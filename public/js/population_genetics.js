@@ -144,7 +144,8 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
     /***********************************************************OPTIONAL VARIABLES***********************************************************/
 
     /**
-     *  Main function that builds random samples for each generation.
+     *  Non blocking function that takes in a context (a generations class) and a finished function 
+     *	when all iterations are finished. 
      *      -Non Blocking 
      *  
      */
@@ -172,7 +173,10 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
         doChunk(); 
     }
 
-    //The actual work that is produced
+    /**
+     *	Sets up the current allele frequncy based on the optional variables that are set. 
+     *	Then makes the call to the population to generate a random sample with the modified allele frequency. 
+     */
     this.buildRandomSamplesWork = function(){
         // console.log("Working");
         
