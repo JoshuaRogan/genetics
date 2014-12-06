@@ -1,0 +1,227 @@
+//Import bootstrap variables and mixins 
+@import "bootstrap/variables.less";	
+@import "bootstrap/mixins.less";	
+
+body{
+	
+}
+.page-home{
+
+	#graph_wrapper{
+
+		#gradient > .vertical(@brand-primary, darken(@brand-primary, 20%));
+
+		background-color: #141425;
+		line-height: 24px;
+		padding: 3px 5px 30px 5px;
+		color: white;
+		text-align: center;
+
+		h1, h2, h3{
+			font-weight: 300;
+		}
+
+		p{
+			color: #fff;
+			font-weight: 300;
+		}
+
+		#graph-canvas{
+			height: 200px;
+			/* Small devices (tablets, 768px and up) */
+			@media (min-width: @screen-sm-min) {height: 300px; }
+
+			/* Medium devices (desktops, 992px and up) */
+			@media (min-width: @screen-md-min) {height: 450px; }
+
+			/* Large devices (large desktops, 1200px and up) */
+			@media (min-width: @screen-lg-min) {height: 550px; }
+		}
+
+
+	}
+
+	#variables {
+		h2{
+			font-size: 35px;
+			a{font-size: 25px}
+		}
+
+		h3{
+			color: @gray-light;
+			font-weight: 300;
+		}
+
+		.error{
+			font-weight: bold; 
+			color: red; 	
+		}
+
+		.variable-section{
+			border-bottom: 1px solid rgba(85, 85, 85, 0.50);
+		}
+		
+
+		.variable{
+			margin-top: 20px;
+
+			input::selection {background: rgba(20, 20, 37, 0.20);}
+			input::-moz-selection {background: rgba(20, 20, 37, 0.20);}
+				
+			/**Variable Name**/
+			label{
+				font-size: 18px;
+				font-weight: normal;
+				overflow: hidden;
+
+				/* Small devices (tablets, 768px and up) */
+				@media (min-width: @screen-sm-min) {font-size: 20px; }
+
+				/* Medium devices (desktops, 992px and up) */
+				@media (min-width: @screen-md-min) {font-size: 20px; }
+
+				/* Large devices (large desktops, 1200px and up) */
+				@media (min-width: @screen-lg-min) {font-size: 22px; }
+			}
+
+			/**Helper Text*/
+			p{
+				font-size: 12px;
+				font-style: italic;
+			}
+
+			/*Variable Value*/
+			.value{
+				text-align: center;
+				font-size: 28px;
+				font-weight: 300;
+				margin-top: 10px;
+
+				@media (min-width: @screen-sm-min) {margin-top: 0; }
+
+				input{
+					border: none;
+					font-size: 26px;
+					box-shadow: none;
+					margin-top:0;
+					padding-top:0;
+					text-align: center;
+					height: 100%;
+				}
+			}
+			
+		}
+
+
+		//Checkboxes and options for the form 
+		#options{
+			margin-top: 20px; 
+			text-align: center;
+
+			@media (min-width: @screen-lg-min) {text-align: left; }
+
+		}
+
+
+
+		#buttons{
+			margin-top: 20px;
+			text-align: center;
+			a{
+				margin-top: 20px; //For when vertical collapse
+			}
+		}
+	}
+
+	#results_panel{
+		margin-top: 20px;
+		
+		#results{
+			height: 800px; 
+			overflow-y: scroll
+		}
+
+	}
+
+	//Graph Computing Modal that runs as the graph is being generated
+	#graph-computing-modal{
+		#graph-completion-precent{
+			font-size: 500%;
+			text-align: center;
+
+			&.completed{
+				color: green;
+			}
+
+			&.failed{
+				color: red; 
+			}
+		}
+
+
+	}
+}
+
+
+
+
+
+
+
+footer{
+	#gradient > .vertical(@brand-primary, darken(@brand-primary, 20%));
+
+	padding-top: 40px;
+	margin-top: 60px;
+	color: white;
+
+	.container-fluid{
+		margin-left: 2%;
+		margin-right: 2%;
+	}
+
+	a{
+		color: white;
+		font-weight: bold
+	}
+
+	a:hover{
+		color: white;
+	}
+
+}
+
+/******************NO UI SLIDER*******************/
+@import "imports/noui.less";	//No UI sliders CSS
+
+.slider{
+	margin-top: 10px;/* Vert Centering*/
+
+	&.active{
+		&.noUi-connect {
+			background-color:  @brand-primary;
+		}
+	}
+
+	&.noUi-connect {
+		background-color: @gray-light; 
+	}
+}
+
+.range-slider .slider{
+	&.active{
+		.noUi-connect{
+			background-color: @brand-primary;
+		}
+	}
+
+	.noUi-connect{
+		background-color: @gray-light; 
+	}
+}
+
+
+
+
+
+

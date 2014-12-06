@@ -1,0 +1,68 @@
+{"fact_lists": [
+	
+	{
+		"title": "What is HPV", 
+		"facts": [
+			"HPV stands for Human Papillomavirus",
+			"About 79 million Americans are currently infected with HPV, making it the most prevalent sexually transmitted infection",
+			"Almost all sexually active men and women will get HPV some point in their lives",
+			"There are many different types of HPV and some may cause genital warts and cancers",
+			"There are vaccines that are recommended that can stop this from happening",
+			"There are about 14 million newly infected individuals each year",
+			"Most sexually active men and women will get one type of HPV in their lifetime",
+			"About 360,000 individuals get genital warts each year",
+			"In the United States more than 10,000 women get cervical cancer each year"
+		]
+	}, 
+	{
+		"title": "How is HPV Spread", 
+		"facts": [
+			"HPV can be spread by having oral, vaginal or anal sex with a male or female who has the virus",
+			"The individual may not know they have HPV because they might not have any signs or symptoms, but it can still be spread",
+			"Symptoms may develop years after you have sex with someone who is infected"
+		]
+	},
+	{
+		"title": "What Health Problems are Caused by HPV?", 
+		"facts": [
+			"HPV may go away on its own",
+			"HPV can cause genital warts in males and females that appear as a small bump or group of bumps",
+			"HPV can cause cancer on the penis, anus or in the mouth and throat",
+			"HPV may also cause cervical cancer in women",
+			"After the person is infected with HPV the cancer may take years or decades to develop"	
+		]
+	},
+	{
+		"title": "How do I know if I have HPV?", 
+		"facts": [
+			"Currently, there is no test to find out a person’s \"HPV status\"",
+			"Some individuals find out when they have genital warts or when a female has a Pap smear that is not normal",
+			"Some may not find out until they have developed the HPV related cancers"		
+		]
+	},
+	{
+		"title": "Is there a treatment for HPV?", 
+		"facts": [
+			"There is no treatment for HPV",
+			"Genital warts can be treated by your provider",
+			"HPV-related cancers that are diagnosed and treated early are more treatable"		
+		]
+	},
+	{
+		"title": "Is there a treatment for HPV?", 
+		"facts": [
+			"The vaccine is safe and effective for all males and females 9-26 years of age",
+			"The CDC recommends the vaccination to all males 11-21 years of age and up to the age of 26 for males who are gay, bisexual or have a compromised immune system",
+			"Three shorts are given over 6 months",
+			"It is most effective after all three doses are given",
+			"Protects males and females against the HPV vaccines that cause disease including the cancers caused by HPV.",
+			"Condoms may help to protect against HPV and lower your chances of getting HPV but does not provide full protection because HPV can infect areas that are not covered by a condom"
+		]
+	},
+	{
+		"title": "HPV Statistics", 
+		"facts": [
+			"The CDC reports that each year 21,000 HPV-related cancers could have been prevented by getting the HPV vaccine"
+		]
+	}
+]}

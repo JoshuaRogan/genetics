@@ -1,0 +1,433 @@
+.page-home #graph_wrapper {
+  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
+  background-color: #141425;
+  line-height: 24px;
+  padding: 3px 5px 30px 5px;
+  color: white;
+  text-align: center;
+}
+.page-home #graph_wrapper h1,
+.page-home #graph_wrapper h2,
+.page-home #graph_wrapper h3 {
+  font-weight: 300;
+}
+.page-home #graph_wrapper p {
+  color: #fff;
+  font-weight: 300;
+}
+.page-home #graph_wrapper #graph-canvas {
+  height: 200px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-home #graph_wrapper #graph-canvas {
+    height: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .page-home #graph_wrapper #graph-canvas {
+    height: 450px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-home #graph_wrapper #graph-canvas {
+    height: 550px;
+  }
+}
+.page-home #variables h2 {
+  font-size: 35px;
+}
+.page-home #variables h2 a {
+  font-size: 25px;
+}
+.page-home #variables h3 {
+  color: #777777;
+  font-weight: 300;
+}
+.page-home #variables .error {
+  font-weight: bold;
+  color: red;
+}
+.page-home #variables .variable-section {
+  border-bottom: 1px solid rgba(85, 85, 85, 0.5);
+}
+.page-home #variables .variable {
+  margin-top: 20px;
+  /**Variable Name**/
+  /**Helper Text*/
+  /*Variable Value*/
+}
+.page-home #variables .variable input::selection {
+  background: rgba(20, 20, 37, 0.2);
+}
+.page-home #variables .variable input::-moz-selection {
+  background: rgba(20, 20, 37, 0.2);
+}
+.page-home #variables .variable label {
+  font-size: 18px;
+  font-weight: normal;
+  overflow: hidden;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-home #variables .variable label {
+    font-size: 20px;
+  }
+}
+@media (min-width: 992px) {
+  .page-home #variables .variable label {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-home #variables .variable label {
+    font-size: 22px;
+  }
+}
+.page-home #variables .variable p {
+  font-size: 12px;
+  font-style: italic;
+}
+.page-home #variables .variable .value {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+@media (min-width: 768px) {
+  .page-home #variables .variable .value {
+    margin-top: 0;
+  }
+}
+.page-home #variables .variable .value input {
+  border: none;
+  font-size: 26px;
+  box-shadow: none;
+  margin-top: 0;
+  padding-top: 0;
+  text-align: center;
+  height: 100%;
+}
+.page-home #variables #options {
+  margin-top: 20px;
+  text-align: center;
+}
+@media (min-width: 1200px) {
+  .page-home #variables #options {
+    text-align: left;
+  }
+}
+.page-home #variables #buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+.page-home #variables #buttons a {
+  margin-top: 20px;
+}
+.page-home #results_panel {
+  margin-top: 20px;
+}
+.page-home #results_panel #results {
+  height: 800px;
+  overflow-y: scroll;
+}
+.page-home #graph-computing-modal #graph-completion-precent {
+  font-size: 500%;
+  text-align: center;
+}
+.page-home #graph-computing-modal #graph-completion-precent.completed {
+  color: green;
+}
+.page-home #graph-computing-modal #graph-completion-precent.failed {
+  color: red;
+}
+footer {
+  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
+  padding-top: 40px;
+  margin-top: 60px;
+  color: white;
+}
+footer .container-fluid {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+footer a {
+  color: white;
+  font-weight: bold;
+}
+footer a:hover {
+  color: white;
+}
+/******************NO UI SLIDER*******************/
+/* Functional styling;
+ * These styles are required for noUiSlider to function.
+ * You don't need to change these rules to apply your design.
+ */
+.noUi-target,
+.noUi-target * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-touch-action: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-target {
+  position: relative;
+}
+.noUi-base {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.noUi-origin {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.noUi-handle {
+  position: relative;
+  z-index: 1;
+}
+.noUi-stacking .noUi-handle {
+  /* This class is applied to the lower origin when
+   its values is > 50%. */
+  z-index: 10;
+}
+.noUi-stacking + .noUi-origin {
+  /* Fix stacking order in IE7, which incorrectly
+   creates a new context for the origins. */
+  *z-index: -1;
+}
+.noUi-state-tap .noUi-origin {
+  -webkit-transition: left 0.3s, top 0.3s;
+  transition: left 0.3s, top 0.3s;
+}
+.noUi-state-drag * {
+  cursor: inherit !important;
+}
+/* Painting and performance;
+ * Browsers can paint handles in their own layer.
+ */
+.noUi-base {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+/* Slider size and handle placement;
+ */
+.noUi-horizontal {
+  height: 18px;
+}
+.noUi-horizontal .noUi-handle {
+  width: 34px;
+  height: 28px;
+  left: -17px;
+  top: -6px;
+}
+.noUi-vertical {
+  width: 18px;
+}
+.noUi-vertical .noUi-handle {
+  width: 28px;
+  height: 34px;
+  left: -6px;
+  top: -17px;
+}
+/* Styling;
+ */
+.noUi-background {
+  background: #FAFAFA;
+  box-shadow: inset 0 1px 1px #f0f0f0;
+}
+.noUi-connect {
+  background: #3FB8AF;
+  box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45);
+  -webkit-transition: background 450ms;
+  transition: background 450ms;
+}
+.noUi-origin {
+  border-radius: 2px;
+}
+.noUi-target {
+  border-radius: 4px;
+  border: 1px solid #D3D3D3;
+  box-shadow: inset 0 1px 1px #f0f0f0, 0 3px 6px -5px #bbbbbb;
+}
+.noUi-target.noUi-connect {
+  box-shadow: inset 0 0 3px rgba(51, 51, 51, 0.45), 0 3px 6px -5px #bbbbbb;
+}
+/* Handles and cursors;
+ */
+.noUi-dragable {
+  cursor: w-resize;
+}
+.noUi-vertical .noUi-dragable {
+  cursor: n-resize;
+}
+.noUi-handle {
+  border: 1px solid #D9D9D9;
+  border-radius: 3px;
+  background: #FFF;
+  cursor: default;
+  box-shadow: inset 0 0 1px #ffffff, inset 0 1px 7px #ebebeb, 0 3px 6px -3px #bbbbbb;
+}
+.noUi-active {
+  box-shadow: inset 0 0 1px #ffffff, inset 0 1px 7px #dddddd, 0 3px 6px -3px #bbbbbb;
+}
+/* Handle stripes;
+ */
+.noUi-handle:before,
+.noUi-handle:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 14px;
+  width: 1px;
+  background: #E8E7E6;
+  left: 14px;
+  top: 6px;
+}
+.noUi-handle:after {
+  left: 17px;
+}
+.noUi-vertical .noUi-handle:before,
+.noUi-vertical .noUi-handle:after {
+  width: 14px;
+  height: 1px;
+  left: 6px;
+  top: 14px;
+}
+.noUi-vertical .noUi-handle:after {
+  top: 17px;
+}
+/* Disabled state;
+ */
+[disabled].noUi-connect,
+[disabled] .noUi-connect {
+  background: #B8B8B8;
+}
+[disabled] .noUi-handle {
+  cursor: not-allowed;
+}
+/* Base;
+ *
+ */
+.noUi-pips,
+.noUi-pips * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-pips {
+  position: absolute;
+  font: 400 12px Arial;
+  color: #999;
+}
+/* Values;
+ *
+ */
+.noUi-value {
+  width: 40px;
+  position: absolute;
+  text-align: center;
+}
+.noUi-value-sub {
+  color: #ccc;
+  font-size: 10px;
+}
+/* Markings;
+ *
+ */
+.noUi-marker {
+  position: absolute;
+  background: #CCC;
+}
+.noUi-marker-sub {
+  background: #AAA;
+}
+.noUi-marker-large {
+  background: #AAA;
+}
+/* Horizontal layout;
+ *
+ */
+.noUi-pips-horizontal {
+  padding: 10px 0;
+  height: 50px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+.noUi-value-horizontal {
+  margin-left: -20px;
+  padding-top: 20px;
+}
+.noUi-value-horizontal.noUi-value-sub {
+  padding-top: 15px;
+}
+.noUi-marker-horizontal.noUi-marker {
+  margin-left: -1px;
+  width: 2px;
+  height: 5px;
+}
+.noUi-marker-horizontal.noUi-marker-sub {
+  height: 10px;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+  height: 15px;
+}
+/* Vertical layout;
+ *
+ */
+.noUi-pips-vertical {
+  padding: 0 10px;
+  height: 100%;
+  top: 0;
+  left: 100%;
+}
+.noUi-value-vertical {
+  width: 15px;
+  margin-left: 20px;
+  margin-top: -5px;
+}
+.noUi-marker-vertical.noUi-marker {
+  width: 5px;
+  height: 2px;
+  margin-top: -1px;
+}
+.noUi-marker-vertical.noUi-marker-sub {
+  width: 10px;
+}
+.noUi-marker-vertical.noUi-marker-large {
+  width: 15px;
+}
+.slider {
+  margin-top: 10px;
+  /* Vert Centering*/
+}
+.slider.active.noUi-connect {
+  background-color: #4b516a;
+}
+.slider.noUi-connect {
+  background-color: #777777;
+}
+.range-slider .slider.active .noUi-connect {
+  background-color: #4b516a;
+}
+.range-slider .slider .noUi-connect {
+  background-color: #777777;
+}
