@@ -62,6 +62,8 @@ HTML;
 }
 
 
+
+
 ?>
 
 <!-- Graph Completion Modal -->
@@ -128,15 +130,11 @@ HTML;
 			<div class="col-sm-6">
 				<a class="btn btn-primary btn-lg" role="button" id="addLine"><i class="fa fa-plus"></i> Add Line</a> 
 			</div>
-
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#graph-computing-modal">
-  Launch demo modal
-</button>
 		</div>
 
 
 		<div>
- 			<div id="main-variables" class="variable-section"> 
+ 			<div id="main-variables" class="variable-section open"> 
 			<h3> Main Variables</h3>
 			<div class="error"></div>
 				<?php 
@@ -158,8 +156,6 @@ HTML;
 					
 					variable::generate_html("Selection Coefficient", "selection-coefficient", "Godard distillery VHS put a bird on it keffiyeh. Meditation selvage fashion axe, fingerstache lo-fi Bushwick next level PBR flannel retro cliche.");
 					variable::generate_html("Dominance Coefficient", "dominance-coefficient", "Godard distillery VHS put a bird on it keffiyeh. Meditation selvage fashion axe, fingerstache lo-fi Bushwick next level PBR flannel retro cliche.");
-				
-
 				?>
 				</div>
 
@@ -169,7 +165,6 @@ HTML;
 				<?php 
 					variable::generate_html("Forward Mutation (mu)", "mutation-rate-mu", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
 					variable::generate_html("Reverse Mutation (nu)", "mutation-rate-nu", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
-
 				?>
 				</div>				
 

@@ -13,9 +13,9 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       		<ul class="nav navbar-nav">
         		<li <?php if(substr($page, 0, strlen($page)-4) == "home") echo "class='active'"; ?> ><a href="/experience">Home</a></li>
-        		<li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Link</a></li>
-        		<li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Link</a></li>
-        		<li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Link</a></li>
+        		<li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">FAQ</a></li>
+        		<li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">About Us</a></li>
+        		<li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Contact Us</a></li>
         </div>
 	</div>
 </nav>

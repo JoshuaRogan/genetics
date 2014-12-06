@@ -51,7 +51,7 @@
 
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="shortcut icon" href="images/favicon.png">
+		<link rel="shortcut icon" href="favicon.ico">
 		
 		<!-- Run in full-screen mode. -->
         <meta name="apple-mobile-web-app-capable" content="yes">
