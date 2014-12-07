@@ -1,5 +1,6 @@
 Human Genetics Graphing
 ==============
+Visit the website *in development* [Here](http://genetics.melwood.jcubedworld.com/)
 
 A population genetics simulator that allows students to explore the effects and interactions of several evolutionary forces.
 
@@ -8,10 +9,10 @@ Features
 - Allele vs. Generation Graphing
 - Variables to modify the allele frequency (Population size, number generations, selection variables, mutation, migration, population bottleneck, and assortative mating)
 
-Tech Features 
+Third Party Components 
 --------------
 - [Less](http://lesscss.org/) Styling 
-- [Bootstrap](http://getbootstrap.com/) Frontend Framework  
+- [Bootstrap](http://getbootstrap.com/) Front-end Framework  
 - [Canvas JS](http://canvasjs.com/) JavaScript Chart API
 - [noUISlider](http://refreshless.com/nouislider/) Form sliders API
 
