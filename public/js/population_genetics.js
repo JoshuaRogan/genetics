@@ -53,9 +53,17 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
     this.currentOtherAlleleFre = 1 - startAlleleFreq; //Currrent implicit other allele frequency 
     this.currentGenerationNum = 0;
 
-
     this.frequencies = Array(); //An array of each frequency that was generated (Graph data)
     this.populations = Array(); //An array of all of the populations (May take up too much memory)  
+
+
+
+    //Genotype Data (Inbreeding and Assortative Mating)
+    this.genoTypeFrequencies = Array(); //An array of each frequency that was generated of the genotype (Graph Data)
+
+
+
+
 
     /***********************************************************OPTIONAL VARIABLES***********************************************************/
     //Mutation Variables
@@ -96,7 +104,7 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
     //Inbreeding
     this.inbreeding = false;
-    this.inbreedingCoefficient = 0.0;
+    this.inbreedingCoefficient = 0.0;	//Important Always needs to be set 
 
     this.setInbreedingCoefficient = function(inbreedingCoefficient) {
         this.inbreeding = true;
@@ -213,13 +221,20 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
                 this.waa = 1 - this.selectionCoefficient;
                 this.fitnessCoefficients = true; 
             }
-            console.log("wAA = ", this.wAA, "wAa =", this.wAa, "waa = ", this.waa);
 
             var p0 = this.currentAlleleFre; 
             var q0 = this.currentOtherAlleleFre; 
 
-            var numerator = (Math.pow(p0, 2) * this.wAA) + ((1 * p0 * q0) * this.wAa);
-            var denom = (Math.pow(p0, 2) * this.wAA) + ((2 * p0 * q0) * this.wAa) + (Math.pow(q0, 2) * this.waa);
+            if(this.possitiveAssortativeMating){
+            	var numerator = 0;
+            	var denom = 1; 
+            }
+            else{
+            	var numerator = ((Math.pow(p0, 2)  + (this.inbreedingCoefficient *p0 * q0)) * this.wAA) + ((1 * p0 * q0 - (this.inbreedingCoefficient *p0 * q0)) * this.wAa);
+            	var denom = ((Math.pow(p0, 2) + (this.inbreedingCoefficient *p0 * q0))* this.wAA) + ((2 * p0 * q0 - (2 * this.inbreedingCoefficient *p0 * q0)) * this.wAa) + ((Math.pow(q0, 2) + (this.inbreedingCoefficient *p0 * q0)) * this.waa);
+
+            }
+
 
             this.currentAlleleFre = numerator / denom;
         }
@@ -229,10 +244,6 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
             this.currentAlleleFre = this.migrantAlleleFreq + (this.currentAlleleFre - this.migrantAlleleFreq) * Math.pow((1-this.migrationRate),this.currentGenerationNum);
         }
 
-        //Update the starting frequency due to inbreeding 
-        if (this.inbreeding) {
-
-        }
 
         //Update the starting frequency due to Assortative Mating
         if (this.possitiveAssortativeMating) {
