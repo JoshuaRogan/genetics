@@ -79,17 +79,17 @@
 }
 @media (min-width: 768px) {
   .page-home #variables .variable label {
-    font-size: 20px;
+    font-size: 19px;
   }
 }
 @media (min-width: 992px) {
   .page-home #variables .variable label {
-    font-size: 20px;
+    font-size: 19px;
   }
 }
 @media (min-width: 1200px) {
   .page-home #variables .variable label {
-    font-size: 22px;
+    font-size: 20px;
   }
 }
 .page-home #variables .variable p {
@@ -115,6 +115,21 @@
   padding-top: 0;
   text-align: center;
   height: 100%;
+}
+.page-home #variables .variable .value input:after {
+  content: " Test";
+}
+.page-home #variables .variable #scientific-notation-container {
+  margin-left: 0px;
+  padding-left: 0;
+  margin-top: 0;
+  padding-top: 0;
+  text-align: center;
+  font-weight: 300;
+  font-size: 26px;
+}
+.page-home #variables .variable #scientific-notation-container .scientific-notation {
+  font-size: 20px;
 }
 .page-home #variables #options {
   margin-top: 20px;

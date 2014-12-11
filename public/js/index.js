@@ -47,9 +47,9 @@ $(document).ready(function() {
 	        $("#generations-slider").Link('lower').to($("#generations"));
 	        $("#generations-slider").addClass("active"); //Active by default
 
-	        $("#generations-slider").on('slide', updateGenOverride);
-	        $("#generations-slider").on('change', updateGenOverride);
-	        $("#generations-slider").on('set', updateGenOverride);
+	        $("#generations-slider").on('slide', activateGenerationsSlider);
+	        $("#generations-slider").on('change', activateGenerationsSlider);
+	        $("#generations-slider").on('set', activateGenerationsSlider);
 	        /*****************END GENERATIONS SLIDER*****************/
 
 
@@ -192,14 +192,14 @@ $(document).ready(function() {
 	        /*****************Mutation rate mu********************/
 	        $("#mutation-rate-mu-slider").noUiSlider({
 	            start: [0],
-	            step: .000000001, //PROBLEM HERE
+	            step: .00001, //PROBLEM HERE
 	            connect: "lower",
 	            range: {
 	                'min': [0],
-	                'max': [1]
+	                'max': [9.99999]
 	            },
 	            format: wNumb({
-	                decimals: 7, //MAX ACCURACY HERE
+	                decimals: 5, //Assuming 10^-3
 	                thousand: ','
 	            })
 	        });
@@ -215,14 +215,14 @@ $(document).ready(function() {
 	        /*****************mutation rate nu********************/
 	        $("#mutation-rate-nu-slider").noUiSlider({
 	            start: [0],
-	            step: .000000001, //PROBLEM HERE
+	            step: .00001, //PROBLEM HERE
 	            connect: "lower",
 	            range: {
 	                'min': [0],
-	                'max': [1]
+	                'max': [9.99999]
 	            },
 	            format: wNumb({
-	                decimals: 7, //MAX ACCURACY HERE
+	                decimals: 5, //Assuming 10^-3
 	                thousand: ','
 	            })
 	        });
@@ -390,11 +390,95 @@ $(document).ready(function() {
         //Show All help button
         $("#all-help").click(function(event) {
             event.preventDefault();
-            $(".variable div p").toggleClass("hidden");
-            if ($(this).html() == "[Show Help]") $(this).html("[Hide Help]");
-            else $(this).html("[Show Help]");
+            if ($(this).html() == "[Show Help]"){
+            	 $(".variable div p").removeClass("hidden");
+            	 $(this).html("[Hide Help]");
+            }
+            else{
+            	$(".variable div p").addClass("hidden");
+            	$(this).html("[Show Help]");
+            }
         });
         /*******************************End Helper Text*******************************/
+
+        /*******************************Handle Opening & Closing of Sections *******************************/
+        //Consider adding a cookie to keep track of these states 
+        
+
+        var variable_text = '<i class="fa fa-chevron-down"></i>';
+        var alt_variable_text = '<i class="fa fa-chevron-up"></i>';
+
+        //Modify to make it open to start
+        $("#main-variables .variable-section-toggle").html(alt_variable_text);
+
+        $(".variable-section-toggle").click(function(event){
+        	event.preventDefault();
+        	$(this).parent().next().next().toggleClass("hidden");
+
+        	if ($(this).html() == variable_text){
+        		$(this).html(alt_variable_text);
+        	} 
+            else {
+            	$(this).html(variable_text);
+            }
+        });
+
+        //Open all of the sections 
+        $("#all-sections").click(function(event) {
+            event.preventDefault();
+
+            if ($(this).html() == '[Open All]'){
+            	 $(".variables-section").removeClass("hidden");
+            	 $(this).html("[Close All]");
+            	 $(".variable-section-toggle").html(alt_variable_text);
+            }
+            else{
+            	$(".variables-section").addClass("hidden");
+            	$(this).html("[Open All]");
+            	$(".variable-section-toggle").html(variable_text);
+            }
+        });
+       	/*******************************Handle Opening & Closing of Sections *******************************/
+
+
+       	/*******************************Handle Opening & Closing of Active Sections *******************************/
+       	$(".variable-activator").click(function(event){
+       		event.preventDefault();
+       		var state;
+
+       		var parentDiv = $(this).parent().parent().parent();
+
+       		if($(this).hasClass("fa-square-o")){	//Activate the variable 
+       			$(this).removeClass("fa-square-o");
+       			$(this).addClass("fa-check-square-o");
+
+       			//Check to see if the div is open 
+       			if(parentDiv.children(".variables-section").hasClass("hidden")){
+       				parentDiv.children(".variables-section").removeClass("hidden");
+       			}
+
+
+       			state = "checked"; 
+       		}
+       		else{	//Deactive the variable
+				$(this).removeClass("fa-check-square-o");
+       			$(this).addClass("fa-square-o");
+       			state = "unchecked"; 
+
+       			//Check to see if the div is open 
+       			if(!(parentDiv.children(".variables-section").hasClass("hidden"))){
+       				parentDiv.children(".variables-section").addClass("hidden");
+       			}
+
+
+       		}
+
+       		//Send the correct id i->a->h3->div
+       		deactiveActiveOnCheckmark(parentDiv.attr('id'), state);
+       		
+       	});
+       	/*******************************Handle Opening & Closing of Active Sections *******************************/
+
     /***********SLIDER CONFIGURATION (MOVE TO A CONFIG FILE)***********/
 
 
@@ -468,7 +552,6 @@ $(document).ready(function() {
          $("#addLine").on("click", function(event) {
         	formHandler(chart, "addLine");
         }); 
-
 
 
 
@@ -553,7 +636,6 @@ function updateLegend(values, append) {
     htmlString += "<li><strong> Starting Allele Frequency: </strong>" + values['starting-allele-frequency'] + "</li>";
 
     //Only display the active variables in the legend 
-
     if (isActiveVariable("#fitness-coefficient-waa")) {
         htmlString += "<li><strong> Fitness Coefficient waa: </strong>" + values['fitness-coefficient-waa'] + "</li>";
         htmlString += "<li><strong> Fitness Coefficient wAa: </strong>" + values['fitness-coefficient-wAa'] + "</li>";
@@ -566,8 +648,8 @@ function updateLegend(values, append) {
     }
 
     if (isActiveVariable("#mutation-rate-nu")) {
-        htmlString += "<li><strong> Forward Mutation: </strong>" + values['mutation-rate-mu'] + "</li>";
-        htmlString += "<li><strong> Reverse Mutation: </strong>" + values['mutation-rate-nu'] + "</li>";
+        htmlString += "<li><strong> Forward Mutation: </strong>" + values['mutation-rate-mu'] + "x10<sup>-3</sup></li>";
+        htmlString += "<li><strong> Reverse Mutation: </strong>" + values['mutation-rate-nu'] + "x10<sup>-3</sup></li>";
     }
 
     if (isActiveVariable("#inbreeding-coefficient")) {
@@ -641,6 +723,11 @@ function isActiveVariable(variableId){
  *
  *	TODO: Check the values to make it inactive if the appropriate values are set
  */
+function activateGenerationsSlider(){
+	//Validate the generation override slider to make sure the new generation number doesn't conflict 
+	validateGenOverride();
+}
+
 function activateFitnessCoefSlider() {
     //Make these active 
     $("#fitness-coefficient-waa-slider").addClass("active");
@@ -650,6 +737,10 @@ function activateFitnessCoefSlider() {
     //Make these inactive (Only one or the other can be active)
     $("#selection-coefficient-slider").removeClass("active");
     $("#dominance-coefficient-slider").removeClass("active");
+
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
 }
 
 function activateSelectionDomSlider() {
@@ -661,54 +752,117 @@ function activateSelectionDomSlider() {
     $("#fitness-coefficient-waa-slider").removeClass("active");
     $("#fitness-coefficient-wAa-slider").removeClass("active");
     $("#fitness-coefficient-wAA-slider").removeClass("active");
+
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
 }
 
 function activateMutationSlider() {
     //Make these active 
     $("#mutation-rate-mu-slider").addClass("active");
     $("#mutation-rate-nu-slider").addClass("active");
+
+    //Update the activator icon
+    $("#mutation-variables .variable-activator").removeClass("fa-square-o");
+    $("#mutation-variables .variable-activator").addClass("fa-check-square-o");
 }
 
 function activateMigrationSlider() {
     //Make these active 
     $("#migration-rate-slider").addClass("active");
     $("#migrant-allele-frequency-slider").addClass("active");
+
+    //Update the activator icon
+    $("#migration-variables .variable-activator").removeClass("fa-square-o");
+    $("#migration-variables .variable-activator").addClass("fa-check-square-o");
 }
 
 function activateInbreedingSlider() {
     //Make these active
     $("#inbreeding-coefficient-slider").addClass("active");
+
+   	//Update the activator icon
+    $("#inbreeding-variables .variable-activator").removeClass("fa-square-o");
+    $("#inbreeding-variables .variable-activator").addClass("fa-check-square-o");
+
 }
 
 function activateAssortativeMating() {
     //Make these active 
     $("#positive-assortative-mating-slider").addClass("active");
+
+    //Update the activator icon
+    $("#assortative-mating .variable-activator").removeClass("fa-square-o");
+    $("#assortative-mating .variable-activator").addClass("fa-check-square-o");
 }
 
+//Instead of validating use http://refreshless.com/nouislider/more/ allowing you to rebuild the slider after initializing 
 function activatePopulationControl(){
 	$("#generation-to-override-slider").addClass("active");
 	$("#new-population-size-slider").addClass("active");
 
+	//Update the activator icon
+	$("#population-control .variable-activator").removeClass("fa-square-o");
+    $("#population-control .variable-activator").addClass("fa-check-square-o");
+
 	//Validate here 
-	var validPopBottleneck = true; 
-	var values = seralizeForm($("#variables-form").serializeArray());
-	if(parseFloat(values['generation-to-override-lower'].replace(',', '')) > parseFloat(values['generations'].replace(',', ''))){
-		validPopBottleneck = false; 
-	}
-	if(parseFloat(values['generation-to-override-upper'].replace(',', '')) > parseFloat(values['generations'].replace(',', ''))){
-		validPopBottleneck = false; 
-	}
-	
-	if(validPopBottleneck){
-		$("#population-control .error").html("");
-	}
-	else{
-		$("#population-control .error").html("Make sure you entered generations numbers that don't exceed the actual number of generations!");
-	}
-
-
+	validateGenOverride();
 }
 
+//Deactive the correct sliders based on what checkmark was clicked 
+function deactiveActiveOnCheckmark(variableSectionId, state){
+	if(variableSectionId == "selection-variables"){
+		//Needs to be more intelligent 
+		if(state =="unchecked"){
+			$("#selection-coefficient-slider").removeClass("active");
+    		$("#dominance-coefficient-slider").removeClass("active");
+    		$("#fitness-coefficient-waa-slider").removeClass("active");
+    		$("#fitness-coefficient-wAa-slider").removeClass("active");
+    		$("#fitness-coefficient-wAA-slider").removeClass("active");
+		}
+	}
+	else if(variableSectionId == "mutation-variables"){
+		$("#mutation-rate-mu-slider").toggleClass("active");
+    	$("#mutation-rate-nu-slider").toggleClass("active");
+	}
+	else if(variableSectionId == "migration-variables"){
+		$("#migration-rate-slider").toggleClass("active");
+    	$("#migrant-allele-frequency-slider").toggleClass("active");
+	}
+	else if(variableSectionId == "assortative-mating"){
+    	$("#positive-assortative-mating-slider").toggleClass("active");
+	}
+	else if(variableSectionId == "inbreeding-variables"){
+    	$("#inbreeding-coefficient-slider").toggleClass("active");
+	}
+	else if(variableSectionId == "population-control"){
+		$("#generation-to-override-slider").toggleClass("active");
+		$("#new-population-size-slider").toggleClass("active");
+	}
+}
+
+function validateGenOverride(){
+	if(isActiveVariable("#generation-to-override")){
+		//Validate here 
+		var validPopBottleneck = true; 
+		var values = seralizeForm($("#variables-form").serializeArray());
+		if(parseFloat(values['generation-to-override-lower'].replace(',', '')) > parseFloat(values['generations'].replace(',', ''))){
+			validPopBottleneck = false; 
+		}
+		if(parseFloat(values['generation-to-override-upper'].replace(',', '')) > parseFloat(values['generations'].replace(',', ''))){
+			validPopBottleneck = false; 
+		}
+		
+		if(validPopBottleneck){
+			$("#population-control .error").html("");
+		}
+		else{
+			$("#population-control .error").html("Make sure you entered generations numbers that don't exceed the actual number of generations!");
+		}
+	}
+
+}
 
 
 
