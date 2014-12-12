@@ -7,7 +7,7 @@
 		    	<span class="icon-bar"></span>
 		    	<span class="icon-bar"></span>
 		    </button>
-		    <a class="navbar-brand emboss" href="/home"><img class="img-responsive" src="/images/logo.png" style="margin-top: -5px; margin-right: 10px;" width="70"></a>
+		    <a class="navbar-brand emboss" href="/home"><img class="img-responsive" src="/images/logo.png" style="margin-top: -5px; margin-right: 10px;" width="70" alt='logo'></a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

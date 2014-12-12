@@ -26,7 +26,7 @@ class variable{
 						<input type="text" class="form-control" id="$variable_id" name="$variable_id" placeholder="0">
 					</div>
 
-					<div class="col-sm-1" id="scientific-notation-container"> 
+					<div class="col-sm-1 scientific-notation-container"> 
 						<span class="scientific-notation">x10<sup>-3</sup></span>
 					</div> 
 				</div>
@@ -94,7 +94,7 @@ HTML;
 ?>
 
 <!-- Graph Completion Modal -->
-<div class="modal fade" id="graph-computing-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="graph-computing-modal" tabindex="-1" role="dialog" aria-labelledby="graph-computing-title" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -261,40 +261,27 @@ HTML;
 			<div class="col-lg-6"> 
 				<h3>Graph Options</h3>
 
-				<label class="checkbox-inline">
-					<input type="checkbox" value="allow-multiple-lines" checked> Allow Multiple Lines
+<!-- 				<label class="checkbox-inline">
+					<input type="checkbox" value="true" checked> Allow Multiple Lines
 				</label>
 
 				<label class="checkbox-inline">
-					<input type="checkbox" value="allow-zoom"> Allow Zoom
+					<input type="checkbox" value="true"> Allow Zoom
 				</label>
 
 				<label class="checkbox-inline">
-					<input type="checkbox" value="high-contrast"> High Contrast
+					<input type="checkbox" value="true"> High Contrast
+				</label> -->
+
+				<label for='infinite_sample_size' class="checkbox-inline">
+					<input id="infinite_sample_size" name="infinite_sample_size" type="checkbox" value="true"> Infinite Sample Size 
 				</label>
 
 				
 
 			</div>
 
-			<div class="col-lg-6">
-				<h3> Computation Type </h3>
 
-				<div class="radio-inline">
-					<label>
-						<input type="radio" name="computation-type" value="server">
-						Compute with Server 
-					</label>
-				</div>
-				<div class="radio-inline">
-					<label>
-						<input type="radio" name="computation-type" value="client" checked>
-						Compute with Client
-					</label>
-				</div>
-
-
-			</div>
 
 
 

@@ -628,7 +628,7 @@ function addLineToGraph(results, chart, lineColor) {
  */
 function updateLegend(values, append) {
     
-	console.log(values); 
+	// console.log(values); 
     var htmlString = "<ul class='list-inline'>";
 
     htmlString += "<li><strong> Population Size: </strong>" + values['population-size'] + "</li>";
@@ -873,149 +873,121 @@ function updateGenOverride(){
 
 /**
  *	Runs the population simluation using the "classes" in population_genetics.js
- *	Handles the form either doing computation on the client or the server with the various inputs. 
+ *	
  *
  */
 function formHandler(chart, type){
-	var computationType = $("input:checked[name='computation-type']").val();
     var values = seralizeForm($("#variables-form").serializeArray());
     updateLegend(values);
 
-    if (computationType == "server") {
-        $.ajax({
-                type: "POST",
-                url: "/ajax",
-                data: $("#variables-form").serialize()
-            })
-            .done(function(msg) {
-                var results = jQuery.parseJSON(msg); //Convert results to JSON
-                $("#results_panel #results").html(results.html);
-                console.log(results.graph_data);
+	var isValid = true; //Validation check 
+	var errors = []; //Error messages 
 
-                var data = [];
-                var dataSeries = {
-                    type: "line",
-                    color: "rgba(255, 255, 255, 0.75)"
-                };
-                var dataPoints = [];
-                for (var i = 0; i < results.graph_data.length; i++) {
-                    dataPoints.push({
-                        x: i,
-                        y: results.graph_data[i]
-                    });
-                }
-                dataSeries.dataPoints = dataPoints;
-                data.push(dataSeries);
-                chart.options.data = data;
-                chart.render();
-            })
-            .fail(function(msg) {
-                $("#results_panel #results").html("<i style='font-size: 300px; color: #c0392b;' class='center-block text-center fa fa-exclamation-triangle fa-5x'></i><span style='font-size: 40px' class='text-center center-block'><strong>Generation Failed</strong></span> ");
-            });
+    //Required Values
+    var input_population_size = parseFloat(values['population-size'].replace(',', ''));
+    var input_num_generations = parseFloat(values['generations'].replace(',', ''));
+    var intput_starting_alele_frequency = parseFloat(values['starting-allele-frequency']);
+    var myGenerations = new generations(input_num_generations, input_population_size, intput_starting_alele_frequency);
+    
 
-        $("#results_panel #results").html("<i style='font-size: 300px' class='center-block text-center fa fa-gear fa-spin fa-4x'></i><span style='font-size: 40px' class='text-center center-block'><strong>Generating Graph</strong></span>");
+    //Selection variables if the coefficient is active 
+    if(isActiveVariable("#fitness-coefficient-wAA") || isActiveVariable("#selection-coefficient")){
+    	//Use the fitness coefficients (waa, wAA, wAa)
+    	if(isActiveVariable("#fitness-coefficient-wAA")){
+    		var wAA = parseFloat(values['fitness-coefficient-wAA'].replace(',', ''));
+    		var wAa = parseFloat(values['fitness-coefficient-wAa'].replace(',', ''));
+    		var waa = parseFloat(values['fitness-coefficient-waa'].replace(',', ''));
+			myGenerations.setFitnessCoefficients(wAA, wAa, waa);
+    	}
+    	//use the Selection/Dominance Coefficient 
+    	else{
+    		 // this.setSelectionDominanceCoe = function(selectionCoefficient, dominaceCoefficient) 
+    		 var selectionCoefficient = parseFloat(values['selection-coefficient'].replace(',', ''));
+    		 var dominaceCoefficient = parseFloat(values['dominance-coefficient'].replace(',', ''));
+    		 myGenerations.setSelectionDominanceCoe(selectionCoefficient, dominaceCoefficient);
+    	}
+    }
+    
+    //Set the mutation variables if they are active 
+    if (isActiveVariable("#mutation-rate-mu") || isActiveVariable("#mutation-rate-nu")) {
+    	var forwardMutationRate = parseFloat(values['mutation-rate-mu']);
+    	var revMutationRate = parseFloat(values['mutation-rate-nu']);
+        myGenerations.setMutation(forwardMutationRate, revMutationRate);
+    }
 
-    } else {//Client side implementation
-    	var isValid = true; //Validation check 
-    	var errors = []; //Error messages 
+    //Set the Migration Variables if they are active 
+    if(isActiveVariable("#migration-rate")){
+    	var migrationRate = parseFloat(values['migration-rate']);
+    	var migrantAlleleFrequency = parseFloat(values['migrant-allele-frequency']);
+    	myGenerations.setMigrationRate(migrationRate, migrantAlleleFrequency);
+    }
 
-        //Required Values
-        var input_population_size = parseFloat(values['population-size'].replace(',', ''));
-        var input_num_generations = parseFloat(values['generations'].replace(',', ''));
-        var intput_starting_alele_frequency = parseFloat(values['starting-allele-frequency']);
-        var myGenerations = new generations(input_num_generations, input_population_size, intput_starting_alele_frequency);
-        
+    //Inbreeding Variables 
+    if(isActiveVariable("#inbreeding-coefficient")){
+    	var inbreedingCoe = parseFloat(values['inbreeding-coefficient']);
+    	myGenerations.setInbreedingCoefficient(inbreedingCoe);
+    }
 
-        //Selection variables if the coefficient is active 
-        if(isActiveVariable("#fitness-coefficient-wAA") || isActiveVariable("#selection-coefficient")){
-        	//Use the fitness coefficients (waa, wAA, wAa)
-        	if(isActiveVariable("#fitness-coefficient-wAA")){
-        		var wAA = parseFloat(values['fitness-coefficient-wAA'].replace(',', ''));
-        		var wAa = parseFloat(values['fitness-coefficient-wAa'].replace(',', ''));
-        		var waa = parseFloat(values['fitness-coefficient-waa'].replace(',', ''));
-				myGenerations.setFitnessCoefficients(wAA, wAa, waa);
-        	}
-        	//use the Selection/Dominance Coefficient 
-        	else{
-        		 // this.setSelectionDominanceCoe = function(selectionCoefficient, dominaceCoefficient) 
-        		 var selectionCoefficient = parseFloat(values['selection-coefficient'].replace(',', ''));
-        		 var dominaceCoefficient = parseFloat(values['dominance-coefficient'].replace(',', ''));
-        		 myGenerations.setSelectionDominanceCoe(selectionCoefficient, dominaceCoefficient);
-        	}
-        }
-        
-        //Set the mutation variables if they are active 
-        if (isActiveVariable("#mutation-rate-mu") || isActiveVariable("#mutation-rate-nu")) {
-        	var forwardMutationRate = parseFloat(values['mutation-rate-mu']);
-        	var revMutationRate = parseFloat(values['mutation-rate-nu']);
-            myGenerations.setMutation(forwardMutationRate, revMutationRate);
-        }
+    //Assortative mating 
+    if(isActiveVariable("#positive-assortative-mating")){
+    	var positiveAssortativeMatingFreq = parseFloat(values['positive-assortative-mating']);
+    	myGenerations.setAssortativeMating(positiveAssortativeMatingFreq);
+    }
 
-        //Set the Migration Variables if they are active 
-        if(isActiveVariable("#migration-rate")){
-        	var migrationRate = parseFloat(values['migration-rate']);
-        	var migrantAlleleFrequency = parseFloat(values['migrant-allele-frequency']);
-        	myGenerations.setMigrationRate(migrationRate, migrantAlleleFrequency);
-        }
+    //Population bottleneck
+    if(isActiveVariable("#generation-to-override")){
+    	var generationStart = parseFloat(values['generation-to-override-lower'].replace(',', ''));
+    	var generationEnd = parseFloat(values['generation-to-override-upper'].replace(',', ''));
+    	var newPopulationSize = parseFloat(values['new-population-size'].replace(',', ''));
+    	
+    	//Validate that generationStart and End are within the generation values
+    	if(generationStart > input_num_generations){
+    		isValid = false; 
+    		errors.push("Invalid Generation Start");
+    	}
+    	if(generationEnd > input_num_generations){
+    		isValid = false; 
+    		errors.push("Invalid Generation End");
+    	}
 
-        //Inbreeding Variables 
-        if(isActiveVariable("#inbreeding-coefficient")){
-        	var inbreedingCoe = parseFloat(values['inbreeding-coefficient']);
-        	myGenerations.setInbreedingCoefficient(inbreedingCoe);
-        }
+    	myGenerations.setpopulationBottleneck(generationStart, generationEnd, newPopulationSize);
+    }
 
-        //Assortative mating 
-        if(isActiveVariable("#positive-assortative-mating")){
-        	var positiveAssortativeMatingFreq = parseFloat(values['positive-assortative-mating']);
-        	myGenerations.setAssortativeMating(positiveAssortativeMatingFreq);
-        }
+    //Actually perform the work
+    if(isValid){
+    	var finishedComputingPartial = partial(finishedComputing, myGenerations, chart, type)
+    	
+    	//Open the Modal for long calculations
+    	if(input_num_generations > 1000 || input_population_size > 1000){
+    		$('#graph-computing-modal').modal('show');
+    	}
 
-        //Population bottleneck
-        if(isActiveVariable("#generation-to-override")){
-        	var generationStart = parseFloat(values['generation-to-override-lower'].replace(',', ''));
-        	var generationEnd = parseFloat(values['generation-to-override-upper'].replace(',', ''));
-        	var newPopulationSize = parseFloat(values['new-population-size'].replace(',', ''));
-        	
-        	//Validate that generationStart and End are within the generation values
-        	if(generationStart > input_num_generations){
-        		isValid = false; 
-        		errors.push("Invalid Generation Start");
-        	}
-        	if(generationEnd > input_num_generations){
-        		isValid = false; 
-        		errors.push("Invalid Generation End");
-        	}
+    	//Call a different function if infinite sample sizes is set both functions set myGenerations.frequencies 
+    	if(values['infinite_sample_size']){
+    		myGenerations.setInfinitePopulation();
+    	}
+    	
+    	myGenerations.buildRandomSamplesAsync(myGenerations, finishedComputingPartial);
+    	
+    	
 
-        	myGenerations.setpopulationBottleneck(generationStart, generationEnd, newPopulationSize);
-        }
+    }
+    else{
+    	//Clear the errors 
+    	$("#alerts-container").html(""); 
 
-        if(isValid){
-        	var finishedComputingPartial = partial(finishedComputing, myGenerations, chart, type)
-        	
-        	//Open the Modal for long calculations
-        	if(input_num_generations > 1000 || input_population_size > 1000){
-        		$('#graph-computing-modal').modal('show');
-        	}
+    	errors.forEach(function(error){
+    		$("#alerts-container").append(buildAlert("alert-danger", error));
+    	});
 
-        	myGenerations.buildRandomSamplesAsync(myGenerations, finishedComputingPartial);
+    	//Add a modal too 
+    }
+    
+    if(errors.length > 0) console.log(errors);
+    
+    
+    $("#results_panel #results").html("Check the console for better data \n" + myGenerations.toString());
 
-        }
-        else{
-        	//Clear the errors 
-        	$("#alerts-container").html(""); 
-
-        	errors.forEach(function(error){
-        		$("#alerts-container").append(buildAlert("alert-danger", error));
-        	});
-
-        	//Add a modal too 
-        }
-        
-        console.log(errors);
-        
-        $("#results_panel #results").html("Check the console for better data \n" + myGenerations.toString());
-
-    } //End Client Computation
 }
 
 /**

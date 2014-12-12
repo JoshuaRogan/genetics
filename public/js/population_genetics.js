@@ -46,8 +46,8 @@ function population(populationSize, startAlleleFreq) {
         output += "----------------POPULATION DATA----------------\n";
         return output; 
     }
-
 }
+
 
 /**
  *  Represents the population through its changes. Primarily used to updated the the startingAlleleFreq so the random 
@@ -62,18 +62,26 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
     this.startAlleleFreq = startAlleleFreq; //Starting allele frequency
     this.startOtherAlleleFreq = 1 - startAlleleFreq; //The implicit other allele frequency 
     this.currentAlleleFre = startAlleleFreq; //Current allele frequency of the population we just generated 
-    this.currentOtherAlleleFre = 1 - startAlleleFreq; //Curr rent implicit other allele frequency 
-    this.currentGenerationNum = 0;
+    this.currentOtherAlleleFre = 1 - startAlleleFreq; //Currrent implicit other allele frequency 
+    this.currentGenerationNum = 0;	//The current generation that is being produced 
+    this.infinitePopulationSize = false; //Generate equations instead of random sampling
 
     this.frequencies = Array(); //An array of each frequency that was generated (Graph data)
     this.populations = Array(); //An array of all of the populations (May take up too much memory)  
 
-
-
     //Genotype Data (Inbreeding and Assortative Mating)
     this.genoTypeFrequencies = Array(); //An array of each frequency that was generated of the genotype (Graph Data)
 
+    //Update the current allele frequency 
+    this.setCurrentAlleleFre = function(newVal) {
+        this.currentAlleleFre = newVal; 
+        this.currentOtherAlleleFre = 1 - this.currentAlleleFre;
+    }
 
+    //Activate infinite population size 
+    this.setInfinitePopulation = function(){
+    	this.infinitePopulationSize = true; 
+    }
 
 
 
@@ -126,10 +134,18 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
     //Assortative Mating
     this.possitiveAssortativeMating = false;
     this.positiveAssortativeFreq = 0.0;
+    this.d_assortativeMating = 0.0;
+    this.h_assortativeMating = 0.0;
+    this.r_assortativeMating = 0.0;
 
     this.setAssortativeMating = function(positiveAssortativeFreq) {
         this.possitiveAssortativeMating = true;
         this.positiveAssortativeFreq = positiveAssortativeFreq;
+
+        //Set D0, H0, R0
+        this.d_assortativeMating = Math.pow(this.startAlleleFreq,2); //p0^2
+        this.h_assortativeMating = 2 * this.startAlleleFreq * this.currentOtherAlleleFre; //2*p0*q0
+        this.r_assortativeMating = Math.pow(this.currentOtherAlleleFre,2); //q0^2
     }
 
     //Migration Variables 
@@ -145,7 +161,7 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
     /**
      *  Population bottleneck
-     *  Modfies the population size for a specfic number of generations (startget - endgen)
+     *  Modifies the population size for a specific number of generations (startget - endgen)
      */
     this.populationBottleneck = false; 
     this.startGeneration = 0;
@@ -158,9 +174,6 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
         this.endGeneration = endGeneration; 
         this.modifiedPopulationSize = modifiedPopulationSize;
     }
-
-
-
     /***********************************************************OPTIONAL VARIABLES***********************************************************/
 
     /**
@@ -209,14 +222,14 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
     this.buildRandomSamplesWork = function(){
         // console.log("Working");
         
-        //Hardcoded DOM update
+        //Hard coded DOM update
         var percentage = (this.currentGenerationNum / this.numGenerations) * 100;
         $("#graph-completion-precent").html((percentage.toFixed(2)) + "%");
         $("#graph-computing-title").html("Computing Generation Number <strong>" + this.currentGenerationNum + "</strong> of " + this.numGenerations);
         
         this.currentGenerationNum++;
 
-        //The order these operations are performed is very important (Consult the formulae last slide)
+        //The order these operations are performed is very important (Consult the formula last slide pdf)
 
         //Update the starting frequency due to mutation
         if (this.mutation) {	
@@ -225,19 +238,25 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
         //Update the starting frequency due to fitness coefficients
         if (this.fitnessCoefficients) {
-        	this.modifyFreqFitnessCoef();
+        	this.modifyFreqFitnessCoef();  //Updates with inbreeding too
         }
         //Update the starting frequency due to the selection/dominance coefficients
         else if (this.selectionDominanceCoe) {
-        	this.modifyFreqSelectAndDomCoef(); 
+        	this.modifyFreqSelectAndDomCoef(); //Updates with inbreeding too
         }
+
+        //Update the starting frequency due to the selection/dominance coefficients     
+        if(this.possitiveAssortativeMating && (this.selectionDominanceCoe || this.fitnessCoefficients)){
+            this.modifyFreqPosAssortMat();
+        }
+
         //Update the starting frequency due to migration
         if(this.migration){
         	this.modifyFreqMigration(); 
         }
 
 
-        //Modifying the population size temporarily 
+        //Modifying the population size temporarily if population bottleneck is active 
         if(this.populationBottleneck){
             if(this.currentGenerationNum > this.startGeneration && this.currentGenerationNum < this.endGeneration){
                 var actualPopulationSize = this.modifiedPopulationSize; //There is a population bottle neck for this generation
@@ -250,17 +269,23 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
             var actualPopulationSize = this.populationSize;
         }
 
+        
+        //Only do random sampling on non infinite population sizes 
+        if(this.infinitePopulationSize){
+            this.frequencies.push(this.currentAlleleFre);  //This is the value that is being graphed
+        }
+        else{
+            var currentPopulation = new population(actualPopulationSize, this.currentAlleleFre);
+            currentPopulation.buildRandomSample();
+            this.populations.push(currentPopulation); //This adds the actual populations to an array for later use. 
+            this.frequencies.push(currentPopulation.currentAlleleFre);  //This is the value that is being graphed
+            this.setCurrentAlleleFre(currentPopulation.currentAlleleFre);
+        }
+        
 
+        
 
-        var currentPopulation = new population(actualPopulationSize, this.currentAlleleFre);
-        currentPopulation.buildRandomSample();
-
-        this.populations.push(currentPopulation); //This adds the actual populations to an array for later use. 
-        this.frequencies.push(currentPopulation.currentAlleleFre);  //This is the value that is being graphed
-
-        this.currentAlleleFre = currentPopulation.currentAlleleFre; //Update the new frequency after the random sampling
-        this.currentOtherAlleleFre = 1 - this.currentAlleleFre; //This is the implicit value of the other allele. Only used for clarity 
-
+        
     }
 
 
@@ -283,19 +308,61 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
     }
 
-    //Update the frequency due to selection effects from the fitness coefficients (Waa, WAA, WAa)
+    //
+    /**
+     *	Update the frequency due to selection effects from the fitness coefficients (Waa, WAA, WAa)
+     *	-Accounts for inbreeding here (equation when inbreedingCoef = 0 simplifies down to the same without inbreeding)
+     */
     this.modifyFreqFitnessCoef = function(){
-    	var p0 = this.currentAlleleFre; //Might be starting allele 
-		var q0 = this.currentOtherAlleleFre; //might be starting 
+    	var p0 = this.currentAlleleFre; //Current or starting ? 
+		var q0 = this.currentOtherAlleleFre; //Current or starting ? 
+		var F = this.inbreedingCoefficient; 
 
-		var numerator = (Math.pow(p0, 2) * this.wAA) + ((1 * p0 * q0) * this.wAa);
-		var denom = (Math.pow(p0, 2) * this.wAA) + ((2 * p0 * q0) * this.wAa) + (Math.pow(q0, 2) * this.waa);
+        //New equations with inbreeding 
+        var numerator = ((Math.pow(p0, 2) + (F*p0*q0))*this.wAA) + ((1*p0*q0) - (F*p0*q0))*this.wAa;
+        var denom = ((Math.pow(p0, 2) + (F*p0*q0))*this.wAA) + ((2*p0*q0) - (F*p0*q0))*this.wAa + (Math.pow(q0, 2) + (F*p0*q0))*this.waa
+        this.setCurrentAlleleFre(numerator / denom);
 
-		this.currentAlleleFre = numerator / denom;
+
+    }
+
+    //Update the frequency due to possitiveAssortativeMating
+    this.modifyFreqPosAssortMat = function(){
+        p0 = this.currentAlleleFre; //Current or starting ? 
+        q0 = this.currentOtherAlleleFre; //Current or starting ?
+
+        //The previous values of d,h,r
+        var d0 = this.d_assortativeMating;
+        var h0 = this.h_assortativeMating;
+        var r0 = this.r_assortativeMating;
+        var alpha = this.positiveAssortativeFreq;
+
+        //Specify each numerator first since the denominator is the same between all of them 
+        var d_numerator = ((1 - alpha) * Math.pow(p0, 2)) + (alpha * (d0 + h0/4));
+        var h_numerator = (2 * (1 - alpha) * p0 * q0) + (alpha * (h0/2));
+        var r_numerator = ((1 - alpha) * q0 * 2) + (alpha * (r0 + h0/4));
+        var commonDenom = d_numerator + h_numerator + r_numerator;
+
+        //Update the d,h,r values 
+        this.d_assortativeMating = d_numerator / commonDenom;
+        this.h_assortativeMating = h_numerator / commonDenom;
+        this.r_assortativeMating = r_numerator / commonDenom;
+
+        //Short hand variables for the new variables 
+        var d_n = this.d_assortativeMating;
+        var h_n = this.d_assortativeMating;
+        var r_n = this.d_assortativeMating;
+
+        //New equations with positive mating 
+        var numerator = (d_n * this.wAA) + ((h_n * p0 * q0 / 2) * this.wAa); 
+        var denom = (d_n * this.wAA) + (h_n * this.wAa) + (r_n * this.waa);
+
+        this.setCurrentAlleleFre(numerator / denom);
     }
 
     //Update the frequency due to the selection effects from the selection and dominance coefficients 
     this.modifyFreqSelectAndDomCoef = function(){
+		//Only needs to be calculated once
 		if(!this.fitnessCoefficients){
 			this.wAA = 1.0; //See selection documentation
 			this.wAa = 1 - (this.selectionCoefficient * this.dominaceCoefficient);
@@ -303,19 +370,8 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 			this.fitnessCoefficients = true; 
 		}
 
-		var p0 = this.currentAlleleFre; 
-		var q0 = this.currentOtherAlleleFre; 
-
-		if(this.possitiveAssortativeMating){
-			var numerator = 0;
-			var denom = 1; 
-		}
-		else{
-			var numerator = ((Math.pow(p0, 2)  + (this.inbreedingCoefficient *p0 * q0)) * this.wAA) + ((1 * p0 * q0 - (this.inbreedingCoefficient *p0 * q0)) * this.wAa);
-			var denom = ((Math.pow(p0, 2) + (this.inbreedingCoefficient *p0 * q0))* this.wAA) + ((2 * p0 * q0 - (2 * this.inbreedingCoefficient *p0 * q0)) * this.wAa) + ((Math.pow(q0, 2) + (this.inbreedingCoefficient *p0 * q0)) * this.waa);
-
-		}
-		this.currentAlleleFre = numerator / denom;
+		//Once the fitness coefficients are set it is the same equation so just call that 
+		this.modifyFreqFitnessCoef(); 
     }
 
     //Update the frequency due to migration effects 
@@ -323,6 +379,9 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 		this.currentAlleleFre = this.migrantAlleleFreq + (this.currentAlleleFre - this.migrantAlleleFreq) 
 			* Math.pow((1-this.migrationRate),this.currentGenerationNum);
     }
+
+
+    //Helper functions 
 
 
 
