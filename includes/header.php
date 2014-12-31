@@ -12,25 +12,25 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       		<ul class="nav navbar-nav">
-        		<li <?php if(substr($page, 0, strlen($page)-4) == "home") echo "class='active'"; ?> ><a href="/experience">Graphs</a></li>
-        		<li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">FAQ</a></li>
-        		<li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Blog</a></li>
-        		<li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Contact Us</a></li>
+        		<li <?php if(substr($page, 0, strlen($page)-4) == "home") echo "class='active'"; ?> ><a href="/home">Graphs</a></li>
+        		<li <?php if(substr($page, 0, strlen($page)-4) == "faq") echo "class='active'"; ?> ><a href="/faq">FAQ</a></li>
+        		<!-- <li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Blog</a></li> -->
+        		<!-- <li <?php if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Contact Us</a></li> -->
         	</ul>
 
-        	<ul class="nav navbar-nav navbar-right">
-				<!-- <li><a href="#">Link</a></li> -->
+<!--         	<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Link</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">More <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">FAQ</a></li>
+						<li><a href="/faq">FAQ</a></li>
 						<li><a href="#">Report a Problem</a></li>
-						<li><a href="#">Contact Us</a></li>
-						<li class="divider"></li>
-						<li><a href="#">About Us</a></li>
+						<li><a hrs="divider"></li>
+						<lef="#">Contact Us</a></li>
+						<li clasi><a href="#">About Us</a></li>
 					</ul>
 				</li>
-				</ul>
+			</ul> -->
         </div>
 	</div>
 </nav>

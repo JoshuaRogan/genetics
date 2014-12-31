@@ -56,11 +56,11 @@
 
 			<ul class="list-inline text-center">
 				<li><a href="#">Home</a></li>
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Contact Us</a></li>
-				<li><a href="#">Blog</a></li>
+				<!-- <li><a href="#">About Us</a></li> -->
+				<!-- <li><a href="#">Contact Us</a></li> -->
+				<!-- <li><a href="#">Blog</a></li> -->
 				<li><a href="/report-problem">Report a Problem</a></li>
-				<li><a href="#">FAQ</a></li>
+				<li><a href="/faq">FAQ</a></li>
 			</ul>
 		</div> 
 	</div> 

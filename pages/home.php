@@ -37,12 +37,15 @@ HTML;
 
 			//Base case
 			else if(!$range_slider){
+				if($variable_id != "population-size") $hidden = "hidden";
+				else $hidden = ""; 
+
 			echo <<<HTML
 
 			<div class="variable row">
 					<div class="col-sm-3">
 						<label>$variable_name: <a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
-						<p class="help-block hidden">$helper_text</p>
+						<p class="help-block $hidden">$helper_text</p>
 					</div>
 
 					<div class="col-sm-6">
@@ -162,11 +165,13 @@ HTML;
 
 		<div>
  			<div id="main-variables" class="variable-section open"> 
-				<h3><i class="fa fa-check-square-o"></i> Main Variables <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+				<h3><i class="fa fa-check-square-o"></i> Main Variables <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a> </h3>
 				<div class="error"></div>
 				<div class="variables-section">
 					<?php 
-						variable::generate_html("Population Size", "population-size", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
+						variable::generate_html("Population Size", "population-size", "<label id='label-infinite-sample-size' for='infinite_sample_size' class='checkbox-inline'>
+					<input id='infinite_sample_size' name='infinite_sample_size' type='checkbox' value='true'> Infinite Sample Size 
+				</label> <br/>");
 						variable::generate_html("Generations", "generations", "Godard distillery VHS put a bird on it keffiyeh. Meditation selvage fashion axe, fingerstache lo-fi Bushwick next level PBR flannel retro cliche.");
 						variable::generate_html("Starting Allele Frequency", "starting-allele-frequency", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
 					?>
@@ -177,7 +182,7 @@ HTML;
 			<div id="optional-variables">
 
 				<div id="selection-variables" class="variable-section"> 
-					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Selection Variables <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Selection <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div>
 					<div class="variables-section hidden">
 
@@ -194,7 +199,7 @@ HTML;
 
 
 				<div id="mutation-variables" class="variable-section"> 
-					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Mutation Variables <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Mutation <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div>
 					<div class="variables-section hidden">
 						<?php 
@@ -205,7 +210,7 @@ HTML;
 				</div>				
 
 				<div id="migration-variables" class="variable-section"> 
-					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Migration Variables <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Migration <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div>
 
 					<div class="variables-section hidden">
@@ -218,7 +223,7 @@ HTML;
 
 
 				<div id="inbreeding-variables" class="variable-section"> 
-					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Inbreeding Variables <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Inbreeding <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div>
 
 					<div class="variables-section hidden">
@@ -273,9 +278,7 @@ HTML;
 					<input type="checkbox" value="true"> High Contrast
 				</label> -->
 
-				<label for='infinite_sample_size' class="checkbox-inline">
-					<input id="infinite_sample_size" name="infinite_sample_size" type="checkbox" value="true"> Infinite Sample Size 
-				</label>
+				
 
 				
 
