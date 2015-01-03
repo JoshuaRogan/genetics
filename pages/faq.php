@@ -42,6 +42,9 @@ class question{
         question::generate_question_html("How can I change the variables", "To change any of the variables you can open up the appropriate section by either clicking the <strong>checkbox</strong> to the left of the section name or the <strong>down arrow</strong>. Once the section is opened you can either move the slider or directly inputing the value by clicking the value itself. ");
         question::generate_question_html("How can I activate a variable", "The variables automatically activate upon <strong>moving the slider</strong> or <strong>inputing a value</strong>. If the variable is active it will be shown in color and a check will be next to the section name.");
         question::generate_question_html("How can I deactivate a variable", "If a variable is active (shown in color), you deactivate it by de-selecting the checkbox to the left of the section you would like to deactivate. Once a value is deselected it will be grayed out.  ");
+        question::generate_question_html("How can I zoom in the graph", "To zoom in the graph simply click and drag across the area you would like to zoom in.");
+        question::generate_question_html("How to move in the the zoomed graph", "Click the directional button on the top right of the graph and click and drag to move along the x axis of the graph.");
+        question::generate_question_html("How to reset the graph", "To reset the graph click the circular arrow on the top right of the graph.");
         ?>
         
 
@@ -60,9 +63,11 @@ class question{
 
         <?php 
             question::generate_question_html("How can I submit a bug or potential new feature", "You can navigate to the <a href='/report-problem'>Report a Problem</a> page to either submit a bug error or suggest new features."); 
-            question::generate_question_html("How was this application created", "This application was powered by <a href='http://en.wikipedia.org/wiki/JavaScript' target='_blank'>JavaScript</a> and designed with the front end framework <a href='http://getbootstrap.com/'>bootstrap.</a> It was developed by <a href='http://joshuarogan.com' target='_blank'> Josh Rogan </a> and commissioned by Dr. John Shaffer, Professor of Human Genetics at the University of Pittsburgh. ")
+            question::generate_question_html("How do I add this to my home screen", "Coming Soon, ");
 
 
+            question::generate_question_html("How was this application created", "This application was powered by <a href='http://en.wikipedia.org/wiki/JavaScript' target='_blank'>JavaScript</a> and designed with the front end framework <a href='http://getbootstrap.com/'>bootstrap.</a> It was developed by <a href='http://joshuarogan.com' target='_blank'> Josh Rogan </a> and commissioned by Dr. John Shaffer, Professor of Human Genetics at the University of Pittsburgh. ");
+           
 
 
         ?>
