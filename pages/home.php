@@ -123,7 +123,7 @@ HTML;
 <div id="graph_wrapper" class="row"> 
 	<div class="container"> 
 		<h1> Genetic Graphing</h1>
-		<p> This is a population genetics simulator that allows students to explore the effects and interactions of several evolutionary forces.</p>
+
 		<div id="graph_legend"> 
 
 		</div>
