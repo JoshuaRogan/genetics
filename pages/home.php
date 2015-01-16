@@ -2,10 +2,94 @@
 error_reporting(-1);
 ini_set('display_errors', 'On');
 
+class variable2{
+
+
+	function __construct($variable_name, $variable_id, $helper_text, $range_slider = false, $symbol = false){
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 class variable{
 
-	public static function generate_html($variable_name, $variable_id, $helper_text, $range_slider = false){
+	public static function generate_simple_slider($variable_name, $symbol, $variable_id, $helper_text){
+		//Start everything hidden except population size 
+		if($variable_id != "population-size") $hidden = "hidden";
+		else $hidden = ""; 
+		$slider_id = $variable_id . "-slider";
 
+		//Print out the HTML
+		echo <<<HTML
+			<div class="variable row">
+					<div class="col-sm-3">
+						<label>$variable_name: <a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
+						<p class="help-block $hidden">
+							Notation: $symbol <br/> 
+							$helper_text
+						</p>
+					</div>
+
+					<div class="col-sm-6">
+						<div id="$slider_id" class="slider"></div>
+					</div>
+
+					<div class="col-sm-3 value">
+						<input type="text" class="form-control" id="$variable_id" name="$variable_id" placeholder="0">
+					</div>
+				</div>
+HTML;
+	}
+
+	public static function generate_mutation_slider($variable_name, $symbol, $variable_id, $helper_text){
+
+	}
+
+	//Generates the range slider for generation override 
+	public static function generate_range_slider($variable_name, $symbol, $variable_id, $helper_text){
+		$variable_id_lower = $variable_id . "-lower"; 
+		$variable_id_upper = $variable_id . "-upper"; 
+		$slider_id = $variable_id . "-slider";
+
+		echo <<<HTML
+
+		<div class="variable row range-slider">
+				<div class="col-sm-3">
+					<label>$variable_name: <a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
+					<p class="help-block $hidden">
+						Notation: $symbol <br/> 
+						$helper_text
+					</p>
+				</div>
+
+				<div class="col-sm-5">
+					<div id="$slider_id" class="slider"></div>
+				</div>
+
+				<div class="col-sm-2 value">
+					<input type="text" class="form-control" id="$variable_id_lower" name="$variable_id_lower" placeholder="0">
+				</div>
+
+				<div class="col-sm-2 value">
+					<input type="text" class="form-control" id="$variable_id_upper" name="$variable_id_upper" placeholder="0">
+				</div>
+			</div>
+
+HTML;
+	}
+
+
+	public static function generate_html($variable_name, $variable_id, $helper_text, $range_slider = false, $symbol = false){
+			if(!$symbol) $symbol = "*"; 
 			$slider_id = $variable_id . "-slider";
 
 			//Special case for adding percision to the mutation variables by assuming x10^-3
@@ -14,7 +98,7 @@ class variable{
 
 			<div class="variable row">
 					<div class="col-sm-3">
-						<label>$variable_name: <a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
+						<label>$variable_name:<a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
 						<p class="help-block hidden">$helper_text</p>
 					</div>
 
@@ -44,7 +128,7 @@ HTML;
 
 			<div class="variable row">
 					<div class="col-sm-3">
-						<label>$variable_name: <a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
+						<label>$variable_name:  $symbol <a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
 						<p class="help-block $hidden">$helper_text</p>
 					</div>
 
@@ -139,7 +223,7 @@ HTML;
 <div id="variables" class="container"> 
 	
 	<form class="row" id="variables-form"> 
-		<h2> Variables Form <a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a> <a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a><!-- <span class="pull-right"><a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a></span> --></h2>
+		<h2> Simulation Parameters<a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a> <a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a><!-- <span class="pull-right"><a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a></span> --></h2>
 		<!-- Need to change font sizes on smaller displays  -->
 		
 		<div id="alerts-container"> 
@@ -165,15 +249,15 @@ HTML;
 
 		<div>
  			<div id="main-variables" class="variable-section open"> 
-				<h3><i class="fa fa-check-square-o"></i> Main Variables <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a> </h3>
+				<h3><i class="fa fa-check-square-o"></i> Base Simulation Model <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a> </h3>
 				<div class="error"></div>
 				<div class="variables-section">
 					<?php 
-						variable::generate_html("Population Size", "population-size", "<label id='label-infinite-sample-size' for='infinite_sample_size' class='checkbox-inline'>
-					<input id='infinite_sample_size' name='infinite_sample_size' type='checkbox' value='true'> Infinite Sample Size 
-				</label> <br/>");
-						variable::generate_html("Generations", "generations", "Godard distillery VHS put a bird on it keffiyeh. Meditation selvage fashion axe, fingerstache lo-fi Bushwick next level PBR flannel retro cliche.");
-						variable::generate_html("Starting Allele Frequency", "starting-allele-frequency", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
+						//Move to another section
+						variable::generate_html("Population Size", "population-size", "<label id='label-infinite-sample-size' for='infinite_sample_size' class='checkbox-inline'> <input id='infinite_sample_size' name='infinite_sample_size' type='checkbox' value='true'> Infinite Sample Size </label> <br/>");
+
+						variable::generate_simple_slider("Generations", "t", "generations", "helper");
+						variable::generate_simple_slider("Starting Allele Frequency", "p", "starting-allele-frequency", "helper");
 					?>
 				</div>
 
@@ -187,12 +271,13 @@ HTML;
 					<div class="variables-section hidden">
 
 						<?php 
-							variable::generate_html("Fitness Coefficient(wAA)", "fitness-coefficient-wAA", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
-							variable::generate_html("Fitness Coefficient(wAa)", "fitness-coefficient-wAa", "Godard distillery VHS put a bird on it keffiyeh. Meditation selvage fashion axe, fingerstache lo-fi Bushwick next level PBR flannel retro cliche.");
-							variable::generate_html("Fitness Coefficient(waa)", "fitness-coefficient-waa", "Godard distillery VHS put a bird on it keffiyeh. Meditation selvage fashion axe, fingerstache lo-fi Bushwick next level PBR flannel retro cliche.");
-							
-							variable::generate_html("Selection Coefficient", "selection-coefficient", "Godard distillery VHS put a bird on it keffiyeh. Meditation selvage fashion axe, fingerstache lo-fi Bushwick next level PBR flannel retro cliche.");
-							variable::generate_html("Dominance Coefficient", "dominance-coefficient", "Godard distillery VHS put a bird on it keffiyeh. Meditation selvage fashion axe, fingerstache lo-fi Bushwick next level PBR flannel retro cliche.");
+							variable::generate_simple_slider("Fitness Coefficient(w<sub>AA</sub>)", "w<sub>AA</sub>", "fitness-coefficient-wAA", "helper");
+							variable::generate_simple_slider("Fitness Coefficient(w<sub>Aa</sub>)", "w<sub>Aa</sub>", "fitness-coefficient-wAa", "helper");
+							variable::generate_simple_slider("Fitness Coefficient(w<sub>aa</sub>)", "w<sub>aa</sub>", "fitness-coefficient-waa", "helper");
+
+							variable::generate_simple_slider("Selection Coefficient", "s", "selection-coefficient", "helper");
+							variable::generate_simple_slider("Dominance Coefficient", "h", "dominance-coefficient", "helper");
+
 						?>
 					</div>
 				</div>
@@ -203,6 +288,9 @@ HTML;
 					<div class="error"></div>
 					<div class="variables-section hidden">
 						<?php 
+
+
+
 							variable::generate_html("Forward Mutation (mu)", "mutation-rate-mu", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
 							variable::generate_html("Reverse Mutation (nu)", "mutation-rate-nu", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
 						?>
@@ -215,8 +303,8 @@ HTML;
 
 					<div class="variables-section hidden">
 						<?php 
-							variable::generate_html("Migration Rate", "migration-rate", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
-							variable::generate_html("Migrant Allele Frequency", "migrant-allele-frequency", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
+							variable::generate_simple_slider("Migration Rate", "m", "migration-rate", "helper");
+							variable::generate_simple_slider("Migrant Allele Frequency", "p<sub>M</sub>", "migrant-allele-frequency", "helper");
 						?>
 					</div>
 				</div>
@@ -228,7 +316,7 @@ HTML;
 
 					<div class="variables-section hidden">
 						<?php 
-							variable::generate_html("Inbreeding Coefficient", "inbreeding-coefficient", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");				
+							variable::generate_simple_slider("Inbreeding Coefficient", "F", "inbreeding-coefficient", "helper");
 						?>
 					</div>
 				</div>
@@ -239,7 +327,7 @@ HTML;
 					<div class="error"></div>
 					<div class="variables-section hidden">
 						<?php 
-							variable::generate_html("Positive Assortative Mating Frequency", "positive-assortative-mating", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");				
+							variable::generate_simple_slider("Positive Assortative Mating Frequency", "&alpha;", "positive-assortative-mating", "helper");
 						?>
 					</div>
 				</div>
@@ -249,9 +337,15 @@ HTML;
 					<div class="error"></div> 
 					<div class="variables-section hidden">
 						<?php 
+
+							// variable::generate_range_slider("Generations to Override", "g", )
 							variable::generate_html("Generations to Override", "generation-to-override", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.", true);	
 							variable::generate_html("New Population Size", "new-population-size", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
 						?>
+
+
+
+
 					</div>
 				</div>
 
