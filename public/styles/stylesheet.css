@@ -1,3 +1,7 @@
+.page-home .infinite-sym {
+  font-size: 30px;
+  vertical-align: middle;
+}
 .page-home #graph_wrapper {
   background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
   background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
@@ -7,13 +11,29 @@
   background-color: #141425;
   line-height: 24px;
   padding: 3px 5px 30px 5px;
-  color: white;
+  color: #fff;
   text-align: center;
 }
 .page-home #graph_wrapper h1,
 .page-home #graph_wrapper h2,
 .page-home #graph_wrapper h3 {
   font-weight: 300;
+}
+.page-home #graph_wrapper h1 {
+  font-size: 16px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-home #graph_wrapper h1 {
+    font-size: 26px;
+  }
+}
+@media (min-width: 992px) {
+  .page-home #graph_wrapper h1 {
+    font-size: 36px;
+  }
 }
 .page-home #graph_wrapper p {
   color: #fff;
@@ -54,6 +74,61 @@
   font-weight: bold;
   color: red;
 }
+.page-home #variables #multiple-legends-container .legend {
+  margin-bottom: 5px;
+  background-color: #d4d6e0;
+  padding: 5px;
+  border: 2px solid #b6bacb;
+}
+.page-home #variables #multiple-legends-container .legend.hidden-legend {
+  height: 30px;
+  overflow: hidden;
+}
+.page-home #variables #multiple-legends-container .legend.hidden-legend h3 {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+.page-home #variables #multiple-legends-container .legend h3 {
+  color: #4b516a;
+  margin-top: 8px;
+  font-size: 18px;
+  /* Small devices (tablets, 768px and up) */
+}
+@media (min-width: 768px) {
+  .page-home #variables #multiple-legends-container .legend h3 {
+    font-size: 24px;
+  }
+}
+.page-home #variables #multiple-legends-container .legend .legend-var {
+  padding-right: 4px;
+}
+.page-home #variables #multiple-legends-container .legend .legend-symbol {
+  padding-left: 2px;
+  padding-right: 5px;
+  font-size: 18px;
+  font-style: italic;
+}
+.page-home #variables #multiple-legends-container .legend .legend-symbol:after {
+  content: " = ";
+}
+.page-home #variables #multiple-legends-container .legend .legend-val {
+  font-weight: 600;
+}
+.page-home #variables #multiple-legends-container .legend .legend-warning {
+  padding-left: 4px;
+}
+.page-home #variables #multiple-legends-container .legend .legend-warning .fa-exclamation-triangle,
+.page-home #variables #multiple-legends-container .legend .legend-warning .fa-exclamation,
+.page-home #variables #multiple-legends-container .legend .legend-warning .fa-tachometer {
+  color: #e74c3c;
+}
+.page-home #variables #multiple-legends-container .legend .legend-warning .fa-recycle {
+  color: #2ecc71;
+}
+.page-home #variables #multiple-legends-container .legend p {
+  margin-top: 10px;
+}
 .page-home #variables .variable-section {
   border-bottom: 1px solid rgba(85, 85, 85, 0.5);
 }
@@ -92,6 +167,29 @@
     font-size: 20px;
   }
 }
+.page-home #variables .variable .help-block {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  /* Small devices (tablets, 768px and up) */
+}
+@media (min-width: 768px) {
+  .page-home #variables .variable .help-block {
+    padding-left: 10px;
+  }
+}
+.page-home #variables .variable .help-block .help-symbol-container {
+  font-size: 18px;
+  color: #4b516a;
+  font-weight: 900;
+}
+.page-home #variables .variable .help-block .help-symbol-container .help-symbol {
+  font-size: 22px;
+  font-style: italic;
+}
+.page-home #variables .variable .help-block p {
+  font-size: 15px;
+}
 .page-home #variables .variable #label-infinite-sample-size {
   font-style: normal;
 }
@@ -116,10 +214,6 @@
     margin-top: 8px;
   }
 }
-.page-home #variables .variable p {
-  font-size: 12px;
-  font-style: italic;
-}
 .page-home #variables .variable .value {
   text-align: center;
   font-size: 28px;
@@ -140,20 +234,42 @@
   text-align: center;
   height: 100%;
 }
-.page-home #variables .variable .value input:after {
-  content: " Test";
-}
 .page-home #variables .variable .scientific-notation-container {
-  margin-left: 0px;
+  margin-left: 0;
   padding-left: 0;
   margin-top: 0;
   padding-top: 0;
-  text-align: center;
   font-weight: 300;
-  font-size: 26px;
 }
 .page-home #variables .variable .scientific-notation-container .scientific-notation {
   font-size: 20px;
+  text-align: right;
+  padding-right: 0;
+  margin-right: 0;
+}
+.page-home #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
+  font-size: 18px;
+  height: 34px;
+  padding: 3px 3px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+}
+@media (max-width: 768px) {
+  .page-home #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
+    font-size: 20px;
+    height: 38px;
+    padding: 6px 12px;
+  }
+}
+@media (min-width: 992px) {
+  .page-home #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
+    font-size: 20px;
+    height: 38px;
+    padding: 6px 12px;
+  }
+}
+.page-home #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent option {
+  text-align: center;
 }
 .page-home #variables #options {
   margin-top: 20px;

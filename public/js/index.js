@@ -8,6 +8,8 @@ $(document).ready(function() {
             $(this).select(); //Automatically select all the text when they click on an input 
         });
 
+        $('[data-toggle="tooltip"]').tooltip(); //Opt in to tooltips 
+
         /***********SLIDER CONFIGURATION (MOVE TO A CONFIG FILE)***********/
 	        /*****************POPULATION SLIDER*****************/
 	        $("#population-size-slider").noUiSlider({
@@ -25,7 +27,10 @@ $(document).ready(function() {
 	        });
 
 	        $("#population-size-slider").Link('lower').to($("#population-size"));
-	        $("#population-size-slider").addClass("active"); //Active by default
+	        // $("#population-size-slider").addClass("active"); //Active by default
+	        $("#population-size-slider").on('slide', activatePopulationSlider);
+	        $("#population-size-slider").on('change', activatePopulationSlider);
+	        $("#population-size-slider").on('set', activatePopulationSlider);
 
 	        /*****************END POPULATION SLIDER*****************/
 
@@ -391,11 +396,11 @@ $(document).ready(function() {
         $("#all-help").click(function(event) {
             event.preventDefault();
             if ($(this).html() == "[Show Help]"){
-            	 $(".variable div p").removeClass("hidden");
+            	 $(".variable .help-block").removeClass("hidden");
             	 $(this).html("[Hide Help]");
             }
             else{
-            	$(".variable div p").addClass("hidden");
+            	$(".variable .help-block").addClass("hidden");
             	$(this).html("[Show Help]");
             }
         });
@@ -511,8 +516,9 @@ $(document).ready(function() {
                     fontWeight: 300
                 },
                 axisX: {
-                    title: "Generation Number",
+                    title: "Generation",
                     titleFontColor: "white", 
+                    // titleFontSize: 22, //Automatically calculated for responsive design
                     labelFontColor: "rgba(255, 255, 255, 0.2)",
                     labelFontSize: 14,
                     labelAngle: 0,
@@ -522,8 +528,9 @@ $(document).ready(function() {
                     tickColor: "rgba(255, 255, 255, 0.2)"
                 },
                 axisY: {
-                    title: "Allele Frequency", 
+                    title: "Frequency of the A allele", 
                     titleFontColor: "white",
+                    // titleFontSize: 22, //Automatically calculated for responsive design
                     labelFontColor: "rgba(255, 255, 255, 0.2)",
                     minimum: 0,
                     maximum: 1,
@@ -626,12 +633,27 @@ function addLineToGraph(results, chart, lineColor) {
  *	if the graph is being redraw don't append it.
  *
  */
+ var num_graphs = 0; 
 function updateLegend(values, append) {
     
 	// console.log(values); 
     var htmlString = "<ul class='list-inline'>";
 
-    htmlString += "<li><strong> Population Size: </strong>" + values['population-size'] + "</li>";
+
+
+    if(isActiveVariable("#population-size")){
+    	htmlString += "<li><strong> Population Size: </strong>" + values['population-size'] + "</li>";
+    }
+    else{
+    	htmlString += "<li><strong> Population Size: </strong> <span class='infinite-sym'> &infin; </span> </li>";
+
+    }
+
+
+
+
+
+
     htmlString += "<li><strong> Number Generations: </strong>" + values['generations'] + "<l/i>";
     htmlString += "<li><strong> Starting Allele Frequency: </strong>" + values['starting-allele-frequency'] + "</li>";
 
@@ -648,8 +670,8 @@ function updateLegend(values, append) {
     }
 
     if (isActiveVariable("#mutation-rate-nu")) {
-        htmlString += "<li><strong> Forward Mutation: </strong>" + values['mutation-rate-mu'] + "x10<sup>-3</sup></li>";
-        htmlString += "<li><strong> Reverse Mutation: </strong>" + values['mutation-rate-nu'] + "x10<sup>-3</sup></li>";
+        htmlString += "<li><strong> Forward Mutation: </strong>" + values['mutation-rate-mu'] + "x10<sup>" + values['mutation-rate-mu-exponent'] + "</sup></li>";
+        htmlString += "<li><strong> Reverse Mutation: </strong>" + values['mutation-rate-nu'] + "x10<sup>"+ values['mutation-rate-nu-exponent'] + "</sup></li>";
     }
 
     if (isActiveVariable("#inbreeding-coefficient")) {
@@ -726,6 +748,12 @@ function isActiveVariable(variableId){
 function activateGenerationsSlider(){
 	//Validate the generation override slider to make sure the new generation number doesn't conflict 
 	validateGenOverride();
+}
+
+function activatePopulationSlider(){
+	$("#population-size-slider").addClass("active");
+
+	//No longer infinite sample size
 }
 
 function activateFitnessCoefSlider() {
@@ -822,6 +850,9 @@ function deactiveActiveOnCheckmark(variableSectionId, state){
     		$("#fitness-coefficient-wAA-slider").removeClass("active");
 		}
 	}
+	else if(variableSectionId == "population-variable"){
+		$("#population-size-slider").toggleClass("active");
+	}
 	else if(variableSectionId == "mutation-variables"){
 		$("#mutation-rate-mu-slider").toggleClass("active");
     	$("#mutation-rate-nu-slider").toggleClass("active");
@@ -910,8 +941,9 @@ function formHandler(chart, type){
     
     //Set the mutation variables if they are active 
     if (isActiveVariable("#mutation-rate-mu") || isActiveVariable("#mutation-rate-nu")) {
-    	var forwardMutationRate = parseFloat(values['mutation-rate-mu']);
-    	var revMutationRate = parseFloat(values['mutation-rate-nu']);
+    	var forwardMutationRate = parseFloat(values['mutation-rate-mu']) * Math.pow(10,parseInt(values['mutation-rate-mu-exponent']));
+    	var revMutationRate = parseFloat(values['mutation-rate-nu']) * Math.pow(10,parseInt(values['mutation-rate-nu-exponent']));
+
         myGenerations.setMutation(forwardMutationRate, revMutationRate);
     }
 
@@ -963,7 +995,7 @@ function formHandler(chart, type){
     	}
 
     	//Call a different function if infinite sample sizes is set both functions set myGenerations.frequencies 
-    	if(values['infinite_sample_size']){
+    	if(!isActiveVariable("#population-size")){
     		myGenerations.setInfinitePopulation();
     	}
     	

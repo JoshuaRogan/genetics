@@ -23,9 +23,7 @@ class variable2{
 class variable{
 
 	public static function generate_simple_slider($variable_name, $symbol, $variable_id, $helper_text){
-		//Start everything hidden except population size 
-		if($variable_id != "population-size") $hidden = "hidden";
-		else $hidden = ""; 
+
 		$slider_id = $variable_id . "-slider";
 
 		//Print out the HTML
@@ -33,10 +31,12 @@ class variable{
 			<div class="variable row">
 					<div class="col-sm-3">
 						<label>$variable_name: <a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
-						<p class="help-block $hidden">
-							Notation: $symbol <br/> 
-							$helper_text
-						</p>
+						
+						<div class="help-block hidden">
+							<div class="help-symbol-container">Symbol: <span class="help-symbol">$symbol</span> </div>
+							<p>$helper_text</p>
+						</div>
+
 					</div>
 
 					<div class="col-sm-6">
@@ -51,7 +51,55 @@ HTML;
 	}
 
 	public static function generate_mutation_slider($variable_name, $symbol, $variable_id, $helper_text){
+		
+		$slider_id = $variable_id . "-slider";
 
+		echo <<<HTML
+
+			<div class="variable row">
+					<div class="col-sm-3">
+						<label>$variable_name:<a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
+
+						<div class="help-block hidden">
+							<div class="help-symbol-container">Symbol: <span class="help-symbol">$symbol</span> </div>
+							<p>$helper_text</p>
+						</div>
+
+					</div>
+
+					<div class="col-sm-4">
+						<div id="$slider_id" class="slider"></div>
+					</div>
+
+					<div class="col-sm-2 value">
+						<input type="text" class="form-control" id="$variable_id" name="$variable_id" placeholder="0">
+					</div>
+
+					
+					<div class="col-sm-3 scientific-notation-container"> 
+
+						<div class="col-xs-6 scientific-notation">x10^</div>
+						
+						<div class="col-xs-6 form-group text-center scientific-form-group">
+						  <select class="form-control mutation-exponent" id="{$variable_id}-exponent" name="{$variable_id}-exponent">
+						    <option>-1</option>
+						    <option>-2</option>
+						    <option>-3</option>
+						    <option>-4</option>
+						    <option selected="selected">-5</option>
+						    <option>-6</option>
+						    <option>-7</option>
+						    <option>-8</option>
+						    <option>-9</option>
+						    <option>-10</option>
+						  </select>
+						</div>
+						
+						
+					</div>
+			</div>
+
+HTML;
 	}
 
 	//Generates the range slider for generation override 
@@ -206,7 +254,7 @@ HTML;
 
 <div id="graph_wrapper" class="row"> 
 	<div class="container"> 
-		<h1> Genetic Graphing</h1>
+		<h1> Population Genetics Simulation</h1>
 
 		<div id="graph_legend"> 
 
@@ -223,11 +271,53 @@ HTML;
 <div id="variables" class="container"> 
 	
 	<form class="row" id="variables-form"> 
-		<h2> Simulation Parameters<a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a> <a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a><!-- <span class="pull-right"><a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a></span> --></h2>
+		<h2> Simulation Parameters <a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a> <!--<a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a>--><!-- <span class="pull-right"><a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a></span> --></h2>
 		<!-- Need to change font sizes on smaller displays  -->
 		
 		<div id="alerts-container"> 
 
+		</div>
+
+		<div id="multiple-legends-container" class="container"> 
+			<div class="legend row" id='graph-1-legend'> 
+				<h3><i class="fa fa-line-chart"></i> <strong>Graph 1</strong><a href="#" class="pull-right showlegend">[Hide Legend]</a></p></h3>
+				
+				<ul class="list-unstyled block-center">  
+					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Generations:</span><span class="legend-symbol">t</span><span class="legend-val">500</span><span data-toggle="tooltip" title="Default Value" class="legend-warning"><i class="fa fa-recycle"></i></span></li>
+					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Population Size:</span><span class="legend-symbol">N</span><span class="legend-val">9,000</span><span data-toggle="tooltip" title="Possible Slow Graphing" class="legend-warning"><i class="fa fa-tachometer"></i></span></li>
+					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Starting Allele Frequency:</span><span class="legend-symbol">p</span><span class="legend-val">0.5000</span><span data-toggle="tooltip" title="Default Value" class="legend-warning"><i class="fa fa-recycle"></i></span></li>
+					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Fitness Coefficient:</span><span class="legend-symbol">W<sub>AA</sub></span><span class="legend-val">.0.735</span></li>
+					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Fitness Coefficient:</span><span class="legend-symbol">W<sub>Aa</sub></span><span class="legend-val">.0.455</span></li>
+					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Fitness Coefficient:</span><span class="legend-symbol">W<sub>aa</sub></span><span class="legend-val">.0.255</span></li>
+					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Forward Mutation:</span><span class="legend-symbol">μ</span><span class="legend-val">4.83695x10<sup>-5</sup></span></li>
+					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Reverse Mutation:</span><span class="legend-symbol">ν</span><span class="legend-val">4.83695x10<sup>-9</sup></span><span data-toggle="tooltip" title="Unusual input" class="legend-warning"><i class="fa fa-exclamation-triangle"></i></span></li>
+				</ul> 
+
+
+				<div class='clearfix col-xs-12'> 
+					<p><code><a href="#" class="get-raw-data">Get Raw Data </a></code></p>
+				</div>
+
+
+			</div>
+
+			<div class="legend row hidden-legend"> 
+				<h3><i class="fa fa-line-chart"></i> <strong>Graph 2</strong><a href="#" class="pull-right showlegend">[Show Legend]</a></p></h3>
+				
+				<ul class="list-unstyled block-center text-center">  
+					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
+					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
+					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
+					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
+					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
+					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
+					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
+					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
+				</ul> 
+
+			</div>
+
+			
 		</div>
 
 		<div id="buttons" class="row"> 
@@ -235,12 +325,7 @@ HTML;
 			<div class="col-sm-6">
 				<a class="btn btn-primary btn-lg" role="button" id="newGraph"><i class="fa fa-line-chart"></i> Generate Graph</a> 
 			</div>
-<!-- 			<div class="col-sm-3">
-				<a class="btn btn-primary btn-lg" role="button"><i class="fa fa-floppy-o"></i> Save Graph</a> 
-			</div>
-			<div class="col-sm-3">
-				<a class="btn btn-primary btn-lg" role="button"><i class="fa fa-print"></i> Print Graph</a> 
-			</div> -->
+
 			<div class="col-sm-6">
 				<a class="btn btn-primary btn-lg" role="button" id="addLine"><i class="fa fa-plus"></i> Add Line</a> 
 			</div>
@@ -253,11 +338,8 @@ HTML;
 				<div class="error"></div>
 				<div class="variables-section">
 					<?php 
-						//Move to another section
-						variable::generate_html("Population Size", "population-size", "<label id='label-infinite-sample-size' for='infinite_sample_size' class='checkbox-inline'> <input id='infinite_sample_size' name='infinite_sample_size' type='checkbox' value='true'> Infinite Sample Size </label> <br/>");
-
-						variable::generate_simple_slider("Generations", "t", "generations", "helper");
-						variable::generate_simple_slider("Starting Allele Frequency", "p", "starting-allele-frequency", "helper");
+						variable::generate_simple_slider("Generations", "t", "generations", "This is the number of generations to be simulated.");
+						variable::generate_simple_slider("Starting Allele Frequency", "p", "starting-allele-frequency", "This is the frequency of the allele of interest, A, at generation 0.");
 					?>
 				</div>
 
@@ -265,18 +347,42 @@ HTML;
 
 			<div id="optional-variables">
 
+				<div id="population-variable" class="variable-section"> 
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Population Size<a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<div class="error"></div>
+					<div class="variables-section hidden">
+						<?php 
+							variable::generate_simple_slider("Population Size", "N", "population-size", "<strong>Setting this overrides infinite population size!</strong> </br></br>This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N."); 
+						?>
+					</div>
+				</div>
+
 				<div id="selection-variables" class="variable-section"> 
 					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Selection <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div>
 					<div class="variables-section hidden">
 
 						<?php 
-							variable::generate_simple_slider("Fitness Coefficient(w<sub>AA</sub>)", "w<sub>AA</sub>", "fitness-coefficient-wAA", "helper");
-							variable::generate_simple_slider("Fitness Coefficient(w<sub>Aa</sub>)", "w<sub>Aa</sub>", "fitness-coefficient-wAa", "helper");
-							variable::generate_simple_slider("Fitness Coefficient(w<sub>aa</sub>)", "w<sub>aa</sub>", "fitness-coefficient-waa", "helper");
+							variable::generate_simple_slider("Fitness Coefficient(w<sub>AA</sub>)", "w<sub>AA</sub>", "fitness-coefficient-wAA", "This describes the relative fitness of individuals with the AA genotype. Higher values
+represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAa and waa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and
+dominance coefficients, but not both");
+							variable::generate_simple_slider("Fitness Coefficient(w<sub>Aa</sub>)", "w<sub>Aa</sub>", "fitness-coefficient-wAa", "This describes the relative fitness of individuals with the Aa genotype. Higher values
+represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAA and waa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and
+dominance coefficients, but not both.");
+							variable::generate_simple_slider("Fitness Coefficient(w<sub>aa</sub>)", "w<sub>aa</sub>", "fitness-coefficient-waa", "This describes the relative fitness of individuals with the aa genotype. Higher values
+represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAA and wAa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and
+dominance coefficients, but not both.");
 
-							variable::generate_simple_slider("Selection Coefficient", "s", "selection-coefficient", "helper");
-							variable::generate_simple_slider("Dominance Coefficient", "h", "dominance-coefficient", "helper");
+							variable::generate_simple_slider("Selection Coefficient", "s", "selection-coefficient", "This represents the degree of selection against the aa genotype group with respect to the
+AA genotype group. A value of s = 1 indicates 100% selection against the aa genotype
+group. A value of s = 0 indicates no selection against the aa genotype group. Note, selection can be defined in terms of the selection and dominance coefficients, or in terms
+of the three fitness coefficients, but not both.");
+							variable::generate_simple_slider("Dominance Coefficient", "h", "dominance-coefficient", "This represents the degree of dominance of the unfavored a allele in selection. The product of selection and dominance coefficients (i.e., s × h) represents the degree of selection against the Aa genotype group with respect to the AA genotype group. A value of h = 1 indicates that the Aa genotype group is equally unfavored as the aa genotype
+group. A value of h = 0 indicates that the Aa genotype group is equally favored as the AA
+genotype group. A value of h = 0.5 represents the additive model, where the selection
+against the Aa genotype group is half that of the aa genotype group. Negative values of h (representing over‐dominance or “heterozygote advantage”) are not implemented. Instead use fitness coefficients to describe situations of over‐ or under‐dominance. Note,
+selection can be defined in terms of selection and dominance coefficients, or in terms of
+the three fitness coefficients, but not both.");
 
 						?>
 					</div>
@@ -288,11 +394,8 @@ HTML;
 					<div class="error"></div>
 					<div class="variables-section hidden">
 						<?php 
-
-
-
-							variable::generate_html("Forward Mutation (mu)", "mutation-rate-mu", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
-							variable::generate_html("Reverse Mutation (nu)", "mutation-rate-nu", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
+							variable::generate_mutation_slider("Forward Mutation", "&mu;", "mutation-rate-mu", "The rate at which allele A mutates to allele a per generation."); 
+							variable::generate_mutation_slider("Reverse Mutation", "&nu;", "mutation-rate-nu", "The rate of which allele a mutates to allele A per generation."); 
 						?>
 					</div>
 				</div>				
@@ -303,8 +406,8 @@ HTML;
 
 					<div class="variables-section hidden">
 						<?php 
-							variable::generate_simple_slider("Migration Rate", "m", "migration-rate", "helper");
-							variable::generate_simple_slider("Migrant Allele Frequency", "p<sub>M</sub>", "migrant-allele-frequency", "helper");
+							variable::generate_simple_slider("Migration Rate", "m", "migration-rate", "The rate at which migrant alleles enter the population per generation.");
+							variable::generate_simple_slider("Migrant Allele Frequency", "p<sub>M</sub>", "migrant-allele-frequency", "The frequency of the A allele in among all alleles entering the population.");
 						?>
 					</div>
 				</div>
@@ -316,7 +419,7 @@ HTML;
 
 					<div class="variables-section hidden">
 						<?php 
-							variable::generate_simple_slider("Inbreeding Coefficient", "F", "inbreeding-coefficient", "helper");
+							variable::generate_simple_slider("Inbreeding Coefficient", "F", "inbreeding-coefficient", "This is the probability that both alleles in a randomly chosen individual in the population are identical‐by‐descent (IBD). A value of F = 0 indicates there is no inbreeding within the population. A value of 1 indicates that there is complete autozygosity such as found in inbred lines model organisms.");
 						?>
 					</div>
 				</div>
@@ -327,7 +430,8 @@ HTML;
 					<div class="error"></div>
 					<div class="variables-section hidden">
 						<?php 
-							variable::generate_simple_slider("Positive Assortative Mating Frequency", "&alpha;", "positive-assortative-mating", "helper");
+							variable::generate_simple_slider("Positive Assortative Mating Frequency", "&alpha;", "positive-assortative-mating", "This is the excess fraction of positive assortative matings in the population where 1 ‐ α is the fraction of random matings.
+A value of α = 1 indicates 100% positive assortative mating, and a value of α = 0 indicates total random mating.");
 						?>
 					</div>
 				</div>
@@ -340,12 +444,9 @@ HTML;
 
 							// variable::generate_range_slider("Generations to Override", "g", )
 							variable::generate_html("Generations to Override", "generation-to-override", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.", true);	
-							variable::generate_html("New Population Size", "new-population-size", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.");
+							variable::generate_simple_slider("Population Size", "N<sub>B</sub>", "new-population-size", "helper");
+
 						?>
-
-
-
-
 					</div>
 				</div>
 

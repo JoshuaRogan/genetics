@@ -93,8 +93,8 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
     this.setMutation = function(forwardMutationRate, reverseMutationRate) {
         this.mutation = true;
-        this.forwardMutationRate = forwardMutationRate * Math.pow(10, -3); //Always assumed
-        this.reverseMutationRate = reverseMutationRate * Math.pow(10, -3); //Always assumed
+        this.forwardMutationRate = forwardMutationRate;
+        this.reverseMutationRate = reverseMutationRate; //Always assumed
     }
 
 
@@ -255,10 +255,11 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
         	this.modifyFreqMigration(); 
         }
 
-
+        var bottleneck_generation = false; //Determine if this is an actual bottlneck generation 
         //Modifying the population size temporarily if population bottleneck is active 
         if(this.populationBottleneck){
             if(this.currentGenerationNum > this.startGeneration && this.currentGenerationNum < this.endGeneration){
+                var bottleneck_generation = true; 
                 var actualPopulationSize = this.modifiedPopulationSize; //There is a population bottle neck for this generation
             }
             else{
@@ -271,7 +272,7 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
         
         //Only do random sampling on non infinite population sizes 
-        if(this.infinitePopulationSize){
+        if(this.infinitePopulationSize && !bottleneck_generation){
             this.frequencies.push(this.currentAlleleFre);  //This is the value that is being graphed
         }
         else{

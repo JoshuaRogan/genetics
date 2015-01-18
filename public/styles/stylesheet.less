@@ -7,6 +7,12 @@ body{
 }
 .page-home{
 
+	//Style for the infinite symbol
+	.infinite-sym{
+		font-size: 30px;
+		vertical-align: middle;
+	}
+
 	#graph_wrapper{
 
 		#gradient > .vertical(@brand-primary, darken(@brand-primary, 20%));
@@ -14,11 +20,23 @@ body{
 		background-color: #141425;
 		line-height: 24px;
 		padding: 3px 5px 30px 5px;
-		color: white;
+		color: #fff;
 		text-align: center;
 
 		h1, h2, h3{
 			font-weight: 300;
+		}
+
+		h1{
+			font-size: 16px;
+			/* Small devices (tablets, 768px and up) */
+			@media (min-width: @screen-sm-min) {font-size: 26px;}
+
+			/* Medium devices (desktops, 992px and up) */
+			@media (min-width: @screen-md-min) {font-size: 36px; }
+
+			/* Large devices (large desktops, 1200px and up) */
+			// @media (min-width: @screen-lg-min) {height: 550px; }	
 		}
 
 		p{
@@ -42,6 +60,7 @@ body{
 	}
 
 	#variables {
+
 		h2{
 			font-size: 35px;
 			a{font-size: 25px}
@@ -55,6 +74,81 @@ body{
 		.error{
 			font-weight: bold; 
 			color: red; 	
+		}
+
+		//New Legend 
+		#multiple-legends-container{
+
+			.legend{
+
+				//Style for hidden legend 
+				&.hidden-legend{
+					height: 30px; 
+					overflow: hidden;
+
+					h3{
+						font-size: 15px;
+						margin: 0; 
+						padding: 0;
+					}	
+				}
+
+				margin-bottom: 5px;
+				background-color: lighten(@brand-primary, 50%);
+				padding: 5px;
+				border: 2px solid lighten(@brand-primary, 40%); 
+
+
+
+				h3{
+					color: @brand-primary; 
+					margin-top: 8px;
+					font-size: 18px;
+
+					/* Small devices (tablets, 768px and up) */
+					@media (min-width: @screen-sm-min) {font-size: 24px;}
+				}
+
+				//Variable Name
+				.legend-var{
+					padding-right: 4px;
+				}
+
+				.legend-symbol{
+					padding-left: 2px; 
+					padding-right: 5px;
+					font-size: 18px;
+					font-style: italic; 
+					&:after{
+						content: " = ";
+					} 
+
+				}
+
+				//Variable Value 
+				.legend-val{
+					font-weight: 600;
+				}
+
+				.legend-warning{
+					padding-left: 4px;
+
+					.fa-exclamation-triangle, .fa-exclamation, .fa-tachometer {
+						color: #e74c3c; 
+					}
+
+					.fa-recycle{
+						color: #2ecc71; 
+					}
+					
+				}
+
+				//Raw Data Link
+				p{
+					margin-top:10px;
+				}
+
+			}
 		}
 
 		.variable-section{
@@ -84,6 +178,41 @@ body{
 				@media (min-width: @screen-lg-min) {font-size: 20px; }
 			}
 
+			//Helper text 
+			.help-block{
+				margin-top: 0;
+				margin-bottom: 0;
+				padding-left: 0;  
+
+				/* Small devices (tablets, 768px and up) */
+				@media (min-width: @screen-sm-min) {padding-left: 10px; }
+
+
+				.help-symbol-container{
+					font-size: 18px;
+					color: @brand-primary; 
+					font-weight: 900;
+
+					.help-symbol{
+						font-size: 22px;
+						font-style: italic;
+					}
+				}
+
+				p{
+					font-size: 15px;
+					
+				}
+			}
+
+
+
+
+
+
+
+
+
 			/**Helper Text*/
 			#label-infinite-sample-size{
 				font-style: normal;
@@ -100,10 +229,7 @@ body{
 				/* Large devices (large desktops, 1200px and up) */
 				@media (min-width: @screen-lg-min) {margin-top: 8px; }
 			}
-			p{
-				font-size: 12px;
-				font-style: italic;
-			}
+			
 
 			/*Variable Value*/
 			.value{
@@ -122,10 +248,6 @@ body{
 					padding-top:0;
 					text-align: center;
 					height: 100%;
-
-					&:after{
-						content: " Test";
-					}
 				}
 
 
@@ -133,16 +255,49 @@ body{
 			}
 
 			.scientific-notation-container{
-				margin-left: 0px; 
+				margin-left: 0; 
 				padding-left: 0; 
 				margin-top:0;
 				padding-top:0;
-				text-align: center;
-				font-weight: 300;
-				font-size: 26px;
 
+			
+				font-weight: 300;
+				//x10
 				.scientific-notation{
-					font-size: 20px;
+						font-size: 20px;
+						text-align: right;
+						padding-right: 0;
+						margin-right: 0;
+				}
+
+				//Mutation exponent dropdown
+				.scientific-form-group .mutation-exponent{
+					font-size: 18px;
+					height: 34px;
+					padding: 3px 3px;
+
+					/* Small devices (tablets, 768px and up) */
+					@media (max-width: @screen-sm-min) {
+						font-size: 20px;
+						height: 38px;
+						padding: 6px 12px; //Defaults
+					}
+
+					/* Medium devices (desktops, 992px and up) */
+					@media (min-width: @screen-md-min) {
+						font-size: 20px;
+						height: 38px; 
+						padding: 6px 12px; //Defaults
+					}
+
+
+
+					option{
+						
+						text-align: center;
+					}
+				
+
 				}
 			}
 
