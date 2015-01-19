@@ -278,7 +278,7 @@ HTML;
 
 		</div>
 
-		<div id="multiple-legends-container" class="container"> 
+		<!-- <div id="multiple-legends-container" class="container"> 
 			<div class="legend row" id='graph-1-legend'> 
 				<h3><i class="fa fa-line-chart"></i> <strong>Graph 1</strong><a href="#" class="pull-right showlegend">[Hide Legend]</a></p></h3>
 				
@@ -316,9 +316,7 @@ HTML;
 				</ul> 
 
 			</div>
-
-			
-		</div>
+		</div> -->
 
 		<div id="buttons" class="row"> 
 
@@ -348,7 +346,7 @@ HTML;
 			<div id="optional-variables">
 
 				<div id="population-variable" class="variable-section"> 
-					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Population Size<a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Finite Population<a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div>
 					<div class="variables-section hidden">
 						<?php 
@@ -459,7 +457,7 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 		<div id="options" class="row"> 
 
 			<div class="col-lg-6"> 
-				<h3>Graph Options</h3>
+				<!-- <h3>Graph Options</h3> -->
 
 <!-- 				<label class="checkbox-inline">
 					<input type="checkbox" value="true" checked> Allow Multiple Lines
@@ -492,13 +490,13 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 	</form>
 
 
-	<div id="results_panel"> 
+<!-- 	<div id="results_panel"> 
 		<h3> Debugging Results </h3>
 		<pre id="results"> 
 
 
 		</pre>
 
-	</div>
+	</div> -->
 
 </div>
