@@ -350,7 +350,7 @@ HTML;
 					<div class="error"></div>
 					<div class="variables-section hidden">
 						<?php 
-							variable::generate_simple_slider("Population Size", "N", "population-size", "<strong>Setting this overrides infinite population size!</strong> </br></br>This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N."); 
+							variable::generate_simple_slider("Population Size", "N", "population-size", "<strong>Setting this overrides infinite population size!</strong> <br/><br/>This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N."); 
 						?>
 					</div>
 				</div>
