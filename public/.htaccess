@@ -1,8 +1,5 @@
-
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule ^([^/\.]+)/?$ /index.php?page=$1 [QSA]
-</IfModule>
+RewriteEngine On
+RewriteRule ^([^/\.]+)/?$ /index.php?page=$1 [QSA]
 
 ErrorDocument 401 /errors/401.html
 ErrorDocument 403 /errors/403.html
@@ -13,8 +10,8 @@ AddType application/octet-stream .zip .mp3 .mp4
 
 
 <IfModule pagespeed_module>
-    ModPagespeed off
-    #ModPagespeedEnableFilters remove_comments,move_css_to_head,rewrite_css
+    ModPagespeed on
+    ModPagespeedEnableFilters remove_comments,combine_css,move_css_to_head,rewrite_css,rewrite_javascript,rewrite_images 
 </IfModule>
 
 # ##############################################################################
