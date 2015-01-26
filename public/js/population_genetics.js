@@ -23,15 +23,17 @@ function population(populationSize, startAlleleFreq) {
 
         //Perform the random sampling 
         for (var i = 0; i < this.populationSize; i++) {
-            if (this.startAlleleFreq == 1.0 || this.startAlleleFreq == 0.0) break;
+            if (this.currentAlleleFre == 1.0 || this.currentAlleleFre == 0.0) break;
 
+            var rand = Math.floor(Math.random() * (1 - 0)) + 0;
 
-            if (Math.random() <= this.startAlleleFreq) {
+            if (Math.random() <= this.currentAlleleFre) {
                 directAlleleCounter++;
             } 
         }
         //Recompute the currentAllele frequency after random sampling
-        this.currentAlleleFre = directAlleleCounter / (i + 1);
+        if(i != 0) this.currentAlleleFre = directAlleleCounter / (i);
+        
     }
 
     //
@@ -71,6 +73,8 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
     //Genotype Data (Inbreeding and Assortative Mating)
     this.genoTypeFrequencies = Array(); //An array of each frequency that was generated of the genotype (Graph Data)
+
+    this.frequencies.push(startAlleleFreq);
 
     //Update the current allele frequency 
     this.setCurrentAlleleFre = function(newVal) {
@@ -298,15 +302,17 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
     //Update the frequency due to mutation effects 
     this.modifyFreqMutation = function (){
-    	var partialResult = this.reverseMutationRate / (this.forwardMutationRate + this.reverseMutationRate);
+    	// var partialResult = this.reverseMutationRate / (this.forwardMutationRate + this.reverseMutationRate);
 
-        this.currentAlleleFre = partialResult + (this.startAlleleFreq - partialResult) 
-        	* Math.pow((1 - this.forwardMutationRate - this.reverseMutationRate), this.currentGenerationNum);
+     //    this.currentAlleleFre = partialResult + (this.currentAlleleFre - partialResult) 
+     //    	* Math.pow((1 - this.forwardMutationRate - this.reverseMutationRate), this.currentGenerationNum);
+
+        this.currentAlleleFre = this.currentAlleleFre * (1 - this.forwardMutationRate) + (1 - this.currentAlleleFre) * this.reverseMutationRate;
     }
 
     //Update the frequency due to selection effects and Inbreeding and assortative mating if they are set 
     this.modifyFreqSelection = function(){ 
-
+    	//Not neccessary 
     }
 
     //
@@ -323,8 +329,6 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
         var numerator = ((Math.pow(p0, 2) + (F*p0*q0))*this.wAA) + ((1*p0*q0) - (F*p0*q0))*this.wAa;
         var denom = ((Math.pow(p0, 2) + (F*p0*q0))*this.wAA) + ((2*p0*q0) - (F*p0*q0))*this.wAa + (Math.pow(q0, 2) + (F*p0*q0))*this.waa
         this.setCurrentAlleleFre(numerator / denom);
-
-
     }
 
     //Update the frequency due to possitiveAssortativeMating
@@ -377,8 +381,10 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
     //Update the frequency due to migration effects 
     this.modifyFreqMigration = function(){ 
-		this.currentAlleleFre = this.migrantAlleleFreq + (this.currentAlleleFre - this.migrantAlleleFreq) 
-			* Math.pow((1-this.migrationRate),this.currentGenerationNum);
+		// this.currentAlleleFre = this.migrantAlleleFreq + (this.currentAlleleFre - this.migrantAlleleFreq) 
+		// 	* Math.pow((1-this.migrationRate),this.currentGenerationNum);
+
+		this.currentAlleleFre = this.currentAlleleFre * (1 - this.migrationRate) + (this.migrantAlleleFreq) * this.migrationRate;
     }
 
 
