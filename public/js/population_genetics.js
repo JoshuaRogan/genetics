@@ -22,7 +22,7 @@ function population(populationSize, startAlleleFreq) {
         var directAlleleCounter = 0;	
 
         //Perform the random sampling 
-        for (var i = 0; i < this.populationSize; i++) {
+        for (var i = 0; i < (this.populationSize * 2); i++) {
             if (this.currentAlleleFre == 1.0 || this.currentAlleleFre == 0.0) break;
 
             var rand = Math.floor(Math.random() * (1 - 0)) + 0;
