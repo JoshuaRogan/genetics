@@ -271,7 +271,13 @@ HTML;
 <div id="variables" class="container"> 
 	
 	<form class="row" id="variables-form"> 
-		<h2> Simulation Parameters <a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a> <!--<a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a>--><!-- <span class="pull-right"><a href="#"><i class="fa fa-print"></i></a> <a href="#"><i class="fa fa-floppy-o"></i></a></span> --></h2>
+		<h2> Simulation Parameters <a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a>
+			<span class="pull-right"> 
+				<a href="#" id="printerFriendly"><i class="fa fa-print"></i></a> 
+				<a href="#" id="screenFriendly"><i class="fa fa-desktop"></i></a>
+				<a href="#" id="getRawData"><i class="fa fa-file-text-o"></i></a>
+			</span>
+		</h2>
 		<!-- Need to change font sizes on smaller displays  -->
 		
 		<div id="alerts-container"> 

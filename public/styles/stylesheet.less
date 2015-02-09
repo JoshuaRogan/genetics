@@ -5,7 +5,18 @@
 body{
 	
 }
+
+@media print{
+	footer {display: none !important;}
+	nav {display: none !important;}	
+	.canvasjs-chart-toolbar{display: none !important}	//Hide the zoom and move on the graph
+	#variables-form{display: none !important; } //Hide all the variable bars 
+}
+
+
 .page-home{
+
+	
 
 	//Style for the infinite symbol
 	.infinite-sym{
@@ -54,6 +65,11 @@ body{
 
 			/* Large devices (large desktops, 1200px and up) */
 			@media (min-width: @screen-lg-min) {height: 550px; }
+
+			//Color of the text for saving graph as png, jpg
+			.canvasjs-chart-container{
+				color: #000; 
+			}
 		}
 
 

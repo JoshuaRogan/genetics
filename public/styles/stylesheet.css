@@ -1,3 +1,17 @@
+@media print {
+  footer {
+    display: none !important;
+  }
+  nav {
+    display: none !important;
+  }
+  .canvasjs-chart-toolbar {
+    display: none !important;
+  }
+  #variables-form {
+    display: none !important;
+  }
+}
 .page-home .infinite-sym {
   font-size: 30px;
   vertical-align: middle;
@@ -59,6 +73,9 @@
   .page-home #graph_wrapper #graph-canvas {
     height: 550px;
   }
+}
+.page-home #graph_wrapper #graph-canvas .canvasjs-chart-container {
+  color: #000;
 }
 .page-home #variables h2 {
   font-size: 35px;

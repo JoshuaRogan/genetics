@@ -4,8 +4,10 @@ $(document).ready(function() {
     
 
     if ($("#main").hasClass("page-home")) {
+        
+    	//Automatically select all the text when they click on an input 
         $("input[type='text']").on("click", function() {
-            $(this).select(); //Automatically select all the text when they click on an input 
+            $(this).select(); 
         });
 
         $('[data-toggle="tooltip"]').tooltip(); //Opt in to tooltips 
@@ -508,6 +510,7 @@ $(document).ready(function() {
 
             chart = new CanvasJS.Chart("graph-canvas", {
                 zoomEnabled: true,
+                exportEnabled: true,
                 backgroundColor: "rgba(200, 54, 54, 0.0)",
                 title: {
                     text: "",
@@ -556,9 +559,48 @@ $(document).ready(function() {
         	formHandler(chart, "newGraph");
         }); 
 
-         $("#addLine").on("click", function(event) {
+        $("#addLine").on("click", function(event) {
         	formHandler(chart, "addLine");
         }); 
+
+        //Handle clicking printerfriendly 
+        $("#printerFriendly").on("click", function(event) {
+        	 event.preventDefault();
+        	printerFriendly(chart);
+        }); 
+
+        //Handle clicking screenFreindly  
+        $("#screenFriendly").on("click", function(event) {
+        	 event.preventDefault();
+        	screenFriendly(chart);
+        }); 
+
+        //Handle clicking printerfriendly 
+        $("#getRawData").on("click", function(event) {
+        	 event.preventDefault();
+        	getRawData(chart);
+        }); 
+
+        /*************AUTOMATIC PRINTER FRIENDLY VERSION*************/
+		// if (window.matchMedia) {
+		// 	var mediaQueryList = window.matchMedia('print');
+
+		// 	mediaQueryList.addListener(function(mql) {
+		// 	    if (mql.matches) {
+		// 	    	// printerFriendly(chart);
+		// 	    } 
+		// 	    else {
+		// 	    	// screenFriendly(chart);
+		// 	    }
+		// 	});
+		// }
+
+		// window.onbeforeprint = printerFriendly(chart);
+		// window.onafterprint = screenFriendly(chart);
+		/*************AUTOMATIC PRINTER FRIENDLY VERSION*************/
+
+		
+
 
 
 
@@ -583,10 +625,18 @@ function getRandomInt(min, max) {
  *
  */
 function updateGraph(results, chart) {
+    if(chart.printerFriendly === true){
+		var color = "rgba(0, 0, 0, 1.0)";
+	}
+	else{
+		var color = "rgba(255, 255, 255, 0.75)";
+	}
+
+
     var data = [];
     var dataSeries = {
         type: "line",
-        color: "rgba(255, 255, 255, 0.75)"
+        color: color
     };
     var dataPoints = [];
     for (var i = 0; i < results.length; i++) {
@@ -609,10 +659,20 @@ function updateGraph(results, chart) {
  */
 function addLineToGraph(results, chart, lineColor) {
 	var data = chart.options.data;
+	
+	if(chart.printerFriendly === true){
+		var color = "rgba(0, 0, 0, 1.0)";
+	}
+	else{
+		var color = "rgba(255, 255, 255, 0.75)";
+	}
+	
+
+
 
 	var dataSeries = {
         type: "line",
-        color: "rgba(255, 255, 255, 0.75)"
+        color: color
     };
     var dataPoints = [];
     for (var i = 0; i < results.length; i++) {
@@ -626,6 +686,110 @@ function addLineToGraph(results, chart, lineColor) {
     chart.options.data = data;
     chart.render();
 }
+
+
+/**	
+ *	Redraw the canvas to make it printer friendly 
+ *
+ */
+function printerFriendly(chart){
+	//Change the color of all the lines 
+	chart.printerFriendly = true; 
+
+	var black = "rgba(0,0,0,1.0)";
+	var darkGray = "rgba(0,0,0,.70)";
+	var white = "rgba(255,255,255,1.0)";
+
+
+	//Change some CSS
+	$("#graph_wrapper").css("background-color", "white"); 
+	$("#graph_wrapper").css("background-image", "none"); 
+	$("#graph_wrapper").css("color", "black"); 
+
+	//Change all of the lines to black 
+	for(var i = 0; i < chart.options.data.length; i++){
+		chart.options.data[i].color = black;
+	}
+
+	//Change the Label colors 
+	chart.options.axisX.labelFontColor = black;  
+	chart.options.axisX.titleFontColor = black;  
+	chart.options.axisX.gridColor = darkGray;  
+
+	chart.options.axisY.labelFontColor = black; 
+	chart.options.axisY.titleFontColor = black;  
+	chart.options.axisY.gridColor = darkGray;  
+
+	chart.options.backgroundColor = white; 
+
+	chart.render();
+}
+
+/**	
+ *	Redraw the canvas to make it screen friendly (Default state) 
+ *
+ */
+function screenFriendly(chart){
+	//Change the color of all the lines  
+	chart.printerFriendly = false; 
+
+	var black = "rgba(0,0,0,1.0)";
+	var darkGray = "rgba(0,0,0,.70)";
+	var white = "rgba(255,255,255,1.0)";
+
+	var lineColor = "rgba(255, 255, 255, 0.75)";
+	var lightGray = "rgba(255, 255, 255, 0.2)";
+	var clear = "rgba(255, 255, 255, 0)";
+
+
+	//Change some CS 
+	$("#graph_wrapper").css("background-image", "linear-gradient(to bottom, #4b516a 0%, #21232e 100%);"); 
+	$("#graph_wrapper").css("color", "#fff"); 
+
+	//Change all of the lines to black 
+	for(var i = 0; i < chart.options.data.length; i++){
+		chart.options.data[i].color = lineColor;
+	}
+
+	//Change the Label colors 
+	chart.options.axisX.labelFontColor = lightGray;  
+	chart.options.axisX.titleFontColor = white;  
+	chart.options.axisX.gridColor = lightGray;  
+
+	chart.options.axisY.labelFontColor = lightGray; 
+	chart.options.axisY.titleFontColor = white;  
+	chart.options.axisY.gridColor = lightGray;  
+
+	chart.options.backgroundColor = clear; 
+
+	chart.render();
+}
+
+/**
+ *	Print out the raw data that was graphed for all the lines 
+ *
+ */
+ function getRawData(chart){
+	var opened = window.open("");
+
+	var chartData = ""; 
+	for(var i = 0; i < chart.options.data.length; i++){
+		// console.log(chart.options.data[i].dataPoints); 
+		for(var j=0; j<chart.options.data[i].dataPoints.length; j++){
+			chartData += "(";
+			chartData += chart.options.data[i].dataPoints[j].x;
+			chartData += ", ";
+			chartData += chart.options.data[i].dataPoints[j].y;
+			
+			if(j == chart.options.data[i].dataPoints.length - 1) chartData += ")";
+			else chartData += "), ";
+		}
+		chartData += "<br/> <br/>";
+	}
+
+
+	opened.document.write("<html><head><title>Graph | Raw Data </title></head><body style='max-width: 100%;'><code>" + chartData + "</code></body></html>");
+ }
 
 
 /**
@@ -1000,9 +1164,6 @@ function formHandler(chart, type){
     	}
     	
     	myGenerations.buildRandomSamplesAsync(myGenerations, finishedComputingPartial);
-    	
-    	
-
     }
     else{
     	//Clear the errors 
@@ -1016,7 +1177,6 @@ function formHandler(chart, type){
     }
     
     if(errors.length > 0) console.log(errors);
-    
     
     $("#results_panel #results").html("Check the console for better data \n" + myGenerations.toString());
 
@@ -1077,5 +1237,4 @@ function buildAlert(className, message){
 	html = "<div class='alert " + className + "' role='alert'>" + "<strong>" + text + "</strong> on " + d + "</div";  
 
 	return html; 
-
 }
