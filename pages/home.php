@@ -273,9 +273,9 @@ HTML;
 	<form class="row" id="variables-form"> 
 		<h2> Simulation Parameters <a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a>
 			<span class="pull-right"> 
-				<a href="#" id="printerFriendly"><i class="fa fa-print"></i></a> 
-				<a href="#" id="screenFriendly"><i class="fa fa-desktop"></i></a>
-				<a href="#" id="getRawData"><i class="fa fa-file-text-o"></i></a>
+				<a href="#" id="printerFriendly" data-toggle="tooltip" data-placement="top" title="Switch to printer friendly version"><i class="fa fa-print"></i></a> 
+				<a href="#" id="screenFriendly" data-toggle="tooltip" data-placement="top" title="Switch to screen friendly version (default)"><i class="fa fa-desktop"></i></a>
+				<a href="#" id="getRawData" data-toggle="tooltip" data-placement="top" title="View RAW data points"><i class="fa fa-file-text-o"></i></a>
 			</span>
 		</h2>
 		<!-- Need to change font sizes on smaller displays  -->

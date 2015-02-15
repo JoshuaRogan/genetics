@@ -15,9 +15,9 @@
 			<div class="col-md-3"> 
 				<h3> Credits: </h3>
 				<p>
-					John R Shaffer, PhD <br/>
+					<a href="http://www.publichealth.pitt.edu/home/directory/john-r-shaffer" target="_blank">John R Shaffer, PhD</a> <br/>
 				 	<a href="http://www.publichealth.pitt.edu/human-genetics" target="_blank"> Department of Human Genetics</a> <br/>
-				 	University of Pittsburgh
+				 	<a href="http://www.pitt.edu/" target="_blank">University of Pittsburgh</a>
 				 	
 				 </p>
 				<p> Application created by <a href="http://joshuarogan.com" target="_blank">Josh Rogan</a></p>

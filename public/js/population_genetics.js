@@ -321,13 +321,13 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
      *	-Accounts for inbreeding here (equation when inbreedingCoef = 0 simplifies down to the same without inbreeding)
      */
     this.modifyFreqFitnessCoef = function(){
-    	var p0 = this.currentAlleleFre; //Current or starting ? 
-		var q0 = this.currentOtherAlleleFre; //Current or starting ? 
+    	var p0 = this.currentAlleleFre; //Current or starting 
+		var q0 = this.currentOtherAlleleFre; //Current or starting 
 		var F = this.inbreedingCoefficient; 
 
         //New equations with inbreeding 
         var numerator = ((Math.pow(p0, 2) + (F*p0*q0))*this.wAA) + ((1*p0*q0) - (F*p0*q0))*this.wAa;
-        var denom = ((Math.pow(p0, 2) + (F*p0*q0))*this.wAA) + ((2*p0*q0) - (F*p0*q0))*this.wAa + (Math.pow(q0, 2) + (F*p0*q0))*this.waa
+        var denom = ((Math.pow(p0, 2) + (F*p0*q0))*this.wAA) + ((2*p0*q0) - (2*F*p0*q0))*this.wAa + (Math.pow(q0, 2) + (F*p0*q0))*this.waa
         this.setCurrentAlleleFre(numerator / denom);
     }
 
@@ -345,7 +345,7 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
         //Specify each numerator first since the denominator is the same between all of them 
         var d_numerator = ((1 - alpha) * Math.pow(p0, 2)) + (alpha * (d0 + h0/4));
         var h_numerator = (2 * (1 - alpha) * p0 * q0) + (alpha * (h0/2));
-        var r_numerator = ((1 - alpha) * q0 * 2) + (alpha * (r0 + h0/4));
+        var r_numerator = ((1 - alpha) * Math.pow(q0, 2)) + (alpha * (r0 + h0/4));
         var commonDenom = d_numerator + h_numerator + r_numerator;
 
         //Update the d,h,r values 
