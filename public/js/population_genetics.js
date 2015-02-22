@@ -354,11 +354,11 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
         //Short hand variables for the new variables 
         var d_n = this.d_assortativeMating;
-        var h_n = this.h_assortativeMating; //Change from d_assortative..
-        var r_n = this.r_assortativeMating;	//Changed from d_assortative..
+        var h_n = this.h_assortativeMating; 	//Change from d_assortative...
+        var r_n = this.r_assortativeMating;		//Changed from d_assortative..
 
         //New equations with positive mating 
-        var numerator = (d_n * this.wAA) + ((h_n * p0 * q0 / 2) * this.wAa); 
+        var numerator = (d_n * this.wAA) + ((h_n / 2) * this.wAa); 
         var denom = (d_n * this.wAA) + (h_n * this.wAa) + (r_n * this.waa);
 
         this.setCurrentAlleleFre(numerator / denom);
