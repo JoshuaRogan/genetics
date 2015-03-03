@@ -611,31 +611,7 @@ function isActiveVariable(variableId){
 	return isActive;
 }
 
-/** 
- *	Make sure that the validation override doesn't exceed the the actual number of generations 
- *
- */
-function validateGenOverride(){
-	if(isActiveVariable("#generation-to-override")){
-		//Validate here 
-		var validPopBottleneck = true; 
-		var values = seralizeForm($("#variables-form").serializeArray());
-		if(parseFloat(values['generation-to-override-lower'].replace(',', '')) > parseFloat(values['generations'].replace(',', ''))){
-			validPopBottleneck = false; 
-		}
-		if(parseFloat(values['generation-to-override-upper'].replace(',', '')) > parseFloat(values['generations'].replace(',', ''))){
-			validPopBottleneck = false; 
-		}
-		
-		if(validPopBottleneck){
-			$("#population-control .error").html("");
-		}
-		else{
-			$("#population-control .error").html("Make sure you entered generations numbers that don't exceed the actual number of generations!");
-		}
-	}
 
-}
 
 
 

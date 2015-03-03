@@ -39,6 +39,7 @@ $(document).ready(function() {
 	        });
 
 	        $("#generations-slider").Link('lower').to($("#generations"));
+	        // $("#generations-slider").Link('lower').to($("#generation-to-override-upper"));
 	        $("#generations-slider").addClass("active"); //Active by default
 
 	        $("#generations-slider").on('slide', activateGenerationsSlider);
@@ -326,18 +327,18 @@ $(document).ready(function() {
 	        /*****************Population Bottleneck********************/
 
 	        $("#generation-to-override-slider").noUiSlider({
-	            start: [500, 5000],
+	            start: [50, 500],
 	            step: 1,
 	            connect: true,
 	            range: {
 	                'min': [1],
-	                'max': [10000]
+	                'max': [500]
 	            },
 	            format: wNumb({
 	                decimals: 0,
 	                thousand: ','
 	            })
-	        });
+	        }, true);
 
 	    	$("#generation-to-override-slider").Link('lower').to($("#generation-to-override-lower"));
 	    	$("#generation-to-override-slider").Link('upper').to($("#generation-to-override-upper"));
@@ -381,7 +382,10 @@ $(document).ready(function() {
  */
 function activateGenerationsSlider(){
 	//Validate the generation override slider to make sure the new generation number doesn't conflict 
+	
+
 	validateGenOverride();
+
 }
 
 function activatePopulationSlider(){
@@ -469,7 +473,7 @@ function activatePopulationControl(){
     $("#population-control .variable-activator").addClass("fa-check-square-o");
 
 	//Validate here 
-	validateGenOverride();
+	// validateGenOverride();
 }
 
 //Deactive the correct sliders based on what checkmark was clicked 
@@ -505,4 +509,57 @@ function deactiveActiveOnCheckmark(variableSectionId, state){
 		$("#generation-to-override-slider").toggleClass("active");
 		$("#new-population-size-slider").toggleClass("active");
 	}
+}
+
+/** 
+ *	Make sure that the validation override doesn't exceed the the actual number of generations 
+ *
+ */
+function validateGenOverride(){
+	
+	//Validate here 
+	var validPopBottleneck = true; 
+	var values = seralizeForm($("#variables-form").serializeArray());
+	var numberOfGens = parseFloat(values['generations'].replace(',', '')); 
+
+	$('#generation-to-override-slider').noUiSlider({
+		range: {
+			'min':0,
+			'max': Number(numberOfGens)
+		}
+    }, true);
+
+
+	// //New Generation lower is greater then total generations
+	// if(parseFloat(values['generation-to-override-lower'].replace(',', '')) > numberOfGens){
+	// 	// validPopBottleneck = false; 
+	// 	// $("#generation-to-override-slider").val([numberOfGens-100, numberOfGens]);//Automatically change the slider
+
+	// 	//Update the min AND max value here 
+	// 	// $('#generation-to-override-slider').noUiSlider({
+	// 	// 	range: {
+	// 	// 		'min': 1,
+	// 	// 		'max': numberOfGens
+	// 	// 	}
+	//  //    }, true);
+	// }
+
+	// //New generation upper is greater then total generations 
+	// if(parseFloat(values['generation-to-override-upper'].replace(',', '')) > numberOfGens){
+	// 	// validPopBottleneck = false; 
+	// 	// $("#generation-to-override-slider").val([null, numberOfGens]);//Automatically change the slider
+
+	// 	//Update the max value here 
+
+
+	// }
+	
+	// if(validPopBottleneck){
+	// 	$("#population-control .error").html("");
+	// }
+	// else{
+	// 	$("#population-control .error").html("Make sure you entered generations numbers that don't exceed the actual number of generations!");
+	// }
+	
+
 }
