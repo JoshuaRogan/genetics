@@ -1,11 +1,14 @@
 $(document).ready(function() {
     /*********************************************************CANVAS JS CONFIG********************************************************/
+    
     if ($('#graph-canvas').length) {
+
+        
         //Build data for canvasjs
         var data = [];
         var dataSeries = {
             type: "line",
-            color: "rgba(255, 255, 255, 0.75)"
+            // color: "rgba(255, 255, 255, 0.75)"
         };
         var dataPoints = [];
         for (var i = 0; i < 1; i++) {
@@ -19,6 +22,7 @@ $(document).ready(function() {
 
 
         chart = new CanvasJS.Chart("graph-canvas", {
+            colorSet: "greenShades",
             zoomEnabled: true,
             exportEnabled: true,
             backgroundColor: "rgba(200, 54, 54, 0.0)",
@@ -37,7 +41,7 @@ $(document).ready(function() {
                 labelAngle: 0,
                 gridThickness: 1,
                 gridColor: "rgba(255, 255, 255, 0.2)",
-                lineColor: "rgba(255, 255, 255, 0.2)",
+                // lineColor: "rgba(255, 255, 255, 0.2)",
                 tickColor: "rgba(255, 255, 255, 0.2)"
             },
             axisY: {
@@ -51,13 +55,15 @@ $(document).ready(function() {
                 includeZero: false,
                 gridThickness: 1,
                 gridColor: "rgba(255, 255, 255, 0.2)",
-                lineColor: "rgba(255, 255, 255, 0.2)",
+                // lineColor: "rgba(255, 255, 255, 0.2)",
                 tickColor: "rgba(255, 255, 255, 0.2)"
             },
             data: data
         });
 
         chart.render();
+
+
 
 
     }

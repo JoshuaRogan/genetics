@@ -1,8 +1,38 @@
 $(document).ready(function() {
     // var chart; //canvas js var allows to make changes to the chart via a var
-    
+    CanvasJS.colorSet = [];
+
+
+ 
 
     if ($("#main").hasClass("page-home")) {
+
+        //Create localStore to save config options 
+        if (supports_html5_storage()) {
+            if(localStorage.getItem("layout") == "contrast"){
+                var chart = $("#graph-canvas").CanvasJSChart();
+                printerFriendly(chart);
+                console.log("Here"); 
+            }
+        }
+
+        //The colors that will be graphed 
+        CanvasJS.colorSet = 
+            [
+                 "#1BCDD1",
+                 "#EC5657",
+                 "#8FAABB",
+                 "#B08BEB",
+                 "#3EA0DD",
+                 "#F5A52A",
+                 "#23BFAA",
+                 "#FAA586",
+                 "#EB8CC6"            
+             ];
+
+        CanvasJS.addColorSet("greenShades", CanvasJS.colorSet);
+
+
         $('[data-toggle="tooltip"]').tooltip(); //Opt in to bootstrap tooltips 
 
     	//Automatically select all the text when they click on an input 
@@ -113,7 +143,29 @@ $(document).ready(function() {
        	});
        	/*******************************Handle Opening & Closing of Active Sections *******************************/
 
-    
+        /*******************************Handle Opening & Closing of Legend *******************************/
+
+
+        $("#multiple-legends-container").on('click', ".togglelegend", function(event) {
+            event.preventDefault();
+            var legend = $(this).parent().parent(); //up one h3, up two div(legend)
+
+            if(legend.hasClass("hidden-legend")){
+                legend.removeClass("hidden-legend"); 
+                $(this).html("[Hide Legend]");
+            }
+            else{
+                legend.addClass("hidden-legend"); 
+                $(this).html("[Show Legend]");
+            }
+
+
+
+        });
+
+
+
+        /*******************************Handle Opening & Closing of Legend *******************************/
 
 
         //Handle the submit clicking
@@ -147,6 +199,11 @@ $(document).ready(function() {
         	var chart = $("#graph-canvas").CanvasJSChart(); 
         	getRawData(chart);
         }); 
+
+
+
+
+
 
         /*************AUTOMATIC PRINTER FRIENDLY VERSION*************/
 		// if (window.matchMedia) {
@@ -198,7 +255,7 @@ function updateGraph(results, chart) {
     var data = [];
     var dataSeries = {
         type: "line",
-        color: color
+        // color: color
     };
     var dataPoints = [];
     for (var i = 0; i < results.length; i++) {
@@ -210,6 +267,7 @@ function updateGraph(results, chart) {
     dataSeries.dataPoints = dataPoints;
     data.push(dataSeries);
     chart.options.data = data;
+    chart.options.colorSet = "greenShades"; 
     chart.render();
 }
 
@@ -220,7 +278,7 @@ function updateGraph(results, chart) {
  *
  */
 function addLineToGraph(results, chart, lineColor) {
-	var data = chart.options.data;
+    var data = chart.options.data;
 	
 	if(chart.printerFriendly === true){
 		var color = "rgba(0, 0, 0, 1.0)";
@@ -229,12 +287,9 @@ function addLineToGraph(results, chart, lineColor) {
 		var color = "rgba(255, 255, 255, 0.75)";
 	}
 	
-
-
-
 	var dataSeries = {
         type: "line",
-        color: color
+        // color: color
     };
     var dataPoints = [];
     for (var i = 0; i < results.length; i++) {
@@ -246,6 +301,7 @@ function addLineToGraph(results, chart, lineColor) {
     dataSeries.dataPoints = dataPoints;
     data.push(dataSeries);
     chart.options.data = data;
+    chart.options.colorSet = "greenShades";
     chart.render();
 }
 
@@ -255,7 +311,8 @@ function addLineToGraph(results, chart, lineColor) {
  *
  */
 function printerFriendly(chart){
-	//Change the color of all the lines 
+	if (supports_html5_storage()) {localStorage.setItem('layout','contrast');}
+    //Change the color of all the lines 
 	chart.printerFriendly = true; 
 
 	var black = "rgba(0,0,0,1.0)";
@@ -268,10 +325,6 @@ function printerFriendly(chart){
 	$("#graph_wrapper").css("background-image", "none"); 
 	$("#graph_wrapper").css("color", "black"); 
 
-	//Change all of the lines to black 
-	for(var i = 0; i < chart.options.data.length; i++){
-		chart.options.data[i].color = black;
-	}
 
 	//Change the Label colors 
 	chart.options.axisX.labelFontColor = black;  
@@ -292,7 +345,9 @@ function printerFriendly(chart){
  *
  */
 function screenFriendly(chart){
-	//Change the color of all the lines  
+	if (supports_html5_storage()) {localStorage.setItem('layout','default');}
+
+    //Change the color of all the lines  
 	chart.printerFriendly = false; 
 
 	var black = "rgba(0,0,0,1.0)";
@@ -304,14 +359,9 @@ function screenFriendly(chart){
 	var clear = "rgba(255, 255, 255, 0)";
 
 
-	//Change some CS 
+	//Change some CSS
 	$("#graph_wrapper").css("background-image", "linear-gradient(to bottom, #4b516a 0%, #21232e 100%);"); 
 	$("#graph_wrapper").css("color", "#fff"); 
-
-	//Change all of the lines to black 
-	for(var i = 0; i < chart.options.data.length; i++){
-		chart.options.data[i].color = lineColor;
-	}
 
 	//Change the Label colors 
 	chart.options.axisX.labelFontColor = lightGray;  
@@ -348,8 +398,6 @@ function screenFriendly(chart){
 		}
 		chartData += "<br/> <br/>";
 	}
-
-
 	opened.document.write("<html><head><title>Graph | Raw Data </title></head><body style='max-width: 100%;'><code>" + chartData + "</code></body></html>");
  }
 
@@ -359,77 +407,183 @@ function screenFriendly(chart){
  *	if the graph is being redraw don't append it.
  *
  */
- var num_graphs = 0; 
+var num_graphs = 1; //Maintain graph number 
+
 function updateLegend(values, append) {
-    
-	// console.log(values); 
-    var htmlString = "<ul class='list-inline'>";
+    //Determine the color of the line 
+    if(!append) var lineColor = CanvasJS.colorSet[0]; //new Graph use the first color 
+    else var lineColor = CanvasJS.colorSet[(num_graphs) % CanvasJS.colorSet.length];   
 
 
+    //Update graph count 
+    if(append) num_graphs++;
+    else num_graphs = 1;
+    var graphId = "graph-" + num_graphs + "-legend"; 
+
+    //Use fa icon to add a color block 
+    var colorBlock = "<i class='fa fa-square' style='color: " + lineColor +"'></i>";
+
+    var htmlString = " <div class='legend row' id='" + graphId + "'>" +
+         "<h3><i class='fa fa-line-chart'></i> <strong>Graph " + num_graphs + " " + colorBlock + "</strong><a href='#' class='pull-right togglelegend'>[Hide Legend]</a></p></h3>" +
+             "<ul class='legend-variables list-unstyled block-center'>";
+
+    // htmlString += "<li><strong> Number Generations: </strong>" + values['generations'] + "<li/>";
+    htmlString += generateLegendRow("numGenerations", values['generations']);
 
     if(isActiveVariable("#population-size")){
-    	htmlString += "<li><strong> Population Size: </strong>" + values['population-size'] + "</li>";
+        // htmlString += "<li><strong> Population Size: </strong>" + values['population-size'] + "</li>";
+        htmlString += generateLegendRow("populationSize", values['population-size']);
     }
-    else{
-    	htmlString += "<li><strong> Population Size: </strong> <span class='infinite-sym'> &infin; </span> </li>";
-
+    else{ //Infinite (may need to change the css to fit infinite symbol) class='infinite-sym'
+         htmlString += "<li class='col-xs-12 col-sm-6 col-md-4'><span class='legend-var'>Population Size:</span><span class='legend-symbol'>N</span>" +
+            "<span class='legend-val'><span > &infin; </span></span><span data-toggle='tooltip' title='Default Value' class='legend-warning'><i class='fa fa-recycle'></i></span></li>";
     }
 
-
-
-
-
-
-    htmlString += "<li><strong> Number Generations: </strong>" + values['generations'] + "<l/i>";
-    htmlString += "<li><strong> Starting Allele Frequency: </strong>" + values['starting-allele-frequency'] + "</li>";
+    htmlString += generateLegendRow("startAlleleFreq", values['starting-allele-frequency']);
 
     //Only display the active variables in the legend 
     if (isActiveVariable("#fitness-coefficient-waa")) {
-        htmlString += "<li><strong> Fitness Coefficient waa: </strong>" + values['fitness-coefficient-waa'] + "</li>";
-        htmlString += "<li><strong> Fitness Coefficient wAa: </strong>" + values['fitness-coefficient-wAa'] + "</li>";
-        htmlString += "<li><strong> Fitness Coefficient wAA: </strong>" + values['fitness-coefficient-wAA'] + "</li>";
+        htmlString += generateLegendRow("fitnessWAA", values['fitness-coefficient-wAA']);
+        htmlString += generateLegendRow("fitnessWAa", values['fitness-coefficient-wAa']);
+        htmlString += generateLegendRow("fitnessWaa", values['fitness-coefficient-waa']);
     }
-
-    if (isActiveVariable("#selection-coefficient")) {
-        htmlString += "<li><strong> Dominance Coefficient: </strong>" + values['dominance-coefficient'] + "</li>";
-        htmlString += "<li><strong> Selection Coefficient: </strong>" + values['selection-coefficient'] + "</li>";
+    else if (isActiveVariable("#selection-coefficient")) {
+        htmlString += generateLegendRow("dominanceCoef", values['dominance-coefficient']);
+        htmlString += generateLegendRow("selectionCoef", values['selection-coefficient']);
     }
 
     if (isActiveVariable("#mutation-rate-nu")) {
-        htmlString += "<li><strong> Forward Mutation: </strong>" + values['mutation-rate-mu'] + "x10<sup>" + values['mutation-rate-mu-exponent'] + "</sup></li>";
-        htmlString += "<li><strong> Reverse Mutation: </strong>" + values['mutation-rate-nu'] + "x10<sup>"+ values['mutation-rate-nu-exponent'] + "</sup></li>";
+        htmlString += generateLegendRow("forMutation", values['mutation-rate-mu'], values['mutation-rate-mu-exponent']);
+        htmlString += generateLegendRow("revMutation", values['mutation-rate-nu'], values['mutation-rate-nu-exponent']);
     }
 
     if (isActiveVariable("#inbreeding-coefficient")) {
-        htmlString += "<li><strong> Inbreeding Coefficient: </strong>" + values['inbreeding-coefficient'] + "</li>";
+        htmlString += generateLegendRow("inbreedCoef", values['inbreeding-coefficient']);
     }
 
     if (isActiveVariable("#positive-assortative-mating")) {
-        htmlString += "<li><strong> Positive Assortative Mating Frequency: </strong>" + values['positive-assortative-mating'] + "</li>";
+        htmlString += generateLegendRow("assortMating", values['positive-assortative-mating']);
     }
 
     if(isActiveVariable("#migration-rate")){
-    	 htmlString += "<li><strong> Migration Rate: </strong>" + values['migration-rate'] + "</li>";
-    	 htmlString += "<li><strong> Migrant Allele Frequency: </strong>" + values['migrant-allele-frequency'] + "</li>";
+         htmlString += generateLegendRow("migrationRate", values['migration-rate']);
+         htmlString += generateLegendRow("migrantAllelFreq", values['migrant-allele-frequency']);
     }
 
     if(isActiveVariable("#generation-to-override")){
-    	htmlString += "<li><strong> Generations to Override: </strong>" + values['generation-to-override-lower'] + " to " + values['generation-to-override-upper'] + "</li>";
-    	htmlString += "<li><strong> Override Population Size: </strong>" + values['new-population-size'] + "</li>";
+        htmlString += generateLegendRow("gensToOverride", values['generation-to-override-lower'], values['generation-to-override-upper']);
+        htmlString += generateLegendRow("newPopSize", values['new-population-size']);
     }
 
-
-
-
-    htmlString += "</ul>";
+    htmlString += "</ul></div>";
 
     if (append) {
-        $("#graph_legend").append(htmlString);
+        //Hide other graphs 
+        $("#multiple-legends-container .legend").addClass("hidden-legend"); 
+        $("#multiple-legends-container .togglelegend").html("[Show Legend]"); 
+
+
+
+        $("#multiple-legends-container").append(htmlString);
+
     } else {
-        $("#graph_legend").html(htmlString);
+        $("#multiple-legends-container").html(htmlString);
     }
 
+    //Regenerate the tooltips 
+    $('[data-toggle="tooltip"]').tooltip();
+}
 
+/**
+ *  Generate one variable <li> string 
+ *
+ */
+function generateLegendRow(variable, value, secondValue){
+    value = parseFloat(value.replace(',', ''));
+    var row = "<li class='col-xs-12 col-sm-6 col-md-4'>"; //The entire row that will be returned 
+    var toolTip = ""; //Build the tooltip 
+    var defaults = {numGenerations: 500, populationSize: 500, startAlleleFreq: .5, fitnessWaa: 1, fitnessWAa: 1, fitnessWAA: 1,dominanceCoef:1, selectionCoef:0, forMutation:0, revMutation:0, inbreedCoef: 0, assortMating:0, migrationRate:0, migrantAllelFreq:.5, newPopSize: 5000 }; // Default values for rows to used to generate default symbol 
+    var performanceLimit = {numGenerations: 3000, populationSize: 3000}; // Performance max values to generate warning symbol 
+    var unusualInput = []; // Unusual inputs to generate warning symbol 
+
+
+    //Add warnings if neccessary 
+    if(value == defaults[variable]) toolTip += "<span data-toggle='tooltip' title='Default Value' class='legend-warning'><i class='fa fa-recycle'></i></span>";
+    else if(value >= performanceLimit[variable]) toolTip += "<span data-toggle='tooltip' title='Possible Slow Graphing' class='legend-warning'><i class='fa fa-tachometer'></i></span>"; 
+
+    //Add the value and formatting 
+    switch (variable){
+        case "numGenerations":
+            row += "<span class='legend-var'>Generations:</span><span class='legend-symbol'>t</span>" +
+                "<span class='legend-val'>" + value + "</span>"; 
+            break;
+        case "populationSize":
+            row += "<span class='legend-var'>Population Size:</span><span class='legend-symbol'>N</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "startAlleleFreq": 
+            row += "<span class='legend-var'>Starting Allele Frequency:</span><span class='legend-symbol'>p</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break; 
+        case "fitnessWaa":
+            row += "<span class='legend-var'>Fitness Coefficient:</span><span class='legend-symbol'>W<sub>aa</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";        
+            break; 
+        case "fitnessWAa":
+            row += "<span class='legend-var'>Fitness Coefficient:</span><span class='legend-symbol'>W<sub>Aa</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;  
+        case "fitnessWAA":
+            row += "<span class='legend-var'>Fitness Coefficient:</span><span class='legend-symbol'>W<sub>AA</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "dominanceCoef":
+            row += "<span class='legend-var'>Dominance Coefficient:</span><span class='legend-symbol'>h</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "selectionCoef":
+            row += "<span class='legend-var'>Selection Coefficient:</span><span class='legend-symbol'>s</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+
+        case "forMutation":
+            row += "<span class='legend-var'>Forward Mutation:</span><span class='legend-symbol'>μ</span>" +
+                "<span class='legend-val'>" + value + "x10<sup>" + secondValue + "</sup></span>";
+            break;
+        case "revMutation":
+            row += "<span class='legend-var'>Reverse Mutation:</span><span class='legend-symbol'>ν</span>" +
+                "<span class='legend-val'>" + value + "x10<sup>" + secondValue + "</sup></span>";
+            break;        
+        case "inbreedCoef":
+            row += "<span class='legend-var'>Inbreeding Coefficient:</span><span class='legend-symbol'>F</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;        
+        case "assortMating":
+            row += "<span class='legend-var'>Positive Assortative Mating Frequency:</span><span class='legend-symbol'>α</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;        
+        case "migrationRate":
+            row += "<span class='legend-var'>Migration Rate:</span><span class='legend-symbol'>m</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "migrantAllelFreq":
+            row += "<span class='legend-var'>Migrant Allele Frequency:</span><span class='legend-symbol'>p<sub>M</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "gensToOverride":
+            row += "<span class='legend-var'>Generations to Override:</span><span class='legend-symbol'></span>" +
+                "<span class='legend-val'>" + value + " to " + secondValue + "</span>";
+            break; 
+        case "newPopSize":
+            row += "<span class='legend-var'>Override Population Size:</span><span class='legend-symbol'>N<sub>B</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+
+    }
+
+    row += toolTip + "</li>"; //Add the tool tip and end the list 
+
+    return row;
 }
 
 
@@ -497,7 +651,10 @@ function updateGenOverride(){
  */
 function formHandler(chart, type){
     var values = seralizeForm($("#variables-form").serializeArray());
-    updateLegend(values);
+    
+    if(type == "newGraph") updateLegend(values, false);
+    else updateLegend(values, true);
+   
 
 	var isValid = true; //Validation check 
 	var errors = []; //Error messages 
@@ -618,10 +775,11 @@ function finishedComputing(myGenerations, chart, type){
 	var results = myGenerations.frequencies;	//The frequencies is what is being graphed
 
 	if(type =="newGraph"){
-		updateGraph(results, chart);
+        updateGraph(results, chart);
+        
     }
     else{
-    	addLineToGraph(results, chart);
+        addLineToGraph(results, chart);
     }
 
     var d = new Date();
@@ -661,4 +819,13 @@ function buildAlert(className, message){
 	html = "<div class='alert " + className + "' role='alert'>" + "<strong>" + text + "</strong> on " + d + "</div";  
 
 	return html; 
+}
+
+
+function supports_html5_storage() {
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null;
+  } catch (e) {
+    return false;
+  }
 }

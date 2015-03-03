@@ -271,10 +271,10 @@ HTML;
 <div id="variables" class="container"> 
 	
 	<form class="row" id="variables-form"> 
-		<h2> Simulation Parameters <a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a>
+		<h2 id="variable-header"> Simulation Parameters <a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a>
 			<span class="pull-right"> 
-				<a href="#" id="printerFriendly" data-toggle="tooltip" data-placement="top" title="Switch to printer friendly version"><i class="fa fa-print"></i></a> 
 				<a href="#" id="screenFriendly" data-toggle="tooltip" data-placement="top" title="Switch to screen friendly version (default)"><i class="fa fa-desktop"></i></a>
+				<a href="#" id="printerFriendly" data-toggle="tooltip" data-placement="top" title="Switch to high contrast for printing and projecting"><i class="fa fa-sun-o"></i></a> 
 				<a href="#" id="getRawData" data-toggle="tooltip" data-placement="top" title="View RAW data points"><i class="fa fa-file-text-o"></i></a>
 			</span>
 		</h2>
@@ -284,45 +284,9 @@ HTML;
 
 		</div>
 
-		<!-- <div id="multiple-legends-container" class="container"> 
-			<div class="legend row" id='graph-1-legend'> 
-				<h3><i class="fa fa-line-chart"></i> <strong>Graph 1</strong><a href="#" class="pull-right showlegend">[Hide Legend]</a></p></h3>
-				
-				<ul class="list-unstyled block-center">  
-					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Generations:</span><span class="legend-symbol">t</span><span class="legend-val">500</span><span data-toggle="tooltip" title="Default Value" class="legend-warning"><i class="fa fa-recycle"></i></span></li>
-					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Population Size:</span><span class="legend-symbol">N</span><span class="legend-val">9,000</span><span data-toggle="tooltip" title="Possible Slow Graphing" class="legend-warning"><i class="fa fa-tachometer"></i></span></li>
-					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Starting Allele Frequency:</span><span class="legend-symbol">p</span><span class="legend-val">0.5000</span><span data-toggle="tooltip" title="Default Value" class="legend-warning"><i class="fa fa-recycle"></i></span></li>
-					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Fitness Coefficient:</span><span class="legend-symbol">W<sub>AA</sub></span><span class="legend-val">.0.735</span></li>
-					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Fitness Coefficient:</span><span class="legend-symbol">W<sub>Aa</sub></span><span class="legend-val">.0.455</span></li>
-					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Fitness Coefficient:</span><span class="legend-symbol">W<sub>aa</sub></span><span class="legend-val">.0.255</span></li>
-					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Forward Mutation:</span><span class="legend-symbol">μ</span><span class="legend-val">4.83695x10<sup>-5</sup></span></li>
-					<li class="col-xs-12 col-sm-6 col-md-4"> <span class="legend-var">Reverse Mutation:</span><span class="legend-symbol">ν</span><span class="legend-val">4.83695x10<sup>-9</sup></span><span data-toggle="tooltip" title="Unusual input" class="legend-warning"><i class="fa fa-exclamation-triangle"></i></span></li>
-				</ul> 
-
-
-				<div class='clearfix col-xs-12'> 
-					<p><code><a href="#" class="get-raw-data">Get Raw Data </a></code></p>
-				</div>
-
-
-			</div>
-
-			<div class="legend row hidden-legend"> 
-				<h3><i class="fa fa-line-chart"></i> <strong>Graph 2</strong><a href="#" class="pull-right showlegend">[Show Legend]</a></p></h3>
-				
-				<ul class="list-unstyled block-center text-center">  
-					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
-					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
-					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
-					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
-					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
-					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
-					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
-					<li class="col-xs-6 col-sm-6 col-md-4 col-lg-3"> <span class="legend-var">Population Size:</span><span class="legend-val">5,000</span></li>
-				</ul> 
-
-			</div>
-		</div> -->
+		<div id='multiple-legends-container' class='container'> 
+			<!--JS FILLED-->
+		</div> 
 
 		<div id="buttons" class="row"> 
 
@@ -336,7 +300,7 @@ HTML;
 		</div>
 
 
-		<div>
+		<div id="vars-section">
  			<div id="main-variables" class="variable-section open"> 
 				<h3><i class="fa fa-check-square-o"></i> Base Simulation Model <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a> </h3>
 				<div class="error"></div>

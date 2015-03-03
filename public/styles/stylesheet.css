@@ -8,8 +8,49 @@
   .canvasjs-chart-toolbar {
     display: none !important;
   }
-  #variables-form {
+  #vars-section,
+  #buttons,
+  #variable-header {
     display: none !important;
+  }
+  #vars-section:before,
+  #buttons:before,
+  #variable-header:before,
+  #vars-section:after,
+  #buttons:after,
+  #variable-header:after {
+    content: " ";
+    display: table;
+  }
+  #vars-section:after,
+  #buttons:after,
+  #variable-header:after {
+    clear: both;
+  }
+  #variables:before,
+  #variables:after {
+    content: " ";
+    display: table;
+  }
+  #variables:after {
+    clear: both;
+  }
+  .legend:before,
+  .legend:after {
+    content: " ";
+    display: table;
+  }
+  .legend:after {
+    clear: both;
+  }
+  .legend .togglelegend {
+    display: none !important;
+  }
+  .hidden-legend {
+    display: none !important;
+  }
+  #multiple-legends-container {
+    margin-top: 250px;
   }
 }
 .page-home .infinite-sym {
@@ -27,6 +68,9 @@
   padding: 3px 5px 30px 5px;
   color: #fff;
   text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
+  border-radius: 2px;
+  border: 0;
 }
 .page-home #graph_wrapper h1,
 .page-home #graph_wrapper h2,
@@ -93,28 +137,44 @@
 }
 .page-home #variables #multiple-legends-container .legend {
   margin-bottom: 5px;
-  background-color: #d4d6e0;
-  padding: 5px;
-  border: 2px solid #b6bacb;
+  background-color: #ffffff;
+  padding: 8px;
+  border: 1px solid #f2f2f5;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
 }
 .page-home #variables #multiple-legends-container .legend.hidden-legend {
   height: 30px;
+  max-height: 30px;
   overflow: hidden;
+  box-shadow: none;
+  border-radius: 2px;
+  border: 1px solid #f2f2f5;
+}
+.page-home #variables #multiple-legends-container .legend.hidden-legend .legend-variables {
+  display: hidden;
 }
 .page-home #variables #multiple-legends-container .legend.hidden-legend h3 {
   font-size: 15px;
   margin: 0;
   padding: 0;
 }
+.page-home #variables #multiple-legends-container .legend.hidden-legend h3 .togglelegend {
+  font-size: 15px;
+}
 .page-home #variables #multiple-legends-container .legend h3 {
   color: #4b516a;
   margin-top: 8px;
   font-size: 18px;
-  /* Small devices (tablets, 768px and up) */
+  /* (tablets, 768px and up) */
 }
 @media (min-width: 768px) {
   .page-home #variables #multiple-legends-container .legend h3 {
     font-size: 24px;
+  }
+  .page-home #variables #multiple-legends-container .legend h3 .togglelegend {
+    font-size: 20px;
   }
 }
 .page-home #variables #multiple-legends-container .legend .legend-var {
@@ -142,6 +202,7 @@
 }
 .page-home #variables #multiple-legends-container .legend .legend-warning .fa-recycle {
   color: #2ecc71;
+  color: #33983c;
 }
 .page-home #variables #multiple-legends-container .legend p {
   margin-top: 10px;

@@ -10,7 +10,27 @@ body{
 	footer {display: none !important;}
 	nav {display: none !important;}	
 	.canvasjs-chart-toolbar{display: none !important}	//Hide the zoom and move on the graph
-	#variables-form{display: none !important; } //Hide all the variable bars 
+	#vars-section, #buttons, #variable-header{
+		display: none !important; 
+		.clearfix();
+	}
+	#variables{
+		.clearfix(); 
+	}
+
+	.legend{
+		.clearfix();
+		.togglelegend{display: none !important; }
+	}
+	.hidden-legend{
+		display: none !important; 
+	}
+
+	#multiple-legends-container{
+		margin-top: 250px;
+	}
+
+	
 }
 
 
@@ -72,6 +92,10 @@ body{
 			}
 		}
 
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
+		border-radius: 2px;
+		border: 0;
+
 
 	}
 
@@ -95,24 +119,42 @@ body{
 		//New Legend 
 		#multiple-legends-container{
 
-			.legend{
+			.legend{	
+
+				margin-bottom: 5px;
+				background-color: lighten(@brand-primary, 70%);
+				padding: 8px;
+				border: 1px solid lighten(@brand-primary, 60%); 
+
+				
+				box-shadow:  0 1px 6px rgba(0,0,0,.12),0 1px 6px rgba(0,0,0,.12);
+				border-radius: 2px;
+				border: 0;
 
 				//Style for hidden legend 
 				&.hidden-legend{
+					.legend-variables{
+						display: hidden; 
+					}
+
 					height: 30px; 
+					max-height: 30px;
 					overflow: hidden;
 
 					h3{
 						font-size: 15px;
 						margin: 0; 
 						padding: 0;
-					}	
-				}
 
-				margin-bottom: 5px;
-				background-color: lighten(@brand-primary, 50%);
-				padding: 5px;
-				border: 2px solid lighten(@brand-primary, 40%); 
+						.togglelegend{ 
+							font-size: 15px;
+						}
+					}	
+
+					box-shadow:  none; 
+					border-radius: 2px;
+					border: 1px solid lighten(@brand-primary, 60%); 
+				}
 
 
 
@@ -120,9 +162,18 @@ body{
 					color: @brand-primary; 
 					margin-top: 8px;
 					font-size: 18px;
+					
 
-					/* Small devices (tablets, 768px and up) */
-					@media (min-width: @screen-sm-min) {font-size: 24px;}
+					
+					/* (tablets, 768px and up) */
+					@media (min-width: @screen-sm-min) {
+						font-size: 24px;
+						.togglelegend{ 
+							font-size: 20px;
+						}
+					}
+
+
 				}
 
 				//Variable Name
@@ -155,6 +206,7 @@ body{
 
 					.fa-recycle{
 						color: #2ecc71; 
+						color: darken(#79D281, 25); 
 					}
 					
 				}
@@ -436,3 +488,5 @@ footer{
     }
 
 }
+
+

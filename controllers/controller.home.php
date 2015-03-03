@@ -9,7 +9,7 @@
  	$_CONTROLLER["description"]				= "Page Description";
 
 	$_CONTROLLER["stylesheets"] 			= array("stylesheet", "bootstrap");
-	$_CONTROLLER["javascript"] 				= array("index", "canvas.js/jquery.canvasjs.min", "chartjq_config", "slider_config", "jquery.nouislider.all.min", "population_genetics");
+	$_CONTROLLER["javascript"] 				= array("chartjq_config", "index", "canvas.js/jquery.canvasjs.min", "slider_config", "jquery.nouislider.all.min", "population_genetics");
 	
 
 	/************DATA HANDLING FUNCTIONS *************/

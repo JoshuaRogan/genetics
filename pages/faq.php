@@ -45,6 +45,7 @@ class question{
         question::generate_question_html("How can I zoom in the graph", "To zoom in the graph simply click and drag across the area you would like to zoom in.");
         question::generate_question_html("How to move in the the zoomed graph", "Click the directional button on the top right of the graph and click and drag to move along the x axis of the graph.");
         question::generate_question_html("How to reset the graph", "To reset the graph click the circular arrow on the top right of the graph.");
+        question::generate_question_html("How can I increase the contrast for printing", "To choose a high contrast version for printing and projecting you can click the <i class='fa fa-sun-o'></i> icon. in the upper right hand corner of the variables section.");
         ?>
         
 
@@ -54,7 +55,7 @@ class question{
      <div class="panel-group" id="accordion-<?php echo question::$section_num++?>">
         <div class="faqHeader">Genetics Questions</div>
 
-        <?php question::generate_question_html("Where can I find more information on the variables?", "You can click the small question mark next to each variable to see a short explanation of the variable or click \"[Show Help]\" to open all of the explanations at once."); ?>
+        <?php question::generate_question_html("Where can I find more information on the variables", "You can click the small question mark next to each variable to see a short explanation of the variable or click \"[Show Help]\" to open all of the explanations at once."); ?>
        
     </div>
 
