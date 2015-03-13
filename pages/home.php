@@ -459,7 +459,7 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 	</form>
 
 
-	<div id="results_panel"> 
+	<div class='hidden' id="results_panel"> 
 		<h3> Debugging Results </h3>
 		<pre id="results"> 
 		<?php 
