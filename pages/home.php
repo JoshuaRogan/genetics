@@ -11,15 +11,6 @@ class variable2{
 }
 
 
-
-
-
-
-
-
-
-
-
 class variable{
 
 	public static function generate_simple_slider($variable_name, $symbol, $variable_id, $helper_text){
@@ -225,6 +216,14 @@ HTML;
 
 
 
+/****USE GET VARIABLE TO PREPOPULATE THE FIELDS***/
+$bookmarks = array(); 
+if(isset($_GET['generations'])) $bookmarks['generations'] = intval($_GET['generations']);
+
+
+
+
+
 
 ?>
 
@@ -427,25 +426,25 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 		<div id="options" class="row"> 
 
 			<div class="col-lg-6"> 
-				<!-- <h3>Graph Options</h3> -->
 
-<!-- 				<label class="checkbox-inline">
-					<input type="checkbox" value="true" checked> Allow Multiple Lines
-				</label>
-
-				<label class="checkbox-inline">
-					<input type="checkbox" value="true"> Allow Zoom
-				</label>
-
-				<label class="checkbox-inline">
-					<input type="checkbox" value="true"> High Contrast
-				</label> -->
 
 				
 
 				
 
 			</div>
+
+			<!-- Hidden form to update values with js later on when everything is loaded --> 
+			<div class="hidden" id="bookmarking-values"> 
+				
+				<?php 
+					foreach($bookmarks as $varname => $value){
+						echo "<input type='hidden' name='bookmarking-$varname' value='$value'>";
+					}
+				?>
+			</div>
+			<!-- Hidden form to update values with js later on when everything is loaded --> 
+
 
 
 
@@ -460,13 +459,15 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 	</form>
 
 
-<!-- 	<div id="results_panel"> 
+	<div id="results_panel"> 
 		<h3> Debugging Results </h3>
 		<pre id="results"> 
-
+		<?php 
+			var_dump($bookmarks); 
+		?>
 
 		</pre>
 
-	</div> -->
+	</div>
 
 </div>
