@@ -283,8 +283,8 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
         <h4 class="modal-title" id="graph-computing-title">Generated Bookmark Link</h4>
       </div>
       <div class="modal-body">
-        home?generations=10&startfreq=0.5325
-        
+      <p> Bookmark the link below to prepopulate the variables with the values you currently have set. </p>
+      <pre class="text-center bookmark-link">http://genetics.droplet.jcubedworld.com/home?generations=250&startfreq=0.5325&population=35&selection=.350&wAA=.250&wAa=.253&waa=.350</pre>
       </div>
       <div class="modal-footer">
 		 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -320,8 +320,8 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 			<span class="pull-right"> 
 				<a href="#" id="screenFriendly" data-toggle="tooltip" data-placement="top" title="Switch to screen friendly version (default)"><i class="fa fa-desktop"></i></a>
 				<a href="#" id="printerFriendly" data-toggle="tooltip" data-placement="top" title="Switch to high contrast for printing and projecting"><i class="fa fa-sun-o"></i></a> 
-				<a href="#" id="getRawData" data-toggle="tooltip" data-placement="top" title="View RAW data points"><i class="fa fa-file-text-o"></i></a>
 				<a href="#" id="getLink" data-target="#bookmark-link" data-toggle="modal" data-tooltip="true" data-placement="top" title="Generate a bookmarked link for these variables"><i class="fa fa-link"></i></a>
+				<a href="#" id="getRawData" data-toggle="tooltip" data-placement="top" title="View RAW data points"><i class="fa fa-file-text-o"></i></a>
 			</span>
 		</h2>
 		<!-- Need to change font sizes on smaller displays  -->
