@@ -463,7 +463,6 @@ function activateAssortativeMating() {
     $("#assortative-mating .variable-activator").addClass("fa-check-square-o");
 }
 
-//Instead of validating use http://refreshless.com/nouislider/more/ allowing you to rebuild the slider after initializing 
 function activatePopulationControl(){
 	$("#generation-to-override-slider").addClass("active");
 	$("#new-population-size-slider").addClass("active");
@@ -471,9 +470,6 @@ function activatePopulationControl(){
 	//Update the activator icon
 	$("#population-control .variable-activator").removeClass("fa-square-o");
     $("#population-control .variable-activator").addClass("fa-check-square-o");
-
-	//Validate here 
-	// validateGenOverride();
 }
 
 //Deactive the correct sliders based on what checkmark was clicked 
@@ -530,36 +526,5 @@ function validateGenOverride(){
     }, true);
 
 
-	// //New Generation lower is greater then total generations
-	// if(parseFloat(values['generation-to-override-lower'].replace(',', '')) > numberOfGens){
-	// 	// validPopBottleneck = false; 
-	// 	// $("#generation-to-override-slider").val([numberOfGens-100, numberOfGens]);//Automatically change the slider
-
-	// 	//Update the min AND max value here 
-	// 	// $('#generation-to-override-slider').noUiSlider({
-	// 	// 	range: {
-	// 	// 		'min': 1,
-	// 	// 		'max': numberOfGens
-	// 	// 	}
-	//  //    }, true);
-	// }
-
-	// //New generation upper is greater then total generations 
-	// if(parseFloat(values['generation-to-override-upper'].replace(',', '')) > numberOfGens){
-	// 	// validPopBottleneck = false; 
-	// 	// $("#generation-to-override-slider").val([null, numberOfGens]);//Automatically change the slider
-
-	// 	//Update the max value here 
-
-
-	// }
-	
-	// if(validPopBottleneck){
-	// 	$("#population-control .error").html("");
-	// }
-	// else{
-	// 	$("#population-control .error").html("Make sure you entered generations numbers that don't exceed the actual number of generations!");
-	// }
-	
 
 }
