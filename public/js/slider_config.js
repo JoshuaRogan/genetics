@@ -371,6 +371,11 @@ $(document).ready(function() {
 	        $("#new-population-size-slider").on('change', activatePopulationControl);
 	        $("#new-population-size-slider").on('set', activatePopulationControl);
 	        /*****************Population Bottleneck****************/
+
+	        //After all of the sliders are initialized check for any bookmarking values 
+	        addBookmarkValues();
+
+
 }) //Document ready 
 
 
@@ -524,7 +529,37 @@ function validateGenOverride(){
 			'max': Number(numberOfGens)
 		}
     }, true);
+}
+
+
+/**
+ *	Look at the hidden fields in the page and attempt to add them to the slider
+ *		-Validation occurs automatically with noui slider
+ */
+function addBookmarkValues(){
+	var bookmarkform = $("#bookmarking-values");
+
+	if(bookmarkform.length){
+		var bookmarks = bookmarkform.serializeArray(); 
+		
+		//Go through each bookmark and try set the value
+		for(var i=0; i<bookmarks.length; i++){
+			
+			if(bookmarks[i].name == "bookmarking-generations") 			$("#generations-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-startfreq") 		$("#starting-allele-frequency-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-population") 		$("#population-size-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-wAA") 			$("#fitness-coefficient-wAA-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-wAa") 			$("#fitness-coefficient-wAa-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-waa") 			$("#fitness-coefficient-waa-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-selection") 		$("#selection-coefficient-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-dominance") 		$("#dominance-coefficient-slider").val(bookmarks[i].value);
+		}
 
 
 
+
+	} 
+	else{
+		console.log(bookmarkform);
+	}
 }

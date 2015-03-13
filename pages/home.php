@@ -218,7 +218,33 @@ HTML;
 
 /****USE GET VARIABLE TO PREPOPULATE THE FIELDS***/
 $bookmarks = array(); 
+
+//Base
 if(isset($_GET['generations'])) $bookmarks['generations'] = intval($_GET['generations']);
+if(isset($_GET['startfreq'])) $bookmarks['startfreq'] = floatval ($_GET['startfreq']);
+if(isset($_GET['population'])) $bookmarks['population'] = intval($_GET['population']); 
+
+//Selection
+if(isset($_GET['wAA'])) $bookmarks['wAA'] = floatval ($_GET['wAA']);
+if(isset($_GET['wAa'])) $bookmarks['wAa'] = floatval ($_GET['wAa']);
+if(isset($_GET['waa'])) $bookmarks['waa'] = floatval ($_GET['waa']);
+if(isset($_GET['selection'])) $bookmarks['selection'] = floatval ($_GET['selection']);
+if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominance']);
+
+//Mutation 
+
+//Migration 
+
+//Inbreeding
+
+//Assortative Mating 
+
+//Population Bottleneck 
+
+
+
+
+
 
 
 
@@ -243,6 +269,26 @@ if(isset($_GET['generations'])) $bookmarks['generations'] = intval($_GET['genera
 <!--         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
  -->      </div>
+    </div>
+  </div>
+</div>
+<!-- Graph Completion Modal -->
+
+<!-- Graph Completion Modal -->
+<div class="modal fade" id="bookmark-link" tabindex="-1" role="dialog" aria-labelledby="bookmark-link" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="graph-computing-title">Generated Bookmark Link</h4>
+      </div>
+      <div class="modal-body">
+        home?generations=10&startfreq=0.5325
+        
+      </div>
+      <div class="modal-footer">
+		 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    	</div>
     </div>
   </div>
 </div>
@@ -275,6 +321,7 @@ if(isset($_GET['generations'])) $bookmarks['generations'] = intval($_GET['genera
 				<a href="#" id="screenFriendly" data-toggle="tooltip" data-placement="top" title="Switch to screen friendly version (default)"><i class="fa fa-desktop"></i></a>
 				<a href="#" id="printerFriendly" data-toggle="tooltip" data-placement="top" title="Switch to high contrast for printing and projecting"><i class="fa fa-sun-o"></i></a> 
 				<a href="#" id="getRawData" data-toggle="tooltip" data-placement="top" title="View RAW data points"><i class="fa fa-file-text-o"></i></a>
+				<a href="#" id="getLink" data-target="#bookmark-link" data-toggle="modal" data-tooltip="true" data-placement="top" title="Generate a bookmarked link for these variables"><i class="fa fa-link"></i></a>
 			</span>
 		</h2>
 		<!-- Need to change font sizes on smaller displays  -->
@@ -434,16 +481,6 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 
 			</div>
 
-			<!-- Hidden form to update values with js later on when everything is loaded --> 
-			<div class="hidden" id="bookmarking-values"> 
-				
-				<?php 
-					foreach($bookmarks as $varname => $value){
-						echo "<input type='hidden' name='bookmarking-$varname' value='$value'>";
-					}
-				?>
-			</div>
-			<!-- Hidden form to update values with js later on when everything is loaded --> 
 
 
 
@@ -459,15 +496,24 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 	</form>
 
 
-	<div class='hidden' id="results_panel"> 
+	<!-- Hidden form to update values with js later on when everything is loaded --> 
+	<form action="" class="hidden" id="bookmarking-values"> 
+		
+		<?php 
+			foreach($bookmarks as $varname => $value){
+				echo "<input type='hidden' name='bookmarking-$varname' value='$value'>";
+			}
+		?>
+	</form>
+	<!-- Hidden form to update values with js later on when everything is loaded --> 
+
+
+<!-- 	<div class='hidden' id="results_panel"> 
 		<h3> Debugging Results </h3>
 		<pre id="results"> 
-		<?php 
-			var_dump($bookmarks); 
-		?>
 
 		</pre>
 
-	</div>
+	</div> -->
 
 </div>

@@ -34,6 +34,7 @@ $(document).ready(function() {
 
 
         $('[data-toggle="tooltip"]').tooltip(); //Opt in to bootstrap tooltips 
+        $('[data-tooltip="true"]').tooltip(); //Workaround for modal &tooltip MIGHT BE ABLE TO CHANGET THIS 
 
     	//Automatically select all the text when they click on an input 
         $("input[type='text']").on("click", function() {
