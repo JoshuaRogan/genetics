@@ -3,8 +3,6 @@ $(document).ready(function() {
     CanvasJS.colorSet = [];
 
 
- 
-
     if ($("#main").hasClass("page-home")) {
 
         //Create localStore to save config options 
@@ -12,7 +10,6 @@ $(document).ready(function() {
             if(localStorage.getItem("layout") == "contrast"){
                 var chart = $("#graph-canvas").CanvasJSChart();
                 printerFriendly(chart);
-                console.log("Here"); 
             }
         }
 
@@ -243,20 +240,11 @@ function getRandomInt(min, max) {
  *
  */
 function updateGraph(results, chart) {
-    console.log(chart); 
-
-    if(chart.printerFriendly === true){ //WONT WORK HERE
-		var color = "rgba(0, 0, 0, 1.0)";
-	}
-	else{
-		var color = "rgba(255, 255, 255, 0.75)";
-	}
-
+    // console.log(chart); 
 
     var data = [];
     var dataSeries = {
-        type: "line",
-        // color: color
+        type: "line"
     };
     var dataPoints = [];
     for (var i = 0; i < results.length; i++) {
@@ -278,19 +266,18 @@ function updateGraph(results, chart) {
  *	generated and shifting the color.
  *
  */
-function addLineToGraph(results, chart, lineColor) {
+function addLineToGraph(results, chart) {
     var data = chart.options.data;
-	
-	if(chart.printerFriendly === true){
-		var color = "rgba(0, 0, 0, 1.0)";
-	}
-	else{
-		var color = "rgba(255, 255, 255, 0.75)";
-	}
-	
+    // console.log(chart);
+    console.log(data); 
+
+    //If add line is called before generate graph remove the 0,0 line  
+    if(data[0].dataPoints[0].x == 0 && data[0].dataPoints[0].y == 0){
+        data = [];
+    }
+
 	var dataSeries = {
-        type: "line",
-        // color: color
+        type: "line"
     };
     var dataPoints = [];
     for (var i = 0; i < results.length; i++) {
@@ -305,6 +292,50 @@ function addLineToGraph(results, chart, lineColor) {
     chart.options.colorSet = "greenShades";
     chart.render();
 }
+
+/**
+ *  Batch tool line generating 
+ *  
+ *
+ */
+function batchToolLines(results, chart) {
+    var data = chart.options.data;
+
+    var dataSeries = {
+        type: "line"
+    };
+
+    var dataPoints = [];
+    for (var i = 0; i < results.length; i++) {
+        dataPoints.push({
+            x: i,
+            y: results[i]
+        });
+    }
+    dataSeries.dataPoints = dataPoints;
+    data.push(dataSeries);
+    chart.options.data = data;
+    chart.options.colorSet = "greenShades";
+    chart.render();
+}
+
+/**
+ *  Remove all of the datapoints from the graph
+ *
+ */
+ function clearChart(chart){
+    var data = [];
+    var dataSeries = {
+        type: "line"
+    };
+    var dataPoints = [];
+
+    dataSeries.dataPoints = dataPoints;
+   
+    chart.options.data = data;
+    chart.options.colorSet = "greenShades"; 
+    chart.render();
+ }
 
 
 /**	
@@ -410,16 +441,34 @@ function screenFriendly(chart){
  */
 var num_graphs = 1; //Maintain graph number 
 
-function updateLegend(values, append) {
+function updateLegend(values, append, chart, numBatchRuns) {
+        
+    var numGraphsDrawn = getNumLinesGraphed(chart); //Actual number of lines on the graph (the number should be the graph number)
+    console.log(numGraphsDrawn); 
+
     //Determine the color of the line 
-    if(!append) var lineColor = CanvasJS.colorSet[0]; //new Graph use the first color 
-    else var lineColor = CanvasJS.colorSet[(num_graphs) % CanvasJS.colorSet.length];   
+    if(!append){
+       var lineColor = CanvasJS.colorSet[0]; //new Graph use the first color  
+    } 
+    else {
+        var lineColor = CanvasJS.colorSet[(num_graphs) % CanvasJS.colorSet.length];   
+    }
+
+    lineColor = CanvasJS.colorSet[(numGraphsDrawn-1) % CanvasJS.colorSet.length]; 
+
+     
+    
 
 
     //Update graph count 
-    if(append) num_graphs++;
-    else num_graphs = 1;
+    // if(append) num_graphs++;
+    // else num_graphs = 1;
+    num_graphs = numGraphsDrawn; //Legacy Variable used alot 
+
+
     var graphId = "graph-" + num_graphs + "-legend"; 
+
+
 
     //Use fa icon to add a color block 
     var colorBlock = "<i class='fa fa-square' style='color: " + lineColor +"'></i>";
@@ -427,6 +476,13 @@ function updateLegend(values, append) {
     var htmlString = " <div class='legend row' id='" + graphId + "'>" +
          "<h3><i class='fa fa-line-chart'></i> <strong>Graph " + num_graphs + " " + colorBlock + "</strong><a href='#' class='pull-right togglelegend'>[Hide Legend]</a></p></h3>" +
              "<ul class='legend-variables list-unstyled block-center'>";
+
+    //If this is batch legend modify the header string 
+    if(numBatchRuns !== undefined){
+        htmlString = " <div class='legend row' id='" + graphId + "'>" +
+         "<h3><i class='fa fa-line-chart'></i> <strong>Graphs 1-" + numBatchRuns +  "</strong><a href='#' class='pull-right togglelegend'>[Hide Legend]</a></p></h3>" +
+             "<ul class='legend-variables list-unstyled block-center'>";
+    }
 
     // htmlString += "<li><strong> Number Generations: </strong>" + values['generations'] + "<li/>";
     htmlString += generateLegendRow("numGenerations", values['generations']);
@@ -476,6 +532,10 @@ function updateLegend(values, append) {
         htmlString += generateLegendRow("newPopSize", values['new-population-size']);
     }
 
+    if(isActiveVariable("#batch-tool-runs")){
+        htmlString += generateLegendRow("batchTool", values['batch-tool-runs']);
+    }
+
     htmlString += "</ul></div>";
 
     if (append) {
@@ -483,16 +543,20 @@ function updateLegend(values, append) {
         $("#multiple-legends-container .legend").addClass("hidden-legend"); 
         $("#multiple-legends-container .togglelegend").html("[Show Legend]"); 
 
-
-
         $("#multiple-legends-container").append(htmlString);
 
-    } else {
+    } 
+    else {
         $("#multiple-legends-container").html(htmlString);
     }
 
     //Regenerate the tooltips 
     $('[data-toggle="tooltip"]').tooltip();
+}
+
+
+function getNumLinesGraphed(chart){
+    return chart.options.data.length; 
 }
 
 /**
@@ -503,8 +567,8 @@ function generateLegendRow(variable, value, secondValue){
     value = parseFloat(value.replace(',', ''));
     var row = "<li class='col-xs-12 col-sm-6 col-md-4'>"; //The entire row that will be returned 
     var toolTip = ""; //Build the tooltip 
-    var defaults = {numGenerations: 500, populationSize: 500, startAlleleFreq: .5, fitnessWaa: 1, fitnessWAa: 1, fitnessWAA: 1,dominanceCoef:1, selectionCoef:0, forMutation:0, revMutation:0, inbreedCoef: 0, assortMating:0, migrationRate:0, migrantAllelFreq:.5, newPopSize: 5000 }; // Default values for rows to used to generate default symbol 
-    var performanceLimit = {numGenerations: 3000, populationSize: 3000}; // Performance max values to generate warning symbol 
+    var defaults = {numGenerations: 500, populationSize: 500, startAlleleFreq: .5, fitnessWaa: 1, fitnessWAa: 1, fitnessWAA: 1,dominanceCoef:1, selectionCoef:0, forMutation:0, revMutation:0, inbreedCoef: 0, assortMating:0, migrationRate:0, migrantAllelFreq:.5, newPopSize: 5000, batchTool: 25 }; // Default values for rows to used to generate default symbol 
+    var performanceLimit = {numGenerations: 3000, populationSize: 3000, batchTool: 35}; // Performance max values to generate warning symbol 
     var unusualInput = []; // Unusual inputs to generate warning symbol 
 
 
@@ -579,6 +643,10 @@ function generateLegendRow(variable, value, secondValue){
             row += "<span class='legend-var'>Override Population Size:</span><span class='legend-symbol'>N<sub>B</sub></span>" +
                 "<span class='legend-val'>" + value + "</span>";
             break;
+        case "batchTool":
+            row += "<span class='legend-var'>Batch Runs:</span><span class='legend-symbol'></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break; 
 
     }
 
@@ -629,8 +697,7 @@ function updateGenOverride(){
 function formHandler(chart, type){
     var values = seralizeForm($("#variables-form").serializeArray());
     
-    if(type == "newGraph") updateLegend(values, false);
-    else updateLegend(values, true);
+    
    
 
 	var isValid = true; //Validation check 
@@ -707,9 +774,17 @@ function formHandler(chart, type){
     	myGenerations.setpopulationBottleneck(generationStart, generationEnd, newPopulationSize);
     }
 
+    //Batch Tool 
+    if(isActiveVariable("#batch-tool-runs")){ 
+        var numBatchRuns = parseFloat(values['batch-tool-runs'].replace(',', ''));
+    }
+
+
     //Actually perform the work
     if(isValid){
-    	var finishedComputingPartial = partial(finishedComputing, myGenerations, chart, type)
+
+        //Allows you to pass these args (Prob not a good name)
+        var finishedComputingPartial = partial(finishedComputing, myGenerations, chart, type); 
     	
     	//Open the Modal for long calculations
     	if(input_num_generations > 1000 || input_population_size > 1000){
@@ -720,8 +795,42 @@ function formHandler(chart, type){
     	if(!isActiveVariable("#population-size")){
     		myGenerations.setInfinitePopulation();
     	}
+
+        //Special case for batch runs (Consider finishedComputingpartial var)
+        if(isActiveVariable("#batch-tool-runs")){
+            var allGenerations = []; 
+            var allPartials = []; 
+            
+            clearChart(chart);
+
+            type = "batchTool"; //Change type to not screw up the legend updating 
+
+            //Create copies
+            for(var i=0; i<numBatchRuns; i++){
+                allGenerations[i] = jQuery.extend(true, {}, myGenerations);
+                allPartials[i] = partial(finishedComputing, allGenerations[i], chart, type); 
+            }
+
+            //Run them all 
+            for(var i=0; i<numBatchRuns; i++){
+                allGenerations[i].buildRandomSamplesAsync(allGenerations[i], allPartials[i]);
+            }
+
+            //Update the legend
+            updateLegend(values, false, chart, numBatchRuns);
+            computeBatchStats(allGenerations);       
+
+        }
+        else{ //Just one run 
+            myGenerations.buildRandomSamplesAsync(myGenerations, finishedComputingPartial);
+
+            //Update the legend 
+            if(type == "newGraph") updateLegend(values, false, chart);
+            else if(type =="addLine") updateLegend(values, true, chart);
+        }
+
+        
     	
-    	myGenerations.buildRandomSamplesAsync(myGenerations, finishedComputingPartial);
     }
     else{
     	//Clear the errors 
@@ -737,7 +846,6 @@ function formHandler(chart, type){
     if(errors.length > 0) console.log(errors);
     
     $("#results_panel #results").html("Check the console for better data \n" + myGenerations.toString());
-
 }
 
 /**
@@ -751,18 +859,80 @@ function finishedComputing(myGenerations, chart, type){
 	console.log(myGenerations);
 	var results = myGenerations.frequencies;	//The frequencies is what is being graphed
 
+    //Check to see if the last graph was a batch auto reset it 
+    if(!$("#graph_stats").hasClass("hidden")){
+        // clearChart(chart); 
+        $("#graph_stats").addClass("hidden");
+    }
+
+
 	if(type =="newGraph"){
         updateGraph(results, chart);
-        
     }
-    else{
+    else if(type == "addLine"){
         addLineToGraph(results, chart);
     }
+    else if(type == "batchTool"){
+        batchToolLines(results, chart); 
+    }
+
+
 
     var d = new Date();
     $("#alerts-container").html(buildAlert("alert-success", "")); 
-
 }
+
+
+/**
+ *  After running through the batch runs compute various stats on all of the runs
+ *   
+ */
+ function computeBatchStats(allGenerations){
+    //Clean up the legends too (Remove all but one and change it to Graph 1-50 since they are all the same vars)
+    console.log(allGenerations); 
+    
+    var numHit0 = 0;    //Number of populations that hit 0 frequency 
+    var numHit1 = 0;    //Number of populations that hit 1 frequency 
+
+    var gensTo0 = 0;    //Add the generation number each time it hits 0 
+    var gensTo1 = 0;    //Add the generation number each time it hits 1 
+
+
+    //Loop Through all of the results 
+    for(var i=0; i<allGenerations.length; i++){
+        for(var j=0; j<allGenerations[i].frequencies.length; j++){
+            if(allGenerations[i].frequencies[j] == 0){
+                numHit0++;
+                gensTo0 += j; 
+                break; 
+            }
+            else if(allGenerations[i].frequencies[j] == 1){
+                numHit1++;
+                gensTo1 += j; 
+                break; 
+            }
+        }
+    }
+
+    //Compute Averages 
+    if(numHit0 > 0) var stringTo0 = (gensTo0/numHit0).toFixed(2);
+    else var stringTo0 = "Never Hit 0.0";
+    
+    if(numHit1 > 0) var stringTo1 = (gensTo1/numHit1).toFixed(2);
+    else var stringTo1 = "Never Hit 1.0";
+
+
+
+    //Update the graph_stats and make it visible 
+    $("#graph_stats").removeClass("hidden"); 
+    $("#timeto0").html(stringTo0);
+    $("#timeto1").html(stringTo1);
+
+
+
+ }
+
+
 
 /**
  *	Able to pass arguments as a parameter 

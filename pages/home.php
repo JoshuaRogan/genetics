@@ -301,11 +301,6 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 	<div class="container"> 
 		<h1> Population Genetics Simulation</h1>
 
-		<div id="graph_legend"> 
-
-		</div>
-
-
 		<div id="graph_container"> 
 			<div id="graph-canvas"></div>  
 		</div>
@@ -327,12 +322,25 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 		<!-- Need to change font sizes on smaller displays  -->
 		
 		<div id="alerts-container"> 
-
+			<!--JS FILLED-->
 		</div>
 
 		<div id='multiple-legends-container' class='container'> 
 			<!--JS FILLED-->
 		</div> 
+
+		<div id="graph_stats" class='container hidden'> 
+			<!--JS FILLED-->
+			<div > 
+				<h3> <i class="fa fa-bar-chart"></i> <strong>Batch Graph Stats</strong> </h3>
+				<ul class='list-unstyled block-center'>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 1 =</span><span class='legend-val' id="timeto1">50</span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 0 =</span><span class='legend-val' id="timeto0">50</span> </li>
+				</ul>
+			</div>
+
+		</div>
+
 
 		<div id="buttons" class="row"> 
 
@@ -459,6 +467,20 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 							// variable::generate_range_slider("Generations to Override", "g", )
 							variable::generate_html("Generations to Override", "generation-to-override", "Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven't heard of them single-origin coffee yr.", true);	
 							variable::generate_simple_slider("Population Size", "N<sub>B</sub>", "new-population-size", "helper");
+
+						?>
+					</div>
+				</div>
+
+				<div id="batch-tool" class="variable-section">
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Batch Tool <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<div class="error"></div> 
+					<div class="variables-section hidden">
+						<?php 
+
+							// variable::generate_range_slider("Generations to Override", "g", )
+							variable::generate_simple_slider("Number of Runs", "Runs", "batch-tool-runs", "helper text");
+
 
 						?>
 					</div>
