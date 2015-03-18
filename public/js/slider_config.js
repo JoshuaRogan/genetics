@@ -518,6 +518,12 @@ function validateGenOverride(){
 	var values = seralizeForm($("#variables-form").serializeArray());
 	var numberOfGens = parseFloat(values['generations'].replace(',', '')); 
 
+	var removeActive = false; 
+	if(!$("#generation-to-override-slider").hasClass("active")){
+		removeActive = true; 
+	}
+
+
 	$('#generation-to-override-slider').noUiSlider({
 		range: {
 			'min':0,
@@ -525,6 +531,13 @@ function validateGenOverride(){
 		}
     }, true);
 
+	// Class is automatically added due to the update 
+	if(removeActive){
+		$("#generation-to-override-slider").removeClass("active");
+		$("#new-population-size-slider").removeClass("active");
 
-
+		$("#population-control .variable-activator").removeClass("fa-check-square-o");
+   	 	$("#population-control .variable-activator").addClass("fa-square-o");
+	} 
+    
 }
