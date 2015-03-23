@@ -493,7 +493,7 @@ function updateLegend(values, append, chart, numBatchRuns) {
     }
     else{ //Infinite (may need to change the css to fit infinite symbol) class='infinite-sym'
          htmlString += "<li class='col-xs-12 col-sm-6 col-md-4'><span class='legend-var'>Population Size:</span><span class='legend-symbol'>N</span>" +
-            "<span class='legend-val'><span > &infin; </span></span><span data-toggle='tooltip' title='Default Value' class='legend-warning'><i class='fa fa-recycle'></i></span></li>";
+            "<span class='legend-val'><span > &infin; </span></span><span data-toggle='tooltip' title='Default Value' class='legend-warning'></span></li>";
     }
 
     htmlString += generateLegendRow("startAlleleFreq", values['starting-allele-frequency']);
@@ -573,7 +573,7 @@ function generateLegendRow(variable, value, secondValue){
 
 
     //Add warnings if neccessary 
-    if(value == defaults[variable]) toolTip += "<span data-toggle='tooltip' title='Default Value' class='legend-warning'><i class='fa fa-recycle'></i></span>";
+    if(value != defaults[variable]) row += "<span data-toggle='tooltip' title='Modified Value' class='legend-warning modified-value'>";
     else if(value >= performanceLimit[variable]) toolTip += "<span data-toggle='tooltip' title='Possible Slow Graphing' class='legend-warning'><i class='fa fa-tachometer'></i></span>"; 
 
     //Add the value and formatting 
@@ -650,6 +650,7 @@ function generateLegendRow(variable, value, secondValue){
 
     }
 
+    if(value != defaults[variable]) row += "</span>"; //Close the span opened by non-default value 
     row += toolTip + "</li>"; //Add the tool tip and end the list 
 
     return row;
@@ -860,10 +861,12 @@ function finishedComputing(myGenerations, chart, type){
 	var results = myGenerations.frequencies;	//The frequencies is what is being graphed
 
     //Check to see if the last graph was a batch auto reset it 
-    if(!$("#graph_stats").hasClass("hidden")){
+    if(!$("#graph_stats").hasClass("hidden") && type !="batchTool" ){
         // clearChart(chart); 
         $("#graph_stats").addClass("hidden");
     }
+
+    
 
 
 	if(type =="newGraph"){

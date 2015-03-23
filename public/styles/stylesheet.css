@@ -140,6 +140,9 @@
   font-weight: bold;
   color: red;
 }
+.page-home #variables #multiple-legends-container .modified-value .legend-val {
+  color: #d9534f;
+}
 .page-home #variables #multiple-legends-container .legend {
   margin-bottom: 5px;
   background-color: #ffffff;

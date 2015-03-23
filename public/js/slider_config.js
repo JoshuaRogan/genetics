@@ -505,7 +505,7 @@ function activatePopulationControl(){
 }
 
 function activateBatchTool(){
-	 //Make these active
+	//Make these active
     $("#batch-tool-runs-slider").addClass("active");
 
    	//Update the activator icon
@@ -562,12 +562,28 @@ function validateGenOverride(){
 	var values = seralizeForm($("#variables-form").serializeArray());
 	var numberOfGens = parseFloat(values['generations'].replace(',', '')); 
 
+	var removeActive = false; 
+	if(!$("#generation-to-override-slider").hasClass("active")){
+		removeActive = true; 
+	}
+
+
 	$('#generation-to-override-slider').noUiSlider({
 		range: {
 			'min':0,
 			'max': Number(numberOfGens)
 		}
     }, true);
+
+	// Class is automatically added due to the update 
+	if(removeActive){
+		$("#generation-to-override-slider").removeClass("active");
+		$("#new-population-size-slider").removeClass("active");
+
+		$("#population-control .variable-activator").removeClass("fa-check-square-o");
+   	 	$("#population-control .variable-activator").addClass("fa-square-o");
+	} 
+    
 }
 
 

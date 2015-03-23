@@ -274,7 +274,7 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 </div>
 <!-- Graph Completion Modal -->
 
-<!-- Graph Completion Modal -->
+<!-- Bookmarking Modal -->
 <div class="modal fade" id="bookmark-link" tabindex="-1" role="dialog" aria-labelledby="bookmark-link" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -292,7 +292,7 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
     </div>
   </div>
 </div>
-<!-- Graph Completion Modal -->
+<!-- Bookmarking Modal -->
 
 
 
@@ -325,6 +325,17 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 			<!--JS FILLED-->
 		</div>
 
+		<div id="buttons" class="row"> 
+
+			<div class="col-sm-6">
+				<a class="btn btn-primary btn-lg" role="button" id="newGraph"><i class="fa fa-line-chart"></i> Generate Graph</a> 
+			</div>
+
+			<div class="col-sm-6">
+				<a class="btn btn-primary btn-lg" role="button" id="addLine"><i class="fa fa-plus"></i> Add Line</a> 
+			</div>
+		</div>
+
 		<div id='multiple-legends-container' class='container'> 
 			<!--JS FILLED-->
 		</div> 
@@ -342,16 +353,7 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 		</div>
 
 
-		<div id="buttons" class="row"> 
 
-			<div class="col-sm-6">
-				<a class="btn btn-primary btn-lg" role="button" id="newGraph"><i class="fa fa-line-chart"></i> Generate Graph</a> 
-			</div>
-
-			<div class="col-sm-6">
-				<a class="btn btn-primary btn-lg" role="button" id="addLine"><i class="fa fa-plus"></i> Add Line</a> 
-			</div>
-		</div>
 
 
 		<div id="vars-section">
