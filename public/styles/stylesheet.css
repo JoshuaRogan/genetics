@@ -53,6 +53,11 @@
     margin-top: 250px;
   }
 }
+.page-home .bookmark-link {
+  color: #4b516a;
+  font-weight: bold;
+  font-size: 17px;
+}
 .page-home .infinite-sym {
   font-size: 30px;
   vertical-align: middle;
@@ -135,6 +140,9 @@
   font-weight: bold;
   color: red;
 }
+.page-home #variables #multiple-legends-container .modified-value .legend-val {
+  color: #d9534f;
+}
 .page-home #variables #multiple-legends-container .legend {
   margin-bottom: 5px;
   background-color: #ffffff;
@@ -206,6 +214,35 @@
 }
 .page-home #variables #multiple-legends-container .legend p {
   margin-top: 10px;
+}
+.page-home #variables #graph_stats {
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  padding: 8px;
+  border: 1px solid #f2f2f5;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
+}
+.page-home #variables #graph_stats h3 {
+  color: #4b516a;
+  margin-top: 8px;
+  font-size: 18px;
+  /* (tablets, 768px and up) */
+}
+@media (min-width: 768px) {
+  .page-home #variables #graph_stats h3 {
+    font-size: 24px;
+  }
+  .page-home #variables #graph_stats h3 .togglelegend {
+    font-size: 20px;
+  }
+}
+.page-home #variables #graph_stats .legend-var {
+  padding-right: 4px;
+}
+.page-home #variables #graph_stats .legend-val {
+  font-weight: 600;
 }
 .page-home #variables .variable-section {
   border-bottom: 1px solid rgba(85, 85, 85, 0.5);

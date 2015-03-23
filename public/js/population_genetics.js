@@ -87,8 +87,6 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
     	this.infinitePopulationSize = true; 
     }
 
-
-
     /***********************************************************OPTIONAL VARIABLES***********************************************************/
     //Mutation Variables
     this.mutation = false;
