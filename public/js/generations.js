@@ -1,54 +1,8 @@
-/**
- *  Represents the actual population that will be generated. 
- *		-Computes the actual random sampling by randomly drawing numbers
- *
- */
-function population(populationSize, startAlleleFreq) {
-    population.VALUE = "A"; //The allele we are directly tracking
-    population.VALUE_IMP = "a"; //The allele we are implicitly tracking 
-
-    this.populationSize = populationSize; //The size of this population
-    this.startAlleleFreq = startAlleleFreq; //The starting allele frequency 
-    this.currentAlleleFre = startAlleleFreq; //Current allele frequency 
-
-    /**
-     *	Draws a random number (0-1) and compares it to the starting allele frequency (0-1). 
-     *		- If the random number is outside of the range (i.e. greater than) the frequency then it 
-     *		it is considered now an implicit allele (i.e. it will count against the new frequency)
-     */
-    this.buildRandomSample = function() {
-        
-    	//The number of alleles drawn based on the starting allele frequency 
-        var directAlleleCounter = 0;	
-
-        //Perform the random sampling 
-        for (var i = 0; i < (this.populationSize * 2); i++) {
-            if (this.currentAlleleFre == 1.0 || this.currentAlleleFre == 0.0) break;
-
-            var rand = Math.floor(Math.random() * (1 - 0)) + 0;
-
-            if (Math.random() <= this.currentAlleleFre) {
-                directAlleleCounter++;
-            } 
-        }
-        //Recompute the currentAllele frequency after random sampling
-        if(i != 0) this.currentAlleleFre = directAlleleCounter / (i);
-        
-    }
-
-    //
-    this.toString = function() {
-        var output = "";
-        output += "\n----------------POPULATION DATA----------------\n";
-        output += "Main Value: " + population.VALUE + "\n";
-        output += "Implicit Value: " + population.VALUE_IMP + "\n";
-        output += "Population Size: " + this.populationSize + "\n";
-        output += "Starting Allele Frequency: " + this.startAlleleFreq + "\n";
-        output += "Current Allele Frequency: " + this.currentAlleleFre + "\n";
-        output += "----------------POPULATION DATA----------------\n";
-        return output; 
-    }
-}
+//Namespaces
+var  = popGen || {};
+popGen.htmlUtilities = popGen.htmlUtilities || {}; 
+popGen.population = popGen.population || {};
+popGen.generation = popGen.generation || {};
 
 
 /**
@@ -57,28 +11,23 @@ function population(populationSize, startAlleleFreq) {
  *	
  *		-Currently storing each population in populations array (could be removed to reduce memory overhead) 
  */
-function generations(numGenerations, populationSize, startAlleleFreq) {
-    this.numGenerations = numGenerations; //Total number of generations
-    this.currentGenerationNum = 0; //The generation number we are now on    
-    this.populationSize = populationSize; //The population size of each population
-    this.startAlleleFreq = startAlleleFreq; //Starting allele frequency
-    this.startOtherAlleleFreq = 1 - startAlleleFreq; //The implicit other allele frequency 
-    this.currentAlleleFre = startAlleleFreq; //Current allele frequency of the population we just generated 
-    this.currentOtherAlleleFre = 1 - startAlleleFreq; //Currrent implicit other allele frequency 
-    this.currentGenerationNum = 0;	//The current generation that is being produced 
-    this.infinitePopulationSize = false; //Generate equations instead of random sampling
+popGen.generation = function(numGenerations, populationSize, startAlleleFreq) {
+	this.numGenerations 		= numGenerations; 		//Total number of generations
+    this.currentGenerationNum 	= 0; 					//The generation number we are now on    
+    this.populationSize 		= populationSize; 		//The population size of each population
+    this.startAlleleFreq 		= startAlleleFreq; 		//Starting allele frequency
+    this.startOtherAlleleFreq 	= 1 - startAlleleFreq; 	//The implicit other allele frequency 
+    this.currentAlleleFre 		= startAlleleFreq; 		//Current allele frequency of the population we just generated 
+    this.currentOtherAlleleFre 	= 1 - startAlleleFreq; 	//Currrent implicit other allele frequency 
+    this.currentGenerationNum 	= 0;					//The current generation that is being produced 
+    this.infinitePopulationSize = false; 				//Generate equations instead of random sampling
 
-    this.frequencies = Array(); //An array of each frequency that was generated (Graph data)
-    this.populations = Array(); //An array of all of the populations (May take up too much memory)  
-
-    //Genotype Data (Inbreeding and Assortative Mating)
-    this.genoTypeFrequencies = Array(); //An array of each frequency that was generated of the genotype (Graph Data)
-
-    this.frequencies.push(startAlleleFreq);
+    this.frequencies = Array(); //An array of each frequency that was generated (These are the values that are graphed)
+    this.populations = Array(); //An array of all of the populations [Currently removing]
 
     //Update the current allele frequency 
-    this.setCurrentAlleleFre = function(newVal) {
-        this.currentAlleleFre = newVal; 
+    this.setCurrentAlleleFre = function(newFreq) {
+        this.currentAlleleFre = newFreq; 
         this.currentOtherAlleleFre = 1 - this.currentAlleleFre;
     }
 
@@ -87,7 +36,6 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
     	this.infinitePopulationSize = true; 
     }
 
-    /***********************************************************OPTIONAL VARIABLES***********************************************************/
 
     //Mutation Variables
     this.mutation = false;
@@ -99,7 +47,6 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
         this.forwardMutationRate = forwardMutationRate;
         this.reverseMutationRate = reverseMutationRate; //Always assumed
     }
-
 
     //Selection variables
     this.fitnessCoefficients = false;
@@ -151,6 +98,8 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
         this.r_assortativeMating = Math.pow(this.currentOtherAlleleFre,2); //q0^2
     }
 
+
+
     //Migration Variables 
     this.migration = false;
     this.migrationRate = 0.0;
@@ -177,7 +126,12 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
         this.endGeneration = endGeneration; 
         this.modifiedPopulationSize = modifiedPopulationSize;
     }
-    /***********************************************************OPTIONAL VARIABLES***********************************************************/
+
+
+
+
+
+
 
     /**
      *  Non blocking function that takes in a context (the generations class) and a finished function 
@@ -215,6 +169,9 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
 
         doChunk(); 
     }
+
+
+
 
     /**
      *	Sets up the current allele frequency based on the optional variables that are set. 
@@ -284,15 +241,10 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
             this.populations.push(currentPopulation); //This adds the actual populations to an array for later use. 
             this.frequencies.push(currentPopulation.currentAlleleFre);  //This is the value that is being graphed
             this.setCurrentAlleleFre(currentPopulation.currentAlleleFre);
-        }
-        
-
-        
-
-        
+        } 
     }
 
-
+    
 
     /**
      * 	Starting allele frequency private modifiers 
@@ -386,19 +338,5 @@ function generations(numGenerations, populationSize, startAlleleFreq) {
     }
 
 
-    //Helper functions 
 
-
-
-
-
-
-
-    this.toString = function(){
-        var output = ""; 
-        this.populations.forEach(function(data){
-            output += data.toString() + "\n";
-        })
-        return output; 
-    }
 }

@@ -4,6 +4,7 @@ popGen.htmlUtilities = popGen.htmlUtilities || {};
 popGen.population = popGen.population || {};
 popGen.generation = popGen.generation || {};
 
+
 /**
  *  Represents the actual population that will be generated. 
  *		-Computes the actual random sampling by randomly drawing numbers
