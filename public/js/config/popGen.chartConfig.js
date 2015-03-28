@@ -1,14 +1,28 @@
 $(document).ready(function() {
     /*********************************************************CANVAS JS CONFIG********************************************************/
     
-    if ($('#graph-canvas').length) {
+    if ($('#graph-canvas').length) { // If the graph exists 
 
+        //The colors that will be graphed 
+        CanvasJS.colorSet = 
+            [
+                 "#1BCDD1",
+                 "#EC5657",
+                 "#8FAABB",
+                 "#B08BEB",
+                 "#3EA0DD",
+                 "#F5A52A",
+                 "#23BFAA",
+                 "#FAA586",
+                 "#EB8CC6"            
+             ];
+
+        CanvasJS.addColorSet("greenShades", CanvasJS.colorSet);
         
         //Build data for canvasjs
         var data = [];
         var dataSeries = {
             type: "line",
-            // color: "rgba(255, 255, 255, 0.75)"
         };
         var dataPoints = [];
         for (var i = 0; i < 1; i++) {
@@ -69,3 +83,6 @@ $(document).ready(function() {
     }
     /*********************************************************CANVAS JS********************************************************/
 }) //Document ready 
+
+
+

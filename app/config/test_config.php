@@ -9,14 +9,14 @@
  */
 
 class config extends global_config{
-	public static $pageTitle 			= "Genetics | Home"; 
+	public static $pageTitle 			= "Genetics | Tester"; 
 	public static $pageDescription 		= "The Department of Human Genetics at the University of Pittsburgh's Graduate School of Public Health is dedicated to genetics research, teaching, and services. The department has three major research missions, which are (1) to develop and use genetic methods to investigate the causes and treatment of hereditary and acquired human illness, (2) to understand and explore the impact of genetics on public health, education, and disease prevention, and (3) to appreciate the role of genetic diversity within human populations."; 
 
 	public static $stylesheets 			= array(); //Include stylesheets 
-	public static $javascript 			= array("/js/canvasJS/jquery.canvasjs.min.js", "/js/config/popGen.config.chartJQ.js", "/js/home.js"); //Include javascript files
+	public static $javascript 			= array("/js/canvasJS/jquery.canvasjs.min.js", "/js/config/popGen.config.chartJQ.js", "/js/test.js"); //Include javascript files
 
-	public static $header				= "header"; //False if no header file otherwise the file name in the /app/views/includes/foo.php 
-	public static $footer 				= "footer";	//Same as header 
+	public static $header				= "header.php"; //False if no header file otherwise the file name in the /app/views/includes/foo.php 
+	public static $footer 				= "footer.php";	//Same as header 
 
 }
 ?>

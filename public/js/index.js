@@ -2,7 +2,6 @@ $(document).ready(function() {
     // var chart; //canvas js var allows to make changes to the chart via a var
     CanvasJS.colorSet = [];
 
-
     if ($("#main").hasClass("page-home")) {
 
         //Create localStore to save config options 
@@ -26,7 +25,6 @@ $(document).ready(function() {
                  "#FAA586",
                  "#EB8CC6"            
              ];
-
         CanvasJS.addColorSet("greenShades", CanvasJS.colorSet);
 
 

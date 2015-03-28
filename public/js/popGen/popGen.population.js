@@ -1,9 +1,6 @@
 //Namespaces
-var  = popGen || {};
-popGen.htmlUtilities = popGen.htmlUtilities || {}; 
+var popGen = popGen || {};
 popGen.population = popGen.population || {};
-popGen.generation = popGen.generation || {};
-
 
 /**
  *  Represents the actual population that will be generated. 

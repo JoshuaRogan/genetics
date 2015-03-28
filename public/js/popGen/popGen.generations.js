@@ -150,7 +150,7 @@ popGen.generation = function(numGenerations, populationSize, startAlleleFreq) {
         /**	
          *	REASON WHY FOR THE ASYNCHRONOUS FUNCTION
          *	Splits the work up into chunks based on long each chunk has been running. This allows the system to have short 
-         *	timeouts where other work such as updating the dom can be performed. (Allows me to calculate the percentage of 
+         *	timeouts where other work such as updating the DOM can be performed. (Allows me to calculate the percentage of 
          *	work completed). Also frees up the computation so it doesn't seem like the browser is frozen. 
          */
         function doChunk() {
