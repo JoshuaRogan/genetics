@@ -2,7 +2,7 @@
 var popGen = popGen || {};
 popGen.config = popGen.config || {}; 
 popGen.config.chartJQ = popGen.config.chartJQ || {
-    debug:                     true, 
+    debug:                     false, 
 
     //Colors 
     lightGray:                "rgba(255, 255, 255, 0.75)",  
@@ -29,10 +29,10 @@ popGen.config.chartJQ = popGen.config.chartJQ || {
     labelFontSize:            "14",
 };
 
-
 /**
- *  Initialize the main chart that will hold of the data 
- *  -Uses canvasJS library 
+ * Initialize the main chart that will hold of the data
+ *      
+ *  @param {string} selector JQuery selctor for the chart element 
  */
 popGen.config.chartJQ.initChart = function(selector){
     if(this.chartExists(selector)){

@@ -1,8 +1,7 @@
 //Namespaces
 var  = popGen || {};
-popGen.htmlUtilities = popGen.htmlUtilities || {}; 
 popGen.population = popGen.population || {};
-popGen.generation = popGen.generation || {};
+popGen.generations = popGen.generations || {};
 
 
 /**
@@ -11,7 +10,7 @@ popGen.generation = popGen.generation || {};
  *	
  *		-Currently storing each population in populations array (could be removed to reduce memory overhead) 
  */
-popGen.generation = function(numGenerations, populationSize, startAlleleFreq) {
+popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 	this.numGenerations 		= numGenerations; 		//Total number of generations
     this.currentGenerationNum 	= 0; 					//The generation number we are now on    
     this.populationSize 		= populationSize; 		//The population size of each population

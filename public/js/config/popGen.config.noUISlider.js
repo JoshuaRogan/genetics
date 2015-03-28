@@ -1,409 +1,450 @@
-$(document).ready(function() {
-/***********SLIDER CONFIGURATION (MOVE TO A CONFIG FILE)***********/
-	        /*****************POPULATION SLIDER*****************/
-	        $("#population-size-slider").noUiSlider({
-	            start: [500],
-	            step: 1,
-	            connect: "lower",
-	            range: {
-	                'min': [1],
-	                'max': [10000]
-	            },
-	            format: wNumb({
-	                decimals: 0,
-	                thousand: ','
-	            })
-	        });
+/**
+ *	TODO: Fix population bottlneck sync
+ *
+ */
+//Namespaces
+var popGen = popGen || {};
+popGen.config = popGen.config || {}; 
+popGen.config.noUISlider = popGen.config.noUISlider || {
+	debug: false, 
+	selectors: { //Not currenlty using or probably useful
+		populationSize: {
+			slider: "#population-size-slider",
+			input: 	"#population-size"
+		}
 
-	        $("#population-size-slider").Link('lower').to($("#population-size"));
-	        // $("#population-size-slider").addClass("active"); //Active by default
-	        $("#population-size-slider").on('slide', activatePopulationSlider);
-	        $("#population-size-slider").on('change', activatePopulationSlider);
-	        $("#population-size-slider").on('set', activatePopulationSlider);
+	}
 
-	        /*****************END POPULATION SLIDER*****************/
+}
 
-	        /*****************GENERATIONS SLIDER*****************/
-	        $("#generations-slider").noUiSlider({
-	            start: [500],
-	            step: 1,
-	            connect: "lower",
-	            range: {
-	                'min': [1],
-	                'max': [10000]
-	            },
-	            format: wNumb({
-	                decimals: 0,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#generations-slider").Link('lower').to($("#generations"));
-	        // $("#generations-slider").Link('lower').to($("#generation-to-override-upper"));
-	        $("#generations-slider").addClass("active"); //Active by default
-
-	        $("#generations-slider").on('slide', activateGenerationsSlider);
-	        $("#generations-slider").on('change', activateGenerationsSlider);
-	        $("#generations-slider").on('set', activateGenerationsSlider);
-	        /*****************END GENERATIONS SLIDER*****************/
+/**
+ * 	Initialize all of the sliders
+ *      
+ *  @param {string} selector JQuery selctor for the slider element 
+ */
+popGen.config.noUISlider.initSliders = function(selector){
 
 
+	//Initalize each slider
+	this.initPopulationSlider(this.selectors);
+	this.initGenerationSlider(this.selectors);
+	this.initStartingFreqSlider(this.selectors);	
+	this.initwAASlider(this.selectors);
+	this.initwAaSlider(this.selectors);
+	this.initwaaSlider(this.selectors);
+	this.initSelectionSlider(this.selectors);
+	this.initDominanceSlider(this.selectors);
+	this.initMUSlider(this.selectors);
+	this.initNUSlider(this.selectors);
+	this.initMigrationSlider(this.selectors);
+	this.initMigrantAlleleSlider(this.selectors);
+	this.initInbreedingSlider(this.selectors);
+	this.initAssortMatingSlider(this.selectors);
+	this.initBottleNeckGensSlider(this.selectors);
+	this.initBottleNeckPopSlider(this.selectors);
+	this.initBatchSlider(this.selectors);
 
 
-	        /*****************STARTING ALLELE FREQ SLIDER********************/
-	        $("#starting-allele-frequency-slider").noUiSlider({
-	            start: [.5],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
+	this.addBookmarkValues();
+}
 
-	        $("#starting-allele-frequency-slider").Link('lower').to($("#starting-allele-frequency"));
-	        $("#starting-allele-frequency-slider").addClass("active"); //Active by default
-	        /*****************END STARTING ALLELE FREQ SLIDER*****************/
-
-	        /*****************Fitness Coeficcient WAA********************/
-	        $("#fitness-coefficient-wAA-slider").noUiSlider({
-	            start: [1],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#fitness-coefficient-wAA-slider").Link('lower').to($("#fitness-coefficient-wAA"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#fitness-coefficient-wAA-slider").on('slide', activateFitnessCoefSlider);
-	        $("#fitness-coefficient-wAA-slider").on('change', activateFitnessCoefSlider);
-	        $("#fitness-coefficient-wAA-slider").on('set', activateFitnessCoefSlider);
-	        /*****************Fitness Coeficcient WAA*****************/
-
-	        /*****************Fitness Coeficcient WAa********************/
-	        $("#fitness-coefficient-wAa-slider").noUiSlider({
-	            start: [1],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#fitness-coefficient-wAa-slider").Link('lower').to($("#fitness-coefficient-wAa"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#fitness-coefficient-wAa-slider").on('slide', activateFitnessCoefSlider);
-	        $("#fitness-coefficient-wAa-slider").on('change', activateFitnessCoefSlider);
-	        $("#fitness-coefficient-wAa-slider").on('set', activateFitnessCoefSlider);
-	        /*****************Fitness Coeficcient WAa*****************/
-
-	        /*****************Fitness Coeficcient Waa********************/
-	        $("#fitness-coefficient-waa-slider").noUiSlider({
-	            start: [1],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#fitness-coefficient-waa-slider").Link('lower').to($("#fitness-coefficient-waa"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#fitness-coefficient-waa-slider").on('slide', activateFitnessCoefSlider);
-	        $("#fitness-coefficient-waa-slider").on('change', activateFitnessCoefSlider);
-	        $("#fitness-coefficient-waa-slider").on('set', activateFitnessCoefSlider);
-	        /*****************Fitness Coeficcient Waa*****************/
-
-	        /*****************selection-coefficient********************/
-	        $("#selection-coefficient-slider").noUiSlider({
-	            start: [0],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#selection-coefficient-slider").Link('lower').to($("#selection-coefficient"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#selection-coefficient-slider").on('slide', activateSelectionDomSlider);
-	        $("#selection-coefficient-slider").on('change', activateSelectionDomSlider);
-	        $("#selection-coefficient-slider").on('set', activateSelectionDomSlider);
-	        /*****************selection-coefficient****************/
-
-	        /*****************dominance-coefficient********************/
-	        $("#dominance-coefficient-slider").noUiSlider({
-	            start: [1],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#dominance-coefficient-slider").Link('lower').to($("#dominance-coefficient"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#dominance-coefficient-slider").on('slide', activateSelectionDomSlider);
-	        $("#dominance-coefficient-slider").on('change', activateSelectionDomSlider);
-	        $("#dominance-coefficient-slider").on('set', activateSelectionDomSlider);
-	        /*****************dominance-coefficient****************/
-
-	        /*****************Mutation rate mu********************/
-	        $("#mutation-rate-mu-slider").noUiSlider({
-	            start: [0],
-	            step: .00001, //PROBLEM HERE
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [9.99999]
-	            },
-	            format: wNumb({
-	                decimals: 5, //Assuming 10^-3
-	                thousand: ','
-	            })
-	        });
-
-	        $("#mutation-rate-mu-slider").Link('lower').to($("#mutation-rate-mu"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#mutation-rate-mu-slider").on('slide', activateMutationSlider);
-	        $("#mutation-rate-mu-slider").on('change', activateMutationSlider);
-	        $("#mutation-rate-mu-slider").on('set', activateMutationSlider);
-	        /*****************mutation rate mu****************/
-
-	        /*****************mutation rate nu********************/
-	        $("#mutation-rate-nu-slider").noUiSlider({
-	            start: [0],
-	            step: .00001, //PROBLEM HERE
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [9.99999]
-	            },
-	            format: wNumb({
-	                decimals: 5, //Assuming 10^-3
-	                thousand: ','
-	            })
-	        });
-
-	        $("#mutation-rate-nu-slider").Link('lower').to($("#mutation-rate-nu"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#mutation-rate-nu-slider").on('slide', activateMutationSlider);
-	        $("#mutation-rate-nu-slider").on('change', activateMutationSlider);
-	        $("#mutation-rate-nu-slider").on('set', activateMutationSlider);
-	        /*****************mutation rate nu****************/
-
-
-	        /*****************Migration Rate********************/
-	        $("#migration-rate-slider").noUiSlider({
-	            start: [0],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#migration-rate-slider").Link('lower').to($("#migration-rate"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#migration-rate-slider").on('slide', activateMigrationSlider);
-	        $("#migration-rate-slider").on('change', activateMigrationSlider);
-	        $("#migration-rate-slider").on('set', activateMigrationSlider);
-	        /*****************Migration Rate****************/
-
-	        /*****************Migrant Allele Frequency********************/
-	        $("#migrant-allele-frequency-slider").noUiSlider({
-	            start: [.5],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#migrant-allele-frequency-slider").Link('lower').to($("#migrant-allele-frequency"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#migrant-allele-frequency-slider").on('slide', activateMigrationSlider);
-	        $("#migrant-allele-frequency-slider").on('change', activateMigrationSlider);
-	        $("#migrant-allele-frequency-slider").on('set', activateMigrationSlider);
-	        /*****************Migrante Allele Frequency****************/
-
-	        /*****************Inbreeding********************/
-	        $("#inbreeding-coefficient-slider").noUiSlider({
-	            start: [0],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#inbreeding-coefficient-slider").Link('lower').to($("#inbreeding-coefficient"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#inbreeding-coefficient-slider").on('slide', activateInbreedingSlider);
-	        $("#inbreeding-coefficient-slider").on('change', activateInbreedingSlider);
-	        $("#inbreeding-coefficient-slider").on('set', activateInbreedingSlider);
-
-	        /*****************Inbreeding****************/
-
-	        /*****************Migrant Allele Frequency********************/
-	        $("#positive-assortative-mating-slider").noUiSlider({
-	            start: [0],
-	            step: .0001,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [1]
-	            },
-	            format: wNumb({
-	                decimals: 4,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#positive-assortative-mating-slider").Link('lower').to($("#positive-assortative-mating"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#positive-assortative-mating-slider").on('slide', activateAssortativeMating);
-	        $("#positive-assortative-mating-slider").on('change', activateAssortativeMating);
-	        $("#positive-assortative-mating-slider").on('set', activateAssortativeMating);
-	        /*****************Migrante Allele Frequency****************/
-
-	        /*****************Population Bottleneck********************/
-
-	        $("#generation-to-override-slider").noUiSlider({
-	            start: [50, 500],
-	            step: 1,
-	            connect: true,
-	            range: {
-	                'min': [1],
-	                'max': [500]
-	            },
-	            format: wNumb({
-	                decimals: 0,
-	                thousand: ','
-	            })
-	        }, true);
-
-	    	$("#generation-to-override-slider").Link('lower').to($("#generation-to-override-lower"));
-	    	$("#generation-to-override-slider").Link('upper').to($("#generation-to-override-upper"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#generation-to-override-slider").on('slide', activatePopulationControl);
-	        $("#generation-to-override-slider").on('change', activatePopulationControl);
-	        $("#generation-to-override-slider").on('set', activatePopulationControl);
-	        /*****************Population Bottleneck****************/
-
-	        /*****************Population Bottleneck********************/
-	        $("#new-population-size-slider").noUiSlider({
-	            start: [5000],
-	            step: 1,
-	            connect: "lower",
-	            range: {
-	                'min': [1],
-	                'max': [10000]
-	            },
-	            format: wNumb({
-	                decimals: 0,
-	                thousand: ','
-	            })
-	        });
-
-	    	$("#new-population-size-slider").Link('lower').to($("#new-population-size"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#new-population-size-slider").on('slide', activatePopulationControl);
-	        $("#new-population-size-slider").on('change', activatePopulationControl);
-	        $("#new-population-size-slider").on('set', activatePopulationControl);
-	        /*****************Population Bottleneck****************/
-
-
-	        /*****************Batch Tool********************/
-	        $("#batch-tool-runs-slider").noUiSlider({
-	            start: [3],
-	            step: 1,
-	            connect: "lower",
-	            range: {
-	                'min': [0],
-	                'max': [50]
-	            },
-	            format: wNumb({
-	                decimals: 0,
-	                thousand: ','
-	            })
-	        });
-
-	        $("#batch-tool-runs-slider").Link('lower').to($("#batch-tool-runs"));
-
-	        //Activate the slider if it was slide, changed or manually set
-	        $("#batch-tool-runs-slider").on('slide', activateBatchTool);
-	        $("#batch-tool-runs-slider").on('change', activateBatchTool);
-	        $("#batch-tool-runs-slider").on('set', activateBatchTool);
-
-	        /*****************Inbreeding****************/
+popGen.config.noUISlider.debugData = function(){
+	console.log(this); 
+}
 
 
 
-	        //After all of the sliders are initialized check for any bookmarking values 
-	        addBookmarkValues();
+/**
+ * 	Individual funtions to initalize sliders
+ *      
+ *  @param {string} selector JQuery selctor for the slider element 
+ */
+
+ popGen.config.noUISlider.initPopulationSlider = function(selector){
+	$("#population-size-slider").noUiSlider({
+		start: [500],
+		step: 1,
+		connect: "lower",
+		range: {
+		    'min': [1],
+		    'max': [10000]
+		},
+		format: wNumb({
+		    decimals: 0,
+		    thousand: ','
+		})
+	});
+
+	$("#population-size-slider").Link('lower').to($("#population-size"));
+	// $("#population-size-slider").addClass("active"); //Active by default
+	$("#population-size-slider").on('slide', this.activatePopulationSlider);
+	$("#population-size-slider").on('change', this.activatePopulationSlider);
+	$("#population-size-slider").on('set', this.activatePopulationSlider);
+ }
+
+popGen.config.noUISlider.initGenerationSlider = function(selector){
+	$("#generations-slider").noUiSlider({
+	    start: [500],
+	    step: 1,
+	    connect: "lower",
+	    range: {
+	        'min': [1],
+	        'max': [10000]
+	    },
+	    format: wNumb({
+	        decimals: 0,
+	        thousand: ','
+	    })
+	});
+
+	$("#generations-slider").Link('lower').to($("#generations"));
+	// $("#generations-slider").Link('lower').to($("#generation-to-override-upper"));
+	$("#generations-slider").addClass("active"); //Active by default
+
+	$("#generations-slider").on('slide', this.activateGenerationsSlider);
+	$("#generations-slider").on('change', this.activateGenerationsSlider);
+	$("#generations-slider").on('set', this.activateGenerationsSlider);
+ }
 
 
-}) //Document ready 
+popGen.config.noUISlider.initStartingFreqSlider = function(selector){
+	$("#starting-allele-frequency-slider").noUiSlider({
+		start: [.5],
+		step: .0001,
+		connect: "lower",
+		range: {
+		    'min': [0],
+		    'max': [1]
+		},
+		format: wNumb({
+		    decimals: 4,
+		    thousand: ','
+		})
+	});
+
+	$("#starting-allele-frequency-slider").Link('lower').to($("#starting-allele-frequency"));
+	$("#starting-allele-frequency-slider").addClass("active"); //Active by default
+}
+
+popGen.config.noUISlider.initwAASlider = function(selector){
+	$("#fitness-coefficient-wAA-slider").noUiSlider({
+	    start: [1],
+	    step: .0001,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [1]
+	    },
+	    format: wNumb({
+	        decimals: 4,
+	        thousand: ','
+	    })
+	});
+
+	$("#fitness-coefficient-wAA-slider").Link('lower').to($("#fitness-coefficient-wAA"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#fitness-coefficient-wAA-slider").on('slide', this.activateFitnessCoefSlider);
+	$("#fitness-coefficient-wAA-slider").on('change', this.activateFitnessCoefSlider);
+	$("#fitness-coefficient-wAA-slider").on('set', this.activateFitnessCoefSlider);
+}
+
+popGen.config.noUISlider.initwAaSlider = function(selector){
+	$("#fitness-coefficient-wAa-slider").noUiSlider({
+	    start: [1],
+	    step: .0001,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [1]
+	    },
+	    format: wNumb({
+	        decimals: 4,
+	        thousand: ','
+	    })
+	});
+
+	$("#fitness-coefficient-wAa-slider").Link('lower').to($("#fitness-coefficient-wAa"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#fitness-coefficient-wAa-slider").on('slide', this.activateFitnessCoefSlider);
+	$("#fitness-coefficient-wAa-slider").on('change', this.activateFitnessCoefSlider);
+	$("#fitness-coefficient-wAa-slider").on('set', this.activateFitnessCoefSlider);
+}
+
+popGen.config.noUISlider.initwaaSlider = function(selector){
+	$("#fitness-coefficient-waa-slider").noUiSlider({
+	    start: [1],
+	    step: .0001,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [1]
+	    },
+	    format: wNumb({
+	        decimals: 4,
+	        thousand: ','
+	    })
+	});
+
+	$("#fitness-coefficient-waa-slider").Link('lower').to($("#fitness-coefficient-waa"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#fitness-coefficient-waa-slider").on('slide', this.activateFitnessCoefSlider);
+	$("#fitness-coefficient-waa-slider").on('change', this.activateFitnessCoefSlider);
+	$("#fitness-coefficient-waa-slider").on('set', this.activateFitnessCoefSlider);	
+}
+
+popGen.config.noUISlider.initSelectionSlider = function(selector){
+	$("#selection-coefficient-slider").noUiSlider({
+	    start: [0],
+	    step: .0001,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [1]
+	    },
+	    format: wNumb({
+	        decimals: 4,
+	        thousand: ','
+	    })
+	});
+
+	$("#selection-coefficient-slider").Link('lower').to($("#selection-coefficient"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#selection-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+	$("#selection-coefficient-slider").on('change', this.activateSelectionDomSlider);
+	$("#selection-coefficient-slider").on('set', this.activateSelectionDomSlider);
+}
+
+popGen.config.noUISlider.initDominanceSlider = function(selector){
+	$("#dominance-coefficient-slider").noUiSlider({
+	    start: [1],
+	    step: .0001,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [1]
+	    },
+	    format: wNumb({
+	        decimals: 4,
+	        thousand: ','
+	    })
+	});
+
+	$("#dominance-coefficient-slider").Link('lower').to($("#dominance-coefficient"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#dominance-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+	$("#dominance-coefficient-slider").on('change', this.activateSelectionDomSlider);
+	$("#dominance-coefficient-slider").on('set', this.activateSelectionDomSlider);	
+}
+
+popGen.config.noUISlider.initMUSlider = function(selector){
+	$("#mutation-rate-mu-slider").noUiSlider({
+	    start: [0],
+	    step: .00001, 
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [9.99999]
+	    },
+	    format: wNumb({
+	        decimals: 5, 
+	        thousand: ','
+	    })
+	});
+
+	$("#mutation-rate-mu-slider").Link('lower').to($("#mutation-rate-mu"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#mutation-rate-mu-slider").on('slide', this.activateMutationSlider);
+	$("#mutation-rate-mu-slider").on('change', this.activateMutationSlider);
+	$("#mutation-rate-mu-slider").on('set', this.activateMutationSlider);	
+}
+
+popGen.config.noUISlider.initNUSlider = function(selector){
+	$("#mutation-rate-nu-slider").noUiSlider({
+	    start: [0],
+	    step: .00001, //PROBLEM HERE
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [9.99999]
+	    },
+	    format: wNumb({
+	        decimals: 5, //Assuming 10^-3
+	        thousand: ','
+	    })
+	});
+
+	$("#mutation-rate-nu-slider").Link('lower').to($("#mutation-rate-nu"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#mutation-rate-nu-slider").on('slide', this.activateMutationSlider);
+	$("#mutation-rate-nu-slider").on('change', this.activateMutationSlider);
+	$("#mutation-rate-nu-slider").on('set', this.activateMutationSlider);
+}
+
+popGen.config.noUISlider.initMigrationSlider = function(selector){
+	$("#migration-rate-slider").noUiSlider({
+	    start: [0],
+	    step: .0001,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [1]
+	    },
+	    format: wNumb({
+	        decimals: 4,
+	        thousand: ','
+	    })
+	});
+
+	$("#migration-rate-slider").Link('lower').to($("#migration-rate"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#migration-rate-slider").on('slide', this.activateMigrationSlider);
+	$("#migration-rate-slider").on('change', this.activateMigrationSlider);
+	$("#migration-rate-slider").on('set', this.activateMigrationSlider);
+}
+
+popGen.config.noUISlider.initMigrantAlleleSlider = function(selector){
+	$("#migrant-allele-frequency-slider").noUiSlider({
+	    start: [.5],
+	    step: .0001,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [1]
+	    },
+	    format: wNumb({
+	        decimals: 4,
+	        thousand: ','
+	    })
+	});
+
+	$("#migrant-allele-frequency-slider").Link('lower').to($("#migrant-allele-frequency"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#migrant-allele-frequency-slider").on('slide', this.activateMigrationSlider);
+	$("#migrant-allele-frequency-slider").on('change', this.activateMigrationSlider);
+	$("#migrant-allele-frequency-slider").on('set', this.activateMigrationSlider);
+}
+
+popGen.config.noUISlider.initInbreedingSlider = function(selector){
+	$("#inbreeding-coefficient-slider").noUiSlider({
+	    start: [0],
+	    step: .0001,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [1]
+	    },
+	    format: wNumb({
+	        decimals: 4,
+	        thousand: ','
+	    })
+	});
+
+	$("#inbreeding-coefficient-slider").Link('lower').to($("#inbreeding-coefficient"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#inbreeding-coefficient-slider").on('slide', this.activateInbreedingSlider);
+	$("#inbreeding-coefficient-slider").on('change', this.activateInbreedingSlider);
+	$("#inbreeding-coefficient-slider").on('set', this.activateInbreedingSlider);
+}
+popGen.config.noUISlider.initAssortMatingSlider = function(selector){
+	$("#positive-assortative-mating-slider").noUiSlider({
+	    start: [0],
+	    step: .0001,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [1]
+	    },
+	    format: wNumb({
+	        decimals: 4,
+	        thousand: ','
+	    })
+	});
+
+	$("#positive-assortative-mating-slider").Link('lower').to($("#positive-assortative-mating"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#positive-assortative-mating-slider").on('slide', this.activateAssortativeMating);
+	$("#positive-assortative-mating-slider").on('change', this.activateAssortativeMating);
+	$("#positive-assortative-mating-slider").on('set', this.activateAssortativeMating);	
+}
+popGen.config.noUISlider.initBottleNeckGensSlider = function(selector){
+	$("#generation-to-override-slider").noUiSlider({
+	    start: [50, 500],
+	    step: 1,
+	    connect: true,
+	    range: {
+	        'min': [1],
+	        'max': [500]
+	    },
+	    format: wNumb({
+	        decimals: 0,
+	        thousand: ','
+	    })
+	}, true);
+
+	$("#generation-to-override-slider").Link('lower').to($("#generation-to-override-lower"));
+	$("#generation-to-override-slider").Link('upper').to($("#generation-to-override-upper"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#generation-to-override-slider").on('slide', this.activatePopulationControl);
+	$("#generation-to-override-slider").on('change', this.activatePopulationControl);
+	$("#generation-to-override-slider").on('set', this.activatePopulationControl);	
+}
+popGen.config.noUISlider.initBottleNeckPopSlider = function(selector){
+	$("#new-population-size-slider").noUiSlider({
+	    start: [5000],
+	    step: 1,
+	    connect: "lower",
+	    range: {
+	        'min': [1],
+	        'max': [10000]
+	    },
+	    format: wNumb({
+	        decimals: 0,
+	        thousand: ','
+	    })
+	});
+
+	$("#new-population-size-slider").Link('lower').to($("#new-population-size"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#new-population-size-slider").on('slide', this.activatePopulationControl);
+	$("#new-population-size-slider").on('change', this.activatePopulationControl);
+	$("#new-population-size-slider").on('set', this.activatePopulationControl);
+}
+
+popGen.config.noUISlider.initBatchSlider = function(selector){
+	$("#batch-tool-runs-slider").noUiSlider({
+	    start: [3],
+	    step: 1,
+	    connect: "lower",
+	    range: {
+	        'min': [0],
+	        'max': [50]
+	    },
+	    format: wNumb({
+	        decimals: 0,
+	        thousand: ','
+	    })
+	});
+
+	$("#batch-tool-runs-slider").Link('lower').to($("#batch-tool-runs"));
+
+	//Activate the slider if it was slide, changed or manually set
+	$("#batch-tool-runs-slider").on('slide', this.activateBatchTool);
+	$("#batch-tool-runs-slider").on('change', this.activateBatchTool);
+	$("#batch-tool-runs-slider").on('set', this.activateBatchTool);
+}
 
 
 /**
@@ -412,21 +453,15 @@ $(document).ready(function() {
  *
  *	TODO: Check the values to make it inactive if the appropriate values are set
  */
-function activateGenerationsSlider(){
-	//Validate the generation override slider to make sure the new generation number doesn't conflict 
-	
-
-	validateGenOverride();
-
+popGen.config.noUISlider.activateGenerationsSlider = function(){
+	popGen.config.noUISlider.validateGenOverride();
 }
 
-function activatePopulationSlider(){
+popGen.config.noUISlider.activatePopulationSlider = function(){
 	$("#population-size-slider").addClass("active");
-
-	//No longer infinite sample size
 }
 
-function activateFitnessCoefSlider() {
+popGen.config.noUISlider.activateFitnessCoefSlider = function(){
     //Make these active 
     $("#fitness-coefficient-waa-slider").addClass("active");
     $("#fitness-coefficient-wAa-slider").addClass("active");
@@ -441,7 +476,7 @@ function activateFitnessCoefSlider() {
     $("#selection-variables .variable-activator").addClass("fa-check-square-o");
 }
 
-function activateSelectionDomSlider() {
+popGen.config.noUISlider.activateSelectionDomSlider = function(){
     //Make these active 
     $("#selection-coefficient-slider").addClass("active");
     $("#dominance-coefficient-slider").addClass("active");
@@ -456,7 +491,7 @@ function activateSelectionDomSlider() {
     $("#selection-variables .variable-activator").addClass("fa-check-square-o");
 }
 
-function activateMutationSlider() {
+popGen.config.noUISlider.activateMutationSlider = function(){
     //Make these active 
     $("#mutation-rate-mu-slider").addClass("active");
     $("#mutation-rate-nu-slider").addClass("active");
@@ -466,7 +501,7 @@ function activateMutationSlider() {
     $("#mutation-variables .variable-activator").addClass("fa-check-square-o");
 }
 
-function activateMigrationSlider() {
+popGen.config.noUISlider.activateMigrationSlider = function(){
     //Make these active 
     $("#migration-rate-slider").addClass("active");
     $("#migrant-allele-frequency-slider").addClass("active");
@@ -476,17 +511,16 @@ function activateMigrationSlider() {
     $("#migration-variables .variable-activator").addClass("fa-check-square-o");
 }
 
-function activateInbreedingSlider() {
+popGen.config.noUISlider.activateInbreedingSlider = function(){
     //Make these active
     $("#inbreeding-coefficient-slider").addClass("active");
 
    	//Update the activator icon
     $("#inbreeding-variables .variable-activator").removeClass("fa-square-o");
     $("#inbreeding-variables .variable-activator").addClass("fa-check-square-o");
-
 }
 
-function activateAssortativeMating() {
+popGen.config.noUISlider.activateAssortativeMating = function(){
     //Make these active 
     $("#positive-assortative-mating-slider").addClass("active");
 
@@ -495,7 +529,7 @@ function activateAssortativeMating() {
     $("#assortative-mating .variable-activator").addClass("fa-check-square-o");
 }
 
-function activatePopulationControl(){
+popGen.config.noUISlider.activatePopulationControl = function(){
 	$("#generation-to-override-slider").addClass("active");
 	$("#new-population-size-slider").addClass("active");
 
@@ -504,7 +538,7 @@ function activatePopulationControl(){
     $("#population-control .variable-activator").addClass("fa-check-square-o");
 }
 
-function activateBatchTool(){
+popGen.config.noUISlider.activateBatchTool = function(){
 	//Make these active
     $("#batch-tool-runs-slider").addClass("active");
 
@@ -513,8 +547,13 @@ function activateBatchTool(){
     $("#batch-tool .variable-activator").addClass("fa-check-square-o");
 }
 
+
+
+
+
+
 //Deactive the correct sliders based on what checkmark was clicked 
-function deactiveActiveOnCheckmark(variableSectionId, state){
+popGen.config.noUISlider.deactiveActiveOnCheckmark = function(variableSectionId, state){
 	if(variableSectionId == "selection-variables"){
 		//Needs to be more intelligent 
 		if(state =="unchecked"){
@@ -551,12 +590,13 @@ function deactiveActiveOnCheckmark(variableSectionId, state){
 	}
 }
 
+
 /** 
  *	Make sure that the validation override doesn't exceed the the actual number of generations 
  *
  */
-function validateGenOverride(){
-	
+popGen.config.noUISlider.validateGenOverride = function(){
+
 	//Validate here 
 	var validPopBottleneck = true; 
 	var values = seralizeForm($("#variables-form").serializeArray());
@@ -586,12 +626,12 @@ function validateGenOverride(){
     
 }
 
-
 /**
  *	Look at the hidden fields in the page and attempt to add them to the slider
  *		-Validation occurs automatically with noui slider
  */
-function addBookmarkValues(){
+popGen.config.noUISlider.addBookmarkValues = function(){
+
 	var bookmarkform = $("#bookmarking-values");
 
 	if(bookmarkform.length){
@@ -609,12 +649,8 @@ function addBookmarkValues(){
 			else if(bookmarks[i].name == "bookmarking-selection") 		$("#selection-coefficient-slider").val(bookmarks[i].value);
 			else if(bookmarks[i].name == "bookmarking-dominance") 		$("#dominance-coefficient-slider").val(bookmarks[i].value);
 		}
-
-
-
-
 	} 
 	else{
-		console.log(bookmarkform);
+		if(this.debug) console.log(bookmarkform);
 	}
 }

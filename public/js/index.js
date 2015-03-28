@@ -695,9 +695,6 @@ function updateGenOverride(){
  */
 function formHandler(chart, type){
     var values = seralizeForm($("#variables-form").serializeArray());
-    
-    
-   
 
 	var isValid = true; //Validation check 
 	var errors = []; //Error messages 
