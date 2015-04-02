@@ -275,16 +275,16 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 <!-- Graph Completion Modal -->
 
 <!-- Bookmarking Modal -->
-<div class="modal fade" id="bookmark-link" tabindex="-1" role="dialog" aria-labelledby="bookmark-link" aria-hidden="true">
+<div class="modal fade" id="bookmark-link" tabindex="-1" role="dialog" aria-labelledby="bookmark-link-title" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="graph-computing-title">Generated Bookmark Link</h4>
+        <h4 class="modal-title" id="bookmark-link-title">Generated Bookmark Link</h4>
       </div>
       <div class="modal-body">
       <p> Bookmark the link below to prepopulate the variables with the values you currently have set. </p>
-      <pre class="text-center bookmark-link">http://genetics.droplet.jcubedworld.com/home?generations=250&startfreq=0.5325&population=35&selection=.350&wAA=.250&wAa=.253&waa=.350</pre>
+      <pre class="text-center bookmark-link">http://genetics.droplet.jcubedworld.com/home?generations=250&amp;startfreq=0.5325&amp;population=35&amp;selection=.350&amp;wAA=.250&amp;wAa=.253&amp;waa=.350</pre>
       </div>
       <div class="modal-footer">
 		 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -521,7 +521,7 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of α 
 
 
 	<!-- Hidden form to update values with js later on when everything is loaded --> 
-	<form action="" class="hidden" id="bookmarking-values"> 
+	<form action="POST" class="hidden" id="bookmarking-values"> 
 		
 		<?php 
 			foreach($bookmarks as $varname => $value){

@@ -14,7 +14,5 @@ popGen.htmlutil.chartDOM	= popGen.htmlutil.chartDOM || {};	//DOM manipulations r
 popGen.htmlutil.sliderDOM	= popGen.htmlutil.sliderDOM || {};	//DOM manipulations related to the sliders
 
 $(document).ready(function(){
-	popGen.config.chartJQ.initChart("#graph-canvas");
-	popGen.config.noUISlider.initSliders();
-	popGen.htmlutil.initHome();
+	popGen.htmlutil.initFAQ();
 });

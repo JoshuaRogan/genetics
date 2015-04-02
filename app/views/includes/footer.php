@@ -42,7 +42,7 @@
 
 			<div class="col-md-3"> 
 				<h3> Report a Problem </h3>
-				<p> Found a problem? <a href="/report-problem">Report it here!</a> </p>
+				<p> Found a problem? <a href="mailto:jjr76@pitt.edu">Send me an email!</a> </p>
 				<a href='http://validator.w3.org/check?uri=http%3A%2F%2Fgenetics.melwood.jcubedworld.com%2F' target="_blank"><i class="fa fa-html5 fa-5x"></i></a>
 
 				<a href='http://validator.w3.org/check?uri=http%3A%2F%2Fgenetics.melwood.jcubedworld.com%2F' target="_blank" ><i class="fa fa-css3 fa-5x"></i></a>

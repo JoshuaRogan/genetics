@@ -2,28 +2,29 @@
  *	DOM manipulations relating the chart
  *
  */
-
 var popGen = popGen || {};
 popGen.htmlutil = popGen.htmlutil || {}; //Should already be defined 
 popGen.generations = popGen.generations || {}; //Should already be defined 
 popGen.config.chartJQ = popGen.config.chartJQ || {}; //Should already be defined 
 
 popGen.htmlutil.chartDOM = popGen.htmlutil.chartDOM || {
-	debug: true, 
-	chart: null,       //Hold the chart data here 
-    values: null,      //Holds all of the user inputed values 
-	nextLine: 0	       //0 Means nothing has been graphed 
+	debug: false, 
+	chart: null,        //Hold the chart data here 
+	frequencies: Array(),        //Hold the chart data here 
+    values: null,      	//Holds all of the user inputed values of the last graphed item 
+	nextLine: 0,	       	//0 Means nothing has been graphed 
+	highContrast: null 
 }; 
 
 popGen.htmlutil.chartDOM.debugData = function(){
 	if(this.debug) console.log(this); 
 }
 
-popGen.htmlutil.chartDOM.initComputation = function(){
+popGen.htmlutil.chartDOM.initChart = function(){
     this.chart = $("#graph-canvas").CanvasJSChart();
-
-    this.values = this.seralizeForm($("#variables-form"));
+    this.values = this.seralizeForm($("#variables-form")); 
 }
+
 
  /**
  * 	Update the graph with new data 
@@ -32,22 +33,27 @@ popGen.htmlutil.chartDOM.initComputation = function(){
  *  @param {string} type "redraw" or "add"  
  */
 popGen.htmlutil.chartDOM.updateGraph = function(dataPoints, type){
+    this.frequencies.push(dataPoints); //Maintain all of the data points
+
     if(this.debug) {
         console.log("Updating Graph: ",dataPoints, type);
-        console.log(this.chart); 
+        console.log(popGen.htmlutil.chartDOM.chart); 
     }
 
     if(type == "newGraph"){
+        if(this.debug){
+            console.log("New Graph attemping update"); 
+            console.log(dataPoints);
+        }
         this.clearGraph(); //First clear the graph and data points 
-    }
-
-    
-
-    if(type == "newGraph"){
         this.addDataPoints(dataPoints); 
         this.updateLegend(false); 
     }
     else if(type == "addLine"){
+        if(this.debug){
+            console.log("Add Line attemping update"); 
+            console.log(dataPoints);
+        }
         this.addDataPoints(dataPoints); 
         this.updateLegend(true); 
     }
@@ -55,10 +61,16 @@ popGen.htmlutil.chartDOM.updateGraph = function(dataPoints, type){
         if(this.debug){
             console.log("Batch Attempting Update"); 
             console.log(dataPoints);
-        } 
-
+        }
+        var numBatchRuns = parseInt(this.values['batch-tool-runs']); 
         this.addDataPoints(dataPoints);
-        this.updateLegend(false, parseInt(this.values['batch-tool-runs']))
+        this.updateLegend(false, numBatchRuns);
+
+        //Only compute this on the last run 
+        if(this.nextLine - 1 == numBatchRuns){ 
+        	this.computeBatchStats(); 
+        }
+
     }
     
 }
@@ -78,10 +90,10 @@ popGen.htmlutil.chartDOM.clearGraph = function(){
 
     dataSeries.dataPoints = dataPoints;
    
-    this.chart.options.data = data;
-    this.chart.options.colorSet = "main";
+    popGen.htmlutil.chartDOM.chart.options.data = data;
+    popGen.htmlutil.chartDOM.chart.options.colorSet = "main";
     this.nextLine = 1; 
-    // this.chart.render(); //Might not need to do this 
+    this.frequencies = Array(); //Clear the old frequencies 
 }
 
  /**
@@ -93,7 +105,7 @@ popGen.htmlutil.chartDOM.addDataPoints = function(dataToAdd){
     // console.log(chart);
     if(this.debug){
         console.log("Adding Data Points to Graph"); 
-        console.log(this.chart); 
+        console.log(popGen.htmlutil.chartDOM.chart); 
         console.log(this.nextLine); //Not working yet 
     }
 
@@ -103,7 +115,7 @@ popGen.htmlutil.chartDOM.addDataPoints = function(dataToAdd){
         this.clearGraph();
     }
 
-    var data = this.chart.options.data;
+    var data = popGen.htmlutil.chartDOM.chart.options.data;
     var dataSeries = {
         type: "line"
     };
@@ -119,8 +131,7 @@ popGen.htmlutil.chartDOM.addDataPoints = function(dataToAdd){
 
     dataSeries.dataPoints = dataPoints;
     data.push(dataSeries);
-    this.chart.options.data = data;
-    // this.chart.render();
+    popGen.htmlutil.chartDOM.chart.options.data = data;
     this.nextLine++;
 }
 
@@ -321,6 +332,53 @@ popGen.htmlutil.chartDOM.generateLegendRow = function(variable, value, secondVal
     return row;
 }
 
+/**
+ *  After running through the batch runs compute various stats on all of the runs
+ *   
+ */
+ popGen.htmlutil.chartDOM.computeBatchStats = function (){
+    //Clean up the legends too (Remove all but one and change it to Graph 1-50 since they are all the same vars)
+    console.log(this.frequencies); 
+
+    var numHit0 = 0;    //Number of populations that hit 0 frequency 
+    var numHit1 = 0;    //Number of populations that hit 1 frequency 
+
+    var gensTo0 = 0;    //Add the generation number each time it hits 0 
+    var gensTo1 = 0;    //Add the generation number each time it hits 1 
+
+
+    //Loop Through all of the results 
+    for(var i=0; i<this.frequencies.length; i++){
+        for(var j=0; j<this.frequencies[i].length; j++){
+            if(this.frequencies[i][j] == 0){
+                numHit0++;
+                gensTo0 += j; 
+                break; 
+            }
+            else if(this.frequencies[i][j] == 1){
+                numHit1++;
+                gensTo1 += j; 
+                break; 
+            }
+        }
+    }
+
+    //Compute Averages 
+    if(numHit0 > 0) var stringTo0 = (gensTo0/numHit0).toFixed(2);
+    else var stringTo0 = "Never Hit 0.0";
+    
+    if(numHit1 > 0) var stringTo1 = (gensTo1/numHit1).toFixed(2);
+    else var stringTo1 = "Never Hit 1.0";
+
+
+
+    //Update the graph_stats and make it visible 
+    $("#graph_stats").removeClass("hidden"); 
+    $("#timeto0").html(stringTo0);
+    $("#timeto1").html(stringTo1);
+
+ }
+
 
 
 /**
@@ -328,8 +386,36 @@ popGen.htmlutil.chartDOM.generateLegendRow = function(variable, value, secondVal
  *      
  *      
  */
-popGen.htmlutil.chartDOM.printerFriendly = function(){
+popGen.htmlutil.chartDOM.highContrastMode = function(){
+	this.initChart(); 
 
+	if (popGen.htmlutil.supportsHTML5LocalStorage()) {localStorage.setItem('layout','contrast');}
+    //Change the color of all the lines 
+	this.highContrast = true; //Not sure why I need this ATM
+
+	var black = "rgba(0,0,0,1.0)";
+	var darkGray = "rgba(0,0,0,.70)";
+	var white = "rgba(255,255,255,1.0)";
+
+
+	//Change some CSS
+	$("#graph_wrapper").css("background-color", "white"); 
+	$("#graph_wrapper").css("background-image", "none"); 
+	$("#graph_wrapper").css("color", "black"); 
+
+
+	//Change the Label colors 
+	this.chart.options.axisX.labelFontColor = black;  
+	this.chart.options.axisX.titleFontColor = black;  
+	this.chart.options.axisX.gridColor 		= darkGray;  
+	this.chart.options.axisY.labelFontColor = black; 
+	this.chart.options.axisY.titleFontColor = black;  
+	this.chart.options.axisY.gridColor 		= darkGray;  
+	this.chart.options.backgroundColor 		= white; 
+
+	this.chart.render();
+
+	//Swap out the icons 
 }
 
 /**
@@ -337,8 +423,33 @@ popGen.htmlutil.chartDOM.printerFriendly = function(){
  *      
  *      
  */
-popGen.htmlutil.chartDOM.screenFriendly = function(){
+popGen.htmlutil.chartDOM.defaultLayout = function(){
+	this.initChart();
+	if (popGen.htmlutil.supportsHTML5LocalStorage()) {localStorage.setItem('layout','default');} 
 
+	this.highContrast = false; //Not sure why I need this ATM
+
+	var black 		= "rgba(0,0,0,1.0)";
+	var darkGray 	= "rgba(0,0,0,.70)";
+	var white 		= "rgba(255,255,255,1.0)";
+	var lineColor 	= "rgba(255, 255, 255, 0.75)";
+	var lightGray 	= "rgba(255, 255, 255, 0.2)";
+	var clear 		= "rgba(255, 255, 255, 0.0)";
+
+	//Change some CSS
+	$("#graph_wrapper").css("background-image", "linear-gradient(to bottom, #4b516a 0%, #21232e 100%)"); 
+	$("#graph_wrapper").css("color", "#fff"); 
+	$("#graph_wrapper").css("background-color", "inherit"); 
+
+	//Change the Label colors 
+	this.chart.options.axisX.labelFontColor 	= lightGray;  
+	this.chart.options.axisX.titleFontColor 	= white;  
+	this.chart.options.axisX.gridColor 			= lightGray;  
+	this.chart.options.axisY.labelFontColor 	= lightGray; 
+	this.chart.options.axisY.titleFontColor 	= white;  
+	this.chart.options.axisY.gridColor 			= lightGray;  
+	this.chart.options.backgroundColor 			= clear; 
+	this.chart.render();
 }
 
 /**
@@ -347,6 +458,25 @@ popGen.htmlutil.chartDOM.screenFriendly = function(){
  *      
  */
 popGen.htmlutil.chartDOM.getRawData = function(){
+    this.initChart(); 
+
+    var opened = window.open("");
+
+    var chartData = ""; 
+    for(var i = 0; i < this.chart.options.data.length; i++){
+        // console.log(chart.options.data[i].dataPoints); 
+        for(var j=0; j<this.chart.options.data[i].dataPoints.length; j++){
+            chartData += "(";
+            chartData += this.chart.options.data[i].dataPoints[j].x;
+            chartData += ", ";
+            chartData += this.chart.options.data[i].dataPoints[j].y;
+            
+            if(j == this.chart.options.data[i].dataPoints.length - 1) chartData += ")";
+            else chartData += "), ";
+        }
+        chartData += "<br/> <br/>";
+    }
+    opened.document.write("<html><head><title>Graph | Raw Data </title></head><body style='max-width: 100%;'><code>" + chartData + "</code></body></html>");
 
 }
 
@@ -361,7 +491,7 @@ popGen.htmlutil.chartDOM.getRawData = function(){
  *  @param {string} type the format of the graph (redraw, addline, batch) 
  */
 popGen.htmlutil.chartDOM.formHandler = function(selector, type){
-	this.initComputation(); //Set the basic vars if they aren't already set
+	this.initChart(); //Set the basic vars if they aren't already set
 	var values = this.values; 
 
 	var isValid = true; 
@@ -449,7 +579,6 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
     if(isValid){
 
         //Allows you to pass these args (Prob not a good name)
-        var finishedComputingFunction = popGen.htmlutil.partial(this.finishedComputing, myGenerations, type); 
         
         //Open the Modal for long calculations
         if(input_num_generations > 1000 || input_population_size > 1000){
@@ -469,26 +598,23 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
             this.clearGraph();
 
             type = "batchTool"; //Change type to not screw up the legend updating 
-            finishedComputingFunction = popGen.htmlutil.partial(this.finishedComputing, myGenerations, type); //Update the type 
 
             //Create copies for each generation 
             for(var i=0; i<numBatchRuns; i++){
                 allGenerations[i] = jQuery.extend(true, {}, myGenerations);
-                allPartials[i] = popGen.htmlutil.partial(finishedComputingFunction, allGenerations[i], type); 
+                allPartials[i] = popGen.htmlutil.partial(this.finishedComputing, allGenerations[i], type); 
             }
 
             //Run all of the copies 
             for(var i=0; i<numBatchRuns; i++){
-                console.log(allGenerations[i]);
                 allGenerations[i].buildRandomSamplesAsync(allGenerations[i], allPartials[i]);
-            }     
+            }
 
         }
         else{ //Just one run 
+            var finishedComputingFunction = popGen.htmlutil.partial(this.finishedComputing, myGenerations, type); 
             myGenerations.buildRandomSamplesAsync(myGenerations, finishedComputingFunction);
         }
-
-        
     }
     else{
         //Clear the errors 
@@ -542,7 +668,7 @@ popGen.htmlutil.chartDOM.isActiveVariable = function(selector){
 
 /**
  *  This will get called when the asynchronous building of random samples is actually finished
- *
+ *	-Don't use this here
  */
 popGen.htmlutil.chartDOM.finishedComputing = function(myGenerations, type){
     //Close the modal
@@ -553,20 +679,13 @@ popGen.htmlutil.chartDOM.finishedComputing = function(myGenerations, type){
         // clearChart(chart); 
         $("#graph_stats").addClass("hidden");
     }
-    console.log("Finished Computing: ", myGenerations); 
+
     popGen.htmlutil.chartDOM.updateGraph(myGenerations.frequencies, type); //Update the graph with the new frequencies 
-    popGen.htmlutil.chartDOM.chart.render();
+    popGen.htmlutil.chartDOM.chart.render(); //Only render here 
 
     var d = new Date();
     $("#alerts-container").html(popGen.htmlutil.buildAlert("alert-success", "")); 
 }
-
-
-
-
-
-
-
 
 
 

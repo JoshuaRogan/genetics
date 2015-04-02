@@ -24,6 +24,8 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
     this.frequencies = Array(); //An array of each frequency that was generated (These are the values that are graphed)
     this.populations = Array(); //An array of all of the populations [Currently removing]
 
+    this.optimized = true; 
+
     //Update the current allele frequency 
     this.setCurrentAlleleFre = function(newFreq) {
         this.currentAlleleFre = newFreq; 
@@ -237,7 +239,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         else{
             var currentPopulation = new popGen.population(actualPopulationSize, this.currentAlleleFre);
             currentPopulation.buildRandomSample();
-            this.populations.push(currentPopulation); //This adds the actual populations to an array for later use. 
+            if(!this.optimized)this.populations.push(currentPopulation); //This adds the actual populations to an array for later use. 
             this.frequencies.push(currentPopulation.currentAlleleFre);  //This is the value that is being graphed
             this.setCurrentAlleleFre(currentPopulation.currentAlleleFre);
         } 

@@ -29,11 +29,13 @@ popGen.htmlutil.debugData = function(){
 popGen.htmlutil.initHome = function(){
 	this.genDOM.activateToolTips(true); 
 	this.genDOM.autoHighlight(); 
-	this.genDOM.home.helperText(); 
 	this.genDOM.sectionHandler(); 
 	this.genDOM.legendHandler("#multiple-legends-container"); 
 	this.genDOM.graphButtonHandler(); 
+	
+	this.genDOM.home.helperText(); 
 	this.genDOM.home.iconHandler(); 
+	this.genDOM.home.userConfig(); 
 }
 
 popGen.htmlutil.initFAQ = function(){
@@ -228,24 +230,37 @@ popGen.htmlutil.genDOM.home.iconHandler = function(){
     //Handle clicking printerfriendly 
     $("#printerFriendly").on("click", function(event) {
     	event.preventDefault();
-    	var chart = $("#graph-canvas").CanvasJSChart(); 
-    	printerFriendly(chart);
+    	popGen.htmlutil.chartDOM.highContrastMode();
     }); 
 
     //Handle clicking screenFreindly  
     $("#screenFriendly").on("click", function(event) {
-    	event.preventDefault();
-    	var chart = $("#graph-canvas").CanvasJSChart(); 
-    	screenFriendly(chart);
+    	event.preventDefault(); 
+    	popGen.htmlutil.chartDOM.defaultLayout();
     }); 
 
     //Handle clicking printerfriendly 
     $("#getRawData").on("click", function(event) {
     	event.preventDefault();
-    	var chart = $("#graph-canvas").CanvasJSChart(); 
-    	getRawData(chart);
+    	popGen.htmlutil.chartDOM.getRawData(); 
     }); 
 }
+
+
+/**
+ * 	Check the local store for any settings to activate 
+ *      
+ */
+popGen.htmlutil.genDOM.home.userConfig = function(){
+	if(popGen.htmlutil.supportsHTML5LocalStorage()){
+
+	if(localStorage.getItem("layout") == "contrast"){
+	    popGen.htmlutil.chartDOM.highContrastMode();
+	}
+        
+	}
+}
+
 
 /*END DOM*/
 
@@ -296,4 +311,19 @@ popGen.htmlutil.partial = function(func /*, 0..n args */) {
 		var allArguments = args.concat(Array.prototype.slice.call(arguments));
 		return func.apply(this, allArguments);
 	};
+}
+
+
+
+ /**
+ *	Determines if local storage is avaible for this user 
+ *	
+ *  	
+ */
+popGen.htmlutil.supportsHTML5LocalStorage = function(func /*, 0..n args */) {
+	  try {
+	    return 'localStorage' in window && window['localStorage'] !== null;
+	  } catch (e) {
+	    return false;
+	  }
 }

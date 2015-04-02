@@ -93,8 +93,6 @@ popGen.config.chartJQ.initChart = function(selector){
             },
             data: data
         });
-
-
     }
     else{
         console.log("ERROR: The chart [" + selector + "] isn't on this page!")
