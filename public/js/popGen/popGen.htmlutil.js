@@ -5,24 +5,22 @@
 var popGen = popGen || {};
 popGen.htmlutil = popGen.htmlutil || {
 	debug: true, 
-	localStore: null, 
+	localStore: null, //Needs to be checked then maintained to avoid future checks 
 };
 
 popGen.htmlutil.genDOM = popGen.htmlutil.genDOM || {
 	debug: true
 };
 
-//Home page specific 
-popGen.htmlutil.genDOM.home = popGen.htmlutil.genDOM.home || {};
-popGen.htmlutil.genDOM.faq = popGen.htmlutil.genDOM.faq || {};
-
-popGen.htmlutil.chartDOM = popGen.htmlutil.chartDOM || {
-	debug: true
-};
+// popGen.htmlutil.chartDOM = popGen.htmlutil.chartDOM || {};
 
 popGen.htmlutil.sliderDOM = popGen.htmlutil.sliderDOM || {
 	debug: true
 };
+
+//Page Specific 
+popGen.htmlutil.genDOM.home = popGen.htmlutil.genDOM.home || {};
+popGen.htmlutil.genDOM.faq = popGen.htmlutil.genDOM.faq || {};
 
 popGen.htmlutil.debugData = function(){
 	console.log(this);  
@@ -148,10 +146,13 @@ popGen.htmlutil.genDOM.sectionHandler = function(){
 		}
 
 		//Send the correct id i->a->h3->div
-		deactiveActiveOnCheckmark(parentDiv.attr('id'), state);
+		popGen.config.noUISlider.deactiveActiveOnCheckmark(parentDiv.attr('id'), state);
 		
 	});
 }
+
+
+
 
 /**	
  *	Handle displaying of the legend 
@@ -177,12 +178,12 @@ popGen.htmlutil.genDOM.graphButtonHandler = function(){
     //Handle the submit clicking
     $("#newGraph").on("click", function(event) {
     	var chart = $("#graph-canvas").CanvasJSChart(); 
-    	formHandler(chart, "newGraph");
+    	popGen.htmlutil.chartDOM.formHandler(chart, "newGraph");
     }); 
 
     $("#addLine").on("click", function(event) {
     	var chart = $("#graph-canvas").CanvasJSChart(); 
-    	formHandler(chart, "addLine");
+    	popGen.htmlutil.chartDOM.formHandler(chart, "addLine");
     }); 
 }
 
@@ -219,6 +220,10 @@ popGen.htmlutil.genDOM.home.helperText = function(){
 }
 
 
+/**
+ * 	Bind helper text (hard coded for home page)
+ *      
+ */
 popGen.htmlutil.genDOM.home.iconHandler = function(){
     //Handle clicking printerfriendly 
     $("#printerFriendly").on("click", function(event) {
@@ -246,11 +251,49 @@ popGen.htmlutil.genDOM.home.iconHandler = function(){
 
 
 /*Misc. Functions*/
-
 /** 
  *	Returns a random integer between min (included) and max (excluded)
  *	Using Math.round() will give you a non-uniform distribution!
+ *  @param {int} min min value to generate
+ *  @param {int} max max value to generate 
  */
 popGen.htmlutil.getRandomInt = function(min,max){
 	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+/**
+ *	Build an alert div returing the html string
+ *  @param {String} className the type of alert: 
+ *		alert-success, alert-info, alert-warning, alert-danger (From bootstrap)
+ *  @param {String} message the message in the aler
+ */
+popGen.htmlutil.buildAlert = function(className, message){
+	var text = ""; 
+	var html = ""; 
+	var d = new Date();	
+
+	if(className == "alert-success"){
+		text = "Graph successfully created "
+	}
+	else if(className = "alert-danger"){ 
+		text = message + " - Graph failed to be created "; 
+	}
+
+	html = "<div class='alert " + className + "' role='alert'>" + "<strong>" + text + "</strong> on " + d + "</div";  
+
+	return html; 
+}
+
+
+ /**
+ *	Able to pass arguments as a parameter 
+ *	Source: http://stackoverflow.com/questions/321113/how-can-i-pre-set-arguments-in-javascript-function-call-partial-function-appli
+ *  @param {...}  *		
+ */
+popGen.htmlutil.partial = function(func /*, 0..n args */) {
+	var args = Array.prototype.slice.call(arguments, 1);
+	return function() {
+		var allArguments = args.concat(Array.prototype.slice.call(arguments));
+		return func.apply(this, allArguments);
+	};
 }

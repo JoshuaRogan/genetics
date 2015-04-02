@@ -1,5 +1,5 @@
 //Namespaces
-var  = popGen || {};
+var popGen = popGen || {};
 popGen.population = popGen.population || {};
 popGen.generations = popGen.generations || {};
 
@@ -136,7 +136,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
      *  Non blocking function that takes in a context (the generations class) and a finished function 
      *	callback when all iterations are finished. 
      *      - Non Blocking implementation 
-     *		-
+     *		- the function finished runs when it is finished
      *  
      */
     this.buildRandomSamplesAsync = function(context, finished){
@@ -235,7 +235,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
             this.frequencies.push(this.currentAlleleFre);  //This is the value that is being graphed
         }
         else{
-            var currentPopulation = new population(actualPopulationSize, this.currentAlleleFre);
+            var currentPopulation = new popGen.population(actualPopulationSize, this.currentAlleleFre);
             currentPopulation.buildRandomSample();
             this.populations.push(currentPopulation); //This adds the actual populations to an array for later use. 
             this.frequencies.push(currentPopulation.currentAlleleFre);  //This is the value that is being graphed

@@ -19,12 +19,15 @@ $(document).ready(function(){
 	// popGen.config.chartJQ.debugData();
 	// popGen.config.noUISlider.debugData();
 	// popGen.htmlutil.debugData();
-	popGen.htmlutil.chartDOM.debugData();
+	
 
 
 	popGen.config.chartJQ.initChart("#graph-canvas");
 	popGen.config.noUISlider.initSliders();
 	popGen.htmlutil.initHome();
+
+
+	popGen.htmlutil.chartDOM.debugData();
 	
 
 

@@ -8,8 +8,8 @@ popGen.population = popGen.population || {};
  *
  */
 popGen.population = function(populationSize, startAlleleFreq) {
-    population.VALUE = "A"; //The allele we are directly tracking
-    population.VALUE_IMP = "a"; //The allele we are implicitly tracking 
+    popGen.population.VALUE = "A"; //The allele we are directly tracking
+    popGen.population.VALUE_IMP = "a"; //The allele we are implicitly tracking 
 
     this.populationSize = populationSize; //The size of this population
     this.startAlleleFreq = startAlleleFreq; //The starting allele frequency 
@@ -37,7 +37,6 @@ popGen.population = function(populationSize, startAlleleFreq) {
         }
         //Recompute the currentAllele frequency after random sampling
         if(i != 0) this.currentAlleleFre = directAlleleCounter / (i);
-        
     }
 
     //

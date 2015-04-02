@@ -599,7 +599,7 @@ popGen.config.noUISlider.validateGenOverride = function(){
 
 	//Validate here 
 	var validPopBottleneck = true; 
-	var values = seralizeForm($("#variables-form").serializeArray());
+	var values = popGen.htmlutil.chartDOM.seralizeForm($("#variables-form"));
 	var numberOfGens = parseFloat(values['generations'].replace(',', '')); 
 
 	var removeActive = false; 

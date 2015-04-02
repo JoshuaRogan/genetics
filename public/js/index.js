@@ -239,7 +239,6 @@ function getRandomInt(min, max) {
  */
 function updateGraph(results, chart) {
     // console.log(chart); 
-
     var data = [];
     var dataSeries = {
         type: "line"

@@ -29,6 +29,13 @@ popGen.config.chartJQ = popGen.config.chartJQ || {
     labelFontSize:            "14",
 };
 
+
+popGen.config.chartJQ.debugData = function(){
+    console.log(this); 
+    console.log(CanvasJS); 
+}
+
+
 /**
  * Initialize the main chart that will hold of the data
  *      
@@ -121,8 +128,3 @@ popGen.config.chartJQ.addColorSet = function(name, colorSet){
     }
 }
 
-
-popGen.config.chartJQ.debugData = function(){
-    console.log(this); 
-    console.log(CanvasJS); 
-}
