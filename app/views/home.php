@@ -219,37 +219,10 @@ HTML;
 /****USE GET VARIABLE TO PREPOPULATE THE FIELDS***/
 $bookmarks = array(); 
 
-//Base
-if(isset($_GET['generations'])) $bookmarks['generations'] = intval($_GET['generations']);
-if(isset($_GET['startfreq'])) $bookmarks['startfreq'] = floatval ($_GET['startfreq']);
-if(isset($_GET['population'])) $bookmarks['population'] = intval($_GET['population']); 
-
-//Selection
-if(isset($_GET['wAA'])) $bookmarks['wAA'] = floatval ($_GET['wAA']);
-if(isset($_GET['wAa'])) $bookmarks['wAa'] = floatval ($_GET['wAa']);
-if(isset($_GET['waa'])) $bookmarks['waa'] = floatval ($_GET['waa']);
-if(isset($_GET['selection'])) $bookmarks['selection'] = floatval ($_GET['selection']);
-if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominance']);
-
-//Mutation 
-
-//Migration 
-
-//Inbreeding
-
-//Assortative Mating 
-
-//Population Bottleneck 
-
-
-
-
-
-
-
-
-
-
+//Put all of the get variablese in a hidden form to retrieve later
+foreach($_GET as $key => $value){
+	$bookmarks[$key] = $value; 
+}
 
 ?>
 
@@ -283,8 +256,8 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
         <h4 class="modal-title" id="bookmark-link-title">Generated Bookmark Link</h4>
       </div>
       <div class="modal-body">
-      <p> Bookmark the link below to prepopulate the variables with the values you currently have set. </p>
-      <pre class="text-center bookmark-link">http://genetics.droplet.jcubedworld.com/home?generations=250&amp;startfreq=0.5325&amp;population=35&amp;selection=.350&amp;wAA=.250&amp;wAa=.253&amp;waa=.350</pre>
+      <p> Bookmark the link below to prepopulate the variables with the values you currently have set and <strong>are active</strong>. </p>
+      <pre class="text-center"><a href="" class="bookmark-link" target="_blank">Bookmark Link is being generated!</a></pre>
       </div>
       <div class="modal-footer">
 		 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -327,11 +300,11 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 
 		<div id="buttons" class="row"> 
 
-			<div class="col-sm-6">
+			<div class="col-xs-6">
 				<a class="btn btn-primary btn-lg" role="button" id="newGraph"><i class="fa fa-line-chart"></i> Generate Graph</a> 
 			</div>
 
-			<div class="col-sm-6">
+			<div class="col-xs-6">
 				<a class="btn btn-primary btn-lg" role="button" id="addLine"><i class="fa fa-plus"></i> Add Line</a> 
 			</div>
 		</div>
@@ -345,8 +318,10 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 			<div > 
 				<h3> <i class="fa fa-bar-chart"></i> <strong>Batch Graph Stats</strong> </h3>
 				<ul class='list-unstyled block-center'>
-					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 1 =</span><span class='legend-val' id="timeto1">50</span> </li>
-					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 0 =</span><span class='legend-val' id="timeto0">50</span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 1 =</span><span class='legend-val' id="timeto1"></span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 0 =</span><span class='legend-val' id="timeto0"></span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Times Hit 1 =</span><span class='legend-val' id="timeshit1"></span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Times Hit 0 =</span><span class='legend-val' id="timeshit0"></span> </li>
 				</ul>
 			</div>
 

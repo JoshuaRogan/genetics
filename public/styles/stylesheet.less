@@ -80,7 +80,7 @@ body{
 		}
 
 		#graph-canvas{
-			height: 200px;
+			height: 250px;
 			/* Small devices (tablets, 768px and up) */
 			@media (min-width: @screen-sm-min) {height: 300px; }
 
@@ -106,8 +106,23 @@ body{
 	#variables {
 
 		h2{
-			font-size: 35px;
-			a{font-size: 25px}
+			font-size: 25px;
+			/* Small devices (tablets, 768px and up) */
+			@media (min-width: @screen-sm-min) {font-size: 30px; }
+			/* Medium devices (desktops, 992px and up) */
+			@media (min-width: @screen-md-min) {font-size: 35px; }
+			/* Large devices (large desktops, 1200px and up) */
+			@media (min-width: @screen-lg-min) {font-size: 35px; }
+
+			a{//open all and show help 
+				font-size: 15px;
+				/* Small devices (tablets, 768px and up) */
+				@media (min-width: @screen-sm-min) {font-size: 20px; }
+				/* Medium devices (desktops, 992px and up) */
+				@media (min-width: @screen-md-min) {font-size: 25px; }
+				/* Large devices (large desktops, 1200px and up) */
+				@media (min-width: @screen-lg-min) {font-size: 25px; }
+			}
 		}
 
 		h3{
@@ -443,8 +458,22 @@ body{
 			margin-top: 0px;
 			margin-bottom: 20px;
 			text-align: center;
+
 			a{
 				margin-top: 20px; //For when vertical collapse
+			}
+
+			//Modify the sizing of the buttons on different screen sizes 
+			.btn{
+				font-size: 14px;
+				/* Small devices (tablets, 768px and up) */
+				@media (min-width: @screen-sm-min) {font-size: 15px; }
+
+				/* Medium devices (desktops, 992px and up) */
+				@media (min-width: @screen-md-min) {font-size: 16px; }
+
+				/* Large devices (large desktops, 1200px and up) */
+				@media (min-width: @screen-lg-min) {font-size: 18px; }
 			}
 		}
 	}
@@ -479,7 +508,13 @@ body{
 }
 
 
+.page-faq{
+	.faqHeader {
+        font-size: 27px;
+        margin: 20px;
+    }
 
+}
 
 
 
@@ -509,7 +544,6 @@ footer{
 
 /******************NO UI SLIDER*******************/
 @import "imports/noui.less";	//No UI sliders CSS
-
 .slider{
 	margin-top: 10px;/* Vert Centering*/
 
@@ -538,12 +572,25 @@ footer{
 
 
 
-.page-faq{
-	.faqHeader {
-        font-size: 27px;
-        margin: 20px;
-    }
+/******************CanvasJS Chart Modifications*******************/
 
+//Change the style of the toolbar icon 
+.canvasjs-chart-toolbar{
+	//3 Dots icon 
+	button[state="menu"],button[state="reset"],button[state="pan"],button[state="zoom"] {
+		background-color: white;
+		border: none; 
+	}
+
+	button[state="menu"]{
+		@media (max-width: @screen-xs-max) {display: none !important; }
+	}
+	
+	//Dropdown menu
+	> div{
+		border: none !important;
+		font-family: @font-family-sans-serif !important;
+	}
 }
 
 

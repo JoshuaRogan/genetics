@@ -639,15 +639,26 @@ popGen.config.noUISlider.addBookmarkValues = function(){
 		
 		//Go through each bookmark and try set the value
 		for(var i=0; i<bookmarks.length; i++){
-			
-			if(bookmarks[i].name == "bookmarking-generations") 			$("#generations-slider").val(bookmarks[i].value);
-			else if(bookmarks[i].name == "bookmarking-startfreq") 		$("#starting-allele-frequency-slider").val(bookmarks[i].value);
-			else if(bookmarks[i].name == "bookmarking-population") 		$("#population-size-slider").val(bookmarks[i].value);
-			else if(bookmarks[i].name == "bookmarking-wAA") 			$("#fitness-coefficient-wAA-slider").val(bookmarks[i].value);
-			else if(bookmarks[i].name == "bookmarking-wAa") 			$("#fitness-coefficient-wAa-slider").val(bookmarks[i].value);
-			else if(bookmarks[i].name == "bookmarking-waa") 			$("#fitness-coefficient-waa-slider").val(bookmarks[i].value);
-			else if(bookmarks[i].name == "bookmarking-selection") 		$("#selection-coefficient-slider").val(bookmarks[i].value);
-			else if(bookmarks[i].name == "bookmarking-dominance") 		$("#dominance-coefficient-slider").val(bookmarks[i].value);
+			if(bookmarks[i].name == "bookmarking-generations") 							$("#generations-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-starting-allele-frequency") 		$("#starting-allele-frequency-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-population-size") 				$("#population-size-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-fitness-coefficient-wAA") 		$("#fitness-coefficient-wAA-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-fitness-coefficient-wAa") 		$("#fitness-coefficient-wAa-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-fitness-coefficient-waa") 		$("#fitness-coefficient-waa-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-selection-coefficient") 			$("#selection-coefficient-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-dominance-coefficient") 			$("#dominance-coefficient-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-mutation-rate-mu") 				$("#mutation-rate-mu-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-mutation-rate-mu-exponent") 		$("#mutation-rate-mu-exponent").val(bookmarks[i].value);			
+			else if(bookmarks[i].name == "bookmarking-mutation-rate-nu") 				$("#mutation-rate-nu-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-mutation-rate-nu-exponent") 		$("#mutation-rate-nu-exponent").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-migration-rate") 					$("#migration-rate-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-migrant-allele-frequency") 		$("#migrant-allele-frequency-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-inbreeding-coefficient") 			$("#inbreeding-coefficient-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-positive-assortative-mating") 	$("#positive-assortative-mating-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-generation-to-override-lower") 	$("#generation-to-override-slider").val([bookmarks[i].value, null]);
+			else if(bookmarks[i].name == "bookmarking-generation-to-override-upper")	$("#generation-to-override-slider").val([null, bookmarks[i].value]);
+			else if(bookmarks[i].name == "bookmarking-new-population-size") 			$("#new-population-size-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-batch-tool-runs") 				$("#batch-tool-runs-slider").val(bookmarks[i].value);
 		}
 	} 
 	else{

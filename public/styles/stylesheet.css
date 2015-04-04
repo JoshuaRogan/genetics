@@ -103,7 +103,7 @@
   font-weight: 300;
 }
 .page-home #graph_wrapper #graph-canvas {
-  height: 200px;
+  height: 250px;
   /* Small devices (tablets, 768px and up) */
   /* Medium devices (desktops, 992px and up) */
   /* Large devices (large desktops, 1200px and up) */
@@ -127,10 +127,46 @@
   color: #000;
 }
 .page-home #variables h2 {
-  font-size: 35px;
+  font-size: 25px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-home #variables h2 {
+    font-size: 30px;
+  }
+}
+@media (min-width: 992px) {
+  .page-home #variables h2 {
+    font-size: 35px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-home #variables h2 {
+    font-size: 35px;
+  }
 }
 .page-home #variables h2 a {
-  font-size: 25px;
+  font-size: 15px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-home #variables h2 a {
+    font-size: 20px;
+  }
+}
+@media (min-width: 992px) {
+  .page-home #variables h2 a {
+    font-size: 25px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-home #variables h2 a {
+    font-size: 25px;
+  }
 }
 .page-home #variables h3 {
   color: #777777;
@@ -403,6 +439,27 @@
 .page-home #variables #buttons a {
   margin-top: 20px;
 }
+.page-home #variables #buttons .btn {
+  font-size: 14px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-home #variables #buttons .btn {
+    font-size: 15px;
+  }
+}
+@media (min-width: 992px) {
+  .page-home #variables #buttons .btn {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-home #variables #buttons .btn {
+    font-size: 18px;
+  }
+}
 .page-home #results_panel {
   margin-top: 20px;
 }
@@ -419,6 +476,10 @@
 }
 .page-home #graph-computing-modal #graph-completion-precent.failed {
   color: red;
+}
+.page-faq .faqHeader {
+  font-size: 27px;
+  margin: 20px;
 }
 footer {
   background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
@@ -702,7 +763,20 @@ footer a:hover {
 .range-slider .slider .noUi-connect {
   background-color: #aaaaaa;
 }
-.page-faq .faqHeader {
-  font-size: 27px;
-  margin: 20px;
+/******************CanvasJS Chart Modifications*******************/
+.canvasjs-chart-toolbar button[state="menu"],
+.canvasjs-chart-toolbar button[state="reset"],
+.canvasjs-chart-toolbar button[state="pan"],
+.canvasjs-chart-toolbar button[state="zoom"] {
+  background-color: white;
+  border: none;
+}
+@media (max-width: 767px) {
+  .canvasjs-chart-toolbar button[state="menu"] {
+    display: none !important;
+  }
+}
+.canvasjs-chart-toolbar > div {
+  border: none !important;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }

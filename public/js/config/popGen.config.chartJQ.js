@@ -10,8 +10,8 @@ popGen.config.chartJQ = popGen.config.chartJQ || {
     clear:                    "rgba(255, 255, 255, 0.0)",     
     backgroundColor:          "rgba(255, 255, 255, 0.0)",                  
     
-    //ColorSet 
-    colorSet:                  [
+    //ColorSets
+    colorSetOrig:            [ 
                                     "#1BCDD1", 
                                     "#EC5657",
                                     "#8FAABB",
@@ -20,7 +20,27 @@ popGen.config.chartJQ = popGen.config.chartJQ || {
                                     "#F5A52A",
                                     "#23BFAA",
                                     "#FAA586",
-                                    "#EB8CC6"            
+                                    "#EB8CC6", 
+                                    "#ECF0F1"           
+                             ],    
+   	colorSet:                 [ 
+                                    
+   									"#F64747", 
+   									"#BE90D4",  
+   									"#F9690E",	
+   									"#1BCDD1",	
+   									"#F9BF3B",	
+   									"#87D37C",
+   									"#4B77BE",
+   									"#663399",
+   									"#FDE3A7", 	      
+   									"#F1A9A0",        
+   									"#2574A9",        
+   									"#90C695",        
+   									"#F4B350",        
+   									"#BDC3C7",        
+   									"#D2527F",   
+									"#8FAABB"     
                              ], 
       
     //Attributes 
@@ -47,7 +67,8 @@ popGen.config.chartJQ.initChart = function(selector){
 
         var data = [];  //Holds all of the datapoints 
         var dataSeries = {
-            type: "line",
+            type: "line"
+
         };
         var dataPoints = [];
         dataPoints.push({x: 0,y: 0}); //Set the inital graph to 0,0 

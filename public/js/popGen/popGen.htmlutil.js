@@ -176,6 +176,10 @@ popGen.htmlutil.genDOM.legendHandler = function(selector){
 	});
 }
 
+/**	
+ *	Handle the graphing buttons 
+ *
+ */
 popGen.htmlutil.genDOM.graphButtonHandler = function(){
     //Handle the submit clicking
     $("#newGraph").on("click", function(event) {
@@ -227,23 +231,40 @@ popGen.htmlutil.genDOM.home.helperText = function(){
  *      
  */
 popGen.htmlutil.genDOM.home.iconHandler = function(){
-    //Handle clicking printerfriendly 
+    
+
+
+    //Handle clicking printerfriendly icon
     $("#printerFriendly").on("click", function(event) {
     	event.preventDefault();
     	popGen.htmlutil.chartDOM.highContrastMode();
+    	$("#screenFriendly").removeClass('hidden'); 
+    	$("#printerFriendly").addClass('hidden'); 
     }); 
 
-    //Handle clicking screenFreindly  
+    //Handle clicking screenFreindly icon
     $("#screenFriendly").on("click", function(event) {
     	event.preventDefault(); 
     	popGen.htmlutil.chartDOM.defaultLayout();
+    	$("#printerFriendly").removeClass('hidden'); 
+    	$("#screenFriendly").addClass('hidden');
     }); 
 
-    //Handle clicking printerfriendly 
+    //Handle clicking printerfriendly icon
     $("#getRawData").on("click", function(event) {
     	event.preventDefault();
     	popGen.htmlutil.chartDOM.getRawData(); 
+    });     
+
+    //Handle the get bookmark link icon 
+    $("#getLink").on("click", function(event) {
+    	event.preventDefault();
+    	var url = popGen.htmlutil.chartDOM.genBookmarkLink(); 
+    	$("#bookmark-link .bookmark-link").html(url); 
+    	$("#bookmark-link .bookmark-link").attr("href", url);
     }); 
+
+
 }
 
 
@@ -253,12 +274,20 @@ popGen.htmlutil.genDOM.home.iconHandler = function(){
  */
 popGen.htmlutil.genDOM.home.userConfig = function(){
 	if(popGen.htmlutil.supportsHTML5LocalStorage()){
+		//Change to correct layout 
+		if(localStorage.getItem("layout") == "contrast"){
+		    popGen.htmlutil.chartDOM.highContrastMode();
+		    $("#printerFriendly").addClass('hidden'); 
+	    	$("#screenFriendly").removeClass('hidden');
+		}
+		else{//Default view
+			$("#printerFriendly").removeClass('hidden'); 
+	    	$("#screenFriendly").addClass('hidden');
+		}
+	}
 
-	if(localStorage.getItem("layout") == "contrast"){
-	    popGen.htmlutil.chartDOM.highContrastMode();
-	}
-        
-	}
+
+
 }
 
 

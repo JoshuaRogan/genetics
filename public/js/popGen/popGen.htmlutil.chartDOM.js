@@ -1,5 +1,5 @@
 /** 
- *	DOM manipulations relating the chart
+ *	DOM manipulations relating the chart and it's variables 
  *
  */
 var popGen = popGen || {};
@@ -377,6 +377,9 @@ popGen.htmlutil.chartDOM.generateLegendRow = function(variable, value, secondVal
     $("#timeto0").html(stringTo0);
     $("#timeto1").html(stringTo1);
 
+    $("#timeshit1").html(numHit1);
+    $("#timeshit0").html(numHit0);
+
  }
 
 
@@ -462,21 +465,19 @@ popGen.htmlutil.chartDOM.getRawData = function(){
 
     var opened = window.open("");
 
-    var chartData = ""; 
+    var chartData = "<div class='container'>"; 
     for(var i = 0; i < this.chart.options.data.length; i++){
-        // console.log(chart.options.data[i].dataPoints); 
+        chartData += '<h2>Data from chart ' + (i+1) + '</h2>';  
+        chartData += "<pre>";  
+        chartData += 'X\tY\n';
         for(var j=0; j<this.chart.options.data[i].dataPoints.length; j++){
-            chartData += "(";
-            chartData += this.chart.options.data[i].dataPoints[j].x;
-            chartData += ", ";
-            chartData += this.chart.options.data[i].dataPoints[j].y;
-            
-            if(j == this.chart.options.data[i].dataPoints.length - 1) chartData += ")";
-            else chartData += "), ";
+            chartData += this.chart.options.data[i].dataPoints[j].x + "\t" + this.chart.options.data[i].dataPoints[j].y;
+            chartData += "\n";
         }
-        chartData += "<br/> <br/>";
+        chartData += "</pre>";
     }
-    opened.document.write("<html><head><title>Graph | Raw Data </title></head><body style='max-width: 100%;'><code>" + chartData + "</code></body></html>");
+    chartData += "</div>"
+    opened.document.write("<html><head><title>Graph | Raw Data </title><link href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet'> <style> pre{max-height: 500px; y-overflow:scroll;}</style></head><body style='max-width: 100%;'><code>" + chartData + "</code></body></html>");
 
 }
 
@@ -630,8 +631,6 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
     if(errors.length > 0) console.log(errors);
     
     $("#results_panel #results").html("Check the console for better data \n" + myGenerations.toString());
-
-
 }
 
 /**
@@ -651,10 +650,14 @@ popGen.htmlutil.chartDOM.seralizeForm = function(formSelector){
 /**
  * 	Check if a variable is currently active 
  *      
- *  @param {string} selector jquery  selector of variable 
+ *  @param {string} selector jquery  selector of variable can be used without the #
  */
 popGen.htmlutil.chartDOM.isActiveVariable = function(selector){
 	var isActive = false; 
+
+    //Make sure the id indicator is in the selector 
+    if(selector.charAt(0) != '#') selector = "#" + selector;
+
 	selector += "-slider"; //Needs to look at the slider 
 
 	//Done this way to make sure it returns exactly true or false
@@ -688,4 +691,36 @@ popGen.htmlutil.chartDOM.finishedComputing = function(myGenerations, type){
 }
 
 
+/** 
+ *  Create a properly formmated bookmark url 
+ *  
+ */
+popGen.htmlutil.chartDOM.genBookmarkLink = function (){
+    if($('#variables').length){
+        var url = "?bookmark=true";
+        this.initChart(); //Make sure the variables are up to date 
+        for (var property in this.values) {
+            if (this.values.hasOwnProperty(property)) {
+                //Add all of the active properties to the url string
+                if(this.isActiveVariable(property)){
+                    url += "&" + property + "=" + this.values[property];
+                }
+                //The exponents don't get picked up by isActiveVariable
+                else if(property == "mutation-rate-mu-exponent" || property == "mutation-rate-nu-exponent"){
+                    if(this.isActiveVariable("mutation-rate-mu") || this.isActiveVariable("mutation-rate-nu")){
+                        url += "&" + property + "=" + this.values[property]; 
+                    }
+                }
+            }
+        }
+        //Clean up and return the URL 
+        var domainURL = window.location.href;
+        var indexNum = domainURL.indexOf("?");
+        if(indexNum != -1) domainURL = (domainURL.substring(0, indexNum))
+        return  domainURL + url;
+    }
+    else{
+        if(this.debug) console.log("No Variables on this page"); 
+    }
+}
 
