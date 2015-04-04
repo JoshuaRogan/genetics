@@ -257,6 +257,8 @@ foreach($_GET as $key => $value){
       </div>
       <div class="modal-body">
       <p> Bookmark the link below to prepopulate the variables with the values you currently have set and <strong>are active</strong>. </p>
+      <div class="alert alert-info" role="alert"> <p> A link shortner such as <strong><a href="https://goo.gl/" target="_blank">Google Link Shortner</a></strong> can be helpful! </p></div>
+
       <pre class="text-center"><a href="" class="bookmark-link" target="_blank">Bookmark Link is being generated!</a></pre>
       </div>
       <div class="modal-footer">
