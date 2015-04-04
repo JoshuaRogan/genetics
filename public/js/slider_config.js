@@ -277,7 +277,7 @@ $(document).ready(function() {
 	        $("#migrant-allele-frequency-slider").on('set', activateMigrationSlider);
 	        /*****************Migrante Allele Frequency****************/
 
-	        /*****************Migrant Allele Frequency********************/
+	        /*****************Inbreeding********************/
 	        $("#inbreeding-coefficient-slider").noUiSlider({
 	            start: [0],
 	            step: .0001,
@@ -299,7 +299,7 @@ $(document).ready(function() {
 	        $("#inbreeding-coefficient-slider").on('change', activateInbreedingSlider);
 	        $("#inbreeding-coefficient-slider").on('set', activateInbreedingSlider);
 
-	        /*****************Migrante Allele Frequency****************/
+	        /*****************Inbreeding****************/
 
 	        /*****************Migrant Allele Frequency********************/
 	        $("#positive-assortative-mating-slider").noUiSlider({
@@ -371,6 +371,38 @@ $(document).ready(function() {
 	        $("#new-population-size-slider").on('change', activatePopulationControl);
 	        $("#new-population-size-slider").on('set', activatePopulationControl);
 	        /*****************Population Bottleneck****************/
+
+
+	        /*****************Batch Tool********************/
+	        $("#batch-tool-runs-slider").noUiSlider({
+	            start: [3],
+	            step: 1,
+	            connect: "lower",
+	            range: {
+	                'min': [0],
+	                'max': [50]
+	            },
+	            format: wNumb({
+	                decimals: 0,
+	                thousand: ','
+	            })
+	        });
+
+	        $("#batch-tool-runs-slider").Link('lower').to($("#batch-tool-runs"));
+
+	        //Activate the slider if it was slide, changed or manually set
+	        $("#batch-tool-runs-slider").on('slide', activateBatchTool);
+	        $("#batch-tool-runs-slider").on('change', activateBatchTool);
+	        $("#batch-tool-runs-slider").on('set', activateBatchTool);
+
+	        /*****************Inbreeding****************/
+
+
+
+	        //After all of the sliders are initialized check for any bookmarking values 
+	        addBookmarkValues();
+
+
 }) //Document ready 
 
 
@@ -472,6 +504,15 @@ function activatePopulationControl(){
     $("#population-control .variable-activator").addClass("fa-check-square-o");
 }
 
+function activateBatchTool(){
+	//Make these active
+    $("#batch-tool-runs-slider").addClass("active");
+
+   	//Update the activator icon
+    $("#batch-tool .variable-activator").removeClass("fa-square-o");
+    $("#batch-tool .variable-activator").addClass("fa-check-square-o");
+}
+
 //Deactive the correct sliders based on what checkmark was clicked 
 function deactiveActiveOnCheckmark(variableSectionId, state){
 	if(variableSectionId == "selection-variables"){
@@ -505,6 +546,9 @@ function deactiveActiveOnCheckmark(variableSectionId, state){
 		$("#generation-to-override-slider").toggleClass("active");
 		$("#new-population-size-slider").toggleClass("active");
 	}
+	else if(variableSectionId == "batch-tool"){
+		$("#batch-tool-runs-slider").toggleClass("active");
+	}
 }
 
 /** 
@@ -535,9 +579,50 @@ function validateGenOverride(){
 	if(removeActive){
 		$("#generation-to-override-slider").removeClass("active");
 		$("#new-population-size-slider").removeClass("active");
+<<<<<<< HEAD
 
 		$("#population-control .variable-activator").removeClass("fa-check-square-o");
    	 	$("#population-control .variable-activator").addClass("fa-square-o");
 	} 
     
+=======
+
+		$("#population-control .variable-activator").removeClass("fa-check-square-o");
+   	 	$("#population-control .variable-activator").addClass("fa-square-o");
+	} 
+    
+}
+
+
+/**
+ *	Look at the hidden fields in the page and attempt to add them to the slider
+ *		-Validation occurs automatically with noui slider
+ */
+function addBookmarkValues(){
+	var bookmarkform = $("#bookmarking-values");
+
+	if(bookmarkform.length){
+		var bookmarks = bookmarkform.serializeArray(); 
+		
+		//Go through each bookmark and try set the value
+		for(var i=0; i<bookmarks.length; i++){
+			
+			if(bookmarks[i].name == "bookmarking-generations") 			$("#generations-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-startfreq") 		$("#starting-allele-frequency-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-population") 		$("#population-size-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-wAA") 			$("#fitness-coefficient-wAA-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-wAa") 			$("#fitness-coefficient-wAa-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-waa") 			$("#fitness-coefficient-waa-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-selection") 		$("#selection-coefficient-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-dominance") 		$("#dominance-coefficient-slider").val(bookmarks[i].value);
+		}
+
+
+
+
+	} 
+	else{
+		console.log(bookmarkform);
+	}
+>>>>>>> origin/master
 }

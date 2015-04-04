@@ -218,7 +218,33 @@ HTML;
 
 /****USE GET VARIABLE TO PREPOPULATE THE FIELDS***/
 $bookmarks = array(); 
+
+//Base
 if(isset($_GET['generations'])) $bookmarks['generations'] = intval($_GET['generations']);
+if(isset($_GET['startfreq'])) $bookmarks['startfreq'] = floatval ($_GET['startfreq']);
+if(isset($_GET['population'])) $bookmarks['population'] = intval($_GET['population']); 
+
+//Selection
+if(isset($_GET['wAA'])) $bookmarks['wAA'] = floatval ($_GET['wAA']);
+if(isset($_GET['wAa'])) $bookmarks['wAa'] = floatval ($_GET['wAa']);
+if(isset($_GET['waa'])) $bookmarks['waa'] = floatval ($_GET['waa']);
+if(isset($_GET['selection'])) $bookmarks['selection'] = floatval ($_GET['selection']);
+if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominance']);
+
+//Mutation 
+
+//Migration 
+
+//Inbreeding
+
+//Assortative Mating 
+
+//Population Bottleneck 
+
+
+
+
+
 
 
 
@@ -248,17 +274,32 @@ if(isset($_GET['generations'])) $bookmarks['generations'] = intval($_GET['genera
 </div>
 <!-- Graph Completion Modal -->
 
+<!-- Bookmarking Modal -->
+<div class="modal fade" id="bookmark-link" tabindex="-1" role="dialog" aria-labelledby="bookmark-link" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="graph-computing-title">Generated Bookmark Link</h4>
+      </div>
+      <div class="modal-body">
+      <p> Bookmark the link below to prepopulate the variables with the values you currently have set. </p>
+      <pre class="text-center bookmark-link">http://genetics.droplet.jcubedworld.com/home?generations=250&startfreq=0.5325&population=35&selection=.350&wAA=.250&wAa=.253&waa=.350</pre>
+      </div>
+      <div class="modal-footer">
+		 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    	</div>
+    </div>
+  </div>
+</div>
+<!-- Bookmarking Modal -->
+
 
 
 
 <div id="graph_wrapper" class="row"> 
 	<div class="container"> 
 		<h1> Population Genetics Simulation</h1>
-
-		<div id="graph_legend"> 
-
-		</div>
-
 
 		<div id="graph_container"> 
 			<div id="graph-canvas"></div>  
@@ -274,18 +315,15 @@ if(isset($_GET['generations'])) $bookmarks['generations'] = intval($_GET['genera
 			<span class="pull-right"> 
 				<a href="#" id="screenFriendly" data-toggle="tooltip" data-placement="top" title="Switch to screen friendly version (default)"><i class="fa fa-desktop"></i></a>
 				<a href="#" id="printerFriendly" data-toggle="tooltip" data-placement="top" title="Switch to high contrast for printing and projecting"><i class="fa fa-sun-o"></i></a> 
+				<a href="#" id="getLink" data-target="#bookmark-link" data-toggle="modal" data-tooltip="true" data-placement="top" title="Generate a bookmarked link for these variables"><i class="fa fa-link"></i></a>
 				<a href="#" id="getRawData" data-toggle="tooltip" data-placement="top" title="View RAW data points"><i class="fa fa-file-text-o"></i></a>
 			</span>
 		</h2>
 		<!-- Need to change font sizes on smaller displays  -->
 		
 		<div id="alerts-container"> 
-
-		</div>
-
-		<div id='multiple-legends-container' class='container'> 
 			<!--JS FILLED-->
-		</div> 
+		</div>
 
 		<div id="buttons" class="row"> 
 
@@ -297,6 +335,25 @@ if(isset($_GET['generations'])) $bookmarks['generations'] = intval($_GET['genera
 				<a class="btn btn-primary btn-lg" role="button" id="addLine"><i class="fa fa-plus"></i> Add Line</a> 
 			</div>
 		</div>
+
+		<div id='multiple-legends-container' class='container'> 
+			<!--JS FILLED-->
+		</div> 
+
+		<div id="graph_stats" class='container hidden'> 
+			<!--JS FILLED-->
+			<div > 
+				<h3> <i class="fa fa-bar-chart"></i> <strong>Batch Graph Stats</strong> </h3>
+				<ul class='list-unstyled block-center'>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 1 =</span><span class='legend-val' id="timeto1">50</span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 0 =</span><span class='legend-val' id="timeto0">50</span> </li>
+				</ul>
+			</div>
+
+		</div>
+
+
+
 
 
 		<div id="vars-section">
@@ -417,6 +474,20 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 					</div>
 				</div>
 
+				<div id="batch-tool" class="variable-section">
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Batch Tool <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<div class="error"></div> 
+					<div class="variables-section hidden">
+						<?php 
+
+							// variable::generate_range_slider("Generations to Override", "g", )
+							variable::generate_simple_slider("Number of Runs", "Runs", "batch-tool-runs", "helper text");
+
+
+						?>
+					</div>
+				</div>
+
 
 
 
@@ -434,16 +505,6 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 
 			</div>
 
-			<!-- Hidden form to update values with js later on when everything is loaded --> 
-			<div class="hidden" id="bookmarking-values"> 
-				
-				<?php 
-					foreach($bookmarks as $varname => $value){
-						echo "<input type='hidden' name='bookmarking-$varname' value='$value'>";
-					}
-				?>
-			</div>
-			<!-- Hidden form to update values with js later on when everything is loaded --> 
 
 
 
@@ -459,15 +520,24 @@ A value of α = 1 indicates 100% positive assortative mating, and a value of 
 	</form>
 
 
-	<div class='hidden' id="results_panel"> 
+	<!-- Hidden form to update values with js later on when everything is loaded --> 
+	<form action="" class="hidden" id="bookmarking-values"> 
+		
+		<?php 
+			foreach($bookmarks as $varname => $value){
+				echo "<input type='hidden' name='bookmarking-$varname' value='$value'>";
+			}
+		?>
+	</form>
+	<!-- Hidden form to update values with js later on when everything is loaded --> 
+
+
+<!-- 	<div class='hidden' id="results_panel"> 
 		<h3> Debugging Results </h3>
 		<pre id="results"> 
-		<?php 
-			var_dump($bookmarks); 
-		?>
 
 		</pre>
 
-	</div>
+	</div> -->
 
 </div>

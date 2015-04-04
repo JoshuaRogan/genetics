@@ -35,7 +35,11 @@ body{
 
 
 .page-home{
-
+	.bookmark-link{
+		color: @brand-primary; 
+		font-weight: bold;
+		font-size: 17px;
+	}
 	
 
 	//Style for the infinite symbol
@@ -118,6 +122,9 @@ body{
 
 		//New Legend 
 		#multiple-legends-container{
+			.modified-value .legend-val{
+					color: @brand-danger; 
+				}
 
 			.legend{	
 
@@ -130,6 +137,8 @@ body{
 				box-shadow:  0 1px 6px rgba(0,0,0,.12),0 1px 6px rgba(0,0,0,.12);
 				border-radius: 2px;
 				border: 0;
+
+				
 
 				//Style for hidden legend 
 				&.hidden-legend{
@@ -172,8 +181,6 @@ body{
 							font-size: 20px;
 						}
 					}
-
-
 				}
 
 				//Variable Name
@@ -215,9 +222,58 @@ body{
 				p{
 					margin-top:10px;
 				}
-
 			}
 		}
+
+
+		//Graph stats using the batch tool 
+		#graph_stats{
+			margin-bottom: 5px;
+			background-color: lighten(@brand-primary, 70%);
+			padding: 8px;
+			border: 1px solid lighten(@brand-primary, 60%); 
+
+			
+			box-shadow:  0 1px 6px rgba(0,0,0,.12),0 1px 6px rgba(0,0,0,.12);
+			border-radius: 2px;
+			border: 0;
+
+			h3{
+				color: @brand-primary; 
+				margin-top: 8px;
+				font-size: 18px;
+				
+
+				
+				/* (tablets, 768px and up) */
+				@media (min-width: @screen-sm-min) {
+					font-size: 24px;
+					.togglelegend{ 
+						font-size: 20px;
+					}
+				}
+			}
+
+			//Variable Name
+			.legend-var{
+				padding-right: 4px;
+			}
+			//Variable Value 
+			.legend-val{
+				font-weight: 600;
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+
 
 		.variable-section{
 			border-bottom: 1px solid rgba(85, 85, 85, 0.50);
