@@ -579,17 +579,11 @@ function validateGenOverride(){
 	if(removeActive){
 		$("#generation-to-override-slider").removeClass("active");
 		$("#new-population-size-slider").removeClass("active");
-<<<<<<< HEAD
 
 		$("#population-control .variable-activator").removeClass("fa-check-square-o");
    	 	$("#population-control .variable-activator").addClass("fa-square-o");
 	} 
     
-=======
-
-		$("#population-control .variable-activator").removeClass("fa-check-square-o");
-   	 	$("#population-control .variable-activator").addClass("fa-square-o");
-	} 
     
 }
 
@@ -624,5 +618,4 @@ function addBookmarkValues(){
 	else{
 		console.log(bookmarkform);
 	}
->>>>>>> origin/master
 }

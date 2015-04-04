@@ -315,7 +315,7 @@ if(isset($_GET['dominance'])) $bookmarks['dominance'] = floatval ($_GET['dominan
 			<span class="pull-right"> 
 				<a href="#" id="screenFriendly" data-toggle="tooltip" data-placement="top" title="Switch to screen friendly version (default)"><i class="fa fa-desktop"></i></a>
 				<a href="#" id="printerFriendly" data-toggle="tooltip" data-placement="top" title="Switch to high contrast for printing and projecting"><i class="fa fa-sun-o"></i></a> 
-				<a href="#" id="getLink" data-target="#bookmark-link" data-toggle="modal" data-tooltip="true" data-placement="top" title="Generate a bookmarked link for these variables"><i class="fa fa-link"></i></a>
+				<!-- <a href="#" id="getLink" data-target="#bookmark-link" data-toggle="modal" data-tooltip="true" data-placement="top" title="Generate a bookmarked link for these variables"><i class="fa fa-link"></i></a> -->
 				<a href="#" id="getRawData" data-toggle="tooltip" data-placement="top" title="View RAW data points"><i class="fa fa-file-text-o"></i></a>
 			</span>
 		</h2>
