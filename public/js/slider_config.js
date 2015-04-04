@@ -600,7 +600,6 @@ function addBookmarkValues(){
 		
 		//Go through each bookmark and try set the value
 		for(var i=0; i<bookmarks.length; i++){
-			
 			if(bookmarks[i].name == "bookmarking-generations") 			$("#generations-slider").val(bookmarks[i].value);
 			else if(bookmarks[i].name == "bookmarking-startfreq") 		$("#starting-allele-frequency-slider").val(bookmarks[i].value);
 			else if(bookmarks[i].name == "bookmarking-population") 		$("#population-size-slider").val(bookmarks[i].value);
@@ -610,10 +609,6 @@ function addBookmarkValues(){
 			else if(bookmarks[i].name == "bookmarking-selection") 		$("#selection-coefficient-slider").val(bookmarks[i].value);
 			else if(bookmarks[i].name == "bookmarking-dominance") 		$("#dominance-coefficient-slider").val(bookmarks[i].value);
 		}
-
-
-
-
 	} 
 	else{
 		console.log(bookmarkform);
