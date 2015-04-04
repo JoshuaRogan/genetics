@@ -459,6 +459,10 @@ popGen.config.noUISlider.activateGenerationsSlider = function(){
 
 popGen.config.noUISlider.activatePopulationSlider = function(){
 	$("#population-size-slider").addClass("active");
+
+	//Update the activator icon
+    $("#population-variable .variable-activator").removeClass("fa-square-o");
+    $("#population-variable .variable-activator").addClass("fa-check-square-o");
 }
 
 popGen.config.noUISlider.activateFitnessCoefSlider = function(){
@@ -641,7 +645,6 @@ popGen.config.noUISlider.addBookmarkValues = function(){
 		for(var i=0; i<bookmarks.length; i++){
 			if(bookmarks[i].name == "bookmarking-generations") 							$("#generations-slider").val(bookmarks[i].value);
 			else if(bookmarks[i].name == "bookmarking-starting-allele-frequency") 		$("#starting-allele-frequency-slider").val(bookmarks[i].value);
-			else if(bookmarks[i].name == "bookmarking-population-size") 				$("#population-size-slider").val(bookmarks[i].value);
 			else if(bookmarks[i].name == "bookmarking-fitness-coefficient-wAA") 		$("#fitness-coefficient-wAA-slider").val(bookmarks[i].value);
 			else if(bookmarks[i].name == "bookmarking-fitness-coefficient-wAa") 		$("#fitness-coefficient-wAa-slider").val(bookmarks[i].value);
 			else if(bookmarks[i].name == "bookmarking-fitness-coefficient-waa") 		$("#fitness-coefficient-waa-slider").val(bookmarks[i].value);
@@ -659,6 +662,16 @@ popGen.config.noUISlider.addBookmarkValues = function(){
 			else if(bookmarks[i].name == "bookmarking-generation-to-override-upper")	$("#generation-to-override-slider").val([null, bookmarks[i].value]);
 			else if(bookmarks[i].name == "bookmarking-new-population-size") 			$("#new-population-size-slider").val(bookmarks[i].value);
 			else if(bookmarks[i].name == "bookmarking-batch-tool-runs") 				$("#batch-tool-runs-slider").val(bookmarks[i].value);
+			else if(bookmarks[i].name == "bookmarking-population-size"){
+				$("#population-size-slider").val(bookmarks[i].value);
+				// $("#population-size-slider").addClass("active"); //Activate the slider too
+			}
+
+
+
+
+							
+
 		}
 	} 
 	else{
