@@ -13,7 +13,9 @@ popGen.htmlutil.chartDOM = popGen.htmlutil.chartDOM || {
 	frequencies: Array(),        //Hold the chart data here 
     values: null,      	//Holds all of the user inputed values of the last graphed item 
 	nextLine: 0,	       	//0 Means nothing has been graphed 
-	highContrast: null 
+	highContrast: null,
+    nextGraphType: "newGraph", //Store this so the webworker doesn't have to worry about it
+    numberBatchRuns: null, 
 }; 
 
 popGen.htmlutil.chartDOM.debugData = function(){
@@ -498,12 +500,32 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
 	var isValid = true; 
 	var errors = []; //Error messages
 
+    var genWorker = new Worker('/js/webworkers/generationWorker.js');
+    genWorker.addEventListener('message', function(e) {
+        var returned = $.parseJSON(e.data); //EVERYTHING MUST BE VALID JSON (DOUBLE QUOTES)
+
+        if(returned.hasOwnProperty("type")){
+            if(returned.type == "results"){
+                // console.log(returned.results); 
+               popGen.htmlutil.chartDOM.workerFinished(returned.results); 
+            }
+            if(returned.type == "message"){
+                console.log(returned.message);
+            }
+            if(returned.type == "error"){
+                console.log(returned.message);
+            }
+        }
+
+    }, false);
+
+
+
 	//Required Values
     var input_population_size = parseFloat(values['population-size'].replace(',', ''));
     var input_num_generations = parseFloat(values['generations'].replace(',', ''));
     var intput_starting_alele_frequency = parseFloat(values['starting-allele-frequency']);
-    var myGenerations = new popGen.generations(input_num_generations, input_population_size, intput_starting_alele_frequency);
-    // console.log(myGenerations); 
+    genWorker.postMessage({"cmd":"initGeneration", "populationSize": input_population_size, "numGenerations": input_num_generations, "startingFrequency": intput_starting_alele_frequency}); // Send data to our worker.
 
     //Selection variables if the coefficient is active 
     if(this.isActiveVariable("#fitness-coefficient-wAA") || this.isActiveVariable("#selection-coefficient")){
@@ -512,14 +534,15 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
     		var wAA = parseFloat(values['fitness-coefficient-wAA'].replace(',', ''));
     		var wAa = parseFloat(values['fitness-coefficient-wAa'].replace(',', ''));
     		var waa = parseFloat(values['fitness-coefficient-waa'].replace(',', ''));
-			myGenerations.setFitnessCoefficients(wAA, wAa, waa);
+            genWorker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': wAA, 'wAa': wAa, 'waa': waa}); 
     	}
     	//use the Selection/Dominance Coefficient 
     	else{
     		 // this.setSelectionDominanceCoe = function(selectionCoefficient, dominaceCoefficient) 
     		 var selectionCoefficient = parseFloat(values['selection-coefficient'].replace(',', ''));
     		 var dominaceCoefficient = parseFloat(values['dominance-coefficient'].replace(',', ''));
-    		 myGenerations.setSelectionDominanceCoe(selectionCoefficient, dominaceCoefficient);
+             genWorker.postMessage({"cmd":"setVar", "varName": "selection-DS", "selectionCoef": selectionCoefficient, "dominaceCoef": dominaceCoefficient});
+
     	}
     }
 
@@ -527,27 +550,32 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
     if (this.isActiveVariable("#mutation-rate-mu") || this.isActiveVariable("#mutation-rate-nu")) {
     	var forwardMutationRate = parseFloat(values['mutation-rate-mu']) * Math.pow(10,parseInt(values['mutation-rate-mu-exponent']));
     	var revMutationRate = parseFloat(values['mutation-rate-nu']) * Math.pow(10,parseInt(values['mutation-rate-nu-exponent']));
+        genWorker.postMessage({"cmd":"setVar", "varName": "mutation", "mu": forwardMutationRate, "nu": revMutationRate}); 
 
-        myGenerations.setMutation(forwardMutationRate, revMutationRate);
+
     }
 
     //Set the Migration Variables if they are active 
     if(this.isActiveVariable("#migration-rate")){
     	var migrationRate = parseFloat(values['migration-rate']);
     	var migrantAlleleFrequency = parseFloat(values['migrant-allele-frequency']);
-    	myGenerations.setMigrationRate(migrationRate, migrantAlleleFrequency);
+        genWorker.postMessage({"cmd":"setVar", "varName": "migration", "migrationRate": migrationRate, "migrantAlleleFreq": migrantAlleleFrequency}); 
+
     }
 
     //Inbreeding Variables 
     if(this.isActiveVariable("#inbreeding-coefficient")){
     	var inbreedingCoe = parseFloat(values['inbreeding-coefficient']);
-    	myGenerations.setInbreedingCoefficient(inbreedingCoe);
+        genWorker.postMessage({"cmd":"setVar", "varName": "inbreeding", "inbreedCoef": inbreedingCoe}); 
+
+
     }
 
     //Assortative mating 
     if(this.isActiveVariable("#positive-assortative-mating")){
     	var positiveAssortativeMatingFreq = parseFloat(values['positive-assortative-mating']);
-    	myGenerations.setAssortativeMating(positiveAssortativeMatingFreq);
+        genWorker.postMessage({"cmd":"setVar", "varName": "assortative-mating", "matingFreq": positiveAssortativeMatingFreq}); 
+
     }
 
     // console.log(myGenerations);
@@ -568,12 +596,15 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
     		errors.push("Invalid Generation End");
     	}
 
-    	myGenerations.setpopulationBottleneck(generationStart, generationEnd, newPopulationSize);
+        genWorker.postMessage({"cmd":"setVar", "varName": "population-bottleneck", "generationStart": generationStart, "generationEnd": generationEnd, "newPopulationSize": newPopulationSize}); 
+
+
     }
 
     //Batch Tool 
     if(this.isActiveVariable("#batch-tool-runs")){ 
         var numBatchRuns = parseFloat(values['batch-tool-runs'].replace(',', ''));
+        this.numBatchRuns = numBatchRuns;
     }
 
     //Actually perform the work
@@ -588,7 +619,7 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
 
         //Call a different function if infinite sample sizes is set both functions set myGenerations.frequencies 
         if(!this.isActiveVariable("#population-size")){
-            myGenerations.setInfinitePopulation(); 
+            genWorker.postMessage({"cmd":"setVar", "varName": "inifinite-pop"}); 
         }
 
         //Special case for batch runs (Consider finishedComputingpartial var)
@@ -599,22 +630,18 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
             this.clearGraph();
 
             type = "batchTool"; //Change type to not screw up the legend updating 
+            this.nextGraphType = "batchTool"; 
 
             //Create copies for each generation 
             for(var i=0; i<numBatchRuns; i++){
-                allGenerations[i] = jQuery.extend(true, {}, myGenerations);
-                allPartials[i] = popGen.htmlutil.partial(this.finishedComputing, allGenerations[i], type); 
-            }
-
-            //Run all of the copies 
-            for(var i=0; i<numBatchRuns; i++){
-                allGenerations[i].buildRandomSamplesAsync(allGenerations[i], allPartials[i]);
-            }
+                genWorker.postMessage({"cmd":"batchRun"}); // Run one of the generations 0 indexed 
+            }   
 
         }
         else{ //Just one run 
-            var finishedComputingFunction = popGen.htmlutil.partial(this.finishedComputing, myGenerations, type); 
-            myGenerations.buildRandomSamplesAsync(myGenerations, finishedComputingFunction);
+            this.nextGraphType = type;
+            genWorker.postMessage({"cmd":"run"}); // Run one of the generations 0 indexed 
+
         }
     }
     else{
@@ -630,7 +657,6 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
     
     if(errors.length > 0) console.log(errors);
     
-    $("#results_panel #results").html("Check the console for better data \n" + myGenerations.toString());
 }
 
 /**
@@ -670,20 +696,21 @@ popGen.htmlutil.chartDOM.isActiveVariable = function(selector){
 
 
 /**
- *  This will get called when the asynchronous building of random samples is actually finished
- *	-Don't use this here
+ *  Function used after the web worker has finsished
+ *  
  */
-popGen.htmlutil.chartDOM.finishedComputing = function(myGenerations, type){
+popGen.htmlutil.chartDOM.workerFinished = function(frequencies){
     //Close the modal
+    console.log("HAPPENING"); 
+
     $('#graph-computing-modal').modal('hide');
 
     //Check to see if the last graph was a batch auto reset it 
-    if(!$("#graph_stats").hasClass("hidden") && type !="batchTool" ){
-        // clearChart(chart); 
+    if(!$("#graph_stats").hasClass("hidden") && this.nextGraphType !="batchTool" ){
         $("#graph_stats").addClass("hidden");
     }
 
-    popGen.htmlutil.chartDOM.updateGraph(myGenerations.frequencies, type); //Update the graph with the new frequencies 
+    popGen.htmlutil.chartDOM.updateGraph(frequencies, this.nextGraphType); //Update the graph with the new frequencies 
     popGen.htmlutil.chartDOM.chart.render(); //Only render here 
 
     var d = new Date();
