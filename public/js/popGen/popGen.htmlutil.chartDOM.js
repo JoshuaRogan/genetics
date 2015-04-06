@@ -70,7 +70,7 @@ popGen.htmlutil.chartDOM.updateGraph = function(dataPoints, type){
 
         //Only compute this on the last run 
         if(this.nextLine - 1 == numBatchRuns){ 
-        	this.computeBatchStats(); 
+        	this.computeAggStats(); 
         }
 
     }
@@ -338,7 +338,7 @@ popGen.htmlutil.chartDOM.generateLegendRow = function(variable, value, secondVal
  *  After running through the batch runs compute various stats on all of the runs
  *   
  */
- popGen.htmlutil.chartDOM.computeBatchStats = function (){
+ popGen.htmlutil.chartDOM.computeAggStats = function (){
     //Clean up the legends too (Remove all but one and change it to Graph 1-50 since they are all the same vars)
     console.log(this.frequencies); 
 

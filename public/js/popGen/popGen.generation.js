@@ -1,4 +1,3 @@
-//Modified for webworkers
 //Namespaces
 var popGen = popGen || {};
 popGen.population = popGen.population || {};
@@ -23,9 +22,9 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
     this.infinitePopulationSize = false; 				//Generate equations instead of random sampling
 
     this.frequencies = Array(); //An array of each frequency that was generated (These are the values that are graphed)
-    this.populations = Array(); //An array of all of the populations [Currently removing]
+    this.populations = Array(); //An array of all of the populations (Remove with optimized flag)
 
-    this.optimized = true; 
+    this.optimized = true; //Flag to prevent storing of some variables 
 
     this.startTime = (new Date).getTime(); 
 	this.finishTime = null; 
@@ -132,6 +131,11 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         this.modifiedPopulationSize = modifiedPopulationSize;
     }
 
+    /**
+     *  Simple function that manages the loop for all of the random samples.
+     *  This is the function to use to run the generations. 
+     *
+     */
     this.buildRandomSamples = function(){
  		this.startTime = (new Date).getTime();
  		this.currentAlleleFre 		= startAlleleFreq; 		//Current allele frequency of the population we just generated 
@@ -150,8 +154,6 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 	 *
      */
     this.buildRandomSample = function(){
-        // console.log("Working");
-        
         //Hard coded DOM update
         // var percentage = (this.currentGenerationNum / this.numGenerations) * 100;
         // $("#graph-completion-precent").html((percentage.toFixed(2)) + "%");
@@ -200,7 +202,6 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
             var actualPopulationSize = this.populationSize;
         }
 
-        
         //Only do random sampling on non infinite population sizes 
         if(this.infinitePopulationSize && !bottleneck_generation){
             this.frequencies.push(this.currentAlleleFre);  //This is the value that is being graphed
@@ -223,11 +224,6 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 
     //Update the frequency due to mutation effects 
     this.modifyFreqMutation = function (){
-    	// var partialResult = this.reverseMutationRate / (this.forwardMutationRate + this.reverseMutationRate);
-
-     //    this.currentAlleleFre = partialResult + (this.currentAlleleFre - partialResult) 
-     //    	* Math.pow((1 - this.forwardMutationRate - this.reverseMutationRate), this.currentGenerationNum);
-
         this.currentAlleleFre = this.currentAlleleFre * (1 - this.forwardMutationRate) + (1 - this.currentAlleleFre) * this.reverseMutationRate;
     }
 
