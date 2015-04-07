@@ -1,3 +1,0 @@
-<?php $__env->startSection('header'); ?>
-	<h1> Header </h1>
-<?php $__env->stopSection(); ?>

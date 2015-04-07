@@ -481,6 +481,73 @@
   font-size: 27px;
   margin: 20px;
 }
+.page-welcome .welcome {
+  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
+  background-color: #141425;
+  line-height: 24px;
+  padding: 3px 5px 30px 5px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
+  border-radius: 2px;
+  border: 0;
+}
+.page-welcome .welcome h1,
+.page-welcome .welcome h2,
+.page-welcome .welcome h3 {
+  font-weight: 300;
+}
+.page-welcome .welcome h1 {
+  font-size: 16px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-welcome .welcome h1 {
+    font-size: 26px;
+  }
+}
+@media (min-width: 992px) {
+  .page-welcome .welcome h1 {
+    font-size: 36px;
+  }
+}
+.page-welcome .welcome p {
+  color: #fff;
+  font-weight: 300;
+}
+.page-welcome .welcome #graph-canvas {
+  height: 250px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-welcome .welcome #graph-canvas {
+    height: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .page-welcome .welcome #graph-canvas {
+    height: 450px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-welcome .welcome #graph-canvas {
+    height: 550px;
+  }
+}
+.page-welcome .welcome #graph-canvas .canvasjs-chart-container {
+  color: #000;
+}
+.page-welcome .logo .fa {
+  font-size: 150px;
+}
 footer {
   background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
   background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);

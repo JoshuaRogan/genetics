@@ -16,6 +16,7 @@ Route::get('home', 'GraphsController@allele');
 Route::get('allele', 'GraphsController@allele');
 Route::get('genotype', 'GraphsController@genotype');
 Route::get('faq', 'FAQController@index');
+Route::get('welcome', 'WelcomeController@index');
 
 Route::controllers([
 	// 'auth' => 'Auth\AuthController',

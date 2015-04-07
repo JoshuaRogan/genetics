@@ -1,48 +1,45 @@
-<html>
-	<head>
-		<title>Laravel</title>
-		
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+@extends('skeleton.base')
+@extends('skeleton.default_header')
+@extends('skeleton.default_footer')
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+@section('title', 'Welcome')
+@section('pageclass', 'page-welcome')
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+@section('styles')
+	@parent
+@stop
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
+@section('lazyscripts')
+	@parent
+	<script src='/js/popGen/popGen.htmlutil.js'></script>
+	
+@stop
 
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
-
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
+@section('content')
+	<div class="welcome row">
 		<div class="container">
-			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
+			<h1>Genetic Simulator Suite</h1>
+			<p>The Department of Human Genetics at the University of Pittsburgh's Graduate School of Public Health is dedicated to genetics research, teaching, and services. The department has three major research missions, which are (1) to develop and use genetic methods to investigate the causes and treatment of hereditary and acquired human illness, (2) to understand and explore the impact of genetics on public health, education, and disease prevention, and (3) to appreciate the role of genetic diversity within human populations.</p>
+			<p><a class="btn btn-primary btn-lg" href="http://www.publichealth.pitt.edu/human-genetics" target="_blank" role="button">Learn more</a></p>
+		</div>
+	</div>
+
+	<div class="container"> 
+
+		
+
+		<div class="graphs text-center row"> 
+			<div class="col-sm-6"> 
+				<div class="logo"><i class="fa fa-connectdevelop"></i></div>
+				<h3> Allele Simulator </h3>
+				<p> Fixie typewriter Pinterest, twee bitters blog American Apparel health goth tousled kitsch keytar. Sriracha fixie YOLO, trust fund Helvetica direct trade cred hoodie chambray mumblecore Etsy skateboard listicle umami. </p>
+			</div>
+
+			<div class="col-sm-6">
+				<div class="logo"><i class="fa fa-connectdevelop"></i></div>
+				<h3> Genotype Simulator </h3>
+				<p> Portland Wes Anderson freegan paleo synth put a bird on it McSweeney's fashion axe High Life tofu church-key tattooed artisan. Gluten-free before they sold out wayfarers. </p>
 			</div>
 		</div>
-	</body>
-</html>
+	</div>
+@stop
