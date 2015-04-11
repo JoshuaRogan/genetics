@@ -22,8 +22,8 @@
 	
 	<!-- STYLESHEETS  -->
 	@section('styles')
-		<link rel="stylesheet" type="text/css" href="/styles/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="/styles/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="{{asset('/styles/bootstrap.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{asset('/styles/stylesheet.css')}}">
 		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,300,700">
     @show

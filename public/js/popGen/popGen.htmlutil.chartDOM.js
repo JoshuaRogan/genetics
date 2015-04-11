@@ -22,6 +22,10 @@ popGen.htmlutil.chartDOM.debugData = function(){
 	if(this.debug) console.log(this); 
 }
 
+/**
+ *  Update the global chart element if there are any changes 
+ *
+ */
 popGen.htmlutil.chartDOM.initChart = function(){
     this.chart = $("#graph-canvas").CanvasJSChart();
     this.values = this.seralizeForm($("#variables-form")); 
@@ -417,7 +421,6 @@ popGen.htmlutil.chartDOM.highContrastMode = function(){
 	this.chart.options.axisY.titleFontColor = black;  
 	this.chart.options.axisY.gridColor 		= darkGray;  
 	this.chart.options.backgroundColor 		= white; 
-
 	this.chart.render();
 
 	//Swap out the icons 
@@ -701,8 +704,6 @@ popGen.htmlutil.chartDOM.isActiveVariable = function(selector){
  */
 popGen.htmlutil.chartDOM.workerFinished = function(frequencies){
     //Close the modal
-    console.log("HAPPENING"); 
-
     $('#graph-computing-modal').modal('hide');
 
     //Check to see if the last graph was a batch auto reset it 

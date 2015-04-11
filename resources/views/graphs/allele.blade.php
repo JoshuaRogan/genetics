@@ -12,13 +12,19 @@
 
 @section('lazyscripts')
 	@parent
-	<script src='/js/canvasJS/jquery.canvasjs.min.js'></script>
-	<script src='/js/noui/jquery.nouislider.all.min.js'></script>
-	<script src='/js/config/popGen.config.chartJQ.js'></script>
-	<script src='/js/config/popGen.config.noUISlider.js'></script>
-	<script src='/js/popGen/popGen.htmlutil.js'></script>
-	<script src='/js/popGen/popGen.htmlutil.chartDOM.js'></script>
-	<script src='/js/home.js'></script>
+
+	<script src="{{ asset('/js/canvasJSN/source/canvasjs.js') }}"> </script>
+	<script src="{{ asset('/js/canvasJSN/source/jquery.canvasjs.js') }}"> </script>
+
+
+
+
+	<script src="{{ asset('/js/noui/jquery.nouislider.all.min.js') }}"> </script>
+	<script src="{{ asset('/js/config/popGen.config.chartJQ.js') }}"> </script>
+	<script src="{{ asset('/js/config/popGen.config.noUISlider.js') }}"> </script>
+	<script src="{{ asset('/js/popGen/popGen.htmlutil.js') }}"> </script>
+	<script src="{{ asset('/js/popGen/popGen.htmlutil.chartDOM.js') }}"> </script>
+	<script src="{{ asset('/js/home.js') }}"> </script>
 @stop
 
 <?php 
@@ -31,7 +37,6 @@ $bookmarks = array();
 foreach($_GET as $key => $value){
 	$bookmarks[$key] = $value; 
 }
-
 
 ?>
 
@@ -84,8 +89,6 @@ foreach($_GET as $key => $value){
 	</div>
 </div>
 <!-- Bookmarking Modal -->
-
-
 
 
 <div id="graph_wrapper" class="row"> 
@@ -142,6 +145,8 @@ foreach($_GET as $key => $value){
 			</div>
 		</div>
 
+
+
 		<div id="vars-section">
  			<div id="main-variables" class="variable-section open"> 
 				<h3><i class="fa fa-check-square-o"></i> Base Simulation Model <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a> </h3>
@@ -159,6 +164,14 @@ foreach($_GET as $key => $value){
 					<div class="error"></div>
 					<div class="variables-section hidden">
 						@include('graphs.macros.simpleslider', ['name' => 'Population Size', 'symbol' => 'N', 'id' => 'population-size', 'helper' => '<strong>Setting this overrides infinite population size!</strong> <br/><br/>This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N.'])
+					</div>
+				</div>
+
+				<div id="batch-tool" class="variable-section">
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Batch Runs <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<div class="error"></div> 
+					<div class="variables-section hidden">
+						@include('graphs.macros.simpleslider', ['name' => 'Number of Runs', 'symbol' => 'Runs', 'id' => 'batch-tool-runs', 'helper' => 'This variable determines the amount of lines that will be generated.'])
 					</div>
 				</div>
 
@@ -222,13 +235,12 @@ foreach($_GET as $key => $value){
 					</div>
 				</div>
 
-				<div id="batch-tool" class="variable-section">
-					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Batch Tool <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
-					<div class="error"></div> 
-					<div class="variables-section hidden">
-						@include('graphs.macros.simpleslider', ['name' => 'Number of Runs', 'symbol' => 'Runs', 'id' => 'batch-tool-runs', 'helper' => 'helper text'])
-					</div>
-				</div>
+				
+
+
+
+
+				
 			</div> <!-- End Optional Variables -->
 		</div> <!-- End Variables Section -->
 	</form>

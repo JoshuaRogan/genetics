@@ -425,7 +425,7 @@ popGen.config.noUISlider.initBottleNeckPopSlider = function(selector){
 
 popGen.config.noUISlider.initBatchSlider = function(selector){
 	$("#batch-tool-runs-slider").noUiSlider({
-	    start: [3],
+	    start: [1],
 	    step: 1,
 	    connect: "lower",
 	    range: {
@@ -459,6 +459,7 @@ popGen.config.noUISlider.activateGenerationsSlider = function(){
 
 popGen.config.noUISlider.activatePopulationSlider = function(){
 	$("#population-size-slider").addClass("active");
+	// $("#batch-tool-runs-slider").addClass("active");
 
 	//Update the activator icon
     $("#population-variable .variable-activator").removeClass("fa-square-o");
@@ -543,8 +544,7 @@ popGen.config.noUISlider.activatePopulationControl = function(){
 }
 
 popGen.config.noUISlider.activateBatchTool = function(){
-	//Make these active
-    $("#batch-tool-runs-slider").addClass("active");
+     $("#batch-tool-runs-slider").addClass("active");
 
    	//Update the activator icon
     $("#batch-tool .variable-activator").removeClass("fa-square-o");
@@ -570,6 +570,7 @@ popGen.config.noUISlider.deactiveActiveOnCheckmark = function(variableSectionId,
 	}
 	else if(variableSectionId == "population-variable"){
 		$("#population-size-slider").toggleClass("active");
+		
 	}
 	else if(variableSectionId == "mutation-variables"){
 		$("#mutation-rate-mu-slider").toggleClass("active");

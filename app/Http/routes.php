@@ -11,12 +11,22 @@
 |
 */
 
-Route::get('/', 'GraphsController@allele');
-Route::get('home', 'GraphsController@allele');
-Route::get('allele', 'GraphsController@allele');
+//Graphs (Home will evenutally be a welcome page)
+Route::get('/', function(){return Redirect::to('graphs/allele');});
+Route::get('home', function(){return Redirect::to('graphs/allele');});
+Route::get('allele', function(){return Redirect::to('graphs/allele');});
+Route::get('graphs/allele', 'GraphsController@allele');
+Route::get('graphs/genotype', 'GraphsController@genotype');
+
+
 Route::get('genotype', 'GraphsController@genotype');
 Route::get('faq', 'FAQController@index');
 Route::get('welcome', 'WelcomeController@index');
+
+
+
+
+
 
 Route::controllers([
 	// 'auth' => 'Auth\AuthController',

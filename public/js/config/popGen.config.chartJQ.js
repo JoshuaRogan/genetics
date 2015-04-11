@@ -79,7 +79,8 @@ popGen.config.chartJQ.initChart = function(selector){
         $(selector).CanvasJSChart({
             zoomEnabled: true,
             exportEnabled: true,
-            backgroundColor: "rgba(200, 54, 54, 0.0)",
+            exportFileName: "Genetic Simulation Graph",
+            backgroundColor: this.clear,
             title: { //Only here if we want to add it later 
                 text: "",
                 fontColor: this.lightGray,

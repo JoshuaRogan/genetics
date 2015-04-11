@@ -9,13 +9,13 @@ popGen.htmlutil = popGen.htmlutil || {
 };
 
 popGen.htmlutil.genDOM = popGen.htmlutil.genDOM || {
-	debug: true
+	debug: false
 };
 
 // popGen.htmlutil.chartDOM = popGen.htmlutil.chartDOM || {};
 
 popGen.htmlutil.sliderDOM = popGen.htmlutil.sliderDOM || {
-	debug: true
+	debug: false
 };
 
 //Page Specific 
@@ -32,10 +32,12 @@ popGen.htmlutil.initHome = function(){
 	this.genDOM.sectionHandler(); 
 	this.genDOM.legendHandler("#multiple-legends-container"); 
 	this.genDOM.graphButtonHandler(); 
+	this.genDOM.graphExportHandler();
 	
 	this.genDOM.home.helperText(); 
 	this.genDOM.home.iconHandler(); 
 	this.genDOM.home.userConfig(); 
+
 }
 
 popGen.htmlutil.initFAQ = function(){
@@ -194,10 +196,16 @@ popGen.htmlutil.genDOM.graphButtonHandler = function(){
 }
 
 
+/**
+ *	Saving JPG/PNG background changer
+ *
+ */
+popGen.htmlutil.genDOM.graphExportHandler = function(){
+	$(".canvasjs-chart-toolbar div div").on("click", function(event) {
+    	event.preventDefault();
+    }); 
 
-
-
-
+}
 
 
 /**

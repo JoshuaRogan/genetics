@@ -5,7 +5,7 @@ popGen.generations = popGen.generation || {};
 
 importScripts("/js/popGen/popGen.population.js");
 importScripts("/js/popGen/popGen.generation.js");
-importScripts("/js/lodash/lodash.js");
+importScripts("/js/lodash/lodash.js"); //Used for cloning the generation
 
 var generation = null; 
 
