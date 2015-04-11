@@ -93,6 +93,19 @@ class BugsController extends Controller {
    		return view('bugs.message', ['type' => 'deleteAll']);
     }
 
+    /**
+     * Change status to completed for this bug
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function complete($id)
+    {
+   		
+    }
+
+
+
 
 
 

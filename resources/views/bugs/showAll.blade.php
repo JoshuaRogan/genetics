@@ -18,9 +18,19 @@
 @section('content')
 	<div class="container">&nbsp;</div>
 	<div class="container">
+		@if(count($bugs) == 0)
+		<div class="jumbotron">
+			<h1><i class="fa fa-child fa-2x" style="color: #3498db"></i>  No Bug Reports Found!</h1> 
+			<h2></h2>
+			<p>There are currently no bug reports active.</p> 
+			<p>
+				<a class="btn btn-primary btn-lg" href="/report-problem" role="button">Submit a Report</a>
+				<a class="btn btn-primary btn-lg" href="/graphs/allele" role="button">Allele Graph</a>
+			</p> 		
+		</div>
+		@endif
 
 		@foreach ($bugs as $bug)
-
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Bug Report<span class="pull-right"><strong>{{ $bug->created_at }}</strong></h3>
