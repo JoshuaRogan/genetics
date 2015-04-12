@@ -42,7 +42,12 @@
 			<ul class="list-group">
 				<li class="list-group-item"><strong>ID:</strong> {{ $bug->id }}</li>
 				<li class="list-group-item"><strong>Name:</strong> {{ $bug->name }}</li>
-				<li class="list-group-item"><strong>Staus:</strong> Open </li>
+				<li class="list-group-item">
+					<strong>Staus:</strong> 
+					{{ ucfirst($bug->status) }} 
+					@if($bug->status == 'open')<a href="/report-problem/complete/{{ $bug->id }}"><span class="label label-warning">Close It</span></a>@endif
+					@if($bug->status == 'closed')<a href="/report-problem/open/{{ $bug->id }}"><span class="label label-warning">Reopen</span></a>@endif
+				</li>
 				<li class="list-group-item"><strong>Email:</strong> {{ $bug->email }}</li>
 				<li class="list-group-item"><strong>Bug:</strong> {{ $bug->subject }}</li>
 				<li class="list-group-item"><strong>Description:</strong> {{ $bug->description }}</li>

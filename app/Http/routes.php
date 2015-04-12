@@ -27,8 +27,13 @@ Route::get('welcome', 'WelcomeController@index');
 Route::get('report-problem', 'BugsController@index'); 
 Route::get('report-problem/view', 'BugsController@view'); 
 Route::get('report-problem/store', function(){return Redirect::to('report-problem');}); 
-Route::post('report-problem/store', 'BugsController@store'); 
+Route::post('report-problem/store', 'BugsController@store');
 Route::get('report-problem/deleteAll', 'BugsController@deleteAll'); 
+Route::get('report-problem/delete/{id}', 'BugsController@delete'); 
+Route::get('report-problem/complete/{id}', 'BugsController@complete'); 
+Route::get('report-problem/open/{id}', 'BugsController@open'); 
+
+
 
 
 

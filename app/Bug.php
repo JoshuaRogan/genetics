@@ -19,7 +19,7 @@ class Bug extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'subject', 'description'];
+	protected $fillable = ['name', 'email', 'subject', 'description', 'status'];
 
 
 }

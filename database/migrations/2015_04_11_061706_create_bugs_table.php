@@ -19,6 +19,7 @@ class CreateBugsTable extends Migration {
 			$table->string('email');
 			$table->string('subject');
 			$table->string('description');
+			$table->string('status')->default('open');
 			$table->timestamps();
 			$table->softDeletes();
 		});

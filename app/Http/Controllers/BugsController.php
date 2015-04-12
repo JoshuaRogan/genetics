@@ -75,7 +75,12 @@ class BugsController extends Controller {
      */
     public function delete($id)
     {
-   
+        $bug = Bug::find($id);
+        $type = ($bug && is_numeric($id)) ? 'deleted' : 'not-found';
+        if($type == 'deleted'){
+            // $bug->delete();
+        }
+        return view('bugs.message', ['type' => $type, 'id' => $id]);
     }
 
      /**
@@ -101,8 +106,36 @@ class BugsController extends Controller {
      */
     public function complete($id)
     {
-   		
+        $bug = Bug::find($id);
+        $success = ($bug && is_numeric($id)) ? 'status-change' : 'not-found';
+
+        if($bug){
+            $bug->status = 'closed';
+            $bug->save();
+        }
+
+   		return view('bugs.message', ['type' => $success, 'id' => $id]);
     }
+
+    /**
+     * Change status to completed for this bug
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function open($id)
+    {
+        $bug = Bug::find($id);
+        $success = ($bug && is_numeric($id)) ? 'status-change' : 'not-found';
+
+        if($bug){
+            $bug->status = 'open';
+            $bug->save();
+        }
+
+        return view('bugs.message', ['type' => $success, 'id' => $id]);
+    }
+
 
 
 
