@@ -19,11 +19,11 @@
 					<li><a href="/graphs/allele">Allele Graph</a></li>
 					<li><a href="/graphs/genotype">Genotype Graph</a></li>
 					<li class="divider"></li>
-					<li><a href="#">Allele Help</a></li>
-					<li><a href="#">Genotype Help</a></li>
+					<li><a href="/faq">Allele Help</a></li>
+					<li><a href="/faq">Genotype Help</a></li>
 					</ul>
 				</li>
-				<li><a href="#">FAQ</a></li>
+				<li><a href="/faq">FAQ</a></li>
         	</ul>
 
      
