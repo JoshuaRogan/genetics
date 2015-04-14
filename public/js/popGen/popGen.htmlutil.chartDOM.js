@@ -16,6 +16,8 @@ popGen.htmlutil.chartDOM = popGen.htmlutil.chartDOM || {
 	highContrast: null,
     nextGraphType: "newGraph", //Store this so the webworker doesn't have to worry about it
     numberBatchRuns: null, 
+    genotype: false, 
+    genotypeHasLegend: false, //Only show the legend one time 
 }; 
 
 popGen.htmlutil.chartDOM.debugData = function(){
@@ -40,7 +42,6 @@ popGen.htmlutil.chartDOM.initChart = function(){
  */
 popGen.htmlutil.chartDOM.updateGraph = function(dataPoints, type){
     this.frequencies.push(dataPoints); //Maintain all of the data points
-
     if(this.debug) {
         console.log("Updating Graph: ",dataPoints, type);
         console.log(popGen.htmlutil.chartDOM.chart); 
@@ -60,8 +61,8 @@ popGen.htmlutil.chartDOM.updateGraph = function(dataPoints, type){
             console.log("Add Line attemping update"); 
             console.log(dataPoints);
         }
-        this.addDataPoints(dataPoints); 
-        this.updateLegend(true); 
+        this.addDataPoints(dataPoints);
+        if(!this.genotypeHasLegend) this.updateLegend(true); 
     }
     else if(type == "batchTool"){
         if(this.debug){
@@ -152,13 +153,29 @@ popGen.htmlutil.chartDOM.updateLegend = function(isAppend, numBatchRuns){
         console.log("Updating Legend", this.values); 
     }
 
+    if(this.genotype) {
+        this.genotypeHasLegend = true; //A legend now exists don't add more 
+    
+        var colorBlock0 = "<i class='fa fa-square' style='color: " + popGen.config.chartJQ.colorSet[0] +"'></i>";
+        var colorBlock1 = "<i class='fa fa-square' style='color: " + popGen.config.chartJQ.colorSet[1] +"'></i>";
+        var colorBlock2 = "<i class='fa fa-square' style='color: " + popGen.config.chartJQ.colorSet[2] +"'></i>";
+
+        var AAColor = "<span style='color:" + popGen.config.chartJQ.colorSet[0] + ";'>AA</span>";
+        var AaColor = "<span style='color:" + popGen.config.chartJQ.colorSet[1] + ";'>Aa</span>";
+        var aaColor = "<span style='color:" + popGen.config.chartJQ.colorSet[2] + ";'>aa</span>";
+    
+        var genoTypeColorLegend = AAColor + " " + AaColor + " " + aaColor;
+    }
+
+
     var values = this.values; 
     var graphNum = (this.nextLine - 1)
     var lineColor = popGen.config.chartJQ.colorSet[(graphNum - 1) % popGen.config.chartJQ.colorSet.length]; 
-    var graphId = "graph-" + graphNum + "-legend";  //HTML id for this legend 
     var colorBlock = "<i class='fa fa-square' style='color: " + lineColor +"'></i>"; //Small color block of the line that is generated 
+    var lineName = (this.genotype) ? "Variables " + genoTypeColorLegend : ("Graph" + graphNum + " " + colorBlock); 
+    var graphId = "graph-" + graphNum + "-legend";  //HTML id for this legend 
     var htmlString = " <div class='legend row' id='" + graphId + "'>" +
-         "<h3><i class='fa fa-line-chart'></i> <strong>Graph " + graphNum + " " + colorBlock + "</strong><a href='#' class='pull-right togglelegend'>[Hide Legend]</a></p></h3>" +
+         "<h3><i class='fa fa-line-chart'></i> <strong>" + lineName + "</strong><a href='#' class='pull-right togglelegend'>[Hide Legend]</a></p></h3>" +
              "<ul class='legend-variables list-unstyled block-center'>";
 
     if(numBatchRuns !== undefined){
@@ -219,12 +236,18 @@ popGen.htmlutil.chartDOM.updateLegend = function(isAppend, numBatchRuns){
         htmlString += this.generateLegendRow("batchTool", values['batch-tool-runs']);
     }
 
+
+
+
     htmlString += "</ul></div>";
 
     if (isAppend) {
-        //Hide other graphs 
-        $("#multiple-legends-container .legend").addClass("hidden-legend"); 
-        $("#multiple-legends-container .togglelegend").html("[Show Legend]"); 
+        //Hide other graphs if not genotype 
+        if(!this.genotype){
+            $("#multiple-legends-container .legend").addClass("hidden-legend"); 
+            $("#multiple-legends-container .togglelegend").html("[Show Legend]"); 
+        }
+        
 
         $("#multiple-legends-container").append(htmlString);
 
@@ -235,8 +258,9 @@ popGen.htmlutil.chartDOM.updateLegend = function(isAppend, numBatchRuns){
 
     //Regenerate the tooltips 
     $('[data-toggle="tooltip"]').tooltip();
-
 }
+
+
 
 /**
  *  Generate one row of the legend 
@@ -336,6 +360,15 @@ popGen.htmlutil.chartDOM.generateLegendRow = function(variable, value, secondVal
     row += toolTip + "</li>"; //Add the tool tip and end the list 
 
     return row;
+}
+
+/**
+ *  Remove all of the legends 
+ *   
+ */
+popGen.htmlutil.chartDOM.clearLegend = function(){
+    $("#multiple-legends-container").html(" ");
+    this.genotypeHasLegend = false; 
 }
 
 /**
@@ -472,7 +505,7 @@ popGen.htmlutil.chartDOM.getRawData = function(){
 
     var chartData = "<div class='container'>"; 
     for(var i = 0; i < this.chart.options.data.length; i++){
-        chartData += '<h2>Data from chart ' + (i+1) + '</h2>';  
+        chartData += '<h2>Data from Line ' + (i+1) + '</h2>';  
         chartData += "<pre>";  
         chartData += 'X\tY\n';
         for(var j=0; j<this.chart.options.data[i].dataPoints.length; j++){
@@ -508,14 +541,23 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
         var returned = $.parseJSON(e.data); //EVERYTHING MUST BE VALID JSON (DOUBLE QUOTES)
 
         if(returned.hasOwnProperty("type")){
-            if(returned.type == "results"){
+            if(returned.type == "results-allele"){
                 // console.log(returned.results); 
                popGen.htmlutil.chartDOM.workerFinished(returned.results); 
             }
-            if(returned.type == "message"){
+            else if(returned.type =="results-genotype"){
+                popGen.htmlutil.chartDOM.genotype = true;
+                popGen.htmlutil.chartDOM.nextGraphType = 'addLine';
+                popGen.htmlutil.chartDOM.clearGraph();
+                popGen.htmlutil.chartDOM.clearLegend();
+                popGen.htmlutil.chartDOM.workerFinished(returned.AA); 
+                popGen.htmlutil.chartDOM.workerFinished(returned.Aa); 
+                popGen.htmlutil.chartDOM.workerFinished(returned.aa); 
+            }
+            else if(returned.type == "message"){
                 console.log(returned.message);
             }
-            if(returned.type == "error"){
+            else if(returned.type == "error"){
                 console.log(returned.message);
             }
         }
@@ -613,7 +655,9 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
     //Actually perform the work
     if(isValid){
 
-        //Allows you to pass these args (Prob not a good name)
+        //if this is a genotype graph tell the worker
+        if($(".graph-genotype").length) genWorker.postMessage({"cmd":"genotypeGraph"}); 
+
         
         //Open the Modal for long calculations
         if(input_num_generations > 1000 || input_population_size > 1000){

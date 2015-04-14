@@ -13,18 +13,29 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       		<ul class="nav navbar-nav">
-        		
-        		<li <?php //if(substr($page, 0, strlen($page)-4) == "home") echo "class='active'"; ?> ><a href="/home">Graphs</a></li>
-        		<li <?php //if(substr($page, 0, strlen($page)-4) == "faq") echo "class='active'"; ?> ><a href="/faq">FAQ</a></li>
-        		<li <?php //if(substr($page, 0, strlen($page)-4) == "faq") echo "class='active'"; ?> ><a href="/report-problem">Bug Report</a></li>
-        		<!-- <li <?php //if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Blog</a></li> -->
-        		<!-- <li <?php //if(substr($page, 0, strlen($page)-4) == "blank") echo "class='active'"; ?> ><a href="#">Contact Us</a></li> -->
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Graphs<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					<li><a href="/graphs/allele">Allele Graph</a></li>
+					<li><a href="/graphs/genotype">Genotype Graph</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Allele Help</a></li>
+					<li><a href="#">Genotype Help</a></li>
+					</ul>
+				</li>
+				<li><a href="#">FAQ</a></li>
         	</ul>
 
+     
+
          	<ul class="nav navbar-nav navbar-right">
-				<li><span class="label label-primary hidden-sm hidden-xs">Beta</span></li>
-				{{-- <li><span class="label label-success">Last Update 4/11/15</span></li> --}}
+				<li><span class="label label-primary hidden-sm hidden-xs">DEV</span></li>
+				<li class="divider">&nbsp;</li>
+				<li><span class="label label-success hidden-sm hidden-xs">Last Update 4/13/15</span></li>
 			</ul> 
+
+
+			
         </div>
 	</div>
 </nav>

@@ -4,7 +4,7 @@
 
 @section('title', 'Allele Graphing')
 @section('description', 'The Department of Human Genetics at the University of Pittsburgh\'s Graduate School of Public Health is dedicated to genetics research, teaching, and services. The department has three major research missions, which are (1) to develop and use genetic methods to investigate the causes and treatment of hereditary and acquired human illness, (2) to understand and explore the impact of genetics on public health, education, and disease prevention, and (3) to appreciate the role of genetic diversity within human populations.')
-@section('pageclass', 'page-home')
+@section('pageclass', 'page-graph graph-allele')
 
 @section('styles')
 	@parent
@@ -16,16 +16,14 @@
 	<script src="{{ asset('/js/canvasJSN/source/canvasjs.js') }}"> </script>
 	<script src="{{ asset('/js/canvasJSN/source/jquery.canvasjs.js') }}"> </script>
 	<script src="{{ asset('/js/noui/jquery.nouislider.all.min.js') }}"> </script>
-	<script src="{{ asset('/js/config/popGen.config.chartJQ.js') }}"> </script>
-	<script src="{{ asset('/js/config/popGen.config.noUISlider.js') }}"> </script>
+	<script src="{{ asset('/js/config/popGen.config.chartJQ.allele.js') }}"> </script>
+	<script src="{{ asset('/js/config/popGen.config.noUISlider.allele.js') }}"> </script>
 	<script src="{{ asset('/js/popGen/popGen.htmlutil.js') }}"> </script>
 	<script src="{{ asset('/js/popGen/popGen.htmlutil.chartDOM.js') }}"> </script>
 	<script src="{{ asset('/js/home.js') }}"> </script>
 @stop
 
 <?php 
-
-
 /****USE GET VARIABLE TO PREPOPULATE THE FIELDS***/
 $bookmarks = array(); 
 
@@ -33,7 +31,6 @@ $bookmarks = array();
 foreach($_GET as $key => $value){
 	$bookmarks[$key] = $value; 
 }
-
 ?>
 
 

@@ -14,12 +14,16 @@
 //Graphs (Home will evenutally be a welcome page)
 Route::get('/', function(){return Redirect::to('graphs/allele');});
 Route::get('home', function(){return Redirect::to('graphs/allele');});
+
+//Allele Frequency Graphs 
 Route::get('allele', function(){return Redirect::to('graphs/allele');});
 Route::get('graphs/allele', 'GraphsController@allele');
+
+//Genotype Graphs 
+Route::get('genotype', function(){return Redirect::to('graphs/genotype');});
 Route::get('graphs/genotype', 'GraphsController@genotype');
 
-
-Route::get('genotype', 'GraphsController@genotype');
+//Helper Pages 
 Route::get('faq', 'FAQController@index');
 Route::get('welcome', 'WelcomeController@index');
 

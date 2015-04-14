@@ -1,2 +1,0 @@
-lessc bootstrap/bootstrap.less > bootstrap.css
-lessc stylesheet.less > stylesheet.css

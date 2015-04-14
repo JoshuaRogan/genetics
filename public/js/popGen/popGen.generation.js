@@ -15,9 +15,9 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
     this.currentGenerationNum 	= 0; 					//The generation number we are now on    
     this.populationSize 		= populationSize; 		//The population size of each population
     this.startAlleleFreq 		= startAlleleFreq; 		//Starting allele frequency
-    this.startOtherAlleleFreq 	= 1 - startAlleleFreq; 	//The implicit other allele frequency 
-    this.currentAlleleFre 		= startAlleleFreq; 		//Current allele frequency of the population we just generated 
-    this.currentOtherAlleleFre 	= 1 - startAlleleFreq; 	//Currrent implicit other allele frequency 
+    this.startOtherAlleleFreq 	= 1 - this.startAlleleFreq; 	//The implicit other allele frequency 
+    this.currentAlleleFre 		= this.startAlleleFreq; 		//Current allele frequency of the population we just generated 
+    this.currentOtherAlleleFre 	= 1 - this.startAlleleFreq; 	//Currrent implicit other allele frequency 
     this.currentGenerationNum 	= 0;					//The current generation that is being produced 
     this.infinitePopulationSize = false; 				//Generate equations instead of random sampling
 
@@ -302,6 +302,10 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 
 		this.currentAlleleFre = this.currentAlleleFre * (1 - this.migrationRate) + (this.migrantAlleleFreq) * this.migrationRate;
     }
+
+
+
+
 
     this.toString = function(){
     	var output = "";
