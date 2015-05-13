@@ -81,6 +81,7 @@ function setVar(data){
  */
 function run(){
 	if(checkGeneration()){
+		
 		if(!genotypeGraph){
 			generation.buildRandomSamples();
 			outputResultsAllele(generation.frequencies); 

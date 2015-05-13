@@ -84,7 +84,7 @@ foreach($_GET as $key => $value){
 <!-- Bookmarking Modal -->
 
 
-<div id="graph_wrapper" class="row"> 
+<div id="graph_wrapper" class="row genotype-graph"> 
 	<div class="container"> 
 		<h1> Genotype Simulation</h1>
 		<div id="graph_container"> 

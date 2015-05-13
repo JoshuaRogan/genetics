@@ -77,6 +77,13 @@
   border-radius: 2px;
   border: 0;
 }
+.page-graph #graph_wrapper.genotype-graph {
+  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
+}
 .page-graph #graph_wrapper h1,
 .page-graph #graph_wrapper h2,
 .page-graph #graph_wrapper h3 {
@@ -495,6 +502,13 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
   border-radius: 2px;
   border: 0;
+}
+.page-welcome .welcome.genotype-graph {
+  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
 }
 .page-welcome .welcome h1,
 .page-welcome .welcome h2,

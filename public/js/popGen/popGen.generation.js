@@ -53,10 +53,10 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
     }
 
     //Selection variables
-    this.fitnessCoefficients = false;
-    this.wAA = 0.0;
-    this.wAa = 0.0;
-    this.waa = 0.0;
+    this.fitnessCoefficients = true;
+    this.wAA = 1.0;
+    this.wAa = 1.0;
+    this.waa = 1.0;
 
     this.setFitnessCoefficients = function(wAA, wAa, waa) {
         this.fitnessCoefficients = true;
@@ -143,6 +143,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
  
     	for(var i=0; i<this.numGenerations; i++){
     		this.buildRandomSample();
+
     	}
     	this.finishTime = (new Date).getTime();
     }
@@ -158,7 +159,8 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         // var percentage = (this.currentGenerationNum / this.numGenerations) * 100;
         // $("#graph-completion-precent").html((percentage.toFixed(2)) + "%");
         // $("#graph-computing-title").html("Computing Generation Number <strong>" + this.currentGenerationNum + "</strong> of " + this.numGenerations);
-        
+        console.log("Assortative Mating D: ", this.d_assortativeMating);
+
         this.currentGenerationNum++;
 
         //The order these operations are performed is very important (Consult the formula last slide pdf)
@@ -249,8 +251,8 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 
     //Update the frequency due to possitiveAssortativeMating
     this.modifyFreqPosAssortMat = function(){
-        p0 = this.currentAlleleFre; //Current or starting ? 
-        q0 = this.currentOtherAlleleFre; //Current or starting ?
+        p0 = this.currentAlleleFre; //The allele frequeny at this time
+        q0 = 1 - p0; 
 
         //The previous values of d,h,r
         var d0 = this.d_assortativeMating;
@@ -264,10 +266,14 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         var r_numerator = ((1 - alpha) * Math.pow(q0, 2)) + (alpha * (r0 + h0/4));
         var commonDenom = d_numerator + h_numerator + r_numerator;
 
+
+        console.log(d_numerator, h_numerator, r_numerator);
+
         //Update the d,h,r values 
         this.d_assortativeMating = d_numerator / commonDenom;
         this.h_assortativeMating = h_numerator / commonDenom;
         this.r_assortativeMating = r_numerator / commonDenom;
+
 
         //Short hand variables for the new variables 
         var d_n = this.d_assortativeMating;
@@ -275,10 +281,11 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         var r_n = this.r_assortativeMating;		//Changed from d_assortative..
 
         //New equations with positive mating 
-        var numerator = (d_n * this.wAA) + ((h_n / 2) * this.wAa); 
+        //Default value for wAA, wAa, and waa is 1.0
+        var numerator = (d_n * this.wAA) + ((h_n / 2) * this.wAa);
         var denom = (d_n * this.wAA) + (h_n * this.wAa) + (r_n * this.waa);
 
-        this.setCurrentAlleleFre(numerator / denom);
+        this.setCurrentAlleleFre(numerator / denom); //Updates the current allele frequency  
     }
 
     //Update the frequency due to the selection effects from the selection and dominance coefficients 
