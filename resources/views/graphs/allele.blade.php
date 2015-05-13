@@ -157,16 +157,11 @@ foreach($_GET as $key => $value){
 					<div class="error"></div>
 					<div class="variables-section hidden">
 						@include('graphs.macros.simpleslider', ['name' => 'Population Size', 'symbol' => 'N', 'id' => 'population-size', 'helper' => '<strong>Setting this overrides infinite population size!</strong> <br/><br/>This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N.'])
+						@include('graphs.macros.simpleslider', ['name' => 'Number of Runs', 'symbol' => 'Runs', 'id' => 'batch-tool-runs', 'helper' => 'This variable determines the amount of lines that will be generated.'])
+
 					</div>
 				</div>
 
-				<div id="batch-tool" class="variable-section">
-					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Batch Runs <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
-					<div class="error"></div> 
-					<div class="variables-section hidden">
-						@include('graphs.macros.simpleslider', ['name' => 'Number of Runs', 'symbol' => 'Runs', 'id' => 'batch-tool-runs', 'helper' => 'This variable determines the amount of lines that will be generated.'])
-					</div>
-				</div>
 
 				<div id="selection-variables" class="variable-section"> 
 					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Selection <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
