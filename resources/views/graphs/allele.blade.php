@@ -12,10 +12,6 @@
 
 @section('lazyscripts')
 	@parent
-
-	<script src="{{ asset('/js/canvasJSN/source/canvasjs.js') }}"> </script>
-	<script src="{{ asset('/js/canvasJSN/source/jquery.canvasjs.js') }}"> </script>
-	<script src="{{ asset('/js/noui/jquery.nouislider.all.min.js') }}"> </script>
 	<script src="{{ asset('/js/config/popGen.config.chartJQ.allele.js') }}"> </script>
 	<script src="{{ asset('/js/config/popGen.config.noUISlider.allele.js') }}"> </script>
 	<script src="{{ asset('/js/popGen/popGen.htmlutil.js') }}"> </script>
@@ -31,6 +27,7 @@ $bookmarks = array();
 foreach($_GET as $key => $value){
 	$bookmarks[$key] = $value; 
 }
+
 ?>
 
 

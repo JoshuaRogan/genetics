@@ -13,9 +13,6 @@
 @section('lazyscripts')
 	@parent
 
-	<script src="{{ asset('/js/canvasJSN/source/canvasjs.js') }}"> </script>
-	<script src="{{ asset('/js/canvasJSN/source/jquery.canvasjs.js') }}"> </script>
-	<script src="{{ asset('/js/noui/jquery.nouislider.all.min.js') }}"> </script>
 	<script src="{{ asset('/js/config/popGen.config.chartJQ.genotype.js') }}"> </script>
 	<script src="{{ asset('/js/config/popGen.config.noUISlider.genotype.js') }}"> </script>
 	<script src="{{ asset('/js/popGen/popGen.htmlutil.js') }}"> </script>
