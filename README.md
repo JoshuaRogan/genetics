@@ -19,5 +19,5 @@ Third Party Components
 
 Main Components 
 --------------
-- [Main JavaScript Class](https://github.com/JoshuaRogan/genetics/blob/dev/public/js/population_genetics.js "JavaScript Class")
-- [Client JavaScript Class](https://github.com/JoshuaRogan/genetics/blob/dev/public/js/index.js "JavaScript Class")
+- [Main JavaScript Folder](https://github.com/JoshuaRogan/genetics/tree/dev/public/js/popGen "JavaScript")
+
