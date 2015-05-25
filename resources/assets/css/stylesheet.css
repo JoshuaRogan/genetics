@@ -1,3 +1,154 @@
+/**
+ *	Various font helper classes for colors and more
+ *
+ */
+.font-bold {
+  font-weight: bold;
+}
+.font-light {
+  font-weight: 300;
+}
+.font-p {
+  color: #333333;
+}
+.font-primary {
+  color: #4b516a;
+}
+.font-white {
+  color: #fff;
+}
+.font-off-white {
+  color: #ecf0f1;
+}
+.font-blue {
+  color: #3498db;
+}
+.font-yellow {
+  color: #f1c40f;
+}
+.font-purple {
+  color: #9b59b6;
+}
+.font-green {
+  color: #2ecc71;
+}
+.font-blue-green {
+  color: #1abc9c;
+}
+.font-red {
+  color: #e74c3c;
+}
+.font-orange {
+  color: #e67e22;
+}
+.font-concrete {
+  color: #95a5a6;
+}
+h1 {
+  font-size: 28.8px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  h1 {
+    font-size: 32.4px;
+  }
+}
+@media (min-width: 992px) {
+  h1 {
+    font-size: 34.199999999999996px;
+  }
+}
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 36px;
+  }
+}
+h2 {
+  font-size: 24px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  h2 {
+    font-size: 27px;
+  }
+}
+@media (min-width: 992px) {
+  h2 {
+    font-size: 28.5px;
+  }
+}
+@media (min-width: 1200px) {
+  h2 {
+    font-size: 30px;
+  }
+}
+h3 {
+  font-size: 19.200000000000003px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  h3 {
+    font-size: 21.6px;
+  }
+}
+@media (min-width: 992px) {
+  h3 {
+    font-size: 22.799999999999997px;
+  }
+}
+@media (min-width: 1200px) {
+  h3 {
+    font-size: 24px;
+  }
+}
+h4 {
+  font-size: 14.4px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  h4 {
+    font-size: 16.2px;
+  }
+}
+@media (min-width: 992px) {
+  h4 {
+    font-size: 17.099999999999998px;
+  }
+}
+@media (min-width: 1200px) {
+  h4 {
+    font-size: 18px;
+  }
+}
+h5 {
+  font-size: 11.200000000000001px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  h5 {
+    font-size: 12.6px;
+  }
+}
+@media (min-width: 992px) {
+  h5 {
+    font-size: 13.299999999999999px;
+  }
+}
+@media (min-width: 1200px) {
+  h5 {
+    font-size: 14px;
+  }
+}
 @media print {
   footer {
     display: none !important;
