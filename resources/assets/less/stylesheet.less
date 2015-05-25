@@ -561,29 +561,68 @@ footer{
 
 /******************NO UI SLIDER Modifications*******************/
 @import "imports/noui.less";	//No UI sliders CSS
-.slider{
-	margin-top: 10px;/* Vert Centering*/
 
-	&.active{
+.graph-allele{
+	.slider{
+		margin-top: 10px;/* Vert Centering*/
+
+		&.active{
+			&.noUi-connect {
+				background-color:  @brand-primary;
+			}
+		}v
+
 		&.noUi-connect {
-			background-color:  @brand-primary;
+			background-color: lighten(@gray-light, 20%) ; 
+	}
+	}
+
+	.range-slider .slider{
+		&.active{
+			.noUi-connect{
+				background-color: @brand-primary;
+			}
+		}
+
+		.noUi-connect{
+			background-color: lighten(@gray-light, 20%); 
 		}
 	}
 
-	&.noUi-connect {
-		background-color: lighten(@gray-light, 20%) ; 
-	}
 }
 
-.range-slider .slider{
-	&.active{
-		.noUi-connect{
-			background-color: @brand-primary;
+.graph-genotype{
+	.btn{
+		background-color: @brand-genotype; 
+		color: white;
+	}
+	a{
+		color: @brand-genotype; 
+	}
+	.slider{
+		margin-top: 10px;/* Vert Centering*/
+
+		&.active{
+			&.noUi-connect {
+				background-color:  @brand-genotype;
+			}
 		}
+
+		&.noUi-connect {
+			background-color: lighten(@gray-light, 20%); 
+	}
 	}
 
-	.noUi-connect{
-		background-color: lighten(@gray-light, 20%); 
+	.range-slider .slider{
+		&.active{
+			.noUi-connect{
+				background-color: @brand-genotype;
+			}
+		}
+
+		.noUi-connect{
+			background-color: lighten(@gray-light, 20%); 
+		}
 	}
 }
 

@@ -979,20 +979,43 @@ footer a:hover {
 .noUi-marker-vertical.noUi-marker-large {
   width: 15px;
 }
-.slider {
+.graph-allele .slider {
   margin-top: 10px;
   /* Vert Centering*/
 }
-.slider.active.noUi-connect {
+.graph-allele .slider.active.noUi-connect {
   background-color: #4b516a;
 }
-.slider.noUi-connect {
+v .graph-allele .slider.noUi-connect {
   background-color: #aaaaaa;
 }
-.range-slider .slider.active .noUi-connect {
+.graph-allele .range-slider .slider.active .noUi-connect {
   background-color: #4b516a;
 }
-.range-slider .slider .noUi-connect {
+.graph-allele .range-slider .slider .noUi-connect {
+  background-color: #aaaaaa;
+}
+.graph-genotype .btn {
+  background-color: #6a4b51;
+  color: white;
+}
+.graph-genotype a {
+  color: #6a4b51;
+}
+.graph-genotype .slider {
+  margin-top: 10px;
+  /* Vert Centering*/
+}
+.graph-genotype .slider.active.noUi-connect {
+  background-color: #6a4b51;
+}
+.graph-genotype .slider.noUi-connect {
+  background-color: #aaaaaa;
+}
+.graph-genotype .range-slider .slider.active .noUi-connect {
+  background-color: #6a4b51;
+}
+.graph-genotype .range-slider .slider .noUi-connect {
   background-color: #aaaaaa;
 }
 /******************CanvasJS Chart Modifications*******************/
