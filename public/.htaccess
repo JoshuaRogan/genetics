@@ -14,5 +14,10 @@
     RewriteRule ^ index.php [L]
 </IfModule>
 
-ModPagespeed on
-ModPagespeedEnableFilters rewrite_images
+<IfModule pagespeed_module>
+    ModPagespeed on
+    ModPagespeedEnableFilters rewrite_images
+    ModPagespeedEnableFilters remove_comments,rewrite_javascript,rewrite_css,rewrite_images
+    ModPagespeedEnableFilters elide_attributes,defer_javascript,move_css_to_head
+    ModPagespeedJpegRecompressionQuality -1
+</IfModule>
