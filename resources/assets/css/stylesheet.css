@@ -986,7 +986,7 @@ footer a:hover {
 .graph-allele .slider.active.noUi-connect {
   background-color: #4b516a;
 }
-v .graph-allele .slider.noUi-connect {
+.graph-allele .slider.noUi-connect {
   background-color: #aaaaaa;
 }
 .graph-allele .range-slider .slider.active .noUi-connect {
