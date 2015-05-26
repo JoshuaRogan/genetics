@@ -31,7 +31,7 @@
          	<ul class="nav navbar-nav navbar-right">
 				<li><span class="label label-primary hidden-sm hidden-xs">DEV</span></li>
 				<li class="divider">&nbsp;</li>
-				<li><span class="label label-success hidden-sm hidden-xs">Last Update 5/25/15</span></li>
+				<li><span class="label label-success hidden-sm hidden-xs">Last Update 5/26/15</span></li>
 			</ul> 
 
 
