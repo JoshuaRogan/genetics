@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<meta name="author" content="Josh Rogan">
 	<meta name="description" content="@yield('description')" >
 	
@@ -14,14 +14,10 @@
 
 	<!-- iOS Options -->
 
-	
-	
-	
 
-	
 	<!-- STYLESHEETS  -->
 	@section('styles')
-		<link rel="stylesheet" type="text/css" href="{{asset('/styles/style.min.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{asset('/styles/style.css')}}">
 		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     @show
 

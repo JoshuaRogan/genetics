@@ -221,9 +221,9 @@ class Router implements RegistrarContract {
 	 */
 	public function controllers(array $controllers)
 	{
-		foreach ($controllers as $uri => $name)
+		foreach ($controllers as $uri => $controller)
 		{
-			$this->controller($uri, $name);
+			$this->controller($uri, $controller);
 		}
 	}
 
@@ -323,7 +323,16 @@ class Router implements RegistrarContract {
 	 */
 	public function resource($name, $controller, array $options = array())
 	{
-		(new ResourceRegistrar($this))->register($name, $controller, $options);
+		if ($this->container && $this->container->bound('Illuminate\Routing\ResourceRegistrar'))
+		{
+			$registrar = $this->container->make('Illuminate\Routing\ResourceRegistrar');
+		}
+		else
+		{
+			$registrar = new ResourceRegistrar($this);
+		}
+
+		$registrar->register($name, $controller, $options);
 	}
 
 	/**

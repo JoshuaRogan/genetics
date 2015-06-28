@@ -1,37 +1,77 @@
 /**
- *	Various font helper classes for colors and more
- *
+ * Various font helper classes for colors and more
+ * 	-Must have variables.less
  */
+.font-bold {
+	font-weight: bold !important;
+}
 
+.font-thick {
+	.font-bold();
+}
 
-//Flat UI colors 
-@clouds: #ecf0f1;
-@peterRiver: #3498db;
-@sunflower: #f1c40f;
-@amethyst: #9b59b6;
-@emerald: #2ecc71;
-@turquoise: #1abc9c; 
-@alizarin: #e74c3c; 
-@carrot: #e67e22; 
-@concerte: #95a5a6; 
+//Font-bold wasn't working (may be overridden somewhere)
+.font-light {
+	font-weight: 300 !important;
+}
 
+.font-mono {
+	font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
 
+.font-p { color: @text-color; }
+.font-primary { color: @brand-primary; }
+.font-white { color: #fff; }
+.font-off-white { color: @clouds; }
+.font-blue { color: @peterRiver; }
+.font-yellow { color: @sunflower; }
+.font-purple { color: @amethyst; }
+.font-green { color: @emerald; }
+.font-blue-green { color: @turquoise; }
+.font-red { color: @alizarin; }
+.font-orange { color: @carrot; }
+.font-concrete { color: @concerte; }
 
+//Background Color Overrides 
+.background-primary { background-color: @brand-primary }
 
-.font-bold{ font-weight: bold;}
-.font-light{font-weight: 300}
+/**
+ * Create responsive fonts by having a reduction factor for each screen size and styling fonts
+ * appropriatley. Reduction factors are in variables.less file. 
+ * 
+ */
+#font-helpers {
+	.responsive-font(@size) {
+		.responsive-font-manual(@size * @xs-reduction, @size * @sm-reduction, @size * @md-reduction, @size * @lg-reduction);
+	}
 
+	/**
+	 * Mixin to allow to set all of the proper media sizes for a font
+	 * @param  {Font Size} @xs-size [The font size you want for this size.]
+	 * @param  {Font Size} @sm-size [The font size you want for this size.]
+	 * @param  {Font Size} @md-size [The font size you want for this size.]
+	 * @param  {Font Size} @lg-size [The font size you want for this size.]
+	 */
+	.responsive-font-manual(@xs-size, @sm-size, @md-size, @lg-size) {
+		font-size: (@xs-size);
 
-//Font color changes 
-.font-p{color: @text-color;}
-.font-primary{ color: @brand-primary;}
-.font-white{ color: #fff;}
-.font-off-white{ color: @clouds;}
-.font-blue{ color: @peterRiver;}
-.font-yellow{ color: @sunflower;}
-.font-purple{ color: @amethyst;}
-.font-green{ color: @emerald;}
-.font-blue-green{color: @turquoise;}
-.font-red{color: @alizarin;}
-.font-orange{color: @carrot;}
-.font-concrete{color: @concerte;}
+		/* Small devices (tablets, 768px and up) */
+		@media (min-width:@screen-sm-min) {
+			font-size: (@sm-size);
+		}
+
+		/* Medium devices (desktops, 992px and up) */
+		@media (min-width:@screen-md-min) {
+			font-size: (@md-size);
+		}
+
+		/* Large devices (large desktops, 1200px and up) */
+		@media (min-width:@screen-lg-min) {
+			font-size: (@lg-size);
+		}
+
+	}
+
+}

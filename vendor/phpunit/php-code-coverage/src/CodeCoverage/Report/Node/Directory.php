@@ -11,13 +11,7 @@
 /**
  * Represents a directory in the code coverage information tree.
  *
- * @category   PHP
- * @package    CodeCoverage
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://github.com/sebastianbergmann/php-code-coverage
- * @since      Class available since Release 1.1.0
+ * @since Class available since Release 1.1.0
  */
 class PHP_CodeCoverage_Report_Node_Directory extends PHP_CodeCoverage_Report_Node implements IteratorAggregate
 {
@@ -171,7 +165,11 @@ class PHP_CodeCoverage_Report_Node_Directory extends PHP_CodeCoverage_Report_Nod
     public function addFile($name, array $coverageData, array $testData, $cacheTokens)
     {
         $file = new PHP_CodeCoverage_Report_Node_File(
-            $name, $this, $coverageData, $testData, $cacheTokens
+            $name,
+            $this,
+            $coverageData,
+            $testData,
+            $cacheTokens
         );
 
         $this->children[] = $file;
@@ -225,7 +223,8 @@ class PHP_CodeCoverage_Report_Node_Directory extends PHP_CodeCoverage_Report_Nod
 
             foreach ($this->children as $child) {
                 $this->classes = array_merge(
-                    $this->classes, $child->getClasses()
+                    $this->classes,
+                    $child->getClasses()
                 );
             }
         }
@@ -245,7 +244,8 @@ class PHP_CodeCoverage_Report_Node_Directory extends PHP_CodeCoverage_Report_Nod
 
             foreach ($this->children as $child) {
                 $this->traits = array_merge(
-                    $this->traits, $child->getTraits()
+                    $this->traits,
+                    $child->getTraits()
                 );
             }
         }
@@ -265,7 +265,8 @@ class PHP_CodeCoverage_Report_Node_Directory extends PHP_CodeCoverage_Report_Nod
 
             foreach ($this->children as $child) {
                 $this->functions = array_merge(
-                    $this->functions, $child->getFunctions()
+                    $this->functions,
+                    $child->getFunctions()
                 );
             }
         }

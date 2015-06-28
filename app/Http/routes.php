@@ -25,6 +25,12 @@ Route::get('graphs/genotype', 'GraphsController@genotype');
 
 //Helper Pages 
 Route::get('faq', 'FAQController@index');
+
+Route::get('faq/technical', 'FAQController@technical');
+Route::get('faq/genetics', 'FAQController@genetics');
+
+Route::get('slides/{slug}', 'SlidesController@show');
+Route::get('slides/', 'SlidesController@index');
 Route::get('welcome', 'WelcomeController@index');
 
 //Bug Reporting 

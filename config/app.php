@@ -145,6 +145,13 @@ return [
 		'Genetics\Providers\EventServiceProvider',
 		'Genetics\Providers\RouteServiceProvider',
 
+		'Intervention\Image\ImageServiceProvider',
+		
+		'GrahamCampbell\Markdown\MarkdownServiceProvider',
+
+		'Radic\BladeExtensions\BladeExtensionsServiceProvider',
+
+
 	],
 
 	/*
@@ -192,6 +199,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		'Image' => 'Intervention\Image\Facades\Image',
+
+		'Markdown' => 'GrahamCampbell\Markdown\Facades\Markdown',
 
 	],
 

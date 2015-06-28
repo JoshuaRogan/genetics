@@ -3,7 +3,7 @@
 			<label>{{$name}}:<a href="#"><sup><i class="fa fa-question"></i></sup></a></label>
 
 			<div class="help-block hidden">
-				<div class="help-symbol-container">Symbol: <span class="help-symbol">{{$symbol}}</span> </div>
+				<div class="help-symbol-container"><span class="help-symbol">{{$symbol}}</span> </div>
 				<p>{{$helper}}</p>
 			</div>
 

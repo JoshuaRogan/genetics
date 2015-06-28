@@ -11,13 +11,7 @@
 /**
  * Represents a file in the code coverage information tree.
  *
- * @category   PHP
- * @package    CodeCoverage
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://github.com/sebastianbergmann/php-code-coverage
- * @since      Class available since Release 1.1.0
+ * @since Class available since Release 1.1.0
  */
 class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
 {
@@ -115,7 +109,8 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
     {
         if (!is_bool($cacheTokens)) {
             throw PHP_CodeCoverage_Util_InvalidArgumentHelper::factory(
-                1, 'boolean'
+                1,
+                'boolean'
             );
         }
 
@@ -373,19 +368,13 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
                 // Start line of a class.
                 if (isset($this->startLines[$lineNumber]['className'])) {
                     $currentClass = &$this->startLines[$lineNumber];
-                }
-
-                // Start line of a trait.
+                } // Start line of a trait.
                 elseif (isset($this->startLines[$lineNumber]['traitName'])) {
                     $currentTrait = &$this->startLines[$lineNumber];
-                }
-
-                // Start line of a method.
+                } // Start line of a method.
                 elseif (isset($this->startLines[$lineNumber]['methodName'])) {
                     $currentMethod = &$this->startLines[$lineNumber];
-                }
-
-                // Start line of a function.
+                } // Start line of a function.
                 elseif (isset($this->startLines[$lineNumber]['functionName'])) {
                     $currentFunction = &$this->startLines[$lineNumber];
                 }
@@ -436,19 +425,13 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
                 // End line of a class.
                 if (isset($this->endLines[$lineNumber]['className'])) {
                     unset($currentClass);
-                }
-
-                // End line of a trait.
+                } // End line of a trait.
                 elseif (isset($this->endLines[$lineNumber]['traitName'])) {
                     unset($currentTrait);
-                }
-
-                // End line of a method.
+                } // End line of a method.
                 elseif (isset($this->endLines[$lineNumber]['methodName'])) {
                     unset($currentMethod);
-                }
-
-                // End line of a function.
+                } // End line of a function.
                 elseif (isset($this->endLines[$lineNumber]['functionName'])) {
                     unset($currentFunction);
                 }
@@ -465,7 +448,8 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
                 }
 
                 $method['crap'] = $this->crap(
-                    $method['ccn'], $method['coverage']
+                    $method['ccn'],
+                    $method['coverage']
                 );
 
                 $trait['ccn'] += $method['ccn'];
@@ -483,7 +467,8 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
             }
 
             $trait['crap'] = $this->crap(
-                $trait['ccn'], $trait['coverage']
+                $trait['ccn'],
+                $trait['coverage']
             );
         }
 
@@ -497,7 +482,8 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
                 }
 
                 $method['crap'] = $this->crap(
-                    $method['ccn'], $method['coverage']
+                    $method['ccn'],
+                    $method['coverage']
                 );
 
                 $class['ccn'] += $method['ccn'];
@@ -515,7 +501,8 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
             }
 
             $class['crap'] = $this->crap(
-                $class['ccn'], $class['coverage']
+                $class['ccn'],
+                $class['coverage']
             );
         }
     }
@@ -654,7 +641,7 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
     protected function crap($ccn, $coverage)
     {
         if ($coverage == 0) {
-            return (string) pow($ccn, 2) + $ccn;
+            return (string) (pow($ccn, 2) + $ccn);
         }
 
         if ($coverage >= 95) {
@@ -662,7 +649,8 @@ class PHP_CodeCoverage_Report_Node_File extends PHP_CodeCoverage_Report_Node
         }
 
         return sprintf(
-            '%01.2F', pow($ccn, 2) * pow(1 - $coverage/100, 3) + $ccn
+            '%01.2F',
+            pow($ccn, 2) * pow(1 - $coverage/100, 3) + $ccn
         );
     }
 }

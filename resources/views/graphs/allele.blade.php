@@ -127,10 +127,11 @@ foreach($_GET as $key => $value){
 			<div > 
 				<h3> <i class="fa fa-bar-chart"></i> <strong>Batch Graph Stats</strong> </h3>
 				<ul class='list-unstyled block-center'>
-					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 1 =</span><span class='legend-val' id="timeto1"></span> </li>
-					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to 0 =</span><span class='legend-val' id="timeto0"></span> </li>
-					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Times Hit 1 =</span><span class='legend-val' id="timeshit1"></span> </li>
-					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Times Hit 0 =</span><span class='legend-val' id="timeshit0"></span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to A fixation, P(A)=1:</span><span class='legend-val' id="timeto1"></span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>No. of simulations reaching fixation:</span><span class='legend-val' id="timeshit1"></span> </li>
+
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>Avg. Gens to A elimination, P(A)=0:</span><span class='legend-val' id="timeto0"></span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class='legend-var'>No. of simulations reaching elimination:</span><span class='legend-val' id="timeshit0"></span> </li>
 				</ul>
 			</div>
 		</div>
@@ -143,7 +144,7 @@ foreach($_GET as $key => $value){
 				<div class="error"></div>
 				<div class="variables-section">
 					@include('graphs.macros.simpleslider', ['name' => 'Generations', 'symbol' => 't', 'id' => 'generations', 'helper' => 'This is the number of generations to be simulated.'])
-					@include('graphs.macros.simpleslider', ['name' => 'Starting Allele Frequency', 'symbol' => 'p', 'id' => 'starting-allele-frequency', 'helper' => 'his is the frequency of the allele of interest, A, at generation 0.'])
+					@include('graphs.macros.simpleslider', ['name' => 'Starting Allele Frequency', 'symbol' => 'p', 'id' => 'starting-allele-frequency', 'helper' => 'This is the frequency of the allele of interest, A, at generation 0.'])
 				</div>
 			</div>
 
@@ -153,8 +154,8 @@ foreach($_GET as $key => $value){
 					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Finite Population<a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div>
 					<div class="variables-section hidden">
-						@include('graphs.macros.simpleslider', ['name' => 'Population Size', 'symbol' => 'N', 'id' => 'population-size', 'helper' => '<strong>Setting this overrides infinite population size!</strong> <br/><br/>This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N.'])
-						@include('graphs.macros.simpleslider', ['name' => 'Number of Runs', 'symbol' => 'Runs', 'id' => 'batch-tool-runs', 'helper' => 'This variable determines the amount of lines that will be generated.'])
+						@include('graphs.macros.simpleslider', ['name' => 'Population Size', 'symbol' => 'N', 'id' => 'population-size', 'helper' => 'This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N. If this parameter is not enabled, the simulation will model the theoretical infinitely sized population.'])
+						@include('graphs.macros.simpleslider', ['name' => 'Number of Simulations', 'symbol' => '', 'id' => 'batch-tool-runs', 'helper' => 'This parameter sets the number of simulations that will be run and plotted simultaneously as a batch.'])
 
 					</div>
 				</div>
@@ -164,9 +165,9 @@ foreach($_GET as $key => $value){
 					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Selection <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div>
 					<div class="variables-section hidden">
-						@include('graphs.macros.simpleslider', ['name' => 'Fitness Coefficient(w<sub>AA</sub>)', 'symbol' => 'w<sub>AA</sub>', 'id' => 'fitness-coefficient-wAA', 'helper' => 'This describes the relative fitness of individuals with the AA genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAa and waa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both'])
-						@include('graphs.macros.simpleslider', ['name' => 'Fitness Coefficient(w<sub>Aa</sub>)', 'symbol' => 'w<sub>Aa</sub>', 'id' => 'fitness-coefficient-wAa', 'helper' => 'This describes the relative fitness of individuals with the Aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAA and waa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.'])
-						@include('graphs.macros.simpleslider', ['name' => 'Fitness Coefficient(w<sub>aa</sub>)', 'symbol' => 'w<sub>aa</sub>', 'id' => 'fitness-coefficient-waa', 'helper' => 'This describes the relative fitness of individuals with the aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAA and wAa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.'])
+						@include('graphs.macros.simpleslider', ['name' => 'Fitness Coefficient(w<sub>AA</sub>)', 'symbol' => 'w<sub>AA</sub>', 'id' => 'fitness-coefficient-wAA', 'helper' => 'This describes the relative fitness of individuals with the AA genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., w<sub>Aa</sub> and w<sub>aa</sub>). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.'])
+						@include('graphs.macros.simpleslider', ['name' => 'Fitness Coefficient(w<sub>Aa</sub>)', 'symbol' => 'w<sub>Aa</sub>', 'id' => 'fitness-coefficient-wAa', 'helper' => 'This describes the relative fitness of individuals with the Aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., w<sub>AA</sub> and w<sub>aa</sub>). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.'])
+						@include('graphs.macros.simpleslider', ['name' => 'Fitness Coefficient(w<sub>aa</sub>)', 'symbol' => 'w<sub>aa</sub>', 'id' => 'fitness-coefficient-waa', 'helper' => 'This describes the relative fitness of individuals with the aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., w<sub>AA</sub> and w<sub>Aa</sub>). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.'])
 						@include('graphs.macros.simpleslider', ['name' => 'Selection Coefficient', 'symbol' => 's', 'id' => 'selection-coefficient', 'helper' => 'This represents the degree of selection against the aa genotype group with respect to the AA genotype group. A value of s = 1 indicates 100% selection against the aa genotype group. A value of s = 0 indicates no selection against the aa genotype group. Note, selection can be defined in terms of the selection and dominance coefficients, or in terms of the three fitness coefficients, but not both.'])
 						@include('graphs.macros.simpleslider', ['name' => 'Dominance Coefficient', 'symbol' => 'h', 'id' => 'dominance-coefficient', 'helper' => 'This represents the degree of dominance of the unfavored a allele in selection. The product of selection and dominance coefficients (i.e., s × h) represents the degree of selection against the Aa genotype group with respect to the AA genotype group. A value of h = 1 indicates that the Aa genotype group is equally unfavored as the aa genotype group. A value of h = 0 indicates that the Aa genotype group is equally favored as the AA genotype group. A value of h = 0.5 represents the additive model, where the selection against the Aa genotype group is half that of the aa genotype group. Negative values of h (representing over‐dominance or “heterozygote advantage”) are not implemented. Instead use fitness coefficients to describe situations of over‐ or under‐dominance. Note, selection can be defined in terms of selection and dominance coefficients, or in terms of the three fitness coefficients, but not both.'])	
 					</div>
@@ -177,8 +178,8 @@ foreach($_GET as $key => $value){
 					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Mutation <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div>
 					<div class="variables-section hidden">
-						@include('graphs.macros.mutationslider', ['name' => 'Forward Mutation', 'symbol' => '&mu;', 'id' => 'mutation-rate-mu', 'helper' => 'The rate at which allele A mutates to allele a per generation.'])
-						@include('graphs.macros.mutationslider', ['name' => 'Reverse Mutation', 'symbol' => '&nu;', 'id' => 'mutation-rate-nu', 'helper' => 'The rate of which allele a mutates to allele A per generation.'])
+						@include('graphs.macros.mutationslider', ['name' => 'Forward Mutation Rate', 'symbol' => '&mu;', 'id' => 'mutation-rate-mu', 'helper' => 'The rate at which allele A mutates to allele a per generation.'])
+						@include('graphs.macros.mutationslider', ['name' => 'Reverse Mutation Rate', 'symbol' => '&nu;', 'id' => 'mutation-rate-nu', 'helper' => 'The rate at which allele a mutates to allele A per generation.'])
 					</div>
 				</div>				
 
@@ -188,7 +189,7 @@ foreach($_GET as $key => $value){
 
 					<div class="variables-section hidden">
 						@include('graphs.macros.simpleslider', ['name' => 'Migration Rate', 'symbol' => 'm', 'id' => 'migration-rate', 'helper' => 'The rate at which migrant alleles enter the population per generation.'])
-						@include('graphs.macros.simpleslider', ['name' => 'Migrant Allele Frequency', 'symbol' => 'p<sub>M</sub>', 'id' => 'migrant-allele-frequency', 'helper' => 'The frequency of the A allele in among all alleles entering the population.'])
+						@include('graphs.macros.simpleslider', ['name' => 'Migrant Allele Frequency', 'symbol' => 'p<sub>M</sub>', 'id' => 'migrant-allele-frequency', 'helper' => 'The frequency of the A allele among all migrant alleles entering the population.'])
 					</div>
 				</div>
 
@@ -198,7 +199,7 @@ foreach($_GET as $key => $value){
 					<div class="error"></div>
 
 					<div class="variables-section hidden">
-						@include('graphs.macros.simpleslider', ['name' => 'Inbreeding Coefficient', 'symbol' => 'F', 'id' => 'inbreeding-coefficient', 'helper' => 'This is the probability that both alleles in a randomly chosen individual in the population are identical‐by‐descent (IBD). A value of F = 0 indicates there is no inbreeding within the population. A value of 1 indicates that there is complete autozygosity such as found in inbred lines model organisms."'])
+						@include('graphs.macros.simpleslider', ['name' => 'Inbreeding Coefficient', 'symbol' => 'F', 'id' => 'inbreeding-coefficient', 'helper' => 'This is the probability that both alleles in a randomly chosen individual in the population are identical‐by‐descent (IBD). A value of F = 0 indicates there is no inbreeding within the population. A value of 1 indicates that there is complete autozygosity such as found in inbred lines of model organisms.'])
 					</div>
 				</div>
 
@@ -212,11 +213,11 @@ foreach($_GET as $key => $value){
 				</div>
 
 				<div id="population-control" class="variable-section">
-					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Population Bottleneck <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
+					<h3><a href="#"><i class="variable-activator fa fa-square-o"></i></a> Bottleneck Generations <a href="#" class="variable-section-toggle pull-right"><i class='fa fa-chevron-down'></i></a></h3>
 					<div class="error"></div> 
 					<div class="variables-section hidden">
-						@include('graphs.macros.rangeslider', ['name' => 'Generations to Override', 'id' => 'generation-to-override', 'helper' => 'Church-key art party umami, meggings squid bitters gastropub synth meh freegan narwhal you probably haven\'t heard of them single-origin coffee yr.'])
-						@include('graphs.macros.simpleslider', ['name' => 'Population Size', 'symbol' => 'N<sub>B</sub>', 'id' => 'new-population-size', 'helper' => 'helper'])
+						@include('graphs.macros.rangeslider', ['name' => 'Generations to Override', 'id' => 'generation-to-override', 'helper' => 'These parameters indicate the start and end generations, respectively, of the population bottleneck event.'])
+						@include('graphs.macros.simpleslider', ['name' => 'Population Size', 'symbol' => 'N<sub>B</sub>', 'id' => 'new-population-size', 'helper' => 'This is the number of individuals in the population during the bottleneck event.  Note that the number of chromosomes simulated is 2NB.'])
 					</div>
 				</div>
 

@@ -1,60 +1,82 @@
 //Import bootstrap variables and mixins 
-@import "bootstrap/variables.less";	
-@import "bootstrap/mixins.less";	
+@import "variables/variables.less";
+@import "bootstrap/variables.less";
+@import "bootstrap/mixins.less";
 @import "font-helpers.less";
+@import "helpers.less";
 @import "typography.less";
+@import "anchor-js.less";
 
-body{
-
+body {
 }
 
-@media print{
-	footer {display: none !important;}
-	nav {display: none !important;}	
-	.canvasjs-chart-toolbar{display: none !important}	//Hide the zoom and move on the graph
-	#vars-section, #buttons, #variable-header{
-		display: none !important; 
-		.clearfix();
-	}
-	#variables{
-		.clearfix(); 
+h1 { #font-helpers .responsive-font(@font-size-h1); }
+h2 { #font-helpers .responsive-font(@font-size-h2); }
+h3 { #font-helpers .responsive-font(@font-size-h3); }
+h4 { #font-helpers .responsive-font(@font-size-h4); }
+h5 { #font-helpers .responsive-font(@font-size-h5); }
+
+@media print {
+	footer {
+		display: none !important;
 	}
 
-	.legend{
-		.clearfix();
-		.togglelegend{display: none !important; }
-	}
-	.hidden-legend{
-		display: none !important; 
+	nav {
+		display: none !important;
 	}
 
-	#multiple-legends-container{
+	.canvasjs-chart-toolbar {
+		display: none !important;
+	}
+
+	//Hide the zoom and move on the graph
+	#vars-section,
+	#buttons,
+	#variable-header {
+		display: none !important;
+		.clearfix();
+	}
+
+	#variables {
+		.clearfix();
+	}
+
+	.legend {
+		.clearfix();
+
+		.togglelegend {
+			display: none !important;
+		}
+
+	}
+
+	.hidden-legend {
+		display: none !important;
+	}
+
+	#multiple-legends-container {
 		margin-top: 250px;
 	}
+
 }
 
-
-
-
-.page-graph{
-	.bookmark-link{
-		color: @brand-primary; 
+.page-graph {
+	.bookmark-link {
+		color: @brand-primary;
 		font-weight: bold;
 		font-size: 17px;
 	}
-	
 
 	//Style for the infinite symbol
-	.infinite-sym{
+	.infinite-sym {
 		font-size: 30px;
 		vertical-align: middle;
 	}
 
-	#graph_wrapper{
-
+	#graph_wrapper {
 		#gradient > .vertical(@brand-primary, darken(@brand-primary, 20%));
 
-		&.genotype-graph{
+		&.genotype-graph {
 			#gradient > .vertical(@brand-genotype, darken(@brand-genotype, 20%));
 		}
 
@@ -64,589 +86,659 @@ body{
 		color: #fff;
 		text-align: center;
 
-		h1, h2, h3{
+		h1,
+		h2,
+		h3 {
 			font-weight: 300;
 		}
 
-		h1{
+		h1 {
 			font-size: 16px;
+
 			/* Small devices (tablets, 768px and up) */
-			@media (min-width: @screen-sm-min) {font-size: 26px;}
+			@media (min-width:@screen-sm-min) {
+				font-size: 26px;
+			}
 
 			/* Medium devices (desktops, 992px and up) */
-			@media (min-width: @screen-md-min) {font-size: 36px; }
+			@media (min-width:@screen-md-min) {
+				font-size: 36px;
+			}
 
 			/* Large devices (large desktops, 1200px and up) */
-			// @media (min-width: @screen-lg-min) {height: 550px; }	
+			@media (min-width:@screen-lg-min) {
+				font-size: 38px;
+			}
+
 		}
 
-		p{
+		p {
 			color: #fff;
 			font-weight: 300;
 		}
 
-		#graph-canvas{
+		#graph-canvas {
 			height: 250px;
+
 			/* Small devices (tablets, 768px and up) */
-			@media (min-width: @screen-sm-min) {height: 300px; }
+			@media (min-width:@screen-sm-min) {
+				height: 300px;
+			}
 
 			/* Medium devices (desktops, 992px and up) */
-			@media (min-width: @screen-md-min) {height: 450px; }
+			@media (min-width:@screen-md-min) {
+				height: 450px;
+			}
 
 			/* Large devices (large desktops, 1200px and up) */
-			@media (min-width: @screen-lg-min) {height: 550px; }
-
-			//Color of the text for saving graph as png, jpg
-			.canvasjs-chart-container{
-				color: #000; 
+			@media (min-width:@screen-lg-min) {
+				height: 550px;
 			}
+
+			//Color of the text for saving graph as png,
+			jpg
+			.canvasjs-chart-container {
+				color: #000;
+			}
+
 		}
 
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
 		border-radius: 2px;
 		border: 0;
-
-
 	}
 
 	#variables {
-
-		h2{
+		h2 {
 			font-size: 25px;
-			/* Small devices (tablets, 768px and up) */
-			@media (min-width: @screen-sm-min) {font-size: 30px; }
-			/* Medium devices (desktops, 992px and up) */
-			@media (min-width: @screen-md-min) {font-size: 35px; }
-			/* Large devices (large desktops, 1200px and up) */
-			@media (min-width: @screen-lg-min) {font-size: 35px; }
 
-			a{//open all and show help 
-				font-size: 15px;
-				/* Small devices (tablets, 768px and up) */
-				@media (min-width: @screen-sm-min) {font-size: 20px; }
-				/* Medium devices (desktops, 992px and up) */
-				@media (min-width: @screen-md-min) {font-size: 25px; }
-				/* Large devices (large desktops, 1200px and up) */
-				@media (min-width: @screen-lg-min) {font-size: 25px; }
+			/* Small devices (tablets, 768px and up) */
+			@media (min-width:@screen-sm-min) {
+				font-size: 30px;
 			}
+
+			/* Medium devices (desktops, 992px and up) */
+			@media (min-width:@screen-md-min) {
+				font-size: 35px;
+			}
+
+			/* Large devices (large desktops, 1200px and up) */
+			@media (min-width:@screen-lg-min) {
+				font-size: 35px;
+			}
+
+			a {
+				//open all and show help 
+				font-size: 15px;
+
+				/* Small devices (tablets, 768px and up) */
+				@media (min-width:@screen-sm-min) {
+					font-size: 20px;
+				}
+
+				/* Medium devices (desktops, 992px and up) */
+				@media (min-width:@screen-md-min) {
+					font-size: 25px;
+				}
+
+				/* Large devices (large desktops, 1200px and up) */
+				@media (min-width:@screen-lg-min) {
+					font-size: 25px;
+				}
+
+			}
+
 		}
 
-		h3{
+		h3 {
 			color: @gray-light;
 			font-weight: 300;
 		}
 
-		.error{
-			font-weight: bold; 
-			color: red; 	
+		.error {
+			font-weight: bold;
+			color: red;
 		}
 
 		//New Legend 
-		#multiple-legends-container{
-			.modified-value .legend-val{
-					color: @brand-danger; 
-				}
+		#multiple-legends-container {
+			.modified-value .legend-val {
+				color: @brand-danger;
+			}
 
-			.legend{	
-
+			.legend {
 				margin-bottom: 5px;
 				background-color: lighten(@brand-primary, 70%);
 				padding: 8px;
-				border: 1px solid lighten(@brand-primary, 60%); 
-
-				
-				box-shadow:  0 1px 6px rgba(0,0,0,.12),0 1px 6px rgba(0,0,0,.12);
+				border: 1px solid lighten(@brand-primary, 60%);
+				box-shadow: 0 1px 6px rgba(0, 0, 0, .12), 0 1px 6px rgba(0, 0, 0, .12);
 				border-radius: 2px;
 				border: 0;
 
-				
-
 				//Style for hidden legend 
-				&.hidden-legend{
-					.legend-variables{
-						display: hidden; 
+				&.hidden-legend {
+					.legend-variables {
+						display: hidden;
 					}
 
-					height: 30px; 
+					height: 30px;
 					max-height: 30px;
 					overflow: hidden;
 
-					h3{
+					h3 {
 						font-size: 15px;
-						margin: 0; 
+						margin: 0;
 						padding: 0;
 
-						.togglelegend{ 
+						.togglelegend {
 							font-size: 15px;
 						}
-					}	
 
-					box-shadow:  none; 
+					}
+
+					box-shadow: none;
 					border-radius: 2px;
-					border: 1px solid lighten(@brand-primary, 60%); 
+					border: 1px solid lighten(@brand-primary, 60%);
 				}
 
-
-
-				h3{
-					color: @brand-primary; 
+				h3 {
+					color: @brand-primary;
 					margin-top: 8px;
 					font-size: 18px;
-					
 
-					
 					/* (tablets, 768px and up) */
-					@media (min-width: @screen-sm-min) {
+					@media (min-width:@screen-sm-min) {
 						font-size: 24px;
-						.togglelegend{ 
+
+						.togglelegend {
 							font-size: 20px;
 						}
+
 					}
+
 				}
 
 				//Variable Name
-				.legend-var{
+				.legend-var {
 					padding-right: 4px;
 				}
 
-				.legend-symbol{
-					padding-left: 2px; 
+				.legend-symbol {
+					padding-left: 2px;
 					padding-right: 5px;
 					font-size: 18px;
-					font-style: italic; 
-					&:after{
+					font-style: italic;
+
+					&:after {
 						content: " = ";
-					} 
+					}
 
 				}
 
 				//Variable Value 
-				.legend-val{
+				.legend-val {
 					font-weight: 600;
 				}
 
-				.legend-warning{
+				.legend-warning {
 					padding-left: 4px;
 
-					.fa-exclamation-triangle, .fa-exclamation, .fa-tachometer {
-						color: #e74c3c; 
+					.fa-exclamation-triangle,
+					.fa-exclamation,
+					.fa-tachometer {
+						color: #e74c3c;
 					}
 
-					.fa-recycle{
-						color: #2ecc71; 
-						color: darken(#79D281, 25); 
+					.fa-recycle {
+						color: #2ecc71;
+						color: darken(#79D281, 25);
 					}
-					
+
 				}
 
 				//Raw Data Link
-				p{
-					margin-top:10px;
+				p {
+					margin-top: 10px;
 				}
+
 			}
+
 		}
 
-
 		//Graph stats using the batch tool 
-		#graph_stats{
+		#graph_stats {
 			margin-bottom: 5px;
 			background-color: lighten(@brand-primary, 70%);
 			padding: 8px;
-			border: 1px solid lighten(@brand-primary, 60%); 
-
-			
-			box-shadow:  0 1px 6px rgba(0,0,0,.12),0 1px 6px rgba(0,0,0,.12);
+			border: 1px solid lighten(@brand-primary, 60%);
+			box-shadow: 0 1px 6px rgba(0, 0, 0, .12), 0 1px 6px rgba(0, 0, 0, .12);
 			border-radius: 2px;
 			border: 0;
 
-			h3{
-				color: @brand-primary; 
+			h3 {
+				color: @brand-primary;
 				margin-top: 8px;
 				font-size: 18px;
-				
 
-				
 				/* (tablets, 768px and up) */
-				@media (min-width: @screen-sm-min) {
+				@media (min-width:@screen-sm-min) {
 					font-size: 24px;
-					.togglelegend{ 
+
+					.togglelegend {
 						font-size: 20px;
 					}
+
 				}
+
 			}
 
 			//Variable Name
-			.legend-var{
+			.legend-var {
 				padding-right: 4px;
 			}
+
 			//Variable Value 
-			.legend-val{
+			.legend-val {
 				font-weight: 600;
 			}
 
 		}
 
-
-
-
-
-
-
-
-
-
-
-		.variable-section{
+		.variable-section {
 			border-bottom: 1px solid rgba(85, 85, 85, 0.50);
 		}
-		
 
-		.variable{
+		.variable {
 			margin-top: 20px;
 
-			input::selection {background: rgba(20, 20, 37, 0.20);}
-			input::-moz-selection {background: rgba(20, 20, 37, 0.20);}
-				
+			input::selection {
+				background: rgba(20, 20, 37, 0.20);
+			}
+
+			input::-moz-selection {
+				background: rgba(20, 20, 37, 0.20);
+			}
+
 			/**Variable Name**/
-			label{
+			label {
 				font-size: 18px;
 				font-weight: normal;
 				overflow: hidden;
 
 				/* Small devices (tablets, 768px and up) */
-				@media (min-width: @screen-sm-min) {font-size: 19px; }
+				@media (min-width:@screen-sm-min) {
+					font-size: 19px;
+				}
 
 				/* Medium devices (desktops, 992px and up) */
-				@media (min-width: @screen-md-min) {font-size: 19px; }
+				@media (min-width:@screen-md-min) {
+					font-size: 19px;
+				}
 
 				/* Large devices (large desktops, 1200px and up) */
-				@media (min-width: @screen-lg-min) {font-size: 20px; }
+				@media (min-width:@screen-lg-min) {
+					font-size: 20px;
+				}
+
 			}
 
 			//Helper text 
-			.help-block{
+			.help-block {
 				margin-top: 0;
 				margin-bottom: 0;
-				padding-left: 0;  
+				padding-left: 0;
 
 				/* Small devices (tablets, 768px and up) */
-				@media (min-width: @screen-sm-min) {padding-left: 10px; }
+				@media (min-width:@screen-sm-min) {
+					padding-left: 10px;
+				}
 
-
-				.help-symbol-container{
+				.help-symbol-container {
 					font-size: 18px;
-					color: @brand-primary; 
+					color: @brand-primary;
 					font-weight: 900;
 
-					.help-symbol{
+					.help-symbol {
 						font-size: 22px;
 						font-style: italic;
 					}
+
 				}
 
-				p{
+				p {
 					font-size: 15px;
-					
 				}
+
 			}
-
-
-
-
-
-
-
-
 
 			/**Helper Text*/
-			#label-infinite-sample-size{
+			#label-infinite-sample-size {
 				font-style: normal;
-				// font-size: 
+				// font-size:
 			}
-			#infinite_sample_size{
+
+			#infinite_sample_size {
 				margin-top: 3px;
+
 				/* Small devices (tablets, 768px and up) */
-				@media (min-width: @screen-sm-min) {margin-top: 8px; }
+				@media (min-width:@screen-sm-min) {
+					margin-top: 8px;
+				}
 
 				/* Medium devices (desktops, 992px and up) */
-				@media (min-width: @screen-md-min) {font-size: 8px; }
+				@media (min-width:@screen-md-min) {
+					font-size: 8px;
+				}
 
 				/* Large devices (large desktops, 1200px and up) */
-				@media (min-width: @screen-lg-min) {margin-top: 8px; }
+				@media (min-width:@screen-lg-min) {
+					margin-top: 8px;
+				}
+
 			}
-			
 
 			/*Variable Value*/
-			.value{
+			.value {
 				text-align: center;
 				font-size: 28px;
 				font-weight: 300;
 				margin-top: 10px;
 
-				@media (min-width: @screen-sm-min) {margin-top: 0; }
+				@media (min-width:@screen-sm-min) {
+					margin-top: 0;
+				}
 
-				input{
+				input {
 					border: none;
 					font-size: 26px;
 					box-shadow: none;
-					margin-top:0;
-					padding-top:0;
+					margin-top: 0;
+					padding-top: 0;
 					text-align: center;
 					height: 100%;
 				}
 
-
-
 			}
 
-			.scientific-notation-container{
-				margin-left: 0; 
-				padding-left: 0; 
-				margin-top:0;
-				padding-top:0;
-
-			
+			.scientific-notation-container {
+				margin-left: 0;
+				padding-left: 0;
+				margin-top: 0;
+				padding-top: 0;
 				font-weight: 300;
+
 				//x10
-				.scientific-notation{
-						font-size: 20px;
-						text-align: right;
-						padding-right: 0;
-						margin-right: 0;
+				.scientific-notation {
+					font-size: 20px;
+					text-align: right;
+					padding-right: 0;
+					margin-right: 0;
 				}
 
 				//Mutation exponent dropdown
-				.scientific-form-group .mutation-exponent{
+				.scientific-form-group .mutation-exponent {
 					font-size: 18px;
 					height: 34px;
 					padding: 3px 3px;
 
 					/* Small devices (tablets, 768px and up) */
-					@media (max-width: @screen-sm-min) {
+					@media (max-width:@screen-sm-min) {
 						font-size: 20px;
 						height: 38px;
-						padding: 6px 12px; //Defaults
+						padding: 6px 12px;
+						//Defaults
 					}
 
 					/* Medium devices (desktops, 992px and up) */
-					@media (min-width: @screen-md-min) {
+					@media (min-width:@screen-md-min) {
 						font-size: 20px;
-						height: 38px; 
-						padding: 6px 12px; //Defaults
+						height: 38px;
+						padding: 6px 12px;
+						//Defaults
 					}
 
-
-
-					option{
-						
+					option {
 						text-align: center;
 					}
-				
 
 				}
+
 			}
 
 		}
 
-
 		//Checkboxes and options for the form 
-		#options{
-			margin-top: 20px; 
+		#options {
+			margin-top: 20px;
 			text-align: center;
 
-			@media (min-width: @screen-lg-min) {text-align: left; }
+			@media (min-width:@screen-lg-min) {
+				text-align: left;
+			}
 
 		}
 
-
-
-		#buttons{
+		#buttons {
 			margin-top: 0px;
 			margin-bottom: 20px;
 			text-align: center;
 
-			a{
-				margin-top: 20px; //For when vertical collapse
+			a {
+				margin-top: 20px;
+				//For when vertical collapse
 			}
 
 			//Modify the sizing of the buttons on different screen sizes 
-			.btn{
+			.btn {
 				font-size: 14px;
+
 				/* Small devices (tablets, 768px and up) */
-				@media (min-width: @screen-sm-min) {font-size: 15px; }
+				@media (min-width:@screen-sm-min) {
+					font-size: 15px;
+				}
 
 				/* Medium devices (desktops, 992px and up) */
-				@media (min-width: @screen-md-min) {font-size: 16px; }
+				@media (min-width:@screen-md-min) {
+					font-size: 16px;
+				}
 
 				/* Large devices (large desktops, 1200px and up) */
-				@media (min-width: @screen-lg-min) {font-size: 18px; }
+				@media (min-width:@screen-lg-min) {
+					font-size: 18px;
+				}
+
 			}
+
 		}
+
 	}
 
-	#results_panel{
+	#results_panel {
 		margin-top: 20px;
-		
-		#results{
-			height: 800px; 
+
+		#results {
+			height: 800px;
 			overflow-y: scroll
 		}
 
 	}
 
 	//Graph Computing Modal that runs as the graph is being generated
-	#graph-computing-modal{
-		#graph-completion-precent{
+	#graph-computing-modal {
+		#graph-completion-precent {
 			font-size: 500%;
 			text-align: center;
 
-			&.completed{
+			&.completed {
 				color: green;
 			}
 
-			&.failed{
-				color: red; 
+			&.failed {
+				color: red;
 			}
 		}
-
-
 	}
 }
 
+.page-faq {
+	#anchor-js .shift-out();
+	.bootstrap-sidebar();
 
-.page-faq{
-	.faqHeader {
-        font-size: 27px;
-        margin: 20px;
-    }
-}
+	pre.formula{
+		#font-helpers.responsive-font(16px);
+		text-align: center;
+	}
 
-.page-welcome{
-	.welcome{
-		.page-graph #graph_wrapper();
-		p{
-			
+	.question {
+		.question-content{
+			img { .img-responsive();}
 		}
 	}
-	.logo .fa{
-		font-size: 150px; 
-	}
 }
 
+.page-welcome {
+	.welcome {
+		.page-graph #graph_wrapper();
 
+		p {
+		}
 
+	}
 
-footer{
+	.logo .fa {
+		font-size: 150px;
+	}
+
+}
+
+footer {
 	#gradient > .vertical(@brand-primary, darken(@brand-primary, 20%));
-
 	padding-top: 40px;
 	margin-top: 60px;
 	color: white;
 
-	.container-fluid{
+	.container-fluid {
 		margin-left: 2%;
 		margin-right: 2%;
 	}
 
-	a{
+	a {
 		color: white;
 		font-weight: bold
 	}
 
-	a:hover{
+	a:hover {
 		color: white;
 	}
 
 }
 
 /******************NO UI SLIDER Modifications*******************/
-@import "imports/noui.less";	//No UI sliders CSS
+@import "imports/noui.less";
 
-.graph-allele{
-	.slider{
-		margin-top: 10px;/* Vert Centering*/
+//No UI sliders CSS
 
-		&.active{
+.graph-allele {
+	.slider {
+		margin-top: 10px;
+
+		/* Vert Centering*/
+		&.active {
 			&.noUi-connect {
-				background-color:  @brand-primary;
-			}
-		}
-
-		&.noUi-connect {
-			background-color: lighten(@gray-light, 20%) ; 
-	}
-	}
-
-	.range-slider .slider{
-		&.active{
-			.noUi-connect{
 				background-color: @brand-primary;
 			}
-		}
 
-		.noUi-connect{
-			background-color: lighten(@gray-light, 20%); 
-		}
-	}
-
-}
-
-.graph-genotype{
-	.btn{
-		background-color: @brand-genotype; 
-		color: white;
-	}
-	a{
-		color: @brand-genotype; 
-	}
-	.slider{
-		margin-top: 10px;/* Vert Centering*/
-
-		&.active{
-			&.noUi-connect {
-				background-color:  @brand-genotype;
-			}
 		}
 
 		&.noUi-connect {
-			background-color: lighten(@gray-light, 20%); 
-	}
+			background-color: lighten(@gray-light, 20%);
+		}
+
 	}
 
-	.range-slider .slider{
-		&.active{
-			.noUi-connect{
-				background-color: @brand-genotype;
+	.range-slider .slider {
+		&.active {
+			.noUi-connect {
+				background-color: @brand-primary;
 			}
+
 		}
 
-		.noUi-connect{
-			background-color: lighten(@gray-light, 20%); 
+		.noUi-connect {
+			background-color: lighten(@gray-light, 20%);
 		}
+
 	}
+
 }
 
+.graph-genotype {
+	.btn {
+		background-color: @brand-genotype;
+		color: white;
+	}
 
+	a {
+		color: @brand-genotype;
+	}
+
+	.slider {
+		margin-top: 10px;
+
+		/* Vert Centering*/
+		&.active {
+			&.noUi-connect {
+				background-color: @brand-genotype;
+			}
+
+		}
+
+		&.noUi-connect {
+			background-color: lighten(@gray-light, 20%);
+		}
+
+	}
+
+	.range-slider .slider {
+		&.active {
+			.noUi-connect {
+				background-color: @brand-genotype;
+			}
+
+		}
+
+		.noUi-connect {
+			background-color: lighten(@gray-light, 20%);
+		}
+
+	}
+
+}
 
 /******************CanvasJS Chart Modifications*******************/
 
 //Change the style of the toolbar icon 
-.canvasjs-chart-toolbar{
+.canvasjs-chart-toolbar {
 	//3 Dots icon 
-	button[state="menu"],button[state="reset"],button[state="pan"],button[state="zoom"] {
+	button[state="menu"],
+	button[state="reset"],
+	button[state="pan"],
+	button[state="zoom"] {
 		background-color: white;
-		border: none; 
+		border: none;
 	}
 
-	button[state="menu"]{
-		@media (max-width: @screen-xs-max) {display: none !important; }
+	button[state="menu"] {
+		@media (max-width:@screen-xs-max) {
+			display: none !important;
+		}
+
 	}
-	
+
 	//Dropdown menu
-	> div{
+	> div {
 		border: none !important;
 		font-family: @font-family-sans-serif !important;
 	}
+
 }
-
-
