@@ -1904,7 +1904,8 @@
             }, true);
 
             var exportOption = document.createElement("div");
-            exportOption.style.cssText = "padding: 2px 15px 2px 10px"
+            exportOption.style.cssText = "padding: 2px 15px 2px 10px; color: black";
+
             exportOption.innerHTML = this._cultureInfo.saveJPGText;
             this._dropdownMenu.appendChild(exportOption);
 
@@ -1923,8 +1924,9 @@
                 hide(_this._dropdownMenu);
             }, true);
 
+
             var exportOption = document.createElement("div");
-            exportOption.style.cssText = "padding: 2px 15px 2px 10px"
+            exportOption.style.cssText = "padding: 2px 15px 2px 10px; color: black";
             exportOption.innerHTML = this._cultureInfo.savePNGText;
             this._dropdownMenu.appendChild(exportOption);
 

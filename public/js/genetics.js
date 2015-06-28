@@ -13225,7 +13225,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
             }, true);
 
             var exportOption = document.createElement("div");
-            exportOption.style.cssText = "padding: 2px 15px 2px 10px"
+            exportOption.style.cssText = "padding: 2px 15px 2px 10px; color: black";
+
             exportOption.innerHTML = this._cultureInfo.saveJPGText;
             this._dropdownMenu.appendChild(exportOption);
 
@@ -13244,8 +13245,9 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
                 hide(_this._dropdownMenu);
             }, true);
 
+
             var exportOption = document.createElement("div");
-            exportOption.style.cssText = "padding: 2px 15px 2px 10px"
+            exportOption.style.cssText = "padding: 2px 15px 2px 10px; color: black";
             exportOption.innerHTML = this._cultureInfo.savePNGText;
             this._dropdownMenu.appendChild(exportOption);
 

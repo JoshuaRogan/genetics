@@ -13,28 +13,19 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       		<ul class="nav navbar-nav">
-				<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Graphs<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-					<li><a href="/graphs/allele">Allele Graph</a></li>
-					<li><a href="/graphs/genotype">Genotype Graph</a></li>
-					<li class="divider"></li>
-					<li><a href="/faq">Allele Help</a></li>
-					<li><a href="/faq">Genotype Help</a></li>
-					</ul>
-				</li>
-				<li><a href="/faq">FAQ</a></li>
+				<li><a href="/graphs/allele">Allele Simulator</a></li>
+				<li><a href="/graphs/genotype">Genotype Simulator</a></li>
         	</ul>
 
-     
+     		<ul class="nav navbar-nav navbar-right"> 
+     			<li><a href="/faq">Help <i class="fa fa-info-circle"></i></a></li>
+     		</ul>
 
-         	<ul class="nav navbar-nav navbar-right">
+         	<ul class="hidden nav navbar-nav navbar-right">
 				<li><span class="label label-primary hidden-sm hidden-xs">DEV</span></li>
 				<li class="divider">&nbsp;</li>
 				<li><span class="label label-success hidden-sm hidden-xs">Last Update 5/26/15</span></li>
 			</ul> 
-
-
 			
         </div>
 	</div>
