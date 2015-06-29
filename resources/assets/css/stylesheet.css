@@ -96,6 +96,20 @@
   position: relative;
   top: 50%;
 }
+/**
+ * Responsive utilities 
+ *  
+ * 
+ */
+#responsive-helpers {
+  /**
+	 * Mixin to allow to set all of the proper media sizes for a height
+	 * @param  {Height Size} @xs-size [The height you want for this size]
+	 * @param  {Height Size} @sm-size [The height you want for this size]
+	 * @param  {Height Size} @md-size [The height you want for this size]
+	 * @param  {Height Size} @lg-size [The height you want for this size]
+	 */
+}
 .bootstrap-sidebar {
   /* Bootstrap Sidebar */
   /* /Bootstrap Sidebar */
@@ -154,7 +168,7 @@
 }
 @media (min-width: 768px) {
   .bootstrap-sidebar .bs-docs-sidebar .nav .nav > li > a {
-    font-size: 11.700000000000001px;
+    font-size: 11.7px;
   }
 }
 @media (min-width: 992px) {
@@ -194,6 +208,9 @@
 #anchor-js .shift-out *:hover > .anchorjs-link.right {
   margin-right: -1.125em !important;
 }
+body .flash-messages {
+  margin-top: 10px;
+}
 h1 {
   font-size: 28.8px;
   /* Small devices (tablets, 768px and up) */
@@ -207,7 +224,7 @@ h1 {
 }
 @media (min-width: 992px) {
   h1 {
-    font-size: 34.199999999999996px;
+    font-size: 34.2px;
   }
 }
 @media (min-width: 1200px) {
@@ -237,7 +254,7 @@ h2 {
   }
 }
 h3 {
-  font-size: 19.200000000000003px;
+  font-size: 19.2px;
   /* Small devices (tablets, 768px and up) */
   /* Medium devices (desktops, 992px and up) */
   /* Large devices (large desktops, 1200px and up) */
@@ -249,7 +266,7 @@ h3 {
 }
 @media (min-width: 992px) {
   h3 {
-    font-size: 22.799999999999997px;
+    font-size: 22.8px;
   }
 }
 @media (min-width: 1200px) {
@@ -270,7 +287,7 @@ h4 {
 }
 @media (min-width: 992px) {
   h4 {
-    font-size: 17.099999999999998px;
+    font-size: 17.1px;
   }
 }
 @media (min-width: 1200px) {
@@ -279,7 +296,7 @@ h4 {
   }
 }
 h5 {
-  font-size: 11.200000000000001px;
+  font-size: 11.2px;
   /* Small devices (tablets, 768px and up) */
   /* Medium devices (desktops, 992px and up) */
   /* Large devices (large desktops, 1200px and up) */
@@ -291,7 +308,7 @@ h5 {
 }
 @media (min-width: 992px) {
   h5 {
-    font-size: 13.299999999999999px;
+    font-size: 13.3px;
   }
 }
 @media (min-width: 1200px) {
@@ -860,7 +877,7 @@ p a {
 }
 @media (min-width: 768px) {
   .page-faq .bs-docs-sidebar .nav .nav > li > a {
-    font-size: 11.700000000000001px;
+    font-size: 11.7px;
   }
 }
 @media (min-width: 992px) {
@@ -912,6 +929,29 @@ p a {
   max-width: 100%;
   height: auto;
 }
+.page-faq .filter-parent {
+  position: relative;
+  font-size: 18px;
+  padding-top: 40px;
+  margin: -20px auto 0px;
+}
+.page-faq .filter-parent label {
+  position: absolute;
+  left: 17px;
+  top: 50px;
+}
+.page-faq .filter-parent #hideseek-search,
+.page-faq .filter-parent .hint {
+  padding-left: 43px;
+  padding-right: 43px;
+  border-radius: 23px;
+}
+.page-faq .filter-parent #num-results {
+  text-decoration: none;
+  position: absolute;
+  right: 18px;
+  top: 53px;
+}
 .page-faq #slide-all-slides .slide {
   position: relative;
   height: 150px;
@@ -927,11 +967,13 @@ p a {
   width: 100%;
   height: 100%;
   opacity: 0;
+  filter: alpha(opacity=0);
   background-color: #606888;
 }
 @media (max-width: 767px) {
   .page-faq #slide-all-slides .slide .slide-download {
     opacity: 1;
+    filter: alpha(opacity=100);
   }
 }
 .page-faq #slide-all-slides .slide .slide-download .icon a {
@@ -1026,6 +1068,7 @@ p a {
 @media (min-width: 480px) {
   .page-faq #slide-all-slides .slide:hover .slide-download {
     opacity: 0.9;
+    filter: alpha(opacity=90);
   }
 }
 .page-faq #slide-all-slides .slide-caption {
@@ -1075,6 +1118,11 @@ p a {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
   border-radius: 2px;
   border: 0;
+  color: "#555333";
+  height: 400px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
 }
 .page-welcome .welcome.genotype-graph {
   background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
@@ -1136,6 +1184,66 @@ p a {
 }
 .page-welcome .welcome #graph-canvas jpg .canvasjs-chart-container {
   color: #000;
+}
+@media (min-width: 768px) {
+  .page-welcome .welcome {
+    height: 350px;
+  }
+}
+@media (min-width: 992px) {
+  .page-welcome .welcome {
+    height: 400px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-welcome .welcome {
+    height: 400px;
+  }
+}
+.page-welcome .welcome p {
+  position: relative;
+  top: 50%;
+  font-size: 13.6px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+  line-height: 25.6px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-welcome .welcome p {
+    font-size: 15.3px;
+  }
+}
+@media (min-width: 992px) {
+  .page-welcome .welcome p {
+    font-size: 16.15px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-welcome .welcome p {
+    font-size: 17px;
+  }
+}
+@media (min-width: 768px) {
+  .page-welcome .welcome p {
+    line-height: 28.8px;
+  }
+}
+@media (min-width: 992px) {
+  .page-welcome .welcome p {
+    line-height: 30.4px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-welcome .welcome p {
+    line-height: 32px;
+  }
+}
+.page-welcome .graphs {
+  padding-top: 50px;
 }
 .page-welcome .logo .fa {
   font-size: 150px;

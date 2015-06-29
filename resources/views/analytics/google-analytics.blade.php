@@ -1,13 +1,4 @@
-<?php 
-	// dd(App::environment());
-	// var_dump(App::environment()); 
-	// dd(App::environment() == "local"); 
-	// echo "BITs";
-
-?>
-
-@if(env('APP_DEBUG'))
-	<h1> Hello </h1>
+@unless(env('APP_DEBUG'))
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -18,5 +9,7 @@
 	  ga('send', 'pageview');
 	</script>
 @else
-	<h1> Fuck </h1>
-@endif
+	
+		<meta name="google-analytics-disabled" content="Google Analytics is disabled in debug mode">
+	
+@endunless

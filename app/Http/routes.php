@@ -26,7 +26,7 @@ Route::get('graphs/genotype', 'GraphsController@genotype');
 //Helper Pages 
 Route::get('help', 'FAQController@index');
 
-Route::get('faq', 'FAQController@index');
+Route::get('faq', function(){return Redirect::to('help');});
 
 Route::get('faq/technical', 'FAQController@technical');
 Route::get('faq/genetics', 'FAQController@genetics');
@@ -48,11 +48,12 @@ Route::get('report-problem/complete/{id}', 'BugsController@complete');
 Route::get('report-problem/open/{id}', 'BugsController@open'); 
 
 
-
-
-
-
-
+Route::get('contact', [
+    'as' => 'contact.index', 'uses' => 'ContactUsController@index'
+]);
+Route::post('contact', [
+    'as' => 'contact.send', 'uses' => 'ContactUsController@send'
+]);
 
 
 Route::controllers([

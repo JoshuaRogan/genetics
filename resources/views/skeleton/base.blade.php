@@ -22,7 +22,7 @@
     @show
 
 	
-
+    @include('analytics.google-analytics')
 </head>
 
 <body> 
@@ -33,6 +33,25 @@
 
 	<!--CONTENT-->
 	<div id="main" class="@yield('pageclass') container-fluid"> 
+		<!--Flash Messages -->
+		@if(Session::has('flash_success'))
+			<div class='container flash-messages'>
+				<div class="alert alert-success">
+					{!!Session::pull('flash_success')!!}
+				</div>
+			</div>
+		@endif
+
+		@if(Session::has('flash_error'))
+			<div class='container flash-messages'>
+				<div class="alert alert-danger">
+					{!!Session::pull('flash_error')!!}
+				</div>
+			</div>
+		@endif
+		
+		<!--Flash Messages -->
+	
 		@yield('content')
 	</div>
 	<!--CONTENT-->

@@ -136,6 +136,8 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
+		'Illuminate\Html\HtmlServiceProvider',
+
 		/*
 		 * Application Service Providers...
 		 */
@@ -150,6 +152,7 @@ return [
 		'GrahamCampbell\Markdown\MarkdownServiceProvider',
 
 		'Radic\BladeExtensions\BladeExtensionsServiceProvider',
+
 
 
 	],
@@ -203,6 +206,8 @@ return [
 		'Image' => 'Intervention\Image\Facades\Image',
 
 		'Markdown' => 'GrahamCampbell\Markdown\Facades\Markdown',
+		'Form'=> 'Illuminate\Html\FormFacade', 
+		'HTML'=> 'Illuminate\Html\HtmlFacade',
 
 	],
 

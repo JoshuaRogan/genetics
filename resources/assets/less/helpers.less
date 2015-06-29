@@ -15,6 +15,55 @@
 	// transform: translateY(-50%);
 }
 
+/**
+ * Responsive utilities 
+ *  
+ * 
+ */
+#responsive-helpers {
+	.responsive-abstract-manual(@property, @xs-value, @sm-value, @md-value, @lg-value){
+		@{property}: @xs-value;
+
+		/* Small devices (tablets, 768px and up) */
+		@media (min-width:@screen-sm-min) {
+			@{property}: @sm-value;
+		}
+
+		/* Medium devices (desktops, 992px and up) */
+		@media (min-width:@screen-md-min) {
+			@{property}: @md-value;
+		}
+
+		/* Large devices (large desktops, 1200px and up) */
+		@media (min-width:@screen-lg-min) {
+			@{property}: @lg-value;
+		}
+	}
+	
+	.responsive-abstract(@property, @size){
+		.responsive-abstract-manual(@property, @size * @xs-reduction, @size * @sm-reduction, @size * @md-reduction, @size * @lg-reduction);
+	}
+
+	.responsive-height(@size) {
+		.responsive-height-manual(@size * @xs-reduction, @size * @sm-reduction, @size * @md-reduction, @size * @lg-reduction);
+	}
+
+	/**
+	 * Mixin to allow to set all of the proper media sizes for a height
+	 * @param  {Height Size} @xs-size [The height you want for this size]
+	 * @param  {Height Size} @sm-size [The height you want for this size]
+	 * @param  {Height Size} @md-size [The height you want for this size]
+	 * @param  {Height Size} @lg-size [The height you want for this size]
+	 */
+	.responsive-height-manual(@xs-size, @sm-size, @md-size, @lg-size) {
+		.responsive-abstract-manual(height, @xs-size, @sm-size, @md-size, @lg-size);
+	}
+
+
+
+	
+
+}
 
 .bootstrap-sidebar{
 	/* Bootstrap Sidebar */

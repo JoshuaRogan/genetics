@@ -10,7 +10,9 @@
 		"intervention/imagecache": "^2.3", 
 		"graham-campbell/markdown": "~3.2",
 		"illuminate/support": "~5.0",
-		"radic/blade-extensions": "~4.0"
+		"radic/blade-extensions": "~4.0",
+		"illuminate/html": "5.0.*",
+		"guzzlehttp/guzzle": "~5.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

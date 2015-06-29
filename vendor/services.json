@@ -22,6 +22,7 @@
         "Illuminate\\Translation\\TranslationServiceProvider",
         "Illuminate\\Validation\\ValidationServiceProvider",
         "Illuminate\\View\\ViewServiceProvider",
+        "Illuminate\\Html\\HtmlServiceProvider",
         "Genetics\\Providers\\AppServiceProvider",
         "Genetics\\Providers\\BusServiceProvider",
         "Genetics\\Providers\\ConfigServiceProvider",
@@ -128,7 +129,9 @@
         "auth.password": "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider",
         "auth.password.tokens": "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider",
         "translator": "Illuminate\\Translation\\TranslationServiceProvider",
-        "translation.loader": "Illuminate\\Translation\\TranslationServiceProvider"
+        "translation.loader": "Illuminate\\Translation\\TranslationServiceProvider",
+        "html": "Illuminate\\Html\\HtmlServiceProvider",
+        "form": "Illuminate\\Html\\HtmlServiceProvider"
     },
     "when": {
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider": [
@@ -162,6 +165,9 @@
 
         ],
         "Illuminate\\Translation\\TranslationServiceProvider": [
+
+        ],
+        "Illuminate\\Html\\HtmlServiceProvider": [
 
         ]
     }

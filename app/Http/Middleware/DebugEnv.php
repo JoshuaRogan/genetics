@@ -18,6 +18,17 @@ class DebugEnv {
 		if (env('APP_DEBUG')){
 			// echo ini_set('opcache.revalidate_freq', '0');
 			ini_set('opcache.revalidate_freq', '0');
+			ini_set('opcache.fast_shutdown', '0');
+
+			$cachedViewsDirectory=app('path.storage').'/views/';
+        	$files = glob($cachedViewsDirectory.'*');
+	        foreach($files as $file) {
+	            if(is_file($file)) {
+	                @unlink($file);
+	            }
+	              
+	        }
+	         
 		}
 		else{
 			

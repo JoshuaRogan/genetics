@@ -15,6 +15,7 @@
     @parent
 
     <script src='/js/popGen/popGen.htmlutil.js'></script>
+    <script src='/js/hideseek/jquery.hideseek.js'></script>
     <script src='/js/faq.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js'></script>
 @stop
@@ -24,11 +25,11 @@
 	<div class="row"> 
 		<div class="col-sm-3 faq-nav"> 
 			{{-- XS Only stacked navigation bar  --}}
-			<nav class="visible-xs"> 
+			<nav class="visible-xs" id="mobile-sidebar"> 
 				<h2> Help Navigation </h2>
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="#help-faq">FAQ</a></li>
-					<li role="presentation" class="active"><a href="#help-learn">Learn</a></li>
+					<li role='presentation' ><a href="#help-faq">Simulator F.A.Q.</a></li>
+					<li role='presentation' ><a href="#help-learn">Learn</a></li>
 				</ul>
 			</nav>
 			{{-- /XS Only stacked navigation bar  --}}
@@ -65,6 +66,22 @@
 		<div class="col-sm-9"> 
 			<h2> Population Generation Simulator Help</h2>
 
+			<div class="filter-parent">
+				<label for="hideseek-search"><i class="fa fa-search"></i></label>
+				<div>
+					<input placeholder="Search Help Documents" id="hideseek-search" class="form-control input-lg"  type="text" data-list=".panel-title">
+				</div>
+				<span id="num-results" class="font-blue">0</span>
+				
+			</div>
+			
+			<section id="search-results">
+				<h3 class="no-anchor hidden"> Search Results </h3>
+					<div class="panel-group no-anchor" id="accordian-search-results">
+						
+					</div>
+			</section>
+
 			<section id="help-faq"> 
 				<h3>Simulator F.A.Q.</h3>
 				@include('help.sections.faq')
@@ -74,8 +91,17 @@
 				<h3> Learn </h3>
 				@include('help.sections.learn')
 			</section>
-		
-	   
+		</div>
+
+		<div class='col-xs-12 visible-xs'>
+			<nav> 
+				<h2> Help Navigation </h2>
+				<ul class="nav nav-pills nav-stacked">
+					<li role='presentation' class='active'><a href="#population-generation-simulator-help">Back to Top</a></li>
+					<li role='presentation' class='active'><a href="#help-faq">Simulator F.A.Q.</a></li>
+					<li role='presentation' class='active'><a href="#help-learn">Learn</a></li>
+				</ul>
+			</nav>
 		</div>
 	</div>
 </div>

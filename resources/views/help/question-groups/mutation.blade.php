@@ -63,10 +63,11 @@
         @block('question-id', 'mutation-unique-event') 
 
         @block('question-content')
-        	<p>Happened once. 
-                                <strong> Formula </strong>
-                                <pre class='formula'> q<sub>0</sub> = 1/(2N) </pre> 
-                                <span class='font-red font-thick'>Note: Other evolutionary mechanisms are required to increase allele frequency if the event is to be observable at a populapion level. </span></p>
+        	<p>Happened once. </p>
+                <strong> Formula </strong>
+                <pre class='formula'> q<sub>0</sub> = 1/(2N) </pre> 
+                <p><span class='font-red font-thick'>Note: Other evolutionary mechanisms are required to increase allele frequency if the event is to be observable at a population level. </span></p>
+                
         @endblock
 @endpartial
 
