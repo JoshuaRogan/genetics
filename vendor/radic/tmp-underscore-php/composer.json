@@ -1,0 +1,26 @@
+{
+  "name": "radic/tmp-underscore-php",
+  "description": "Temporary package until underscore-php updates its dependencies. A redacted port of Underscore.js for PHP",
+  "license": "MIT",
+  "keywords": [
+    "toolkit",
+    "internals",
+    "laravel"
+  ],
+  "authors": [
+    {
+      "name": "Maxime Fabre",
+      "email": "ehtnam6@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "~5.0",
+    "patchwork/utf8": "~1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Underscore\\": ["src", "tests"]
+    }
+  }
+}
