@@ -23,8 +23,6 @@
 <div class="container">
 	<div class="row"> 
 		<div class="col-sm-3 faq-nav"> 
-			{{-- <h2> Help Navigation </h2> --}}
-
 			{{-- XS Only stacked navigation bar  --}}
 			<nav class="visible-xs"> 
 				<h2> Help Navigation </h2>
@@ -39,42 +37,25 @@
 			<nav class="bs-docs-sidebar hidden-xs">
 				<ul id="sidebar" class="nav nav-stacked fixed">
 					<li>
-						<a href="#help-faq">FAQ</a>
+						<a href="#help-faq">Simulator F.A.Q.</a>
 						<ul class="nav nav-stacked">
-							<li><a href="#accordion-0">Usability Questions</a></li>
-							<li><a href="#accordion-1">Genetics Questions</a></li>
-							<li><a href="#accordion-2">Technical Questions</a></li>
+							<li><a href="#faq-simulator-usability">Simulator Usability</a></li>
+							<li><a href="#faq-simulator-technical">Technical Questions</a></li>
 						</ul>
 					</li>
 
 					<li>
 						<a href="#help-learn">Learn</a>
 						<ul class="nav nav-stacked">
-							<li><a href="#faq-learn-genetic-drift">Unit 2.1 Drift</a></li>
-							<li><a href="#faq-learn-selection">Unit 2.2 Selection</a></li>
-							<li><a href="#faq-learn-mutation">Unit 2.3 Mutation</a></li>
-							<li><a href="#faq-learn-migration">Unit 2.4 Migration</a></li>
-							<li><a href="#faq-learn-assortative-mating">Unit 2.5 Assortative Mating</a></li>
-							<li><a href="#faq-learn-inbreeding">Unit 2.6 Inbreeding</a></li>
+							<li><a href="#learn-genetic-drift">Unit 2.1 Drift</a></li>
+							<li><a href="#learn-selection">Unit 2.2 Selection</a></li>
+							<li><a href="#learn-mutation">Unit 2.3 Mutation</a></li>
+							<li><a href="#learn-migration">Unit 2.4 Migration</a></li>
+							<li><a href="#learn-assortative-mating">Unit 2.5 Assortative Mating</a></li>
+							<li><a href="#learn-inbreeding">Unit 2.6 Inbreeding</a></li>
 							<li><a href="#slide-all-slides">All Slides</a></li>
 						</ul>
 					</li>
-
-					{{-- <li>
-						<a href="#GroupB">Slides</a>
-						<ul class="nav nav-stacked">
-							<li><a href="#GroupBSub1">Sub-Group 1</a></li>
-							<li><a href="#GroupBSub2">Sub-Group 2</a></li>
-						</ul>
-					</li>
-
-					<li>
-						<a href="#GroupC">Group C</a>
-						<ul class="nav nav-stacked">
-							<li><a href="#GroupCSub1">Sub-Group 1</a></li>
-							<li><a href="#GroupCSub2">Sub-Group 2</a></li>
-						</ul>
-					</li> --}}
 				</ul>
 			</nav>
 			{{-- /SM > Only scrollspy navigation --}}
@@ -86,43 +67,14 @@
 
 			<section id="help-faq"> 
 				<h3>Simulator F.A.Q.</h3>
-				@include('/help/faq')
+				@include('help.sections.faq')
 			</section>
 
 			<section id="help-learn"> 
 				<h3> Learn </h3>
-				@include('/help/slides')
+				@include('help.sections.learn')
 			</section>
-
-			
-
-	    {{--     <section id="GroupA" class="group">
-	            <h3>Group A</h3>
-	            <div id="GroupASub1" class="subgroup">
-	                <h4>Group A Sub 1</h4>
-	            </div>
-	            <div id="GroupASub2" class="subgroup">
-	                <h4>Group A Sub 2</h4>
-	            </div>
-	        </section>
-	        <section id="GroupB" class="group">
-	            <h3>Group B</h3>
-	            <div id="GroupBSub1" class="subgroup">
-	                <h4>Group B Sub 1</h4>
-	            </div>
-	            <div id="GroupBSub2" class="subgroup">
-	                <h4>Group B Sub 2</h4>
-	            </div>
-	        </section>
-	        <section id="GroupC" class="group">
-	            <h3>Group C</h3>
-	            <div id="GroupCSub1" class="subgroup">
-	                <h4>Group C Sub 1</h4>
-	            </div>
-	            <div id="GroupCSub2" class="subgroup">
-	                <h4>Group C Sub 2</h4>
-	            </div>
-	        </section>    --}} 
+		
 	   
 		</div>
 	</div>

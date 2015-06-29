@@ -1,4 +1,4 @@
-@set('question_set', 'faq-learn-selection')
+@set('question_set', 'learn-selection')
 
 @partial('help.macros.question')
         @block('question-title', 'What is selection?')
@@ -42,6 +42,7 @@
 
         @block('question-content')
             The selection coefficient, s, describes the degree of selection against the aa genotype. 
+            <strong> Formula </strong>
             <pre class='text-center formula'> s = 1 - (W<sub>aa</sub> / W<sub>AA</sub>) </pre>                
         @endblock
 @endpartial
@@ -52,6 +53,7 @@
 
         @block('question-content')
             The dominance coefficient, h, describes the degree of dominance. 
+            <strong> Formula </strong>
             <pre class='text-center formula'> h x s = 1 - (W<sub>Aa</sub> / W<sub>AA</sub>) </pre>                
         @endblock
 @endpartial

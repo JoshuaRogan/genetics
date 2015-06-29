@@ -1,15 +1,14 @@
-@set('question_set', 'faq-learn-inbreeding')
+@set('question_set', 'learn-inbreeding')
 
 @partial('help.macros.question')
     @block('question-title', 'What is inbreeding?')
     @block('question-id', 'inbreeding') 
 
     @block('question-content')
-    	Inbreeding for and individual:  mating with a relative
-    	Inbreeding for a population: matings between relatives occur more often than expected by chance
+    	Inbreeding for and <strong>individual</strong>:  mating with a relative
+    	Inbreeding for a <strong>population</strong>: matings between relatives occur more often than expected by chance
 
-    	Similar to assortative mating and population substructure. Relatives likely to share genotypes/phenotypes = assortative mating. Cultural (distant) inbreeding = population substructure. Inbreeding affects all genes/loci across the genome.
- 
+    	Similar to <strong>assortative mating </strong>and <strong>population substructure</strong>. Relatives likely to share genotypes/phenotypes = assortative mating. Cultural (distant) inbreeding = population substructure. Inbreeding affects all genes/loci <em>across the genome</em>.
 	@endblock
 @endpartial
 
@@ -43,7 +42,7 @@
 
     		</table>
     	</div>
-    	These ideas are not mutually exclusive;  they can all be happening at the same time (and to some degree probably are). They describe different aspects of a system of non-random mating. All defined with respect an arbitrary "population" under consideration. No clear or technical distinctions between them
+    	These ideas are not mutually exclusive;  they can all be happening at the same time (and to some degree probably are). They describe different aspects of a system of non-random mating. All defined with respect an arbitrary "population" under consideration. No clear or technical distinctions between them.
 	@endblock
 @endpartial
 
@@ -98,7 +97,7 @@
     @block('question-id', 'recessive-diseases') 
 
     @block('question-content')
-    	Inbreeding increases homozygosity
+    	Inbreeding increases <strong>homozygosity</strong>
     	<ul>  
     		<li>Therefore an inbred individual has increased risk of recessive disease</li>
 			<li>An inbred population has increased prevalence of recessive disease</li>
@@ -119,7 +118,8 @@
     		<li>If the rate of close inbreeding stays the same in a population (e.g. 1/1000 matings is between first cousins), then F keeps increasing with every generation.</li>
 			<li>If the population size is increasing over time, the rate of “distant inbreeding” (e.g. unknowing mating between 10th cousins) will decrease.  </li>
     	</ul>
-    	The value of F at any given point in time, depends on a lot of factors, but unlikely to remain constant.  
+
+    	<span class='font-red font-thick'>Note: The value of F at any given point in time, depends on a lot of factors, but <em>unlikely</em> to remain constant.  </span>
 	@endblock
 @endpartial
 
@@ -213,7 +213,7 @@
 			</li>
 		</ul>
 
-		Note:  sometime texts are imprecise about F and &Phi;
+		<span class='font-red font-thick'>Note:  Some texts are imprecise about F and &Phi;</span>
 
 	@endblock
 @endpartial

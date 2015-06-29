@@ -1,4 +1,4 @@
-@set('question_set', 'faq-learn-genetic-drift')
+@set('question_set', 'learn-genetic-drift')
 
 @partial('help.macros.question')
         @block('question-title', 'What is drift?')

@@ -1,11 +1,11 @@
-@set('question_set', 'faq-learn-migration')
+@set('question_set', 'learn-migration')
 
 @partial('help.macros.question')
     @block('question-title', 'What is migration?')
     @block('question-id', 'migration') 
 
     @block('question-content')
-    	Migration is the movement of alleles among subpopulations.
+    	Migration is the movement of alleles among <strong>subpopulations</strong>.
 	@endblock
 @endpartial
 
@@ -14,7 +14,12 @@
     @block('question-id', 'population-viewpoints') 
 
     @block('question-content')
-    	A meta-population may be divided into subpopulations (geographical regions or ethnic groups). People more often mate within their subpopulation, but there is some mixing. From the point of view of the meta-population, the population structure is an example of non-random mating. From the point of view of the subpopulation, the population structure is an example of migration
+        <ul> 
+        	<li>A meta-population may be divided into subpopulations (geographical regions or ethnic groups). </li>
+            <li>People more often mate within their subpopulation, but there is some mixing. </li>
+            <li>From the point of view of the <strong>meta-population</strong>, the population structure is an example of non-random mating. </li>
+            <li>From the point of view of the <strong>subpopulation</strong>, the population structure is an example of migration</li>
+        </ul>
 	@endblock
 @endpartial
 
@@ -25,15 +30,15 @@
     @block('question-content')
     	For the purpose of studying population genetics, migration does NOT necessarily involve people migrating from one geographical place to another. Migration from the genetic standpoint is only interested in movement of alleles among subpopulations. 
 
-    	<strong>Examples: </strong>
-    	<ul class='list-unstyled'> 
+    	<br/><strong>Examples: </strong>
+    	<ul> 
     		<li>Sailors land on island, mate with natives, and then sail on </li>
 			<li>European settlers mate with native Americans </li>
 			<li>Mixing of people of African ancestry and European ancestry in North America  </li>
     	</ul>
 
     	<strong>Counter Example: </strong>
-    	<ul class='list-unstyled'> 
+    	<ul> 
     		<li>Entire island population moves from a volcanically active island to an uninhabited nearby island (i.e. NO genetic migration) </li>
     	</ul>
 
@@ -47,8 +52,7 @@
     @block('question-content')
     	<strong>Qualitative: </strong>
     	<ul>
-	    	<li>Migration among populations is "homogenizing"</li>
-	    	<li> 
+	    	<li>Migration among populations is "homogenizing"
 	    		<ul> 
 					<li>Allele frequencies of each population move toward the average</li>
 					<li>Do not confuse homogenous with homozygous </li>
@@ -84,7 +88,7 @@
     @block('question-content')
     	<img src='images/faq/migration/island-model.png' alt='What is the island model of migration?'> 
 
-	    <ul class='list-unstyled'> 
+	    <ul> 
 			<li>Many populations; migration rates among all. Population of interest is an "island". Collectively call all of the other populations together a "continent" </li>
 			<li>P(A) for each population, p</li>
 			<li>p = average p over all populations (p of meta-population). Does not change over time (think of whole-world allele freq.</li>

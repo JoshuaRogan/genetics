@@ -1,11 +1,11 @@
-@set('question_set', 'faq-learn-mutation')
+@set('question_set', 'learn-mutation')
 
 @partial('help.macros.question')
         @block('question-title', 'What is mutation?')
         @block('question-id', 'what-is-mutation') 
 
         @block('question-content')
-			Mutation is the change in the genetic material. Mutation changes allele frequencies because it creates new alleles. Mutation is the ultimate source of all genetic variation.       
+			<p>Mutation is the change in the genetic material. Mutation changes allele frequencies because it creates new alleles. Mutation is the ultimate source of all genetic variation.</p>       
 		@endblock
 @endpartial
 
@@ -14,7 +14,7 @@
         @block('question-id', 'causes-mutation') 
 
         @block('question-content')
-        	Mutation is caused by inaccurate DNA copying by cellular machinery and external agents (mutagens) alter DNA.
+        	<p>Mutation is caused by inaccurate DNA copying by cellular machinery and external agents (mutagens) alter DNA.</p>
         @endblock
 @endpartial
 
@@ -63,9 +63,10 @@
         @block('question-id', 'mutation-unique-event') 
 
         @block('question-content')
-        	Happened once. 
-        	<pre class='formula'> q<sub>0</sub> = 1/(2N) </pre> 
-        	Other evolutionary mechanisms are required to increase allele frequency if the event is to be observable at a population level. 
+        	<p>Happened once. 
+                                <strong> Formula </strong>
+                                <pre class='formula'> q<sub>0</sub> = 1/(2N) </pre> 
+                                <span class='font-red font-thick'>Note: Other evolutionary mechanisms are required to increase allele frequency if the event is to be observable at a populapion level. </span></p>
         @endblock
 @endpartial
 
@@ -74,7 +75,7 @@
         @block('question-id', 'unique-event-epidemiology') 
 
         @block('question-content')
-        	Often assume an observed genetic variant is unique (i.e. exists on a specific genetic background, linked and in LD with surrounding variants). We can use linked markers as proxy for the unique (possibly rare) variant.
+        	<p>Often assume an observed genetic variant is unique (i.e. exists on a specific genetic background, linked and in LD with surrounding variants). We can use linked markers as proxy for the unique (possibly rare) variant.</p>
         @endblock
 @endpartial
 
@@ -83,7 +84,7 @@
         @block('question-id', 'unique-event-population-genetics') 
 
         @block('question-content')
-        	Introduce new allele. Modeling unique events are beyond the scope of population genetics. Not possible to formulate principals governing unique events.
+        	<p>Introduce new allele. Modeling unique events are beyond the scope of population genetics. Not possible to formulate principals governing unique events.</p>
         @endblock
 @endpartial
 
@@ -92,7 +93,9 @@
         @block('question-id', 'mutation-recurrent-event') 
 
         @block('question-content')
-        	Recurrent event mutation occur at some rate that is large enough to happen more than once. <br/><strong>Example:</strong> Bacteria and sensitivity vs. resistance to an 'exposure'. Spread 'sensitive' bacteria culture across a plate. Expose the bacteria (to a toxin, antibiotic, etc.). Sensitive bacteria die, resistant bacteria (mutant) start new colonies. Count the colonies to calculate rate of recurrent mutation.
+        	<p>Recurrent event mutation occur at some rate that is large enough to happen more than once. </p>
+                
+                <p><strong>Example:</strong><br/> Bacteria and sensitivity vs. resistance to an 'exposure'. Spread 'sensitive' bacteria culture across a plate. Expose the bacteria (to a toxin, antibiotic, etc.). Sensitive bacteria die, resistant bacteria (mutant) start new colonies. Count the colonies to calculate rate of recurrpnt mutation</p>.
         @endblock
 @endpartial
 
@@ -101,7 +104,7 @@
         @block('question-id', 'mutation-rate-in-humans') 
 
         @block('question-content')
-        	Differs by type of mutation: Nucleotide substitution:  ~10<sup>-8</sup> Repeat expansion/contraction:  ~10<sup>-4</sup>. Increase with paternal age (doubles between age 25 and 50). Constant across maternal age.
+        	<p>Differs by type of mutation: Nucleotide substitution:  ~10<sup>-8</sup> Repeat expansion/contraction:  ~10<sup>-4</sup>. Increase with paternal age (doubles between age 25 and 50). Constant across maternal age.</p>
         @endblock
 @endpartial
 
@@ -110,11 +113,14 @@
         @block('question-id', 'one-way-mutuation-model') 
 
         @block('question-content')
-        	Mutation is from A → a  at a rate of &mu; per generation.
-        	<pre class='formula'>p<sub>t</sub> = p<sub>0</sub> (1- m)<sup>t</sup></pre>
-        	<pre class='formula'>t 	number of generations <br/>p<sub>0</sub>	starting allele frequency <br/>p<sub>t</sub>	allele frequency in generation t <br/>&mu;	mutation rate</pre>
-        	Know any three of these and you can solve for the fourth.
-        	Note: There is no reverse mutation in the one-way model.
+        	<p>Mutation is from A → a  at a rate of &mu; per generation.</p>
+                
+                <strong> Formulas </strong>
+                <pre class='formula'>p<sub>t</sub> = p<sub>0</sub> (1- m)<sup>t</sup></pre>
+                <pre class='formula'>t = number of generations <br/>p<sub>0</sub> = starting allele frequency <br/>p<sub>t</sub> = allele frequency in generation t <br/>&mu; = mutation rate</pre>
+                
+                <p>Know any three of these and you can solve for the fourth. </p>
+                <p><span class='font-red font-thick'>Note: There is no reverse mutation in the one-way model.</span></p>
         @endblock
 @endpartial
 
@@ -123,14 +129,18 @@
         @block('question-id', 'two-way-mutuation-model') 
 
         @block('question-content')
-        	Mutation is from A → a  at a rate of &mu; per generation = Forward Mutation. 
-        	Mutation is from a → A  at a rate of ν per generation = Reverse Mutation.  
+        	<p>Mutation is from A → a  at a rate of &mu; per generation = Forward Mutation.</p> 
+        	<p>Mutation is from a → A  at a rate of ν per generation = Reverse Mutation. </p> 
 
-        	One Generation: 
-        	<pre class="formula">p<sub>1</sub> = p<sub>0</sub> (1-&mu;) + q<sub>0</sub> v </pre>
+        	<div>
+                        One Generation:
+        	       <pre class="formula">p<sub>1</sub> = p<sub>0</sub> (1-&mu;) + q<sub>0</sub> v </pre>
+                </div>
 
-        	T Generations: 
-        	<img src="images/faq/mutation/t-generations.png" alt="T generations formula"> 
+                <div> 
+        	       T Generations: 
+        	       <img src="images/faq/mutation/t-generations.png" alt="T generations formula"> 
+                </div>
         @endblock
 @endpartial
 

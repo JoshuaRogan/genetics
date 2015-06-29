@@ -17,6 +17,7 @@ popGen.htmlutil.sliderDOM = popGen.htmlutil.sliderDOM || {}; //DOM manipulations
 
 $(document).ready(function() {
 	popGen.htmlutil.initFAQ();
+	smoothScrolling();
 	
 	var mainAnchors = new AnchorJS({
 		placement: 'left', 
@@ -37,3 +38,18 @@ $(document).ready(function() {
 	});
 
 });
+
+function smoothScrolling(){
+	$('a[href^="#"]').on('click',function (e) {
+	    e.preventDefault();
+
+	    var target = this.hash;
+	    var $target = $(target);
+
+	    $('html, body').stop().animate({
+	        'scrollTop': $target.offset().top
+	    }, 900, 'swing', function () {
+	        window.location.hash = target;
+	    });
+	});
+}

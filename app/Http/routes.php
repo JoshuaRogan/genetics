@@ -33,6 +33,8 @@ Route::get('slides/{slug}', 'SlidesController@show');
 Route::get('slides/', 'SlidesController@index');
 Route::get('welcome', 'WelcomeController@index');
 
+Route::get('test', 'HomeController@tester');
+
 //Bug Reporting 
 Route::get('report-problem', 'BugsController@index'); 
 Route::get('report-problem/view', 'BugsController@view'); 

@@ -1,4 +1,4 @@
-@set('question_set', 'faq-learn-assortative-mating')
+@set('question_set', 'learn-assortative-mating')
 
 @partial('help.macros.question')
     @block('question-title', 'What is Assortative mating?')
@@ -7,7 +7,7 @@
     @block('question-content')
     	Assortative mating is where a choice of mate is dependent on a particular phenotype or genotype.
     	<br/><strong>Examples:</strong>
-    	<ul class='list-unstyled'> 
+    	<ul> 
     		<li>People more often mate with those of similar height / skin tone</li>
     		<li>Deaf people more often mate with deaf people</li>
     	</ul>
@@ -32,9 +32,9 @@
     	<div class="table-responsive"> 
     		<table class='table'> 
     			<tr> 
-    				<td> Type of Assortative Mating </td>
-    				<td> Effect on freq. homozygotes </td>
-    				<td> Effect on freq. heterozygotes </td>
+    				<th> Type of Assortative Mating </th>
+    				<th> Effect on freq. homozygotes </th>
+    				<th> Effect on freq. heterozygotes </th>
     			</tr>
 
     			<tr> 
@@ -51,7 +51,7 @@
     		</table>
     	</div>
 
-    	Amount of increase or decrease depends on the specific scheme. Assortative mating does NOT change allele frequencies but it DOES affect the rate at which natural selection changes allele frequencies. 
+    	<span class='font-red font-thick'>Note: Amount of increase or decrease depends on the specific scheme. Assortative mating does NOT change allele frequencies but it DOES affect the rate at which natural selection changes allele frequencies. </span>
  
 	@endblock
 @endpartial
@@ -131,7 +131,7 @@
     		</table>
     	</div>
 
-    	Assortative mating leads to changes in genotype frequencies. Therefore, except under specific circumstances, mating frequencies (U-Z) will also change after every generation.
+    	<span class='font-red font-thick'>Note: Assortative mating leads to changes in genotype frequencies. Therefore, except under specific circumstances, mating frequencies (U-Z) will also change after every generation. </span>
 
 	@endblock
 @endpartial
@@ -205,9 +205,10 @@
     			</tr>
     		</table>
     	</div>
-
+		
+		<strong> Formula </strong>
     	<pre class='formula'>P(AA) = D<br/>P(Aa) = H<br/>P(aa) = R</pre>
-    	Mating type frequencies always sum to 1. Many different (potentially complex) mating schemes are possible
+    	<span class='font-red font-thick'>Note: Mating type frequencies always sum to 1. Many different (potentially complex) mating schemes are possible</span>
 	@endblock
 @endpartial
 
