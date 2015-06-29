@@ -24,6 +24,8 @@ Route::get('genotype', function(){return Redirect::to('graphs/genotype');});
 Route::get('graphs/genotype', 'GraphsController@genotype');
 
 //Helper Pages 
+Route::get('help', 'FAQController@index');
+
 Route::get('faq', 'FAQController@index');
 
 Route::get('faq/technical', 'FAQController@technical');
