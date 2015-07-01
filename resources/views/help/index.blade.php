@@ -76,7 +76,7 @@
 			</div>
 			
 			<section id="search-results">
-				<h3 class="no-anchor hidden"> Search Results </h3>
+				<h3 class="no-anchor hidden"> Search Results for <span class='search-term font-blue'></span></h3>
 					<div class="panel-group no-anchor" id="accordian-search-results">
 						
 					</div>

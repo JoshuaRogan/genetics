@@ -24,16 +24,14 @@ $(document).ready(function() {
         class: 'right'
     });
     questionAnchors.add('.panel-title').remove('.no-anchor');
-
     $('body').scrollspy({
         target: '.bs-docs-sidebar'
     });
-
     $('body').scrollspy({
         target: '#mobile-sidebar'
     });
-
     activateFAQSearch("#hideseek-search");
+    activateLazyLoadImages();
 });
 
 function smoothScrolling() {
@@ -51,28 +49,43 @@ function smoothScrolling() {
 
 function activateFAQSearch(selector) {
     if ($(selector).length) {
-
         $(selector).hideseek({
-            copy_to: '#accordian-search-results', 
+            copy_to: '#accordian-search-results',
             result_selector: '#num-results',
             nodata: '',
-            complete: function(query, num_results){
-            	$(this.result_selector).html(num_results);
+            complete: function(query, num_results) {
+                $(this.result_selector).html(num_results);
+                if (query.length === 0) {
+                    $("#search-results h3").addClass('hidden');
 
-            	if(query.length === 0){
-            		$("#search-results h3").addClass('hidden');
-            	}
-            	else{
-            		$("#search-results h3").removeClass('hidden');
-            	}
-            	
-            	if(query.length > 0 && num_results == 0){
-               		$(this.copy_to).html('<div class="alert alert-info lead text-center font-thick" role="alert"> Sorry no results found!</div>');
+                } else {
+                    $("#search-results h3").removeClass('hidden');
+                    $("#search-results h3 .search-term").html("'" + query + "'");
+
+
                 }
-
+                if (query.length > 0 && num_results == 0) {
+                    $(this.copy_to).html('<div class="alert alert-info lead text-center font-thick" role="alert"> Sorry no results found!</div>');
+                }
 
 
             }
         });
     }
 };
+
+function activateLazyLoadImages() {
+    // try http://sjwilliams.github.io/laziestloader/
+    var layzr = new Layzr({
+        selector: '[data-original]',
+        attr: 'data-original',
+        bgAttr: 'data-layzr-bg',
+        hiddenAttr: 'data-layzr-hidden',
+        threshold: 20,
+        callback: function(){ //Remove the image loader
+            console.log("loaded");
+            $(this).next().remove();
+            $(this).attr('data-isLoaded', 'true');
+        }
+    });
+}
