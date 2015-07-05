@@ -11319,6 +11319,60 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
 }(jQuery);
 ;
+var popGen = popGen || {
+    debug: false,
+    transition_time: 250 //Time for CSS transition in ms
+};
+
+popGen.config = popGen.config || {}; //Parent config files
+popGen.config.chartJQ = popGen.config.chartJQ || {}; //Override this file with the correct config 
+
+//Genotype Graph Configuration 
+popGen.config.genotype = popGen.config.genotype || {};
+popGen.config.genotype.chartJQ = popGen.config.genotype.chartJQ || {};
+
+//Allele Graph Configuration Files 
+popGen.config.allele = popGen.config.allele || {};
+popGen.config.allele.chartJQ = popGen.config.allele.chartJQ || {};
+
+//Html Utitlies 
+popGen.htmlutil = popGen.htmlutil || {};
+popGen.htmlutil.genDOM = popGen.htmlutil.genDOM || {}; //General DOM Manipualtions
+popGen.htmlutil.chartDOM = popGen.htmlutil.chartDOM || {}; //DOM manipulations related to the chart
+popGen.htmlutil.sliderDOM = popGen.htmlutil.sliderDOM || {}; //DOM manipulations related to the sliders
+
+$(document).ready(function() {
+
+    $.material.init();
+    popGen.htmlutil.genDOM.validatorURL();
+    
+    if ($('.page-graph').length) {
+        if (popGen.debug) console.log("Graph Page");
+        if ($('.graph-genotype').length) {
+            if (popGen.debug) console.log("Genotype Graph");           
+            popGen.config = popGen.config.genotype;
+            popGen.config.chartJQ.initChart("#graph-canvas");
+            popGen.config.noUISlider.initSliders();
+
+        } else if ($('.graph-allele').length) {
+            if (popGen.debug) console.log("Allele Graph");
+            popGen.config = popGen.config.allele;
+            popGen.config.chartJQ.initChart("#graph-canvas");
+            popGen.config.noUISlider.initSliders();
+
+        }
+        popGen.htmlutil.initHome(); 
+    }
+    else if($('.page-faq').length){
+        popGen.faq.init();
+    }
+});;
+/*!
+ * AnchorJS - v1.1.1 - 2015-05-23
+ * https://github.com/bryanbraun/anchorjs
+ * Copyright (c) 2015 Bryan Braun; Licensed MIT
+ */
+function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefaultOptions=function(A){this.options.icon=this.options.hasOwnProperty("icon")?A.icon:"&#xe9cb",this.options.visible=this.options.hasOwnProperty("visible")?A.visible:"hover",this.options.placement=this.options.hasOwnProperty("placement")?A.placement:"right",this.options.class=this.options.hasOwnProperty("class")?A.class:""},this._applyRemainingDefaultOptions(A),this.add=function(A){var e,t,o,n,i,s,a,l,c,r,h,g,B,Q;if(this._applyRemainingDefaultOptions(this.options),A){if("string"!=typeof A)throw new Error("The selector provided to AnchorJS was invalid.")}else A="h1, h2, h3, h4, h5, h6";if(e=document.querySelectorAll(A),0===e.length)return!1;for(this._addBaselineStyles(),t=document.querySelectorAll("[id]"),o=[].map.call(t,function(A){return A.id}),i=0;i<e.length;i++){if(e[i].hasAttribute("id"))n=e[i].getAttribute("id");else{s=e[i].textContent,a=s.replace(/[^\w\s-]/gi,"").replace(/\s+/g,"-").replace(/-{2,}/g,"-").substring(0,64).replace(/^-+|-+$/gm,"").toLowerCase(),r=a,c=0;do void 0!==l&&(r=a+"-"+c),l=o.indexOf(r),c+=1;while(-1!==l);l=void 0,o.push(r),e[i].setAttribute("id",r),n=r}h=n.replace(/-/g," "),g='<a class="anchorjs-link '+this.options.class+'" href="#'+n+'" aria-label="Anchor link for: '+h+'" data-anchorjs-icon="'+this.options.icon+'"></a>',B=document.createElement("div"),B.innerHTML=g,Q=B.childNodes,"always"===this.options.visible&&(Q[0].style.opacity="1"),"&#xe9cb"===this.options.icon&&(Q[0].style.fontFamily="anchorjs-icons",Q[0].style.fontStyle="normal",Q[0].style.fontVariant="normal",Q[0].style.fontWeight="normal"),"left"===this.options.placement?(Q[0].style.position="absolute",Q[0].style.marginLeft="-1em",Q[0].style.paddingRight="0.5em",e[i].insertBefore(Q[0],e[i].firstChild)):(Q[0].style.paddingLeft="0.375em",e[i].appendChild(Q[0]))}return this},this.remove=function(A){for(var e,t=document.querySelectorAll(A),o=0;o<t.length;o++)e=t[o].querySelector(".anchorjs-link"),e&&t[o].removeChild(e);return this},this._addBaselineStyles=function(){if(null===document.head.querySelector("style.anchorjs")){var A,e=document.createElement("style"),t=" .anchorjs-link {   opacity: 0;   text-decoration: none;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale; }",o=" *:hover > .anchorjs-link, .anchorjs-link:focus  {   opacity: 1; }",n=' @font-face {   font-family: "anchorjs-icons";   font-style: normal;   font-weight: normal;   src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBTUAAAC8AAAAYGNtYXAWi9QdAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5Zgq29TcAAAF4AAABNGhlYWQEZM3pAAACrAAAADZoaGVhBhUDxgAAAuQAAAAkaG10eASAADEAAAMIAAAAFGxvY2EAKACuAAADHAAAAAxtYXhwAAgAVwAAAygAAAAgbmFtZQ5yJ3cAAANIAAAB2nBvc3QAAwAAAAAFJAAAACAAAwJAAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpywPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg6cv//f//AAAAAAAg6cv//f//AAH/4xY5AAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAACADEARAJTAsAAKwBUAAABIiYnJjQ/AT4BMzIWFxYUDwEGIicmND8BNjQnLgEjIgYPAQYUFxYUBw4BIwciJicmND8BNjIXFhQPAQYUFx4BMzI2PwE2NCcmNDc2MhcWFA8BDgEjARQGDAUtLXoWOR8fORYtLTgKGwoKCjgaGg0gEhIgDXoaGgkJBQwHdR85Fi0tOAobCgoKOBoaDSASEiANehoaCQkKGwotLXoWOR8BMwUFLYEuehYXFxYugC44CQkKGwo4GkoaDQ0NDXoaShoKGwoFBe8XFi6ALjgJCQobCjgaShoNDQ0NehpKGgobCgoKLYEuehYXAAEAAAABAACiToc1Xw889QALBAAAAAAA0XnFFgAAAADRecUWAAAAAAJTAsAAAAAIAAIAAAAAAAAAAQAAA8D/wAAABAAAAAAAAlMAAQAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAACAAAAAoAAMQAAAAAACgAUAB4AmgABAAAABQBVAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAAAAAAAEADgAAAAEAAAAAAAIABwCfAAEAAAAAAAMADgBLAAEAAAAAAAQADgC0AAEAAAAAAAUACwAqAAEAAAAAAAYADgB1AAEAAAAAAAoAGgDeAAMAAQQJAAEAHAAOAAMAAQQJAAIADgCmAAMAAQQJAAMAHABZAAMAAQQJAAQAHADCAAMAAQQJAAUAFgA1AAMAAQQJAAYAHACDAAMAAQQJAAoANAD4YW5jaG9yanMtaWNvbnMAYQBuAGMAaABvAHIAagBzAC0AaQBjAG8AbgBzVmVyc2lvbiAxLjAAVgBlAHIAcwBpAG8AbgAgADEALgAwYW5jaG9yanMtaWNvbnMAYQBuAGMAaABvAHIAagBzAC0AaQBjAG8AbgBzYW5jaG9yanMtaWNvbnMAYQBuAGMAaABvAHIAagBzAC0AaQBjAG8AbgBzUmVndWxhcgBSAGUAZwB1AGwAYQByYW5jaG9yanMtaWNvbnMAYQBuAGMAaABvAHIAagBzAC0AaQBjAG8AbgBzRm9udCBnZW5lcmF0ZWQgYnkgSWNvTW9vbi4ARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAASQBjAG8ATQBvAG8AbgAuAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==) format("truetype"); }',i=" [data-anchorjs-icon]::after {   content: attr(data-anchorjs-icon); }";e.className="anchorjs",e.appendChild(document.createTextNode("")),A=document.head.querySelector('[rel="stylesheet"], style'),void 0===A?document.head.appendChild(e):document.head.insertBefore(e,A),e.sheet.insertRule(t,e.sheet.cssRules.length),e.sheet.insertRule(o,e.sheet.cssRules.length),e.sheet.insertRule(i,e.sheet.cssRules.length),e.sheet.insertRule(n,e.sheet.cssRules.length)}}}var anchors=new AnchorJS;;
 /**
 * @preserve CanvasJS HTML5 & JavaScript Charts - v1.6.2 GA- http://canvasjs.com/ 
 * Copyright 2013 fenopix
@@ -24586,12 +24640,338 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 	}
 
 }(jQuery, window, document));;
+popGen.faq = popGen.faq || {};
+
+popGen.faq.init = function() {
+    popGen.htmlutil.initFAQ();
+    popGen.htmlutil.smoothScrolling();
+
+    var mainAnchors = new AnchorJS({
+        placement: 'left',
+        class: 'left'
+    });
+    mainAnchors.add().remove('.panel-title').remove('.no-anchor');
+    var questionAnchors = new AnchorJS({
+        placement: 'right',
+        class: 'right'
+    });
+    questionAnchors.add('.panel-title').remove('.no-anchor');
+    $('body').scrollspy({
+        target: '.bs-docs-sidebar'
+    });
+    $('body').scrollspy({
+        target: '#mobile-sidebar'
+    });
+    this.activateFAQSearch("#hideseek-search");
+    this.activateLazyLoadImages();
+};
+
+
+popGen.faq.activateFAQSearch = function(selector) {
+    if ($(selector).length) {
+        $(selector).hideseek({
+            copy_to: '#accordian-search-results',
+            result_selector: '#num-results',
+            nodata: '',
+            complete: function(query, num_results) {
+                $(this.result_selector).html(num_results);
+                if (query.length === 0) {
+                    $("#search-results h3").addClass('hidden');
+                } else {
+                    $("#search-results h3").removeClass('hidden');
+                    $("#search-results h3 .search-term").html("'" + query + "'");
+                }
+                if (query.length > 0 && num_results == 0) {
+                    $(this.copy_to).html('<div class="alert alert-info lead text-center font-thick" role="alert"> Sorry no results found!</div>');
+                }
+            }
+        });
+    }
+};
+
+popGen.faq.activateLazyLoadImages = function() {
+    // try http://sjwilliams.github.io/laziestloader/
+    var layzr = new Layzr({
+        selector: '[data-original]',
+        attr: 'data-original',
+        bgAttr: 'data-layzr-bg',
+        threshold: 20,
+        callback: function() { //Remove the image loader
+            if(popGen.debug) console.log("loaded");
+            console.log("test");
+            $(this).next().remove();
+            $(this).attr('data-isLoaded', 'true');
+        }
+    });
+};;
+/**
+ * HideSeek jQuery plugin
+ *
+ * @copyright Copyright 2015, Dimitris Krestos
+ * @license   Apache License, Version 2.0 (http://www.opensource.org/licenses/apache2.0.php)
+ * @link      http://vdw.staytuned.gr
+ * @version   v0.6.2
+ *
+ * Dependencies are include in minified versions at the bottom:
+ * 1. Highlight v4 by Johann Burkard
+ *
+ */
+/* Sample html structure
+
+<input name="search" placeholder="Start typing here" type="text" data-list=".list">
+<ul class="list">
+  <li>item 1</li>
+  <li>...</li>
+  <li><a href="#">item 2</a></li>
+</ul>
+
+or
+
+<input name="search" placeholder="Start typing here" type="text" data-list=".list">
+<div class="list">
+  <span>item 1</span>
+  <span>...</span>
+  <span>item 2</span>
+</div>
+
+or any similar structure...
+
+*/
+;
+(function($, window, undefined) {
+    "use strict";
+    $.fn.hideseek = function(options) {
+        var defaults = {
+            list: '.hideseek-data',
+            nodata: '',
+            attribute: 'text',
+            highlight: false,
+            ignore: '',
+            navigation: false,
+            ignore_accents: false,
+            hidden_mode: false,
+            copy_to: false,
+            result_selector: false, 
+            complete: false, //callback upcon completio, 
+            first: false, //callback on first run
+        };
+        var options = $.extend(defaults, options);
+        return this.each(function() {
+            var $this = $(this);
+            $this.opts = [];
+            $.map(['list', 'nodata', 'attribute', 'highlight', 'ignore', 'navigation', 'ignore_accents', 'hidden_mode', 'copy_to', 'result_selector', 'complete', 'first'], function(val, i) {
+                $this.opts[val] = $this.data(val) || options[val];
+            });
+            var $list = $($this.opts.list);
+            if ($this.opts.navigation) $this.attr('autocomplete', 'off');
+            if ($this.opts.hidden_mode) $list.children().hide();
+            
+            
+            
+
+            $this.keyup(function(e) {
+                if (e.keyCode != 38 && e.keyCode != 40 && e.keyCode != 13) {
+                    if($this.opts.first){
+                      $this.opts.first();
+                      $this.opts.first = false;
+                    }
+                    var q = $this.val().toLowerCase();
+
+                    $this.results_loc = $($this.opts.copy_to);
+                    $this.results_loc.empty();
+                    
+                    $list.children($this.opts.ignore.trim() ? ":not(" + $this.opts.ignore + ")" : '').removeClass('selected').each(function() {
+                        
+                        /**
+                         *  Workaround for bootstrap panel search 
+                         *
+                         * 
+                         */
+                        if($($this.opts.copy_to).length){
+                          var clone = $(this).parent().parent().parent().clone();
+                          var panel_title = clone.find('h4.panel-title');
+                          
+                          panel_title.attr('id', function(index, value){
+                            return "search-result-" + value;  
+                          });
+
+                          clone.find('.question-content').attr('id', function(index, value){
+                            return "search-result-" + value; 
+                          });
+
+                          panel_title.find('a.accordion-toggle').attr('href', function(index, value){
+                            return "#" + clone.find('.question-content').attr('id');  
+                          });
+
+                          panel_title.find('a.accordion-toggle').attr('data-parent', $this.opts.copy_to);
+                          panel_title.find('.anchorjs-link').remove();
+
+                          var search_id = "search-result-" + clone.attr('id');
+                          if(!$this.results_loc.has("#" + search_id).length){
+                            clone.attr('id', "search-result-" + clone.attr('id'));
+                            clone.appendTo($this.results_loc);
+                           
+                          }
+
+
+                          
+                          
+                        }
+
+                        var data = ($this.opts.attribute != 'text') ? $(this).attr($this.opts.attribute).toLowerCase() : $(this).text().toLowerCase();
+
+                        var treaty = data.removeAccents($this.opts.ignore_accents).indexOf(q) == -1 || q === ($this.opts.hidden_mode ? '' : false)
+                        if (treaty) {
+                            // $(this).hide();    
+                            clone.remove();   //Remove this element since it shouldn't be in the results
+
+                            $this.trigger('_after_each');
+                        } else {
+                            $this.opts.highlight ? $(this).removeHighlight().highlight(q).show() : $(this).show();
+                            $this.trigger('_after_each');
+                        }
+
+                        //If the length is 0 remove everything 
+                        if(q.length == 0){
+                          $this.results_loc.empty();
+                        }
+
+                    });                    
+
+                    // No results message
+                    if ($this.opts.nodata) {
+                        $list.find('.no-results').remove();
+                        if (!$list.children(':not([style*="display: none"])').length) {
+                            $list.children().first().clone().removeHighlight().addClass('no-results').show().prependTo($this.opts.list).text($this.opts.nodata);  
+                        }
+                        
+                    }
+
+                    if($this.opts.complete){
+                        // $this.opts.complete(q, $this.result_length, results_loc);
+                        $this.opts.complete(q, $this.results_loc.find('.panel').length);
+                    }
+                    
+
+                    // $this.trigger('_after');
+                };
+                // Navigation
+                function current(element) {
+                    return element.children('.selected:visible');
+                };
+
+                function prev(element) {
+                    return current(element).prevAll(":visible:first");
+                };
+
+                function next(element) {
+                    return current(element).nextAll(":visible:first");
+                };
+                if ($this.opts.navigation) {
+                    if (e.keyCode == 38) {
+                        if (current($list).length) {
+                            prev($list).addClass('selected');
+                            current($list).last().removeClass('selected');
+                        } else {
+                            $list.children(':visible').last().addClass('selected');
+                        };
+                    } else if (e.keyCode == 40) {
+                        if (current($list).length) {
+                            next($list).addClass('selected');
+                            current($list).first().removeClass('selected');
+                        } else {
+                            $list.children(':visible').first().addClass('selected');
+                        };
+                    } else if (e.keyCode == 13) {
+                        if (current($list).find('a').length) {
+                            document.location = current($list).find('a').attr('href');
+                        } else {
+                            $this.val(current($list).text());
+                        };
+                    };
+                };
+            });
+        });
+    };
+    $(document).ready(function() {
+        $('[data-toggle="hideseek"]').hideseek();
+    });
+})(jQuery);
+/*
+
+highlight v4
+
+Highlights arbitrary terms.
+
+<http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html>
+
+MIT license.
+
+Johann Burkard
+<http://johannburkard.de>
+<mailto:jb@eaio.com>
+
+*/
+jQuery.fn.highlight = function(t) {
+    function e(t, i) {
+        var n = 0;
+        if (3 == t.nodeType) {
+            var a = t.data.removeAccents(true).toUpperCase().indexOf(i);
+            if (a >= 0) {
+                var s = document.createElement("mark");
+                s.className = "highlight";
+                var r = t.splitText(a);
+                r.splitText(i.length);
+                var o = r.cloneNode(!0);
+                s.appendChild(o), r.parentNode.replaceChild(s, r), n = 1
+            }
+        } else if (1 == t.nodeType && t.childNodes && !/(script|style)/i.test(t.tagName))
+            for (var h = 0; h < t.childNodes.length; ++h) h += e(t.childNodes[h], i);
+        return n
+    }
+    return this.length && t && t.length ? this.each(function() {
+        e(this, t.toUpperCase())
+    }) : this
+}, jQuery.fn.removeHighlight = function() {
+    return this.find("mark.highlight").each(function() {
+        with(this.parentNode.firstChild.nodeName, this.parentNode) replaceChild(this.firstChild, this), normalize()
+    }).end()
+};
+// Ignore accents
+String.prototype.removeAccents = function(enabled) {
+    if (enabled) return this.replace(/[áàãâä]/gi, "a").replace(/[éè¨ê]/gi, "e").replace(/[íìïî]/gi, "i").replace(/[óòöôõ]/gi, "o").replace(/[úùüû]/gi, "u").replace(/[ç]/gi, "c").replace(/[ñ]/gi, "n");
+    return this;
+};
 /*!
  * Layzr.js 1.4.0 - A small, fast, modern, and dependency-free library for lazy loading.
  * Copyright (c) 2015 Michael Cavalea - http://callmecavs.github.io/layzr.js/
  * License: MIT
  */
 !function(t,i){"function"==typeof define&&define.amd?define([],i):"object"==typeof exports?module.exports=i():t.Layzr=i()}(this,function(){"use strict";function t(t){this._lastScroll=0,this._ticking=!1,t=t||{},this._optionsContainer=document.querySelector(t.container)||window,this._optionsSelector=t.selector||"[data-layzr]",this._optionsAttr=t.attr||"data-layzr",this._optionsAttrRetina=t.retinaAttr||"data-layzr-retina",this._optionsAttrBg=t.bgAttr||"data-layzr-bg",this._optionsAttrHidden=t.hiddenAttr||"data-layzr-hidden",this._optionsThreshold=t.threshold||0,this._optionsCallback=t.callback||null,this._retina=window.devicePixelRatio>1,this._srcAttr=this._retina?this._optionsAttrRetina:this._optionsAttr,this._nodes=document.querySelectorAll(this._optionsSelector),this._create()}return t.prototype._requestScroll=function(){this._lastScroll=this._optionsContainer===window?window.scrollY||window.pageYOffset:this._optionsContainer.scrollTop+this._getOffset(this._optionsContainer),this._requestTick()},t.prototype._requestTick=function(){this._ticking||(requestAnimationFrame(this.update.bind(this)),this._ticking=!0)},t.prototype._getOffset=function(t){var i=0;do isNaN(t.offsetTop)||(i+=t.offsetTop);while(t=t.offsetParent);return i},t.prototype._getContainerHeight=function(){return this._optionsContainer.innerHeight||this._optionsContainer.offsetHeight},t.prototype._create=function(){this._requestScroll(),this._optionsContainer.addEventListener("scroll",this._requestScroll.bind(this),!1),this._optionsContainer.addEventListener("resize",this._requestScroll.bind(this),!1)},t.prototype._destroy=function(){this._optionsContainer.removeEventListener("scroll",this._requestScroll.bind(this),!1),this._optionsContainer.removeEventListener("resize",this._requestScroll.bind(this),!1)},t.prototype._inViewport=function(t){var i=this._lastScroll,e=i+this._getContainerHeight(),o=this._getOffset(t),n=o+this._getContainerHeight(),s=this._optionsThreshold/100*window.innerHeight;return n>=i-s&&e+s>=o&&!t.hasAttribute(this._optionsAttrHidden)},t.prototype._reveal=function(t){var i=t.getAttribute(this._srcAttr)||t.getAttribute(this._optionsAttr);t.hasAttribute(this._optionsAttrBg)?t.style.backgroundImage="url("+i+")":t.setAttribute("src",i),"function"==typeof this._optionsCallback&&this._optionsCallback.call(t),t.removeAttribute(this._optionsAttr),t.removeAttribute(this._optionsAttrRetina),t.removeAttribute(this._optionsAttrBg),t.removeAttribute(this._optionsAttrHidden)},t.prototype.updateSelector=function(){this._nodes=document.querySelectorAll(this._optionsSelector)},t.prototype.update=function(){for(var t=this._nodes.length,i=0;t>i;i++){var e=this._nodes[i];e.hasAttribute(this._optionsAttr)&&this._inViewport(e)&&this._reveal(e)}this._ticking=!1},t});;
+(function ($) {
+  $(document).ready(function() {
+    $(document).on('click.card', '.card', function (e) {
+
+      if ($(this).find('.card-reveal').length) {
+        if ($(e.target).is($('.card-reveal .card-title')) || $(e.target).is($('.card-reveal .card-title i'))) {
+          // Make Reveal animate down and display none
+          $(this).find('.card-reveal').velocity(
+            {translateY: 0}, {
+              duration: 225,
+              queue: false,
+              easing: 'easeInOutQuad',
+              complete: function() { $(this).css({ display: 'none'}); }
+            }
+          );
+        }
+        else if ($(e.target).is($('.card .activator')) ||
+                 $(e.target).is($('.card .activator i')) ) {
+          $(this).find('.card-reveal').css({ display: 'block'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});
+        }
+      }
+    });
+  });
+}( jQuery ));;
 /*! noUiSlider - 7.0.9 - 2014-10-08 16:49:44 */
 
 (function(){
@@ -26877,6 +27257,2560 @@ function closure ( target, options, originalOptions ){
 
 }( window.jQuery || window.Zepto ));
 ;
+popGen.config.allele = popGen.config.allele || {};
+popGen.config.allele.chartJQ = {
+    debug: popGen.debug,
+    //Colors 
+    lightGray: "rgba(255, 255, 255, 0.75)",
+    lighterGray: "rgba(255, 255, 255, 0.2)",
+    clear: "rgba(255, 255, 255, 0.0)",
+    backgroundColor: "rgba(255, 255, 255, 0.0)",
+    //ColorSets
+    colorSetOrig: ["#1BCDD1", "#EC5657", "#8FAABB", "#B08BEB", "#3EA0DD", "#F5A52A", "#23BFAA", "#FAA586", "#EB8CC6", "#ECF0F1"],
+    colorSet: ["#F64747", "#BE90D4", "#F9690E", "#1BCDD1", "#F9BF3B", "#87D37C", "#4B77BE", "#663399", "#FDE3A7", "#F1A9A0", "#2574A9", "#90C695", "#F4B350", "#BDC3C7", "#D2527F", "#8FAABB"],
+    //Attributes 
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+    backgroundColor: "rgba(255, 255, 255, 0.0)",
+    labelFontSize: "14",
+};
+
+popGen.config.allele.chartJQ.debugData = function() {
+    console.log(this);
+    console.log(CanvasJS);
+};
+/**
+ * Initialize the main chart that will hold of the data
+ *      
+ *  @param {string} selector JQuery selctor for the chart element 
+ */
+popGen.config.allele.chartJQ.initChart = function(selector) {
+    if (this.chartExists(selector)) {
+        this.addColorSet("main", this.colorSet); //Add the color set to the library 
+        var data = []; //Holds all of the datapoints 
+        var dataSeries = {
+            type: "line"
+        };
+        var dataPoints = [];
+        dataPoints.push({
+            x: 0,
+            y: 0
+        }); //Set the inital graph to 0,0 
+        dataSeries.dataPoints = dataPoints;
+        data.push(dataSeries);
+        //Create the graph 
+        $(selector).CanvasJSChart({
+            zoomEnabled: true,
+            exportEnabled: true,
+            exportFileName: "Genetic Simulation Graph",
+            backgroundColor: this.clear,
+            title: { //Only here if we want to add it later 
+                text: "",
+                fontColor: this.lightGray,
+                fontFamily: this.fontFamily,
+                fontWeight: 300
+            },
+            axisX: {
+                title: "Generation",
+                titleFontColor: "white",
+                // titleFontSize: 22, //Automatically calculated for responsive design
+                labelFontColor: this.lighterGray,
+                labelFontSize: this.labelFontSize,
+                labelAngle: 0,
+                gridThickness: 1,
+                gridColor: this.lighterGray,
+                lineColor: this.lighterGray,
+                tickColor: this.lighterGray,
+            },
+            axisY: {
+                title: "Frequency of the A allele",
+                titleFontColor: "white",
+                // titleFontSize: 22, //Automatically calculated for responsive design
+                labelFontColor: this.lighterGray,
+                minimum: 0,
+                maximum: 1,
+                labelFontSize: this.labelFontSize,
+                includeZero: false,
+                gridThickness: 1,
+                gridColor: this.lighterGray,
+                lineColor: this.lighterGray,
+                tickColor: this.lighterGray
+            },
+            data: data
+        });
+    } else {
+        console.log("ERROR: The chart [" + selector + "] isn't on this page!")
+    }
+};
+/**
+ * Determines if the chart exists on the page 
+ *      
+ *  @param {string} selector JQuery selctor for the chart element 
+ */
+popGen.config.allele.chartJQ.chartExists = function(selector) {
+    if ($(selector).length) return true;
+    else return false;
+};
+/**
+ *  Add a custome color set to the CanvasJS library
+ *      
+ *  @param {string} name the name to identify this color set 
+ *  @param {array<String>} colorSet array of strings representing colors
+ */
+popGen.config.allele.chartJQ.addColorSet = function(name, colorSet) {
+    if (typeof CanvasJS !== 'undefined') {
+        CanvasJS.addColorSet(name, colorSet);
+        if (this.debug) console.log("ColorSet Successfull Set");
+    } else {
+        console.log("CanvasJS not avaiable");
+    }
+};;
+popGen.config.genotype = popGen.config.genotype || {};
+popGen.config.genotype.chartJQ = {
+    debug: false,
+    //Colors 
+    lightGray: "rgba(255, 255, 255, 0.75)",
+    lighterGray: "rgba(255, 255, 255, 0.2)",
+    clear: "rgba(255, 255, 255, 0.0)",
+    backgroundColor: "rgba(255, 255, 255, 0.0)",
+    //ColorSets
+    colorSetOrig: ["#1BCDD1", "#EC5657", "#8FAABB", "#B08BEB", "#3EA0DD", "#F5A52A", "#23BFAA", "#FAA586", "#EB8CC6", "#ECF0F1"],
+    colorSet: ["#F64747", "#BE90D4", "#F9690E", "#1BCDD1", "#F9BF3B", "#87D37C", "#4B77BE", "#663399", "#FDE3A7", "#F1A9A0", "#2574A9", "#90C695", "#F4B350", "#BDC3C7", "#D2527F", "#8FAABB"],
+    //Attributes 
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+    backgroundColor: "rgba(255, 255, 255, 0.0)",
+    labelFontSize: "14",
+};
+popGen.config.genotype.chartJQ.debugData = function() {
+    console.log(this);
+    console.log(CanvasJS);
+};
+/**
+ * Initialize the main chart that will hold of the data
+ *      
+ *  @param {string} selector JQuery selctor for the chart element 
+ */
+popGen.config.genotype.chartJQ.initChart = function(selector) {
+    if (this.chartExists(selector)) {
+        this.addColorSet("main", this.colorSet); //Add the color set to the library 
+        var data = []; //Holds all of the datapoints 
+        var dataSeries = {
+            type: "line"
+        };
+        var dataPoints = [];
+        dataPoints.push({
+            x: 0,
+            y: 0
+        }); //Set the inital graph to 0,0 
+        dataSeries.dataPoints = dataPoints;
+        data.push(dataSeries);
+        //Create the graph 
+        $(selector).CanvasJSChart({
+            zoomEnabled: true,
+            exportEnabled: true,
+            exportFileName: "Genotype Simulation Graph",
+            backgroundColor: this.clear,
+            title: { //Only here if we want to add it later 
+                text: "",
+                fontColor: this.lightGray,
+                fontFamily: this.fontFamily,
+                fontWeight: 300
+            },
+            axisX: {
+                title: "Generation",
+                titleFontColor: "white",
+                // titleFontSize: 22, //Automatically calculated for responsive design
+                labelFontColor: this.lighterGray,
+                labelFontSize: this.labelFontSize,
+                labelAngle: 0,
+                gridThickness: 1,
+                gridColor: this.lighterGray,
+                lineColor: this.lighterGray,
+                tickColor: this.lighterGray,
+            },
+            axisY: {
+                title: "Genotype Frequency",
+                titleFontColor: "white",
+                // titleFontSize: 22, //Automatically calculated for responsive design
+                labelFontColor: this.lighterGray,
+                minimum: 0,
+                maximum: 1,
+                labelFontSize: this.labelFontSize,
+                includeZero: false,
+                gridThickness: 1,
+                gridColor: this.lighterGray,
+                lineColor: this.lighterGray,
+                tickColor: this.lighterGray
+            },
+            data: data
+        });
+    } else {
+        console.log("ERROR: The chart [" + selector + "] isn't on this page!");
+    }
+};
+/**
+ * Determines if the chart exists on the page 
+ *      
+ *  @param {string} selector JQuery selctor for the chart element 
+ */
+popGen.config.genotype.chartJQ.chartExists = function(selector) {
+    if ($(selector).length) return true;
+    else return false;
+};
+/**
+ *  Add a custome color set to the CanvasJS library
+ *      
+ *  @param {string} name the name to identify this color set 
+ *  @param {array<String>} colorSet array of strings representing colors
+ */
+popGen.config.genotype.chartJQ.addColorSet = function(name, colorSet) {
+    if (typeof CanvasJS !== 'undefined') {
+        CanvasJS.addColorSet(name, colorSet);
+        if (this.debug) console.log("ColorSet Successfull Set");
+    } else {
+        console.log("CanvasJS not avaiable");
+    }
+};;
+/**
+ *  TODO: Fix population bottlneck sync
+ *
+ */
+//Namespaces
+popGen.config.allele = popGen.config.allele || {};
+popGen.config.allele.noUISlider = popGen.config.allele.noUISlider || {
+    debug: false,
+    selectors: { //Not currenlty using or probably useful
+        populationSize: {
+            slider: "#population-size-slider",
+            input: "#population-size"
+        }
+    }
+};
+/**
+ *  Initialize all of the sliders
+ *      
+ *  @param {string} selector JQuery selctor for the slider element 
+ */
+popGen.config.allele.noUISlider.initSliders = function(selector) {
+    //Initalize each slider
+    this.initPopulationSlider(this.selectors);
+    this.initGenerationSlider(this.selectors);
+    this.initStartingFreqSlider(this.selectors);
+    this.initwAASlider(this.selectors);
+    this.initwAaSlider(this.selectors);
+    this.initwaaSlider(this.selectors);
+    this.initSelectionSlider(this.selectors);
+    this.initDominanceSlider(this.selectors);
+    this.initMUSlider(this.selectors);
+    this.initNUSlider(this.selectors);
+    this.initMigrationSlider(this.selectors);
+    this.initMigrantAlleleSlider(this.selectors);
+    this.initInbreedingSlider(this.selectors);
+    this.initAssortMatingSlider(this.selectors);
+    this.initBottleNeckGensSlider(this.selectors);
+    this.initBottleNeckPopSlider(this.selectors);
+    this.initBatchSlider(this.selectors);
+    this.addBookmarkValues();
+};
+popGen.config.allele.noUISlider.debugData = function() {
+    console.log(this);
+};
+/**
+ *  Individual funtions to initalize sliders
+ *      
+ *  @param {string} selector JQuery selctor for the slider element 
+ */
+popGen.config.allele.noUISlider.initPopulationSlider = function(selector) {
+    $("#population-size-slider").noUiSlider({
+        start: [500],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#population-size-slider").Link('lower').to($("#population-size"));
+    // $("#population-size-slider").addClass("active"); //Active by default
+    $("#population-size-slider").on('slide', this.activatePopulationSlider);
+    $("#population-size-slider").on('change', this.activatePopulationSlider);
+    $("#population-size-slider").on('set', this.activatePopulationSlider);
+};
+popGen.config.allele.noUISlider.initGenerationSlider = function(selector) {
+    $("#generations-slider").noUiSlider({
+        start: [500],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#generations-slider").Link('lower').to($("#generations"));
+    // $("#generations-slider").Link('lower').to($("#generation-to-override-upper"));
+    $("#generations-slider").addClass("active"); //Active by default
+    $("#generations-slider").on('slide', this.activateGenerationsSlider);
+    $("#generations-slider").on('change', this.activateGenerationsSlider);
+    $("#generations-slider").on('set', this.activateGenerationsSlider);
+};
+popGen.config.allele.noUISlider.initStartingFreqSlider = function(selector) {
+    $("#starting-allele-frequency-slider").noUiSlider({
+        start: [.5],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#starting-allele-frequency-slider").Link('lower').to($("#starting-allele-frequency"));
+    $("#starting-allele-frequency-slider").addClass("active"); //Active by default
+};
+popGen.config.allele.noUISlider.initwAASlider = function(selector) {
+    $("#fitness-coefficient-wAA-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-wAA-slider").Link('lower').to($("#fitness-coefficient-wAA"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-wAA-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAA-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAA-slider").on('set', this.activateFitnessCoefSlider);
+};
+popGen.config.allele.noUISlider.initwAaSlider = function(selector) {
+    $("#fitness-coefficient-wAa-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-wAa-slider").Link('lower').to($("#fitness-coefficient-wAa"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-wAa-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAa-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAa-slider").on('set', this.activateFitnessCoefSlider);
+};
+popGen.config.allele.noUISlider.initwaaSlider = function(selector) {
+    $("#fitness-coefficient-waa-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-waa-slider").Link('lower').to($("#fitness-coefficient-waa"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-waa-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-waa-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-waa-slider").on('set', this.activateFitnessCoefSlider);
+};
+popGen.config.allele.noUISlider.initSelectionSlider = function(selector) {
+    $("#selection-coefficient-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#selection-coefficient-slider").Link('lower').to($("#selection-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#selection-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+    $("#selection-coefficient-slider").on('change', this.activateSelectionDomSlider);
+    $("#selection-coefficient-slider").on('set', this.activateSelectionDomSlider);
+};
+popGen.config.allele.noUISlider.initDominanceSlider = function(selector) {
+    $("#dominance-coefficient-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#dominance-coefficient-slider").Link('lower').to($("#dominance-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#dominance-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+    $("#dominance-coefficient-slider").on('change', this.activateSelectionDomSlider);
+    $("#dominance-coefficient-slider").on('set', this.activateSelectionDomSlider);
+};
+popGen.config.allele.noUISlider.initMUSlider = function(selector) {
+    $("#mutation-rate-mu-slider").noUiSlider({
+        start: [0],
+        step: .00001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [9.99999]
+        },
+        format: wNumb({
+            decimals: 5,
+            thousand: ','
+        })
+    });
+    $("#mutation-rate-mu-slider").Link('lower').to($("#mutation-rate-mu"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#mutation-rate-mu-slider").on('slide', this.activateMutationSlider);
+    $("#mutation-rate-mu-slider").on('change', this.activateMutationSlider);
+    $("#mutation-rate-mu-slider").on('set', this.activateMutationSlider);
+};
+popGen.config.allele.noUISlider.initNUSlider = function(selector) {
+    $("#mutation-rate-nu-slider").noUiSlider({
+        start: [0],
+        step: .00001, //PROBLEM HERE
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [9.99999]
+        },
+        format: wNumb({
+            decimals: 5, //Assuming 10^-3
+            thousand: ','
+        })
+    });
+    $("#mutation-rate-nu-slider").Link('lower').to($("#mutation-rate-nu"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#mutation-rate-nu-slider").on('slide', this.activateMutationSlider);
+    $("#mutation-rate-nu-slider").on('change', this.activateMutationSlider);
+    $("#mutation-rate-nu-slider").on('set', this.activateMutationSlider);
+};
+popGen.config.allele.noUISlider.initMigrationSlider = function(selector) {
+    $("#migration-rate-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#migration-rate-slider").Link('lower').to($("#migration-rate"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#migration-rate-slider").on('slide', this.activateMigrationSlider);
+    $("#migration-rate-slider").on('change', this.activateMigrationSlider);
+    $("#migration-rate-slider").on('set', this.activateMigrationSlider);
+};
+popGen.config.allele.noUISlider.initMigrantAlleleSlider = function(selector) {
+    $("#migrant-allele-frequency-slider").noUiSlider({
+        start: [.5],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#migrant-allele-frequency-slider").Link('lower').to($("#migrant-allele-frequency"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#migrant-allele-frequency-slider").on('slide', this.activateMigrationSlider);
+    $("#migrant-allele-frequency-slider").on('change', this.activateMigrationSlider);
+    $("#migrant-allele-frequency-slider").on('set', this.activateMigrationSlider);
+};
+popGen.config.allele.noUISlider.initInbreedingSlider = function(selector) {
+    $("#inbreeding-coefficient-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#inbreeding-coefficient-slider").Link('lower').to($("#inbreeding-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#inbreeding-coefficient-slider").on('slide', this.activateInbreedingSlider);
+    $("#inbreeding-coefficient-slider").on('change', this.activateInbreedingSlider);
+    $("#inbreeding-coefficient-slider").on('set', this.activateInbreedingSlider);
+};
+popGen.config.allele.noUISlider.initAssortMatingSlider = function(selector) {
+    $("#positive-assortative-mating-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#positive-assortative-mating-slider").Link('lower').to($("#positive-assortative-mating"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#positive-assortative-mating-slider").on('slide', this.activateAssortativeMating);
+    $("#positive-assortative-mating-slider").on('change', this.activateAssortativeMating);
+    $("#positive-assortative-mating-slider").on('set', this.activateAssortativeMating);
+};
+popGen.config.allele.noUISlider.initBottleNeckGensSlider = function(selector) {
+    $("#generation-to-override-slider").noUiSlider({
+        start: [50, 500],
+        step: 1,
+        connect: true,
+        range: {
+            'min': [1],
+            'max': [500]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    }, true);
+    $("#generation-to-override-slider").Link('lower').to($("#generation-to-override-lower"));
+    $("#generation-to-override-slider").Link('upper').to($("#generation-to-override-upper"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#generation-to-override-slider").on('slide', this.activatePopulationControl);
+    $("#generation-to-override-slider").on('change', this.activatePopulationControl);
+    $("#generation-to-override-slider").on('set', this.activatePopulationControl);
+};
+popGen.config.allele.noUISlider.initBottleNeckPopSlider = function(selector) {
+    $("#new-population-size-slider").noUiSlider({
+        start: [5000],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#new-population-size-slider").Link('lower').to($("#new-population-size"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#new-population-size-slider").on('slide', this.activatePopulationControl);
+    $("#new-population-size-slider").on('change', this.activatePopulationControl);
+    $("#new-population-size-slider").on('set', this.activatePopulationControl);
+};
+popGen.config.allele.noUISlider.initBatchSlider = function(selector) {
+    $("#batch-tool-runs-slider").noUiSlider({
+        start: [1],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [50]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#batch-tool-runs-slider").Link('lower').to($("#batch-tool-runs"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#batch-tool-runs-slider").on('slide', this.activateBatchTool);
+    $("#batch-tool-runs-slider").on('change', this.activateBatchTool);
+    $("#batch-tool-runs-slider").on('set', this.activateBatchTool);
+};
+/**
+ *  These functions checks to see if the current slider has been moved yet. Once it is moved change the color of
+ *  the slider to the primary color from the inactive color (grayed-out most likely).
+ *
+ *  TODO: Check the values to make it inactive if the appropriate values are set
+ */
+popGen.config.allele.noUISlider.activateGenerationsSlider = function() {
+    if (popGen.config.allele) {
+        popGen.config.allele.noUISlider.validateGenOverride();
+    } else {
+        popGen.config.noUISlider.validateGenOverride();
+    }
+};
+popGen.config.allele.noUISlider.activatePopulationSlider = function() {
+    $("#population-size-slider").addClass("active");
+    // $("#batch-tool-runs-slider").addClass("active");
+    //Update the activator icon
+    $("#population-variable .variable-activator").removeClass("fa-square-o");
+    $("#population-variable .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateFitnessCoefSlider = function() {
+    //Make these active 
+    $("#fitness-coefficient-waa-slider").addClass("active");
+    $("#fitness-coefficient-wAa-slider").addClass("active");
+    $("#fitness-coefficient-wAA-slider").addClass("active");
+    //Make these inactive (Only one or the other can be active)
+    $("#selection-coefficient-slider").removeClass("active");
+    $("#dominance-coefficient-slider").removeClass("active");
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateSelectionDomSlider = function() {
+    //Make these active 
+    $("#selection-coefficient-slider").addClass("active");
+    $("#dominance-coefficient-slider").addClass("active");
+    //Make these inactive (Only one or the other can be active)
+    $("#fitness-coefficient-waa-slider").removeClass("active");
+    $("#fitness-coefficient-wAa-slider").removeClass("active");
+    $("#fitness-coefficient-wAA-slider").removeClass("active");
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateMutationSlider = function() {
+    //Make these active 
+    $("#mutation-rate-mu-slider").addClass("active");
+    $("#mutation-rate-nu-slider").addClass("active");
+    //Update the activator icon
+    $("#mutation-variables .variable-activator").removeClass("fa-square-o");
+    $("#mutation-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateMigrationSlider = function() {
+    //Make these active 
+    $("#migration-rate-slider").addClass("active");
+    $("#migrant-allele-frequency-slider").addClass("active");
+    //Update the activator icon
+    $("#migration-variables .variable-activator").removeClass("fa-square-o");
+    $("#migration-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateInbreedingSlider = function() {
+    //Make these active
+    $("#inbreeding-coefficient-slider").addClass("active");
+    //Update the activator icon
+    $("#inbreeding-variables .variable-activator").removeClass("fa-square-o");
+    $("#inbreeding-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateAssortativeMating = function() {
+    //Make these active 
+    $("#positive-assortative-mating-slider").addClass("active");
+    //Update the activator icon
+    $("#assortative-mating .variable-activator").removeClass("fa-square-o");
+    $("#assortative-mating .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activatePopulationControl = function() {
+    $("#generation-to-override-slider").addClass("active");
+    $("#new-population-size-slider").addClass("active");
+    //Update the activator icon
+    $("#population-control .variable-activator").removeClass("fa-square-o");
+    $("#population-control .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateBatchTool = function() {
+    $("#batch-tool-runs-slider").addClass("active");
+    //Update the activator icon
+    $("#batch-tool .variable-activator").removeClass("fa-square-o");
+    $("#batch-tool .variable-activator").addClass("fa-check-square-o");
+};
+//Deactive the correct sliders based on what checkmark was clicked 
+popGen.config.allele.noUISlider.deactiveActiveOnCheckmark = function(variableSectionId, state) {
+    console.log(variableSectionId, state);
+    if (variableSectionId == "selection-variables") {
+        //Needs to be more intelligent 
+        if (state == "unchecked") {
+            $("#selection-coefficient-slider").removeClass("active");
+            $("#dominance-coefficient-slider").removeClass("active");
+            $("#fitness-coefficient-waa-slider").removeClass("active");
+            $("#fitness-coefficient-wAa-slider").removeClass("active");
+            $("#fitness-coefficient-wAA-slider").removeClass("active");
+        }
+    } else if (variableSectionId == "population-variable") {
+        $("#population-size-slider").toggleClass("active");
+
+        if(state = 'unchecked'){
+            $('#batch-tool-runs-slider').removeClass('active');
+        }
+
+    } else if (variableSectionId == "mutation-variables") {
+        $("#mutation-rate-mu-slider").toggleClass("active");
+        $("#mutation-rate-nu-slider").toggleClass("active");
+    } else if (variableSectionId == "migration-variables") {
+        $("#migration-rate-slider").toggleClass("active");
+        $("#migrant-allele-frequency-slider").toggleClass("active");
+    } else if (variableSectionId == "assortative-mating") {
+        $("#positive-assortative-mating-slider").toggleClass("active");
+    } else if (variableSectionId == "inbreeding-variables") {
+        $("#inbreeding-coefficient-slider").toggleClass("active");
+    } else if (variableSectionId == "population-control") {
+        $("#generation-to-override-slider").toggleClass("active");
+        $("#new-population-size-slider").toggleClass("active");
+    } else if (variableSectionId == "batch-tool") {
+        $("#batch-tool-runs-slider").toggleClass("active");
+    }
+};
+/** 
+ *  Make sure that the validation override doesn't exceed the the actual number of generations 
+ *
+ */
+popGen.config.allele.noUISlider.validateGenOverride = function() {
+    //Validate here 
+    var validPopBottleneck = true;
+    var values = popGen.htmlutil.chartDOM.seralizeForm($("#variables-form"));
+    var numberOfGens = parseFloat(values['generations'].replace(',', ''));
+    var removeActive = false;
+    if (!$("#generation-to-override-slider").hasClass("active")) {
+        removeActive = true;
+    }
+    $('#generation-to-override-slider').noUiSlider({
+        range: {
+            'min': 0,
+            'max': Number(numberOfGens)
+        }
+    }, true);
+    // Class is automatically added due to the update 
+    if (removeActive) {
+        $("#generation-to-override-slider").removeClass("active");
+        $("#new-population-size-slider").removeClass("active");
+        $("#population-control .variable-activator").removeClass("fa-check-square-o");
+        $("#population-control .variable-activator").addClass("fa-square-o");
+    }
+};
+/**
+ *  Look at the hidden fields in the page and attempt to add them to the slider
+ *      -Validation occurs automatically with noui slider
+ */
+popGen.config.allele.noUISlider.addBookmarkValues = function() {
+    var bookmarkform = $("#bookmarking-values");
+    if (bookmarkform.length) {
+        var bookmarks = bookmarkform.serializeArray();
+        //Go through each bookmark and try set the value
+        for (var i = 0; i < bookmarks.length; i++) {
+            if (bookmarks[i].name == "bookmarking-generations") $("#generations-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-starting-allele-frequency") $("#starting-allele-frequency-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-wAA") $("#fitness-coefficient-wAA-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-wAa") $("#fitness-coefficient-wAa-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-waa") $("#fitness-coefficient-waa-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-selection-coefficient") $("#selection-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-dominance-coefficient") $("#dominance-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-mu") $("#mutation-rate-mu-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-mu-exponent") $("#mutation-rate-mu-exponent").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-nu") $("#mutation-rate-nu-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-nu-exponent") $("#mutation-rate-nu-exponent").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-migration-rate") $("#migration-rate-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-migrant-allele-frequency") $("#migrant-allele-frequency-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-inbreeding-coefficient") $("#inbreeding-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-positive-assortative-mating") $("#positive-assortative-mating-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-generation-to-override-lower") $("#generation-to-override-slider").val([bookmarks[i].value, null]);
+            else if (bookmarks[i].name == "bookmarking-generation-to-override-upper") $("#generation-to-override-slider").val([null, bookmarks[i].value]);
+            else if (bookmarks[i].name == "bookmarking-new-population-size") $("#new-population-size-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-batch-tool-runs") $("#batch-tool-runs-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-population-size") {
+                $("#population-size-slider").val(bookmarks[i].value);
+                // $("#population-size-slider").addClass("active"); //Activate the slider too
+            }
+        }
+    } else {
+        if (this.debug) console.log(bookmarkform);
+    }
+};;
+/**
+ *  TODO: Fix population bottlneck sync
+ *
+ */
+//Namespaces
+popGen.config.genotype = popGen.config.genotype || {};
+popGen.config.genotype.noUISlider = popGen.config.genotype.noUISlider || {
+        debug: false,
+        selectors: { //Not currenlty using or probably useful
+            populationSize: {
+                slider: "#population-size-slider",
+                input: "#population-size"
+            }
+        }
+    }
+    /**
+     *  Initialize all of the sliders
+     *      
+     *  @param {string} selector JQuery selctor for the slider element 
+     */
+popGen.config.genotype.noUISlider.initSliders = function(selector) {
+    //Initalize each slider
+    this.initPopulationSlider(this.selectors);
+    this.initGenerationSlider(this.selectors);
+    this.initStartingFreqSlider(this.selectors);
+    this.initwAASlider(this.selectors);
+    this.initwAaSlider(this.selectors);
+    this.initwaaSlider(this.selectors);
+    this.initSelectionSlider(this.selectors);
+    this.initDominanceSlider(this.selectors);
+    this.initMUSlider(this.selectors);
+    this.initNUSlider(this.selectors);
+    this.initMigrationSlider(this.selectors);
+    this.initMigrantAlleleSlider(this.selectors);
+    this.initInbreedingSlider(this.selectors);
+    this.initAssortMatingSlider(this.selectors);
+    this.initBottleNeckGensSlider(this.selectors);
+    this.initBottleNeckPopSlider(this.selectors);
+    // this.initBatchSlider(this.selectors);
+    this.addBookmarkValues();
+}
+popGen.config.genotype.noUISlider.debugData = function() {
+        console.log(this);
+    }
+    /**
+     *  Individual funtions to initalize sliders
+     *      
+     *  @param {string} selector JQuery selctor for the slider element 
+     */
+popGen.config.genotype.noUISlider.initPopulationSlider = function(selector) {
+    $("#population-size-slider").noUiSlider({
+        start: [500],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#population-size-slider").Link('lower').to($("#population-size"));
+    // $("#population-size-slider").addClass("active"); //Active by default
+    $("#population-size-slider").on('slide', this.activatePopulationSlider);
+    $("#population-size-slider").on('change', this.activatePopulationSlider);
+    $("#population-size-slider").on('set', this.activatePopulationSlider);
+}
+popGen.config.genotype.noUISlider.initGenerationSlider = function(selector) {
+    $("#generations-slider").noUiSlider({
+        start: [500],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#generations-slider").Link('lower').to($("#generations"));
+    // $("#generations-slider").Link('lower').to($("#generation-to-override-upper"));
+    $("#generations-slider").addClass("active"); //Active by default
+    $("#generations-slider").on('slide', this.activateGenerationsSlider);
+    $("#generations-slider").on('change', this.activateGenerationsSlider);
+    $("#generations-slider").on('set', this.activateGenerationsSlider);
+}
+popGen.config.genotype.noUISlider.initStartingFreqSlider = function(selector) {
+    $("#starting-allele-frequency-slider").noUiSlider({
+        start: [.5],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#starting-allele-frequency-slider").Link('lower').to($("#starting-allele-frequency"));
+    $("#starting-allele-frequency-slider").addClass("active"); //Active by default
+}
+popGen.config.genotype.noUISlider.initwAASlider = function(selector) {
+    $("#fitness-coefficient-wAA-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-wAA-slider").Link('lower').to($("#fitness-coefficient-wAA"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-wAA-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAA-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAA-slider").on('set', this.activateFitnessCoefSlider);
+}
+popGen.config.genotype.noUISlider.initwAaSlider = function(selector) {
+    $("#fitness-coefficient-wAa-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-wAa-slider").Link('lower').to($("#fitness-coefficient-wAa"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-wAa-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAa-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAa-slider").on('set', this.activateFitnessCoefSlider);
+}
+popGen.config.genotype.noUISlider.initwaaSlider = function(selector) {
+    $("#fitness-coefficient-waa-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-waa-slider").Link('lower').to($("#fitness-coefficient-waa"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-waa-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-waa-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-waa-slider").on('set', this.activateFitnessCoefSlider);
+}
+popGen.config.genotype.noUISlider.initSelectionSlider = function(selector) {
+    $("#selection-coefficient-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#selection-coefficient-slider").Link('lower').to($("#selection-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#selection-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+    $("#selection-coefficient-slider").on('change', this.activateSelectionDomSlider);
+    $("#selection-coefficient-slider").on('set', this.activateSelectionDomSlider);
+}
+popGen.config.genotype.noUISlider.initDominanceSlider = function(selector) {
+    $("#dominance-coefficient-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#dominance-coefficient-slider").Link('lower').to($("#dominance-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#dominance-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+    $("#dominance-coefficient-slider").on('change', this.activateSelectionDomSlider);
+    $("#dominance-coefficient-slider").on('set', this.activateSelectionDomSlider);
+}
+popGen.config.genotype.noUISlider.initMUSlider = function(selector) {
+    $("#mutation-rate-mu-slider").noUiSlider({
+        start: [0],
+        step: .00001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [9.99999]
+        },
+        format: wNumb({
+            decimals: 5,
+            thousand: ','
+        })
+    });
+    $("#mutation-rate-mu-slider").Link('lower').to($("#mutation-rate-mu"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#mutation-rate-mu-slider").on('slide', this.activateMutationSlider);
+    $("#mutation-rate-mu-slider").on('change', this.activateMutationSlider);
+    $("#mutation-rate-mu-slider").on('set', this.activateMutationSlider);
+}
+popGen.config.genotype.noUISlider.initNUSlider = function(selector) {
+    $("#mutation-rate-nu-slider").noUiSlider({
+        start: [0],
+        step: .00001, //PROBLEM HERE
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [9.99999]
+        },
+        format: wNumb({
+            decimals: 5, //Assuming 10^-3
+            thousand: ','
+        })
+    });
+    $("#mutation-rate-nu-slider").Link('lower').to($("#mutation-rate-nu"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#mutation-rate-nu-slider").on('slide', this.activateMutationSlider);
+    $("#mutation-rate-nu-slider").on('change', this.activateMutationSlider);
+    $("#mutation-rate-nu-slider").on('set', this.activateMutationSlider);
+}
+popGen.config.genotype.noUISlider.initMigrationSlider = function(selector) {
+    $("#migration-rate-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#migration-rate-slider").Link('lower').to($("#migration-rate"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#migration-rate-slider").on('slide', this.activateMigrationSlider);
+    $("#migration-rate-slider").on('change', this.activateMigrationSlider);
+    $("#migration-rate-slider").on('set', this.activateMigrationSlider);
+}
+popGen.config.genotype.noUISlider.initMigrantAlleleSlider = function(selector) {
+    $("#migrant-allele-frequency-slider").noUiSlider({
+        start: [.5],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#migrant-allele-frequency-slider").Link('lower').to($("#migrant-allele-frequency"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#migrant-allele-frequency-slider").on('slide', this.activateMigrationSlider);
+    $("#migrant-allele-frequency-slider").on('change', this.activateMigrationSlider);
+    $("#migrant-allele-frequency-slider").on('set', this.activateMigrationSlider);
+}
+popGen.config.genotype.noUISlider.initInbreedingSlider = function(selector) {
+    $("#inbreeding-coefficient-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#inbreeding-coefficient-slider").Link('lower').to($("#inbreeding-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#inbreeding-coefficient-slider").on('slide', this.activateInbreedingSlider);
+    $("#inbreeding-coefficient-slider").on('change', this.activateInbreedingSlider);
+    $("#inbreeding-coefficient-slider").on('set', this.activateInbreedingSlider);
+}
+popGen.config.genotype.noUISlider.initAssortMatingSlider = function(selector) {
+    $("#positive-assortative-mating-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#positive-assortative-mating-slider").Link('lower').to($("#positive-assortative-mating"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#positive-assortative-mating-slider").on('slide', this.activateAssortativeMating);
+    $("#positive-assortative-mating-slider").on('change', this.activateAssortativeMating);
+    $("#positive-assortative-mating-slider").on('set', this.activateAssortativeMating);
+}
+popGen.config.genotype.noUISlider.initBottleNeckGensSlider = function(selector) {
+    $("#generation-to-override-slider").noUiSlider({
+        start: [50, 500],
+        step: 1,
+        connect: true,
+        range: {
+            'min': [1],
+            'max': [500]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    }, true);
+    $("#generation-to-override-slider").Link('lower').to($("#generation-to-override-lower"));
+    $("#generation-to-override-slider").Link('upper').to($("#generation-to-override-upper"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#generation-to-override-slider").on('slide', this.activatePopulationControl);
+    $("#generation-to-override-slider").on('change', this.activatePopulationControl);
+    $("#generation-to-override-slider").on('set', this.activatePopulationControl);
+}
+popGen.config.genotype.noUISlider.initBottleNeckPopSlider = function(selector) {
+    $("#new-population-size-slider").noUiSlider({
+        start: [5000],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#new-population-size-slider").Link('lower').to($("#new-population-size"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#new-population-size-slider").on('slide', this.activatePopulationControl);
+    $("#new-population-size-slider").on('change', this.activatePopulationControl);
+    $("#new-population-size-slider").on('set', this.activatePopulationControl);
+}
+popGen.config.genotype.noUISlider.initBatchSlider = function(selector) {
+    $("#batch-tool-runs-slider").noUiSlider({
+        start: [1],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [50]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#batch-tool-runs-slider").Link('lower').to($("#batch-tool-runs"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#batch-tool-runs-slider").on('slide', this.activateBatchTool);
+    $("#batch-tool-runs-slider").on('change', this.activateBatchTool);
+    $("#batch-tool-runs-slider").on('set', this.activateBatchTool);
+};
+/**
+ *  These functions checks to see if the current slider has been moved yet. Once it is moved change the color of
+ *  the slider to the primary color from the inactive color (grayed-out most likely).
+ *
+ *  TODO: Check the values to make it inactive if the appropriate values are set
+ */
+popGen.config.genotype.noUISlider.activateGenerationsSlider = function() {
+    if(popGen.config.genotype){
+        popGen.config.genotype.noUISlider.validateGenOverride();
+    }
+    else{
+        popGen.config.noUISlider.validateGenOverride();
+    }
+}
+popGen.config.genotype.noUISlider.activatePopulationSlider = function() {
+    $("#population-size-slider").addClass("active");
+    // $("#batch-tool-runs-slider").addClass("active");
+    //Update the activator icon
+    $("#population-variable .variable-activator").removeClass("fa-square-o");
+    $("#population-variable .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateFitnessCoefSlider = function() {
+    //Make these active 
+    $("#fitness-coefficient-waa-slider").addClass("active");
+    $("#fitness-coefficient-wAa-slider").addClass("active");
+    $("#fitness-coefficient-wAA-slider").addClass("active");
+    //Make these inactive (Only one or the other can be active)
+    $("#selection-coefficient-slider").removeClass("active");
+    $("#dominance-coefficient-slider").removeClass("active");
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateSelectionDomSlider = function() {
+    //Make these active 
+    $("#selection-coefficient-slider").addClass("active");
+    $("#dominance-coefficient-slider").addClass("active");
+    //Make these inactive (Only one or the other can be active)
+    $("#fitness-coefficient-waa-slider").removeClass("active");
+    $("#fitness-coefficient-wAa-slider").removeClass("active");
+    $("#fitness-coefficient-wAA-slider").removeClass("active");
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateMutationSlider = function() {
+    //Make these active 
+    $("#mutation-rate-mu-slider").addClass("active");
+    $("#mutation-rate-nu-slider").addClass("active");
+    //Update the activator icon
+    $("#mutation-variables .variable-activator").removeClass("fa-square-o");
+    $("#mutation-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateMigrationSlider = function() {
+    //Make these active 
+    $("#migration-rate-slider").addClass("active");
+    $("#migrant-allele-frequency-slider").addClass("active");
+    //Update the activator icon
+    $("#migration-variables .variable-activator").removeClass("fa-square-o");
+    $("#migration-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateInbreedingSlider = function() {
+    //Make these active
+    $("#inbreeding-coefficient-slider").addClass("active");
+    //Update the activator icon
+    $("#inbreeding-variables .variable-activator").removeClass("fa-square-o");
+    $("#inbreeding-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateAssortativeMating = function() {
+    //Make these active 
+    $("#positive-assortative-mating-slider").addClass("active");
+    //Update the activator icon
+    $("#assortative-mating .variable-activator").removeClass("fa-square-o");
+    $("#assortative-mating .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activatePopulationControl = function() {
+    $("#generation-to-override-slider").addClass("active");
+    $("#new-population-size-slider").addClass("active");
+    //Update the activator icon
+    $("#population-control .variable-activator").removeClass("fa-square-o");
+    $("#population-control .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateBatchTool = function() {
+        $("#batch-tool-runs-slider").addClass("active");
+        //Update the activator icon
+        $("#batch-tool .variable-activator").removeClass("fa-square-o");
+        $("#batch-tool .variable-activator").addClass("fa-check-square-o");
+    }
+    //Deactive the correct sliders based on what checkmark was clicked 
+popGen.config.genotype.noUISlider.deactiveActiveOnCheckmark = function(variableSectionId, state) {
+        if (variableSectionId == "selection-variables") {
+            //Needs to be more intelligent 
+            if (state == "unchecked") {
+                $("#selection-coefficient-slider").removeClass("active");
+                $("#dominance-coefficient-slider").removeClass("active");
+                $("#fitness-coefficient-waa-slider").removeClass("active");
+                $("#fitness-coefficient-wAa-slider").removeClass("active");
+                $("#fitness-coefficient-wAA-slider").removeClass("active");
+            }
+        } else if (variableSectionId == "population-variable") {
+            $("#population-size-slider").toggleClass("active");
+        } else if (variableSectionId == "mutation-variables") {
+            $("#mutation-rate-mu-slider").toggleClass("active");
+            $("#mutation-rate-nu-slider").toggleClass("active");
+        } else if (variableSectionId == "migration-variables") {
+            $("#migration-rate-slider").toggleClass("active");
+            $("#migrant-allele-frequency-slider").toggleClass("active");
+        } else if (variableSectionId == "assortative-mating") {
+            $("#positive-assortative-mating-slider").toggleClass("active");
+        } else if (variableSectionId == "inbreeding-variables") {
+            $("#inbreeding-coefficient-slider").toggleClass("active");
+        } else if (variableSectionId == "population-control") {
+            $("#generation-to-override-slider").toggleClass("active");
+            $("#new-population-size-slider").toggleClass("active");
+        } else if (variableSectionId == "batch-tool") {
+            $("#batch-tool-runs-slider").toggleClass("active");
+        }
+    }
+    /** 
+     *  Make sure that the validation override doesn't exceed the the actual number of generations 
+     *
+     */
+popGen.config.genotype.noUISlider.validateGenOverride = function() {
+        //Validate here 
+        var validPopBottleneck = true;
+        var values = popGen.htmlutil.chartDOM.seralizeForm($("#variables-form"));
+        var numberOfGens = parseFloat(values['generations'].replace(',', ''));
+        var removeActive = false;
+        if (!$("#generation-to-override-slider").hasClass("active")) {
+            removeActive = true;
+        }
+        $('#generation-to-override-slider').noUiSlider({
+            range: {
+                'min': 0,
+                'max': Number(numberOfGens)
+            }
+        }, true);
+        // Class is automatically added due to the update 
+        if (removeActive) {
+            $("#generation-to-override-slider").removeClass("active");
+            $("#new-population-size-slider").removeClass("active");
+            $("#population-control .variable-activator").removeClass("fa-check-square-o");
+            $("#population-control .variable-activator").addClass("fa-square-o");
+        }
+    }
+    /**
+     *  Look at the hidden fields in the page and attempt to add them to the slider
+     *      -Validation occurs automatically with noui slider
+     */
+popGen.config.genotype.noUISlider.addBookmarkValues = function() {
+    var bookmarkform = $("#bookmarking-values");
+    if (bookmarkform.length) {
+        var bookmarks = bookmarkform.serializeArray();
+        //Go through each bookmark and try set the value
+        for (var i = 0; i < bookmarks.length; i++) {
+            if (bookmarks[i].name == "bookmarking-generations") $("#generations-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-starting-allele-frequency") $("#starting-allele-frequency-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-wAA") $("#fitness-coefficient-wAA-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-wAa") $("#fitness-coefficient-wAa-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-waa") $("#fitness-coefficient-waa-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-selection-coefficient") $("#selection-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-dominance-coefficient") $("#dominance-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-mu") $("#mutation-rate-mu-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-mu-exponent") $("#mutation-rate-mu-exponent").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-nu") $("#mutation-rate-nu-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-nu-exponent") $("#mutation-rate-nu-exponent").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-migration-rate") $("#migration-rate-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-migrant-allele-frequency") $("#migrant-allele-frequency-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-inbreeding-coefficient") $("#inbreeding-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-positive-assortative-mating") $("#positive-assortative-mating-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-generation-to-override-lower") $("#generation-to-override-slider").val([bookmarks[i].value, null]);
+            else if (bookmarks[i].name == "bookmarking-generation-to-override-upper") $("#generation-to-override-slider").val([null, bookmarks[i].value]);
+            else if (bookmarks[i].name == "bookmarking-new-population-size") $("#new-population-size-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-batch-tool-runs") $("#batch-tool-runs-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-population-size") {
+                $("#population-size-slider").val(bookmarks[i].value);
+                // $("#population-size-slider").addClass("active"); //Activate the slider too
+            }
+        }
+    } else {
+        if (this.debug) console.log(bookmarkform);
+    }
+};
+/** 
+ *	DOM manipulations relating the chart and it's variables 
+ *
+ */
+popGen.htmlutil.chartDOM = {
+	debug: popGen.debug, 
+	chart: null,        //Hold the chart data here 
+	frequencies: Array(),        //Hold the chart data here 
+    values: null,      	//Holds all of the user inputed values of the last graphed item 
+	nextLine: 0,	       	//0 Means nothing has been graphed 
+	highContrast: null,
+    nextGraphType: "newGraph", //Store this so the webworker doesn't have to worry about it
+    numberBatchRuns: null, 
+    genotype: false, 
+    genotypeHasLegend: false, //Only show the legend one time 
+}; 
+
+popGen.htmlutil.chartDOM.debugData = function(){
+	if(this.debug) console.log(this); 
+}
+
+/**
+ *  Update the global chart element if there are any changes 
+ *
+ */
+popGen.htmlutil.chartDOM.initChart = function(){
+    this.chart = $("#graph-canvas").CanvasJSChart();
+    this.values = this.seralizeForm($("#variables-form")); 
+}
+
+
+ /**
+ * 	Update the graph with new data 
+ *      
+ *  @param {array<float>} dataPoints an array of datapoints to be graphed 
+ *  @param {string} type "redraw" or "add"  
+ */
+popGen.htmlutil.chartDOM.updateGraph = function(dataPoints, type){
+    this.frequencies.push(dataPoints); //Maintain all of the data points
+    if(this.debug) {
+        console.log("Updating Graph: ",dataPoints, type);
+        console.log(popGen.htmlutil.chartDOM.chart); 
+    }
+
+    if(type == "newGraph"){
+        if(this.debug){
+            console.log("New Graph attemping update"); 
+            console.log(dataPoints);
+        }
+        this.clearGraph(); //First clear the graph and data points 
+        this.addDataPoints(dataPoints); 
+        this.updateLegend(false); 
+    }
+    else if(type == "addLine"){
+        if(this.debug){
+            console.log("Add Line attemping update"); 
+            console.log(dataPoints);
+        }
+        this.addDataPoints(dataPoints);
+        if(!this.genotypeHasLegend) this.updateLegend(true); 
+    }
+    else if(type == "batchTool"){
+        if(this.debug){
+            console.log("Batch Attempting Update"); 
+            console.log(dataPoints);
+        }
+        var numBatchRuns = parseInt(this.values['batch-tool-runs']); 
+        this.addDataPoints(dataPoints);
+        this.updateLegend(false, numBatchRuns);
+
+        //Only compute this on the last run 
+        if(this.nextLine - 1 == numBatchRuns){ 
+        	this.computeAggStats(); 
+        }
+
+    }
+    
+}
+
+
+ /**
+ * 	Clear the graph 
+ *      
+ *      
+ */
+popGen.htmlutil.chartDOM.clearGraph = function(){
+    var data = [];
+    var dataSeries = {
+        type: "line"
+    };
+    var dataPoints = [];
+
+    dataSeries.dataPoints = dataPoints;
+   
+    popGen.htmlutil.chartDOM.chart.options.data = data;
+    popGen.htmlutil.chartDOM.chart.options.colorSet = "main";
+    this.nextLine = 1; 
+    this.frequencies = Array(); //Clear the old frequencies 
+}
+
+ /**
+ *  Add datapoints to the graph and redraw 
+ *      
+ *  @param {array<float>} dataPoints an array of datapoints to be graphed 
+ */
+popGen.htmlutil.chartDOM.addDataPoints = function(dataToAdd){
+    // console.log(chart);
+    if(this.debug){
+        console.log("Adding Data Points to Graph"); 
+        console.log(popGen.htmlutil.chartDOM.chart); 
+        console.log(this.nextLine); //Not working yet 
+    }
+
+    //If you are trying to add a line when there isn't there clear the graph first 
+    if(this.nextLine == 0){ 
+        if(this.debug) console.log("Clearning graph one time"); 
+        this.clearGraph();
+    }
+
+    var data = popGen.htmlutil.chartDOM.chart.options.data;
+    var dataSeries = {
+        type: "line"
+    };
+
+    var dataPoints = [];
+    for (var i = 0; i < dataToAdd.length; i++) {
+        dataPoints.push({
+            x: i,
+            y: dataToAdd[i]
+        });
+    }
+
+
+    dataSeries.dataPoints = dataPoints;
+    data.push(dataSeries);
+    popGen.htmlutil.chartDOM.chart.options.data = data;
+    this.nextLine++;
+}
+
+/**
+ *  Update the legend 
+ *      
+ *  @param {bool} isAppend Append or erase the previous legends 
+ *  @param {int} numBatchRuns optional      
+ */
+popGen.htmlutil.chartDOM.updateLegend = function(isAppend, numBatchRuns){
+    if(this.debug){
+        console.log("Updating Legend", this.values); 
+    }
+
+    if(this.genotype) {
+        this.genotypeHasLegend = true; //A legend now exists don't add more 
+        
+        var colorBlock0 = "<i class='fa fa-square' style='color: " + popGen.config.chartJQ.colorSet[0] +"'></i>";
+        var colorBlock1 = "<i class='fa fa-square' style='color: " + popGen.config.chartJQ.colorSet[1] +"'></i>";
+        var colorBlock2 = "<i class='fa fa-square' style='color: " + popGen.config.chartJQ.colorSet[2] +"'></i>";
+
+        var AAColor = "<span style='color:" + popGen.config.chartJQ.colorSet[0] + ";'>AA</span>";
+        var AaColor = "<span style='color:" + popGen.config.chartJQ.colorSet[1] + ";'>Aa</span>";
+        var aaColor = "<span style='color:" + popGen.config.chartJQ.colorSet[2] + ";'>aa</span>";
+    
+        var genoTypeColorLegend = AAColor + " " + AaColor + " " + aaColor;
+    }
+
+
+    var values = this.values; 
+    var graphNum = (this.nextLine - 1)
+    var lineColor = popGen.config.chartJQ.colorSet[(graphNum - 1) % popGen.config.chartJQ.colorSet.length]; 
+    var colorBlock = "<i class='fa fa-square' style='color: " + lineColor +"'></i>"; //Small color block of the line that is generated 
+    var lineName = (this.genotype) ? "Variables " + genoTypeColorLegend : ("Graph" + graphNum + " " + colorBlock); 
+    var graphId = "graph-" + graphNum + "-legend";  //HTML id for this legend 
+    var htmlString = " <div class='legend row' id='" + graphId + "'>" +
+         "<h3><i class='fa fa-line-chart'></i> <strong>" + lineName + "</strong><a href='#' class='pull-right togglelegend'>[Hide Legend]</a></p></h3>" +
+             "<ul class='legend-variables list-unstyled block-center'>";
+
+    if(numBatchRuns !== undefined){
+        htmlString = " <div class='legend row' id='" + graphId + "'>" +
+         "<h3><i class='fa fa-line-chart'></i> <strong>Graphs 1-" + numBatchRuns +  "</strong><a href='#' class='pull-right togglelegend'>[Hide Legend]</a></p></h3>" +
+             "<ul class='legend-variables list-unstyled block-center'>";
+    }
+
+    //Add items to the graph if they are set 
+    htmlString += this.generateLegendRow("numGenerations", values['generations']);
+
+    if(this.isActiveVariable("#population-size")){
+        // htmlString += "<li><strong> Population Size: </strong>" + values['population-size'] + "</li>";
+        htmlString += this.generateLegendRow("populationSize", values['population-size']);
+    }
+    else{ //Infinite (may need to change the css to fit infinite symbol) class='infinite-sym'
+         htmlString += "<li class='col-xs-12 col-sm-6 col-md-4'><span class='legend-var'>Population Size:</span><span class='legend-symbol'>N</span>" +
+            "<span class='legend-val'><span > &infin; </span></span><span data-toggle='tooltip' title='Default Value' class='legend-warning'></span></li>";
+    }
+
+    htmlString += this.generateLegendRow("startAlleleFreq", values['starting-allele-frequency']);
+
+    //Only display the active variables in the legend 
+    if (this.isActiveVariable("#fitness-coefficient-waa")) {
+        htmlString += this.generateLegendRow("fitnessWAA", values['fitness-coefficient-wAA']);
+        htmlString += this.generateLegendRow("fitnessWAa", values['fitness-coefficient-wAa']);
+        htmlString += this.generateLegendRow("fitnessWaa", values['fitness-coefficient-waa']);
+    }
+    else if (this.isActiveVariable("#selection-coefficient")) {
+        htmlString += this.generateLegendRow("dominanceCoef", values['dominance-coefficient']);
+        htmlString += this.generateLegendRow("selectionCoef", values['selection-coefficient']);
+    }
+
+    if (this.isActiveVariable("#mutation-rate-nu")) {
+        htmlString += this.generateLegendRow("forMutation", values['mutation-rate-mu'], values['mutation-rate-mu-exponent']);
+        htmlString += this.generateLegendRow("revMutation", values['mutation-rate-nu'], values['mutation-rate-nu-exponent']);
+    }
+
+    if (this.isActiveVariable("#inbreeding-coefficient")) {
+        htmlString += this.generateLegendRow("inbreedCoef", values['inbreeding-coefficient']);
+    }
+
+    if (this.isActiveVariable("#positive-assortative-mating")) {
+        htmlString += this.generateLegendRow("assortMating", values['positive-assortative-mating']);
+    }
+
+    if(this.isActiveVariable("#migration-rate")){
+         htmlString += this.generateLegendRow("migrationRate", values['migration-rate']);
+         htmlString += this.generateLegendRow("migrantAllelFreq", values['migrant-allele-frequency']);
+    }
+
+    if(this.isActiveVariable("#generation-to-override")){
+        htmlString += this.generateLegendRow("gensToOverride", values['generation-to-override-lower'], values['generation-to-override-upper']);
+        htmlString += this.generateLegendRow("newPopSize", values['new-population-size']);
+    }
+
+    if(this.isActiveVariable("#batch-tool-runs")){
+        htmlString += this.generateLegendRow("batchTool", values['batch-tool-runs']);
+    }
+
+
+
+
+    htmlString += "</ul></div>";
+
+    if (isAppend) {
+        //Hide other graphs if not genotype 
+        if(!this.genotype){
+            $("#multiple-legends-container .legend").addClass("hidden-legend"); 
+            $("#multiple-legends-container .togglelegend").html("[Show Legend]"); 
+        }
+        
+
+        $("#multiple-legends-container").append(htmlString);
+
+    } 
+    else {
+        $("#multiple-legends-container").html(htmlString);
+    }
+
+    //Regenerate the tooltips 
+    $('[data-toggle="tooltip"]').tooltip();
+}
+
+
+
+/**
+ *  Generate one row of the legend 
+ *      
+ *  @param {string} variable the name of the variable
+ *  @param {string} value   the value of the variable 
+ *  @param {string} secondValue if there are multiple values (e.g Generations overide)
+ */
+popGen.htmlutil.chartDOM.generateLegendRow = function(variable, value, secondValue){
+    value = parseFloat(value.replace(',', ''));
+    var row = "<li class='col-xs-12 col-sm-6 col-md-4'>"; //The entire row that will be returned 
+    var toolTip = ""; //Build the tooltip 
+    var defaults = {numGenerations: 500, populationSize: 500, startAlleleFreq: .5, fitnessWaa: 1, fitnessWAa: 1, fitnessWAA: 1,dominanceCoef:1, selectionCoef:0, forMutation:0, revMutation:0, inbreedCoef: 0, assortMating:0, migrationRate:0, migrantAllelFreq:.5, newPopSize: 5000, batchTool: 25 }; // Default values for rows to used to generate default symbol 
+    var performanceLimit = {numGenerations: 3000, populationSize: 3000, batchTool: 35}; // Performance max values to generate warning symbol 
+    var unusualInput = []; // Unusual inputs to generate warning symbol 
+
+
+    //Add warnings if neccessary 
+    if(value != defaults[variable]) row += "<span data-toggle='tooltip' title='Modified Value' class='legend-warning modified-value'>";
+    else if(value >= performanceLimit[variable]) toolTip += "<span data-toggle='tooltip' title='Possible Slow Graphing' class='legend-warning'><i class='fa fa-tachometer'></i></span>"; 
+
+    //Add the value and formatting 
+    switch (variable){
+        case "numGenerations":
+            row += "<span class='legend-var'>Generations:</span><span class='legend-symbol'>t</span>" +
+                "<span class='legend-val'>" + value + "</span>"; 
+            break;
+        case "populationSize":
+            row += "<span class='legend-var'>Population Size:</span><span class='legend-symbol'>N</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "startAlleleFreq": 
+            row += "<span class='legend-var'>Starting Allele Frequency:</span><span class='legend-symbol'>p</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break; 
+        case "fitnessWaa":
+            row += "<span class='legend-var'>Fitness Coefficient:</span><span class='legend-symbol'>W<sub>aa</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";        
+            break; 
+        case "fitnessWAa":
+            row += "<span class='legend-var'>Fitness Coefficient:</span><span class='legend-symbol'>W<sub>Aa</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;  
+        case "fitnessWAA":
+            row += "<span class='legend-var'>Fitness Coefficient:</span><span class='legend-symbol'>W<sub>AA</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "dominanceCoef":
+            row += "<span class='legend-var'>Dominance Coefficient:</span><span class='legend-symbol'>h</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "selectionCoef":
+            row += "<span class='legend-var'>Selection Coefficient:</span><span class='legend-symbol'>s</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+
+        case "forMutation":
+            row += "<span class='legend-var'>Forward Mutation:</span><span class='legend-symbol'>μ</span>" +
+                "<span class='legend-val'>" + value + "x10<sup>" + secondValue + "</sup></span>";
+            break;
+        case "revMutation":
+            row += "<span class='legend-var'>Reverse Mutation:</span><span class='legend-symbol'>ν</span>" +
+                "<span class='legend-val'>" + value + "x10<sup>" + secondValue + "</sup></span>";
+            break;        
+        case "inbreedCoef":
+            row += "<span class='legend-var'>Inbreeding Coefficient:</span><span class='legend-symbol'>F</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;        
+        case "assortMating":
+            row += "<span class='legend-var'>Positive Assortative Mating Frequency:</span><span class='legend-symbol'>α</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;        
+        case "migrationRate":
+            row += "<span class='legend-var'>Migration Rate:</span><span class='legend-symbol'>m</span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "migrantAllelFreq":
+            row += "<span class='legend-var'>Migrant Allele Frequency:</span><span class='legend-symbol'>p<sub>M</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "gensToOverride":
+            row += "<span class='legend-var'>Generations to Override:</span><span class='legend-symbol'></span>" +
+                "<span class='legend-val'>" + value + " to " + secondValue + "</span>";
+            break; 
+        case "newPopSize":
+            row += "<span class='legend-var'>Override Population Size:</span><span class='legend-symbol'>N<sub>B</sub></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break;
+        case "batchTool":
+            row += "<span class='legend-var'>Batch Runs:</span><span class='legend-symbol'></span>" +
+                "<span class='legend-val'>" + value + "</span>";
+            break; 
+
+    }
+
+    if(value != defaults[variable]) row += "</span>"; //Close the span opened by non-default value 
+    row += toolTip + "</li>"; //Add the tool tip and end the list 
+
+    return row;
+}
+
+/**
+ *  Remove all of the legends 
+ *   
+ */
+popGen.htmlutil.chartDOM.clearLegend = function(){
+    $("#multiple-legends-container").html(" ");
+    this.genotypeHasLegend = false; 
+}
+
+/**
+ *  After running through the batch runs compute various stats on all of the runs
+ *   
+ */
+ popGen.htmlutil.chartDOM.computeAggStats = function (){
+    //Clean up the legends too (Remove all but one and change it to Graph 1-50 since they are all the same vars)
+    console.log(this.frequencies); 
+
+    var numHit0 = 0;    //Number of populations that hit 0 frequency 
+    var numHit1 = 0;    //Number of populations that hit 1 frequency 
+
+    var gensTo0 = 0;    //Add the generation number each time it hits 0 
+    var gensTo1 = 0;    //Add the generation number each time it hits 1 
+
+
+    //Loop Through all of the results 
+    for(var i=0; i<this.frequencies.length; i++){
+        for(var j=0; j<this.frequencies[i].length; j++){
+            if(this.frequencies[i][j] == 0){
+                numHit0++;
+                gensTo0 += j; 
+                break; 
+            }
+            else if(this.frequencies[i][j] == 1){
+                numHit1++;
+                gensTo1 += j; 
+                break; 
+            }
+        }
+    }
+
+    //Compute Averages 
+    if(numHit0 > 0) var stringTo0 = (gensTo0/numHit0).toFixed(2);
+    else var stringTo0 = "Never Hit 0.0";
+    
+    if(numHit1 > 0) var stringTo1 = (gensTo1/numHit1).toFixed(2);
+    else var stringTo1 = "Never Hit 1.0";
+
+
+
+    //Update the graph_stats and make it visible 
+    $("#graph_stats").removeClass("hidden"); 
+    $("#timeto0").html(stringTo0);
+    $("#timeto1").html(stringTo1);
+
+    $("#timeshit1").html(numHit1);
+    $("#timeshit0").html(numHit0);
+
+ }
+
+
+
+/**
+ * 	Redraw the graph making it printing friendly 
+ *      
+ *      
+ */
+popGen.htmlutil.chartDOM.highContrastMode = function(){
+	this.initChart(); 
+
+	if (popGen.htmlutil.supportsHTML5LocalStorage()) {localStorage.setItem('layout','contrast');}
+    //Change the color of all the lines 
+	this.highContrast = true; //Not sure why I need this ATM
+
+	var black = "rgba(0,0,0,1.0)";
+	var darkGray = "rgba(0,0,0,.70)";
+	var white = "rgba(255,255,255,1.0)";
+
+
+	//Change some CSS
+	$("#graph_wrapper").css("background-color", "white"); 
+	$("#graph_wrapper").css("background-image", "none"); 
+	$("#graph_wrapper").css("color", "black"); 
+
+
+	//Change the Label colors 
+	this.chart.options.axisX.labelFontColor = black;  
+	this.chart.options.axisX.titleFontColor = black;  
+	this.chart.options.axisX.gridColor 		= darkGray;  
+	this.chart.options.axisY.labelFontColor = black; 
+	this.chart.options.axisY.titleFontColor = black;  
+	this.chart.options.axisY.gridColor 		= darkGray;  
+	this.chart.options.backgroundColor 		= white; 
+	this.chart.render();
+
+	//Swap out the icons 
+}
+
+/**
+ * 	Redraw the graph making it screen friendly (Default State)
+ *      
+ *      
+ */
+popGen.htmlutil.chartDOM.defaultLayout = function(){
+	this.initChart();
+	if (popGen.htmlutil.supportsHTML5LocalStorage()) {localStorage.setItem('layout','default');} 
+
+	this.highContrast = false; //Not sure why I need this ATM
+
+	var black 		= "rgba(0,0,0,1.0)";
+	var darkGray 	= "rgba(0,0,0,.70)";
+	var white 		= "rgba(255,255,255,1.0)";
+	var lineColor 	= "rgba(255, 255, 255, 0.75)";
+	var lightGray 	= "rgba(255, 255, 255, 0.2)";
+	var clear 		= "rgba(255, 255, 255, 0.0)";
+
+	//Change some CSS
+	$("#graph_wrapper").css("background-image", "linear-gradient(to bottom, #4b516a 0%, #21232e 100%)"); 
+	$("#graph_wrapper").css("color", "#fff"); 
+	$("#graph_wrapper").css("background-color", "inherit"); 
+
+	//Change the Label colors 
+	this.chart.options.axisX.labelFontColor 	= lightGray;  
+	this.chart.options.axisX.titleFontColor 	= white;  
+	this.chart.options.axisX.gridColor 			= lightGray;  
+	this.chart.options.axisY.labelFontColor 	= lightGray; 
+	this.chart.options.axisY.titleFontColor 	= white;  
+	this.chart.options.axisY.gridColor 			= lightGray;  
+	this.chart.options.backgroundColor 			= clear; 
+	this.chart.render();
+}
+
+/**
+ * 	Get all of the raw data points and open them in a new window
+ *      
+ *      
+ */
+popGen.htmlutil.chartDOM.getRawData = function(){
+    this.initChart(); 
+
+    var opened = window.open("");
+
+    var chartData = "<div class='container'>"; 
+    for(var i = 0; i < this.chart.options.data.length; i++){
+        chartData += '<h2>Data from Line ' + (i+1) + '</h2>';  
+        chartData += "<pre>";  
+        chartData += 'X\tY\n';
+        for(var j=0; j<this.chart.options.data[i].dataPoints.length; j++){
+            chartData += this.chart.options.data[i].dataPoints[j].x + "\t" + this.chart.options.data[i].dataPoints[j].y;
+            chartData += "\n";
+        }
+        chartData += "</pre>";
+    }
+    chartData += "</div>"
+    opened.document.write("<html><head><title>Graph | Raw Data </title><link href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet'> <style> pre{max-height: 500px; y-overflow:scroll;}</style></head><body style='max-width: 100%;'><code>" + chartData + "</code></body></html>");
+
+}
+
+
+
+
+
+/**
+ * 	Runs the population simluation using the "classes" in population_genetics.js
+ *      
+ *  @param {string} selector form selector 
+ *  @param {string} type the format of the graph (redraw, addline, batch) 
+ */
+popGen.htmlutil.chartDOM.formHandler = function(selector, type){
+	this.initChart(); //Set the basic vars if they aren't already set
+	var values = this.values; 
+
+	var isValid = true; 
+	var errors = []; //Error messages
+
+    var genWorker = new Worker('/js/webworkers/generationWorker.js');
+    genWorker.addEventListener('message', function(e) {
+        var returned = $.parseJSON(e.data); //EVERYTHING MUST BE VALID JSON (DOUBLE QUOTES)
+
+        if(returned.hasOwnProperty("type")){
+            if(returned.type == "results-allele"){
+                // console.log(returned.results); 
+               popGen.htmlutil.chartDOM.workerFinished(returned.results); 
+            }
+            else if(returned.type =="results-genotype"){
+                popGen.htmlutil.chartDOM.genotype = true;
+                popGen.htmlutil.chartDOM.nextGraphType = 'addLine';
+                popGen.htmlutil.chartDOM.clearGraph();
+                popGen.htmlutil.chartDOM.clearLegend();
+                popGen.htmlutil.chartDOM.workerFinished(returned.AA); 
+                popGen.htmlutil.chartDOM.workerFinished(returned.Aa); 
+                popGen.htmlutil.chartDOM.workerFinished(returned.aa); 
+            }
+            else if(returned.type == "message"){
+                console.log(returned.message);
+            }
+            else if(returned.type == "error"){
+                console.log(returned.message);
+            }
+        }
+
+    }, false);
+
+
+
+	//Required Values
+    var input_population_size = parseFloat(values['population-size'].replace(',', ''));
+    var input_num_generations = parseFloat(values['generations'].replace(',', ''));
+    var intput_starting_alele_frequency = parseFloat(values['starting-allele-frequency']);
+    genWorker.postMessage({"cmd":"initGeneration", "populationSize": input_population_size, "numGenerations": input_num_generations, "startingFrequency": intput_starting_alele_frequency}); // Send data to our worker.
+
+    //Selection variables if the coefficient is active 
+    if(this.isActiveVariable("#fitness-coefficient-wAA") || this.isActiveVariable("#selection-coefficient")){
+    	//Use the fitness coefficients (waa, wAA, wAa)
+    	if(this.isActiveVariable("#fitness-coefficient-wAA")){
+    		var wAA = parseFloat(values['fitness-coefficient-wAA'].replace(',', ''));
+    		var wAa = parseFloat(values['fitness-coefficient-wAa'].replace(',', ''));
+    		var waa = parseFloat(values['fitness-coefficient-waa'].replace(',', ''));
+            genWorker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': wAA, 'wAa': wAa, 'waa': waa}); 
+    	}
+    	//use the Selection/Dominance Coefficient 
+    	else{
+    		 // this.setSelectionDominanceCoe = function(selectionCoefficient, dominaceCoefficient) 
+    		 var selectionCoefficient = parseFloat(values['selection-coefficient'].replace(',', ''));
+    		 var dominaceCoefficient = parseFloat(values['dominance-coefficient'].replace(',', ''));
+             genWorker.postMessage({"cmd":"setVar", "varName": "selection-DS", "selectionCoef": selectionCoefficient, "dominaceCoef": dominaceCoefficient});
+
+    	}
+    }
+
+        //Set the mutation variables if they are active 
+    if (this.isActiveVariable("#mutation-rate-mu") || this.isActiveVariable("#mutation-rate-nu")) {
+    	var forwardMutationRate = parseFloat(values['mutation-rate-mu']) * Math.pow(10,parseInt(values['mutation-rate-mu-exponent']));
+    	var revMutationRate = parseFloat(values['mutation-rate-nu']) * Math.pow(10,parseInt(values['mutation-rate-nu-exponent']));
+        genWorker.postMessage({"cmd":"setVar", "varName": "mutation", "mu": forwardMutationRate, "nu": revMutationRate}); 
+
+
+    }
+
+    //Set the Migration Variables if they are active 
+    if(this.isActiveVariable("#migration-rate")){
+    	var migrationRate = parseFloat(values['migration-rate']);
+    	var migrantAlleleFrequency = parseFloat(values['migrant-allele-frequency']);
+        genWorker.postMessage({"cmd":"setVar", "varName": "migration", "migrationRate": migrationRate, "migrantAlleleFreq": migrantAlleleFrequency}); 
+
+    }
+
+    //Inbreeding Variables 
+    if(this.isActiveVariable("#inbreeding-coefficient")){
+    	var inbreedingCoe = parseFloat(values['inbreeding-coefficient']);
+        genWorker.postMessage({"cmd":"setVar", "varName": "inbreeding", "inbreedCoef": inbreedingCoe}); 
+
+
+    }
+
+    //Assortative mating 
+    if(this.isActiveVariable("#positive-assortative-mating")){
+    	var positiveAssortativeMatingFreq = parseFloat(values['positive-assortative-mating']);
+        genWorker.postMessage({"cmd":"setVar", "varName": "assortative-mating", "matingFreq": positiveAssortativeMatingFreq}); 
+
+    }
+
+    // console.log(myGenerations);
+
+    //Population bottleneck
+    if(this.isActiveVariable("#generation-to-override")){
+    	var generationStart = parseFloat(values['generation-to-override-lower'].replace(',', ''));
+    	var generationEnd = parseFloat(values['generation-to-override-upper'].replace(',', ''));
+    	var newPopulationSize = parseFloat(values['new-population-size'].replace(',', ''));
+    	
+    	//Validate that generationStart and End are within the generation values
+    	if(generationStart > input_num_generations){
+    		isValid = false; 
+    		errors.push("Invalid Generation Start");
+    	}
+    	if(generationEnd > input_num_generations){
+    		isValid = false; 
+    		errors.push("Invalid Generation End");
+    	}
+
+        genWorker.postMessage({"cmd":"setVar", "varName": "population-bottleneck", "generationStart": generationStart, "generationEnd": generationEnd, "newPopulationSize": newPopulationSize}); 
+
+
+    }
+
+    //Batch Tool 
+    if(this.isActiveVariable("#batch-tool-runs")){ 
+        var numBatchRuns = parseFloat(values['batch-tool-runs'].replace(',', ''));
+        this.numBatchRuns = numBatchRuns;
+    }
+
+    //Actually perform the work
+    if(isValid){
+
+        //if this is a genotype graph tell the worker
+        if($(".graph-genotype").length) genWorker.postMessage({"cmd":"genotypeGraph"}); 
+
+        
+        //Open the Modal for long calculations
+        if(input_num_generations > 1000 || input_population_size > 1000){
+            $('#graph-computing-modal').modal('show');
+        }
+
+        //Call a different function if infinite sample sizes is set both functions set myGenerations.frequencies 
+        if(!this.isActiveVariable("#population-size")){
+            genWorker.postMessage({"cmd":"setVar", "varName": "inifinite-pop"}); 
+        }
+
+        //Special case for batch runs (Consider finishedComputingpartial var)
+        if(this.isActiveVariable("#batch-tool-runs")){
+            var allGenerations = []; 
+            var allPartials = []; 
+            
+            this.clearGraph();
+
+            type = "batchTool"; //Change type to not screw up the legend updating 
+            this.nextGraphType = "batchTool"; 
+
+            //Create copies for each generation 
+            for(var i=0; i<numBatchRuns; i++){
+                genWorker.postMessage({"cmd":"batchRun"}); // Run one of the generations 0 indexed 
+            }   
+
+        }
+        else{ //Just one run 
+            this.nextGraphType = type;
+            genWorker.postMessage({"cmd":"run"}); // Run one of the generations 0 indexed 
+
+        }
+    }
+    else{
+        //Clear the errors 
+        $("#alerts-container").html(""); 
+
+        errors.forEach(function(error){
+            $("#alerts-container").append(buildAlert("alert-danger", error));
+        });
+
+        //Add a modal too 
+    }
+    
+    if(errors.length > 0) console.log(errors);
+    
+}
+
+/**
+ * 	Take a serialized array and change the filed name value to an associative array
+ *      
+ *  @param {string} formSelector jquery form selector of the ofrm to seralize 
+ */
+popGen.htmlutil.chartDOM.seralizeForm = function(formSelector){
+	var serializeArray = $(formSelector).serializeArray();
+	var values = {};
+    $.each(serializeArray, function(i, field) {
+        values[field.name] = field.value;
+    });
+    return values;
+}
+
+/**
+ * 	Check if a variable is currently active 
+ *      
+ *  @param {string} selector jquery  selector of variable can be used without the #
+ */
+popGen.htmlutil.chartDOM.isActiveVariable = function(selector){
+	var isActive = false; 
+
+    //Make sure the id indicator is in the selector 
+    if(selector.charAt(0) != '#') selector = "#" + selector;
+
+	selector += "-slider"; //Needs to look at the slider 
+
+	//Done this way to make sure it returns exactly true or false
+	if($(selector).hasClass("active")){
+		isActive = true; 
+	}
+
+	return isActive;
+}
+
+
+/**
+ *  Function used after the web worker has finsished
+ *  
+ */
+popGen.htmlutil.chartDOM.workerFinished = function(frequencies){
+    //Close the modal
+    $('#graph-computing-modal').modal('hide');
+
+    //Check to see if the last graph was a batch auto reset it 
+    if(!$("#graph_stats").hasClass("hidden") && this.nextGraphType !="batchTool" ){
+        $("#graph_stats").addClass("hidden");
+    }
+
+    popGen.htmlutil.chartDOM.updateGraph(frequencies, this.nextGraphType); //Update the graph with the new frequencies 
+    popGen.htmlutil.chartDOM.chart.render(); //Only render here 
+
+    var d = new Date();
+    $("#alerts-container").html(popGen.htmlutil.buildAlert("alert-success", "")); 
+}
+
+
+/** 
+ *  Create a properly formmated bookmark url 
+ *  
+ */
+popGen.htmlutil.chartDOM.genBookmarkLink = function (){
+    if($('#variables').length){
+        var url = "?bookmark=true";
+        this.initChart(); //Make sure the variables are up to date 
+        for (var property in this.values) {
+            if (this.values.hasOwnProperty(property)) {
+                //Add all of the active properties to the url string
+                if(this.isActiveVariable(property)){
+                    url += "&" + property + "=" + this.values[property];
+                }
+                //The exponents don't get picked up by isActiveVariable
+                else if(property == "mutation-rate-mu-exponent" || property == "mutation-rate-nu-exponent"){
+                    if(this.isActiveVariable("mutation-rate-mu") || this.isActiveVariable("mutation-rate-nu")){
+                        url += "&" + property + "=" + this.values[property]; 
+                    }
+                }
+            }
+        }
+        //Clean up and return the URL 
+        var domainURL = window.location.href;
+        var indexNum = domainURL.indexOf("?");
+        if(indexNum != -1) domainURL = (domainURL.substring(0, indexNum))
+        return  domainURL + url;
+    }
+    else{
+        if(this.debug) console.log("No Variables on this page"); 
+    }
+}
+
+;
+/**
+ *	General HTML utilites and DOM manipulations 
+ *
+ */
+popGen.htmlutil = popGen.htmlutil || {
+	debug: this.debug, 
+	localStore: null, //Needs to be checked then maintained to avoid future checks 
+};
+
+popGen.htmlutil.genDOM = popGen.htmlutil.genDOM || {
+	debug: this.debug
+};
+
+// popGen.htmlutil.chartDOM = popGen.htmlutil.chartDOM || {};
+
+popGen.htmlutil.sliderDOM = popGen.htmlutil.sliderDOM || {
+	debug: this.debug
+};
+
+//Page Specific 
+popGen.htmlutil.genDOM.home = popGen.htmlutil.genDOM.home || {};
+popGen.htmlutil.genDOM.faq = popGen.htmlutil.genDOM.faq || {};
+
+popGen.htmlutil.debugData = function(){
+	console.log(this);  
+}
+
+popGen.htmlutil.initHome = function(){
+	this.genDOM.activateToolTips(true); 
+	this.genDOM.autoHighlight();  
+	this.genDOM.legendHandler("#multiple-legends-container"); 
+	this.genDOM.graphButtonHandler(); 
+	this.genDOM.graphExportHandler();
+	this.genDOM.activateVelocityVariableSection();
+	this.genDOM.bulkSectionOpener(); 
+	this.genDOM.activateHelpSections(); 
+	this.genDOM.home.iconHandler(); 
+	this.genDOM.home.userConfig(); 
+};
+
+popGen.htmlutil.initFAQ = function(){
+	this.genDOM.activateToolTips(false);
+};
+
+/**
+ * [smoothScrolling description]
+ * 
+ */
+popGen.htmlutil.smoothScrolling = function(){
+    $('a[href^="#"]').not('.accordion-toggle').on('click', function(e) {
+        e.preventDefault();
+        var target = this.hash;
+        var $target = $(target);
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top
+        }, 900, 'swing', function() {
+            window.location.hash = target;
+        });
+    });
+};
+
+
+
+/*DOM*/
+
+/**
+ * Activate the velocity plugin for the variable secions contained in all 
+ * of the graphs. 
+ */
+popGen.htmlutil.genDOM.activateVelocityVariableSection = function(){
+	$.each( $('.variable-section-toggle'), function( key, value ) {
+		 value = $(value); 
+		 var container =  value.parent().next().next();
+		 var check = value.parent().find('.fa').not('.fa-chevron-down').not('.fa-chevron-up').not('.fa-default'); 
+
+		 popGen.velocity.verticalSlideSection(value, container, 'easeOutCirc', 300);
+		 popGen.velocity.verticalSlideSectionCheck(check, container, 'easeOutCirc', 300);
+
+
+		 popGen.velocity.sections.push(container); 
+	});
+
+
+
+};
+
+/**
+ * Activate the velocity plugin for the help section contained for each variable. 
+ * 
+ */
+popGen.htmlutil.genDOM.activateHelpSections = function(){
+
+
+	//Show All help button
+	$("#all-help").click(function(event) {
+	    event.preventDefault();
+	    if ($(this).html() == "[Show Help]"){
+	    	 popGen.velocity.showAllHelp();
+	    	 $(this).html("[Hide Help]");
+	    }
+	    else{
+	    	popGen.velocity.hideAllHelp();
+	    	$(this).html("[Show Help]");
+	    }
+	});
+
+
+	$.each( $('.variable label a'), function( key, value ) {
+		value = $(value);
+		var container = value.parent().next();
+		popGen.velocity.verticalSlideSection(value, container, 'easeOutCirc', 300);
+		popGen.velocity.help_sections.push(container);
+	});
+
+};
+
+/**
+ * If there is an active class the chevron should point up. 
+ * @param  JQuery element Element that either does or doesn;t have active class 
+ * @return Boolean check        the check was the item pressed 
+ */
+popGen.htmlutil.genDOM.checkSections = function(element, checkItem){
+	checkItem = typeof checkItem !== 'undefined' ? checkItem : false;
+
+	var chevron = element.find('.fa');
+	var check = element.parent().find('.fa').not('.fa-chevron-down').not('.fa-chevron-up').not('.fa-default');
+
+	if(element.hasClass('active')){
+		chevron.removeClass('fa-chevron-down');
+    	chevron.addClass('fa-chevron-up');
+	}
+	else{
+		chevron.removeClass('fa-chevron-up');
+    	chevron.addClass('fa-chevron-down');
+	}
+
+	if(checkItem === true){
+		if(check.hasClass('fa-check-square-o')){
+			check.removeClass('fa-check-square-o').addClass('fa-square-o');
+    		popGen.config.noUISlider.deactiveActiveOnCheckmark(check.parent().parent().parent().attr('id'),'unchecked');
+		}
+		else if(check.hasClass('fa-square-o')){
+			check.removeClass('fa-square-o').addClass('fa-check-square-o');
+    		popGen.config.noUISlider.deactiveActiveOnCheckmark(check.parent().parent().parent().attr('id'), 'checked');
+		}
+	}
+};
+
+/**
+ * 	Activate tooltips 
+ *      
+ *  @param {boolean} activate all tool tips (including modal workaround)
+ */
+popGen.htmlutil.genDOM.activateToolTips = function(all){
+	$('[data-toggle="tooltip"]').tooltip(); //Opt in to bootstrap tooltips 
+    if(all)$('[data-tooltip="true"]').tooltip(); //Workaround for modal &tooltip MIGHT BE ABLE TO CHANGET THIS 
+};
+
+/**
+ * 	Auto-highlight 
+ *      
+ */
+ popGen.htmlutil.genDOM.autoHighlight = function(){
+ 	//Automatically select all the text when they click on an input 
+    $("input[type='text']").on("click", function() {
+        $(this).select(); 
+    });
+};
+
+/**
+ * [bulkSectionOpener description]
+ * @return {[type]} [description]
+ */
+popGen.htmlutil.genDOM.bulkSectionOpener = function(){
+	$("#all-sections").click(function(event) {
+	    event.preventDefault();
+
+	    if ($(this).html() == '[Open All]'){
+	    	 popGen.velocity.showAll(); 
+	    	 $(this).html("[Close All]");
+	    }
+	    else{
+	    	popGen.velocity.hideAll(); 
+	    	$(this).html("[Open All]");
+	    }
+	});
+};
+
+/**
+ * [validatorURL description]
+ * @return {[type]} [description]
+ */
+popGen.htmlutil.genDOM.validatorURL = function(){
+	var root = popGen.htmlutil.getRootURL();
+	$('.html-validator').attr('href', 'http://validator.w3.org/check?uri=' + root)
+}
+
+
+
+/**	
+ *	Handle displaying of the legend 
+ *
+ */
+popGen.htmlutil.genDOM.legendHandler = function(selector){
+	$(selector).on('click', ".togglelegend", function(event) {
+	    event.preventDefault();
+	    var legend = $(this).parent().parent(); //up one h3, up two div(legend)
+
+	    if(legend.hasClass("hidden-legend")){
+	        legend.removeClass("hidden-legend"); 
+	        $(this).html("[Hide Legend]");
+	    }
+	    else{
+	        legend.addClass("hidden-legend"); 
+	        $(this).html("[Show Legend]");
+	    }
+	});
+}
+
+/**	
+ *	Handle the graphing buttons 
+ *
+ */
+popGen.htmlutil.genDOM.graphButtonHandler = function(){
+    //Handle the submit clicking
+    $("#newGraph").on("click", function(event) {
+    	var chart = $("#graph-canvas").CanvasJSChart(); 
+    	popGen.htmlutil.chartDOM.formHandler(chart, "newGraph");
+    }); 
+
+    $("#addLine").on("click", function(event) {
+    	var chart = $("#graph-canvas").CanvasJSChart(); 
+    	popGen.htmlutil.chartDOM.formHandler(chart, "addLine");
+    }); 
+}
+
+
+/**
+ *	Saving JPG/PNG background changer
+ *
+ */
+popGen.htmlutil.genDOM.graphExportHandler = function(){
+	$(".canvasjs-chart-toolbar div div").on("click", function(event) {
+    	event.preventDefault();
+    }); 
+
+}
+
+
+/**
+ * 	Bind helper text (hard coded for home page)
+ *      
+ */
+popGen.htmlutil.genDOM.home.helperText = function(){
+
+}
+
+
+/**
+ * 	Bind helper text (hard coded for home page)
+ *      
+ */
+popGen.htmlutil.genDOM.home.iconHandler = function(){
+    
+
+
+    //Handle clicking printerfriendly icon
+    $("#printerFriendly").on("click", function(event) {
+    	event.preventDefault();
+    	popGen.htmlutil.chartDOM.highContrastMode();
+    	$("#screenFriendly").removeClass('hidden'); 
+    	$("#printerFriendly").addClass('hidden'); 
+    }); 
+
+    //Handle clicking screenFreindly icon
+    $("#screenFriendly").on("click", function(event) {
+    	event.preventDefault(); 
+    	popGen.htmlutil.chartDOM.defaultLayout();
+    	$("#printerFriendly").removeClass('hidden'); 
+    	$("#screenFriendly").addClass('hidden');
+    }); 
+
+    //Handle clicking printerfriendly icon
+    $("#getRawData").on("click", function(event) {
+    	event.preventDefault();
+    	popGen.htmlutil.chartDOM.getRawData(); 
+    });     
+
+    //Handle the get bookmark link icon 
+    $("#getLink").on("click", function(event) {
+    	event.preventDefault();
+    	var url = popGen.htmlutil.chartDOM.genBookmarkLink(); 
+    	$("#bookmark-link .bookmark-link").html(url); 
+    	$("#bookmark-link .bookmark-link").attr("href", url);
+    }); 
+
+
+}
+
+
+/**
+ * 	Check the local store for any settings to activate 
+ *      
+ */
+popGen.htmlutil.genDOM.home.userConfig = function(){
+	if(popGen.htmlutil.supportsHTML5LocalStorage()){
+		//Change to correct layout 
+		if(localStorage.getItem("layout") === "contrast"){
+		    popGen.htmlutil.chartDOM.highContrastMode();
+		    $("#printerFriendly").addClass('hidden'); 
+	    	$("#screenFriendly").removeClass('hidden');
+		}
+		else{//Default view
+			$("#printerFriendly").removeClass('hidden'); 
+	    	$("#screenFriendly").addClass('hidden');
+		}
+	}
+
+
+
+}
+
+
+/*END DOM*/
+
+
+/*Misc. Functions*/
+/** 
+ *	Returns a random integer between min (included) and max (excluded)
+ *	Using Math.round() will give you a non-uniform distribution!
+ *  @param {int} min min value to generate
+ *  @param {int} max max value to generate 
+ */
+popGen.htmlutil.getRandomInt = function(min,max){
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+/**
+ *	Build an alert div returing the html string
+ *  @param {String} className the type of alert: 
+ *		alert-success, alert-info, alert-warning, alert-danger (From bootstrap)
+ *  @param {String} message the message in the aler
+ */
+popGen.htmlutil.buildAlert = function(className, message){
+	var text = ""; 
+	var html = ""; 
+	var d = new Date();	
+
+	if(className == "alert-success"){
+		text = "Graph successfully created "
+	}
+	else if(className = "alert-danger"){ 
+		text = message + " - Graph failed to be created "; 
+	}
+
+	html = "<div class='alert " + className + "' role='alert'>" + "<strong>" + text + "</strong> on " + d + "</div";  
+
+	return html; 
+}
+
+
+ /**
+ *	Able to pass arguments as a parameter 
+ *	Source: http://stackoverflow.com/questions/321113/how-can-i-pre-set-arguments-in-javascript-function-call-partial-function-appli
+ *  @param {...}  *		
+ */
+popGen.htmlutil.partial = function(func /*, 0..n args */) {
+	var args = Array.prototype.slice.call(arguments, 1);
+	return function() {
+		var allArguments = args.concat(Array.prototype.slice.call(arguments));
+		return func.apply(this, allArguments);
+	};
+}
+
+
+
+ /**
+ *	Determines if local storage is avaible for this user 
+ *	
+ *  	
+ */
+popGen.htmlutil.supportsHTML5LocalStorage = function(func /*, 0..n args */) {
+	  try {
+	    return 'localStorage' in window && window['localStorage'] !== null;
+	  } catch (e) {
+	    return false;
+	  }
+}
+
+
+/**
+ * Get the base URL of the current page. If you are on 'http://melwood.jcubedworld.com/baseball/?type=dog'
+ * 	'http://melwood.jcubedworld.com' will be returned. The protocal and domain will be returned. 
+ * 
+ * @return {String} The base URL of the current page including the protocal. 
+ */
+popGen.htmlutil.getRootURL = function() {
+	if (!location.origin) location.origin = location.protocol + "//" + location.host;
+	return location.origin;
+};;
 /*!
  * reveal.js
  * http://lab.hakim.se/reveal-js
@@ -31386,6 +34320,557 @@ function closure ( target, options, originalOptions ){
 
 }));
 ;
+/* globals jQuery */
+
+(function($) {
+  // Selector to select only not already processed elements
+  $.expr[":"].notmdproc = function(obj){
+    if ($(obj).data("mdproc")) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  function _isChar(evt) {
+    if (typeof evt.which == "undefined") {
+      return true;
+    } else if (typeof evt.which == "number" && evt.which > 0) {
+      return !evt.ctrlKey && !evt.metaKey && !evt.altKey && evt.which != 8 && evt.which != 9;
+    }
+    return false;
+  }
+
+  $.material =  {
+    "options": {
+      // These options set what will be started by $.material.init()
+      "input": true,
+      "ripples": true,
+      "checkbox": true,
+      "togglebutton": true,
+      "radio": true,
+      "arrive": true,
+      "autofill": false,
+
+      "withRipples": [
+        ".btn:not(.btn-link)",
+        ".card-image",
+        ".navbar a:not(.withoutripple)",
+        ".dropdown-menu a",
+        ".nav-tabs a:not(.withoutripple)",
+        ".withripple",
+        ".pagination li:not(.active, .disabled) a:not(.withoutripple)"
+      ].join(","),
+      "inputElements": "input.form-control, textarea.form-control, select.form-control",
+      "checkboxElements": ".checkbox > label > input[type=checkbox]",
+      "togglebuttonElements": ".togglebutton > label > input[type=checkbox]",
+      "radioElements": ".radio > label > input[type=radio]"
+    },
+    "checkbox": function(selector) {
+      // Add fake-checkbox to material checkboxes
+      $((selector) ? selector : this.options.checkboxElements)
+      .filter(":notmdproc")
+      .data("mdproc", true)
+      .after("<span class=checkbox-material><span class=check></span></span>");
+    },
+    "togglebutton": function(selector) {
+      // Add fake-checkbox to material checkboxes
+      $((selector) ? selector : this.options.togglebuttonElements)
+      .filter(":notmdproc")
+      .data("mdproc", true)
+      .after("<span class=toggle></span>");
+    },
+    "radio": function(selector) {
+      // Add fake-radio to material radios
+      $((selector) ? selector : this.options.radioElements)
+      .filter(":notmdproc")
+      .data("mdproc", true)
+      .after("<span class=circle></span><span class=check></span>");
+    },
+    "input": function(selector) {
+      $((selector) ? selector : this.options.inputElements)
+      .filter(":notmdproc")
+      .data("mdproc", true)
+      .each( function() {
+        var $this = $(this);
+
+        if (!$(this).attr("data-hint") && !$this.hasClass("floating-label")) {
+          return;
+        }
+        $this.wrap("<div class=form-control-wrapper></div>");
+        $this.after("<span class=material-input></span>");
+
+        // Add floating label if required
+        if ($this.hasClass("floating-label")) {
+          var placeholder = $this.attr("placeholder");
+          $this.attr("placeholder", null).removeClass("floating-label");
+          $this.after("<div class=floating-label>" + placeholder + "</div>");
+        }
+
+        // Add hint label if required
+        if ($this.attr("data-hint")) {
+          $this.after("<div class=hint>" + $this.attr("data-hint") + "</div>");
+        }
+
+        // Set as empty if is empty (damn I must improve this...)
+        if ($this.val() === null || $this.val() == "undefined" || $this.val() === "") {
+          $this.addClass("empty");
+        }
+
+        // Support for file input
+        if ($this.parent().next().is("[type=file]")) {
+          $this.parent().addClass("fileinput");
+          var $input = $this.parent().next().detach();
+          $this.after($input);
+        }
+      });
+
+      $(document)
+      .on("change", ".checkbox input[type=checkbox]", function() { $(this).blur(); })
+      .on("keydown paste", ".form-control", function(e) {
+        if(_isChar(e)) {
+          $(this).removeClass("empty");
+        }
+      })
+      .on("keyup change", ".form-control", function() {
+        var $this = $(this);
+        if ($this.val() === "" && (typeof $this[0].checkValidity != "undefined" && $this[0].checkValidity())) {
+          $this.addClass("empty");
+        } else {
+          $this.removeClass("empty");
+        }
+      })
+      .on("focus", ".form-control-wrapper.fileinput", function() {
+        $(this).find("input").addClass("focus");
+      })
+      .on("blur", ".form-control-wrapper.fileinput", function() {
+        $(this).find("input").removeClass("focus");
+      })
+      .on("change", ".form-control-wrapper.fileinput [type=file]", function() {
+        var value = "";
+        $.each($(this)[0].files, function(i, file) {
+          value += file.name + ", ";
+        });
+        value = value.substring(0, value.length - 2);
+        if (value) {
+          $(this).prev().removeClass("empty");
+        } else {
+          $(this).prev().addClass("empty");
+        }
+        $(this).prev().val(value);
+      });
+    },
+    "ripples": function(selector) {
+      $((selector) ? selector : this.options.withRipples).ripples();
+    },
+    "autofill": function() {
+
+      // This part of code will detect autofill when the page is loading (username and password inputs for example)
+      var loading = setInterval(function() {
+        $("input[type!=checkbox]").each(function() {
+          if ($(this).val() && $(this).val() !== $(this).attr("value")) {
+            $(this).trigger("change");
+          }
+        });
+      }, 100);
+
+      // After 10 seconds we are quite sure all the needed inputs are autofilled then we can stop checking them
+      setTimeout(function() {
+        clearInterval(loading);
+      }, 10000);
+      // Now we just listen on inputs of the focused form (because user can select from the autofill dropdown only when the input has focus)
+      var focused;
+      $(document)
+      .on("focus", "input", function() {
+        var $inputs = $(this).parents("form").find("input").not("[type=file]");
+        focused = setInterval(function() {
+          $inputs.each(function() {
+            if ($(this).val() !== $(this).attr("value")) {
+              $(this).trigger("change");
+            }
+          });
+        }, 100);
+      })
+      .on("blur", "input", function() {
+        clearInterval(focused);
+      });
+    },
+    "init": function() {
+      if ($.fn.ripples && this.options.ripples) {
+        this.ripples();
+      }
+      if (this.options.input) {
+        this.input();
+      }
+      if (this.options.checkbox) {
+        this.checkbox();
+      }
+      if (this.options.togglebutton) {
+        this.togglebutton();
+      }
+      if (this.options.radio) {
+        this.radio();
+      }
+      if (this.options.autofill) {
+        this.autofill();
+      }
+
+      if (document.arrive && this.options.arrive) {
+        if ($.fn.ripples && this.options.ripples) {
+          $(document).arrive(this.options.withRipples, function() {
+            $.material.ripples($(this));
+          });
+        }
+        if (this.options.input) {
+          $(document).arrive(this.options.inputElements, function() {
+            $.material.input($(this));
+          });
+        }
+        if (this.options.checkbox) {
+          $(document).arrive(this.options.checkboxElements, function() {
+            $.material.checkbox($(this));
+          });
+        }
+        if (this.options.radio) {
+          $(document).arrive(this.options.radioElements, function() {
+            $.material.radio($(this));
+          });
+        }
+        if (this.options.togglebutton) {
+          $(document).arrive(this.options.togglebuttonElements, function() {
+            $.material.togglebutton($(this));
+          });
+        }
+
+      }
+    }
+  };
+
+})(jQuery);;
+/* Copyright 2014+, Federico Zivolo, LICENSE at https://github.com/FezVrasta/bootstrap-material-design/blob/master/LICENSE.md */
+/* globals jQuery, navigator */
+
+(function($, window, document, undefined) {
+
+  "use strict";
+
+  /**
+   * Define the name of the plugin
+   */
+  var ripples = "ripples";
+
+
+  /**
+   * Get an instance of the plugin
+   */
+  var self = null;
+
+
+  /**
+   * Define the defaults of the plugin
+   */
+  var defaults = {};
+
+
+  /**
+   * Create the main plugin function
+   */
+  function Ripples(element, options) {
+    self = this;
+
+    this.element = $(element);
+
+    this.options = $.extend({}, defaults, options);
+
+    this._defaults = defaults;
+    this._name = ripples;
+
+    this.init();
+  }
+
+
+  /**
+   * Initialize the plugin
+   */
+  Ripples.prototype.init = function() {
+    var $element  = this.element;
+
+    $element.on("mousedown touchstart", function(event) {
+      /**
+       * Verify if the user is just touching on a device and return if so
+       */
+      if(self.isTouch() && event.type === "mousedown") {
+        return;
+      }
+
+
+      /**
+       * Verify if the current element already has a ripple wrapper element and
+       * creates if it doesn't
+       */
+      if(!($element.find(".ripple-wrapper").length)) {
+        $element.append("<div class=\"ripple-wrapper\"></div>");
+      }
+
+
+      /**
+       * Find the ripple wrapper
+       */
+      var $wrapper = $element.children(".ripple-wrapper");
+
+
+      /**
+       * Get relY and relX positions
+       */
+      var relY = self.getRelY($wrapper, event);
+      var relX = self.getRelX($wrapper, event);
+
+
+      /**
+       * If relY and/or relX are false, return the event
+       */
+      if(!relY && !relX) {
+        return;
+      }
+
+
+      /**
+       * Get the ripple color
+       */
+      var rippleColor = self.getRipplesColor($element);
+
+
+      /**
+       * Create the ripple element
+       */
+      var $ripple = $("<div></div>");
+
+      $ripple
+      .addClass("ripple")
+      .css({
+        "left": relX,
+        "top": relY,
+        "background-color": rippleColor
+      });
+
+
+      /**
+       * Append the ripple to the wrapper
+       */
+      $wrapper.append($ripple);
+
+
+      /**
+       * Make sure the ripple has the styles applied (ugly hack but it works)
+       */
+      (function() { return window.getComputedStyle($ripple[0]).opacity; })();
+
+
+      /**
+       * Turn on the ripple animation
+       */
+      self.rippleOn($element, $ripple);
+
+
+      /**
+       * Call the rippleEnd function when the transition "on" ends
+       */
+      setTimeout(function() {
+        self.rippleEnd($ripple);
+      }, 500);
+
+
+      /**
+       * Detect when the user leaves the element
+       */
+      $element.on("mouseup mouseleave touchend", function() {
+        $ripple.data("mousedown", "off");
+
+        if($ripple.data("animating") === "off") {
+          self.rippleOut($ripple);
+        }
+      });
+
+    });
+  };
+
+
+  /**
+   * Get the new size based on the element height/width and the ripple width
+   */
+  Ripples.prototype.getNewSize = function($element, $ripple) {
+
+    return (Math.max($element.outerWidth(), $element.outerHeight()) / $ripple.outerWidth()) * 2.5;
+  };
+
+
+  /**
+   * Get the relX
+   */
+  Ripples.prototype.getRelX = function($wrapper,  event) {
+    var wrapperOffset = $wrapper.offset();
+
+    if(!self.isTouch()) {
+      /**
+       * Get the mouse position relative to the ripple wrapper
+       */
+      return event.pageX - wrapperOffset.left;
+    } else {
+      /**
+       * Make sure the user is using only one finger and then get the touch
+       * position relative to the ripple wrapper
+       */
+      event = event.originalEvent;
+
+      if(event.touches.length === 1) {
+        return event.touches[0].pageX - wrapperOffset.left;
+      }
+
+      return false;
+    }
+  };
+
+
+  /**
+   * Get the relY
+   */
+  Ripples.prototype.getRelY = function($wrapper, event) {
+    var wrapperOffset = $wrapper.offset();
+
+    if(!self.isTouch()) {
+      /**
+       * Get the mouse position relative to the ripple wrapper
+       */
+      return event.pageY - wrapperOffset.top;
+    } else {
+      /**
+       * Make sure the user is using only one finger and then get the touch
+       * position relative to the ripple wrapper
+       */
+      event = event.originalEvent;
+
+      if(event.touches.length === 1) {
+        return event.touches[0].pageY - wrapperOffset.top;
+      }
+
+      return false;
+    }
+  };
+
+
+  /**
+   * Get the ripple color
+   */
+  Ripples.prototype.getRipplesColor = function($element) {
+
+    var color = $element.data("ripple-color") ? $element.data("ripple-color") : window.getComputedStyle($element[0]).color;
+
+    return color;
+  };
+
+
+  /**
+   * Verify if the client browser has transistion support
+   */
+  Ripples.prototype.hasTransitionSupport = function() {
+    var thisBody  = document.body || document.documentElement;
+    var thisStyle = thisBody.style;
+
+    var support = (
+      thisStyle.transition !== undefined ||
+      thisStyle.WebkitTransition !== undefined ||
+      thisStyle.MozTransition !== undefined ||
+      thisStyle.MsTransition !== undefined ||
+      thisStyle.OTransition !== undefined
+    );
+
+    return support;
+  };
+
+
+  /**
+   * Verify if the client is using a mobile device
+   */
+  Ripples.prototype.isTouch = function() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  };
+
+
+  /**
+   * End the animation of the ripple
+   */
+  Ripples.prototype.rippleEnd = function($ripple) {
+    $ripple.data("animating", "off");
+
+    if($ripple.data("mousedown") === "off") {
+      self.rippleOut($ripple);
+    }
+  };
+
+
+  /**
+   * Turn off the ripple effect
+   */
+  Ripples.prototype.rippleOut = function($ripple) {
+    $ripple.off();
+
+    if(self.hasTransitionSupport()) {
+      $ripple.addClass("ripple-out");
+    } else {
+      $ripple.animate({"opacity": 0}, 100, function() {
+        $ripple.trigger("transitionend");
+      });
+    }
+
+    $ripple.on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
+      $ripple.remove();
+    });
+  };
+
+
+  /**
+   * Turn on the ripple effect
+   */
+  Ripples.prototype.rippleOn = function($element, $ripple) {
+    var size = self.getNewSize($element, $ripple);
+
+    if(self.hasTransitionSupport()) {
+      $ripple
+      .css({
+        "-ms-transform": "scale(" + size + ")",
+        "-moz-transform": "scale(" + size + ")",
+        "-webkit-transform": "scale(" + size + ")",
+        "transform": "scale(" + size + ")"
+      })
+      .addClass("ripple-on")
+      .data("animating", "on")
+      .data("mousedown", "on");
+    } else {
+      $ripple.animate({
+        "width": Math.max($element.outerWidth(), $element.outerHeight()) * 2,
+        "height": Math.max($element.outerWidth(), $element.outerHeight()) * 2,
+        "margin-left": Math.max($element.outerWidth(), $element.outerHeight()) * (-1),
+        "margin-top": Math.max($element.outerWidth(), $element.outerHeight()) * (-1),
+        "opacity": 0.2
+      }, 500, function() {
+        $ripple.trigger("transitionend");
+      });
+    }
+  };
+
+
+  /**
+   * Create the jquery plugin function
+   */
+  $.fn.ripples = function(options) {
+    return this.each(function() {
+      if(!$.data(this, "plugin_" + ripples)) {
+        $.data(this, "plugin_" + ripples, new Ripples(this, options));
+      }
+    });
+  };
+
+})(jQuery, window, document);;
 $(document).ready(function() {
 	if($("#main").hasClass("page-slideshow")) {
 		
@@ -31403,4 +34888,178 @@ $(document).ready(function() {
 		});
 		
 	}
-}); 
+}); ;
+popGen.velocity = popGen.velocity || {
+    sections: Array(),
+    help_sections: Array(),
+    duration: 400,
+    easing: 'ease'
+};
+/**
+ * [verticalSlide description]
+ * @param  {[type]} element   [description]
+ * @param  {[type]} container [description]
+ * @param  {[type]} easing    [description]
+ * @param  {[type]} duration  [description]
+ * @return {[type]}           [description]
+ */
+popGen.velocity.verticalSlideSection = function(element, container, easing, duration) {
+    //Init
+    var active = element.hasClass('active'); // store active state
+    popGen.htmlutil.genDOM.checkSections(element);
+    if (!active) {
+        container.addClass('hidden');
+    }
+    element.on('click', function(e) {
+        active = element.hasClass('active'); // store active state
+        container.removeClass('hidden');
+        e.preventDefault();
+        element.toggleClass('active'); // set click target to active
+        popGen.htmlutil.genDOM.checkSections(element);
+        container.velocity(active ? 'slideUp' : 'slideDown', { // test and init command
+            duration: duration, // duration set in function call params
+            easing: easing, // easing set in function call params
+        });
+    });
+};
+/**
+ * [verticalSlideSectionCheck description]
+ * @param  {[type]} element   [description]
+ * @param  {[type]} container [description]
+ * @param  {[type]} easing    [description]
+ * @param  {[type]} duration  [description]
+ * @return {[type]}           [description]
+ */
+popGen.velocity.verticalSlideSectionCheck = function(element, container, easing, duration) {
+    element.on('click', function(e) {
+        var var_section = element.parent().next();
+        var active = var_section.hasClass('active'); // store active state
+        container.removeClass('hidden');
+        e.preventDefault();
+        if (element.hasClass('fa-square-o')) {
+            if (!active) {
+                container.velocity('slideDown', { // test and init command
+                    duration: duration, // duration set in function call params
+                    easing: easing, // easing set in function call params
+                });
+            }
+            var_section.addClass('active'); // set click target to active
+        } else {
+            if (active) {
+                container.velocity('slideUp', { // test and init command
+                    duration: duration, // duration set in function call params
+                    easing: easing, // easing set in function call params
+                });
+            }
+            var_section.removeClass('active'); // set click target to active
+        }
+        popGen.htmlutil.genDOM.checkSections(var_section, true);
+    });
+};
+/**
+ * Hide all of the sections 
+ * 
+ */
+popGen.velocity.hideAll = function() {
+    $.each(this.sections, function(key, value) {
+        value.velocity('slideUp', { // test and init command
+            duration: this.duration, // duration set in function call params
+            easing: this.easing, // easing set in function call params
+        });
+        $('.variable-section-toggle').removeClass('active').not('default');
+    });
+    $('.fa-chevron-up').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+};
+/**
+ * Show all of the sections 
+ * 
+ */
+popGen.velocity.showAll = function() {
+    $.each(this.sections, function(key, value) {
+        value.removeClass('hidden');
+        $('.variable-section-toggle').addClass('active').not('default');
+        value.velocity('slideDown', { // test and init command
+            duration: this.duration, // duration set in function call params
+            easing: this.easing, // easing set in function call params
+        });
+    });
+    $('.fa-chevron-down').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+};
+/**
+ *
+ * 
+ * [showHideVelocity description]
+ * @param  {[type]} element   [description]
+ * @param  {[type]} container [description]
+ * @return {[type]}           [description]
+ */
+popGen.velocity.showHideVelocity = function(element, container) {
+    $(element).on('click', function(e) {
+        e.preventDefault();
+        $(element).toggleClass("active");
+        var active = $(element).hasClass('active'),
+            close = "0",
+            open = "250px",
+            duration = 900,
+            easing = "easeOutCirc";
+        $(container).velocity({
+            height: active ? open : close
+        }, {
+            duration: duration,
+            easing: easing,
+        });
+    });
+};
+/**
+ * [verticalSlideHelp description]
+ * @param  {[type]} element   [description]
+ * @param  {[type]} container [description]
+ * @param  {[type]} easing    [description]
+ * @param  {[type]} duration  [description]
+ * @return {[type]}           [description]
+ */
+popGen.velocity.verticalSlideHelp = function(element, container, easing, duration) {
+    var active = element.hasClass('active'); // store active state
+    element.on('click', function(e) {
+        active = element.hasClass('active'); // store active state
+        container.removeClass('hidden');
+        e.preventDefault();
+        element.toggleClass('active'); // set click target to active
+        popGen.htmlutil.genDOM.checkSections(element);
+        container.velocity(active ? 'slideUp' : 'slideDown', { // test and init command
+            duration: duration, // duration set in function call params
+            easing: easing, // easing set in function call params
+        });
+    });
+};
+/**
+ * [showAllHelp description]
+ * @return {[type]} [description]
+ */
+popGen.velocity.showAllHelp = function() {
+    $.each(this.help_sections, function(key, value) {
+        value.removeClass('hidden');
+        value.addClass('active');
+        value.velocity('slideDown', { // test and init command
+            duration: this.duration, // duration set in function call params
+            easing: this.easing, // easing set in function call params
+        });
+    });
+};
+/**
+ * [hideAllHelp description]
+ * @return {[type]} [description]
+ */
+popGen.velocity.hideAllHelp = function() {
+    $.each(this.help_sections, function(key, value) {
+        value.removeClass('active');
+        value.velocity('slideUp', { // test and init command
+            duration: this.duration, // duration set in function call params
+            easing: this.easing, // easing set in function call params
+        });
+    });
+};;
+/*! VelocityJS.org (1.2.2). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
+/*! VelocityJS.org jQuery Shim (1.0.1). (C) 2014 The jQuery Foundation. MIT @license: en.wikipedia.org/wiki/MIT_License. */
+!function(e){function t(e){var t=e.length,r=$.type(e);return"function"===r||$.isWindow(e)?!1:1===e.nodeType&&t?!0:"array"===r||0===t||"number"==typeof t&&t>0&&t-1 in e}if(!e.jQuery){var $=function(e,t){return new $.fn.init(e,t)};$.isWindow=function(e){return null!=e&&e==e.window},$.type=function(e){return null==e?e+"":"object"==typeof e||"function"==typeof e?a[o.call(e)]||"object":typeof e},$.isArray=Array.isArray||function(e){return"array"===$.type(e)},$.isPlainObject=function(e){var t;if(!e||"object"!==$.type(e)||e.nodeType||$.isWindow(e))return!1;try{if(e.constructor&&!n.call(e,"constructor")&&!n.call(e.constructor.prototype,"isPrototypeOf"))return!1}catch(r){return!1}for(t in e);return void 0===t||n.call(e,t)},$.each=function(e,r,a){var n,o=0,i=e.length,s=t(e);if(a){if(s)for(;i>o&&(n=r.apply(e[o],a),n!==!1);o++);else for(o in e)if(n=r.apply(e[o],a),n===!1)break}else if(s)for(;i>o&&(n=r.call(e[o],o,e[o]),n!==!1);o++);else for(o in e)if(n=r.call(e[o],o,e[o]),n===!1)break;return e},$.data=function(e,t,a){if(void 0===a){var n=e[$.expando],o=n&&r[n];if(void 0===t)return o;if(o&&t in o)return o[t]}else if(void 0!==t){var n=e[$.expando]||(e[$.expando]=++$.uuid);return r[n]=r[n]||{},r[n][t]=a,a}},$.removeData=function(e,t){var a=e[$.expando],n=a&&r[a];n&&$.each(t,function(e,t){delete n[t]})},$.extend=function(){var e,t,r,a,n,o,i=arguments[0]||{},s=1,l=arguments.length,u=!1;for("boolean"==typeof i&&(u=i,i=arguments[s]||{},s++),"object"!=typeof i&&"function"!==$.type(i)&&(i={}),s===l&&(i=this,s--);l>s;s++)if(null!=(n=arguments[s]))for(a in n)e=i[a],r=n[a],i!==r&&(u&&r&&($.isPlainObject(r)||(t=$.isArray(r)))?(t?(t=!1,o=e&&$.isArray(e)?e:[]):o=e&&$.isPlainObject(e)?e:{},i[a]=$.extend(u,o,r)):void 0!==r&&(i[a]=r));return i},$.queue=function(e,r,a){function n(e,r){var a=r||[];return null!=e&&(t(Object(e))?!function(e,t){for(var r=+t.length,a=0,n=e.length;r>a;)e[n++]=t[a++];if(r!==r)for(;void 0!==t[a];)e[n++]=t[a++];return e.length=n,e}(a,"string"==typeof e?[e]:e):[].push.call(a,e)),a}if(e){r=(r||"fx")+"queue";var o=$.data(e,r);return a?(!o||$.isArray(a)?o=$.data(e,r,n(a)):o.push(a),o):o||[]}},$.dequeue=function(e,t){$.each(e.nodeType?[e]:e,function(e,r){t=t||"fx";var a=$.queue(r,t),n=a.shift();"inprogress"===n&&(n=a.shift()),n&&("fx"===t&&a.unshift("inprogress"),n.call(r,function(){$.dequeue(r,t)}))})},$.fn=$.prototype={init:function(e){if(e.nodeType)return this[0]=e,this;throw new Error("Not a DOM node.")},offset:function(){var t=this[0].getBoundingClientRect?this[0].getBoundingClientRect():{top:0,left:0};return{top:t.top+(e.pageYOffset||document.scrollTop||0)-(document.clientTop||0),left:t.left+(e.pageXOffset||document.scrollLeft||0)-(document.clientLeft||0)}},position:function(){function e(){for(var e=this.offsetParent||document;e&&"html"===!e.nodeType.toLowerCase&&"static"===e.style.position;)e=e.offsetParent;return e||document}var t=this[0],e=e.apply(t),r=this.offset(),a=/^(?:body|html)$/i.test(e.nodeName)?{top:0,left:0}:$(e).offset();return r.top-=parseFloat(t.style.marginTop)||0,r.left-=parseFloat(t.style.marginLeft)||0,e.style&&(a.top+=parseFloat(e.style.borderTopWidth)||0,a.left+=parseFloat(e.style.borderLeftWidth)||0),{top:r.top-a.top,left:r.left-a.left}}};var r={};$.expando="velocity"+(new Date).getTime(),$.uuid=0;for(var a={},n=a.hasOwnProperty,o=a.toString,i="Boolean Number String Function Array Date RegExp Object Error".split(" "),s=0;s<i.length;s++)a["[object "+i[s]+"]"]=i[s].toLowerCase();$.fn.init.prototype=$.fn,e.Velocity={Utilities:$}}}(window),function(e){"object"==typeof module&&"object"==typeof module.exports?module.exports=e():"function"==typeof define&&define.amd?define(e):e()}(function(){return function(e,t,r,a){function n(e){for(var t=-1,r=e?e.length:0,a=[];++t<r;){var n=e[t];n&&a.push(n)}return a}function o(e){return g.isWrapped(e)?e=[].slice.call(e):g.isNode(e)&&(e=[e]),e}function i(e){var t=$.data(e,"velocity");return null===t?a:t}function s(e){return function(t){return Math.round(t*e)*(1/e)}}function l(e,r,a,n){function o(e,t){return 1-3*t+3*e}function i(e,t){return 3*t-6*e}function s(e){return 3*e}function l(e,t,r){return((o(t,r)*e+i(t,r))*e+s(t))*e}function u(e,t,r){return 3*o(t,r)*e*e+2*i(t,r)*e+s(t)}function c(t,r){for(var n=0;m>n;++n){var o=u(r,e,a);if(0===o)return r;var i=l(r,e,a)-t;r-=i/o}return r}function p(){for(var t=0;b>t;++t)w[t]=l(t*x,e,a)}function f(t,r,n){var o,i,s=0;do i=r+(n-r)/2,o=l(i,e,a)-t,o>0?n=i:r=i;while(Math.abs(o)>h&&++s<v);return i}function d(t){for(var r=0,n=1,o=b-1;n!=o&&w[n]<=t;++n)r+=x;--n;var i=(t-w[n])/(w[n+1]-w[n]),s=r+i*x,l=u(s,e,a);return l>=y?c(t,s):0==l?s:f(t,r,r+x)}function g(){V=!0,(e!=r||a!=n)&&p()}var m=4,y=.001,h=1e-7,v=10,b=11,x=1/(b-1),S="Float32Array"in t;if(4!==arguments.length)return!1;for(var P=0;4>P;++P)if("number"!=typeof arguments[P]||isNaN(arguments[P])||!isFinite(arguments[P]))return!1;e=Math.min(e,1),a=Math.min(a,1),e=Math.max(e,0),a=Math.max(a,0);var w=S?new Float32Array(b):new Array(b),V=!1,C=function(t){return V||g(),e===r&&a===n?t:0===t?0:1===t?1:l(d(t),r,n)};C.getControlPoints=function(){return[{x:e,y:r},{x:a,y:n}]};var T="generateBezier("+[e,r,a,n]+")";return C.toString=function(){return T},C}function u(e,t){var r=e;return g.isString(e)?v.Easings[e]||(r=!1):r=g.isArray(e)&&1===e.length?s.apply(null,e):g.isArray(e)&&2===e.length?b.apply(null,e.concat([t])):g.isArray(e)&&4===e.length?l.apply(null,e):!1,r===!1&&(r=v.Easings[v.defaults.easing]?v.defaults.easing:h),r}function c(e){if(e){var t=(new Date).getTime(),r=v.State.calls.length;r>1e4&&(v.State.calls=n(v.State.calls));for(var o=0;r>o;o++)if(v.State.calls[o]){var s=v.State.calls[o],l=s[0],u=s[2],f=s[3],d=!!f,m=null;f||(f=v.State.calls[o][3]=t-16);for(var y=Math.min((t-f)/u.duration,1),h=0,b=l.length;b>h;h++){var S=l[h],w=S.element;if(i(w)){var V=!1;if(u.display!==a&&null!==u.display&&"none"!==u.display){if("flex"===u.display){var C=["-webkit-box","-moz-box","-ms-flexbox","-webkit-flex"];$.each(C,function(e,t){x.setPropertyValue(w,"display",t)})}x.setPropertyValue(w,"display",u.display)}u.visibility!==a&&"hidden"!==u.visibility&&x.setPropertyValue(w,"visibility",u.visibility);for(var T in S)if("element"!==T){var k=S[T],A,F=g.isString(k.easing)?v.Easings[k.easing]:k.easing;if(1===y)A=k.endValue;else{var E=k.endValue-k.startValue;if(A=k.startValue+E*F(y,u,E),!d&&A===k.currentValue)continue}if(k.currentValue=A,"tween"===T)m=A;else{if(x.Hooks.registered[T]){var j=x.Hooks.getRoot(T),H=i(w).rootPropertyValueCache[j];H&&(k.rootPropertyValue=H)}var N=x.setPropertyValue(w,T,k.currentValue+(0===parseFloat(A)?"":k.unitType),k.rootPropertyValue,k.scrollData);x.Hooks.registered[T]&&(i(w).rootPropertyValueCache[j]=x.Normalizations.registered[j]?x.Normalizations.registered[j]("extract",null,N[1]):N[1]),"transform"===N[0]&&(V=!0)}}u.mobileHA&&i(w).transformCache.translate3d===a&&(i(w).transformCache.translate3d="(0px, 0px, 0px)",V=!0),V&&x.flushTransformCache(w)}}u.display!==a&&"none"!==u.display&&(v.State.calls[o][2].display=!1),u.visibility!==a&&"hidden"!==u.visibility&&(v.State.calls[o][2].visibility=!1),u.progress&&u.progress.call(s[1],s[1],y,Math.max(0,f+u.duration-t),f,m),1===y&&p(o)}}v.State.isTicking&&P(c)}function p(e,t){if(!v.State.calls[e])return!1;for(var r=v.State.calls[e][0],n=v.State.calls[e][1],o=v.State.calls[e][2],s=v.State.calls[e][4],l=!1,u=0,c=r.length;c>u;u++){var p=r[u].element;if(t||o.loop||("none"===o.display&&x.setPropertyValue(p,"display",o.display),"hidden"===o.visibility&&x.setPropertyValue(p,"visibility",o.visibility)),o.loop!==!0&&($.queue(p)[1]===a||!/\.velocityQueueEntryFlag/i.test($.queue(p)[1]))&&i(p)){i(p).isAnimating=!1,i(p).rootPropertyValueCache={};var f=!1;$.each(x.Lists.transforms3D,function(e,t){var r=/^scale/.test(t)?1:0,n=i(p).transformCache[t];i(p).transformCache[t]!==a&&new RegExp("^\\("+r+"[^.]").test(n)&&(f=!0,delete i(p).transformCache[t])}),o.mobileHA&&(f=!0,delete i(p).transformCache.translate3d),f&&x.flushTransformCache(p),x.Values.removeClass(p,"velocity-animating")}if(!t&&o.complete&&!o.loop&&u===c-1)try{o.complete.call(n,n)}catch(d){setTimeout(function(){throw d},1)}s&&o.loop!==!0&&s(n),i(p)&&o.loop===!0&&!t&&($.each(i(p).tweensContainer,function(e,t){/^rotate/.test(e)&&360===parseFloat(t.endValue)&&(t.endValue=0,t.startValue=360),/^backgroundPosition/.test(e)&&100===parseFloat(t.endValue)&&"%"===t.unitType&&(t.endValue=0,t.startValue=100)}),v(p,"reverse",{loop:!0,delay:o.delay})),o.queue!==!1&&$.dequeue(p,o.queue)}v.State.calls[e]=!1;for(var g=0,m=v.State.calls.length;m>g;g++)if(v.State.calls[g]!==!1){l=!0;break}l===!1&&(v.State.isTicking=!1,delete v.State.calls,v.State.calls=[])}var f=function(){if(r.documentMode)return r.documentMode;for(var e=7;e>4;e--){var t=r.createElement("div");if(t.innerHTML="<!--[if IE "+e+"]><span></span><![endif]-->",t.getElementsByTagName("span").length)return t=null,e}return a}(),d=function(){var e=0;return t.webkitRequestAnimationFrame||t.mozRequestAnimationFrame||function(t){var r=(new Date).getTime(),a;return a=Math.max(0,16-(r-e)),e=r+a,setTimeout(function(){t(r+a)},a)}}(),g={isString:function(e){return"string"==typeof e},isArray:Array.isArray||function(e){return"[object Array]"===Object.prototype.toString.call(e)},isFunction:function(e){return"[object Function]"===Object.prototype.toString.call(e)},isNode:function(e){return e&&e.nodeType},isNodeList:function(e){return"object"==typeof e&&/^\[object (HTMLCollection|NodeList|Object)\]$/.test(Object.prototype.toString.call(e))&&e.length!==a&&(0===e.length||"object"==typeof e[0]&&e[0].nodeType>0)},isWrapped:function(e){return e&&(e.jquery||t.Zepto&&t.Zepto.zepto.isZ(e))},isSVG:function(e){return t.SVGElement&&e instanceof t.SVGElement},isEmptyObject:function(e){for(var t in e)return!1;return!0}},$,m=!1;if(e.fn&&e.fn.jquery?($=e,m=!0):$=t.Velocity.Utilities,8>=f&&!m)throw new Error("Velocity: IE8 and below require jQuery to be loaded before Velocity.");if(7>=f)return void(jQuery.fn.velocity=jQuery.fn.animate);var y=400,h="swing",v={State:{isMobile:/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),isAndroid:/Android/i.test(navigator.userAgent),isGingerbread:/Android 2\.3\.[3-7]/i.test(navigator.userAgent),isChrome:t.chrome,isFirefox:/Firefox/i.test(navigator.userAgent),prefixElement:r.createElement("div"),prefixMatches:{},scrollAnchor:null,scrollPropertyLeft:null,scrollPropertyTop:null,isTicking:!1,calls:[]},CSS:{},Utilities:$,Redirects:{},Easings:{},Promise:t.Promise,defaults:{queue:"",duration:y,easing:h,begin:a,complete:a,progress:a,display:a,visibility:a,loop:!1,delay:!1,mobileHA:!0,_cacheValues:!0},init:function(e){$.data(e,"velocity",{isSVG:g.isSVG(e),isAnimating:!1,computedStyle:null,tweensContainer:null,rootPropertyValueCache:{},transformCache:{}})},hook:null,mock:!1,version:{major:1,minor:2,patch:2},debug:!1};t.pageYOffset!==a?(v.State.scrollAnchor=t,v.State.scrollPropertyLeft="pageXOffset",v.State.scrollPropertyTop="pageYOffset"):(v.State.scrollAnchor=r.documentElement||r.body.parentNode||r.body,v.State.scrollPropertyLeft="scrollLeft",v.State.scrollPropertyTop="scrollTop");var b=function(){function e(e){return-e.tension*e.x-e.friction*e.v}function t(t,r,a){var n={x:t.x+a.dx*r,v:t.v+a.dv*r,tension:t.tension,friction:t.friction};return{dx:n.v,dv:e(n)}}function r(r,a){var n={dx:r.v,dv:e(r)},o=t(r,.5*a,n),i=t(r,.5*a,o),s=t(r,a,i),l=1/6*(n.dx+2*(o.dx+i.dx)+s.dx),u=1/6*(n.dv+2*(o.dv+i.dv)+s.dv);return r.x=r.x+l*a,r.v=r.v+u*a,r}return function a(e,t,n){var o={x:-1,v:0,tension:null,friction:null},i=[0],s=0,l=1e-4,u=.016,c,p,f;for(e=parseFloat(e)||500,t=parseFloat(t)||20,n=n||null,o.tension=e,o.friction=t,c=null!==n,c?(s=a(e,t),p=s/n*u):p=u;;)if(f=r(f||o,p),i.push(1+f.x),s+=16,!(Math.abs(f.x)>l&&Math.abs(f.v)>l))break;return c?function(e){return i[e*(i.length-1)|0]}:s}}();v.Easings={linear:function(e){return e},swing:function(e){return.5-Math.cos(e*Math.PI)/2},spring:function(e){return 1-Math.cos(4.5*e*Math.PI)*Math.exp(6*-e)}},$.each([["ease",[.25,.1,.25,1]],["ease-in",[.42,0,1,1]],["ease-out",[0,0,.58,1]],["ease-in-out",[.42,0,.58,1]],["easeInSine",[.47,0,.745,.715]],["easeOutSine",[.39,.575,.565,1]],["easeInOutSine",[.445,.05,.55,.95]],["easeInQuad",[.55,.085,.68,.53]],["easeOutQuad",[.25,.46,.45,.94]],["easeInOutQuad",[.455,.03,.515,.955]],["easeInCubic",[.55,.055,.675,.19]],["easeOutCubic",[.215,.61,.355,1]],["easeInOutCubic",[.645,.045,.355,1]],["easeInQuart",[.895,.03,.685,.22]],["easeOutQuart",[.165,.84,.44,1]],["easeInOutQuart",[.77,0,.175,1]],["easeInQuint",[.755,.05,.855,.06]],["easeOutQuint",[.23,1,.32,1]],["easeInOutQuint",[.86,0,.07,1]],["easeInExpo",[.95,.05,.795,.035]],["easeOutExpo",[.19,1,.22,1]],["easeInOutExpo",[1,0,0,1]],["easeInCirc",[.6,.04,.98,.335]],["easeOutCirc",[.075,.82,.165,1]],["easeInOutCirc",[.785,.135,.15,.86]]],function(e,t){v.Easings[t[0]]=l.apply(null,t[1])});var x=v.CSS={RegEx:{isHex:/^#([A-f\d]{3}){1,2}$/i,valueUnwrap:/^[A-z]+\((.*)\)$/i,wrappedValueAlreadyExtracted:/[0-9.]+ [0-9.]+ [0-9.]+( [0-9.]+)?/,valueSplit:/([A-z]+\(.+\))|(([A-z0-9#-.]+?)(?=\s|$))/gi},Lists:{colors:["fill","stroke","stopColor","color","backgroundColor","borderColor","borderTopColor","borderRightColor","borderBottomColor","borderLeftColor","outlineColor"],transformsBase:["translateX","translateY","scale","scaleX","scaleY","skewX","skewY","rotateZ"],transforms3D:["transformPerspective","translateZ","scaleZ","rotateX","rotateY"]},Hooks:{templates:{textShadow:["Color X Y Blur","black 0px 0px 0px"],boxShadow:["Color X Y Blur Spread","black 0px 0px 0px 0px"],clip:["Top Right Bottom Left","0px 0px 0px 0px"],backgroundPosition:["X Y","0% 0%"],transformOrigin:["X Y Z","50% 50% 0px"],perspectiveOrigin:["X Y","50% 50%"]},registered:{},register:function(){for(var e=0;e<x.Lists.colors.length;e++){var t="color"===x.Lists.colors[e]?"0 0 0 1":"255 255 255 1";x.Hooks.templates[x.Lists.colors[e]]=["Red Green Blue Alpha",t]}var r,a,n;if(f)for(r in x.Hooks.templates){a=x.Hooks.templates[r],n=a[0].split(" ");var o=a[1].match(x.RegEx.valueSplit);"Color"===n[0]&&(n.push(n.shift()),o.push(o.shift()),x.Hooks.templates[r]=[n.join(" "),o.join(" ")])}for(r in x.Hooks.templates){a=x.Hooks.templates[r],n=a[0].split(" ");for(var e in n){var i=r+n[e],s=e;x.Hooks.registered[i]=[r,s]}}},getRoot:function(e){var t=x.Hooks.registered[e];return t?t[0]:e},cleanRootPropertyValue:function(e,t){return x.RegEx.valueUnwrap.test(t)&&(t=t.match(x.RegEx.valueUnwrap)[1]),x.Values.isCSSNullValue(t)&&(t=x.Hooks.templates[e][1]),t},extractValue:function(e,t){var r=x.Hooks.registered[e];if(r){var a=r[0],n=r[1];return t=x.Hooks.cleanRootPropertyValue(a,t),t.toString().match(x.RegEx.valueSplit)[n]}return t},injectValue:function(e,t,r){var a=x.Hooks.registered[e];if(a){var n=a[0],o=a[1],i,s;return r=x.Hooks.cleanRootPropertyValue(n,r),i=r.toString().match(x.RegEx.valueSplit),i[o]=t,s=i.join(" ")}return r}},Normalizations:{registered:{clip:function(e,t,r){switch(e){case"name":return"clip";case"extract":var a;return x.RegEx.wrappedValueAlreadyExtracted.test(r)?a=r:(a=r.toString().match(x.RegEx.valueUnwrap),a=a?a[1].replace(/,(\s+)?/g," "):r),a;case"inject":return"rect("+r+")"}},blur:function(e,t,r){switch(e){case"name":return v.State.isFirefox?"filter":"-webkit-filter";case"extract":var a=parseFloat(r);if(!a&&0!==a){var n=r.toString().match(/blur\(([0-9]+[A-z]+)\)/i);a=n?n[1]:0}return a;case"inject":return parseFloat(r)?"blur("+r+")":"none"}},opacity:function(e,t,r){if(8>=f)switch(e){case"name":return"filter";case"extract":var a=r.toString().match(/alpha\(opacity=(.*)\)/i);return r=a?a[1]/100:1;case"inject":return t.style.zoom=1,parseFloat(r)>=1?"":"alpha(opacity="+parseInt(100*parseFloat(r),10)+")"}else switch(e){case"name":return"opacity";case"extract":return r;case"inject":return r}}},register:function(){9>=f||v.State.isGingerbread||(x.Lists.transformsBase=x.Lists.transformsBase.concat(x.Lists.transforms3D));for(var e=0;e<x.Lists.transformsBase.length;e++)!function(){var t=x.Lists.transformsBase[e];x.Normalizations.registered[t]=function(e,r,n){switch(e){case"name":return"transform";case"extract":return i(r)===a||i(r).transformCache[t]===a?/^scale/i.test(t)?1:0:i(r).transformCache[t].replace(/[()]/g,"");case"inject":var o=!1;switch(t.substr(0,t.length-1)){case"translate":o=!/(%|px|em|rem|vw|vh|\d)$/i.test(n);break;case"scal":case"scale":v.State.isAndroid&&i(r).transformCache[t]===a&&1>n&&(n=1),o=!/(\d)$/i.test(n);break;case"skew":o=!/(deg|\d)$/i.test(n);break;case"rotate":o=!/(deg|\d)$/i.test(n)}return o||(i(r).transformCache[t]="("+n+")"),i(r).transformCache[t]}}}();for(var e=0;e<x.Lists.colors.length;e++)!function(){var t=x.Lists.colors[e];x.Normalizations.registered[t]=function(e,r,n){switch(e){case"name":return t;case"extract":var o;if(x.RegEx.wrappedValueAlreadyExtracted.test(n))o=n;else{var i,s={black:"rgb(0, 0, 0)",blue:"rgb(0, 0, 255)",gray:"rgb(128, 128, 128)",green:"rgb(0, 128, 0)",red:"rgb(255, 0, 0)",white:"rgb(255, 255, 255)"};/^[A-z]+$/i.test(n)?i=s[n]!==a?s[n]:s.black:x.RegEx.isHex.test(n)?i="rgb("+x.Values.hexToRgb(n).join(" ")+")":/^rgba?\(/i.test(n)||(i=s.black),o=(i||n).toString().match(x.RegEx.valueUnwrap)[1].replace(/,(\s+)?/g," ")}return 8>=f||3!==o.split(" ").length||(o+=" 1"),o;case"inject":return 8>=f?4===n.split(" ").length&&(n=n.split(/\s+/).slice(0,3).join(" ")):3===n.split(" ").length&&(n+=" 1"),(8>=f?"rgb":"rgba")+"("+n.replace(/\s+/g,",").replace(/\.(\d)+(?=,)/g,"")+")"}}}()}},Names:{camelCase:function(e){return e.replace(/-(\w)/g,function(e,t){return t.toUpperCase()})},SVGAttribute:function(e){var t="width|height|x|y|cx|cy|r|rx|ry|x1|x2|y1|y2";return(f||v.State.isAndroid&&!v.State.isChrome)&&(t+="|transform"),new RegExp("^("+t+")$","i").test(e)},prefixCheck:function(e){if(v.State.prefixMatches[e])return[v.State.prefixMatches[e],!0];for(var t=["","Webkit","Moz","ms","O"],r=0,a=t.length;a>r;r++){var n;if(n=0===r?e:t[r]+e.replace(/^\w/,function(e){return e.toUpperCase()}),g.isString(v.State.prefixElement.style[n]))return v.State.prefixMatches[e]=n,[n,!0]}return[e,!1]}},Values:{hexToRgb:function(e){var t=/^#?([a-f\d])([a-f\d])([a-f\d])$/i,r=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i,a;return e=e.replace(t,function(e,t,r,a){return t+t+r+r+a+a}),a=r.exec(e),a?[parseInt(a[1],16),parseInt(a[2],16),parseInt(a[3],16)]:[0,0,0]},isCSSNullValue:function(e){return 0==e||/^(none|auto|transparent|(rgba\(0, ?0, ?0, ?0\)))$/i.test(e)},getUnitType:function(e){return/^(rotate|skew)/i.test(e)?"deg":/(^(scale|scaleX|scaleY|scaleZ|alpha|flexGrow|flexHeight|zIndex|fontWeight)$)|((opacity|red|green|blue|alpha)$)/i.test(e)?"":"px"},getDisplayType:function(e){var t=e&&e.tagName.toString().toLowerCase();return/^(b|big|i|small|tt|abbr|acronym|cite|code|dfn|em|kbd|strong|samp|var|a|bdo|br|img|map|object|q|script|span|sub|sup|button|input|label|select|textarea)$/i.test(t)?"inline":/^(li)$/i.test(t)?"list-item":/^(tr)$/i.test(t)?"table-row":/^(table)$/i.test(t)?"table":/^(tbody)$/i.test(t)?"table-row-group":"block"},addClass:function(e,t){e.classList?e.classList.add(t):e.className+=(e.className.length?" ":"")+t},removeClass:function(e,t){e.classList?e.classList.remove(t):e.className=e.className.toString().replace(new RegExp("(^|\\s)"+t.split(" ").join("|")+"(\\s|$)","gi")," ")}},getPropertyValue:function(e,r,n,o){function s(e,r){function n(){u&&x.setPropertyValue(e,"display","none")}var l=0;if(8>=f)l=$.css(e,r);else{var u=!1;if(/^(width|height)$/.test(r)&&0===x.getPropertyValue(e,"display")&&(u=!0,x.setPropertyValue(e,"display",x.Values.getDisplayType(e))),!o){if("height"===r&&"border-box"!==x.getPropertyValue(e,"boxSizing").toString().toLowerCase()){var c=e.offsetHeight-(parseFloat(x.getPropertyValue(e,"borderTopWidth"))||0)-(parseFloat(x.getPropertyValue(e,"borderBottomWidth"))||0)-(parseFloat(x.getPropertyValue(e,"paddingTop"))||0)-(parseFloat(x.getPropertyValue(e,"paddingBottom"))||0);return n(),c}if("width"===r&&"border-box"!==x.getPropertyValue(e,"boxSizing").toString().toLowerCase()){var p=e.offsetWidth-(parseFloat(x.getPropertyValue(e,"borderLeftWidth"))||0)-(parseFloat(x.getPropertyValue(e,"borderRightWidth"))||0)-(parseFloat(x.getPropertyValue(e,"paddingLeft"))||0)-(parseFloat(x.getPropertyValue(e,"paddingRight"))||0);return n(),p}}var d;d=i(e)===a?t.getComputedStyle(e,null):i(e).computedStyle?i(e).computedStyle:i(e).computedStyle=t.getComputedStyle(e,null),"borderColor"===r&&(r="borderTopColor"),l=9===f&&"filter"===r?d.getPropertyValue(r):d[r],(""===l||null===l)&&(l=e.style[r]),n()}if("auto"===l&&/^(top|right|bottom|left)$/i.test(r)){var g=s(e,"position");("fixed"===g||"absolute"===g&&/top|left/i.test(r))&&(l=$(e).position()[r]+"px")}return l}var l;if(x.Hooks.registered[r]){var u=r,c=x.Hooks.getRoot(u);n===a&&(n=x.getPropertyValue(e,x.Names.prefixCheck(c)[0])),x.Normalizations.registered[c]&&(n=x.Normalizations.registered[c]("extract",e,n)),l=x.Hooks.extractValue(u,n)}else if(x.Normalizations.registered[r]){var p,d;p=x.Normalizations.registered[r]("name",e),"transform"!==p&&(d=s(e,x.Names.prefixCheck(p)[0]),x.Values.isCSSNullValue(d)&&x.Hooks.templates[r]&&(d=x.Hooks.templates[r][1])),l=x.Normalizations.registered[r]("extract",e,d)}if(!/^[\d-]/.test(l))if(i(e)&&i(e).isSVG&&x.Names.SVGAttribute(r))if(/^(height|width)$/i.test(r))try{l=e.getBBox()[r]}catch(g){l=0}else l=e.getAttribute(r);else l=s(e,x.Names.prefixCheck(r)[0]);return x.Values.isCSSNullValue(l)&&(l=0),v.debug>=2&&console.log("Get "+r+": "+l),l},setPropertyValue:function(e,r,a,n,o){var s=r;if("scroll"===r)o.container?o.container["scroll"+o.direction]=a:"Left"===o.direction?t.scrollTo(a,o.alternateValue):t.scrollTo(o.alternateValue,a);else if(x.Normalizations.registered[r]&&"transform"===x.Normalizations.registered[r]("name",e))x.Normalizations.registered[r]("inject",e,a),s="transform",a=i(e).transformCache[r];else{if(x.Hooks.registered[r]){var l=r,u=x.Hooks.getRoot(r);n=n||x.getPropertyValue(e,u),a=x.Hooks.injectValue(l,a,n),r=u}if(x.Normalizations.registered[r]&&(a=x.Normalizations.registered[r]("inject",e,a),r=x.Normalizations.registered[r]("name",e)),s=x.Names.prefixCheck(r)[0],8>=f)try{e.style[s]=a}catch(c){v.debug&&console.log("Browser does not support ["+a+"] for ["+s+"]")}else i(e)&&i(e).isSVG&&x.Names.SVGAttribute(r)?e.setAttribute(r,a):e.style[s]=a;v.debug>=2&&console.log("Set "+r+" ("+s+"): "+a)}return[s,a]},flushTransformCache:function(e){function t(t){return parseFloat(x.getPropertyValue(e,t))}var r="";if((f||v.State.isAndroid&&!v.State.isChrome)&&i(e).isSVG){var a={translate:[t("translateX"),t("translateY")],skewX:[t("skewX")],skewY:[t("skewY")],scale:1!==t("scale")?[t("scale"),t("scale")]:[t("scaleX"),t("scaleY")],rotate:[t("rotateZ"),0,0]};$.each(i(e).transformCache,function(e){/^translate/i.test(e)?e="translate":/^scale/i.test(e)?e="scale":/^rotate/i.test(e)&&(e="rotate"),a[e]&&(r+=e+"("+a[e].join(" ")+") ",delete a[e])})}else{var n,o;$.each(i(e).transformCache,function(t){return n=i(e).transformCache[t],"transformPerspective"===t?(o=n,!0):(9===f&&"rotateZ"===t&&(t="rotate"),void(r+=t+n+" "))}),o&&(r="perspective"+o+" "+r)}x.setPropertyValue(e,"transform",r)}};x.Hooks.register(),x.Normalizations.register(),v.hook=function(e,t,r){var n=a;return e=o(e),$.each(e,function(e,o){if(i(o)===a&&v.init(o),r===a)n===a&&(n=v.CSS.getPropertyValue(o,t));else{var s=v.CSS.setPropertyValue(o,t,r);"transform"===s[0]&&v.CSS.flushTransformCache(o),n=s}}),n};var S=function(){function e(){return l?T.promise||null:f}function n(){function e(e){function p(e,t){var r=a,i=a,s=a;return g.isArray(e)?(r=e[0],!g.isArray(e[1])&&/^[\d-]/.test(e[1])||g.isFunction(e[1])||x.RegEx.isHex.test(e[1])?s=e[1]:(g.isString(e[1])&&!x.RegEx.isHex.test(e[1])||g.isArray(e[1]))&&(i=t?e[1]:u(e[1],o.duration),e[2]!==a&&(s=e[2]))):r=e,t||(i=i||o.easing),g.isFunction(r)&&(r=r.call(n,w,P)),g.isFunction(s)&&(s=s.call(n,w,P)),[r||0,i,s]}function f(e,t){var r,a;return a=(t||"0").toString().toLowerCase().replace(/[%A-z]+$/,function(e){return r=e,""}),r||(r=x.Values.getUnitType(e)),[a,r]}function d(){var e={myParent:n.parentNode||r.body,position:x.getPropertyValue(n,"position"),fontSize:x.getPropertyValue(n,"fontSize")},a=e.position===N.lastPosition&&e.myParent===N.lastParent,o=e.fontSize===N.lastFontSize;N.lastParent=e.myParent,N.lastPosition=e.position,N.lastFontSize=e.fontSize;var s=100,l={};if(o&&a)l.emToPx=N.lastEmToPx,l.percentToPxWidth=N.lastPercentToPxWidth,l.percentToPxHeight=N.lastPercentToPxHeight;else{var u=i(n).isSVG?r.createElementNS("http://www.w3.org/2000/svg","rect"):r.createElement("div");v.init(u),e.myParent.appendChild(u),$.each(["overflow","overflowX","overflowY"],function(e,t){v.CSS.setPropertyValue(u,t,"hidden")}),v.CSS.setPropertyValue(u,"position",e.position),v.CSS.setPropertyValue(u,"fontSize",e.fontSize),v.CSS.setPropertyValue(u,"boxSizing","content-box"),$.each(["minWidth","maxWidth","width","minHeight","maxHeight","height"],function(e,t){v.CSS.setPropertyValue(u,t,s+"%")}),v.CSS.setPropertyValue(u,"paddingLeft",s+"em"),l.percentToPxWidth=N.lastPercentToPxWidth=(parseFloat(x.getPropertyValue(u,"width",null,!0))||1)/s,l.percentToPxHeight=N.lastPercentToPxHeight=(parseFloat(x.getPropertyValue(u,"height",null,!0))||1)/s,l.emToPx=N.lastEmToPx=(parseFloat(x.getPropertyValue(u,"paddingLeft"))||1)/s,e.myParent.removeChild(u)}return null===N.remToPx&&(N.remToPx=parseFloat(x.getPropertyValue(r.body,"fontSize"))||16),null===N.vwToPx&&(N.vwToPx=parseFloat(t.innerWidth)/100,N.vhToPx=parseFloat(t.innerHeight)/100),l.remToPx=N.remToPx,l.vwToPx=N.vwToPx,l.vhToPx=N.vhToPx,v.debug>=1&&console.log("Unit ratios: "+JSON.stringify(l),n),l}if(o.begin&&0===w)try{o.begin.call(m,m)}catch(y){setTimeout(function(){throw y},1)}if("scroll"===k){var S=/^x$/i.test(o.axis)?"Left":"Top",V=parseFloat(o.offset)||0,C,A,F;o.container?g.isWrapped(o.container)||g.isNode(o.container)?(o.container=o.container[0]||o.container,C=o.container["scroll"+S],F=C+$(n).position()[S.toLowerCase()]+V):o.container=null:(C=v.State.scrollAnchor[v.State["scrollProperty"+S]],A=v.State.scrollAnchor[v.State["scrollProperty"+("Left"===S?"Top":"Left")]],F=$(n).offset()[S.toLowerCase()]+V),s={scroll:{rootPropertyValue:!1,startValue:C,currentValue:C,endValue:F,unitType:"",easing:o.easing,scrollData:{container:o.container,direction:S,alternateValue:A}},element:n},v.debug&&console.log("tweensContainer (scroll): ",s.scroll,n)}else if("reverse"===k){if(!i(n).tweensContainer)return void $.dequeue(n,o.queue);"none"===i(n).opts.display&&(i(n).opts.display="auto"),"hidden"===i(n).opts.visibility&&(i(n).opts.visibility="visible"),i(n).opts.loop=!1,i(n).opts.begin=null,i(n).opts.complete=null,b.easing||delete o.easing,b.duration||delete o.duration,o=$.extend({},i(n).opts,o);var E=$.extend(!0,{},i(n).tweensContainer);for(var j in E)if("element"!==j){var H=E[j].startValue;E[j].startValue=E[j].currentValue=E[j].endValue,E[j].endValue=H,g.isEmptyObject(b)||(E[j].easing=o.easing),v.debug&&console.log("reverse tweensContainer ("+j+"): "+JSON.stringify(E[j]),n)}s=E}else if("start"===k){var E;i(n).tweensContainer&&i(n).isAnimating===!0&&(E=i(n).tweensContainer),$.each(h,function(e,t){if(RegExp("^"+x.Lists.colors.join("$|^")+"$").test(e)){var r=p(t,!0),n=r[0],o=r[1],i=r[2];if(x.RegEx.isHex.test(n)){for(var s=["Red","Green","Blue"],l=x.Values.hexToRgb(n),u=i?x.Values.hexToRgb(i):a,c=0;c<s.length;c++){var f=[l[c]];o&&f.push(o),u!==a&&f.push(u[c]),h[e+s[c]]=f}delete h[e]}}});for(var R in h){var O=p(h[R]),z=O[0],q=O[1],M=O[2];R=x.Names.camelCase(R);var I=x.Hooks.getRoot(R),B=!1;if(i(n).isSVG||"tween"===I||x.Names.prefixCheck(I)[1]!==!1||x.Normalizations.registered[I]!==a){(o.display!==a&&null!==o.display&&"none"!==o.display||o.visibility!==a&&"hidden"!==o.visibility)&&/opacity|filter/.test(R)&&!M&&0!==z&&(M=0),o._cacheValues&&E&&E[R]?(M===a&&(M=E[R].endValue+E[R].unitType),B=i(n).rootPropertyValueCache[I]):x.Hooks.registered[R]?M===a?(B=x.getPropertyValue(n,I),M=x.getPropertyValue(n,R,B)):B=x.Hooks.templates[I][1]:M===a&&(M=x.getPropertyValue(n,R));var W,G,D,X=!1;if(W=f(R,M),M=W[0],D=W[1],W=f(R,z),z=W[0].replace(/^([+-\/*])=/,function(e,t){return X=t,""}),G=W[1],M=parseFloat(M)||0,z=parseFloat(z)||0,"%"===G&&(/^(fontSize|lineHeight)$/.test(R)?(z/=100,G="em"):/^scale/.test(R)?(z/=100,G=""):/(Red|Green|Blue)$/i.test(R)&&(z=z/100*255,G="")),/[\/*]/.test(X))G=D;else if(D!==G&&0!==M)if(0===z)G=D;else{l=l||d();var Y=/margin|padding|left|right|width|text|word|letter/i.test(R)||/X$/.test(R)||"x"===R?"x":"y";switch(D){case"%":M*="x"===Y?l.percentToPxWidth:l.percentToPxHeight;break;case"px":break;default:M*=l[D+"ToPx"]}switch(G){case"%":M*=1/("x"===Y?l.percentToPxWidth:l.percentToPxHeight);break;case"px":break;default:M*=1/l[G+"ToPx"]}}switch(X){case"+":z=M+z;break;case"-":z=M-z;break;case"*":z=M*z;break;case"/":z=M/z}s[R]={rootPropertyValue:B,startValue:M,currentValue:M,endValue:z,unitType:G,easing:q},v.debug&&console.log("tweensContainer ("+R+"): "+JSON.stringify(s[R]),n)}else v.debug&&console.log("Skipping ["+I+"] due to a lack of browser support.")}s.element=n}s.element&&(x.Values.addClass(n,"velocity-animating"),L.push(s),""===o.queue&&(i(n).tweensContainer=s,i(n).opts=o),i(n).isAnimating=!0,w===P-1?(v.State.calls.push([L,m,o,null,T.resolver]),v.State.isTicking===!1&&(v.State.isTicking=!0,c())):w++)}var n=this,o=$.extend({},v.defaults,b),s={},l;switch(i(n)===a&&v.init(n),parseFloat(o.delay)&&o.queue!==!1&&$.queue(n,o.queue,function(e){v.velocityQueueEntryFlag=!0,i(n).delayTimer={setTimeout:setTimeout(e,parseFloat(o.delay)),next:e}}),o.duration.toString().toLowerCase()){case"fast":o.duration=200;break;case"normal":o.duration=y;break;case"slow":o.duration=600;break;default:o.duration=parseFloat(o.duration)||1}v.mock!==!1&&(v.mock===!0?o.duration=o.delay=1:(o.duration*=parseFloat(v.mock)||1,o.delay*=parseFloat(v.mock)||1)),o.easing=u(o.easing,o.duration),o.begin&&!g.isFunction(o.begin)&&(o.begin=null),o.progress&&!g.isFunction(o.progress)&&(o.progress=null),o.complete&&!g.isFunction(o.complete)&&(o.complete=null),o.display!==a&&null!==o.display&&(o.display=o.display.toString().toLowerCase(),"auto"===o.display&&(o.display=v.CSS.Values.getDisplayType(n))),o.visibility!==a&&null!==o.visibility&&(o.visibility=o.visibility.toString().toLowerCase()),o.mobileHA=o.mobileHA&&v.State.isMobile&&!v.State.isGingerbread,o.queue===!1?o.delay?setTimeout(e,o.delay):e():$.queue(n,o.queue,function(t,r){return r===!0?(T.promise&&T.resolver(m),!0):(v.velocityQueueEntryFlag=!0,void e(t))}),""!==o.queue&&"fx"!==o.queue||"inprogress"===$.queue(n)[0]||$.dequeue(n)}var s=arguments[0]&&(arguments[0].p||$.isPlainObject(arguments[0].properties)&&!arguments[0].properties.names||g.isString(arguments[0].properties)),l,f,d,m,h,b;if(g.isWrapped(this)?(l=!1,d=0,m=this,f=this):(l=!0,d=1,m=s?arguments[0].elements||arguments[0].e:arguments[0]),m=o(m)){s?(h=arguments[0].properties||arguments[0].p,b=arguments[0].options||arguments[0].o):(h=arguments[d],b=arguments[d+1]);var P=m.length,w=0;if(!/^(stop|finish)$/i.test(h)&&!$.isPlainObject(b)){var V=d+1;b={};for(var C=V;C<arguments.length;C++)g.isArray(arguments[C])||!/^(fast|normal|slow)$/i.test(arguments[C])&&!/^\d/.test(arguments[C])?g.isString(arguments[C])||g.isArray(arguments[C])?b.easing=arguments[C]:g.isFunction(arguments[C])&&(b.complete=arguments[C]):b.duration=arguments[C]}var T={promise:null,resolver:null,rejecter:null};l&&v.Promise&&(T.promise=new v.Promise(function(e,t){T.resolver=e,T.rejecter=t}));var k;switch(h){case"scroll":k="scroll";break;case"reverse":k="reverse";break;case"finish":case"stop":$.each(m,function(e,t){i(t)&&i(t).delayTimer&&(clearTimeout(i(t).delayTimer.setTimeout),i(t).delayTimer.next&&i(t).delayTimer.next(),delete i(t).delayTimer)});var A=[];return $.each(v.State.calls,function(e,t){t&&$.each(t[1],function(r,n){var o=b===a?"":b;return o===!0||t[2].queue===o||b===a&&t[2].queue===!1?void $.each(m,function(r,a){a===n&&((b===!0||g.isString(b))&&($.each($.queue(a,g.isString(b)?b:""),function(e,t){g.isFunction(t)&&t(null,!0)}),$.queue(a,g.isString(b)?b:"",[])),"stop"===h?(i(a)&&i(a).tweensContainer&&o!==!1&&$.each(i(a).tweensContainer,function(e,t){t.endValue=t.currentValue
+}),A.push(e)):"finish"===h&&(t[2].duration=1))}):!0})}),"stop"===h&&($.each(A,function(e,t){p(t,!0)}),T.promise&&T.resolver(m)),e();default:if(!$.isPlainObject(h)||g.isEmptyObject(h)){if(g.isString(h)&&v.Redirects[h]){var F=$.extend({},b),E=F.duration,j=F.delay||0;return F.backwards===!0&&(m=$.extend(!0,[],m).reverse()),$.each(m,function(e,t){parseFloat(F.stagger)?F.delay=j+parseFloat(F.stagger)*e:g.isFunction(F.stagger)&&(F.delay=j+F.stagger.call(t,e,P)),F.drag&&(F.duration=parseFloat(E)||(/^(callout|transition)/.test(h)?1e3:y),F.duration=Math.max(F.duration*(F.backwards?1-e/P:(e+1)/P),.75*F.duration,200)),v.Redirects[h].call(t,t,F||{},e,P,m,T.promise?T:a)}),e()}var H="Velocity: First argument ("+h+") was not a property map, a known action, or a registered redirect. Aborting.";return T.promise?T.rejecter(new Error(H)):console.log(H),e()}k="start"}var N={lastParent:null,lastPosition:null,lastFontSize:null,lastPercentToPxWidth:null,lastPercentToPxHeight:null,lastEmToPx:null,remToPx:null,vwToPx:null,vhToPx:null},L=[];$.each(m,function(e,t){g.isNode(t)&&n.call(t)});var F=$.extend({},v.defaults,b),R;if(F.loop=parseInt(F.loop),R=2*F.loop-1,F.loop)for(var O=0;R>O;O++){var z={delay:F.delay,progress:F.progress};O===R-1&&(z.display=F.display,z.visibility=F.visibility,z.complete=F.complete),S(m,"reverse",z)}return e()}};v=$.extend(S,v),v.animate=S;var P=t.requestAnimationFrame||d;return v.State.isMobile||r.hidden===a||r.addEventListener("visibilitychange",function(){r.hidden?(P=function(e){return setTimeout(function(){e(!0)},16)},c()):P=t.requestAnimationFrame||d}),e.Velocity=v,e!==t&&(e.fn.velocity=S,e.fn.velocity.defaults=v.defaults),$.each(["Down","Up"],function(e,t){v.Redirects["slide"+t]=function(e,r,n,o,i,s){var l=$.extend({},r),u=l.begin,c=l.complete,p={height:"",marginTop:"",marginBottom:"",paddingTop:"",paddingBottom:""},f={};l.display===a&&(l.display="Down"===t?"inline"===v.CSS.Values.getDisplayType(e)?"inline-block":"block":"none"),l.begin=function(){u&&u.call(i,i);for(var r in p){f[r]=e.style[r];var a=v.CSS.getPropertyValue(e,r);p[r]="Down"===t?[a,0]:[0,a]}f.overflow=e.style.overflow,e.style.overflow="hidden"},l.complete=function(){for(var t in f)e.style[t]=f[t];c&&c.call(i,i),s&&s.resolver(i)},v(e,p,l)}}),$.each(["In","Out"],function(e,t){v.Redirects["fade"+t]=function(e,r,n,o,i,s){var l=$.extend({},r),u={opacity:"In"===t?1:0},c=l.complete;l.complete=n!==o-1?l.begin=null:function(){c&&c.call(i,i),s&&s.resolver(i)},l.display===a&&(l.display="In"===t?"auto":"none"),v(this,u,l)}}),v}(window.jQuery||window.Zepto||window,window,document)});

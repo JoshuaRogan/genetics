@@ -159,7 +159,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         // var percentage = (this.currentGenerationNum / this.numGenerations) * 100;
         // $("#graph-completion-precent").html((percentage.toFixed(2)) + "%");
         // $("#graph-computing-title").html("Computing Generation Number <strong>" + this.currentGenerationNum + "</strong> of " + this.numGenerations);
-        console.log("Assortative Mating D: ", this.d_assortativeMating);
+        // console.log("Assortative Mating D: ", this.d_assortativeMating);
 
         this.currentGenerationNum++;
 

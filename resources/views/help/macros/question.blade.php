@@ -10,6 +10,9 @@
     <div id='{{$question_set}}-question-@render("question-id")' class='panel-collapse collapse question-content'>
         <div class='panel-body'>
             @render('question-content')
+
+            
+       
         </div>
     </div>
 </div>

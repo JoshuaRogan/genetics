@@ -17,7 +17,11 @@
 
 	<!-- STYLESHEETS  -->
 	@section('styles')
-		<link rel="stylesheet" type="text/css" href="{{asset('/styles/style.css')}}">
+		@if(env('APP_DEBUG')) 
+			<link rel="stylesheet" type="text/css" href="{{asset('/styles/style.css')}}">
+		@else
+			<link rel="stylesheet" type="text/css" href="{{asset('/styles/style.min.css')}}">
+		@endif
 		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     @show
 
@@ -62,7 +66,13 @@
 
 	<!--LAZY SCRIPTS --> 
 	@section('lazyscripts')
-		<script src="{{asset('/js/genetics.js')}}"></script>
+		@if(env('APP_DEBUG')) 
+			<script src="{{asset('/js/genetics.js')}}"></script>
+		@else
+			<script src="{{asset('/js/genetics.min.js')}}"></script>
+		@endif
+
+		
     @show
 	<!--LAZY SCRIPTS --> 
 

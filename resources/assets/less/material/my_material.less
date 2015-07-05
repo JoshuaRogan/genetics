@@ -1,0 +1,121 @@
+@import "_colors.less";
+@import "_mixins.less";
+@import "_icons-material-design.less";
+@import "_shadows.less";
+@import "_buttons.less";
+@import "_alerts.less";
+
+@primary: @brand-primary; 
+@material-font-path: "../fonts";
+
+@input-danger: @brand-danger;
+@input-default: @brand-primary;
+@input-warning: @brand-warning;
+@input-success: @brand-success;
+@input-info:    @brand-info;
+
+@primary: @brand-primary;
+@success: @brand-success;
+@info: @brand-info;
+@warning: @brand-warning;
+@danger: @brand-danger;
+
+@btn-default: @primary;
+@btn-default-text: @darkbg-text;
+
+@btn-primary: @primary;
+@btn-primary-text: @darkbg-text;
+
+@btn-success: @success;
+@btn-success-text: @darkbg-text;
+
+@btn-info: @info;
+@btn-info-text: @darkbg-text;
+
+@btn-warning: @warning;
+@btn-warning-text: @darkbg-text;
+
+@btn-danger: @danger;
+@btn-danger-text: @darkbg-text;
+
+@darkbg-text: rgba(255,255,255,0.84);
+@lightbg-text: rgba(0,0,0,0.84);
+@icon-color: rgba(0,0,0,0.5);
+
+
+@material-border-radius: 2px;
+@input-underline-color: #D2D2D2;
+
+@text-disabled: #a8a8a8;
+@background-disabled: #eaeaea;
+
+// Checkboxes
+@checkbox-size: 20px;
+@checkbox-animation-ripple: 500ms;
+@checkbox-animation-check: 0.3s;
+
+// Popovers and Popups
+@popover-background: rgba(101, 101, 101, 0.9);
+@popover-color: #ececec;
+
+// Inputs
+@input-placeholder-color: #BDBDBD;
+@floating-label-size-ratio: 70 / 100;
+
+// Dropdown Menu
+@dropdown-radius: 2px;
+@dropdown-font-size: 16px;
+
+
+#material {
+    #ripples {
+        .withripple {
+            position: relative;
+        }
+        .ripple-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .ripple {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            margin-left: -10px;
+            margin-top: -10px;
+            border-radius: 100%;
+            background-color: rgba(0, 0, 0, 0.05);
+            transform: scale(1);
+            transform-origin: 50%;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .ripple.ripple-on {
+            transition: opacity 0.15s ease-in 0s, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+            opacity: 0.1;
+        }
+        .ripple.ripple-out {
+            transition: opacity 0.1s linear 0s !important;
+            opacity: 0;
+        }
+    }
+    #forms {
+    	@import "_inputs.less";
+    }
+    
+}
+
+
+.btn.btn-primary{
+	.btn.btn-flat();
+	background-color: @brand-primary;
+	color: white; 
+    font-weight: 300; 
+}	
+

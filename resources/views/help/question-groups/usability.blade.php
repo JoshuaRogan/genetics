@@ -8,7 +8,7 @@
             <p>To generate a <strong>new</strong> graph you can simply set the simulation parameters that you are interested in and click the "Generate Graph" button. You can then <strong>add</strong> more simulations to the existing graph by clicking the "Add Line" button. You can  <strong>replace</strong> the existing graph with a new simulation by clicking the "Generate Graph" button."  </p>
             <p><a href='http://i.imgur.com/DDdDLC9.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>      
             <img class='faq-lazy' data-original='/images/faq/create_graph.gif' alt="How can I create a graph of my simulation?">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div> 
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div> 
 
         @endblock
 @endpartial
@@ -21,7 +21,7 @@
             <p>To change any of the simulation parameters you can open up the appropriate section by either clicking the checkbox to the left of the section name or the down arrow on the right. Once the section is opened you can either move the slider or click on the parameter value to directly input a new value using your keyboard. </p>
             <p><a href='http://i.imgur.com/KMVO51x.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>     
             <img class='faq-lazy' data-original='/images/faq/input.gif' alt="How can I change the simluation parameters">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div> 
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div> 
         
         @endblock
 @endpartial
@@ -35,7 +35,7 @@
              
             <p><a href='http://i.imgur.com/XDkBJh6.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>
             <img class='faq-lazy' data-original='/images/faq/activate.gif' alt="How can I activate a simulation parameter?">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div>      
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div>      
         @endblock
 @endpartial
 
@@ -48,7 +48,7 @@
             
             <p><a href='http://i.imgur.com/XDkBJh6.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>
             <img class='faq-lazy' data-original='/images/faq/activate.gif' alt="How can I deactivate a simulation parameter?">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div>       
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div>       
      
         @endblock
 @endpartial
@@ -61,7 +61,7 @@
             <p>To zoom in the graph simply click and drag across the area you would like to zoom in.  </p>
             <p><a href='http://i.imgur.com/Ln5MnIi.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>      
             <img class='faq-lazy' data-original='/images/faq/zoom_pan.gif' alt="How can I zoom in the graph?">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div> 
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div> 
         @endblock
 @endpartial
 
@@ -73,7 +73,7 @@
             <p>Click the directional button on the top right of the graph and click and drag to pan along the x axis of the graph. </p>
             <p><a href='http://i.imgur.com/Ln5MnIi.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>      
             <img class='faq-lazy' data-original='/images/faq/zoom_pan.gif' alt="How can I pan the graph?">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div> 
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div> 
         @endblock
 @endpartial
 
@@ -87,7 +87,7 @@
             <p>To reset the graph click the circular arrow on the top right of the graph.  </p>
             <p><a href='http://i.imgur.com/Ln5MnIi.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>      
             <img class='faq-lazy' data-original='/images/faq/zoom_pan.gif' alt="reset the graph">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div> 
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div> 
         @endblock
 @endpartial
 
@@ -99,7 +99,7 @@
             <p>To save the graph as an image file (jpg and png) click the triple dot in the upper left corner of the graph. </p>
             <p><a href='http://i.imgur.com/135lVeP.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>      
             <img class='faq-lazy' data-original='/images/faq/save_image.gif' alt="save graph as an image">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div> 
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div> 
         @endblock
 @endpartial
 
@@ -111,7 +111,7 @@
             <p>To choose a high contrast version of the graph for printing and projecting you can click the icon in the upper right hand corner of the variables section. </p>
             <p><a href='http://i.imgur.com/Rywoz9S.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>      
             <img class='faq-lazy' data-original='/images/faq/display.gif' alt="increase contrast for printing and projecting">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div> 
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div> 
         @endblock
 @endpartial
 
@@ -123,7 +123,7 @@
             <p>Legends are automatically created for each simulation. Only the most recent simulation is shown. But, you can open legends of any previous simulation by clicking <strong>[Show Legend]</strong> </p>
             <p><a href='http://i.imgur.com/LjDVaj8.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>      
             <img class='faq-lazy' data-original='/images/faq/legend.gif' alt="view different legends">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div> 
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div> 
         @endblock
 @endpartial
 
@@ -138,7 +138,7 @@
 
             <p><a href='http://i.imgur.com/eqw4Rmb.gif'> <i class='fa fa-picture-o'></i><strong> View High Res Gif</strong></a></p>      
             <img class='faq-lazy' data-original='/images/faq/helper.gif' alt="ALTTEXT">
-            <div class="image-loader"> <i class='fa fa-spinner fa-spin'></i></div> 
+            <div class="progress-bar-mat"><div class="indeterminate"></div></div> 
         @endblock
 @endpartial
 

@@ -13,11 +13,6 @@
 
 @section('lazyscripts')
     @parent
-
-    <script src='/js/popGen/popGen.htmlutil.js'></script>
-    <script src='/js/hideseek/jquery.hideseek.js'></script>
-    <script src='/js/faq.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js'></script>
 @stop
 
 @section('content')

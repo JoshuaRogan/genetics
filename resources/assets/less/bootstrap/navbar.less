@@ -388,8 +388,8 @@
 
 // Default navbar
 .navbar-default {
-  background-color: @navbar-default-bg;
-  border-color: @navbar-default-border;
+  background-color: white;
+  border-color: white;
 
   .navbar-brand {
     color: @navbar-default-brand-color;
@@ -397,6 +397,7 @@
     &:focus {
       color: @navbar-default-brand-hover-color;
       background-color: @navbar-default-brand-hover-bg;
+
     }
   }
 
@@ -411,7 +412,12 @@
       &:hover,
       &:focus {
         color: @navbar-default-link-hover-color;
-        background-color: @navbar-default-link-hover-bg;
+        background-color: @brand-primary;
+        color: white;
+        border-color:  @brand-primary;
+        // font-weight: bold;
+        // color: @brand-primary;
+        // text-decoration: underline;
       }
     }
     > .active > a {
@@ -420,6 +426,7 @@
       &:focus {
         color: @navbar-default-link-active-color;
         background-color: @navbar-default-link-active-bg;
+        font-weight: bold;
       }
     }
     > .disabled > a {
@@ -428,6 +435,7 @@
       &:focus {
         color: @navbar-default-link-disabled-color;
         background-color: @navbar-default-link-disabled-bg;
+        font-weight: bold;
       }
     }
   }

@@ -11,8 +11,6 @@
 
 @section('lazyscripts')
 	@parent
-	<script src='/js/popGen/popGen.htmlutil.js'></script>
-	
 @stop
 
 @section('content')
