@@ -11367,6 +11367,1366 @@ $(document).ready(function() {
         popGen.faq.init();
     }
 });;
+popGen.config.allele = popGen.config.allele || {};
+popGen.config.allele.chartJQ = {
+    debug: popGen.debug,
+    //Colors 
+    lightGray: "rgba(255, 255, 255, 0.75)",
+    lighterGray: "rgba(255, 255, 255, 0.2)",
+    clear: "rgba(255, 255, 255, 0.0)",
+    backgroundColor: "rgba(255, 255, 255, 0.0)",
+    //ColorSets
+    colorSetOrig: ["#1BCDD1", "#EC5657", "#8FAABB", "#B08BEB", "#3EA0DD", "#F5A52A", "#23BFAA", "#FAA586", "#EB8CC6", "#ECF0F1"],
+    colorSet: ["#F64747", "#BE90D4", "#F9690E", "#1BCDD1", "#F9BF3B", "#87D37C", "#4B77BE", "#663399", "#FDE3A7", "#F1A9A0", "#2574A9", "#90C695", "#F4B350", "#BDC3C7", "#D2527F", "#8FAABB"],
+    //Attributes 
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+    backgroundColor: "rgba(255, 255, 255, 0.0)",
+    labelFontSize: "14",
+};
+
+popGen.config.allele.chartJQ.debugData = function() {
+    console.log(this);
+    console.log(CanvasJS);
+};
+/**
+ * Initialize the main chart that will hold of the data
+ *      
+ *  @param {string} selector JQuery selctor for the chart element 
+ */
+popGen.config.allele.chartJQ.initChart = function(selector) {
+    if (this.chartExists(selector)) {
+        this.addColorSet("main", this.colorSet); //Add the color set to the library 
+        var data = []; //Holds all of the datapoints 
+        var dataSeries = {
+            type: "line"
+        };
+        var dataPoints = [];
+        dataPoints.push({
+            x: 0,
+            y: 0
+        }); //Set the inital graph to 0,0 
+        dataSeries.dataPoints = dataPoints;
+        data.push(dataSeries);
+        //Create the graph 
+        $(selector).CanvasJSChart({
+            zoomEnabled: true,
+            exportEnabled: true,
+            exportFileName: "Genetic Simulation Graph",
+            backgroundColor: this.clear,
+            title: { //Only here if we want to add it later 
+                text: "",
+                fontColor: this.lightGray,
+                fontFamily: this.fontFamily,
+                fontWeight: 300
+            },
+            axisX: {
+                title: "Generation",
+                titleFontColor: "white",
+                // titleFontSize: 22, //Automatically calculated for responsive design
+                labelFontColor: this.lighterGray,
+                labelFontSize: this.labelFontSize,
+                labelAngle: 0,
+                gridThickness: 1,
+                gridColor: this.lighterGray,
+                lineColor: this.lighterGray,
+                tickColor: this.lighterGray,
+            },
+            axisY: {
+                title: "Frequency of the A allele",
+                titleFontColor: "white",
+                // titleFontSize: 22, //Automatically calculated for responsive design
+                labelFontColor: this.lighterGray,
+                minimum: 0,
+                maximum: 1,
+                labelFontSize: this.labelFontSize,
+                includeZero: false,
+                gridThickness: 1,
+                gridColor: this.lighterGray,
+                lineColor: this.lighterGray,
+                tickColor: this.lighterGray
+            },
+            data: data
+        });
+    } else {
+        console.log("ERROR: The chart [" + selector + "] isn't on this page!")
+    }
+};
+/**
+ * Determines if the chart exists on the page 
+ *      
+ *  @param {string} selector JQuery selctor for the chart element 
+ */
+popGen.config.allele.chartJQ.chartExists = function(selector) {
+    if ($(selector).length) return true;
+    else return false;
+};
+/**
+ *  Add a custome color set to the CanvasJS library
+ *      
+ *  @param {string} name the name to identify this color set 
+ *  @param {array<String>} colorSet array of strings representing colors
+ */
+popGen.config.allele.chartJQ.addColorSet = function(name, colorSet) {
+    if (typeof CanvasJS !== 'undefined') {
+        CanvasJS.addColorSet(name, colorSet);
+        if (this.debug) console.log("ColorSet Successfull Set");
+    } else {
+        console.log("CanvasJS not avaiable");
+    }
+};;
+popGen.config.genotype = popGen.config.genotype || {};
+popGen.config.genotype.chartJQ = {
+    debug: false,
+    //Colors 
+    lightGray: "rgba(255, 255, 255, 0.75)",
+    lighterGray: "rgba(255, 255, 255, 0.2)",
+    clear: "rgba(255, 255, 255, 0.0)",
+    backgroundColor: "rgba(255, 255, 255, 0.0)",
+    //ColorSets
+    colorSetOrig: ["#1BCDD1", "#EC5657", "#8FAABB", "#B08BEB", "#3EA0DD", "#F5A52A", "#23BFAA", "#FAA586", "#EB8CC6", "#ECF0F1"],
+    colorSet: ["#F64747", "#BE90D4", "#F9690E", "#1BCDD1", "#F9BF3B", "#87D37C", "#4B77BE", "#663399", "#FDE3A7", "#F1A9A0", "#2574A9", "#90C695", "#F4B350", "#BDC3C7", "#D2527F", "#8FAABB"],
+    //Attributes 
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+    backgroundColor: "rgba(255, 255, 255, 0.0)",
+    labelFontSize: "14",
+};
+popGen.config.genotype.chartJQ.debugData = function() {
+    console.log(this);
+    console.log(CanvasJS);
+};
+/**
+ * Initialize the main chart that will hold of the data
+ *      
+ *  @param {string} selector JQuery selctor for the chart element 
+ */
+popGen.config.genotype.chartJQ.initChart = function(selector) {
+    if (this.chartExists(selector)) {
+        this.addColorSet("main", this.colorSet); //Add the color set to the library 
+        var data = []; //Holds all of the datapoints 
+        var dataSeries = {
+            type: "line"
+        };
+        var dataPoints = [];
+        dataPoints.push({
+            x: 0,
+            y: 0
+        }); //Set the inital graph to 0,0 
+        dataSeries.dataPoints = dataPoints;
+        data.push(dataSeries);
+        //Create the graph 
+        $(selector).CanvasJSChart({
+            zoomEnabled: true,
+            exportEnabled: true,
+            exportFileName: "Genotype Simulation Graph",
+            backgroundColor: this.clear,
+            title: { //Only here if we want to add it later 
+                text: "",
+                fontColor: this.lightGray,
+                fontFamily: this.fontFamily,
+                fontWeight: 300
+            },
+            axisX: {
+                title: "Generation",
+                titleFontColor: "white",
+                // titleFontSize: 22, //Automatically calculated for responsive design
+                labelFontColor: this.lighterGray,
+                labelFontSize: this.labelFontSize,
+                labelAngle: 0,
+                gridThickness: 1,
+                gridColor: this.lighterGray,
+                lineColor: this.lighterGray,
+                tickColor: this.lighterGray,
+            },
+            axisY: {
+                title: "Genotype Frequency",
+                titleFontColor: "white",
+                // titleFontSize: 22, //Automatically calculated for responsive design
+                labelFontColor: this.lighterGray,
+                minimum: 0,
+                maximum: 1,
+                labelFontSize: this.labelFontSize,
+                includeZero: false,
+                gridThickness: 1,
+                gridColor: this.lighterGray,
+                lineColor: this.lighterGray,
+                tickColor: this.lighterGray
+            },
+            data: data
+        });
+    } else {
+        console.log("ERROR: The chart [" + selector + "] isn't on this page!");
+    }
+};
+/**
+ * Determines if the chart exists on the page 
+ *      
+ *  @param {string} selector JQuery selctor for the chart element 
+ */
+popGen.config.genotype.chartJQ.chartExists = function(selector) {
+    if ($(selector).length) return true;
+    else return false;
+};
+/**
+ *  Add a custome color set to the CanvasJS library
+ *      
+ *  @param {string} name the name to identify this color set 
+ *  @param {array<String>} colorSet array of strings representing colors
+ */
+popGen.config.genotype.chartJQ.addColorSet = function(name, colorSet) {
+    if (typeof CanvasJS !== 'undefined') {
+        CanvasJS.addColorSet(name, colorSet);
+        if (this.debug) console.log("ColorSet Successfull Set");
+    } else {
+        console.log("CanvasJS not avaiable");
+    }
+};;
+/**
+ *  TODO: Fix population bottlneck sync
+ *
+ */
+//Namespaces
+popGen.config.allele = popGen.config.allele || {};
+popGen.config.allele.noUISlider = popGen.config.allele.noUISlider || {
+    debug: false,
+    selectors: { //Not currenlty using or probably useful
+        populationSize: {
+            slider: "#population-size-slider",
+            input: "#population-size"
+        }
+    }
+};
+/**
+ *  Initialize all of the sliders
+ *      
+ *  @param {string} selector JQuery selctor for the slider element 
+ */
+popGen.config.allele.noUISlider.initSliders = function(selector) {
+    //Initalize each slider
+    this.initPopulationSlider(this.selectors);
+    this.initGenerationSlider(this.selectors);
+    this.initStartingFreqSlider(this.selectors);
+    this.initwAASlider(this.selectors);
+    this.initwAaSlider(this.selectors);
+    this.initwaaSlider(this.selectors);
+    this.initSelectionSlider(this.selectors);
+    this.initDominanceSlider(this.selectors);
+    this.initMUSlider(this.selectors);
+    this.initNUSlider(this.selectors);
+    this.initMigrationSlider(this.selectors);
+    this.initMigrantAlleleSlider(this.selectors);
+    this.initInbreedingSlider(this.selectors);
+    this.initAssortMatingSlider(this.selectors);
+    this.initBottleNeckGensSlider(this.selectors);
+    this.initBottleNeckPopSlider(this.selectors);
+    this.initBatchSlider(this.selectors);
+    this.addBookmarkValues();
+};
+popGen.config.allele.noUISlider.debugData = function() {
+    console.log(this);
+};
+/**
+ *  Individual funtions to initalize sliders
+ *      
+ *  @param {string} selector JQuery selctor for the slider element 
+ */
+popGen.config.allele.noUISlider.initPopulationSlider = function(selector) {
+    $("#population-size-slider").noUiSlider({
+        start: [500],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#population-size-slider").Link('lower').to($("#population-size"));
+    // $("#population-size-slider").addClass("active"); //Active by default
+    $("#population-size-slider").on('slide', this.activatePopulationSlider);
+    $("#population-size-slider").on('change', this.activatePopulationSlider);
+    $("#population-size-slider").on('set', this.activatePopulationSlider);
+};
+popGen.config.allele.noUISlider.initGenerationSlider = function(selector) {
+    $("#generations-slider").noUiSlider({
+        start: [500],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#generations-slider").Link('lower').to($("#generations"));
+    // $("#generations-slider").Link('lower').to($("#generation-to-override-upper"));
+    $("#generations-slider").addClass("active"); //Active by default
+    $("#generations-slider").on('slide', this.activateGenerationsSlider);
+    $("#generations-slider").on('change', this.activateGenerationsSlider);
+    $("#generations-slider").on('set', this.activateGenerationsSlider);
+};
+popGen.config.allele.noUISlider.initStartingFreqSlider = function(selector) {
+    $("#starting-allele-frequency-slider").noUiSlider({
+        start: [.5],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#starting-allele-frequency-slider").Link('lower').to($("#starting-allele-frequency"));
+    $("#starting-allele-frequency-slider").addClass("active"); //Active by default
+};
+popGen.config.allele.noUISlider.initwAASlider = function(selector) {
+    $("#fitness-coefficient-wAA-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-wAA-slider").Link('lower').to($("#fitness-coefficient-wAA"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-wAA-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAA-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAA-slider").on('set', this.activateFitnessCoefSlider);
+};
+popGen.config.allele.noUISlider.initwAaSlider = function(selector) {
+    $("#fitness-coefficient-wAa-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-wAa-slider").Link('lower').to($("#fitness-coefficient-wAa"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-wAa-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAa-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAa-slider").on('set', this.activateFitnessCoefSlider);
+};
+popGen.config.allele.noUISlider.initwaaSlider = function(selector) {
+    $("#fitness-coefficient-waa-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-waa-slider").Link('lower').to($("#fitness-coefficient-waa"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-waa-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-waa-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-waa-slider").on('set', this.activateFitnessCoefSlider);
+};
+popGen.config.allele.noUISlider.initSelectionSlider = function(selector) {
+    $("#selection-coefficient-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#selection-coefficient-slider").Link('lower').to($("#selection-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#selection-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+    $("#selection-coefficient-slider").on('change', this.activateSelectionDomSlider);
+    $("#selection-coefficient-slider").on('set', this.activateSelectionDomSlider);
+};
+popGen.config.allele.noUISlider.initDominanceSlider = function(selector) {
+    $("#dominance-coefficient-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#dominance-coefficient-slider").Link('lower').to($("#dominance-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#dominance-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+    $("#dominance-coefficient-slider").on('change', this.activateSelectionDomSlider);
+    $("#dominance-coefficient-slider").on('set', this.activateSelectionDomSlider);
+};
+popGen.config.allele.noUISlider.initMUSlider = function(selector) {
+    $("#mutation-rate-mu-slider").noUiSlider({
+        start: [0],
+        step: .00001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [9.99999]
+        },
+        format: wNumb({
+            decimals: 5,
+            thousand: ','
+        })
+    });
+    $("#mutation-rate-mu-slider").Link('lower').to($("#mutation-rate-mu"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#mutation-rate-mu-slider").on('slide', this.activateMutationSlider);
+    $("#mutation-rate-mu-slider").on('change', this.activateMutationSlider);
+    $("#mutation-rate-mu-slider").on('set', this.activateMutationSlider);
+};
+popGen.config.allele.noUISlider.initNUSlider = function(selector) {
+    $("#mutation-rate-nu-slider").noUiSlider({
+        start: [0],
+        step: .00001, //PROBLEM HERE
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [9.99999]
+        },
+        format: wNumb({
+            decimals: 5, //Assuming 10^-3
+            thousand: ','
+        })
+    });
+    $("#mutation-rate-nu-slider").Link('lower').to($("#mutation-rate-nu"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#mutation-rate-nu-slider").on('slide', this.activateMutationSlider);
+    $("#mutation-rate-nu-slider").on('change', this.activateMutationSlider);
+    $("#mutation-rate-nu-slider").on('set', this.activateMutationSlider);
+};
+popGen.config.allele.noUISlider.initMigrationSlider = function(selector) {
+    $("#migration-rate-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#migration-rate-slider").Link('lower').to($("#migration-rate"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#migration-rate-slider").on('slide', this.activateMigrationSlider);
+    $("#migration-rate-slider").on('change', this.activateMigrationSlider);
+    $("#migration-rate-slider").on('set', this.activateMigrationSlider);
+};
+popGen.config.allele.noUISlider.initMigrantAlleleSlider = function(selector) {
+    $("#migrant-allele-frequency-slider").noUiSlider({
+        start: [.5],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#migrant-allele-frequency-slider").Link('lower').to($("#migrant-allele-frequency"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#migrant-allele-frequency-slider").on('slide', this.activateMigrationSlider);
+    $("#migrant-allele-frequency-slider").on('change', this.activateMigrationSlider);
+    $("#migrant-allele-frequency-slider").on('set', this.activateMigrationSlider);
+};
+popGen.config.allele.noUISlider.initInbreedingSlider = function(selector) {
+    $("#inbreeding-coefficient-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#inbreeding-coefficient-slider").Link('lower').to($("#inbreeding-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#inbreeding-coefficient-slider").on('slide', this.activateInbreedingSlider);
+    $("#inbreeding-coefficient-slider").on('change', this.activateInbreedingSlider);
+    $("#inbreeding-coefficient-slider").on('set', this.activateInbreedingSlider);
+};
+popGen.config.allele.noUISlider.initAssortMatingSlider = function(selector) {
+    $("#positive-assortative-mating-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#positive-assortative-mating-slider").Link('lower').to($("#positive-assortative-mating"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#positive-assortative-mating-slider").on('slide', this.activateAssortativeMating);
+    $("#positive-assortative-mating-slider").on('change', this.activateAssortativeMating);
+    $("#positive-assortative-mating-slider").on('set', this.activateAssortativeMating);
+};
+popGen.config.allele.noUISlider.initBottleNeckGensSlider = function(selector) {
+    $("#generation-to-override-slider").noUiSlider({
+        start: [50, 500],
+        step: 1,
+        connect: true,
+        range: {
+            'min': [1],
+            'max': [500]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    }, true);
+    $("#generation-to-override-slider").Link('lower').to($("#generation-to-override-lower"));
+    $("#generation-to-override-slider").Link('upper').to($("#generation-to-override-upper"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#generation-to-override-slider").on('slide', this.activatePopulationControl);
+    $("#generation-to-override-slider").on('change', this.activatePopulationControl);
+    $("#generation-to-override-slider").on('set', this.activatePopulationControl);
+};
+popGen.config.allele.noUISlider.initBottleNeckPopSlider = function(selector) {
+    $("#new-population-size-slider").noUiSlider({
+        start: [5000],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#new-population-size-slider").Link('lower').to($("#new-population-size"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#new-population-size-slider").on('slide', this.activatePopulationControl);
+    $("#new-population-size-slider").on('change', this.activatePopulationControl);
+    $("#new-population-size-slider").on('set', this.activatePopulationControl);
+};
+popGen.config.allele.noUISlider.initBatchSlider = function(selector) {
+    $("#batch-tool-runs-slider").noUiSlider({
+        start: [1],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [50]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#batch-tool-runs-slider").Link('lower').to($("#batch-tool-runs"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#batch-tool-runs-slider").on('slide', this.activateBatchTool);
+    $("#batch-tool-runs-slider").on('change', this.activateBatchTool);
+    $("#batch-tool-runs-slider").on('set', this.activateBatchTool);
+};
+/**
+ *  These functions checks to see if the current slider has been moved yet. Once it is moved change the color of
+ *  the slider to the primary color from the inactive color (grayed-out most likely).
+ *
+ *  TODO: Check the values to make it inactive if the appropriate values are set
+ */
+popGen.config.allele.noUISlider.activateGenerationsSlider = function() {
+    if (popGen.config.allele) {
+        popGen.config.allele.noUISlider.validateGenOverride();
+    } else {
+        popGen.config.noUISlider.validateGenOverride();
+    }
+};
+popGen.config.allele.noUISlider.activatePopulationSlider = function() {
+    $("#population-size-slider").addClass("active");
+    // $("#batch-tool-runs-slider").addClass("active");
+    //Update the activator icon
+    $("#population-variable .variable-activator").removeClass("fa-square-o");
+    $("#population-variable .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateFitnessCoefSlider = function() {
+    //Make these active 
+    $("#fitness-coefficient-waa-slider").addClass("active");
+    $("#fitness-coefficient-wAa-slider").addClass("active");
+    $("#fitness-coefficient-wAA-slider").addClass("active");
+    //Make these inactive (Only one or the other can be active)
+    $("#selection-coefficient-slider").removeClass("active");
+    $("#dominance-coefficient-slider").removeClass("active");
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateSelectionDomSlider = function() {
+    //Make these active 
+    $("#selection-coefficient-slider").addClass("active");
+    $("#dominance-coefficient-slider").addClass("active");
+    //Make these inactive (Only one or the other can be active)
+    $("#fitness-coefficient-waa-slider").removeClass("active");
+    $("#fitness-coefficient-wAa-slider").removeClass("active");
+    $("#fitness-coefficient-wAA-slider").removeClass("active");
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateMutationSlider = function() {
+    //Make these active 
+    $("#mutation-rate-mu-slider").addClass("active");
+    $("#mutation-rate-nu-slider").addClass("active");
+    //Update the activator icon
+    $("#mutation-variables .variable-activator").removeClass("fa-square-o");
+    $("#mutation-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateMigrationSlider = function() {
+    //Make these active 
+    $("#migration-rate-slider").addClass("active");
+    $("#migrant-allele-frequency-slider").addClass("active");
+    //Update the activator icon
+    $("#migration-variables .variable-activator").removeClass("fa-square-o");
+    $("#migration-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateInbreedingSlider = function() {
+    //Make these active
+    $("#inbreeding-coefficient-slider").addClass("active");
+    //Update the activator icon
+    $("#inbreeding-variables .variable-activator").removeClass("fa-square-o");
+    $("#inbreeding-variables .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateAssortativeMating = function() {
+    //Make these active 
+    $("#positive-assortative-mating-slider").addClass("active");
+    //Update the activator icon
+    $("#assortative-mating .variable-activator").removeClass("fa-square-o");
+    $("#assortative-mating .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activatePopulationControl = function() {
+    $("#generation-to-override-slider").addClass("active");
+    $("#new-population-size-slider").addClass("active");
+    //Update the activator icon
+    $("#population-control .variable-activator").removeClass("fa-square-o");
+    $("#population-control .variable-activator").addClass("fa-check-square-o");
+};
+popGen.config.allele.noUISlider.activateBatchTool = function() {
+    $("#batch-tool-runs-slider").addClass("active");
+    //Update the activator icon
+    $("#batch-tool .variable-activator").removeClass("fa-square-o");
+    $("#batch-tool .variable-activator").addClass("fa-check-square-o");
+};
+//Deactive the correct sliders based on what checkmark was clicked 
+popGen.config.allele.noUISlider.deactiveActiveOnCheckmark = function(variableSectionId, state) {
+    console.log(variableSectionId, state);
+    if (variableSectionId == "selection-variables") {
+        //Needs to be more intelligent 
+        if (state == "unchecked") {
+            $("#selection-coefficient-slider").removeClass("active");
+            $("#dominance-coefficient-slider").removeClass("active");
+            $("#fitness-coefficient-waa-slider").removeClass("active");
+            $("#fitness-coefficient-wAa-slider").removeClass("active");
+            $("#fitness-coefficient-wAA-slider").removeClass("active");
+        }
+    } else if (variableSectionId == "population-variable") {
+        $("#population-size-slider").toggleClass("active");
+
+        if(state = 'unchecked'){
+            $('#batch-tool-runs-slider').removeClass('active');
+        }
+
+    } else if (variableSectionId == "mutation-variables") {
+        $("#mutation-rate-mu-slider").toggleClass("active");
+        $("#mutation-rate-nu-slider").toggleClass("active");
+    } else if (variableSectionId == "migration-variables") {
+        $("#migration-rate-slider").toggleClass("active");
+        $("#migrant-allele-frequency-slider").toggleClass("active");
+    } else if (variableSectionId == "assortative-mating") {
+        $("#positive-assortative-mating-slider").toggleClass("active");
+    } else if (variableSectionId == "inbreeding-variables") {
+        $("#inbreeding-coefficient-slider").toggleClass("active");
+    } else if (variableSectionId == "population-control") {
+        $("#generation-to-override-slider").toggleClass("active");
+        $("#new-population-size-slider").toggleClass("active");
+    } else if (variableSectionId == "batch-tool") {
+        $("#batch-tool-runs-slider").toggleClass("active");
+    }
+};
+/** 
+ *  Make sure that the validation override doesn't exceed the the actual number of generations 
+ *
+ */
+popGen.config.allele.noUISlider.validateGenOverride = function() {
+    //Validate here 
+    var validPopBottleneck = true;
+    var values = popGen.htmlutil.chartDOM.seralizeForm($("#variables-form"));
+    var numberOfGens = parseFloat(values['generations'].replace(',', ''));
+    var removeActive = false;
+    if (!$("#generation-to-override-slider").hasClass("active")) {
+        removeActive = true;
+    }
+    $('#generation-to-override-slider').noUiSlider({
+        range: {
+            'min': 0,
+            'max': Number(numberOfGens)
+        }
+    }, true);
+    // Class is automatically added due to the update 
+    if (removeActive) {
+        $("#generation-to-override-slider").removeClass("active");
+        $("#new-population-size-slider").removeClass("active");
+        $("#population-control .variable-activator").removeClass("fa-check-square-o");
+        $("#population-control .variable-activator").addClass("fa-square-o");
+    }
+};
+/**
+ *  Look at the hidden fields in the page and attempt to add them to the slider
+ *      -Validation occurs automatically with noui slider
+ */
+popGen.config.allele.noUISlider.addBookmarkValues = function() {
+    var bookmarkform = $("#bookmarking-values");
+    if (bookmarkform.length) {
+        var bookmarks = bookmarkform.serializeArray();
+        //Go through each bookmark and try set the value
+        for (var i = 0; i < bookmarks.length; i++) {
+            if (bookmarks[i].name == "bookmarking-generations") $("#generations-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-starting-allele-frequency") $("#starting-allele-frequency-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-wAA") $("#fitness-coefficient-wAA-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-wAa") $("#fitness-coefficient-wAa-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-waa") $("#fitness-coefficient-waa-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-selection-coefficient") $("#selection-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-dominance-coefficient") $("#dominance-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-mu") $("#mutation-rate-mu-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-mu-exponent") $("#mutation-rate-mu-exponent").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-nu") $("#mutation-rate-nu-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-nu-exponent") $("#mutation-rate-nu-exponent").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-migration-rate") $("#migration-rate-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-migrant-allele-frequency") $("#migrant-allele-frequency-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-inbreeding-coefficient") $("#inbreeding-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-positive-assortative-mating") $("#positive-assortative-mating-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-generation-to-override-lower") $("#generation-to-override-slider").val([bookmarks[i].value, null]);
+            else if (bookmarks[i].name == "bookmarking-generation-to-override-upper") $("#generation-to-override-slider").val([null, bookmarks[i].value]);
+            else if (bookmarks[i].name == "bookmarking-new-population-size") $("#new-population-size-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-batch-tool-runs") $("#batch-tool-runs-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-population-size") {
+                $("#population-size-slider").val(bookmarks[i].value);
+                // $("#population-size-slider").addClass("active"); //Activate the slider too
+            }
+        }
+    } else {
+        if (this.debug) console.log(bookmarkform);
+    }
+};;
+/**
+ *  TODO: Fix population bottlneck sync
+ *
+ */
+//Namespaces
+popGen.config.genotype = popGen.config.genotype || {};
+popGen.config.genotype.noUISlider = popGen.config.genotype.noUISlider || {
+        debug: false,
+        selectors: { //Not currenlty using or probably useful
+            populationSize: {
+                slider: "#population-size-slider",
+                input: "#population-size"
+            }
+        }
+    }
+    /**
+     *  Initialize all of the sliders
+     *      
+     *  @param {string} selector JQuery selctor for the slider element 
+     */
+popGen.config.genotype.noUISlider.initSliders = function(selector) {
+    //Initalize each slider
+    this.initPopulationSlider(this.selectors);
+    this.initGenerationSlider(this.selectors);
+    this.initStartingFreqSlider(this.selectors);
+    this.initwAASlider(this.selectors);
+    this.initwAaSlider(this.selectors);
+    this.initwaaSlider(this.selectors);
+    this.initSelectionSlider(this.selectors);
+    this.initDominanceSlider(this.selectors);
+    this.initMUSlider(this.selectors);
+    this.initNUSlider(this.selectors);
+    this.initMigrationSlider(this.selectors);
+    this.initMigrantAlleleSlider(this.selectors);
+    this.initInbreedingSlider(this.selectors);
+    this.initAssortMatingSlider(this.selectors);
+    this.initBottleNeckGensSlider(this.selectors);
+    this.initBottleNeckPopSlider(this.selectors);
+    // this.initBatchSlider(this.selectors);
+    this.addBookmarkValues();
+}
+popGen.config.genotype.noUISlider.debugData = function() {
+        console.log(this);
+    }
+    /**
+     *  Individual funtions to initalize sliders
+     *      
+     *  @param {string} selector JQuery selctor for the slider element 
+     */
+popGen.config.genotype.noUISlider.initPopulationSlider = function(selector) {
+    $("#population-size-slider").noUiSlider({
+        start: [500],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#population-size-slider").Link('lower').to($("#population-size"));
+    // $("#population-size-slider").addClass("active"); //Active by default
+    $("#population-size-slider").on('slide', this.activatePopulationSlider);
+    $("#population-size-slider").on('change', this.activatePopulationSlider);
+    $("#population-size-slider").on('set', this.activatePopulationSlider);
+}
+popGen.config.genotype.noUISlider.initGenerationSlider = function(selector) {
+    $("#generations-slider").noUiSlider({
+        start: [500],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#generations-slider").Link('lower').to($("#generations"));
+    // $("#generations-slider").Link('lower').to($("#generation-to-override-upper"));
+    $("#generations-slider").addClass("active"); //Active by default
+    $("#generations-slider").on('slide', this.activateGenerationsSlider);
+    $("#generations-slider").on('change', this.activateGenerationsSlider);
+    $("#generations-slider").on('set', this.activateGenerationsSlider);
+}
+popGen.config.genotype.noUISlider.initStartingFreqSlider = function(selector) {
+    $("#starting-allele-frequency-slider").noUiSlider({
+        start: [.5],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#starting-allele-frequency-slider").Link('lower').to($("#starting-allele-frequency"));
+    $("#starting-allele-frequency-slider").addClass("active"); //Active by default
+}
+popGen.config.genotype.noUISlider.initwAASlider = function(selector) {
+    $("#fitness-coefficient-wAA-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-wAA-slider").Link('lower').to($("#fitness-coefficient-wAA"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-wAA-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAA-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAA-slider").on('set', this.activateFitnessCoefSlider);
+}
+popGen.config.genotype.noUISlider.initwAaSlider = function(selector) {
+    $("#fitness-coefficient-wAa-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-wAa-slider").Link('lower').to($("#fitness-coefficient-wAa"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-wAa-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAa-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-wAa-slider").on('set', this.activateFitnessCoefSlider);
+}
+popGen.config.genotype.noUISlider.initwaaSlider = function(selector) {
+    $("#fitness-coefficient-waa-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#fitness-coefficient-waa-slider").Link('lower').to($("#fitness-coefficient-waa"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#fitness-coefficient-waa-slider").on('slide', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-waa-slider").on('change', this.activateFitnessCoefSlider);
+    $("#fitness-coefficient-waa-slider").on('set', this.activateFitnessCoefSlider);
+}
+popGen.config.genotype.noUISlider.initSelectionSlider = function(selector) {
+    $("#selection-coefficient-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#selection-coefficient-slider").Link('lower').to($("#selection-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#selection-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+    $("#selection-coefficient-slider").on('change', this.activateSelectionDomSlider);
+    $("#selection-coefficient-slider").on('set', this.activateSelectionDomSlider);
+}
+popGen.config.genotype.noUISlider.initDominanceSlider = function(selector) {
+    $("#dominance-coefficient-slider").noUiSlider({
+        start: [1],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#dominance-coefficient-slider").Link('lower').to($("#dominance-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#dominance-coefficient-slider").on('slide', this.activateSelectionDomSlider);
+    $("#dominance-coefficient-slider").on('change', this.activateSelectionDomSlider);
+    $("#dominance-coefficient-slider").on('set', this.activateSelectionDomSlider);
+}
+popGen.config.genotype.noUISlider.initMUSlider = function(selector) {
+    $("#mutation-rate-mu-slider").noUiSlider({
+        start: [0],
+        step: .00001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [9.99999]
+        },
+        format: wNumb({
+            decimals: 5,
+            thousand: ','
+        })
+    });
+    $("#mutation-rate-mu-slider").Link('lower').to($("#mutation-rate-mu"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#mutation-rate-mu-slider").on('slide', this.activateMutationSlider);
+    $("#mutation-rate-mu-slider").on('change', this.activateMutationSlider);
+    $("#mutation-rate-mu-slider").on('set', this.activateMutationSlider);
+}
+popGen.config.genotype.noUISlider.initNUSlider = function(selector) {
+    $("#mutation-rate-nu-slider").noUiSlider({
+        start: [0],
+        step: .00001, //PROBLEM HERE
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [9.99999]
+        },
+        format: wNumb({
+            decimals: 5, //Assuming 10^-3
+            thousand: ','
+        })
+    });
+    $("#mutation-rate-nu-slider").Link('lower').to($("#mutation-rate-nu"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#mutation-rate-nu-slider").on('slide', this.activateMutationSlider);
+    $("#mutation-rate-nu-slider").on('change', this.activateMutationSlider);
+    $("#mutation-rate-nu-slider").on('set', this.activateMutationSlider);
+}
+popGen.config.genotype.noUISlider.initMigrationSlider = function(selector) {
+    $("#migration-rate-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#migration-rate-slider").Link('lower').to($("#migration-rate"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#migration-rate-slider").on('slide', this.activateMigrationSlider);
+    $("#migration-rate-slider").on('change', this.activateMigrationSlider);
+    $("#migration-rate-slider").on('set', this.activateMigrationSlider);
+}
+popGen.config.genotype.noUISlider.initMigrantAlleleSlider = function(selector) {
+    $("#migrant-allele-frequency-slider").noUiSlider({
+        start: [.5],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#migrant-allele-frequency-slider").Link('lower').to($("#migrant-allele-frequency"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#migrant-allele-frequency-slider").on('slide', this.activateMigrationSlider);
+    $("#migrant-allele-frequency-slider").on('change', this.activateMigrationSlider);
+    $("#migrant-allele-frequency-slider").on('set', this.activateMigrationSlider);
+}
+popGen.config.genotype.noUISlider.initInbreedingSlider = function(selector) {
+    $("#inbreeding-coefficient-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#inbreeding-coefficient-slider").Link('lower').to($("#inbreeding-coefficient"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#inbreeding-coefficient-slider").on('slide', this.activateInbreedingSlider);
+    $("#inbreeding-coefficient-slider").on('change', this.activateInbreedingSlider);
+    $("#inbreeding-coefficient-slider").on('set', this.activateInbreedingSlider);
+}
+popGen.config.genotype.noUISlider.initAssortMatingSlider = function(selector) {
+    $("#positive-assortative-mating-slider").noUiSlider({
+        start: [0],
+        step: .0001,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [1]
+        },
+        format: wNumb({
+            decimals: 4,
+            thousand: ','
+        })
+    });
+    $("#positive-assortative-mating-slider").Link('lower').to($("#positive-assortative-mating"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#positive-assortative-mating-slider").on('slide', this.activateAssortativeMating);
+    $("#positive-assortative-mating-slider").on('change', this.activateAssortativeMating);
+    $("#positive-assortative-mating-slider").on('set', this.activateAssortativeMating);
+}
+popGen.config.genotype.noUISlider.initBottleNeckGensSlider = function(selector) {
+    $("#generation-to-override-slider").noUiSlider({
+        start: [50, 500],
+        step: 1,
+        connect: true,
+        range: {
+            'min': [1],
+            'max': [500]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    }, true);
+    $("#generation-to-override-slider").Link('lower').to($("#generation-to-override-lower"));
+    $("#generation-to-override-slider").Link('upper').to($("#generation-to-override-upper"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#generation-to-override-slider").on('slide', this.activatePopulationControl);
+    $("#generation-to-override-slider").on('change', this.activatePopulationControl);
+    $("#generation-to-override-slider").on('set', this.activatePopulationControl);
+}
+popGen.config.genotype.noUISlider.initBottleNeckPopSlider = function(selector) {
+    $("#new-population-size-slider").noUiSlider({
+        start: [5000],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [1],
+            'max': [10000]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#new-population-size-slider").Link('lower').to($("#new-population-size"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#new-population-size-slider").on('slide', this.activatePopulationControl);
+    $("#new-population-size-slider").on('change', this.activatePopulationControl);
+    $("#new-population-size-slider").on('set', this.activatePopulationControl);
+}
+popGen.config.genotype.noUISlider.initBatchSlider = function(selector) {
+    $("#batch-tool-runs-slider").noUiSlider({
+        start: [1],
+        step: 1,
+        connect: "lower",
+        range: {
+            'min': [0],
+            'max': [50]
+        },
+        format: wNumb({
+            decimals: 0,
+            thousand: ','
+        })
+    });
+    $("#batch-tool-runs-slider").Link('lower').to($("#batch-tool-runs"));
+    //Activate the slider if it was slide, changed or manually set
+    $("#batch-tool-runs-slider").on('slide', this.activateBatchTool);
+    $("#batch-tool-runs-slider").on('change', this.activateBatchTool);
+    $("#batch-tool-runs-slider").on('set', this.activateBatchTool);
+};
+/**
+ *  These functions checks to see if the current slider has been moved yet. Once it is moved change the color of
+ *  the slider to the primary color from the inactive color (grayed-out most likely).
+ *
+ *  TODO: Check the values to make it inactive if the appropriate values are set
+ */
+popGen.config.genotype.noUISlider.activateGenerationsSlider = function() {
+    if(popGen.config.genotype){
+        popGen.config.genotype.noUISlider.validateGenOverride();
+    }
+    else{
+        popGen.config.noUISlider.validateGenOverride();
+    }
+}
+popGen.config.genotype.noUISlider.activatePopulationSlider = function() {
+    $("#population-size-slider").addClass("active");
+    // $("#batch-tool-runs-slider").addClass("active");
+    //Update the activator icon
+    $("#population-variable .variable-activator").removeClass("fa-square-o");
+    $("#population-variable .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateFitnessCoefSlider = function() {
+    //Make these active 
+    $("#fitness-coefficient-waa-slider").addClass("active");
+    $("#fitness-coefficient-wAa-slider").addClass("active");
+    $("#fitness-coefficient-wAA-slider").addClass("active");
+    //Make these inactive (Only one or the other can be active)
+    $("#selection-coefficient-slider").removeClass("active");
+    $("#dominance-coefficient-slider").removeClass("active");
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateSelectionDomSlider = function() {
+    //Make these active 
+    $("#selection-coefficient-slider").addClass("active");
+    $("#dominance-coefficient-slider").addClass("active");
+    //Make these inactive (Only one or the other can be active)
+    $("#fitness-coefficient-waa-slider").removeClass("active");
+    $("#fitness-coefficient-wAa-slider").removeClass("active");
+    $("#fitness-coefficient-wAA-slider").removeClass("active");
+    //Update the activator icon
+    $("#selection-variables .variable-activator").removeClass("fa-square-o");
+    $("#selection-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateMutationSlider = function() {
+    //Make these active 
+    $("#mutation-rate-mu-slider").addClass("active");
+    $("#mutation-rate-nu-slider").addClass("active");
+    //Update the activator icon
+    $("#mutation-variables .variable-activator").removeClass("fa-square-o");
+    $("#mutation-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateMigrationSlider = function() {
+    //Make these active 
+    $("#migration-rate-slider").addClass("active");
+    $("#migrant-allele-frequency-slider").addClass("active");
+    //Update the activator icon
+    $("#migration-variables .variable-activator").removeClass("fa-square-o");
+    $("#migration-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateInbreedingSlider = function() {
+    //Make these active
+    $("#inbreeding-coefficient-slider").addClass("active");
+    //Update the activator icon
+    $("#inbreeding-variables .variable-activator").removeClass("fa-square-o");
+    $("#inbreeding-variables .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateAssortativeMating = function() {
+    //Make these active 
+    $("#positive-assortative-mating-slider").addClass("active");
+    //Update the activator icon
+    $("#assortative-mating .variable-activator").removeClass("fa-square-o");
+    $("#assortative-mating .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activatePopulationControl = function() {
+    $("#generation-to-override-slider").addClass("active");
+    $("#new-population-size-slider").addClass("active");
+    //Update the activator icon
+    $("#population-control .variable-activator").removeClass("fa-square-o");
+    $("#population-control .variable-activator").addClass("fa-check-square-o");
+}
+popGen.config.genotype.noUISlider.activateBatchTool = function() {
+        $("#batch-tool-runs-slider").addClass("active");
+        //Update the activator icon
+        $("#batch-tool .variable-activator").removeClass("fa-square-o");
+        $("#batch-tool .variable-activator").addClass("fa-check-square-o");
+    }
+    //Deactive the correct sliders based on what checkmark was clicked 
+popGen.config.genotype.noUISlider.deactiveActiveOnCheckmark = function(variableSectionId, state) {
+        if (variableSectionId == "selection-variables") {
+            //Needs to be more intelligent 
+            if (state == "unchecked") {
+                $("#selection-coefficient-slider").removeClass("active");
+                $("#dominance-coefficient-slider").removeClass("active");
+                $("#fitness-coefficient-waa-slider").removeClass("active");
+                $("#fitness-coefficient-wAa-slider").removeClass("active");
+                $("#fitness-coefficient-wAA-slider").removeClass("active");
+            }
+        } else if (variableSectionId == "population-variable") {
+            $("#population-size-slider").toggleClass("active");
+        } else if (variableSectionId == "mutation-variables") {
+            $("#mutation-rate-mu-slider").toggleClass("active");
+            $("#mutation-rate-nu-slider").toggleClass("active");
+        } else if (variableSectionId == "migration-variables") {
+            $("#migration-rate-slider").toggleClass("active");
+            $("#migrant-allele-frequency-slider").toggleClass("active");
+        } else if (variableSectionId == "assortative-mating") {
+            $("#positive-assortative-mating-slider").toggleClass("active");
+        } else if (variableSectionId == "inbreeding-variables") {
+            $("#inbreeding-coefficient-slider").toggleClass("active");
+        } else if (variableSectionId == "population-control") {
+            $("#generation-to-override-slider").toggleClass("active");
+            $("#new-population-size-slider").toggleClass("active");
+        } else if (variableSectionId == "batch-tool") {
+            $("#batch-tool-runs-slider").toggleClass("active");
+        }
+    }
+    /** 
+     *  Make sure that the validation override doesn't exceed the the actual number of generations 
+     *
+     */
+popGen.config.genotype.noUISlider.validateGenOverride = function() {
+        //Validate here 
+        var validPopBottleneck = true;
+        var values = popGen.htmlutil.chartDOM.seralizeForm($("#variables-form"));
+        var numberOfGens = parseFloat(values['generations'].replace(',', ''));
+        var removeActive = false;
+        if (!$("#generation-to-override-slider").hasClass("active")) {
+            removeActive = true;
+        }
+        $('#generation-to-override-slider').noUiSlider({
+            range: {
+                'min': 0,
+                'max': Number(numberOfGens)
+            }
+        }, true);
+        // Class is automatically added due to the update 
+        if (removeActive) {
+            $("#generation-to-override-slider").removeClass("active");
+            $("#new-population-size-slider").removeClass("active");
+            $("#population-control .variable-activator").removeClass("fa-check-square-o");
+            $("#population-control .variable-activator").addClass("fa-square-o");
+        }
+    }
+    /**
+     *  Look at the hidden fields in the page and attempt to add them to the slider
+     *      -Validation occurs automatically with noui slider
+     */
+popGen.config.genotype.noUISlider.addBookmarkValues = function() {
+    var bookmarkform = $("#bookmarking-values");
+    if (bookmarkform.length) {
+        var bookmarks = bookmarkform.serializeArray();
+        //Go through each bookmark and try set the value
+        for (var i = 0; i < bookmarks.length; i++) {
+            if (bookmarks[i].name == "bookmarking-generations") $("#generations-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-starting-allele-frequency") $("#starting-allele-frequency-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-wAA") $("#fitness-coefficient-wAA-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-wAa") $("#fitness-coefficient-wAa-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-fitness-coefficient-waa") $("#fitness-coefficient-waa-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-selection-coefficient") $("#selection-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-dominance-coefficient") $("#dominance-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-mu") $("#mutation-rate-mu-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-mu-exponent") $("#mutation-rate-mu-exponent").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-nu") $("#mutation-rate-nu-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-mutation-rate-nu-exponent") $("#mutation-rate-nu-exponent").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-migration-rate") $("#migration-rate-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-migrant-allele-frequency") $("#migrant-allele-frequency-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-inbreeding-coefficient") $("#inbreeding-coefficient-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-positive-assortative-mating") $("#positive-assortative-mating-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-generation-to-override-lower") $("#generation-to-override-slider").val([bookmarks[i].value, null]);
+            else if (bookmarks[i].name == "bookmarking-generation-to-override-upper") $("#generation-to-override-slider").val([null, bookmarks[i].value]);
+            else if (bookmarks[i].name == "bookmarking-new-population-size") $("#new-population-size-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-batch-tool-runs") $("#batch-tool-runs-slider").val(bookmarks[i].value);
+            else if (bookmarks[i].name == "bookmarking-population-size") {
+                $("#population-size-slider").val(bookmarks[i].value);
+                // $("#population-size-slider").addClass("active"); //Activate the slider too
+            }
+        }
+    } else {
+        if (this.debug) console.log(bookmarkform);
+    }
+};
 /*!
  * AnchorJS - v1.1.1 - 2015-05-23
  * https://github.com/bryanbraun/anchorjs
@@ -11374,7 +12734,7 @@ $(document).ready(function() {
  */
 function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefaultOptions=function(A){this.options.icon=this.options.hasOwnProperty("icon")?A.icon:"&#xe9cb",this.options.visible=this.options.hasOwnProperty("visible")?A.visible:"hover",this.options.placement=this.options.hasOwnProperty("placement")?A.placement:"right",this.options.class=this.options.hasOwnProperty("class")?A.class:""},this._applyRemainingDefaultOptions(A),this.add=function(A){var e,t,o,n,i,s,a,l,c,r,h,g,B,Q;if(this._applyRemainingDefaultOptions(this.options),A){if("string"!=typeof A)throw new Error("The selector provided to AnchorJS was invalid.")}else A="h1, h2, h3, h4, h5, h6";if(e=document.querySelectorAll(A),0===e.length)return!1;for(this._addBaselineStyles(),t=document.querySelectorAll("[id]"),o=[].map.call(t,function(A){return A.id}),i=0;i<e.length;i++){if(e[i].hasAttribute("id"))n=e[i].getAttribute("id");else{s=e[i].textContent,a=s.replace(/[^\w\s-]/gi,"").replace(/\s+/g,"-").replace(/-{2,}/g,"-").substring(0,64).replace(/^-+|-+$/gm,"").toLowerCase(),r=a,c=0;do void 0!==l&&(r=a+"-"+c),l=o.indexOf(r),c+=1;while(-1!==l);l=void 0,o.push(r),e[i].setAttribute("id",r),n=r}h=n.replace(/-/g," "),g='<a class="anchorjs-link '+this.options.class+'" href="#'+n+'" aria-label="Anchor link for: '+h+'" data-anchorjs-icon="'+this.options.icon+'"></a>',B=document.createElement("div"),B.innerHTML=g,Q=B.childNodes,"always"===this.options.visible&&(Q[0].style.opacity="1"),"&#xe9cb"===this.options.icon&&(Q[0].style.fontFamily="anchorjs-icons",Q[0].style.fontStyle="normal",Q[0].style.fontVariant="normal",Q[0].style.fontWeight="normal"),"left"===this.options.placement?(Q[0].style.position="absolute",Q[0].style.marginLeft="-1em",Q[0].style.paddingRight="0.5em",e[i].insertBefore(Q[0],e[i].firstChild)):(Q[0].style.paddingLeft="0.375em",e[i].appendChild(Q[0]))}return this},this.remove=function(A){for(var e,t=document.querySelectorAll(A),o=0;o<t.length;o++)e=t[o].querySelector(".anchorjs-link"),e&&t[o].removeChild(e);return this},this._addBaselineStyles=function(){if(null===document.head.querySelector("style.anchorjs")){var A,e=document.createElement("style"),t=" .anchorjs-link {   opacity: 0;   text-decoration: none;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale; }",o=" *:hover > .anchorjs-link, .anchorjs-link:focus  {   opacity: 1; }",n=' @font-face {   font-family: "anchorjs-icons";   font-style: normal;   font-weight: normal;   src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBTUAAAC8AAAAYGNtYXAWi9QdAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5Zgq29TcAAAF4AAABNGhlYWQEZM3pAAACrAAAADZoaGVhBhUDxgAAAuQAAAAkaG10eASAADEAAAMIAAAAFGxvY2EAKACuAAADHAAAAAxtYXhwAAgAVwAAAygAAAAgbmFtZQ5yJ3cAAANIAAAB2nBvc3QAAwAAAAAFJAAAACAAAwJAAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpywPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg6cv//f//AAAAAAAg6cv//f//AAH/4xY5AAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAACADEARAJTAsAAKwBUAAABIiYnJjQ/AT4BMzIWFxYUDwEGIicmND8BNjQnLgEjIgYPAQYUFxYUBw4BIwciJicmND8BNjIXFhQPAQYUFx4BMzI2PwE2NCcmNDc2MhcWFA8BDgEjARQGDAUtLXoWOR8fORYtLTgKGwoKCjgaGg0gEhIgDXoaGgkJBQwHdR85Fi0tOAobCgoKOBoaDSASEiANehoaCQkKGwotLXoWOR8BMwUFLYEuehYXFxYugC44CQkKGwo4GkoaDQ0NDXoaShoKGwoFBe8XFi6ALjgJCQobCjgaShoNDQ0NehpKGgobCgoKLYEuehYXAAEAAAABAACiToc1Xw889QALBAAAAAAA0XnFFgAAAADRecUWAAAAAAJTAsAAAAAIAAIAAAAAAAAAAQAAA8D/wAAABAAAAAAAAlMAAQAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAACAAAAAoAAMQAAAAAACgAUAB4AmgABAAAABQBVAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAAAAAAAEADgAAAAEAAAAAAAIABwCfAAEAAAAAAAMADgBLAAEAAAAAAAQADgC0AAEAAAAAAAUACwAqAAEAAAAAAAYADgB1AAEAAAAAAAoAGgDeAAMAAQQJAAEAHAAOAAMAAQQJAAIADgCmAAMAAQQJAAMAHABZAAMAAQQJAAQAHADCAAMAAQQJAAUAFgA1AAMAAQQJAAYAHACDAAMAAQQJAAoANAD4YW5jaG9yanMtaWNvbnMAYQBuAGMAaABvAHIAagBzAC0AaQBjAG8AbgBzVmVyc2lvbiAxLjAAVgBlAHIAcwBpAG8AbgAgADEALgAwYW5jaG9yanMtaWNvbnMAYQBuAGMAaABvAHIAagBzAC0AaQBjAG8AbgBzYW5jaG9yanMtaWNvbnMAYQBuAGMAaABvAHIAagBzAC0AaQBjAG8AbgBzUmVndWxhcgBSAGUAZwB1AGwAYQByYW5jaG9yanMtaWNvbnMAYQBuAGMAaABvAHIAagBzAC0AaQBjAG8AbgBzRm9udCBnZW5lcmF0ZWQgYnkgSWNvTW9vbi4ARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAASQBjAG8ATQBvAG8AbgAuAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==) format("truetype"); }',i=" [data-anchorjs-icon]::after {   content: attr(data-anchorjs-icon); }";e.className="anchorjs",e.appendChild(document.createTextNode("")),A=document.head.querySelector('[rel="stylesheet"], style'),void 0===A?document.head.appendChild(e):document.head.insertBefore(e,A),e.sheet.insertRule(t,e.sheet.cssRules.length),e.sheet.insertRule(o,e.sheet.cssRules.length),e.sheet.insertRule(i,e.sheet.cssRules.length),e.sheet.insertRule(n,e.sheet.cssRules.length)}}}var anchors=new AnchorJS;;
 /**
-* @preserve CanvasJS HTML5 & JavaScript Charts - v1.6.2 GA- http://canvasjs.com/ 
+* @preserve CanvasJS HTML5 & JavaScript Charts - v1.7.0 GA - http://canvasjs.com/ 
 * Copyright 2013 fenopix
 */
 
@@ -11412,13 +12772,14 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             theme: "theme1",
             animationEnabled: false,
             animationDuration: 1200,
+            dataPointMaxWidth: null,
+
             colorSet: "colorSet1",
             culture: "en",
             creditText: "CanvasJS.com",
             interactivityEnabled: true,
             exportEnabled: false,
-            exportFileName: "Chart",
-            convertIfClear: false //Converts a clear canvas to white for exporting only
+            exportFileName: "Chart"
         },
 
         Title: {
@@ -11436,7 +12797,34 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             borderColor: "black",
             cornerRadius: 0,
             backgroundColor: null,
-            margin: 5
+            margin: 5,
+            wrap: true,
+            maxWidth: null,
+
+            dockInsidePlotArea: false
+            //toolTipContent: null//string - To be implemented (TBI)
+        },
+
+        Subtitle: {
+            padding: 0,
+            text: null,
+            verticalAlign: "top",//top, center, bottom
+            horizontalAlign: "center",//left, center, right
+            fontSize: 14,//in pixels
+            fontFamily: "Calibri",
+            fontWeight: "normal", //normal, bold, bolder, lighter,
+            fontColor: "black",
+            fontStyle: "normal", // normal, italic, oblique
+
+            borderThickness: 0,
+            borderColor: "black",
+            cornerRadius: 0,
+            backgroundColor: null,
+            margin: 2,
+            wrap: true,
+            maxWidth: null,
+
+            dockInsidePlotArea: false
             //toolTipContent: null//string - To be implemented (TBI)
         },
 
@@ -11455,15 +12843,40 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             itemmouseover: null,
             itemmouseout: null,
             itemmousemove: null,
-            itemclick: null
+            itemclick: null,
+
+            dockInsidePlotArea: false,
+            reversed: false,
+
+            maxWidth: null,
+            maxHeight: null,
+
+            itemMaxWidth: null,
+            itemWidth: null,
+            itemWrap: true,
+            itemTextFormatter: null
         },
 
         ToolTip: {
             enabled: true,
-            borderColor: null,
             shared: false,
             animationEnabled: true,
-            content: null
+            content: null,
+            contentFormatter: null,
+
+            reversed: false,
+
+            backgroundColor: null,
+
+            borderColor: null,
+            borderThickness: 2, //in pixels
+            cornerRadius: 5, // in pixels
+
+            fontSize: 14, // in pixels
+            fontColor: "#000000",
+            fontFamily: "Calibri, Arial, Georgia, serif;",
+            fontWeight: "normal", //normal, bold, bolder, lighter,
+            fontStyle: "italic"  // normal, italic, oblique
         },
 
         Axis: {
@@ -11488,6 +12901,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             labelAutoFit: false,
             labelWrap: true,
             labelMaxWidth: null,//null for auto
+            labelFormatter: null,
 
             prefix: "",
             suffix: "",
@@ -11500,9 +12914,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
             lineColor: "black",
             lineThickness: 1,
+            lineDashType: "solid",
 
             gridColor: "A0A0A0",
             gridThickness: 0,
+            gridDashType: "solid",
 
             interlacedColor: null,
 
@@ -11519,14 +12935,19 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             endValue: null,
 
             color: "orange",
+            opacity: null,
             thickness: 2,
+            lineDashType: "solid",
             label: "",
             labelBackgroundColor: "#EEEEEE",
             labelFontFamily: "arial",
             labelFontColor: "orange",
             labelFontSize: 12,
             labelFontWeight: "normal",
-            labelFontStyle: "normal"
+            labelFontStyle: "normal",
+            labelFormatter: null,
+
+            showOnTop: false
         },
 
         DataSeries: {
@@ -11534,6 +12955,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             dataPoints: null,
             label: "",
             bevelEnabled: false,
+            highlightEnabled: true,
 
             cursor: null,
 
@@ -11543,15 +12965,18 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             indexLabelFontColor: "black",
             indexLabelFontSize: 12,
             indexLabelFontStyle: "normal", //   italic ,oblique, normal 
-            indexLabelFontFamily: "Arial", 	// fx: Arial Verdana "Courier New" Serif 
-            indexLabelFontWeight: "normal", 	// bold ,bolder, lighter, normal 
+            indexLabelFontFamily: "Arial",  // fx: Arial Verdana "Courier New" Serif 
+            indexLabelFontWeight: "normal",     // bold ,bolder, lighter, normal 
             indexLabelBackgroundColor: null,
             indexLabelLineColor: null,
             indexLabelLineThickness: 1,
+            indexLabelLineDashType: "solid",
             indexLabelMaxWidth: null,
             indexLabelWrap: true,
+            indexLabelFormatter: null,
 
             lineThickness: 2,
+            lineDashType: "solid",
 
             color: null,
             risingColor: "white",
@@ -11590,25 +13015,6 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             visible: true
         },
 
-        CultureInfo: {
-            decimalSeparator: ".",
-            digitGroupSeparator: ",",
-            zoomText: "Zoom",
-            panText: "Pan",
-            resetText: "Reset",
-
-            menuText: "More Options",
-            saveJPGText: "Save as JPG",
-            savePNGText: "Save as PNG",
-
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-
-            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        },
-
-
         //Private
         TextBlock: {
             x: 0,
@@ -11632,6 +13038,24 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             cornerRadius: 0,
             backgroundColor: null,
             textBaseline: "top"
+        },
+
+        CultureInfo: {
+            decimalSeparator: ".",
+            digitGroupSeparator: ",",
+            zoomText: "Zoom",
+            panText: "Pan",
+            resetText: "Reset",
+
+            menuText: "More Options",
+            saveJPGText: "Save as JPG",
+            savePNGText: "Save as PNG",
+
+            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         }
     };
 
@@ -11658,49 +13082,49 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     var colorSets = {
 
         "colorSet1": [
-			"#369EAD",
-			"#C24642",
-			"#7F6084",
-			//"#96C412",
-			"#86B402",
-			"#A2D1CF",
-			//"#D8C641",
-			"#C8B631",
-			"#6DBCEB",
-			//"#4A4946",
-			"#52514E",
-			"#4F81BC",
-			"#A064A1",
-			"#F79647"
+            "#369EAD",
+            "#C24642",
+            "#7F6084",
+            //"#96C412",
+            "#86B402",
+            "#A2D1CF",
+            //"#D8C641",
+            "#C8B631",
+            "#6DBCEB",
+            //"#4A4946",
+            "#52514E",
+            "#4F81BC",
+            "#A064A1",
+            "#F79647"
         ],
         "colorSet2": [
-			"#4F81BC",
-			"#C0504E",
-			"#9BBB58",
-			"#23BFAA",
-			//"#FAA586",
-			"#8064A1",
-			"#4AACC5",
-			"#F79647",
-			//"#77AA33",
-			//"#7F6084"
-			"#33558B"
+            "#4F81BC",
+            "#C0504E",
+            "#9BBB58",
+            "#23BFAA",
+            //"#FAA586",
+            "#8064A1",
+            "#4AACC5",
+            "#F79647",
+            //"#77AA33",
+            //"#7F6084"
+            "#33558B"
         ],
         "colorSet3": [
-			"#8CA1BC",
-			"#36845C",
-			"#017E82",
-			"#8CB9D0",
-			"#708C98",
-			"#94838D",
-			"#F08891",
-			"#0366A7",
-			"#008276",
-			"#EE7757",
-			"#E5BA3A",
-			"#F2990B",
-			"#03557B",
-			"#782970"
+            "#8CA1BC",
+            "#36845C",
+            "#017E82",
+            "#8CB9D0",
+            "#708C98",
+            "#94838D",
+            "#F08891",
+            "#0366A7",
+            "#008276",
+            "#EE7757",
+            "#E5BA3A",
+            "#F2990B",
+            "#03557B",
+            "#782970"
         ]//,
         //"colorSet4": [
         //    "#3698C5",
@@ -11738,166 +13162,180 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     };
 
     var themes =
-		{
-		    "theme1": {
-		        Chart:
-					{
-					    colorSet: "colorSet1"
-					},
-		        Title: {
-		            fontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
-		            fontSize: 33,
-		            fontColor: "#3A3A3A",
-		            fontWeight: "bold",
-		            verticalAlign: "top",
-		            margin: 10
-		        },
-		        Axis: {
-		            titleFontSize: 26,
-		            //titleFontColor: "rgb(98,98,98)",
-		            titleFontColor: "#666666",
-		            //titleFontFamily: "arial black",
-		            //titleFontFamily: "Verdana, Geneva, Calibri, sans-serif",
-		            titleFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
-		            //titleFontWeight: "bold",
+        {
+            "theme1": {
+                Chart:
+                    {
+                        colorSet: "colorSet1"
+                    },
+                Title: {
+                    fontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+                    fontSize: 33,
+                    fontColor: "#3A3A3A",
+                    fontWeight: "bold",
+                    verticalAlign: "top",
+                    margin: 5
+                },
+                Subtitle: {
+                    fontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+                    fontSize: 16,
+                    fontColor: "#3A3A3A",
+                    fontWeight: "bold",
+                    verticalAlign: "top",
+                    margin: 5
+                },
+                Axis: {
+                    titleFontSize: 26,
+                    //titleFontColor: "rgb(98,98,98)",
+                    titleFontColor: "#666666",
+                    //titleFontFamily: "arial black",
+                    //titleFontFamily: "Verdana, Geneva, Calibri, sans-serif",
+                    titleFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+                    //titleFontWeight: "bold",
 
-		            //labelFontFamily: "Times New Roman, Times, serif",
-		            labelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
-		            //labelFontFamily: "Helvetica Neue, Helvetica",
-		            labelFontSize: 18,
-		            labelFontColor: "grey",
-		            //labelFontWeight: "bold",
-		            tickColor: "#BBBBBB",
-		            tickThickness: 2,
-		            gridThickness: 2,
-		            gridColor: "#BBBBBB",
-		            lineThickness: 2,
-		            lineColor: "#BBBBBB"
-		        },
-		        Legend: {
-		            verticalAlign: "bottom",
-		            horizontalAlign: "center",
-		            fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "calibri"
-		        },
-		        DataSeries: {
-		            //bevelEnabled: true,
-		            indexLabelFontColor: "grey",
-		            //indexLabelFontFamily: "Trebuchet MS, monospace, Courier New, Courier",
-		            indexLabelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
-		            //indexLabelFontWeight: "bold",
-		            indexLabelFontSize: 18,
-		            //indexLabelLineColor: "lightgrey",
-		            indexLabelLineThickness: 1
-		        }
-		    },
+                    //labelFontFamily: "Times New Roman, Times, serif",
+                    labelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+                    //labelFontFamily: "Helvetica Neue, Helvetica",
+                    labelFontSize: 18,
+                    labelFontColor: "grey",
+                    //labelFontWeight: "bold",
+                    tickColor: "#BBBBBB",
+                    tickThickness: 2,
+                    gridThickness: 2,
+                    gridColor: "#BBBBBB",
+                    lineThickness: 2,
+                    lineColor: "#BBBBBB"
+                },
+                Legend: {
+                    verticalAlign: "bottom",
+                    horizontalAlign: "center",
+                    fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "calibri"
+                },
+                DataSeries: {
+                    //bevelEnabled: true,
+                    indexLabelFontColor: "grey",
+                    //indexLabelFontFamily: "Trebuchet MS, monospace, Courier New, Courier",
+                    indexLabelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+                    //indexLabelFontWeight: "bold",
+                    indexLabelFontSize: 18,
+                    //indexLabelLineColor: "lightgrey",
+                    indexLabelLineThickness: 1
+                }
+            },
 
-		    "theme2": {
-		        Chart:
-					{
-					    colorSet: "colorSet2"
-					},
-		        Title: {
-		            fontFamily: "impact, charcoal, arial black, sans-serif",
-		            fontSize: 32,//fontColor: "rgb(58,58,58)",
-		            fontColor: "#333333",
-		            //fontFamily: "arial black", fontSize: 30,//fontColor: "rgb(58,58,58)",
-		            //fontFamily: "arial black",
-		            //fontFamily: "Helvetica Neue, Helvetica", fontSize: 35,// fontColor: "rgb(58,58,58)",
-		            //fontWeight: "bold",
-		            verticalAlign: "top",
-		            margin: 10
-		        },
-		        Axis: {
-		            titleFontSize: 22,
-		            titleFontColor: "rgb(98,98,98)",
-		            //titleFontFamily: "arial black",
-		            titleFontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "arial",
-		            titleFontWeight: "bold",
+            "theme2": {
+                Chart:
+                    {
+                        colorSet: "colorSet2"
+                    },
+                Title: {
+                    fontFamily: "impact, charcoal, arial black, sans-serif",
+                    fontSize: 32,//fontColor: "rgb(58,58,58)",
+                    fontColor: "#333333",
+                    verticalAlign: "top",
+                    margin: 5
+                },
+                Subtitle: {
+                    fontFamily: "impact, charcoal, arial black, sans-serif",
+                    fontSize: 14,//fontColor: "rgb(58,58,58)",
+                    fontColor: "#333333",
+                    verticalAlign: "top",
+                    margin: 5
+                },
+                Axis: {
+                    titleFontSize: 22,
+                    titleFontColor: "rgb(98,98,98)",
+                    //titleFontFamily: "arial black",
+                    titleFontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "arial",
+                    titleFontWeight: "bold",
 
 
-		            labelFontFamily: isCanvasSupported ? "monospace, Courier New, Courier" : "arial",
-		            //labelFontFamily: "Helvetica Neue, Helvetica",
-		            labelFontSize: 16,
-		            labelFontColor: "grey",
-		            labelFontWeight: "bold",
-		            tickColor: "grey",
-		            tickThickness: 2,
-		            gridThickness: 2,
-		            gridColor: "grey",
-		            lineThickness: 0
-		        },
-		        Legend: {
-		            verticalAlign: "bottom",
-		            horizontalAlign: "center",
-		            fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "arial"
-		        },
-		        DataSeries: {
-		            indexLabelFontColor: "grey",
-		            //indexLabelFontFamily: "Trebuchet MS, monospace, Courier New, Courier",
-		            indexLabelFontFamily: isCanvasSupported ? "Courier New, Courier, monospace" : "arial",
-		            indexLabelFontWeight: "bold",
-		            indexLabelFontSize: 18,
-		            //indexLabelLineColor: "lightgrey",
-		            indexLabelLineThickness: 1
-		        }
-		    },
+                    labelFontFamily: isCanvasSupported ? "monospace, Courier New, Courier" : "arial",
+                    //labelFontFamily: "Helvetica Neue, Helvetica",
+                    labelFontSize: 16,
+                    labelFontColor: "grey",
+                    labelFontWeight: "bold",
+                    tickColor: "grey",
+                    tickThickness: 2,
+                    gridThickness: 2,
+                    gridColor: "grey",
+                    lineColor: "grey",
+                    lineThickness: 0
+                },
+                Legend: {
+                    verticalAlign: "bottom",
+                    horizontalAlign: "center",
+                    fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "arial"
+                },
+                DataSeries: {
+                    indexLabelFontColor: "grey",
+                    //indexLabelFontFamily: "Trebuchet MS, monospace, Courier New, Courier",
+                    indexLabelFontFamily: isCanvasSupported ? "Courier New, Courier, monospace" : "arial",
+                    indexLabelFontWeight: "bold",
+                    indexLabelFontSize: 18,
+                    //indexLabelLineColor: "lightgrey",
+                    indexLabelLineThickness: 1
+                }
+            },
 
-		    "theme3": {
-		        Chart:
-					{
-					    colorSet: "colorSet1"
-					},
-		        Title: {
-		            //fontFamily: "impact, charcoal, arial black, sans-serif", fontSize: 30,//fontColor: "rgb(58,58,58)",
-		            //fontFamily: "arial black", fontSize: 30,//fontColor: "rgb(58,58,58)",
-		            //fontFamily: "arial black",
-		            fontFamily: isCanvasSupported ? "Candara, Optima, Trebuchet MS, Helvetica Neue, Helvetica, Trebuchet MS, serif" : "calibri",
-		            fontSize: 32,
-		            //fontFamily: "Palatino Linotype, Book Antiqua, Palatino, serif", fontSize: 30,
-		            //fontFamily: "Lucida Sans Unicode, Lucida Grande, Trebuchet MS, sans-serif", fontSize: 30,
-		            //fontColor: "rgb(68,78,58)",
-		            fontColor: "#3A3A3A",
-		            fontWeight: "bold",
-		            verticalAlign: "top",
-		            margin: 10
-		        },
-		        Axis: {
-		            titleFontSize: 22,
-		            titleFontColor: "rgb(98,98,98)",
-		            //titleFontFamily: "arial black",
-		            titleFontFamily: isCanvasSupported ? "Verdana, Geneva, Calibri, sans-serif" : "calibri",
-		            //titleFontWeight: "bold",
+            "theme3": {
+                Chart:
+                    {
+                        colorSet: "colorSet1"
+                    },
+                Title: {
+                    fontFamily: isCanvasSupported ? "Candara, Optima, Trebuchet MS, Helvetica Neue, Helvetica, Trebuchet MS, serif" : "calibri",
+                    fontSize: 32,
+                    fontColor: "#3A3A3A",
+                    fontWeight: "bold",
+                    verticalAlign: "top",
+                    margin: 5
+                },
+                Subtitle: {
+                    fontFamily: isCanvasSupported ? "Candara, Optima, Trebuchet MS, Helvetica Neue, Helvetica, Trebuchet MS, serif" : "calibri",
+                    fontSize: 16,
+                    fontColor: "#3A3A3A",
+                    fontWeight: "bold",
+                    verticalAlign: "top",
+                    margin: 5
+                },
+                Axis: {
+                    titleFontSize: 22,
+                    titleFontColor: "rgb(98,98,98)",
+                    //titleFontFamily: "arial black",
+                    titleFontFamily: isCanvasSupported ? "Verdana, Geneva, Calibri, sans-serif" : "calibri",
+                    //titleFontWeight: "bold",
 
-		            //labelFontFamily: "Times New Roman, Times, serif",
-		            labelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
-		            //labelFontFamily: "Helvetica Neue, Helvetica",
-		            labelFontSize: 18,
-		            labelFontColor: "grey",
-		            //labelFontWeight: "bold",
-		            tickColor: "grey",
-		            tickThickness: 2,
-		            gridThickness: 2,
-		            gridColor: "grey",
-		            lineThickness: 2,
-		            lineColor: "grey"
-		        },
-		        Legend: {
-		            verticalAlign: "bottom",
-		            horizontalAlign: "center",
-		            fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "calibri"
-		        },
-		        DataSeries: {
-		            bevelEnabled: true,
-		            indexLabelFontColor: "grey",
-		            //indexLabelFontFamily: "Trebuchet MS, monospace, Courier New, Courier",
-		            indexLabelFontFamily: isCanvasSupported ? "Candara, Optima, Calibri, Verdana, Geneva, sans-serif" : "calibri",
-		            //indexLabelFontWeight: "bold",
-		            indexLabelFontSize: 18,
-		            indexLabelLineColor: "lightgrey",
-		            indexLabelLineThickness: 2
-		        }
-		    }
-		};
+                    //labelFontFamily: "Times New Roman, Times, serif",
+                    labelFontFamily: isCanvasSupported ? "Calibri, Optima, Candara, Verdana, Geneva, sans-serif" : "calibri",
+                    //labelFontFamily: "Helvetica Neue, Helvetica",
+                    labelFontSize: 18,
+                    labelFontColor: "grey",
+                    //labelFontWeight: "bold",
+                    tickColor: "grey",
+                    tickThickness: 2,
+                    gridThickness: 2,
+                    gridColor: "grey",
+                    lineThickness: 2,
+                    lineColor: "grey"
+                },
+                Legend: {
+                    verticalAlign: "bottom",
+                    horizontalAlign: "center",
+                    fontFamily: isCanvasSupported ? "monospace, sans-serif,arial black" : "calibri"
+                },
+                DataSeries: {
+                    bevelEnabled: true,
+                    indexLabelFontColor: "grey",
+                    //indexLabelFontFamily: "Trebuchet MS, monospace, Courier New, Courier",
+                    indexLabelFontFamily: isCanvasSupported ? "Candara, Optima, Calibri, Verdana, Geneva, sans-serif" : "calibri",
+                    //indexLabelFontWeight: "bold",
+                    indexLabelFontSize: 18,
+                    indexLabelLineColor: "lightgrey",
+                    indexLabelLineThickness: 2
+                }
+            }
+        };
 
     //#endregion Themes
 
@@ -11917,10 +13355,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
     //#region Static Methods & variables
 
-    function extend(Child, Parent) {
-        Child.prototype = inherit(Parent.prototype);
-        Child.prototype.constructor = Child;
-        Child.parent = Parent.prototype;
+    function extend(derived, base) {
+        derived.prototype = inherit(base.prototype);
+        derived.prototype.constructor = derived;
+        derived.base = base.prototype;
     }
 
     function inherit(proto) {
@@ -12004,7 +13442,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             }
 
             //if (typeof stroke == "undefined") {
-            //	stroke = true;
+            //  stroke = true;
             //}
 
             if (typeof radius === "undefined") {
@@ -12078,6 +13516,33 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         return rgb;
     }
 
+    function arrayIndexOf(elt /*, from*/) {
+        var len = this.length >>> 0;
+
+        var from = Number(arguments[1]) || 0;
+        from = (from < 0)
+             ? Math.ceil(from)
+             : Math.floor(from);
+        if (from < 0)
+            from += len;
+
+        for (; from < len; from++) {
+            if (from in this &&
+                this[from] === elt)
+                return from;
+        }
+        return -1;
+    };
+
+    //IE8- Fix: indexOf is not supported in IE8- for arrays
+    function addArrayIndexOf(obj) {
+        if (!obj.indexOf) {
+            obj.indexOf = arrayIndexOf;
+        }
+
+        return obj;
+    }
+
     var fontHeightInPixels = {};
     var textMeasureEl = null;
     function getFontHeightInPixels(fontFamily, fontSize, fontWeight) {
@@ -12110,7 +13575,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 //body.removeChild(tempDiv);
 
                 //if (window.console)
-                //	window.console.log(fontSize + ": " + height);
+                //  window.console.log(fontSize + ": " + height);
             }
             catch (e) {
                 height = Math.ceil(fontSize * 1.1);
@@ -12122,6 +13587,38 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         }
 
         return height;
+    }
+
+    function getLineDashArray(lineDashType, lineThickness) {
+        var lineDashArray = [];
+
+        lineDashType = lineDashType || "solid";
+
+        lineDashTypeMap = {
+            "solid": [],
+            "shortDash": [3, 1],
+            "shortDot": [1, 1],
+            "shortDashDot": [3, 1, 1, 1],
+            "shortDashDotDot": [3, 1, 1, 1, 1, 1],
+            "dot": [1, 2],
+            "dash": [4, 2],
+            "dashDot": [4, 2, 1, 2],
+            "longDash": [8, 2],
+            "longDashDot": [8, 2, 1, 2],
+            "longDashDotDot": [8, 2, 1, 2, 1, 2]
+        };
+
+        lineDashArray = lineDashTypeMap[lineDashType];
+
+        if (lineDashArray) {
+
+            for (var i = 0; i < lineDashArray.length; i++) {
+                lineDashArray[i] *= lineThickness;
+            }
+        } else
+            lineDashArray = [];
+
+        return lineDashArray;
     }
 
     //userCapture is optional. Defaults to false
@@ -12579,10 +14076,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         if (isCanvasSupported && !!optimizeForHiDPI) {
             var ctx = canvas.getContext("2d");
             backingStoreRatio = ctx.webkitBackingStorePixelRatio ||
-								ctx.mozBackingStorePixelRatio ||
-								ctx.msBackingStorePixelRatio ||
-								ctx.oBackingStorePixelRatio ||
-								ctx.backingStorePixelRatio || 1;
+                                ctx.mozBackingStorePixelRatio ||
+                                ctx.msBackingStorePixelRatio ||
+                                ctx.oBackingStorePixelRatio ||
+                                ctx.backingStorePixelRatio || 1;
 
 
             devicePixelBackingStoreRatio = devicePixelRatio / backingStoreRatio;
@@ -12623,58 +14120,13 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         return canvas;
     }
 
-    function exportCanvas(canvas, format, fileName, thisObj){
-        console.log("Attempting to export"); 
+    function exportCanvas(canvas, format, fileName) {
         if (!canvas || !format || !fileName)
             return;
-        console.log("Attempting to export1");
-
-        
-        var reset = false; 
-        var context = canvas.getContext('2d');
-        console.log(context); 
-
-        var org_labelFontColor  = thisObj._options.axisX.labelFontColor;
-        var org_titleFontColor  = thisObj._options.axisX.titleFontColor;
-        var org_gridColor       = thisObj._options.axisX.gridColor;
-        var org_labelFontColor  = thisObj._options.axisY.labelFontColor;
-        var org_titleFontColor  = thisObj._options.axisY.titleFontColor;
-        var org_gridColor       = thisObj._options.gridColor;
-        var org_backgroundColor = thisObj._options.backgroundColor;
-        
-        
-        var black       = "rgba(0,0,0,1.0)";
-        var darkGray    = "rgba(0,0,0,.70)";
-        var white       = "rgba(255,255,255,1.0)";
-        var lightGray   = "rgba(255, 255, 255, 0.2)";
-        var clear       = "rgba(255, 255, 255, 0.0)";
-
-        //Change the Label colors to white/black
-        thisObj._options.axisX.labelFontColor = black;  
-        thisObj._options.axisX.titleFontColor = black;  
-        thisObj._options.axisX.gridColor      = darkGray;  
-        thisObj._options.axisY.labelFontColor = black; 
-        thisObj._options.axisY.titleFontColor = black;  
-        thisObj._options.axisY.gridColor      = darkGray;  
-        thisObj._options.backgroundColor      = white; 
-        thisObj.render(thisObj._options);
-        canvas = thisObj.canvas; 
-        reset = true; //Reset the colors 
-            
-          
-            
-            
-            
-        
-     
-
-
-
 
         var fullFileName = fileName + "." + (format === "jpeg" ? "jpg" : format);
         var mimeType = "image/" + format;
         var img = canvas.toDataURL(mimeType);
-        console.log(img); 
         var saved = false;
 
         var downloadLink = document.createElement("a");
@@ -12716,8 +14168,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 event = document.createEvent("MouseEvents");
 
                 event.initMouseEvent("click", true, false, window,
-								 0, 0, 0, 0, 0, false, false, false,
-								 false, 0, null);
+                                 0, 0, 0, 0, 0, false, false, false,
+                                 false, 0, null);
 
                 if (downloadLink.dispatchEvent) {
                     //alert("dispatchEvent");
@@ -12736,30 +14188,6 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 win.document.close();
             }
         }
-
-        
-        //Revert to original colors 
-       
-        thisObj._options.axisX.labelFontColor     = org_labelFontColor;  
-        thisObj._options.axisX.titleFontColor     = org_titleFontColor;  
-        thisObj._options.axisX.gridColor          = org_gridColor;  
-        thisObj._options.axisY.labelFontColor     = org_labelFontColor; 
-        thisObj._options.axisY.titleFontColor     = org_titleFontColor;  
-        thisObj._options.axisY.gridColor          = org_gridColor;  
-        thisObj._options.backgroundColor          = org_backgroundColor; 
-        thisObj.render(thisObj._options);
-
-
-
-
-
-
-          
-          
-               
-          
-          
-                   
     }
 
     var base64Images = {
@@ -12784,7 +14212,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             button.setAttribute("type", 'button');
             button.style.position = "relative";
             button.style.margin = "0px 0px 0px 0px";
-            button.style.padding = "3px 4px 0px 4px";
+            button.style.padding = "3px 4px 0px 4px";   
             button.style.cssFloat = "left";
             button.setAttribute("title", chart._cultureInfo[state + "Text"]);
             button.innerHTML = "<img style='height:16px;' src='" + base64Images[state].image + "' alt='" + chart._cultureInfo[state + "Text"] + "' />";
@@ -12818,8 +14246,12 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     //#region Class Definitions
 
     //#region Class CanvasJSObject
-    function CanvasJSObject(defaultsKey, options, theme) {
+    function CanvasJSObject(defaultsKey, options, theme, parent) {
         this._defaultsKey = defaultsKey;
+
+        this.parent = parent;
+
+        this._eventListeners = [];//Multidimentional array with an array for each event type
 
         var currentThemeOptions = {};
 
@@ -12829,6 +14261,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         this._options = options ? options : {};
         this.setOptions(this._options, currentThemeOptions);
     }
+
     CanvasJSObject.prototype.setOptions = function (options, currentThemeOptions) {
 
         if (!defaultOptions[this._defaultsKey]) {
@@ -12912,6 +14345,49 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         return hasChanged;
     };
+
+    CanvasJSObject.prototype.addEventListener = function (eventName, eventHandler, context) {
+        if (!eventName || !eventHandler)
+            return;
+
+        context = context || this;
+
+        this._eventListeners[eventName] = this._eventListeners[eventName] || [];
+
+        this._eventListeners[eventName].push({ context: context, eventHandler: eventHandler });
+    }
+
+    CanvasJSObject.prototype.removeEventListener = function (eventName, eventHandler) {
+        if (!eventName || !eventHandler || !this._eventListeners[eventName])
+            return;
+
+        var listeners = this._eventListeners[eventName];
+        for (var i = 0; i < listeners.length; i++) {
+
+            if (listeners[i].eventHandler === eventHandler) {
+                listeners[i].splice(i, 1);
+                break;
+            }
+        }
+    }
+
+    CanvasJSObject.prototype.removeAllEventListeners = function () {
+        this._eventListeners = [];
+    }
+
+    CanvasJSObject.prototype.dispatchEvent = function (eventName, eventParameter) {
+        if (!eventName || !this._eventListeners[eventName])
+            return;
+
+        eventParameter = eventParameter || {};
+
+        var listeners = this._eventListeners[eventName];
+        for (var i = 0; i < listeners.length; i++) {
+
+            listeners[i].eventHandler.call(listeners[i].context, eventParameter);
+        }
+    }
+
     //#endregion Class CanvasJSObject
 
     //#region Class Chart
@@ -12921,7 +14397,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         options = options || {};
 
-        Chart.parent.constructor.call(this, "Chart", options, options.theme ? options.theme : "theme1");
+        Chart.base.constructor.call(this, "Chart", options, options.theme ? options.theme : "theme1");
 
         var _this = this;
 
@@ -12971,6 +14447,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         this.width = width;
         this.height = height;
 
+        this.x1 = this.y1 = 0;
+        this.x2 = this.width;
+        this.y2 = this.height;
+
+
         this._selectedColorSet = typeof (colorSets[this.colorSet]) !== "undefined" ? colorSets[this.colorSet] : colorSets["colorSet1"];
 
         this._canvasJSContainer = document.createElement("div");
@@ -12990,7 +14471,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         this.canvas.style.position = "absolute";
         if (this.canvas.getContext) {
             //try {
-            //	this.canvas.style.background = this.backgroundColor;
+            //  this.canvas.style.background = this.backgroundColor;
             //} catch (e) { }
             this._canvasJSContainer.appendChild(this.canvas);
             this.ctx = this.canvas.getContext("2d");
@@ -13030,7 +14511,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         this._toolBar = document.createElement("div");
         this._toolBar.setAttribute("class", "canvasjs-chart-toolbar");
-        this._toolBar.style.cssText = "position: absolute; right: 2px; top: 0px;";
+        this._toolBar.style.cssText = "position: absolute; right: 1px; top: 1px;";
         this._canvasJSContainer.appendChild(this._toolBar);
 
 
@@ -13086,7 +14567,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         this._toolTip = new ToolTip(this, this._options.toolTip, this.theme);
 
-        this.layoutManager = new LayoutManager(this);
+
         this.data = null;
         this.axisX = null;
         this.axisY = null;
@@ -13130,14 +14611,14 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             this.backgroundColor = "rgba(0,0,0,0)";
 
         this.updateOption("culture");
-        this._cultureInfo = new CultureInfo(this, this._options.culture);
+        this._cultureInfo = new CultureInfo(this._options.culture);
 
         this.updateOption("animationEnabled");
         this.animationEnabled = this.animationEnabled && isCanvasSupported;
 
         //Need to check this._options.zoomEnabled because this.zoomEnabled is used internally to keep track of state - and hence changes.
         if (this._options.zoomEnabled) {
-
+                  
             if (!this._zoomButton) {
 
                 hide(this._zoomButton = document.createElement("button"));
@@ -13155,7 +14636,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     } else {
                         _this.zoomEnabled = true;
                         _this.panEnabled = false;
-
+                        
                         setButtonState(_this, _this._zoomButton, "pan");
                     }
 
@@ -13194,7 +14675,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         _this.sessionVariables.axisX.internalMaximum = _this._options.axisX.maximum;
                     else
                         _this.sessionVariables.axisX.internalMaximum = null;
-
+                    
                     _this.resetOverlayedCanvas();
 
                     hide(_this._zoomButton, _this._resetButton);
@@ -13279,8 +14760,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             }, true);
 
             var exportOption = document.createElement("div");
-            exportOption.style.cssText = "padding: 2px 15px 2px 10px; color: black";
-
+            exportOption.style.cssText = "padding: 2px 15px 2px 10px"
             exportOption.innerHTML = this._cultureInfo.saveJPGText;
             this._dropdownMenu.appendChild(exportOption);
 
@@ -13293,15 +14773,12 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             }, true);
 
             addEvent(exportOption, "click", function () {
-                exportCanvas(_this.canvas, "jpg", _this.exportFileName, _this);
-
-
+                exportCanvas(_this.canvas, "jpg", _this.exportFileName);
                 hide(_this._dropdownMenu);
             }, true);
 
-
             var exportOption = document.createElement("div");
-            exportOption.style.cssText = "padding: 2px 15px 2px 10px; color: black";
+            exportOption.style.cssText = "padding: 2px 15px 2px 10px"
             exportOption.innerHTML = this._cultureInfo.savePNGText;
             this._dropdownMenu.appendChild(exportOption);
 
@@ -13314,9 +14791,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             }, true);
 
             addEvent(exportOption, "click", function () {
-                exportCanvas(_this.canvas, "png", _this.exportFileName, _this);
-
-
+                exportCanvas(_this.canvas, "png", _this.exportFileName);
                 hide(_this._dropdownMenu);
             }, true);
         }
@@ -13332,8 +14807,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         }
 
         if (typeof (defaultOptions.Chart.creditHref) === "undefined") {
-            this.creditHref = "";
-            this.creditText = "";
+            this.creditHref = "http://canvasjs.com/";
+            this.creditText = "CanvasJS.com";
         } else {
             var creditTextChanged = this.updateOption("creditText");
             var creditHrefChanged = this.updateOption("creditHref");
@@ -13354,11 +14829,12 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         if (this._options.toolTip && this._toolTip._options !== this._options.toolTip)
             this._toolTip._options = this._options.toolTip
 
-        this._toolTip.updateOption("enabled");
-        this._toolTip.updateOption("shared");
-        this._toolTip.updateOption("animationEnabled");
-        this._toolTip.updateOption("borderColor");
-        this._toolTip.updateOption("content");
+        for (var prop in this._toolTip._options) {
+
+            if (this._toolTip._options.hasOwnProperty(prop)) {
+                this._toolTip.updateOption(prop);
+            }
+        }
 
     }
 
@@ -13401,6 +14877,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             this._animator.cancelAllAnimations();
         }
 
+        this.removeAllEventListeners();
+
         this.disableToolTip = false;
 
 
@@ -13438,7 +14916,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             plotTypes: []//array of plotType: {type:"", axisYType: "primary", dataSeriesIndexes:[]}
         };
 
-        this.layoutManager.reset();
+        this.layoutManager = new LayoutManager(0, 0, this.width, this.height, 2);
+
+        if (this.plotArea.layoutManager)
+            this.plotArea.layoutManager.reset();
 
 
         this.data = [];
@@ -13462,8 +14943,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     dataSeries.color = this._selectedColorSet[dataSeries.index % this._selectedColorSet.length];
                 } else {
                     if (dataSeries.type === "line" || dataSeries.type === "stepLine" || dataSeries.type === "spline" || dataSeries.type === "area"
-						|| dataSeries.type === "stepArea" || dataSeries.type === "splineArea" || dataSeries.type === "stackedArea" || dataSeries.type === "stackedArea100"
-						|| dataSeries.type === "rangeArea" || dataSeries.type === "rangeSplineArea" || dataSeries.type === "candlestick" || dataSeries.type === "ohlc") {
+                        || dataSeries.type === "stepArea" || dataSeries.type === "splineArea" || dataSeries.type === "stackedArea" || dataSeries.type === "stackedArea100"
+                        || dataSeries.type === "rangeArea" || dataSeries.type === "rangeSplineArea" || dataSeries.type === "candlestick" || dataSeries.type === "ohlc") {
                         dataSeries._colorSet = [this._selectedColorSet[0]];
                     }
                     else
@@ -13544,44 +15025,25 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         this._objectsInitialized = true;
     }
 
-    Chart._supportedChartTypes = ["line", "stepLine", "spline", "column", "area", "stepArea", "splineArea", "bar", "bubble", "scatter",
-		"stackedColumn", "stackedColumn100", "stackedBar", "stackedBar100",
-		"stackedArea", "stackedArea100",
-		"candlestick",
-		"ohlc",
-		"rangeColumn",
-		"rangeBar",
-		"rangeArea",
-		"rangeSplineArea",
-		"pie", "doughnut", "funnel"
-    ];
-
     //indexOf is not supported in IE8-
-    if (!Chart._supportedChartTypes.indexOf) {
-        Chart._supportedChartTypes.indexOf = function (elt /*, from*/) {
-            var len = this.length >>> 0;
-
-            var from = Number(arguments[1]) || 0;
-            from = (from < 0)
-				 ? Math.ceil(from)
-				 : Math.floor(from);
-            if (from < 0)
-                from += len;
-
-            for (; from < len; from++) {
-                if (from in this &&
-					this[from] === elt)
-                    return from;
-            }
-            return -1;
-        };
-    }
+    Chart._supportedChartTypes = addArrayIndexOf(["line", "stepLine", "spline", "column", "area", "stepArea", "splineArea", "bar", "bubble", "scatter",
+        "stackedColumn", "stackedColumn100", "stackedBar", "stackedBar100",
+        "stackedArea", "stackedArea100",
+        "candlestick",
+        "ohlc",
+        "rangeColumn",
+        "rangeBar",
+        "rangeArea",
+        "rangeSplineArea",
+        "pie", "doughnut", "funnel"
+    ]);
 
     Chart.prototype.render = function (options) {
         if (options)
             this._options = options;
 
         this._initialize();
+        var plotAreaElements = []; //Elements to be rendered inside the plotArea
 
         //Create Primary and Secondary axis and assign them to the series
         for (var i = 0; i < this.data.length; i++) {
@@ -13627,19 +15089,44 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         if (this._options.title) {
             this._title = new Title(this, this._options.title);
-            this._title.render();
+
+            if (!this._title.dockInsidePlotArea)
+                this._title.render();
+            else
+                plotAreaElements.push(this._title);
+        }
+
+        if (this._options.subtitles) {
+            for (var i = 0; i < this._options.subtitles.length; i++) {
+
+                this.subtitles = [];
+
+                var subtitle = new Subtitle(this, this._options.subtitles[i]);
+                this.subtitles.push(subtitle);
+
+                if (!subtitle.dockInsidePlotArea)
+                    subtitle.render();
+                else
+                    plotAreaElements.push(subtitle);
+            }
         }
 
         this.legend = new Legend(this, this._options.legend, this.theme);
         for (var i = 0; i < this.data.length; i++) {
-            if (this.data[i].showInLegend)
+            if (this.data[i].showInLegend || this.data[i].type === "pie" || this.data[i].type === "doughnut") {
                 this.legend.dataSeries.push(this.data[i]);
+            }
         }
-        this.legend.render();
+
+        if (!this.legend.dockInsidePlotArea)
+            this.legend.render();
+        else
+            plotAreaElements.push(this.legend);
 
         //TBI: Revisit and check if the functionality is enough.
         if (this.plotInfo.axisPlacement === "normal" || this.plotInfo.axisPlacement === "xySwapped") {
-            var freeSpace = this.layoutManager.getFreeSpace();
+
+            //var freeSpace = this.layoutManager.getFreeSpace();
 
             Axis.setLayoutAndRender(this.axisX, this.axisY, this.axisY2, this.plotInfo.axisPlacement, this.layoutManager.getFreeSpace());
         } else if (this.plotInfo.axisPlacement === "none") {
@@ -13648,6 +15135,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         }
         else {
             return;
+        }
+
+        var index = 0;
+        for (index in plotAreaElements) {
+            plotAreaElements[index].render();
         }
 
         var animations = [];
@@ -13746,8 +15238,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 //console.log(fractionComplete);
                 //animationCount++;
 
-                _this.ctx.clearRect(0, 0, _this.width, _this.height);                
-              //  _this.ctx.drawImage(initialState, 0, 0, _this.width * devicePixelBackingStoreRatio, _this.height * devicePixelBackingStoreRatio, 0, 0, _this.width, _this.height);                
+                _this.ctx.clearRect(0, 0, _this.width, _this.height);
+
+
+                //  _this.ctx.drawImage(initialState, 0, 0, _this.width * devicePixelBackingStoreRatio, _this.height * devicePixelBackingStoreRatio, 0, 0, _this.width, _this.height);                
                 _this.ctx.drawImage(initialState, 0, 0, Math.floor(_this.width * devicePixelBackingStoreRatio), Math.floor(_this.height * devicePixelBackingStoreRatio), 0, 0, _this.width, _this.height);
 
                 for (var l = 0; l < animations.length; l++) {
@@ -13765,6 +15259,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         animationInfo.animationCallback(animationInfo.easingFunction(fractionComplete, 0, 1, 1), animationInfo);
                     }
                 }
+
+                _this.dispatchEvent("dataAnimationIterationEnd",
+                                    {
+                                        chart: _this
+                                    });
 
             }, function () {
 
@@ -13785,10 +15284,16 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 initialState = null;
                 _this.disableToolTip = false;
                 //console.log("*********** Animation Complete - " + animationCount + " ***********");
+
             });
         } else {
             if (_this._indexLabels.length > 0)
                 _this.renderIndexLabels();
+
+            _this.dispatchEvent("dataAnimationIterationEnd",
+                    {
+                        chart: _this
+                    });
         }
 
         this.attachPlotAreaEventHandlers();
@@ -14553,7 +16058,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
     /// <summary>Calculates Font Size based on standardSize and Chart Size</summary>
     /// <param name="standardSize" type="Number">Standard font size for a Chart with min(width,height) = 400px</param>
-    /// <returns type="Number">The area.</returns>	
+    /// <returns type="Number">The area.</returns>  
     Chart.prototype.getAutoFontSize = function (standardSize, width, height) {
 
         width = width || this.width;
@@ -14644,9 +16149,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             var type = mouseEvents[i];
             var simulatedEvent = document.createEvent("MouseEvent");
             simulatedEvent.initMouseEvent(type, true, true, window, 1,
-									  first.screenX, first.screenY,
-									  first.clientX, first.clientY, false,
-									  false, false, false, 0, null);
+                                      first.screenX, first.screenY,
+                                      first.clientX, first.clientY, false,
+                                      false, false, false, 0, null);
 
             first.target.dispatchEvent(simulatedEvent);
 
@@ -14953,7 +16458,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
             if (Math.abs(dragDelta) > 2 && Math.abs(dragDelta) < 8 && (this.panEnabled || this.zoomEnabled)) {
                 this._toolTip.hide();
-            } else if (this._toolTip.enabled && !this.panEnabled && !this.zoomEnabled) {
+            } else if (!this.panEnabled && !this.zoomEnabled) {
                 this._toolTip.mouseMoveHandler(x, y);
             }
 
@@ -15014,7 +16519,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             //} else if (this._toolTip.enabled)
             //    this._toolTip.mouseMoveHandler(x, y);
 
-        } else if (this._toolTip.enabled)
+        } else
             this._toolTip.mouseMoveHandler(x, y);
     }
 
@@ -15065,6 +16570,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 plotArea.ctx.translate(-plotArea.x1, -plotArea.y1);
             }
         }
+
+        plotArea.layoutManager = new LayoutManager(plotArea.x1, plotArea.y1, plotArea.x2, plotArea.y2, 2);
     }
 
     Chart.prototype.getPixelCoordinatesOnPlotArea = function (x, y) {
@@ -15077,232 +16584,283 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     Chart.prototype.renderIndexLabels = function (targetCtx) {
         var ctx = targetCtx || this.plotArea.ctx;
 
-        ctx.textBaseline = "middle";
         var plotArea = this.plotArea;
+
+        var mid = 0;
+        var yMinLimit = 0;
+        var yMaxLimit = 0;
+        var xMinLimit = 0;
+        var xMaxLimit = 0;
+        var marginX = 0, marginY = 0; // Margin between label and dataPoint / PlotArea
+        var offSetX = 0, offSetY = 0; // Distance to offSet textBlock (top) from dataPoint inorder to position it
+        var visibleWidth = 0;
+        var visibleHeight = 0;
 
         for (var i = 0; i < this._indexLabels.length; i++) {
 
             var indexLabel = this._indexLabels[i];
+            var chartTypeLower = indexLabel.chartType.toLowerCase();
 
             var x, y, angle;
 
-            ctx.fillStyle = getProperty("indexLabelFontColor", indexLabel.dataPoint, indexLabel.dataSeries);
-            ctx.font = getFontString("indexLabel", indexLabel.dataPoint, indexLabel.dataSeries);
-            var indexLabelText = this.replaceKeywordsWithValue(getProperty("indexLabel", indexLabel.dataPoint, indexLabel.dataSeries), indexLabel.dataPoint, indexLabel.dataSeries, null, indexLabel.indexKeyword);
-            var textSize = { width: ctx.measureText(indexLabelText).width, height: getProperty("indexLabelFontSize", indexLabel.dataPoint, indexLabel.dataSeries) };
+            var fontColor = getProperty("indexLabelFontColor", indexLabel.dataPoint, indexLabel.dataSeries);
+            var fontSize = getProperty("indexLabelFontSize", indexLabel.dataPoint, indexLabel.dataSeries);
+            var fontFamily = getProperty("indexLabelFontFamily", indexLabel.dataPoint, indexLabel.dataSeries);
+            var fontStyle = getProperty("indexLabelFontStyle", indexLabel.dataPoint, indexLabel.dataSeries);
+            var fontWeight = getProperty("indexLabelFontWeight", indexLabel.dataPoint, indexLabel.dataSeries);
+            var backgroundColor = getProperty("indexLabelBackgroundColor", indexLabel.dataPoint, indexLabel.dataSeries);
+            var maxWidth = getProperty("indexLabelMaxWidth", indexLabel.dataPoint, indexLabel.dataSeries);
+            var indexLabelWrap = getProperty("indexLabelWrap", indexLabel.dataPoint, indexLabel.dataSeries);
+
+            var percentAndTotal = { percent: null, total: null };
+            var formatterParameter = null;
+
+            if (indexLabel.dataSeries.type.indexOf("stacked") >= 0 || indexLabel.dataSeries.type === "pie" || indexLabel.dataSeries.type === "doughnut")
+                percentAndTotal = this.getPercentAndTotal(indexLabel.dataSeries, indexLabel.dataPoint);
+
+            if (indexLabel.dataSeries.indexLabelFormatter || indexLabel.dataPoint.indexLabelFormatter)
+                formatterParameter = { chart: this._options, dataSeries: indexLabel.dataSeries, dataPoint: indexLabel.dataPoint, index: indexLabel.indexKeyword, total: percentAndTotal.total, percent: percentAndTotal.percent };
+
+
+            var indexLabelText = indexLabel.dataPoint.indexLabelFormatter ? indexLabel.dataPoint.indexLabelFormatter(formatterParameter)
+                : indexLabel.dataPoint.indexLabel ? this.replaceKeywordsWithValue(indexLabel.dataPoint.indexLabel, indexLabel.dataPoint, indexLabel.dataSeries, null, indexLabel.indexKeyword)
+                : indexLabel.dataSeries.indexLabelFormatter ? indexLabel.dataSeries.indexLabelFormatter(formatterParameter)
+                : indexLabel.dataSeries.indexLabel ? this.replaceKeywordsWithValue(indexLabel.dataSeries.indexLabel, indexLabel.dataPoint, indexLabel.dataSeries, null, indexLabel.indexKeyword) : null;
+
+            if (indexLabelText === null || indexLabelText === "")
+                continue;
+
             var placement = getProperty("indexLabelPlacement", indexLabel.dataPoint, indexLabel.dataSeries);
             var orientation = getProperty("indexLabelOrientation", indexLabel.dataPoint, indexLabel.dataSeries);
             var angle = 0;
 
-            var yMinLimit = 0;
-            var yMaxLimit = 0;
-            var xMinLimit = 0;
-            var xMaxLimit = 0;
-            var offsetX = 0, offsetY = 0;
             var direction = indexLabel.direction; // +1 for above the point and -1 for below the point
 
             var axisX = indexLabel.dataSeries.axisX;
             var axisY = indexLabel.dataSeries.axisY;
 
-            if (indexLabel.dataPoint.x < axisX.minimum || indexLabel.dataPoint.x > axisX.maximum || indexLabel.dataPoint.y < axisY.minimum || indexLabel.dataPoint.y > axisY.maximum)
-                continue;
 
-            if (indexLabel.chartType === "column" || indexLabel.chartType === "stackedColumn" || indexLabel.chartType === "stackedColumn100"
-				|| indexLabel.chartType === "bar" || indexLabel.chartType === "stackedBar" || indexLabel.chartType === "stackedBar100"
-				|| indexLabel.chartType === "candlestick" || indexLabel.chartType === "ohlc"
-				|| indexLabel.chartType === "rangeColumn" || indexLabel.chartType === "rangeBar") {
+            var textBlock = new TextBlock(ctx, {
+                x: 0,
+                y: 0,
+                maxWidth: maxWidth ? maxWidth : this.width * .5,
+                maxHeight: indexLabelWrap ? fontSize * 5 : fontSize * 1.5,
+                angle: orientation === "horizontal" ? 0 : -90,
+                text: indexLabelText,
+                padding: 0,
+                backgroundColor: backgroundColor,
+                horizontalAlign: "left",//left, center, right
+                fontSize: fontSize,//in pixels
+                fontFamily: fontFamily,
+                fontWeight: fontWeight, //normal, bold, bolder, lighter,
+                fontColor: fontColor,
+                fontStyle: fontStyle, // normal, italic, oblique
+                textBaseline: "top"
+            });
 
-                offsetY = 5;
-                offsetX = 5;
-                var width = Math.abs(indexLabel.bounds.x1, indexLabel.bounds.x2)
-                var height = Math.abs(indexLabel.bounds.y1, indexLabel.bounds.y2)
+            var textSize = textBlock.measureText();
 
-                if (this.plotInfo.axisPlacement === "normal") {
+            //if (indexLabel.dataPoint.x < axisX.minimum || indexLabel.dataPoint.x > axisX.maximum || indexLabel.dataPoint.y < axisY.minimum || indexLabel.dataPoint.y > axisY.maximum)
+            //  continue;
 
-                    if (placement !== "inside") {	//outside or auto
+            if (chartTypeLower.indexOf("line") >= 0 || chartTypeLower.indexOf("area") >= 0
+                    || chartTypeLower.indexOf("bubble") >= 0 || chartTypeLower.indexOf("scatter") >= 0) {
 
-                        yMinLimit = plotArea.y1;
-                        yMaxLimit = plotArea.y2;
+                if (indexLabel.dataPoint.x < axisX.minimum || indexLabel.dataPoint.x > axisX.maximum || indexLabel.dataPoint.y < axisY.minimum || indexLabel.dataPoint.y > axisY.maximum)
+                    continue;
+            }
+            else {
+                if (indexLabel.dataPoint.x < axisX.minimum || indexLabel.dataPoint.x > axisX.maximum)
+                    continue;
+            }
 
-                    } else {
+            marginY = 2;
+            marginX = 2;
 
-                        yMinLimit = indexLabel.bounds.y1;
-                        yMaxLimit = indexLabel.bounds.y2;
-                    }
+            if (orientation === "horizontal") {
+                visibleWidth = textBlock.width;
+                visibleHeight = textBlock.height;
+            } else {
+                visibleHeight = textBlock.width;
+                visibleWidth = textBlock.height;
+            }
 
-                    if (orientation === "horizontal") {
-                        x = indexLabel.point.x - textSize.width / 2;
+            if (this.plotInfo.axisPlacement === "normal") {
 
-                        if (direction >= 0) {
-                            if (indexLabel.point.y - textSize.height / 2 - offsetY < yMinLimit + textSize.height / 2) {
-                                if (placement === "auto")
-                                    y = Math.min(Math.max(indexLabel.point.y, yMinLimit) + textSize.height / 2 + 1, yMaxLimit - textSize.height / 2 - offsetY);
-                                else
-                                    y = Math.min(yMinLimit + textSize.height / 2 + 1, yMaxLimit - textSize.height / 2 - offsetY);
-                                //y = Math.min(indexLabel.point.y - textSize.height / 2 - offsetY + 1, yMaxLimit - textSize.height / 2 - offsetY);
-                            } else {
+                if (chartTypeLower.indexOf("line") >= 0 || chartTypeLower.indexOf("area") >= 0) {
 
-                                y = Math.min(indexLabel.point.y - textSize.height / 2 - offsetY + 1, yMaxLimit - textSize.height / 2 - offsetY);
+                    placement = "auto";
+                    marginY = 4;
 
-                            }
-                        }
-                        else {
-                            if (indexLabel.point.y + textSize.height / 2 + offsetY > yMaxLimit - textSize.height / 2 - 1) {
-                                if (placement === "auto")
-                                    y = Math.max(Math.min(indexLabel.point.y, yMaxLimit) - textSize.height / 2 - 1, yMinLimit + textSize.height / 2 + offsetY);
-                                else
-                                    y = Math.max(yMaxLimit - textSize.height / 2 - 1, yMinLimit + textSize.height / 2 + offsetY);
-                                //y = Math.max(indexLabel.point.y + textSize.height / 2 + offsetY, yMinLimit + textSize.height / 2 + offsetY);
+                } else if (chartTypeLower.indexOf("stacked") >= 0) {
 
-                            } else {
-                                y = Math.max(indexLabel.point.y + textSize.height / 2 + offsetY, yMinLimit + textSize.height / 2 + offsetY);
-                            }
-                        }
+                    if (placement === "auto")
+                        placement = "inside";
 
-                        //y = yMinLimit;
-                    }
-                    else if (orientation === "vertical") {
-                        x = indexLabel.point.x;
-                        if (direction >= 0) {
-                            if (indexLabel.point.y - offsetY < yMinLimit + textSize.width + 1) {
-                                if (placement === "auto")
-                                    y = Math.min(Math.max(indexLabel.point.y, yMinLimit) + textSize.width + 1, yMaxLimit);
-                                else
-                                    y = Math.min(yMinLimit + textSize.width + 1, yMaxLimit);
-                            } else {
-                                y = Math.min(indexLabel.point.y - offsetY, yMaxLimit - 1);
-                            }
-                        }
-                        else {
+                } else if (chartTypeLower === "bubble" || chartTypeLower === "scatter") {
 
-                            if (indexLabel.point.y + textSize.width + offsetY > yMaxLimit - 1) {
-                                if (placement === "auto")
-                                    y = Math.max(Math.min(indexLabel.point.y, yMaxLimit) - offsetY, yMinLimit);
-                                else
-                                    y = Math.max(yMaxLimit - 1, yMinLimit);
+                    placement = "inside";
 
-                            } else {
-
-                                y = Math.max(indexLabel.point.y + textSize.width + offsetY, yMinLimit);
-
-                            }
-                        }
-
-                        angle = -90;
-                    }
-
-                } else if (this.plotInfo.axisPlacement === "xySwapped") {
-
-                    if (placement !== "inside") {
-
-                        xMinLimit = plotArea.x1;
-                        xMaxLimit = plotArea.x2;
-
-                    } else {
-
-                        xMinLimit = indexLabel.bounds.x1;
-                        xMaxLimit = indexLabel.bounds.x2;
-
-                    }
-
-                    if (orientation === "horizontal") {
-                        y = indexLabel.point.y;
-
-                        if (direction >= 0) {
-                            if (indexLabel.point.x + offsetX > xMaxLimit - textSize.width) {
-                                if (placement === "auto")
-                                    x = Math.max(Math.min(indexLabel.point.x, xMaxLimit) - textSize.width, xMinLimit);
-                                else
-                                    x = Math.max(xMaxLimit - textSize.width, xMinLimit);
-                            }
-                            else {
-                                x = Math.max(indexLabel.point.x + offsetX, xMinLimit);
-                            }
-                        }
-                        else {
-                            if (indexLabel.point.x - textSize.width - offsetX < xMinLimit) {
-                                if (placement === "auto")
-                                    x = Math.min(Math.max(indexLabel.point.x, xMinLimit) + 1, xMaxLimit);
-                                else
-                                    x = Math.min(xMinLimit + 1, xMaxLimit);
-                            } else {
-                                x = Math.min(indexLabel.point.x - textSize.width - offsetX, xMaxLimit);
-                            }
-                        }
-                    }
-                    else if (orientation === "vertical") {
-                        y = indexLabel.point.y + textSize.width / 2;
-
-                        if (direction >= 0) {
-                            if (indexLabel.point.x + textSize.height / 2 + offsetX > xMaxLimit - textSize.height / 2) {
-                                if (placement === "auto")
-                                    x = Math.max(Math.min(indexLabel.point.x, xMaxLimit) - textSize.height / 2, xMinLimit);
-                                else
-                                    x = Math.max(xMaxLimit - textSize.height / 2, xMinLimit);
-                            } else {
-                                x = Math.max(indexLabel.point.x + textSize.height / 2 + offsetX, xMinLimit);
-                            }
-                        }
-                        else {
-                            if (indexLabel.point.x - textSize.height / 2 - offsetX < xMinLimit + textSize.height / 2) {
-                                if (placement === "auto")
-                                    x = Math.min(Math.max(indexLabel.point.x, xMinLimit) + textSize.height / 2, xMaxLimit + textSize.height / 2);
-                                else
-                                    x = Math.min(xMinLimit + textSize.height / 2, xMaxLimit + textSize.height / 2);
-
-                            } else {
-                                x = Math.min(indexLabel.point.x - textSize.height / 2 - offsetX, xMaxLimit + textSize.height / 2);
-                            }
-                        }
-
-                        angle = -90;
-                    }
                 }
 
-            } else {
+                x = indexLabel.point.x - visibleWidth / 2;
 
-                offsetY = 5;
+                if (placement !== "inside") {   //outside or auto
 
+                    yMinLimit = plotArea.y1;
+                    yMaxLimit = plotArea.y2;
 
-                if (orientation === "horizontal") {
+                    if (direction > 0) {
+                        y = indexLabel.point.y - visibleHeight - marginY;
 
-                    x = indexLabel.point.x - textSize.width / 2;
+                        if (y < yMinLimit) {
+                            if (placement === "auto") {
+                                y = Math.max(indexLabel.point.y, yMinLimit) + marginY;
+                            }
+                            else {
+                                y = yMinLimit + marginY;
+                            }
+                        }
+                    }
+                    else {
+                        y = indexLabel.point.y + marginY;
 
-                    if (indexLabel.chartType === "bubble") {
-                        offsetY = -textSize.height / 2;
+                        if (y > yMaxLimit - visibleHeight - marginY) {
+                            if (placement === "auto") {
+                                y = Math.min(indexLabel.point.y, yMaxLimit) - visibleHeight - marginY;
+                            }
+                            else {
+                                y = yMaxLimit - visibleHeight - marginY;
+                            }
+                        }
                     }
 
-                    if (direction > 0)
-                        y = Math.max(indexLabel.point.y - textSize.height / 2 - offsetY, plotArea.y1 + textSize.height / 2);
+                } else {
+
+
+                    yMinLimit = Math.max(indexLabel.bounds.y1, plotArea.y1);
+                    yMaxLimit = Math.min(indexLabel.bounds.y2, plotArea.y2);
+
+
+                    if (chartTypeLower.indexOf("range") >= 0) {
+                        if (direction > 0)
+                            mid = Math.max(indexLabel.bounds.y1, plotArea.y1) + visibleHeight / 2 + marginY;
+                        else
+                            mid = Math.min(indexLabel.bounds.y2, plotArea.y2) - visibleHeight / 2 - marginY;
+                    }
                     else
-                        y = Math.min(indexLabel.point.y + textSize.height / 2 + offsetY, plotArea.y2 - textSize.height / 2);
+                        mid = (Math.max(indexLabel.bounds.y1, plotArea.y1) + Math.min(indexLabel.bounds.y2, plotArea.y2)) / 2
 
-                } else if (orientation === "vertical") {
+                    if (direction > 0) {
+                        y = Math.max(indexLabel.point.y, mid) - visibleHeight / 2;
 
-                    x = indexLabel.point.x;
+                        if (y < yMinLimit && (chartTypeLower === "bubble" || chartTypeLower === "scatter")) {
+                            y = Math.max(indexLabel.point.y - visibleHeight - marginY, plotArea.y1 + marginY);
+                        }
+                    }
+                    else {
+                        y = Math.min(indexLabel.point.y, mid) - visibleHeight / 2;
 
-                    if (indexLabel.chartType === "bubble") {
-                        offsetY = -textSize.width / 2;
+                        if (y > yMaxLimit - visibleHeight - marginY && (chartTypeLower === "bubble" || chartTypeLower === "scatter")) {
+                            y = Math.min(indexLabel.point.y + marginY, plotArea.y2 - visibleHeight - marginY);
+                        }
+                    }
+                }
+            }
+            else {
+
+                if (chartTypeLower.indexOf("line") >= 0 || chartTypeLower.indexOf("area") >= 0
+                    || chartTypeLower.indexOf("scatter") >= 0) {
+
+                    placement = "auto";
+                    marginX = 4;
+
+                } else if (chartTypeLower.indexOf("stacked") >= 0) {
+
+                    if (placement === "auto")
+                        placement = "inside";
+
+                } else if (chartTypeLower === "bubble") {
+
+                    placement = "inside";
+
+                }
+
+                y = indexLabel.point.y - visibleHeight / 2;
+
+                if (placement !== "inside") {   //outside or auto
+
+                    xMinLimit = plotArea.x1;
+                    xMaxLimit = plotArea.x2;
+
+                    if (direction < 0) {
+                        x = indexLabel.point.x - visibleWidth - marginX;
+
+                        if (x < xMinLimit) {
+                            if (placement === "auto") {
+                                x = Math.max(indexLabel.point.x, xMinLimit) + marginX;
+                            }
+                            else {
+                                x = xMinLimit + marginX;
+                            }
+                        }
+                    }
+                    else {
+                        x = indexLabel.point.x + marginX;
+
+                        if (x > xMaxLimit - visibleWidth - marginX) {
+                            if (placement === "auto") {
+                                x = Math.min(indexLabel.point.x, xMaxLimit) - visibleWidth - marginX;
+                            }
+                            else {
+                                x = xMaxLimit - visibleWidth - marginX;
+                            }
+                        }
                     }
 
-                    if (direction > 0)
-                        y = Math.max(indexLabel.point.y - offsetY, plotArea.y1 + textSize.width);
-                    else
-                        y = Math.min(indexLabel.point.y + textSize.width + offsetY, plotArea.y2);
+                } else {
 
-                    angle = -90;
+                    xMinLimit = Math.max(indexLabel.bounds.x1, plotArea.x1);
+                    xMaxLimit = Math.min(indexLabel.bounds.x2, plotArea.x2);
+
+                    if (chartTypeLower.indexOf("range") >= 0) {
+                        if (direction < 0)
+                            mid = Math.max(indexLabel.bounds.x1, plotArea.x1) + visibleWidth / 2 + marginX;
+                        else
+                            mid = Math.min(indexLabel.bounds.x2, plotArea.x2) - visibleWidth / 2 - marginX;
+                    }
+                    else
+                        var mid = (Math.max(indexLabel.bounds.x1, plotArea.x1) + Math.min(indexLabel.bounds.x2, plotArea.x2)) / 2;
+
+                    if (direction < 0) {
+                        x = Math.max(indexLabel.point.x, mid) - visibleWidth / 2;
+
+                        //if (y < xMinLimit) {
+                        //  y = Math.max(indexLabel.point.y - visibleHeight - marginY, plotArea.y1 + marginY);
+                        //}
+                    }
+                    else {
+                        x = Math.min(indexLabel.point.x, mid) - visibleWidth / 2;
+
+                        //if (y > xMaxLimit - visibleHeight - marginY) {
+                        //  y = Math.min(indexLabel.point.y + marginY, plotArea.y2 - visibleHeight - marginY);
+                        //}
+                    }
                 }
 
             }
 
-            ctx.save();
 
-            ctx.translate(x, y);
-            ctx.rotate(Math.PI / 180 * angle);
+            if (orientation === "vertical") {
+                y += visibleHeight;
+            }
 
-            ctx.fillText(indexLabelText, 0, 0);
+            textBlock.x = x;
+            textBlock.y = y;
 
-            ctx.restore();
+            //console.log(textBlock.text + ": " + textBlock.x + "; " + textBlock.y);
+
+            textBlock.render(true);
         }
 
         //source and dest would be same when animation is not enabled
@@ -15338,6 +16896,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             var dataSeries = this.data[dataSeriesIndex];
             ctx.lineWidth = dataSeries.lineThickness;
             var dataPoints = dataSeries.dataPoints;
+
+
+            if (ctx.setLineDash) {
+                ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+            }
 
             var seriesId = dataSeries.id;
             this._eventManager.objectMap[seriesId] = { objectType: "dataSeries", dataSeriesIndex: dataSeriesIndex };
@@ -15434,7 +16997,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         markers.push(markerProps);
 
                         //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                        //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                        //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                         //}
 
                         var markerColor = intToHexColorString(id);
@@ -15453,7 +17016,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         }
                     }
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "line",
@@ -15517,6 +17080,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             var dataSeries = this.data[dataSeriesIndex];
             ctx.lineWidth = dataSeries.lineThickness;
             var dataPoints = dataSeries.dataPoints;
+
+            if (ctx.setLineDash) {
+                ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+            }
 
             var seriesId = dataSeries.id;
             this._eventManager.objectMap[seriesId] = { objectType: "dataSeries", dataSeriesIndex: dataSeriesIndex };
@@ -15616,7 +17183,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         markers.push(markerProps);
 
                         //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                        //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                        //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                         //}
 
                         var markerColor = intToHexColorString(id);
@@ -15634,7 +17201,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         }
                     }
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "stepLine",
@@ -15731,6 +17298,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             ctx.lineWidth = dataSeries.lineThickness;
             var dataPoints = dataSeries.dataPoints;
 
+            if (ctx.setLineDash) {
+                ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+            }
+
             var seriesId = dataSeries.id;
             this._eventManager.objectMap[seriesId] = { objectType: "dataSeries", dataSeriesIndex: dataSeriesIndex };
             var hexColor = intToHexColorString(seriesId);
@@ -15790,7 +17361,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         markers.push(markerProps);
 
                         //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                        //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                        //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                         //}
 
                         var markerColor = intToHexColorString(id);
@@ -15809,7 +17380,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     }
 
                     //Add Labels
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "spline",
@@ -15994,7 +17565,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             //          ctx.stroke();
             ctx.restore();
         }
-        //	
+        //  
 
     }
 
@@ -16016,14 +17587,14 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        var maxBarWidth = Math.min((this.width * .15), this.plotArea.width / plotUnit.plotType.totalDataSeries * .9) << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : Math.min((this.width * .15), this.plotArea.width / plotUnit.plotType.totalDataSeries * .9) << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         var barWidth = (((plotArea.width / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) / plotUnit.plotType.totalDataSeries * .9) << 0;
 
         if (barWidth > maxBarWidth)
             barWidth = maxBarWidth;
         else if (xMinDiff === Infinity) {
-            barWidth = maxBarWidth;
+            barWidth = maxBarWidth / plotUnit.plotType.totalDataSeries * .9;
         } else if (barWidth < 1)
             barWidth = 1;
 
@@ -16117,7 +17688,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     if (isCanvasSupported)
                         drawRect(this._eventManager.ghostCtx, x1, y1, x2, y2, color, 0, null, false, false, false, false);
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "column",
@@ -16165,7 +17736,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //var yZeroToPixel = (axisYProps.y2 - axisYProps.height / rangeY * Math.abs(0 - plotUnit.axisY.minimum) + .5) << 0;
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        var maxBarWidth = this.width * .15 << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : this.width * .15 << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         var barWidth = (((plotArea.width / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) / plotUnit.plotType.plotUnits.length * .9) << 0;
 
@@ -16263,7 +17834,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         drawRect(this._eventManager.ghostCtx, x1, y1, x2, y2, color, 0, null, false, false, false, false);
 
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "stackedColumn",
@@ -16311,7 +17882,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //var yZeroToPixel = (axisYProps.y2 - axisYProps.height / rangeY * Math.abs(0 - plotUnit.axisY.minimum) + .5) << 0;
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        var maxBarWidth = this.width * .15 << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : this.width * .15 << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         var barWidth = (((plotArea.width / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) / plotUnit.plotType.plotUnits.length * .9) << 0;
 
@@ -16412,7 +17983,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         drawRect(this._eventManager.ghostCtx, x1, y1, x2, y2, color, 0, null, false, false, false, false);
 
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "stackedColumn100",
@@ -16457,8 +18028,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //In case of Bar Chart, yZeroToPixel is x co-ordinate!
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        //var maxBarWidth = this.height * .15;
-        var maxBarWidth = Math.min((this.height * .15), this.plotArea.height / plotUnit.plotType.totalDataSeries * .9) << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : Math.min((this.height * .15), this.plotArea.height / plotUnit.plotType.totalDataSeries * .9) << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         //var barWidth = (((plotArea.height / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) / totalDataSeries * .9) << 0;
 
@@ -16467,7 +18037,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         if (barWidth > maxBarWidth)
             barWidth = maxBarWidth;
         else if (xMinDiff === Infinity) {
-            barWidth = maxBarWidth;
+            barWidth = maxBarWidth / plotUnit.plotType.totalDataSeries * .9;
         } else if (barWidth < 1)
             barWidth = 1;
 
@@ -16548,16 +18118,16 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     if (isCanvasSupported)
                         drawRect(this._eventManager.ghostCtx, x1, y1, x2, y2, color, 0, null, false, false, false, false);
 
-
-                    this._indexLabels.push({
-                        chartType: "bar",
-                        dataPoint: dataPoints[i],
-                        dataSeries: dataSeries,
-                        point: { x: dataPoints[i].y >= 0 ? x2 : x1, y: y1 + (y2 - y1) / 2 },
-                        direction: dataPoints[i].y >= 0 ? 1 : -1,
-                        bounds: { x1: Math.min(x1, x2), y1: y1, x2: Math.max(x1, x2), y2: y2 },
-                        color: color
-                    });
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter)
+                        this._indexLabels.push({
+                            chartType: "bar",
+                            dataPoint: dataPoints[i],
+                            dataSeries: dataSeries,
+                            point: { x: dataPoints[i].y >= 0 ? x2 : x1, y: y1 + (y2 - y1) / 2 },
+                            direction: dataPoints[i].y >= 0 ? 1 : -1,
+                            bounds: { x1: Math.min(x1, x2), y1: y1, x2: Math.max(x1, x2), y2: y2 },
+                            color: color
+                        });
                 }
             }
         }
@@ -16593,8 +18163,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //var yZeroToPixel = (axisYProps.y2 - axisYProps.height / rangeY * Math.abs(0 - plotUnit.axisY.minimum) + .5) << 0;
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        //var maxBarWidth = this.width * .15 << 0;
-        var maxBarWidth = this.height * .15 << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : this.height * .15 << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         var barWidth = (((plotArea.height / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) / plotUnit.plotType.plotUnits.length * .9) << 0;
 
@@ -16687,16 +18256,16 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     if (isCanvasSupported)
                         drawRect(this._eventManager.ghostCtx, x1, y1, x2, y2, color, 0, null, false, false, false, false);
 
-
-                    this._indexLabels.push({
-                        chartType: "stackedBar",
-                        dataPoint: dataPoints[i],
-                        dataSeries: dataSeries,
-                        point: { x: dataPoints[i].y >= 0 ? x2 : x1, y: y },
-                        direction: dataPoints[i].y >= 0 ? 1 : -1,
-                        bounds: { x1: Math.min(x1, x2), y1: y1, x2: Math.max(x1, x2), y2: y2 },
-                        color: color
-                    });
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter)
+                        this._indexLabels.push({
+                            chartType: "stackedBar",
+                            dataPoint: dataPoints[i],
+                            dataSeries: dataSeries,
+                            point: { x: dataPoints[i].y >= 0 ? x2 : x1, y: y },
+                            direction: dataPoints[i].y >= 0 ? 1 : -1,
+                            bounds: { x1: Math.min(x1, x2), y1: y1, x2: Math.max(x1, x2), y2: y2 },
+                            color: color
+                        });
                 }
             }
         }
@@ -16732,8 +18301,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //var yZeroToPixel = (axisYProps.y2 - axisYProps.height / rangeY * Math.abs(0 - plotUnit.axisY.minimum) + .5) << 0;
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        //var maxBarWidth = this.width * .15 << 0;
-        var maxBarWidth = this.height * .15 << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : this.height * .15 << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         var barWidth = (((plotArea.height / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) / plotUnit.plotType.plotUnits.length * .9) << 0;
 
@@ -16832,16 +18400,16 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     if (isCanvasSupported)
                         drawRect(this._eventManager.ghostCtx, x1, y1, x2, y2, color, 0, null, false, false, false, false);
 
-
-                    this._indexLabels.push({
-                        chartType: "stackedBar100",
-                        dataPoint: dataPoints[i],
-                        dataSeries: dataSeries,
-                        point: { x: dataPoints[i].y >= 0 ? x2 : x1, y: y },
-                        direction: dataPoints[i].y >= 0 ? 1 : -1,
-                        bounds: { x1: Math.min(x1, x2), y1: y1, x2: Math.max(x1, x2), y2: y2 },
-                        color: color
-                    });
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter)
+                        this._indexLabels.push({
+                            chartType: "stackedBar100",
+                            dataPoint: dataPoints[i],
+                            dataSeries: dataSeries,
+                            point: { x: dataPoints[i].y >= 0 ? x2 : x1, y: y },
+                            direction: dataPoints[i].y >= 0 ? 1 : -1,
+                            bounds: { x1: Math.min(x1, x2), y1: y1, x2: Math.max(x1, x2), y2: y2 },
+                            color: color
+                        });
                 }
             }
         }
@@ -16922,6 +18490,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 ctx.strokeStyle = color;
                 ctx.lineWidth = dataSeries.lineThickness;
 
+                if (ctx.setLineDash) {
+                    ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+                }
+
                 var prevDataNull = true;
                 for (; i < dataPoints.length; i++) {
 
@@ -16977,7 +18549,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             markers.push(markerProps);
 
                             //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                            //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                            //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                             //}
 
                             var markerColor = intToHexColorString(id);
@@ -16995,7 +18567,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         }
                     }
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "area",
@@ -17130,6 +18702,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 ctx.strokeStyle = color;
                 ctx.lineWidth = dataSeries.lineThickness;
 
+                if (ctx.setLineDash) {
+                    ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+                }
+
                 for (; i < dataPoints.length; i++) {
 
                     dataPointX = dataPoints[i].x.getTime ? dataPoints[i].x.getTime() : dataPoints[i].x;
@@ -17162,7 +18738,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             markers.push(markerProps);
 
                             //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                            //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                            //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                             //}
 
                             var markerColor = intToHexColorString(id);
@@ -17182,7 +18758,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
 
                     //Render Index Labels
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "splineArea",
@@ -17330,6 +18906,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 ctx.strokeStyle = color;
                 ctx.lineWidth = dataSeries.lineThickness;
 
+                if (ctx.setLineDash) {
+                    ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+                }
+
                 for (; i < dataPoints.length; i++) {
 
                     dataPointX = dataPoints[i].x.getTime ? dataPoints[i].x.getTime() : dataPoints[i].x;
@@ -17392,7 +18972,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             markers.push(markerProps);
 
                             //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                            //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                            //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                             //}
 
                             var markerColor = intToHexColorString(id);
@@ -17410,7 +18990,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         }
                     }
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "stepArea",
@@ -17573,6 +19153,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 ctx.strokeStyle = color;
                 ctx.lineWidth = dataSeries.lineThickness;
 
+                if (ctx.setLineDash) {
+                    ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+                }
+
                 for (i = 0; i < allXValues.length; i++) {
 
                     dataPointX = allXValues[i];
@@ -17667,7 +19251,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             markers.push(markerProps);
 
                             //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                            //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                            //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                             //}
 
                             markerColor = intToHexColorString(id);
@@ -17685,7 +19269,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         }
                     }
 
-                    if (dataPoint.indexLabel || dataSeries.indexLabel) {
+                    if (dataPoint.indexLabel || dataSeries.indexLabel || dataPoint.indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "stackedArea",
@@ -17768,7 +19352,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //var yZeroToPixel = (axisYProps.y2 - axisYProps.height / rangeY * Math.abs(0 - plotUnit.axisY.minimum) + .5) << 0;
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        var maxBarWidth = this.width * .15 << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : this.width * .15 << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         var barWidth = (((plotArea.width / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) * .9) << 0;
 
@@ -17844,6 +19428,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 ctx.fillStyle = color;
                 ctx.strokeStyle = color;
                 ctx.lineWidth = dataSeries.lineThickness;
+
+                if (ctx.setLineDash) {
+                    ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+                }
 
                 var bevelEnabled = (barWidth > 5) ? false : false;
 
@@ -17945,7 +19533,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             markers.push(markerProps);
 
                             //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                            //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                            //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                             //}
 
                             markerColor = intToHexColorString(id);
@@ -17963,7 +19551,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         }
                     }
 
-                    if (dataPoint.indexLabel || dataSeries.indexLabel) {
+                    if (dataPoint.indexLabel || dataSeries.indexLabel || dataPoint.indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "stackedArea100",
@@ -18038,7 +19626,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        var maxBarWidth = this.width * .15 << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : this.width * .15 << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         var barWidth = (((plotArea.width / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) / totalDataSeries * .9) << 0;
 
@@ -18151,7 +19739,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         RenderHelper.drawMarker(x, y, this._eventManager.ghostCtx, markerProps.type, markerProps.size, markerColor, markerColor, markerProps.borderThickness);
 
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "bubble",
@@ -18159,6 +19747,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             dataSeries: dataSeries,
                             point: { x: x, y: y },
                             direction: 1,
+                            bounds: { x1: x - markerProps.size / 2, y1: y - markerProps.size / 2, x2: x + markerProps.size / 2, y2: y + markerProps.size / 2 },
                             color: color
                         });
                     }
@@ -18192,7 +19781,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        var maxBarWidth = this.width * .15 << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : this.width * .15 << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         var barWidth = (((plotArea.width / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) / totalDataSeries * .9) << 0;
 
@@ -18262,11 +19851,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     //}
 
                     //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                    //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                    //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                     //}
 
                     if ((Math.sqrt((prevDataPointX - x) * (prevDataPointX - x) + (prevDataPointY - y) * (prevDataPointY - y)) < Math.min(markerProps.size, 5))
-						&& dataPoints.length > (Math.min(this.plotArea.width, this.plotArea.height))) {
+                        && dataPoints.length > (Math.min(this.plotArea.width, this.plotArea.height))) {
                         continue;
                     }
 
@@ -18277,17 +19866,17 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
                     if (isCanvasSupported) {
                         RenderHelper.drawMarker(
-								markerProps.x, markerProps.y, this._eventManager.ghostCtx,
-								markerProps.type,
-								markerProps.size,
-								markerColor,
-								markerColor,
-								markerProps.borderThickness
-							);
+                                markerProps.x, markerProps.y, this._eventManager.ghostCtx,
+                                markerProps.type,
+                                markerProps.size,
+                                markerColor,
+                                markerColor,
+                                markerProps.borderThickness
+                            );
                     }
                     //markers.push();
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "scatter",
@@ -18295,6 +19884,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             dataSeries: dataSeries,
                             point: { x: x, y: y },
                             direction: 1,
+                            bounds: { x1: x - markerProps.size / 2, y1: y - markerProps.size / 2, x2: x + markerProps.size / 2, y2: y + markerProps.size / 2 },
                             color: color
                         });
                     }
@@ -18332,8 +19922,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        //var maxBarWidth = (this.width * .15);
-        var maxBarWidth = (this.width * .015);
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : (this.width * .015);
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         var barWidth = (((plotArea.width / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) * .7) << 0;
 
@@ -18387,8 +19976,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     }
 
                     if (dataPoints[i].y === null || !dataPoints[i].y.length
-						|| typeof (dataPoints[i].y[0]) !== "number" || typeof (dataPoints[i].y[1]) !== "number"
-						|| typeof (dataPoints[i].y[2]) !== "number" || typeof (dataPoints[i].y[3]) !== "number")
+                        || typeof (dataPoints[i].y[0]) !== "number" || typeof (dataPoints[i].y[1]) !== "number"
+                        || typeof (dataPoints[i].y[2]) !== "number" || typeof (dataPoints[i].y[3]) !== "number")
                         continue;
 
                     x = (plotUnit.axisX.conversionParameters.reference + plotUnit.axisX.conversionParameters.pixelPerUnit * (dataPointX - plotUnit.axisX.conversionParameters.minimum) + .5) << 0;
@@ -18485,7 +20074,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         }
                     }
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: dataSeries.type,
@@ -18528,7 +20117,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        var maxBarWidth = (this.width * .03);
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : (this.width * .03);
         //var maxBarWidth = (this.width * .015);
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         //var barWidth = (((plotArea.width / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) * .9) << 0;
@@ -18537,7 +20126,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         if (barWidth > maxBarWidth)
             barWidth = maxBarWidth;
         else if (xMinDiff === Infinity) {
-            barWidth = maxBarWidth;
+            barWidth = maxBarWidth / plotUnit.plotType.totalDataSeries * .9;
         } else if (barWidth < 1)
             barWidth = 1;
 
@@ -18584,7 +20173,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     }
 
                     if (dataPoints[i].y === null || !dataPoints[i].y.length
-						|| typeof (dataPoints[i].y[0]) !== "number" || typeof (dataPoints[i].y[1]) !== "number")
+                        || typeof (dataPoints[i].y[0]) !== "number" || typeof (dataPoints[i].y[1]) !== "number")
                         continue;
 
                     x = (plotUnit.axisX.conversionParameters.reference + plotUnit.axisX.conversionParameters.pixelPerUnit * (dataPointX - plotUnit.axisX.conversionParameters.minimum) + .5) << 0;
@@ -18619,7 +20208,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         drawRect(this._eventManager.ghostCtx, x1, y1, x2, y2, color, 0, null, false, false, false, false);
 
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "rangeColumn",
@@ -18676,8 +20265,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //In case of Bar Chart, yZeroToPixel is x co-ordinate!
         var yZeroToPixel = (plotUnit.axisY.conversionParameters.reference + plotUnit.axisY.conversionParameters.pixelPerUnit * (0 - plotUnit.axisY.conversionParameters.minimum)) << 0;
 
-        //var maxBarWidth = this.height * .15;
-        var maxBarWidth = Math.min((this.height * .15), this.plotArea.height / plotUnit.plotType.totalDataSeries * .9) << 0;
+        var maxBarWidth = this.dataPointMaxWidth ? this.dataPointMaxWidth : Math.min((this.height * .15), this.plotArea.height / plotUnit.plotType.totalDataSeries * .9) << 0;
         var xMinDiff = plotUnit.axisX.dataInfo.minDiff;
         //var barWidth = (((plotArea.height / Math.abs(plotUnit.axisX.maximum - plotUnit.axisX.minimum)) * Math.abs(xMinDiff)) / totalDataSeries * .9) << 0;
 
@@ -18686,7 +20274,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         if (barWidth > maxBarWidth)
             barWidth = maxBarWidth;
         else if (xMinDiff === Infinity) {
-            barWidth = maxBarWidth;
+            barWidth = maxBarWidth / plotUnit.plotType.totalDataSeries * .9;
         } else if (barWidth < 1)
             barWidth = 1;
 
@@ -18732,7 +20320,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     }
 
                     if (dataPoints[i].y === null || !dataPoints[i].y.length
-						|| typeof (dataPoints[i].y[0]) !== "number" || typeof (dataPoints[i].y[1]) !== "number")
+                        || typeof (dataPoints[i].y[0]) !== "number" || typeof (dataPoints[i].y[1]) !== "number")
                         continue;
 
                     //x and y are pixel co-ordinates of point and should not be confused with X and Y values
@@ -18767,7 +20355,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         drawRect(this._eventManager.ghostCtx, x1, y1, x2, y2, color, 0, null, false, false, false, false);
 
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "rangeBar",
@@ -18871,6 +20459,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 ctx.strokeStyle = color;
                 ctx.lineWidth = dataSeries.lineThickness;
 
+                if (ctx.setLineDash) {
+                    ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+                }
+
                 var prevDataNull = true;
                 for (; i < dataPoints.length; i++) {
 
@@ -18881,7 +20473,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     }
 
                     if (dataPoints[i].y === null || !dataPoints[i].y.length
-						|| typeof (dataPoints[i].y[0]) !== "number" || typeof (dataPoints[i].y[1]) !== "number") {
+                        || typeof (dataPoints[i].y[0]) !== "number" || typeof (dataPoints[i].y[1]) !== "number") {
 
                         closeArea();
 
@@ -18933,7 +20525,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             markers.push(markerProps);
 
                             //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                            //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                            //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                             //}
 
                             var markerColor = intToHexColorString(id);
@@ -18969,7 +20561,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         }
                     }
 
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "rangeArea",
@@ -19035,10 +20627,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             ghostCtx.fill();
 
             //if (isCanvasSupported) {
-            //	ghostCtx.lineTo(x, baseY);
-            //	ghostCtx.lineTo(startPoint.x, baseY);
-            //	ghostCtx.closePath();
-            //	ghostCtx.fill();
+            //  ghostCtx.lineTo(x, baseY);
+            //  ghostCtx.lineTo(startPoint.x, baseY);
+            //  ghostCtx.closePath();
+            //  ghostCtx.fill();
             //}
 
             if (dataSeries.lineThickness > 0) {
@@ -19137,6 +20729,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 ctx.strokeStyle = color;
                 ctx.lineWidth = dataSeries.lineThickness;
 
+                if (ctx.setLineDash) {
+                    ctx.setLineDash(getLineDashArray(dataSeries.lineDashType, dataSeries.lineThickness));
+                }
+
                 for (; i < dataPoints.length; i++) {
 
                     dataPointX = dataPoints[i].x.getTime ? dataPoints[i].x.getTime() : dataPoints[i].x;
@@ -19172,7 +20768,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             markers.push(markerProps);
 
                             //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                            //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                            //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                             //}
 
                             var markerColor = intToHexColorString(id);
@@ -19192,7 +20788,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             markers.push(markerProps);
 
                             //if (!dataSeries.maxWidthInX || markerProps.size > dataSeries.maxWidthInX) {
-                            //	dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
+                            //  dataSeries.maxWidthInX = markerProps.size / (plotUnit.axisX.conversionParameters.pixelPerUnit > 1 ? plotUnit.axisX.conversionParameters.pixelPerUnit - 1 : plotUnit.axisX.conversionParameters.pixelPerUnit);
                             //}
 
                             var markerColor = intToHexColorString(id);
@@ -19212,7 +20808,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
 
                     //Render Index Labels
-                    if (dataPoints[i].indexLabel || dataSeries.indexLabel) {
+                    if (dataPoints[i].indexLabel || dataSeries.indexLabel || dataPoints[i].indexLabelFormatter || dataSeries.indexLabelFormatter) {
 
                         this._indexLabels.push({
                             chartType: "splineArea",
@@ -19434,7 +21030,19 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
                 var dataPointEO = { id: id, objectType: "dataPoint", dataPointIndex: j, dataSeriesIndex: 0 };
                 dataPointEOs.push(dataPointEO);
-                var indexLabelText = dataPoint.indexLabel ? dataPoint.indexLabel : dataSeries.indexLabel ? dataSeries.indexLabel : dataPoint.label ? dataPoint.label : dataSeries.label ? dataSeries.label : '';
+
+                var percentAndTotal = { percent: null, total: null };
+                var formatterParameter = null;
+
+                percentAndTotal = _this.getPercentAndTotal(dataSeries, dataPoint);
+
+                if (dataSeries.indexLabelFormatter || dataPoint.indexLabelFormatter)
+                    formatterParameter = { chart: _this._options, dataSeries: dataSeries, dataPoint: dataPoint, total: percentAndTotal.total, percent: percentAndTotal.percent };
+
+                var indexLabelText = dataPoint.indexLabelFormatter ? dataPoint.indexLabelFormatter(formatterParameter)
+                    : dataPoint.indexLabel ? _this.replaceKeywordsWithValue(dataPoint.indexLabel, dataPoint, dataSeries, j)
+                    : dataSeries.indexLabelFormatter ? dataSeries.indexLabelFormatter(formatterParameter)
+                    : dataSeries.indexLabel ? _this.replaceKeywordsWithValue(dataSeries.indexLabel, dataPoint, dataSeries, j) : dataPoint.label ? dataPoint.label : '';
 
 
                 _this._eventManager.objectMap[id] = dataPointEO;
@@ -19443,10 +21051,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 dataPointEO.center = { x: center.x, y: center.y };
                 dataPointEO.y = dataPoint.y;
                 dataPointEO.radius = outerRadius;
-                dataPointEO.indexLabelText = _this.replaceKeywordsWithValue(indexLabelText, dataPoint, dataSeries, j);
+                dataPointEO.indexLabelText = indexLabelText;
                 dataPointEO.indexLabelPlacement = dataSeries.indexLabelPlacement;
                 dataPointEO.indexLabelLineColor = dataPoint.indexLabelLineColor ? dataPoint.indexLabelLineColor : dataSeries.indexLabelLineColor ? dataSeries.indexLabelLineColor : dataPoint.color ? dataPoint.color : dataSeries._colorSet[j % dataSeries._colorSet.length];
                 dataPointEO.indexLabelLineThickness = dataPoint.indexLabelLineThickness ? dataPoint.indexLabelLineThickness : dataSeries.indexLabelLineThickness;
+                dataPointEO.indexLabelLineDashType = dataPoint.indexLabelLineDashType ? dataPoint.indexLabelLineDashType : dataSeries.indexLabelLineDashType;
                 dataPointEO.indexLabelFontColor = dataPoint.indexLabelFontColor ? dataPoint.indexLabelFontColor : dataSeries.indexLabelFontColor;
                 dataPointEO.indexLabelFontStyle = dataPoint.indexLabelFontStyle ? dataPoint.indexLabelFontStyle : dataSeries.indexLabelFontStyle;
                 dataPointEO.indexLabelFontWeight = dataPoint.indexLabelFontWeight ? dataPoint.indexLabelFontWeight : dataSeries.indexLabelFontWeight;
@@ -19490,7 +21099,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 else
                     dataPointEO.hemisphere = "right";
 
-                //dataPointEO.indexLabelText = j.toString() + "; " + dataPoint.y.toString() + "; " + midAngle.toString() + "; junk";				
+                //dataPointEO.indexLabelText = j.toString() + "; " + dataPoint.y.toString() + "; " + midAngle.toString() + "; junk";                
                 dataPointEO.indexLabelTextBlock = new TextBlock(_this.plotArea.ctx, {
                     fontSize: dataPointEO.indexLabelFontSize, fontFamily: dataPointEO.indexLabelFontFamily, fontColor: dataPointEO.indexLabelFontColor,
                     fontStyle: dataPointEO.indexLabelFontStyle, fontWeight: dataPointEO.indexLabelFontWeight,
@@ -19537,7 +21146,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 var dataPointEO = dataPointEOs[(firstDPCloseToNorth + j) % dataPoints.length];
 
                 //if (dataPoint.hemisphere = "right")
-                //	break;
+                //  break;
 
                 if (noDPNearNorthPole > 1 && dataPointEO.midAngle > (3 * Math.PI / 2) - poleAnglularDistance && dataPointEO.midAngle < (3 * Math.PI / 2) + poleAnglularDistance) {
 
@@ -19586,7 +21195,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 dataPointEO.indexLabelTextBlock.x -= xOffset;
 
                 //if (i < 4)
-                //	customPrompt(i + "; " + center.y + "; " + dataPointEO.indexLabelTextBlock.y.toFixed(2));
+                //  customPrompt(i + "; " + center.y + "; " + dataPointEO.indexLabelTextBlock.y.toFixed(2));
 
                 dataPointEO.indexLabelTextBlock.y += dataPointEO.indexLabelTextBlock.height / 2;
 
@@ -19597,6 +21206,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     //ctx.strokeStyle = dataPoints[i].color ? dataPoints[i].color : dataSeries._colorSet[i % dataSeries._colorSet.length];
                     ctx.strokeStyle = dataPointEO.indexLabelLineColor;
                     ctx.lineWidth = dataPointEO.indexLabelLineThickness;
+
+                    if (ctx.setLineDash) {
+                        ctx.setLineDash(getLineDashArray(dataPointEO.indexLabelLineDashType, dataPointEO.indexLabelLineThickness));
+                    }
+
                     //ctx.lineWidth = 4;
                     ctx.beginPath();
                     ctx.moveTo(indexLabelLineStartX, indexLabelLineStartY);
@@ -19736,7 +21350,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     break;
                 }
                 else if ((dataPointEOs[nextLabelIndex].indexLabelText) && (nextLabelIndex !== currentLabelIndex)
-					&& ((getVerticalDistanceBetweenLabels(dataPointEOs[nextLabelIndex], dataPointEOs[currentLabelIndex]) < 0) || (dataPointEOs[currentLabelIndex].hemisphere === "right" ? dataPointEOs[nextLabelIndex].indexLabelTextBlock.y >= dataPointEOs[currentLabelIndex].indexLabelTextBlock.y : dataPointEOs[nextLabelIndex].indexLabelTextBlock.y <= dataPointEOs[currentLabelIndex].indexLabelTextBlock.y)))
+                    && ((getVerticalDistanceBetweenLabels(dataPointEOs[nextLabelIndex], dataPointEOs[currentLabelIndex]) < 0) || (dataPointEOs[currentLabelIndex].hemisphere === "right" ? dataPointEOs[nextLabelIndex].indexLabelTextBlock.y >= dataPointEOs[currentLabelIndex].indexLabelTextBlock.y : dataPointEOs[nextLabelIndex].indexLabelTextBlock.y <= dataPointEOs[currentLabelIndex].indexLabelTextBlock.y)))
                     break;
                 else {
                     nextLabelIndex = null;
@@ -19758,7 +21372,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     break;
                 }
                 else if ((dataPointEOs[prevLabelIndex].indexLabelText) && (dataPointEOs[prevLabelIndex].hemisphere === dataPointEOs[currentLabelIndex].hemisphere) && (prevLabelIndex !== currentLabelIndex)
-					&& ((getVerticalDistanceBetweenLabels(dataPointEOs[prevLabelIndex], dataPointEOs[currentLabelIndex]) < 0) || (dataPointEOs[currentLabelIndex].hemisphere === "right" ? dataPointEOs[prevLabelIndex].indexLabelTextBlock.y <= dataPointEOs[currentLabelIndex].indexLabelTextBlock.y : dataPointEOs[prevLabelIndex].indexLabelTextBlock.y >= dataPointEOs[currentLabelIndex].indexLabelTextBlock.y)))
+                    && ((getVerticalDistanceBetweenLabels(dataPointEOs[prevLabelIndex], dataPointEOs[currentLabelIndex]) < 0) || (dataPointEOs[currentLabelIndex].hemisphere === "right" ? dataPointEOs[prevLabelIndex].indexLabelTextBlock.y <= dataPointEOs[currentLabelIndex].indexLabelTextBlock.y : dataPointEOs[prevLabelIndex].indexLabelTextBlock.y >= dataPointEOs[currentLabelIndex].indexLabelTextBlock.y)))
                     break;
                 else {
                     prevLabelIndex = null;
@@ -19790,7 +21404,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 var dataPointEO = dataPointEOs[dataPointIndex];
 
                 //if (dataPointIndex === 0)
-                //	customPrompt(labelYMin.toFixed(2) + "; " + labelYMax.toFixed(2) + "; " + dataPointEO.indexLabelTextBlock.y.toFixed(2));
+                //  customPrompt(labelYMin.toFixed(2) + "; " + labelYMax.toFixed(2) + "; " + dataPointEO.indexLabelTextBlock.y.toFixed(2));
 
                 // If label is already outside the bounds, return
                 if ((offset < 0 && dataPointEO.indexLabelTextBlock.y < labelYMin) || (offset > 0 && dataPointEO.indexLabelTextBlock.y > labelYMax))
@@ -19890,7 +21504,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     if (otherDataPointIndex !== null) {
 
                         //if (dataPointIndex < 4)
-                        //	customPrompt("valid: " + validOffset);
+                        //  customPrompt("valid: " + validOffset);
 
                         var tempOffset = -validOffset;
 
@@ -19902,7 +21516,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                             otherDataPointActualOffset = rePositionLabels(otherDataPointIndex, otherDataPointOffset);
 
                             //if (dataPointIndex < 4)
-                            //	customPrompt(dataPointIndex + "; " + "offset: " + otherDataPointOffset);
+                            //  customPrompt(dataPointIndex + "; " + "offset: " + otherDataPointOffset);
 
 
                             if (+otherDataPointActualOffset.toFixed(precision) > +otherDataPointOffset.toFixed(precision)) {
@@ -19910,13 +21524,13 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                                 if (distanceFromOtherLabel > minDistanceBetweenLabels)
                                     actualOffset = -(distanceFromOtherLabel - minDistanceBetweenLabels);
                                     //else
-                                    //	actualOffset = 0;
+                                    //  actualOffset = 0;
                                 else
                                     actualOffset = -(tempOffset - (otherDataPointActualOffset - otherDataPointOffset));
                             }
 
                             //if (dataPointIndex < 4)
-                            //	customPrompt("actual: " + actualOffset);
+                            //  customPrompt("actual: " + actualOffset);
                         }
 
                     }
@@ -19943,7 +21557,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                                 if (distanceFromOtherLabel > minDistanceBetweenLabels)
                                     actualOffset = distanceFromOtherLabel - minDistanceBetweenLabels;
                                     //else
-                                    //	actualOffset = 0;
+                                    //  actualOffset = 0;
                                 else
                                     actualOffset = tempOffset - (otherDataPointOffset - otherDataPointActualOffset);
                             }
@@ -19952,12 +21566,12 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     }
 
                     //if (!(dataPointEO.indexLabelTextBlock.y + dataPointEO.indexLabelTextBlock.height / 2 + actualOffset < labelYMax)) {
-                    //	if (dataPointEO.indexLabelTextBlock.y + dataPointEO.indexLabelTextBlock.height / 2 < labelYMax) {
-                    //		actualOffset = labelYMax - (dataPointEO.indexLabelTextBlock.y + dataPointEO.indexLabelTextBlock.height / 2);
-                    //	}
-                    //	else {
-                    //		actualOffset = 0;
-                    //	}
+                    //  if (dataPointEO.indexLabelTextBlock.y + dataPointEO.indexLabelTextBlock.height / 2 < labelYMax) {
+                    //      actualOffset = labelYMax - (dataPointEO.indexLabelTextBlock.y + dataPointEO.indexLabelTextBlock.height / 2);
+                    //  }
+                    //  else {
+                    //      actualOffset = 0;
+                    //  }
                     //}
 
                 }
@@ -20002,7 +21616,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     }
 
                     //if (actualOffset < 0 && dataPointIndex < 4)
-                    //	customPrompt(actualOffset.toFixed(2) + "; " + dataPointEO.indexLabelTextBlock.y.toFixed(2) + "; " + newLabelY.toFixed(2));
+                    //  customPrompt(actualOffset.toFixed(2) + "; " + dataPointEO.indexLabelTextBlock.y.toFixed(2) + "; " + newLabelY.toFixed(2));
 
                     dataPointEO.indexLabelTextBlock.y = newLabelY;
 
@@ -20079,9 +21693,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         var distanceFromNextLabel = 0;
 
                         //if (dataPointEO.hemisphere === "right")
-                        //	distanceFromNextLabel = (nextDataPoint.indexLabelTextBlock.y - nextDataPoint.indexLabelTextBlock.height / 2) - (currentDataPoint.indexLabelTextBlock.y + currentDataPoint.indexLabelTextBlock.height / 2) - minDistanceBetweenLabels;
+                        //  distanceFromNextLabel = (nextDataPoint.indexLabelTextBlock.y - nextDataPoint.indexLabelTextBlock.height / 2) - (currentDataPoint.indexLabelTextBlock.y + currentDataPoint.indexLabelTextBlock.height / 2) - minDistanceBetweenLabels;
                         //else
-                        //	distanceFromNextLabel = (currentDataPoint.indexLabelTextBlock.y - currentDataPoint.indexLabelTextBlock.height / 2) - (nextDataPoint.indexLabelTextBlock.y + nextDataPoint.indexLabelTextBlock.height / 2) - minDistanceBetweenLabels;
+                        //  distanceFromNextLabel = (currentDataPoint.indexLabelTextBlock.y - currentDataPoint.indexLabelTextBlock.height / 2) - (nextDataPoint.indexLabelTextBlock.y + nextDataPoint.indexLabelTextBlock.height / 2) - minDistanceBetweenLabels;
 
                         distanceFromNextLabel = getVerticalDistanceBetweenLabels(currentDataPoint, nextDataPoint) - minDistanceBetweenLabels;
 
@@ -20099,11 +21713,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                                     continue;
 
                                 //if (dataPointEOs[k].hemisphere !== dataPointEO.hemisphere || Math.abs(dataPointEOs[k].midAngle - dataPointEO.midAngle) > 30)
-                                //	continue;
+                                //  continue;
                                 //if (dataPointEOs[k].hemisphere !== dataPointEO.hemisphere || Math.abs(dataPointEOs[k].labelAngle - dataPointEO.indexLabelAngle) > 30)
-                                //	continue;
+                                //  continue;
                                 //if (dataPointEOs[k].hemisphere !== dataPointEO.hemisphere || Math.abs(dataPointEOs[k].midAngle - dataPointEO.midAngle) > indexLabelAngleWhenTangent)
-                                //	continue;
+                                //  continue;
                                 if (dataPointEOs[k].hemisphere !== dataPointEO.hemisphere)
                                     continue;
 
@@ -20124,7 +21738,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                                 actualUpwardOffset = rePositionLabels(i, upWardsOffset);
 
                                 //if (i < 4 && actualDownwardOffset !== upWardsOffset)
-                                //	customPrompt(i + "; " + upWardsOffset.toFixed(2) + "; " + actualUpwardOffset.toFixed(2));
+                                //  customPrompt(i + "; " + upWardsOffset.toFixed(2) + "; " + actualUpwardOffset.toFixed(2));
 
 
                                 downWardsOffset = -1 * (distanceFromNextLabel - actualUpwardOffset);
@@ -20193,7 +21807,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
                     if (xOverFlow > 0) {
                         if (Math.abs(dataPointEO.indexLabelTextBlock.y - dataPointEO.indexLabelTextBlock.height / 2 - center.y) < outerRadius
-							|| Math.abs(dataPointEO.indexLabelTextBlock.y + dataPointEO.indexLabelTextBlock.height / 2 - center.y) < outerRadius) {
+                            || Math.abs(dataPointEO.indexLabelTextBlock.y + dataPointEO.indexLabelTextBlock.height / 2 - center.y) < outerRadius) {
 
                             xdr = xOverFlow / Math.abs(Math.cos(dataPointEO.indexLabelAngle));
 
@@ -20234,7 +21848,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                         }
                     } else {
                         //if (i < 4)
-                        //	customPrompt(i + "; " + center.y + "; " + dataPointEO.indexLabelTextBlock.y.toFixed(2));
+                        //  customPrompt(i + "; " + center.y + "; " + dataPointEO.indexLabelTextBlock.y.toFixed(2));
                     }
 
                 }
@@ -20294,9 +21908,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     distanceFromNextLabel = 0;
 
                     //if (nextDataPoint.indexLabelTextBlock.y > currentDataPoint.indexLabelTextBlock.y)
-                    //	distanceFromNextLabel = (nextDataPoint.indexLabelTextBlock.y - (nextDataPoint.indexLabelTextBlock.height / 2)) - (currentDataPoint.indexLabelTextBlock.y + (currentDataPoint.indexLabelTextBlock.height / 2));
+                    //  distanceFromNextLabel = (nextDataPoint.indexLabelTextBlock.y - (nextDataPoint.indexLabelTextBlock.height / 2)) - (currentDataPoint.indexLabelTextBlock.y + (currentDataPoint.indexLabelTextBlock.height / 2));
                     //else
-                    //	distanceFromNextLabel = (currentDataPoint.indexLabelTextBlock.y - (currentDataPoint.indexLabelTextBlock.height / 2)) - (nextDataPoint.indexLabelTextBlock.y + (nextDataPoint.indexLabelTextBlock.height / 2));
+                    //  distanceFromNextLabel = (currentDataPoint.indexLabelTextBlock.y - (currentDataPoint.indexLabelTextBlock.height / 2)) - (nextDataPoint.indexLabelTextBlock.y + (nextDataPoint.indexLabelTextBlock.height / 2));
 
                     distanceFromNextLabel = getVerticalDistanceBetweenLabels(currentDataPoint, nextDataPoint);
 
@@ -20365,6 +21979,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 _this._animator.animate(0, explodeDuration, function (fractionComplete) {
 
                     explodeToggle(fractionComplete);
+                    renderChartElementsInPlotArea();
                     //console.log("Explode Start");
 
                 });
@@ -20381,6 +21996,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         this._animator.animate(0, this.animatedRender ? this.animationDuration : 0, function (fractionComplete) {
 
             animate(fractionComplete);
+            renderChartElementsInPlotArea();
 
         }, function () {
 
@@ -20388,11 +22004,34 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             _this._animator.animate(0, _this.animatedRender ? explodeDuration : 0, function (fractionComplete) {
 
                 explodeToggle(fractionComplete);
+                renderChartElementsInPlotArea();
 
             });
 
             //console.log("Animation Complete");
         });
+
+        function renderChartElementsInPlotArea() {
+
+            _this.plotArea.layoutManager.reset();
+
+            if (_this._title) {
+                if (_this._title.dockInsidePlotArea || (_this._title.horizontalAlign === "center" && _this._title.verticalAlign === "center"))
+                    _this._title.render();
+            }
+
+            if (_this.subtitles)
+                for (var i = 0; i < _this.subtitles.length; i++) {
+                    var subtitle = _this.subtitles[i];
+                    if (subtitle.dockInsidePlotArea || (subtitle.horizontalAlign === "center" && subtitle.verticalAlign === "center"))
+                        subtitle.render();
+                }
+
+            if (_this.legend) {
+                if (_this.legend.dockInsidePlotArea || (_this.legend.horizontalAlign === "center" && _this.legend.verticalAlign === "center"))
+                    _this.legend.render();
+            }
+        }
 
         //this.ctx.strokeRect(plotArea.x1 + 1, plotArea.y1, plotArea.width - 2, plotArea.height);
     }
@@ -20405,34 +22044,43 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
     Chart.prototype.requestAnimFrame = (function () {
         return window.requestAnimationFrame ||
-				window.webkitRequestAnimationFrame ||
-				window.mozRequestAnimationFrame ||
-				window.oRequestAnimationFrame ||
-				window.msRequestAnimationFrame ||
-				function (callback) {
-				    window.setTimeout(callback, 1000 / 60);
-				};
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
     })();
 
     Chart.prototype.cancelRequestAnimFrame = (function () {
         return window.cancelAnimationFrame ||
-			window.webkitCancelRequestAnimationFrame ||
-			window.mozCancelRequestAnimationFrame ||
-			window.oCancelRequestAnimationFrame ||
-			window.msCancelRequestAnimationFrame ||
-			clearTimeout
+            window.webkitCancelRequestAnimationFrame ||
+            window.mozCancelRequestAnimationFrame ||
+            window.oCancelRequestAnimationFrame ||
+            window.msCancelRequestAnimationFrame ||
+            clearTimeout
     })();
 
     //#endregion Class Chart
 
     //#region Class LayoutManager
-    function LayoutManager(chart) {
+    function LayoutManager(x1, y1, x2, y2, padding) {
 
-        this._topOccupied = 0;
-        this._bottomOccupied = 0;
-        this._leftOccupied = 0;
-        this._rightOccupied = 0;
-        this.chart = chart;
+        if (typeof (padding) === "undefined")
+            padding = 0;
+
+        this._padding = padding;
+
+        this._x1 = x1;
+        this._y1 = y1;
+        this._x2 = x2;
+        this._y2 = y2;
+
+        this._topOccupied = this._padding;
+        this._bottomOccupied = this._padding;
+        this._leftOccupied = this._padding;
+        this._rightOccupied = this._padding;
     }
 
     LayoutManager.prototype.registerSpace = function (position, size) {
@@ -20467,26 +22115,27 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         ///</signature>
 
         return {
-            x1: this._leftOccupied,
-            y1: this._topOccupied,
-            x2: this.chart.width - this._rightOccupied,
-            y2: this.chart.height - this._bottomOccupied,
-            width: (this.chart.width - this._rightOccupied) - this._leftOccupied,
-            height: (this.chart.height - this._bottomOccupied) - this._topOccupied
+            x1: this._x1 + this._leftOccupied,
+            y1: this._y1 + this._topOccupied,
+            x2: this._x2 - this._rightOccupied,
+            y2: this._y2 - this._bottomOccupied,
+            width: (this._x2 - this._x1) - this._rightOccupied - this._leftOccupied,
+            height: (this._y2 - this._y1) - this._bottomOccupied - this._topOccupied
         };
     }
 
     LayoutManager.prototype.reset = function () {
-        this._topOccupied = 0;
-        this._bottomOccupied = 3;//so that there is enough padding in the bottom.
-        this._leftOccupied = 0;
-        this._rightOccupied = 0;
+        //so that there is enough padding.
+        this._topOccupied = this._padding;
+        this._bottomOccupied = this._padding;
+        this._leftOccupied = this._padding;
+        this._rightOccupied = this._padding;
     }
     //#endregion Class LayoutManager
 
     //#region Class TextBlock
     function TextBlock(ctx, options) {
-        TextBlock.parent.constructor.call(this, "TextBlock", options);
+        TextBlock.base.constructor.call(this, "TextBlock", options);
 
         this.ctx = ctx;
         this._isDirty = true;
@@ -20525,8 +22174,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             this.ctx.roundRect(0, offsetY, this.width, this.height, this.cornerRadius, this.borderThickness, this.backgroundColor, this.borderColor);
 
             //if (this.textBaseline === "middle") {
-            //	//textTop += this.fontSize / 2;
-            //	textTop += this._lineHeight / 2;
+            //  //textTop += this.fontSize / 2;
+            //  textTop += this._lineHeight / 2;
             //}
         }
 
@@ -20578,9 +22227,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             return { text: "", width: 0 };
 
         var textWidth = 0,
-			min = 0,
-			max = text.length - 1,
-			mid = Infinity;
+            min = 0,
+            max = text.length - 1,
+            mid = Infinity;
 
         this.ctx.font = this._getFontString();
 
@@ -20624,7 +22273,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
     TextBlock.prototype._wrapText = function wrapText() {
         //this.ctx.save();
-        var text = new String(trimString(this.text));
+        var text = new String(trimString(String(this.text)));
         var lines = [];
         var font = this.ctx.font; // Save the current Font
         var height = 0;
@@ -20669,7 +22318,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     //#region Class Title
 
     function Title(chart, options) {
-        Title.parent.constructor.call(this, "Title", options, chart.theme);
+        Title.base.constructor.call(this, "Title", options, chart.theme);
 
         this.chart = chart;
         this.canvas = chart.canvas;
@@ -20684,7 +22333,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         }
 
         this.width = null,//read only
-		this.height = null//read only
+        this.height = null//read only
         this.bounds = { x1: null, y1: null, x2: null, y2: null };
     }
 
@@ -20694,31 +22343,43 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         if (!this.text)
             return;
 
-        var freespace = this.chart.layoutManager.getFreeSpace();
-        var left = 0;
-        var top = 0;
+        var container = (!this.dockInsidePlotArea ? this.chart : this.chart.plotArea);
+        var freespace = container.layoutManager.getFreeSpace();
+        var left = freespace.x1;
+        var top = freespace.y1;
         var angle = 0;
-        var maxWidth = 0;
         var maxHeight = 0;
+        var containerMargin = 2; //Margin towards the container
+        var rightOffset = this.chart._menuButton && this.chart.exportEnabled && this.verticalAlign === "top" ? 22 : 0; //So that Title doesn't overlap menu button.
 
         var textBlockHorizontalAlign;
         var position;
 
         if (this.verticalAlign === "top" || this.verticalAlign === "bottom") {
-            maxWidth = freespace.width - this.margin * 2;
-            maxHeight = freespace.height * .5 - this.margin * 2;
+            if (this.maxWidth === null)
+                this.maxWidth = freespace.width - containerMargin * 2 - rightOffset * (this.horizontalAlign === "center" ? 2 : 1);
+
+            maxHeight = freespace.height * .5 - this.margin - containerMargin;
             angle = 0;
         }
         else if (this.verticalAlign === "center") {
 
             if (this.horizontalAlign === "left" || this.horizontalAlign === "right") {
-                maxWidth = freespace.height - this.margin * 2;
-                maxHeight = freespace.width * .5 - this.margin * 2;
+                if (this.maxWidth === null)
+                    this.maxWidth = freespace.height - containerMargin * 2;
+
+                maxHeight = freespace.width * .5 - this.margin - containerMargin;
             } else if (this.horizontalAlign === "center") {
-                maxWidth = freespace.width - this.margin * 2;
-                maxHeight = freespace.height * .5 - this.margin * 2;
+                if (this.maxWidth === null)
+                    this.maxWidth = freespace.width - containerMargin * 2;
+
+                maxHeight = freespace.height * .5 - containerMargin * 2;
             }
         }
+
+        if (!this.wrap)
+            maxHeight = Math.min(maxHeight, Math.max(this.fontSize * 1.5, this.fontSize + this.padding * 2.5));
+        //console.log(this.maxWidth);
 
         var textBlock = new TextBlock(this.ctx, {
             fontSize: this.fontSize, fontFamily: this.fontFamily, fontColor: this.fontColor,
@@ -20726,7 +22387,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             horizontalAlign: this.horizontalAlign, verticalAlign: this.verticalAlign,
             borderColor: this.borderColor, borderThickness: this.borderThickness,
             backgroundColor: this.backgroundColor,
-            maxWidth: maxWidth, maxHeight: maxHeight,
+            maxWidth: this.maxWidth, maxHeight: maxHeight,
             cornerRadius: this.cornerRadius,
             text: this.text,
             padding: this.padding,
@@ -20738,22 +22399,22 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         if (this.verticalAlign === "top" || this.verticalAlign === "bottom") {
 
             if (this.verticalAlign === "top") {
-                top = this.margin;
+                top = freespace.y1 + containerMargin;
                 position = "top";
             }
             else if (this.verticalAlign === "bottom") {
-                top = freespace.y2 - this.margin - textBlockSize.height;
+                top = freespace.y2 - containerMargin - textBlockSize.height;
                 position = "bottom";
             }
 
             if (this.horizontalAlign === "left") {
-                left = freespace.x1 + this.margin;
+                left = freespace.x1 + containerMargin;
             }
             else if (this.horizontalAlign === "center") {
-                left = freespace.x1 + (maxWidth / 2 - textBlockSize.width / 2) + this.margin;
+                left = freespace.x1 + freespace.width / 2 - textBlockSize.width / 2;
             }
             else if (this.horizontalAlign === "right") {
-                left = freespace.x2 - this.margin - textBlockSize.width;
+                left = freespace.x2 - containerMargin - textBlockSize.width - rightOffset;
             }
 
             textBlockHorizontalAlign = this.horizontalAlign;
@@ -20765,8 +22426,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
             if (this.horizontalAlign === "left") {
 
-                left = freespace.x1 + this.margin;
-                top = freespace.y2 - this.margin - (maxWidth / 2 - textBlockSize.width / 2);
+                left = freespace.x1 + containerMargin;
+                top = freespace.y2 - containerMargin - (this.maxWidth / 2 - textBlockSize.width / 2);
                 angle = -90;
 
                 position = "left";
@@ -20774,8 +22435,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 this.height = textBlockSize.width;
             }
             else if (this.horizontalAlign === "right") {
-                left = freespace.x2 - this.margin;
-                top = freespace.y1 + this.margin + (maxWidth / 2 - textBlockSize.width / 2);
+                left = freespace.x2 - containerMargin;
+                top = freespace.y1 + containerMargin + (this.maxWidth / 2 - textBlockSize.width / 2);
                 angle = 90;
 
                 position = "right";
@@ -20783,8 +22444,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 this.height = textBlockSize.width;
             }
             else if (this.horizontalAlign === "center") {
-                top = freespace.y1 + (freespace.height / 2 - textBlockSize.height / 2);
-                left = freespace.x1 + (freespace.width / 2 - textBlockSize.width / 2);
+                top = container.y1 + (container.height / 2 - textBlockSize.height / 2);
+                left = container.x1 + (container.width / 2 - textBlockSize.width / 2);
 
                 position = "center";
                 this.width = textBlockSize.width;
@@ -20800,7 +22461,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         textBlock.horizontalAlign = textBlockHorizontalAlign;
         textBlock.render(true);
 
-        this.chart.layoutManager.registerSpace(position, { width: this.width + this.margin * 2, height: this.height + this.margin * 2 });
+        container.layoutManager.registerSpace(position, {
+            width: this.width + (position === "left" || position === "right" ? this.margin + containerMargin : 0),
+            height: this.height + (position === "top" || position === "bottom" ? this.margin + containerMargin : 0)
+        });
 
         this.bounds = { x1: left, y1: top, x2: left + this.width, y2: top + this.height };
 
@@ -20810,11 +22474,38 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
     //#endregion Class Title
 
+    //#region Class SubTitle
+
+    function Subtitle(chart, options) {
+        Subtitle.base.constructor.call(this, "Subtitle", options, chart.theme);
+
+        this.chart = chart;
+        this.canvas = chart.canvas;
+        this.ctx = this.chart.ctx;
+
+
+        if (typeof (this._options.fontSize) === "undefined") {
+
+            this.fontSize = this.chart.getAutoFontSize(this.fontSize);
+
+            //window.console.log("Chart Title fontSize: " + this.fontSize);
+        }
+
+        this.width = null,//read only
+        this.height = null//read only
+        this.bounds = { x1: null, y1: null, x2: null, y2: null };
+    }
+
+    extend(Subtitle, CanvasJSObject);
+    Subtitle.prototype.render = Title.prototype.render;
+
+    //#endregion Class SubTitle
+
     //#region Legend
 
     //TBI: Implement Markes for Legend
     function Legend(chart, options, theme) {
-        Legend.parent.constructor.call(this, "Legend", options, theme);
+        Legend.base.constructor.call(this, "Legend", options, theme);
 
         this.chart = chart;
         this.canvas = chart.canvas;
@@ -20824,9 +22515,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         this.width = 0,
         //this.fontSize = 12,
-		this.height = 0,
-		this.orientation = null,
-		this.horizontalSpacing = 10;
+        this.height = 0,
+        this.orientation = null,
         this.dataSeries = [];
         this.bounds = { x1: null, y1: null, x2: null, y2: null };
 
@@ -20836,11 +22526,15 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         }
 
         this.lineHeight = getFontHeightInPixels(this.fontFamily, this.fontSize, this.fontWeight);
+
+        this.horizontalSpacing = this.fontSize;
     }
     extend(Legend, CanvasJSObject);
 
     Legend.prototype.render = function () {
-        var freeSpace = this.chart.layoutManager.getFreeSpace();
+
+        var container = (!this.dockInsidePlotArea ? this.chart : this.chart.plotArea);
+        var freeSpace = container.layoutManager.getFreeSpace();
         var position = null;
         var top = 0;
         var left = 0;
@@ -20851,37 +22545,40 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         var items = [];
         var rows = [];
 
-
-
         //this.ctx.font = getFontString("", this, null);
         //this.ctx.fontColor = this.fontColor;
 
         if (this.verticalAlign === "top" || this.verticalAlign === "bottom") {
             this.orientation = "horizontal";
             position = this.verticalAlign;
-            maxWidth = freeSpace.width * .9;
-            maxHeight = freeSpace.height * .5;
+
+            maxWidth = this.maxWidth !== null ? this.maxWidth : freeSpace.width * .7;
+            maxHeight = this.maxHeight !== null ? this.maxHeight : freeSpace.height * .5;
         }
         else if (this.verticalAlign === "center") {
             this.orientation = "vertical";
             position = this.horizontalAlign;
 
-            maxWidth = freeSpace.width * .5;
-            maxHeight = freeSpace.height * .9;
+            maxWidth = this.maxWidth !== null ? this.maxWidth : freeSpace.width * .5;
+            maxHeight = this.maxHeight !== null ? this.maxHeight : freeSpace.height * .7;
         }
 
         for (var i = 0; i < this.dataSeries.length; i++) {
             var dataSeries = this.dataSeries[i];
 
-            var markerType = dataSeries.legendMarkerType ? dataSeries.legendMarkerType : (dataSeries.type === "line" || dataSeries.type === "stepLine" || dataSeries.type === "spline" || dataSeries.type === "scatter" || dataSeries.type === "bubble") && dataSeries.markerType ? dataSeries.markerType : DataSeries.getDefaultLegendMarker(dataSeries.type);
-            var legendText = dataSeries.legendText ? dataSeries.legendText : dataSeries.name;
-            var markerColor = dataSeries.legendMarkerColor ? dataSeries.legendMarkerColor : dataSeries.markerColor ? dataSeries.markerColor : dataSeries._colorSet[0];
-            var markerSize = (!dataSeries.markerSize && (dataSeries.type === "line" || dataSeries.type === "stepLine" || dataSeries.type === "spline")) ? 0 : this.lineHeight * .6;
-            var markerBorderColor = dataSeries.legendMarkerBorderColor ? dataSeries.legendMarkerBorderColor : dataSeries.markerBorderColor;
-            var markerBorderThickness = dataSeries.legendMarkerBorderThickness ? dataSeries.legendMarkerBorderThickness : dataSeries.markerBorderThickness ? Math.max(1, Math.round(markerSize * .2)) : 0;
-            var lineColor = dataSeries._colorSet[0];
 
             if (dataSeries.type !== "pie" && dataSeries.type !== "doughnut" && dataSeries.type !== "funnel") {
+
+                var markerType = dataSeries.legendMarkerType ? dataSeries.legendMarkerType : (dataSeries.type === "line" || dataSeries.type === "stepLine" || dataSeries.type === "spline" || dataSeries.type === "scatter" || dataSeries.type === "bubble") && dataSeries.markerType ? dataSeries.markerType : DataSeries.getDefaultLegendMarker(dataSeries.type);
+                var legendText = dataSeries.legendText ? dataSeries.legendText : this.itemTextFormatter ? this.itemTextFormatter({ chart: this.chart, legend: this._options, dataSeries: dataSeries, dataPoint: null })
+                    : dataSeries.name;
+                var markerColor = dataSeries.legendMarkerColor ? dataSeries.legendMarkerColor : dataSeries.markerColor ? dataSeries.markerColor : dataSeries._colorSet[0];
+                var markerSize = (!dataSeries.markerSize && (dataSeries.type === "line" || dataSeries.type === "stepLine" || dataSeries.type === "spline")) ? 0 : this.lineHeight * .6;
+                var markerBorderColor = dataSeries.legendMarkerBorderColor ? dataSeries.legendMarkerBorderColor : dataSeries.markerBorderColor;
+                var markerBorderThickness = dataSeries.legendMarkerBorderThickness ? dataSeries.legendMarkerBorderThickness : dataSeries.markerBorderThickness ? Math.max(1, Math.round(markerSize * .2)) : 0;
+                var lineColor = dataSeries._colorSet[0];
+
+                legendText = this.chart.replaceKeywordsWithValue(legendText, dataSeries.dataPoints[0], dataSeries, i);
                 var item = {
                     markerType: markerType, markerColor: markerColor, text: legendText, textBlock: null, chartType: dataSeries.type, markerSize: markerSize, lineColor: dataSeries._colorSet[0],
                     dataSeriesIndex: dataSeries.index, dataPointIndex: null, markerBorderColor: markerBorderColor, markerBorderThickness: markerBorderThickness
@@ -20893,39 +22590,74 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
                     var dataPoint = dataSeries.dataPoints[dataPointIndex];
 
-                    markerType = dataPoint.legendMarkerType ? dataPoint.legendMarkerType : dataSeries.legendMarkerType ? dataSeries.legendMarkerType : DataSeries.getDefaultLegendMarker(dataSeries.type);
-                    var legendText = dataPoint.legendText ? dataPoint.legendText : dataSeries.legendText ? dataSeries.legendText : dataPoint.name ? dataPoint.name : "DataPoint: " + (dataPointIndex + 1);
+                    var markerType = dataPoint.legendMarkerType ? dataPoint.legendMarkerType : dataSeries.legendMarkerType ? dataSeries.legendMarkerType : DataSeries.getDefaultLegendMarker(dataSeries.type);
+                    var legendText = dataPoint.legendText ? dataPoint.legendText : dataSeries.legendText ? dataSeries.legendText : this.itemTextFormatter ? this.itemTextFormatter({ chart: this.chart, legend: this._options, dataSeries: dataSeries, dataPoint: dataPoint })
+                        : dataPoint.name ? dataPoint.name : "DataPoint: " + (dataPointIndex + 1);
                     var markerColor = dataPoint.legendMarkerColor ? dataPoint.legendMarkerColor : dataSeries.legendMarkerColor ? dataSeries.legendMarkerColor : dataPoint.color ? dataPoint.color : dataSeries.color ? dataSeries.color : dataSeries._colorSet[dataPointIndex % dataSeries._colorSet.length];
-                    var markerSize = ((dataPoint.markerSize === 0 || (dataSeries.markerSize === 0 && !dataPoint.markerSize))) ? 0 : this.lineHeight * .6;
+                    var markerSize = this.lineHeight * .6;
                     var markerBorderColor = dataPoint.legendMarkerBorderColor ? dataPoint.legendMarkerBorderColor : dataSeries.legendMarkerBorderColor ? dataSeries.legendMarkerBorderColor : dataPoint.markerBorderColor ? dataPoint.markerBorderColor : dataSeries.markerBorderColor;
                     var markerBorderThickness = dataPoint.legendMarkerBorderThickness ? dataPoint.legendMarkerBorderThickness : dataSeries.legendMarkerBorderThickness ? dataSeries.legendMarkerBorderThickness : dataPoint.markerBorderThickness || dataSeries.markerBorderThickness ? Math.max(1, Math.round(markerSize * .2)) : 0;
+
+                    legendText = this.chart.replaceKeywordsWithValue(legendText, dataPoint, dataSeries, dataPointIndex);
 
                     var item = {
                         markerType: markerType, markerColor: markerColor, text: legendText, textBlock: null, chartType: dataSeries.type, markerSize: markerSize,
                         dataSeriesIndex: i, dataPointIndex: dataPointIndex, markerBorderColor: markerBorderColor, markerBorderThickness: markerBorderThickness
                     };
 
-                    items.push(item);
+                    if (dataPoint.showInLegend || (dataSeries.showInLegend && dataPoint.showInLegend !== false)) {
+                        items.push(item);
+                    }
                 }
             }
-
             item = null;
         }
-
+        if (this.reversed === true) {
+            items.reverse();
+        }
 
         // Find out the required width and height of Legend and position the items relative to the container
         if (items.length > 0) {
             var row = null;
             var rowIndex = 0; // required for vertical orientation
+            var textMaxWidth = 0;
+            var columnHeight = 0;
+
+            if (this.itemWidth !== null) {
+                if (this.itemMaxWidth !== null) {
+                    textMaxWidth = Math.min(this.itemWidth, this.itemMaxWidth, maxWidth);
+                } else {
+                    textMaxWidth = Math.min(this.itemWidth, maxWidth);
+                }
+            } else {
+                if (this.itemMaxWidth !== null) {
+                    textMaxWidth = Math.min(this.itemMaxWidth, maxWidth);
+                } else {
+                    textMaxWidth = maxWidth;
+                }
+            }
+            
+            markerSize = (markerSize === 0 ? this.lineHeight * .6 : markerSize);
+            textMaxWidth = textMaxWidth - (markerSize + this.horizontalSpacing * .1);
+
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
 
+                if (item.chartType === "line" || item.chartType === "spline" || item.chartType === "stepLine") {
+                    textMaxWidth = textMaxWidth - 2 * (this.lineHeight * .1);
+                }
+
+                if (maxHeight <= 0 || typeof (maxHeight) === "undefined" || textMaxWidth <= 0 || typeof (textMaxWidth) === "undefined") {
+                    continue;
+                }
+
                 if (this.orientation === "horizontal") {
+
                     item.textBlock = new TextBlock(this.ctx, {
                         x: 0,
                         y: 0,//TBI
-                        maxWidth: maxWidth,
-                        maxHeight: this.lineHeight, //TBI: FontSize
+                        maxWidth: textMaxWidth,
+                        maxHeight: this.itemWrap ? maxHeight : this.lineHeight, //TBI: FontSize
                         angle: 0,
                         text: item.text,
                         horizontalAlign: "left",//left, center, right
@@ -20938,36 +22670,33 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     });
                     item.textBlock.measureText();
 
+                    if (this.itemWidth !== null) {
+                        item.textBlock.width = this.itemWidth - (markerSize + this.horizontalSpacing * .1 + ((item.chartType === "line" || item.chartType === "spline" || item.chartType === "stepLine") ? 2 * (this.lineHeight * .1) : 0));
+                    }
 
-                    if (!row || row.width + item.textBlock.width + (row.width === 0 ? 0 : this.horizontalSpacing) > maxWidth) {
+                    if (!row || row.width + Math.round(item.textBlock.width + this.horizontalSpacing * .1 + markerSize + (row.width === 0 ? 0 : (this.horizontalSpacing)) + ((item.chartType === "line" || item.chartType === "spline" || item.chartType === "stepLine") ? 2 * (this.lineHeight * .1) : 0)) > maxWidth) {
                         row = { items: [], width: 0 };
                         rows.push(row);
-                        this.height = rows.length * (item.textBlock.height + 5);
+                        this.height += columnHeight;
+                        columnHeight = 0;
                     }
+
+                    columnHeight = Math.max(columnHeight, item.textBlock.height);
 
                     item.textBlock.x = row.width;
                     item.textBlock.y = 0;
 
-                    row.width += Math.round(item.textBlock.width + item.textBlock._lineHeight + (row.width === 0 ? 0 : item.textBlock._lineHeight * .5));
+                    row.width += Math.round(item.textBlock.width + this.horizontalSpacing * .1 + markerSize + (row.width === 0 ? 0 : this.horizontalSpacing) + ((item.chartType === "line" || item.chartType === "spline" || item.chartType === "stepLine") ? 2 * (this.lineHeight * .1) : 0));
                     row.items.push(item);
 
                     this.width = Math.max(row.width, this.width);
-
                 } else {
-                    if (this.height + this.lineHeight < maxHeight) {
-                        row = { items: [], width: 0 };
-                        rows.push(row);
-                        this.height = rows.length * (this.lineHeight);
-                    } else {
-                        row = rows[rowIndex];
-                        rowIndex = (rowIndex + 1) % rows.length
-                    }
 
                     item.textBlock = new TextBlock(this.ctx, {
                         x: 0,
                         y: 0,//TBI
-                        maxWidth: maxWidth,
-                        maxHeight: this.fontSize * 1.5, //TBI: FontSize
+                        maxWidth: textMaxWidth,
+                        maxHeight: this.itemWrap === true ? maxHeight : this.fontSize * 1.5, //TBI: FontSize
                         angle: 0,
                         text: item.text,
                         horizontalAlign: "left",//left, center, right
@@ -20981,48 +22710,67 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
                     item.textBlock.measureText();
 
-                    item.textBlock.x = row.width; // relative to the row
-                    item.textBlock.y = 0; // relative to the row
+                    if (this.itemWidth !== null) {
+                        item.textBlock.width = this.itemWidth - (markerSize + this.horizontalSpacing * .1 + ((item.chartType === "line" || item.chartType === "spline" || item.chartType === "stepLine") ? 2 * (this.lineHeight * .1) : 0));
+                    }
 
-                    row.width += item.textBlock.width + item.textBlock._lineHeight + (row.width === 0 ? 0 : item.textBlock._lineHeight * .5);
+                    if (this.height <= maxHeight) {
+                        row = { items: [], width: 0 };
+                        rows.push(row);
+                    } else {
+                        row = rows[rowIndex];
+                        rowIndex = (rowIndex + 1) % rows.length;
+                    }
+
+                    this.height += item.textBlock.height;
+
+                    item.textBlock.x = row.width; // relative to the row                    
+                    item.textBlock.y = 0; // relative to the row                                   
+
+                    row.width += Math.round(item.textBlock.width + this.horizontalSpacing * .1 + markerSize + (row.width === 0 ? 0 : this.horizontalSpacing) + ((item.chartType === "line" || item.chartType === "spline" || item.chartType === "stepLine") ? 2 * (this.lineHeight * .1) : 0));
                     row.items.push(item);
 
                     this.width = Math.max(row.width, this.width);
                 }
             }
 
-            this.height = rows.length * (this.lineHeight);
+            if (this.itemWrap === false) {
+                this.height = rows.length * (this.lineHeight);
+            } else {
+                this.height += columnHeight;
+            }
 
+            this.height = Math.min(maxHeight, this.height);
+            this.width = Math.min(maxWidth, this.width);
         }
 
         if (this.verticalAlign === "top") {
             if (this.horizontalAlign === "left")
-                left = freeSpace.x1 + 2;
+                left = freeSpace.x1;
             else if (this.horizontalAlign === "right")
-                left = freeSpace.x2 - this.width - 2;
+                left = freeSpace.x2 - this.width;
             else
                 left = freeSpace.x1 + freeSpace.width / 2 - this.width / 2;
 
             top = freeSpace.y1;
         } else if (this.verticalAlign === "center") {
             if (this.horizontalAlign === "left")
-                left = freeSpace.x1 + 2;
+                left = freeSpace.x1;
             else if (this.horizontalAlign === "right")
-                left = freeSpace.x2 - this.width - 2;
+                left = freeSpace.x2 - this.width;
             else
                 left = freeSpace.x1 + freeSpace.width / 2 - this.width / 2;
 
             top = freeSpace.y1 + freeSpace.height / 2 - this.height / 2;
         } else if (this.verticalAlign === "bottom") {
             if (this.horizontalAlign === "left")
-                left = freeSpace.x1 + 2;
+                left = freeSpace.x1;
             else if (this.horizontalAlign === "right")
-                left = freeSpace.x2 - this.width - 2;
+                left = freeSpace.x2 - this.width;
             else
                 left = freeSpace.x1 + freeSpace.width / 2 - this.width / 2;
 
-
-            top = freeSpace.y2 - this.height - 5;
+            top = freeSpace.y2 - this.height;
         }
 
         this.items = items;
@@ -21039,35 +22787,55 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             //delete item.textBlock;// Not Required anymore
         }
 
+        var rowHeight = 0;
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
+            var columnHeight = 0;
             for (var itemIndex = 0; itemIndex < row.items.length; itemIndex++) {
                 var item = row.items[itemIndex];
 
-                var legendX = item.textBlock.x + left + (itemIndex === 0 ? item.markerSize * .2 : (this.lineHeight * .4) + (item.markerSize * .2));
-                var legendY = top + (i * this.lineHeight);
+                var itemX = item.textBlock.x + left + (itemIndex === 0 ? markerSize * .2 : this.horizontalSpacing);
+                var itemY = top + rowHeight;
 
-                var ghostX = legendX;
+                var ghostX = itemX;
 
                 if (!this.chart.data[item.dataSeriesIndex].visible)
                     this.ctx.globalAlpha = .5;
+
+                this.ctx.save();
+                this.ctx.rect(left, top, maxWidth, maxHeight);
+                this.ctx.clip();
 
                 if (item.chartType === "line" || item.chartType === "stepLine" || item.chartType === "spline") {
                     this.ctx.strokeStyle = item.lineColor;
                     this.ctx.lineWidth = Math.ceil(this.lineHeight / 8);
                     this.ctx.beginPath();
-                    this.ctx.moveTo(legendX - this.lineHeight * .1, legendY + this.lineHeight / 2);
-                    this.ctx.lineTo(legendX + this.lineHeight * .7, legendY + this.lineHeight / 2);
+                    this.ctx.moveTo(itemX - this.lineHeight * .1, itemY + this.lineHeight / 2);
+                    this.ctx.lineTo(itemX + this.lineHeight * .7, itemY + this.lineHeight / 2);
                     this.ctx.stroke();
 
                     ghostX -= this.lineHeight * .1;
                 }
 
-                RenderHelper.drawMarker(legendX + item.markerSize / 2, legendY + (this.lineHeight / 2), this.ctx, item.markerType, item.markerSize, item.markerColor, item.markerBorderColor, item.markerBorderThickness);
+                RenderHelper.drawMarker(itemX + markerSize / 2, itemY + (this.lineHeight / 2), this.ctx, item.markerType, item.markerSize, item.markerColor, item.markerBorderColor, item.markerBorderThickness);
 
-                item.textBlock.x = legendX + Math.round(this.lineHeight * .9);
-                item.textBlock.y = legendY;
+                item.textBlock.x = itemX + this.horizontalSpacing * .1 + markerSize;
+
+                if (item.chartType === "line" || item.chartType === "stepLine" || item.chartType === "spline") {
+                    item.textBlock.x = item.textBlock.x + this.lineHeight * .1;
+                }
+
+                item.textBlock.y = itemY;
+
                 item.textBlock.render(true);
+
+                this.ctx.restore();
+
+                if (itemIndex > 0) {
+                    columnHeight = Math.max(columnHeight, item.textBlock.height);
+                } else {
+                    columnHeight = item.textBlock.height;
+                }
 
                 if (!this.chart.data[item.dataSeriesIndex].visible)
                     this.ctx.globalAlpha = 1;
@@ -21082,8 +22850,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 item.x2 = this.chart._eventManager.objectMap[item.id].x2 = item.textBlock.x + item.textBlock.width;
                 item.y2 = this.chart._eventManager.objectMap[item.id].y2 = item.textBlock.y + item.textBlock.height;
             }
+            rowHeight = rowHeight + columnHeight;
         }
-
 
         //this.ctx.beginPath();
         //this.ctx.lineWidth = 2;
@@ -21091,8 +22859,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //this.ctx.rect(left, top, this.width, this.height);
         //this.ctx.stroke();
 
-
-        this.chart.layoutManager.registerSpace(position, { width: this.width + 2 + 2, height: this.height + 5 + 5 });
+        container.layoutManager.registerSpace(position, { width: this.width + 2 + 2, height: this.height + 5 + 5 });
 
         this.bounds = { x1: left, y1: top, x2: left + this.width, y2: top + this.height };
     }
@@ -21101,7 +22868,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
     //#region Class PlotArea
     function PlotArea(chart, options) {
-        PlotArea.parent.constructor.call(this, options);
+        PlotArea.base.constructor.call(this, options);
 
         this.chart = chart;
         this.canvas = chart.canvas;
@@ -21120,7 +22887,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     //#region DataSeries
 
     function DataSeries(chart, options, theme, index, id) {
-        DataSeries.parent.constructor.call(this, "DataSeries", options, theme);
+        DataSeries.base.constructor.call(this, "DataSeries", options, theme);
 
         this.chart = chart;
         this.canvas = chart.canvas;
@@ -21157,14 +22924,14 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     DataSeries.prototype.getDefaultAxisPlacement = function () {
 
         //if (!this.visible)
-        //	return "none";
+        //  return "none";
 
         //type = this.type.toLowerCase();
         var type = this.type;
 
         if (type === "column" || type === "line" || type === "stepLine" || type === "spline" || type === "area" || type === "stepArea" || type === "splineArea" || type === "stackedColumn" || type === "stackedLine" || type === "bubble" || type === "scatter"
-			|| type === "stackedArea" || type === "stackedColumn100" || type === "stackedLine100" || type === "stackedArea100"
-			|| type === "candlestick" || type === "ohlc" || type === "rangeColumn" || type === "rangeArea" || type === "rangeSplineArea") {
+            || type === "stackedArea" || type === "stackedColumn100" || type === "stackedLine100" || type === "stackedArea100"
+            || type === "candlestick" || type === "ohlc" || type === "rangeColumn" || type === "rangeArea" || type === "rangeSplineArea") {
             return "normal";
         }
         else if (type === "bar" || type === "stackedBar" || type === "stackedBar100" || type === "rangeBar") {
@@ -21184,9 +22951,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //type = type.toLowerCase();
 
         if (type === "column" || type === "stackedColumn" || type === "stackedLine" || type === "bar" || type === "stackedBar" || type === "stackedBar100"
-			|| type === "bubble" || type === "scatter"
-			|| type === "stackedColumn100" || type === "stackedLine100" || type === "stepArea"
-			|| type === "candlestick" || type === "ohlc" || type === "rangeColumn" || type === "rangeBar" || type === "rangeArea" || type === "rangeSplineArea") {
+            || type === "bubble" || type === "scatter"
+            || type === "stackedColumn100" || type === "stackedLine100" || type === "stepArea"
+            || type === "candlestick" || type === "ohlc" || type === "rangeColumn" || type === "rangeBar" || type === "rangeArea" || type === "rangeSplineArea") {
             return "square";
         }
         else if (type === "line" || type === "stepLine" || type === "spline" || type === "pie" || type === "doughnut" || type === "funnel") {
@@ -21222,9 +22989,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             //var xRange = (this.dataPoints[this.dataPoints.length - 1].x - this.dataPoints[0].x);
 
             //if (xRange > 0)
-            //	searchStartIndex = ((this.dataPoints.length - 1) / xRange * (x - this.dataPoints[0].x)) >> 0;
+            //  searchStartIndex = ((this.dataPoints.length - 1) / xRange * (x - this.dataPoints[0].x)) >> 0;
             //else
-            //	searchStartIndex = 0;
+            //  searchStartIndex = 0;
 
             var xRange = (this.dataPoints[this.dataPoints.length - 1].x - this.dataPoints[0].x);
 
@@ -21313,9 +23080,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             //var xRange = (this.axisX._absoluteMaximum - this.axisX._absoluteMinimum);
 
             //if (xRange > 0)
-            //	searchStartIndex = Math.min(Math.max(((this.dataPoints.length - 1) / xRange * (xval - this.axisX._absoluteMinimum)) >> 0, 0), this.dataPoints.length);
+            //  searchStartIndex = Math.min(Math.max(((this.dataPoints.length - 1) / xRange * (xval - this.axisX._absoluteMinimum)) >> 0, 0), this.dataPoints.length);
             //else
-            //	searchStartIndex = 0;
+            //  searchStartIndex = 0;
         }
 
         while (true) {
@@ -21493,8 +23260,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
                         case "candlestick":
                             if (((x >= (visualInfo.x1 - visualInfo.borderThickness / 2)) && (x <= (visualInfo.x2 + visualInfo.borderThickness / 2))
-								&& (y >= visualInfo.y2 - visualInfo.borderThickness / 2) && (y <= visualInfo.y3 + visualInfo.borderThickness / 2))
-								|| (Math.abs(visualInfo.x2 - x + visualInfo.x1 - x) < visualInfo.borderThickness && (y >= visualInfo.y1 && y <= visualInfo.y4))) {
+                                && (y >= visualInfo.y2 - visualInfo.borderThickness / 2) && (y <= visualInfo.y3 + visualInfo.borderThickness / 2))
+                                || (Math.abs(visualInfo.x2 - x + visualInfo.x1 - x) < visualInfo.borderThickness && (y >= visualInfo.y1 && y <= visualInfo.y4))) {
                                 results.push({
                                     dataPoint: dataPoint,
                                     dataPointIndex: i,
@@ -21511,11 +23278,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
                             if ((Math.abs(visualInfo.x2 - x + visualInfo.x1 - x) < visualInfo.borderThickness && (y >= visualInfo.y2 && y <= visualInfo.y3))
 
-								|| (x >= visualInfo.x1 && (x <= (visualInfo.x2 + visualInfo.x1) / 2)
-									&& (y >= visualInfo.y1 - visualInfo.borderThickness / 2) && (y <= visualInfo.y1 + visualInfo.borderThickness / 2))
+                                || (x >= visualInfo.x1 && (x <= (visualInfo.x2 + visualInfo.x1) / 2)
+                                    && (y >= visualInfo.y1 - visualInfo.borderThickness / 2) && (y <= visualInfo.y1 + visualInfo.borderThickness / 2))
 
-								|| ((x >= (visualInfo.x1 + visualInfo.x2) / 2) && (x <= visualInfo.x2)
-									&& (y >= visualInfo.y4 - visualInfo.borderThickness / 2) && (y <= visualInfo.y4 + visualInfo.borderThickness / 2))) {
+                                || ((x >= (visualInfo.x1 + visualInfo.x2) / 2) && (x <= visualInfo.x2)
+                                    && (y >= visualInfo.y4 - visualInfo.borderThickness / 2) && (y <= visualInfo.y4 + visualInfo.borderThickness / 2))) {
 
                                 results.push({
                                     dataPoint: dataPoint,
@@ -21559,7 +23326,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         }
 
         //if (window.console)
-        //	window.console.log("forwardMissCount: " + forwardMissCount + "; backwardMissCount: " + backwardMissCount + "; getClosest: " + getClosest);
+        //  window.console.log("forwardMissCount: " + forwardMissCount + "; backwardMissCount: " + backwardMissCount + "; getClosest: " + getClosest);
 
         //if (window.console && closestResult)
         //    window.console.log(j + ": distance = " + closestResult.distance);
@@ -21592,7 +23359,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     //#region Axis
 
     function Axis(chart, options, type, position) {
-        Axis.parent.constructor.call(this, "Axis", options, chart.theme);
+        Axis.base.constructor.call(this, "Axis", options, chart.theme);
 
         this.chart = chart;
         this.canvas = chart.canvas;
@@ -21667,7 +23434,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             this.stripLines = [];
 
             for (var i = 0; i < this._options.stripLines.length; i++) {
-                this.stripLines.push(new StripLine(this.chart, this._options.stripLines[i], chart.theme, ++this.chart._eventManager.lastObjectId));
+                this.stripLines.push(new StripLine(this.chart, this._options.stripLines[i], chart.theme, ++this.chart._eventManager.lastObjectId, this));
             }
         }
 
@@ -21730,11 +23497,12 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             //endPoint = this.maximum;
 
             for (i = this.intervalstartTimePercent; i < endPoint; addToDateTime(i, this.interval, this.intervalType)) {
-
+                 
                 //var text = dateFormat(i, this.valueFormatString);
                 var timeInMilliseconds = i.getTime();
-                var text = this.type === "axisX" && this.labels[timeInMilliseconds] ? this.labels[timeInMilliseconds] : dateFormat(i, this.valueFormatString, this.chart._cultureInfo);
-
+                var text = this.labelFormatter ? this.labelFormatter({ chart: this.chart, axis: this._options, value: i, label: this.labels[i] ? this.labels[i] : null })
+                    : this.type === "axisX" && this.labels[timeInMilliseconds] ? this.labels[timeInMilliseconds] : dateFormat(i, this.valueFormatString, this.chart._cultureInfo);
+                
                 textBlock = new TextBlock(this.ctx, {
                     x: 0,
                     y: 0,
@@ -21785,8 +23553,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             //parseFloat & toPrecision are being used to avoid issues related to precision.
             for (i = this.intervalstartTimePercent; i <= endPoint; i = parseFloat((i + this.interval).toFixed(14))) {
 
-                var text = this.type === "axisX" && this.labels[i] ? this.labels[i] : numberFormat(i, this.valueFormatString, this.chart._cultureInfo);
-
+                var text = this.labelFormatter ? this.labelFormatter({ chart: this.chart, axis: this._options, value: i, label: this.labels[i] ? this.labels[i] : null })
+                    : this.type === "axisX" && this.labels[i] ? this.labels[i] : numberFormat(i, this.valueFormatString, this.chart._cultureInfo);
+                
                 textBlock = new TextBlock(this.ctx, {
                     x: 0,
                     y: 0,
@@ -21809,7 +23578,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 this._labels.push({ position: i, textBlock: textBlock, effectiveHeight: null });
             }
         }
-
+           
         for (var i = 0; i < this.stripLines.length; i++) {
 
             var stripLine = this.stripLines[i];
@@ -21823,12 +23592,12 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 maxWidth: labelMaxWidth,
                 maxHeight: labelMaxHeight,
                 angle: this.labelAngle,
-                text: stripLine.label,
+                text: stripLine.labelFormatter ? stripLine.labelFormatter({ chart: this.chart, axis: this, stripLine: stripLine }) : stripLine.label,
                 horizontalAlign: "left",//left, center, right
                 fontSize: stripLine.labelFontSize,//in pixels
                 fontFamily: stripLine.labelFontFamily,
                 fontWeight: stripLine.labelFontWeight, //normal, bold, bolder, lighter,
-                fontColor: stripLine.labelFontColor,
+                fontColor: stripLine._options.labelFontColor || stripLine.color,
                 fontStyle: stripLine.labelFontStyle, // normal, italic, oblique
                 textBaseline: "middle",
                 borderThickness: 0
@@ -21879,7 +23648,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         var axisWidth = titleHeight + maxLabelEffectiveWidth + this.tickLength + 5;
 
         //if (isDebugMode && window.console) {
-        //	window.console.log(this.type + "--- axisWidth: " + axisWidth);
+        //  window.console.log(this.type + "--- axisWidth: " + axisWidth);
         //}
 
         return axisWidth;
@@ -21940,7 +23709,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             axisY2.calculateAxisParameters();
 
         if (axisY && axisY2 && typeof (axisY._options.maximum) === "undefined" && typeof (axisY._options.minimum) === "undefined" && typeof (axisY._options.interval) === "undefined"
-				&& typeof (axisY2._options.maximum) === "undefined" && typeof (axisY2._options.minimum) === "undefined" && typeof (axisY2._options.interval) === "undefined") {
+                && typeof (axisY2._options.maximum) === "undefined" && typeof (axisY2._options.minimum) === "undefined" && typeof (axisY2._options.interval) === "undefined") {
 
             var noTicksY = (axisY.maximum - axisY.minimum) / axisY.interval;
 
@@ -21990,8 +23759,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             axisX.boundingRect = { x1: x1, y1: y1, x2: x2, y2: y2, width: x2 - x1, height: y2 - y1 };
 
             //if (isDebugMode) {
-            //	axisX.ctx.rect(axisX.boundingRect.x1, axisX.boundingRect.y1, axisX.boundingRect.width, axisX.boundingRect.height);
-            //	axisX.ctx.stroke();
+            //  axisX.ctx.rect(axisX.boundingRect.x1, axisX.boundingRect.y1, axisX.boundingRect.width, axisX.boundingRect.height);
+            //  axisX.ctx.stroke();
             //}
 
             // Position axisY based on the available free space, Margin and its height
@@ -22008,8 +23777,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             }
 
             //if (isDebugMode && axisY) {
-            //	axisY.ctx.rect(axisY.boundingRect.x1, axisY.boundingRect.y1, axisY.boundingRect.width, axisY.boundingRect.height);
-            //	axisY.ctx.stroke();
+            //  axisY.ctx.rect(axisY.boundingRect.x1, axisY.boundingRect.y1, axisY.boundingRect.width, axisY.boundingRect.height);
+            //  axisY.ctx.stroke();
             //}
 
             // Position axisY2 based on the available free space, Margin and its height
@@ -22499,7 +24268,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 label.textBlock.x = xy.x - (label.textBlock.width * Math.cos(Math.PI / 180 * this.labelAngle)) - this.tickLength - 5;
 
                 if (this.labelAngle === 0) {
-                    label.textBlock.y = xy.y - label.textBlock.height / 2 + this.labelFontSize / 2;
+                    label.textBlock.y = xy.y;
                 } else
                     label.textBlock.y = xy.y - (label.textBlock.width * Math.sin(Math.PI / 180 * this.labelAngle));
 
@@ -22532,11 +24301,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 this._titleTextBlock.render(true);
 
                 //if (isDebugMode) {
-                //	window.console.log("titleFontSize: " + this.titleFontSize + "; width: " + size.width + "; height: " + size.height);
-                //	window.console.log("this.boundingRect.x1: " + this.boundingRect.x1);
+                //  window.console.log("titleFontSize: " + this.titleFontSize + "; width: " + size.width + "; height: " + size.height);
+                //  window.console.log("this.boundingRect.x1: " + this.boundingRect.x1);
 
-                //	//this.ctx.rect(this._titleTextBlock.x, this._titleTextBlock.y, this._titleTextBlock.height, -this._titleTextBlock.width);
-                //	//this.ctx.stroke();
+                //  //this.ctx.rect(this._titleTextBlock.x, this._titleTextBlock.y, this._titleTextBlock.height, -this._titleTextBlock.width);
+                //  //this.ctx.stroke();
 
                 //}
 
@@ -22582,7 +24351,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 label.textBlock.x = xy.x + this.tickLength + 5;
                 //label.textBlock.y = xy.y - (label.textBlock.width * Math.sin(Math.PI / 180 * this.labelAngle));
                 if (this.labelAngle === 0) {
-                    label.textBlock.y = xy.y - label.textBlock.height / 2 + this.labelFontSize / 2;
+                    label.textBlock.y = xy.y;
                 }
                 else
                     label.textBlock.y = xy.y;
@@ -22637,7 +24406,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 if (renderInterlacedGrid) {//So that the interlaced color alternates
                     interlacedGridStartPoint = this.getPixelCoordinatesOnAxis(this._labels[i].position);
 
-                    if (i + 1 >= this._labels.length)
+                    if (i + 1 >= this._labels.length - 1)
                         interlacedGridEndPoint = this.getPixelCoordinatesOnAxis(this.maximum);
                     else
                         interlacedGridEndPoint = this.getPixelCoordinatesOnAxis(this._labels[i + 1].position);
@@ -22653,15 +24422,15 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
             ctx.fillStyle = this.interlacedColor;
 
-            for (i = 0; i < this._labels.length; i++) {
-                if (this._labels[i].stripLine)
-                    continue;
-
+            for (i = 0; i < this._labels.length; i++) {          
+                    if (this._labels[i].stripLine)
+                        continue;
+                  
                 if (renderInterlacedGrid) {//So that the interlaced color alternates
 
                     interlacedGridEndPoint = this.getPixelCoordinatesOnAxis(this._labels[i].position);
 
-                    if (i + 1 >= this._labels.length)
+                    if (i + 1 >= this._labels.length - 1)
                         interlacedGridStartPoint = this.getPixelCoordinatesOnAxis(this.maximum);
                     else
                         interlacedGridStartPoint = this.getPixelCoordinatesOnAxis(this._labels[i + 1].position);
@@ -22671,7 +24440,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 } else
                     renderInterlacedGrid = true;
             }
-            //throw "123";
+                //throw "123";
         }
 
         ctx.beginPath();
@@ -22683,9 +24452,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         if (!(this.stripLines && this.stripLines.length > 0) || !thicknessType)
             return;
 
-        var ctx = this.chart.plotArea.ctx;
-        var ghostCtx = this.chart._eventManager.ghostCtx;
-
+        var _this = this;
 
         var i = 0;
         for (i = 0; i < this.stripLines.length; i++) {
@@ -22700,60 +24467,13 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             if (thicknessType === "pixel" && (stripLine.value < this.minimum || stripLine.value > this.maximum))
                 continue;
 
-            var xy = this.getPixelCoordinatesOnAxis(stripLine.value);
-
-            var lineWidth = Math.abs(thicknessType === "pixel" ? stripLine.thickness : this.conversionParameters.pixelPerUnit * stripLine.thickness);
-
-            if (lineWidth <= 0)
-                continue;
-
-            ctx.strokeStyle = stripLine.color;
-            ctx.beginPath();
-
-            var hexColor = intToHexColorString(stripLine.id);
-            //ghostCtx.strokeStyle = hexColor;
-            //ghostCtx.beginPath();
-            var x1, x2, y1, y2;
-
-            //ghostCtx.lineWidth = ctx.lineWidth = Math.abs(thicknessType === "pixel" ? stripLine.thickness : this.conversionParameters.pixelPerUnit * stripLine.thickness);
-
-
-            ctx.lineWidth = lineWidth
-
-            if (this._position === "bottom" || this._position === "top") {
-
-                var stripX = (ctx.lineWidth % 2 === 1) ? (xy.x << 0) + .5 : (xy.x << 0);
-
-                x1 = x2 = stripX;
-                y1 = this.chart.plotArea.y1;
-                y2 = this.chart.plotArea.y2;
+            if (stripLine.showOnTop) {
+                this.chart.addEventListener("dataAnimationIterationEnd", stripLine.render, stripLine);
             }
-            else if (this._position === "left" || this._position === "right") {
-                var stripY = (ctx.lineWidth % 2 === 1) ? (xy.y << 0) + .5 : (xy.y << 0);
-
-                y1 = y2 = stripY;
-                x1 = this.chart.plotArea.x1;
-                x2 = this.chart.plotArea.x2;
-            }
-
-            ctx.moveTo(x1, y1);
-            ctx.lineTo(x2, y2);
-            ctx.stroke();
-
-
-            //ghostCtx.moveTo(x1, y1);
-            //ghostCtx.lineTo(x2, y2);
-            //ghostCtx.stroke();
-
-            //this.chart._eventManager.objectMap[stripLine.id] = {
-            //	objectType: "stripLine", stripLine: stripLine, stripLineIndex: i, axis: this,
-            //	x1: x1, y1: y1, x2: x2, y2: y2
-            //};
-
-            //{ objectType: "dat/aSeries", dataSeriesIndex: dataSeriesIndex };
+            else
+                stripLine.render();
         }
-
-    }
+    };
 
     Axis.prototype.renderGrid = function () {
 
@@ -22771,6 +24491,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
         ctx.lineWidth = this.gridThickness;
         ctx.strokeStyle = this.gridColor;
+
+        if (ctx.setLineDash) {
+            ctx.setLineDash(getLineDashArray(this.gridDashType, this.gridThickness));
+        }
 
 
         if (this._position === "bottom" || this._position === "top") {
@@ -22796,6 +24520,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         else if (this._position === "left" || this._position === "right") {
 
             for (var i = 0; i < this._labels.length && !this._labels[i].stripLine; i++) {
+
+                if (i === 0 && this.type === "axisY" && this.chart.axisX && this.chart.axisX.lineThickness)
+                    continue;
 
                 if (this._labels[i].position < this.minimum || this._labels[i].position > this.maximum)
                     continue;
@@ -22824,6 +24551,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 ctx.lineWidth = this.lineThickness;
                 ctx.strokeStyle = this.lineColor ? this.lineColor : "black";
 
+                if (ctx.setLineDash) {
+                    ctx.setLineDash(getLineDashArray(this.lineDashType, this.lineThickness));
+                }
+
                 var lineY = (this.lineThickness % 2 === 1) ? (this.lineCoordinates.y1 << 0) + .5 : (this.lineCoordinates.y1 << 0);
 
                 ctx.beginPath();
@@ -22836,6 +24567,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             if (this.lineThickness) {
                 ctx.lineWidth = this.lineThickness;
                 ctx.strokeStyle = this.lineColor;
+
+                if (ctx.setLineDash) {
+                    ctx.setLineDash(getLineDashArray(this.lineDashType, this.lineThickness));
+                }
 
                 var lineX = (this.lineThickness % 2 === 1) ? (this.lineCoordinates.x1 << 0) + .5 : (this.lineCoordinates.x1 << 0);
 
@@ -22918,6 +24653,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         var freeSpace = this.chart.layoutManager.getFreeSpace();
         var availableWidth = 0;
         var availableHeight = 0;
+        var isLessThanTwoDataPoints = false;
 
         if (this._position === "bottom" || this._position === "top") {
             this.maxWidth = freeSpace.width;
@@ -22950,14 +24686,18 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             else if (max - min > 1) {
                 minDiff = Math.abs(max - min) * .5;
             }
-            else
+            else {
                 minDiff = 1;
+
+                if (this.chart.plotInfo.axisXValueType === "dateTime")
+                    isLessThanTwoDataPoints = true;
+            }
 
         } else if (this.type === "axisY") {
 
-            min = typeof (this._options.minimum) === "undefined" ? this.dataInfo.viewPortMin : this._options.minimum;
-            max = typeof (this._options.maximum) === "undefined" ? this.dataInfo.viewPortMax : this._options.maximum;
-
+            min = typeof (this._options.minimum) === "undefined" || this._options.minimum === null ? this.dataInfo.viewPortMin : this._options.minimum;
+            max = typeof (this._options.maximum) === "undefined" || this._options.maximum === null ? this.dataInfo.viewPortMax : this._options.maximum;
+            
             if (!isFinite(min) && !isFinite(max)) {
                 max = typeof (this._options.interval) === "undefined" ? -Infinity : this._options.interval;
                 min = 0;
@@ -22992,11 +24732,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
 
             //Apply includeZero
-            if (this.includeZero && typeof (this._options.minimum) === "undefined") {
+            if (this.includeZero && (typeof (this._options.minimum) === "undefined" || this._options.minimum === null)) {
                 if (min > 0)
                     min = 0;
             }
-            if (this.includeZero && typeof (this._options.maximum) === "undefined") {
+            if (this.includeZero && (typeof (this._options.maximum) === "undefined" || this._options.maximum === null)) {
                 if (max < 0)
                     max = 0;
             }
@@ -23155,8 +24895,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             else
                 this.maximum = max + minDiff / 2;
 
+
             if (!this.valueFormatString) {
-                if (this.intervalType === "year") {
+                if (isLessThanTwoDataPoints) {
+                    this.valueFormatString = "MMM DD YYYY HH:mm";
+                } else if (this.intervalType === "year") {
                     this.valueFormatString = "YYYY";
                 } else if (this.intervalType === "month") {
                     this.valueFormatString = "MMM YYYY";
@@ -23217,8 +24960,6 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 }
             }
 
-
-
             if (this.type === "axisX") {
                 if (!(this.sessionVariables.internalMinimum !== null)) {
                     this.minimum = min - minDiff / 2;
@@ -23259,7 +25000,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             }
 
         }
-
+        
         //if (isDebugMode && window.console) {
         //    window.console.log(this.type + ": Min = " + this.minimum);
         //    window.console.log(this.type + ": Max = " + this.maximum);
@@ -23374,13 +25115,17 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
     //#region StripLine
 
-    function StripLine(chart, options, theme, id) {
-        StripLine.parent.constructor.call(this, "StripLine", options, theme);
+    function StripLine(chart, options, theme, id, axis) {
+        StripLine.base.constructor.call(this, "StripLine", options, theme, axis);
 
-        this._thicknessType = "pixel";
 
         this.id = id;
+        this.chart = chart;
+        this.ctx = this.chart.ctx;
 
+        this.label = this.label;
+
+        this._thicknessType = "pixel";
         if (this.startValue !== null && this.endValue !== null) {
 
             this.value = ((this.startValue.getTime ? this.startValue.getTime() : this.startValue) + (this.endValue.getTime ? this.endValue.getTime() : this.endValue)) / 2;
@@ -23390,12 +25135,62 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     }
     extend(StripLine, CanvasJSObject);
 
+    StripLine.prototype.render = function () {
+
+        var xy = this.parent.getPixelCoordinatesOnAxis(this.value);
+
+        var lineWidth = Math.abs(this._thicknessType === "pixel" ? this.thickness : this.parent.conversionParameters.pixelPerUnit * this.thickness);
+
+        if (lineWidth > 0) {
+            //var opacity = this.opacity === null ? ( this.showOnTop && this._thicknessType === "pixel" ? 1 : 1) : this.opacity;
+            var opacity = this.opacity === null ? 1 : this.opacity;
+
+            this.ctx.strokeStyle = this.color;
+            this.ctx.beginPath();
+
+            var oldGlobalAlpha = this.ctx.globalAlpha;
+            this.ctx.globalAlpha = opacity;
+
+            var hexColor = intToHexColorString(this.id);
+            var x1, x2, y1, y2;
+
+            this.ctx.lineWidth = lineWidth;
+
+
+            if (this.ctx.setLineDash) {
+                this.ctx.setLineDash(getLineDashArray(this.lineDashType, lineWidth));
+            }
+
+            if (this.parent._position === "bottom" || this.parent._position === "top") {
+
+                var stripX = (this.ctx.lineWidth % 2 === 1) ? (xy.x << 0) + .5 : (xy.x << 0);
+
+                x1 = x2 = stripX;
+                y1 = this.chart.plotArea.y1;
+                y2 = this.chart.plotArea.y2;
+            }
+            else if (this.parent._position === "left" || this.parent._position === "right") {
+                var stripY = (this.ctx.lineWidth % 2 === 1) ? (xy.y << 0) + .5 : (xy.y << 0);
+
+                y1 = y2 = stripY;
+                x1 = this.chart.plotArea.x1;
+                x2 = this.chart.plotArea.x2;
+            }
+
+            this.ctx.moveTo(x1, y1);
+            this.ctx.lineTo(x2, y2);
+            this.ctx.stroke();
+
+            this.ctx.globalAlpha = oldGlobalAlpha;
+        }
+    };
+
     //#endregion StripLine
 
     //#region ToolTip
 
     function ToolTip(chart, options, theme) {
-        ToolTip.parent.constructor.call(this, "ToolTip", options, theme);
+        ToolTip.base.constructor.call(this, "ToolTip", options, theme);
 
         this.chart = chart;
         this.canvas = chart.canvas;
@@ -23426,11 +25221,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             var toolTipHtml = "<div style=\" width: auto;";
             toolTipHtml += "height: auto;";
             toolTipHtml += "min-width: 50px;";
-            toolTipHtml += "line-height: 20px;";
+            toolTipHtml += "line-height: auto;";
             toolTipHtml += "margin: 0px 0px 0px 0px;";
             toolTipHtml += "padding: 5px;";
             toolTipHtml += "font-family: Calibri, Arial, Georgia, serif;";
-            toolTipHtml += "font-weight: 400;";
+            toolTipHtml += "font-weight: normal;";
             toolTipHtml += "font-style: " + (isCanvasSupported ? "italic;" : "normal;");
             toolTipHtml += "font-size: 14px;";
             toolTipHtml += "color: #000000;";
@@ -23486,7 +25281,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
     ToolTip.prototype._updateToolTip = function (mouseX, mouseY) {
         //return;
 
-        if (!this.enabled || this.chart.disableToolTip)
+        if (this.chart.disableToolTip) // Disabled during animation, etc
             return;
 
         if (typeof (mouseX) === "undefined" || typeof (mouseY) === "undefined") {
@@ -23510,7 +25305,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         var toolTipBottom;
         var x = 0;
 
-        if (this.shared && this.chart.plotInfo.axisPlacement !== "none") {
+        if (this.shared && this.enabled && this.chart.plotInfo.axisPlacement !== "none") {
             // && this.chart.plotInfo.axisPlacement !== "none"
             if (this.chart.plotInfo.axisPlacement === "xySwapped") {
                 x = (this.chart.axisX.maximum - this.chart.axisX.minimum) / this.chart.axisX.lineCoordinates.height * ((this.chart.axisX.lineCoordinates.y2 - mouseY)) + this.chart.axisX.minimum;
@@ -23563,6 +25358,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 if (id > 0 && typeof this.chart._eventManager.objectMap[id] !== "undefined") {//DataPoint/DataSeries event
                     eventObject = this.chart._eventManager.objectMap[id];
 
+                    if (eventObject.objectType === "legendItem")
+                        return;
+
                     //if (this.currentSeriesIndex === eventObject.dataSeriesIndex && this.currentDataPointIndex === eventObject.dataPointIndex)
                     //  return;
                     //else {
@@ -23591,10 +25389,10 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     entry.dataPoint = dataPoint;
                     entry.index = this.currentDataPointIndex;
                     entry.distance = Math.abs(dataPoint.x - x);
-                } else if (dataSeries.type === "line" || dataSeries.type === "stepLine" || dataSeries.type === "spline" || dataSeries.type === "area" || dataSeries.type === "stepArea"
+                } else if (this.enabled && (dataSeries.type === "line" || dataSeries.type === "stepLine" || dataSeries.type === "spline" || dataSeries.type === "area" || dataSeries.type === "stepArea"
                         || dataSeries.type === "splineArea" || dataSeries.type === "stackedArea" || dataSeries.type === "stackedArea100"
                         || dataSeries.type === "rangeArea" || dataSeries.type === "rangeSplineArea"
-                        || dataSeries.type === "candlestick" || dataSeries.type === "ohlc") {
+                        || dataSeries.type === "candlestick" || dataSeries.type === "ohlc")) {
                     var x = (this.chart.axisX.maximum - this.chart.axisX.minimum) / this.chart.axisX.lineCoordinates.width * (mouseX - this.chart.axisX.lineCoordinates.x1) + this.chart.axisX.minimum.valueOf();
 
                     entry = dataSeries.getDataPointAtX(x, true);
@@ -23616,71 +25414,89 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
             this.highlightObjects(entries);
 
+            if (this.enabled) {
 
-            var toolTipInnerHtml = "";
+                var toolTipInnerHtml = "";
 
-            toolTipInnerHtml = this.getToolTipInnerHTML({ entries: entries });
+                toolTipInnerHtml = this.getToolTipInnerHTML({ entries: entries });
 
-            if (toolTipInnerHtml !== null) {
-                this.contentDiv.innerHTML = toolTipInnerHtml;
+                if (toolTipInnerHtml !== null) {
+                    this.contentDiv.innerHTML = toolTipInnerHtml;
 
-                this.contentDiv.innerHTML = toolTipInnerHtml;
+                    this.contentDiv.innerHTML = toolTipInnerHtml;
 
-                var previouslyHidden = false;
-                if (this.container.style.display === "none") {
-                    previouslyHidden = true;
-                    this.container.style.display = "block";
-                }
+                    var previouslyHidden = false;
+                    if (this.container.style.display === "none") {
+                        previouslyHidden = true;
+                        this.container.style.display = "block";
+                    }
 
-                try {
-                    this.contentDiv.style.borderRightColor = this.contentDiv.style.borderLeftColor = this.contentDiv.style.borderColor = this.borderColor ? this.borderColor : entries[0].dataPoint.color ? entries[0].dataPoint.color : entries[0].dataSeries.color ? entries[0].dataSeries.color : entries[0].dataSeries._colorSet[entries[0].index % entries[0].dataSeries._colorSet.length];
-                } catch (e) { }
+                    try {
+                        this.contentDiv.style.background = this.backgroundColor ? this.backgroundColor : isCanvasSupported ? "rgba(255,255,255,.9)" : "rgb(255,255,255)";
 
-                if (entries[0].dataSeries.type === "pie" || entries[0].dataSeries.type === "doughnut" || entries[0].dataSeries.type === "funnel" || entries[0].dataSeries.type === "bar" || entries[0].dataSeries.type === "rangeBar" || entries[0].dataSeries.type === "stackedBar" || entries[0].dataSeries.type === "stackedBar100") {
-                    toolTipLeft = mouseX - 10 - this.container.clientWidth;
+                        this.contentDiv.style.borderRightColor = this.contentDiv.style.borderLeftColor = this.contentDiv.style.borderColor = this.borderColor ? this.borderColor : entries[0].dataPoint.color ? entries[0].dataPoint.color : entries[0].dataSeries.color ? entries[0].dataSeries.color : entries[0].dataSeries._colorSet[entries[0].index % entries[0].dataSeries._colorSet.length];
+
+                        this.contentDiv.style.borderWidth = (this.borderThickness || this.borderThickness === 0) ? this.borderThickness + "px" : 2 + "px";
+
+                        this.contentDiv.style.borderRadius = (this.cornerRadius || this.cornerRadius === 0) ? this.cornerRadius + "px" : 5 + "px";
+                        this.container.style.borderRadius = this.contentDiv.style.borderRadius;
+
+
+                        this.contentDiv.style.fontSize = (this.fontSize || this.fontSize === 0) ? this.fontSize + "px" : 14 + "px";
+                        this.contentDiv.style.color = this.fontColor ? this.fontColor : "#000000";
+                        this.contentDiv.style.fontFamily = this.fontFamily ? this.fontFamily : "Calibri, Arial, Georgia, serif;";
+                        this.contentDiv.style.fontWeight = this.fontWeight ? this.fontWeight : "normal";
+                        this.contentDiv.style.fontStyle = this.fontStyle ? this.fontStyle : isCanvasSupported ? "italic" : "normal";
+
+                    } catch (e) { }
+
+                    if (entries[0].dataSeries.type === "pie" || entries[0].dataSeries.type === "doughnut" || entries[0].dataSeries.type === "funnel" || entries[0].dataSeries.type === "bar" || entries[0].dataSeries.type === "rangeBar" || entries[0].dataSeries.type === "stackedBar" || entries[0].dataSeries.type === "stackedBar100") {
+                        toolTipLeft = mouseX - 10 - this.container.clientWidth;
+                    } else {
+                        toolTipLeft = (((this.chart.axisX.lineCoordinates.width / Math.abs(this.chart.axisX.maximum - this.chart.axisX.minimum)) * Math.abs(entries[0].dataPoint.x - this.chart.axisX.minimum)) + this.chart.axisX.lineCoordinates.x1 + .5) - this.container.clientWidth << 0;
+                        toolTipLeft -= 10;
+                    }
+
+
+                    if (toolTipLeft < 0) {
+                        toolTipLeft += this.container.clientWidth + 20;
+                    }
+
+                    if (toolTipLeft + this.container.clientWidth > this.chart._container.clientWidth)
+                        toolTipLeft = Math.max(0, this.chart._container.clientWidth - this.container.clientWidth);
+
+                    toolTipLeft += "px";
+
+                    if (entries.length === 1 && !this.shared && (entries[0].dataSeries.type === "line" || entries[0].dataSeries.type === "stepLine" || entries[0].dataSeries.type === "spline" || entries[0].dataSeries.type === "area" || entries[0].dataSeries.type === "stepArea" || entries[0].dataSeries.type === "splineArea" || entries[0].dataSeries.type === "stackedArea" || entries[0].dataSeries.type === "stackedArea100")) {
+                        toolTipBottom = (entries[0].dataSeries.axisY.lineCoordinates.y2 - entries[0].dataSeries.axisY.lineCoordinates.height / Math.abs(entries[0].dataSeries.axisY.maximum - entries[0].dataSeries.axisY.minimum) * Math.abs(entries[0].dataPoint.y - entries[0].dataSeries.axisY.minimum) + .5) << 0;
+                    } else if (entries[0].dataSeries.type === "bar" || entries[0].dataSeries.type === "rangeBar" || entries[0].dataSeries.type === "stackedBar" || entries[0].dataSeries.type === "stackedBar100") {
+                        toolTipBottom = (entries[0].dataSeries.axisX.lineCoordinates.y2 - entries[0].dataSeries.axisX.lineCoordinates.height / Math.abs(entries[0].dataSeries.axisX.maximum - entries[0].dataSeries.axisX.minimum) * Math.abs(entries[0].dataPoint.x - entries[0].dataSeries.axisX.minimum) + .5) << 0;
+                    }
+                    else {
+                        toolTipBottom = mouseY;
+                    }
+
+                    toolTipBottom = (-toolTipBottom + 10);
+
+                    if (toolTipBottom + this.container.clientHeight + 5 > 0) {
+                        toolTipBottom -= toolTipBottom + this.container.clientHeight + 5 - 0
+                    }
+
+                    toolTipBottom += "px";
+
+                    //this.container.style.right = toolTipRight;
+                    this.container.style.left = toolTipLeft;
+                    this.container.style.bottom = toolTipBottom;
+
+                    if (!this.animationEnabled || previouslyHidden) {
+                        this.disableAnimation();
+                    }
+                    else
+                        this.enableAnimation();
                 } else {
-                    toolTipLeft = (((this.chart.axisX.lineCoordinates.width / Math.abs(this.chart.axisX.maximum - this.chart.axisX.minimum)) * Math.abs(entries[0].dataPoint.x - this.chart.axisX.minimum)) + this.chart.axisX.lineCoordinates.x1 + .5) - this.container.clientWidth << 0;
-                    toolTipLeft -= 10;
+                    this.hide(false);
                 }
 
-
-                if (toolTipLeft < 0) {
-                    toolTipLeft += this.container.clientWidth + 20;
-                }
-
-                if (toolTipLeft + this.container.clientWidth > this.chart._container.clientWidth)
-                    toolTipLeft = Math.max(0, this.chart._container.clientWidth - this.container.clientWidth);
-
-                toolTipLeft += "px";
-
-                if (entries.length === 1 && !this.shared && (entries[0].dataSeries.type === "line" || entries[0].dataSeries.type === "stepLine" || entries[0].dataSeries.type === "spline" || entries[0].dataSeries.type === "area" || entries[0].dataSeries.type === "stepArea" || entries[0].dataSeries.type === "splineArea" || entries[0].dataSeries.type === "stackedArea" || entries[0].dataSeries.type === "stackedArea100")) {
-                    toolTipBottom = (entries[0].dataSeries.axisY.lineCoordinates.y2 - entries[0].dataSeries.axisY.lineCoordinates.height / Math.abs(entries[0].dataSeries.axisY.maximum - entries[0].dataSeries.axisY.minimum) * Math.abs(entries[0].dataPoint.y - entries[0].dataSeries.axisY.minimum) + .5) << 0;
-                } else if (entries[0].dataSeries.type === "bar" || entries[0].dataSeries.type === "rangeBar" || entries[0].dataSeries.type === "stackedBar" || entries[0].dataSeries.type === "stackedBar100") {
-                    toolTipBottom = (entries[0].dataSeries.axisX.lineCoordinates.y2 - entries[0].dataSeries.axisX.lineCoordinates.height / Math.abs(entries[0].dataSeries.axisX.maximum - entries[0].dataSeries.axisX.minimum) * Math.abs(entries[0].dataPoint.x - entries[0].dataSeries.axisX.minimum) + .5) << 0;
-                }
-                else {
-                    toolTipBottom = mouseY;
-                }
-
-                toolTipBottom = (-toolTipBottom + 10);
-
-                if (toolTipBottom + this.container.clientHeight + 5 > 0) {
-                    toolTipBottom -= toolTipBottom + this.container.clientHeight + 5 - 0
-                }
-
-                toolTipBottom += "px";
-
-                //this.container.style.right = toolTipRight;
-                this.container.style.left = toolTipLeft;
-                this.container.style.bottom = toolTipBottom;
-
-                if (!this.animationEnabled || previouslyHidden) {
-                    this.disableAnimation();
-                }
-                else
-                    this.enableAnimation();
-            } else {
-                this.hide(false);
             }
 
             //if (isDebugMode)
@@ -23691,8 +25507,8 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
     ToolTip.prototype.highlightObjects = function (entries) {
 
-        if (!this.enabled)
-            return;
+        //if (!this.enabled)
+        //  return;
 
         //this.chart.overlaidCanvasCtx.clearRect(0, 0, this.chart.overlaidCanvas.width, this.chart.overlaidCanvas.height);
         var overlaidCanvasCtx = this.chart.overlaidCanvasCtx;
@@ -23715,26 +25531,16 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                 continue;
 
             var dataSeries = this.chart.data[eventObject.dataSeriesIndex];
-            var dataPoint = this.chart.data[eventObject.dataPointIndex];
+            var dataPoint = dataSeries.dataPoints[eventObject.dataPointIndex];
             var index = eventObject.dataPointIndex;
 
-            if (dataSeries.type === "line" || dataSeries.type === "stepLine" || dataSeries.type === "spline" || dataSeries.type === "scatter"
-                || dataSeries.type === "area" || dataSeries.type === "stepArea" || dataSeries.type === "splineArea"
-                || dataSeries.type === "stackedArea" || dataSeries.type === "stackedArea100"
-                || dataSeries.type === "rangeArea" || dataSeries.type === "rangeSplineArea") {
-                var markerProps = dataSeries.getMarkerProperties(index, eventObject.x1, eventObject.y1, this.chart.overlaidCanvasCtx);
-                markerProps.size = Math.max(markerProps.size * 1.5 << 0, 10);
+            if (dataPoint.highlightEnabled !== false && (dataSeries.highlightEnabled === true || dataPoint.highlightEnabled === true)) {
 
-                markerProps.borderColor = markerProps.borderColor || "#FFFFFF";
-                markerProps.borderThickness = markerProps.borderThickness || Math.ceil(markerProps.size * .1);
-
-                //overlaidCanvasCtx.globalAlpha = .8;
-                RenderHelper.drawMarkers([markerProps]);
-                //overlaidCanvasCtx.globalAlpha = .8;
-
-                if (typeof (eventObject.y2) !== "undefined") {
-
-                    var markerProps = dataSeries.getMarkerProperties(index, eventObject.x1, eventObject.y2, this.chart.overlaidCanvasCtx);
+                if (dataSeries.type === "line" || dataSeries.type === "stepLine" || dataSeries.type === "spline" || dataSeries.type === "scatter"
+                    || dataSeries.type === "area" || dataSeries.type === "stepArea" || dataSeries.type === "splineArea"
+                    || dataSeries.type === "stackedArea" || dataSeries.type === "stackedArea100"
+                    || dataSeries.type === "rangeArea" || dataSeries.type === "rangeSplineArea") {
+                    var markerProps = dataSeries.getMarkerProperties(index, eventObject.x1, eventObject.y1, this.chart.overlaidCanvasCtx);
                     markerProps.size = Math.max(markerProps.size * 1.5 << 0, 10);
 
                     markerProps.borderColor = markerProps.borderColor || "#FFFFFF";
@@ -23743,67 +25549,80 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     //overlaidCanvasCtx.globalAlpha = .8;
                     RenderHelper.drawMarkers([markerProps]);
                     //overlaidCanvasCtx.globalAlpha = .8;
+
+                    if (typeof (eventObject.y2) !== "undefined") {
+
+                        var markerProps = dataSeries.getMarkerProperties(index, eventObject.x1, eventObject.y2, this.chart.overlaidCanvasCtx);
+                        markerProps.size = Math.max(markerProps.size * 1.5 << 0, 10);
+
+                        markerProps.borderColor = markerProps.borderColor || "#FFFFFF";
+                        markerProps.borderThickness = markerProps.borderThickness || Math.ceil(markerProps.size * .1);
+
+                        //overlaidCanvasCtx.globalAlpha = .8;
+                        RenderHelper.drawMarkers([markerProps]);
+                        //overlaidCanvasCtx.globalAlpha = .8;
+                    }
+                } else if (dataSeries.type === "bubble") {
+                    var markerProps = dataSeries.getMarkerProperties(index, eventObject.x1, eventObject.y1, this.chart.overlaidCanvasCtx);
+                    markerProps.size = eventObject.size;
+                    markerProps.color = "white";
+                    markerProps.borderColor = "white";
+                    //markerProps.borderThickness = 2;
+                    overlaidCanvasCtx.globalAlpha = .3;
+                    RenderHelper.drawMarkers([markerProps]);
+                    overlaidCanvasCtx.globalAlpha = 1;
+                } else if (dataSeries.type === "column" || dataSeries.type === "stackedColumn" || dataSeries.type === "stackedColumn100"
+                    || dataSeries.type === "bar" || dataSeries.type === "rangeBar" || dataSeries.type === "stackedBar" || dataSeries.type === "stackedBar100"
+                    || dataSeries.type === "rangeColumn") {
+                    drawRect(overlaidCanvasCtx, eventObject.x1, eventObject.y1, eventObject.x2, eventObject.y2, "white", 0, null, false, false, false, false, .3);
                 }
-            } else if (dataSeries.type === "bubble") {
-                var markerProps = dataSeries.getMarkerProperties(index, eventObject.x1, eventObject.y1, this.chart.overlaidCanvasCtx);
-                markerProps.size = eventObject.size;
-                markerProps.color = "white";
-                markerProps.borderColor = "white";
-                //markerProps.borderThickness = 2;
-                overlaidCanvasCtx.globalAlpha = .3;
-                RenderHelper.drawMarkers([markerProps]);
-                overlaidCanvasCtx.globalAlpha = 1;
-            } else if (dataSeries.type === "column" || dataSeries.type === "stackedColumn" || dataSeries.type === "stackedColumn100"
-                || dataSeries.type === "bar" || dataSeries.type === "rangeBar" || dataSeries.type === "stackedBar" || dataSeries.type === "stackedBar100"
-                || dataSeries.type === "rangeColumn") {
-                drawRect(overlaidCanvasCtx, eventObject.x1, eventObject.y1, eventObject.x2, eventObject.y2, "white", 0, null, false, false, false, false, .3);
-            }
-            else if (dataSeries.type === "pie" || dataSeries.type === "doughnut") {
-                drawSegment(overlaidCanvasCtx, eventObject.center, eventObject.radius, "white", dataSeries.type, eventObject.startAngle, eventObject.endAngle, .3);
-            } else if (dataSeries.type === "candlestick") {
+                else if (dataSeries.type === "pie" || dataSeries.type === "doughnut") {
+                    drawSegment(overlaidCanvasCtx, eventObject.center, eventObject.radius, "white", dataSeries.type, eventObject.startAngle, eventObject.endAngle, .3);
+                } else if (dataSeries.type === "candlestick") {
 
-                overlaidCanvasCtx.globalAlpha = 1;
-                overlaidCanvasCtx.strokeStyle = eventObject.color;
-                overlaidCanvasCtx.lineWidth = eventObject.borderThickness * 2;
-                offset = (overlaidCanvasCtx.lineWidth) % 2 === 0 ? 0 : .5;
+                    overlaidCanvasCtx.globalAlpha = 1;
+                    overlaidCanvasCtx.strokeStyle = eventObject.color;
+                    overlaidCanvasCtx.lineWidth = eventObject.borderThickness * 2;
+                    offset = (overlaidCanvasCtx.lineWidth) % 2 === 0 ? 0 : .5;
 
-                overlaidCanvasCtx.beginPath();
-                overlaidCanvasCtx.moveTo(eventObject.x3 - offset, eventObject.y2);
-                overlaidCanvasCtx.lineTo(eventObject.x3 - offset, Math.min(eventObject.y1, eventObject.y4));
-                overlaidCanvasCtx.stroke();
+                    overlaidCanvasCtx.beginPath();
+                    overlaidCanvasCtx.moveTo(eventObject.x3 - offset, eventObject.y2);
+                    overlaidCanvasCtx.lineTo(eventObject.x3 - offset, Math.min(eventObject.y1, eventObject.y4));
+                    overlaidCanvasCtx.stroke();
 
-                overlaidCanvasCtx.beginPath();
-                overlaidCanvasCtx.moveTo(eventObject.x3 - offset, Math.max(eventObject.y1, eventObject.y4));
-                overlaidCanvasCtx.lineTo(eventObject.x3 - offset, eventObject.y3);
-                overlaidCanvasCtx.stroke();
+                    overlaidCanvasCtx.beginPath();
+                    overlaidCanvasCtx.moveTo(eventObject.x3 - offset, Math.max(eventObject.y1, eventObject.y4));
+                    overlaidCanvasCtx.lineTo(eventObject.x3 - offset, eventObject.y3);
+                    overlaidCanvasCtx.stroke();
 
-                drawRect(overlaidCanvasCtx, eventObject.x1, Math.min(eventObject.y1, eventObject.y4), eventObject.x2, Math.max(eventObject.y1, eventObject.y4), "transparent", eventObject.borderThickness * 2, eventObject.color, false, false, false, false);
-                overlaidCanvasCtx.globalAlpha = 1;
+                    drawRect(overlaidCanvasCtx, eventObject.x1, Math.min(eventObject.y1, eventObject.y4), eventObject.x2, Math.max(eventObject.y1, eventObject.y4), "transparent", eventObject.borderThickness * 2, eventObject.color, false, false, false, false);
+                    overlaidCanvasCtx.globalAlpha = 1;
 
-            } else if (dataSeries.type === "ohlc") {
-                overlaidCanvasCtx.globalAlpha = 1;
+                } else if (dataSeries.type === "ohlc") {
+                    overlaidCanvasCtx.globalAlpha = 1;
 
-                overlaidCanvasCtx.strokeStyle = eventObject.color;
-                overlaidCanvasCtx.lineWidth = eventObject.borderThickness * 2;
+                    overlaidCanvasCtx.strokeStyle = eventObject.color;
+                    overlaidCanvasCtx.lineWidth = eventObject.borderThickness * 2;
 
-                offset = (overlaidCanvasCtx.lineWidth) % 2 === 0 ? 0 : .5;
+                    offset = (overlaidCanvasCtx.lineWidth) % 2 === 0 ? 0 : .5;
 
-                overlaidCanvasCtx.beginPath();
-                overlaidCanvasCtx.moveTo(eventObject.x3 - offset, eventObject.y2);
-                overlaidCanvasCtx.lineTo(eventObject.x3 - offset, eventObject.y3);
-                overlaidCanvasCtx.stroke();
+                    overlaidCanvasCtx.beginPath();
+                    overlaidCanvasCtx.moveTo(eventObject.x3 - offset, eventObject.y2);
+                    overlaidCanvasCtx.lineTo(eventObject.x3 - offset, eventObject.y3);
+                    overlaidCanvasCtx.stroke();
 
-                overlaidCanvasCtx.beginPath();
-                overlaidCanvasCtx.moveTo(eventObject.x3, eventObject.y1);
-                overlaidCanvasCtx.lineTo(eventObject.x1, eventObject.y1);
-                overlaidCanvasCtx.stroke();
+                    overlaidCanvasCtx.beginPath();
+                    overlaidCanvasCtx.moveTo(eventObject.x3, eventObject.y1);
+                    overlaidCanvasCtx.lineTo(eventObject.x1, eventObject.y1);
+                    overlaidCanvasCtx.stroke();
 
-                overlaidCanvasCtx.beginPath();
-                overlaidCanvasCtx.moveTo(eventObject.x3, eventObject.y4);
-                overlaidCanvasCtx.lineTo(eventObject.x2, eventObject.y4);
-                overlaidCanvasCtx.stroke();
+                    overlaidCanvasCtx.beginPath();
+                    overlaidCanvasCtx.moveTo(eventObject.x3, eventObject.y4);
+                    overlaidCanvasCtx.lineTo(eventObject.x2, eventObject.y4);
+                    overlaidCanvasCtx.stroke();
 
-                overlaidCanvasCtx.globalAlpha = 1;
+                    overlaidCanvasCtx.globalAlpha = 1;
+                }
             }
         }
 
@@ -23830,13 +25649,14 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             }
         }
 
-        if (isToolTipDefinedInData && this.content && typeof (this.content) === "function") {
+        if (isToolTipDefinedInData && ((this.content && typeof (this.content) === "function") || this.contentFormatter)) {
 
-            toolTipInnerHtml = this.content({ entries: entries });
+            var param = { chart: this.chart, toolTip: this._options, entries: entries };
+            toolTipInnerHtml = this.contentFormatter ? this.contentFormatter(param) : this.content(param);
 
         } else {
 
-            if (this.shared) {
+            if (this.shared && this.chart.plotInfo.axisPlacement !== "none") {
 
                 var toolTipInnerHtmlPrefix = "";
 
@@ -23880,10 +25700,23 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
                     if (toolTipInnerHtml === null)
                         toolTipInnerHtml = "";
 
-                    toolTipInnerHtml += this.chart.replaceKeywordsWithValue(toolTipContent, dataPoint, dataSeries, index);
 
-                    if (i < entries.length - 1)
-                        toolTipInnerHtml += "</br>";
+                    if (this.reversed === true) {
+
+                        toolTipInnerHtml = this.chart.replaceKeywordsWithValue(toolTipContent, dataPoint, dataSeries, index) + toolTipInnerHtml;
+
+                        if (i < entries.length - 1)
+                            toolTipInnerHtml = "</br>" + toolTipInnerHtml;
+
+                    } else {
+
+                        toolTipInnerHtml += this.chart.replaceKeywordsWithValue(toolTipContent, dataPoint, dataSeries, index);
+
+                        if (i < entries.length - 1)
+                            toolTipInnerHtml += "</br>";
+
+                    }
+
                 }
 
                 if (toolTipInnerHtml !== null)
@@ -23963,6 +25796,44 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             this.chart.resetOverlayedCanvas();
     }
 
+    Chart.prototype.getPercentAndTotal = function (ds, dp) {
+
+        var dpX = null;
+        var total = null;
+        var percent = null;
+
+        if (ds.type.indexOf("stacked") >= 0) {
+            total = 0;
+            dpX = dp.x.getTime ? dp.x.getTime() : dp.x;
+            if (dpX in ds.plotUnit.yTotals) {
+                total = ds.plotUnit.yTotals[dpX];
+
+                if (!isNaN(dp.y)) {
+                    if (total === 0)
+                        percent = 0;
+                    else
+                        percent = (dp.y / total) * 100;
+                }
+                else
+                    percent = 0;
+            }
+        } else if (ds.type === "pie" || ds.type === "doughnut") {
+            total = 0;
+            for (i = 0; i < ds.dataPoints.length; i++) {
+
+                if (!isNaN(ds.dataPoints[i].y))
+                    total += ds.dataPoints[i].y;
+            }
+
+            if (!isNaN(dp.y))
+                percent = (dp.y / total) * 100;
+            else
+                percent = 0;
+        }
+         
+        return { percent: percent, total: total };
+    }
+
     Chart.prototype.replaceKeywordsWithValue = function (str, dp, ds, dpIndex, indexKeywordValue) {
         //var regex = /\{\s*[a-zA-Z]+\s*\}|"[^"]*"|'[^']*'/g;
         var regex = /\{.*?\}|"[^"]*"|'[^']*'/g;
@@ -23973,31 +25844,12 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             var percent = "#percent";
             var total = "#total";
             var dpX = null;
-            if (ds.type.indexOf("stacked") >= 0) {
-                total = 0;
-                dpX = dp.x.getTime ? dp.x.getTime() : dp.x;
-                if (dpX in ds.plotUnit.yTotals) {
-                    total = ds.plotUnit.yTotals[dpX];
 
-                    if (!isNaN(dp.y))
-                        percent = (dp.y / total) * 100;
-                    else
-                        percent = 0;
-                }
-            } else if (ds.type === "pie" || ds.type === "doughnut") {
-                total = 0;
-                for (i = 0; i < ds.dataPoints.length; i++) {
-
-                    if (!isNaN(ds.dataPoints[i].y))
-                        total += ds.dataPoints[i].y;
-                }
-
-                if (!isNaN(dp.y))
-                    percent = (dp.y / total) * 100;
-                else
-                    percent = 0;
-            }
-
+            var percentAndTotal = this.getPercentAndTotal(ds, dp);
+            
+            total = percentAndTotal.total ? percentAndTotal.total : total;
+            percent = isNaN(percentAndTotal.percent) ? percent : percentAndTotal.percent;
+            
             do {
                 var percentFormatString = "";
                 if (ds.percentFormatString)
@@ -24133,9 +25985,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         //var dataPointInfo = this.chart.getDataPointAtXY(xy.x, xy.y, false);
 
         //if (dataPointInfo) {
-        //	id = dataPointInfo.dataSeries.dataPointIds[dataPointInfo.dataPointIndex];
+        //  id = dataPointInfo.dataSeries.dataPointIds[dataPointInfo.dataPointIndex];
         //} else if (isCanvasSupported) {//IE9+
-        //	id = getObjectId(xy.x, xy.y, this.ghostCtx);
+        //  id = getObjectId(xy.x, xy.y, this.ghostCtx);
         //}
         id = this.chart.getObjectAtXY(xy.x, xy.y, false);
 
@@ -24172,11 +26024,11 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
             }
                 //else if (eventObjectMap.objectType === "stripLine") {
 
-                //	//Event Parameter should not contain reference to stripLine directly. But to its options.
-                //	eventObjectMap.eventParameter = { x: xy.x, y: xy.y, stripLine: eventObjectMap.stripLine._options, axis: eventObjectMap.axis._options, stripLineIndex: eventObjectMap.stripLineIndex };
-                //	eventObjectMap.eventContext = { context: eventObjectMap.stripLine, userContext: eventObjectMap.stripLine._options, mouseover: "mouseover", mousemove: "mousemove", mouseout: "mouseout", click: "click" };
+                //  //Event Parameter should not contain reference to stripLine directly. But to its options.
+                //  eventObjectMap.eventParameter = { x: xy.x, y: xy.y, stripLine: eventObjectMap.stripLine._options, axis: eventObjectMap.axis._options, stripLineIndex: eventObjectMap.stripLineIndex };
+                //  eventObjectMap.eventContext = { context: eventObjectMap.stripLine, userContext: eventObjectMap.stripLine._options, mouseover: "mouseover", mousemove: "mousemove", mouseout: "mouseout", click: "click" };
 
-                //	eventObjectMaps.push(eventObjectMap);
+                //  eventObjectMaps.push(eventObjectMap);
                 //}
             else if (eventObjectMap.objectType === "legendItem") {
 
@@ -24276,19 +26128,14 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 
     //#region Class CultureInfo
 
-    function CultureInfo(chart, culture) {
+    function CultureInfo(culture) {
 
         var cultureInfo;
 
         if (culture && cultures[culture])
             cultureInfo = cultures[culture];
 
-
-        Title.parent.constructor.call(this, "CultureInfo", cultureInfo, chart.theme);
-
-        this.chart = chart;
-        this.canvas = chart.canvas;
-        this.ctx = this.chart.ctx;
+        CultureInfo.base.constructor.call(this, "CultureInfo", cultureInfo);
     }
 
     extend(CultureInfo, CanvasJSObject);
@@ -24565,9 +26412,9 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         }
         //,
         //draw1pxLine: function (x1, y1, x2, y2, color, ctx) {
-        //	ctx.beginPath();
-        //	ctx.drawRect(x1, y1, x2 - x1, y2 - y1);
-        //	ctx.stroke();
+        //  ctx.beginPath();
+        //  ctx.drawRect(x1, y1, x2 - x1, y2 - y1);
+        //  ctx.stroke();
         //}
     }
 
@@ -24590,10 +26437,31 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
         },
         addCultureInfo: function (name, cultureInfo) {
             cultures[name] = cultureInfo;
+        },
+        formatNumber: function (number, formatString, culture) {
+            culture = culture || "en";
+            formatString = formatString || "#,##0.##";
+
+            if (!cultures[culture])
+                throw "Unknown Culture Name";
+            else {
+                return numberFormat(number, formatString, new CultureInfo(culture));
+            }
+        },
+        formatDate: function (date, formatString, culture) {
+            culture = culture || "en";
+            formatString = formatString || "DD MMM YYYY";
+
+            if (!cultures[culture])
+                throw "Unknown Culture Name";
+            else {
+                return dateFormat(date, formatString, new CultureInfo(culture));
+            }
         }
+
     }
 
-    CanvasJS.Chart.version = "v1.6.2 GA";
+    CanvasJS.Chart.version = "v1.7.0 GA";
     window.CanvasJS = CanvasJS;
     //#endregion Public API
 
@@ -24616,6 +26484,7 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 *     http://canvasjs.com/
 * 
 */
+
 (function ($, window, document, undefined) {
 
 	$.fn.CanvasJSChart = function (options) {

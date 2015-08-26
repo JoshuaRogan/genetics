@@ -16,6 +16,7 @@
 *     http://canvasjs.com/
 * 
 */
+
 (function ($, window, document, undefined) {
 
 	$.fn.CanvasJSChart = function (options) {

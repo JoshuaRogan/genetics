@@ -11417,6 +11417,12 @@ Then, run this script to get the list.
     right: -8%;
   }
 }
+.page-report-problem .btn {
+  color: white !important;
+}
+.page-welcome .btn {
+  color: white !important;
+}
 body .withripple {
   position: relative;
 }
