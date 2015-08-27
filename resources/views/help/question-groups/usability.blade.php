@@ -1,4 +1,5 @@
 @set('question_set', 'faq-simulator-usability')
+<ul class='list-unstyled question collapsible' data-collapsible="accordion"  id='question-panel-{{$question_set}}-@render("question-id")'>
 
 @partial('help.macros.question')
         @block('question-title', 'How can I create a graph of my simulation? ')
@@ -159,4 +160,4 @@
             You can access the simulation data by clicking on the <i class='fa fa-file-text-o'></i> icon located in the top right corner of the Simulation Parameters section.  This will take you to a seperate page containg scrollable, tab seperated x,y coordinates from each line that are currently on the graph. You can easily copy and paste this into your favorite data manipulation program to perform additional analysis. 
         @endblock
 @endpartial
-
+</ul>

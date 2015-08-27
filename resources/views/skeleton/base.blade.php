@@ -35,6 +35,9 @@
 	@yield('header')
 	<!--HEADER --> 
 
+
+
+
 	<!--CONTENT-->
 	<div id="main" class="@yield('pageclass') container-fluid"> 
 		<!--Flash Messages -->
@@ -55,6 +58,21 @@
 		@endif
 		
 		<!--Flash Messages -->
+
+		<!--FIRST TIME --> 
+		<div class="modal text-center" id="first-time-faq">
+
+			<div class="modal-content">
+				<h2> First time here? </h2>
+				<h3> Check out the <a href="#">FAQ</a></h3>
+			</div>
+
+			<div class="modal-footer">
+		      <a href="#!" class=" btn btn-primary modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+		    </div>
+
+		</div>
+		<!--FIRST TIME --> 
 	
 		@yield('content')
 	</div>

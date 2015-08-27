@@ -1,27 +1,27 @@
 popGen.faq = popGen.faq || {};
 
 popGen.faq.init = function() {
-    popGen.htmlutil.initFAQ();
-    popGen.htmlutil.smoothScrolling();
+    // popGen.htmlutil.initFAQ();
+    // popGen.htmlutil.smoothScrolling();
 
-    var mainAnchors = new AnchorJS({
-        placement: 'left',
-        class: 'left'
-    });
-    mainAnchors.add().remove('.panel-title').remove('.no-anchor');
-    var questionAnchors = new AnchorJS({
-        placement: 'right',
-        class: 'right'
-    });
-    questionAnchors.add('.panel-title').remove('.no-anchor');
-    $('body').scrollspy({
-        target: '.bs-docs-sidebar'
-    });
-    $('body').scrollspy({
-        target: '#mobile-sidebar'
-    });
-    this.activateFAQSearch("#hideseek-search");
-    this.activateLazyLoadImages();
+    // var mainAnchors = new AnchorJS({
+    //     placement: 'left',
+    //     class: 'left'
+    // });
+    // mainAnchors.add().remove('.panel-title').remove('.no-anchor');
+    // var questionAnchors = new AnchorJS({
+    //     placement: 'right',
+    //     class: 'right'
+    // });
+    // questionAnchors.add('.panel-title').remove('.no-anchor');
+    // $('body').scrollspy({
+    //     target: '.bs-docs-sidebar'
+    // });
+    // $('body').scrollspy({
+    //     target: '#mobile-sidebar'
+    // });
+    // this.activateFAQSearch("#hideseek-search");
+    // this.activateLazyLoadImages();
 };
 
 

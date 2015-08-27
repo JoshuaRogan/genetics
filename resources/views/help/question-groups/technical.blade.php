@@ -1,4 +1,5 @@
 @set('question_set', 'faq-simulator-technical')
+<ul class='list-unstyled question collapsible' data-collapsible="accordion"  id='question-panel-{{$question_set}}-@render("question-id")'>
 
 @partial('help.macros.question')
         @block('question-title', 'How can I submit a bug or potential new feature? ')
@@ -50,3 +51,4 @@
             <p>To support this project you can submit <a href="/report-problem" target="_blank">bugs</a>, submit issues to the <a href="https://github.com/JoshuaRogan/genetics" target="_blank">github repository</a>, or contact us!</p>
         @endblock
 @endpartial
+</ul>

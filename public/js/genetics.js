@@ -26513,27 +26513,27 @@ function AnchorJS(A){"use strict";this.options=A||{},this._applyRemainingDefault
 popGen.faq = popGen.faq || {};
 
 popGen.faq.init = function() {
-    popGen.htmlutil.initFAQ();
-    popGen.htmlutil.smoothScrolling();
+    // popGen.htmlutil.initFAQ();
+    // popGen.htmlutil.smoothScrolling();
 
-    var mainAnchors = new AnchorJS({
-        placement: 'left',
-        class: 'left'
-    });
-    mainAnchors.add().remove('.panel-title').remove('.no-anchor');
-    var questionAnchors = new AnchorJS({
-        placement: 'right',
-        class: 'right'
-    });
-    questionAnchors.add('.panel-title').remove('.no-anchor');
-    $('body').scrollspy({
-        target: '.bs-docs-sidebar'
-    });
-    $('body').scrollspy({
-        target: '#mobile-sidebar'
-    });
-    this.activateFAQSearch("#hideseek-search");
-    this.activateLazyLoadImages();
+    // var mainAnchors = new AnchorJS({
+    //     placement: 'left',
+    //     class: 'left'
+    // });
+    // mainAnchors.add().remove('.panel-title').remove('.no-anchor');
+    // var questionAnchors = new AnchorJS({
+    //     placement: 'right',
+    //     class: 'right'
+    // });
+    // questionAnchors.add('.panel-title').remove('.no-anchor');
+    // $('body').scrollspy({
+    //     target: '.bs-docs-sidebar'
+    // });
+    // $('body').scrollspy({
+    //     target: '#mobile-sidebar'
+    // });
+    // this.activateFAQSearch("#hideseek-search");
+    // this.activateLazyLoadImages();
 };
 
 
@@ -31451,6 +31451,7 @@ popGen.htmlutil.genDOM.bulkSectionOpener = function(){
 	    else{
 	    	popGen.velocity.hideAll(); 
 	    	$(this).html('<span data-hover="Open All">Open All</span>');
+	    	$(this).trigger("mouseleave");
 	    }
 
 	});
@@ -31593,6 +31594,8 @@ popGen.htmlutil.genDOM.activateLeanModal = function(){
 	// $('.modal-trigger').leanModal();
 	$('#getLink').leanModal();
 	$('#graph-computing-modal').leanModal();
+	$('#first-time-faq').openModal();
+
 };
 
 /*END DOM*/

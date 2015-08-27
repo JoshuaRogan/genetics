@@ -1,4 +1,6 @@
+
 @set('question_set', 'learn-genetic-drift')
+<ul class='list-unstyled question collapsible' data-collapsible="accordion"  id='question-panel-{{$question_set}}-@render("question-id")'>
 
 @partial('help.macros.question')
         @block('question-title', 'What is drift?')
@@ -69,3 +71,4 @@
             It is genetic effects on a population started by a small group of individuals. Ex. If 100 alleles emigrate to the desert, THAT IS the new population!           
         @endblock
 @endpartial
+</ul>

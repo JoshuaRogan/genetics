@@ -1,5 +1,5 @@
 @set('question_set', 'learn-assortative-mating')
-
+<ul class='list-unstyled question collapsible' data-collapsible="accordion"  id='question-panel-{{$question_set}}-@render("question-id")'>
 @partial('help.macros.question')
     @block('question-title', 'What is Assortative mating?')
     @block('question-id', 'assortative-mating') 
@@ -220,3 +220,4 @@
     	<img src='images/faq/assortative-mating/genotype-freq.png' alt='Genotype frequencies after one generation of assortative mating'>
 	@endblock
 @endpartial
+</ul>

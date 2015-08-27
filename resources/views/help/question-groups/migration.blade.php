@@ -1,4 +1,6 @@
+
 @set('question_set', 'learn-migration')
+<ul class='list-unstyled question collapsible' data-collapsible="accordion"  id='question-panel-{{$question_set}}-@render("question-id")'>
 
 @partial('help.macros.question')
     @block('question-title', 'What is migration?')
@@ -115,3 +117,4 @@
     	<img src='images/faq/migration/two-way-racism.png' alt='Two-way Racism as General Model'>
 	@endblock
 @endpartial
+</ul>

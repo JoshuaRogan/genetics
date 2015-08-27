@@ -328,6 +328,8 @@ popGen.htmlutil.genDOM.activateLeanModal = function(){
 	// $('.modal-trigger').leanModal();
 	$('#getLink').leanModal();
 	$('#graph-computing-modal').leanModal();
+	$('#first-time-faq').openModal();
+
 };
 
 /*END DOM*/
