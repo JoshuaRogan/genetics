@@ -435,11 +435,10 @@ popGen.htmlutil.chartDOM.highContrastMode = function(){
 	var white = "rgba(255,255,255,1.0)";
 
 
-	//Change some CSS
-	$("#graph_wrapper").css("background-color", "white"); 
-	$("#graph_wrapper").css("background-image", "none"); 
-	$("#graph_wrapper").css("color", "black"); 
 
+    //Switch layout classes
+    $("#graph_wrapper").addClass("print-layout"); 
+    $("#graph_wrapper").removeClass("default-layout"); 
 
 	//Change the Label colors 
 	this.chart.options.axisX.labelFontColor = black;  
@@ -472,10 +471,9 @@ popGen.htmlutil.chartDOM.defaultLayout = function(){
 	var lightGray 	= "rgba(255, 255, 255, 0.2)";
 	var clear 		= "rgba(255, 255, 255, 0.0)";
 
-	//Change some CSS
-	$("#graph_wrapper").css("background-image", "linear-gradient(to bottom, #4b516a 0%, #21232e 100%)"); 
-	$("#graph_wrapper").css("color", "#fff"); 
-	$("#graph_wrapper").css("background-color", "inherit"); 
+    //Switch layout classes
+    $("#graph_wrapper").removeClass("print-layout"); 
+    $("#graph_wrapper").addClass("default-layout");
 
 	//Change the Label colors 
 	this.chart.options.axisX.labelFontColor 	= lightGray;  
@@ -656,7 +654,7 @@ popGen.htmlutil.chartDOM.formHandler = function(selector, type){
         
         //Open the Modal for long calculations
         if(input_num_generations > 1000 || input_population_size > 1000){
-            $('#graph-computing-modal').modal('show');
+            $('#graph-computing-modal').openModal();;
         }
 
         //Call a different function if infinite sample sizes is set both functions set myGenerations.frequencies 
@@ -743,7 +741,7 @@ popGen.htmlutil.chartDOM.isActiveVariable = function(selector){
  */
 popGen.htmlutil.chartDOM.workerFinished = function(frequencies){
     //Close the modal
-    $('#graph-computing-modal').modal('hide');
+    $('#graph-computing-modal').closeModal();
 
     //Check to see if the last graph was a batch auto reset it 
     if(!$("#graph_stats").hasClass("hidden") && this.nextGraphType !="batchTool" ){

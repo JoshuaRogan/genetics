@@ -35,7 +35,8 @@ popGen.htmlutil.initHome = function(){
 	this.genDOM.bulkSectionOpener(); 
 	this.genDOM.activateHelpSections(); 
 	this.genDOM.home.iconHandler(); 
-	this.genDOM.home.userConfig(); 
+	this.genDOM.home.userConfig();
+	this.genDOM.activateLeanModal(); 
 };
 
 popGen.htmlutil.initFAQ = function(){
@@ -319,7 +320,11 @@ popGen.htmlutil.genDOM.home.userConfig = function(){
 
 
 }
-
+popGen.htmlutil.genDOM.activateLeanModal = function(){
+	// $('.modal-trigger').leanModal();
+	$('#getLink').leanModal();
+	$('#graph-computing-modal').leanModal();
+};
 
 /*END DOM*/
 
@@ -423,7 +428,6 @@ popGen.htmlutil.updateCanvasMenu = function(){
 	var $toolbar = $(toolbar);
 	if($toolbar.length){
 		$toolbar.click(function(){
-			console.log("CLICK");
 			$(toolbar + " button[state='zoom']").html(html_zoom); 
 			$(toolbar + " button[state='pan']").html(html_pan); 
 		});

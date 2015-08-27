@@ -14,15 +14,44 @@
         vertical-align: middle;
     }
     #graph_wrapper {
-        #gradient > .vertical(@brand-primary, darken(@brand-primary, 20%));
+        
+        &.allele-graph{
+            #gradient > .vertical(@brand-primary, darken(@brand-primary, 20%));
+            background-color: @brand-primary;
+        }
+        
         &.genotype-graph {
             #gradient > .vertical(@brand-genotype, darken(@brand-genotype, 20%));
+            background-color: @brand-genotype;
         }
-        background-color: #141425;
+
+        
         line-height: 24px;
         padding: 3px 5px 30px 5px;
         color: #fff;
         text-align: center;
+
+        &.print-layout{
+            background-color: white; 
+            background-image: none; 
+            color: black;
+            box-shadow: none;
+        }
+
+        &.default-layout{
+            &.allele-graph{
+                #gradient > .vertical(@brand-primary, darken(@brand-primary, 20%));
+                color: white; 
+            }
+
+            &.genotype-graph {
+                #gradient > .vertical(@brand-genotype, darken(@brand-genotype, 20%));
+                background-color: none;
+            }
+        }
+
+       
+
         h1, h2, h3 {
             font-weight: 300;
         }

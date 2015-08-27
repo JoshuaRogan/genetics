@@ -1,14 +1,14 @@
 //Import bootstrap variables and mixins 
 @import "variables/variables.less";
-@import "bootstrap/variables.less";
-@import "bootstrap/mixins.less";
+@import "vendors/bootstrap/variables.less";
+@import "vendors/bootstrap/mixins.less";
+
+
 @import "font-helpers.less";
 @import "helpers.less";
 @import "anchor-js.less";
 @import "transitions.less";
-@import "material/my_material.less";
-@import "materialize/materialize.less";
-
+ 
 //Pages
 @import "pages/contact.less";
 @import "pages/welcome.less";
@@ -20,6 +20,10 @@
 //Vendor Overides
 @import "_canvasjs.less";
 @import "_material.less";
+
+//Additional Vendors
+@import "vendors/material/my_material.less";
+@import "vendors/materialize/materialize.less";
 
 body {
     //Add Google Material Ripples to default elements 

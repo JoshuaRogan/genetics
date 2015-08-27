@@ -5364,126 +5364,6 @@ button.close {
   border: 0;
   -webkit-appearance: none;
 }
-.modal-open {
-  overflow: hidden;
-}
-.modal {
-  display: none;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1050;
-  -webkit-overflow-scrolling: touch;
-  outline: 0;
-}
-.modal.fade .modal-dialog {
-  -webkit-transform: translate3d(0, -25%, 0);
-  transform: translate3d(0, -25%, 0);
-  -webkit-transition: -webkit-transform 0.3s ease-out;
-  -moz-transition: -moz-transform 0.3s ease-out;
-  -o-transition: -o-transform 0.3s ease-out;
-  transition: transform 0.3s ease-out;
-}
-.modal.in .modal-dialog {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-.modal-dialog {
-  position: relative;
-  width: auto;
-  margin: 10px;
-}
-.modal-content {
-  position: relative;
-  background-color: #ffffff;
-  border: 1px solid #999999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  background-clip: padding-box;
-  outline: 0;
-}
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1040;
-  background-color: #000000;
-}
-.modal-backdrop.fade {
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-.modal-backdrop.in {
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-}
-.modal-header {
-  padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
-  min-height: 16.42857143px;
-}
-.modal-header .close {
-  margin-top: -2px;
-}
-.modal-title {
-  margin: 0;
-  line-height: 1.42857143;
-}
-.modal-body {
-  position: relative;
-  padding: 15px;
-}
-.modal-footer {
-  padding: 15px;
-  text-align: right;
-  border-top: 1px solid #e5e5e5;
-}
-.modal-footer .btn + .btn {
-  margin-left: 5px;
-  margin-bottom: 0;
-}
-.modal-footer .btn-group .btn + .btn {
-  margin-left: -1px;
-}
-.modal-footer .btn-block + .btn-block {
-  margin-left: 0;
-}
-.modal-scrollbar-measure {
-  position: absolute;
-  top: -9999px;
-  width: 50px;
-  height: 50px;
-  overflow: scroll;
-}
-@media (min-width: 768px) {
-  .modal-dialog {
-    width: 600px;
-    margin: 30px auto;
-  }
-  .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  }
-  .modal-sm {
-    width: 300px;
-  }
-}
-@media (min-width: 992px) {
-  .modal-lg {
-    width: 900px;
-  }
-}
 .tooltip {
   position: absolute;
   z-index: 1070;
@@ -5917,9 +5797,7 @@ button.close {
 .pager:before,
 .pager:after,
 .panel-body:before,
-.panel-body:after,
-.modal-footer:before,
-.modal-footer:after {
+.panel-body:after {
   content: " ";
   display: table;
 }
@@ -5936,8 +5814,7 @@ button.close {
 .navbar-header:after,
 .navbar-collapse:after,
 .pager:after,
-.panel-body:after,
-.modal-footer:after {
+.panel-body:after {
   clear: both;
 }
 .center-block {
@@ -6421,6 +6298,1164 @@ button.close {
 }
 #transition .trans-hide:after {
   clear: both;
+}
+.page-contact #material-form fieldset[disabled] .form-control,
+.page-contact #material-form .form-control,
+.page-contact #material-form fieldset[disabled] .form-control:focus,
+.page-contact #material-form .form-control:focus,
+.page-contact #material-form fieldset[disabled] .form-control.focus,
+.page-contact #material-form .form-control.focus {
+  padding: 0;
+  float: none;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.page-contact #material-form fieldset[disabled] .form-control:disabled,
+.page-contact #material-form .form-control:disabled,
+.page-contact #material-form fieldset[disabled] .form-control:focus:disabled,
+.page-contact #material-form .form-control:focus:disabled,
+.page-contact #material-form fieldset[disabled] .form-control.focus:disabled,
+.page-contact #material-form .form-control.focus:disabled {
+  border-style: dashed;
+  border-bottom: 1px solid #757575;
+}
+.page-contact #material-form fieldset[disabled] .form-control:textarea,
+.page-contact #material-form .form-control:textarea {
+  height: 40px;
+}
+.page-contact #material-form select[multiple].form-control,
+.page-contact #material-form select[multiple].form-control:focus,
+.page-contact #material-form select[multiple].form-control.focus {
+  height: 85px;
+}
+.page-contact #material-form .form-control {
+  border: 0;
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background 0s ease-out;
+}
+.page-contact #material-form .form-control::-webkit-input-placeholder {
+  color: #bdbdbd;
+}
+.page-contact #material-form .form-control::-moz-placeholder {
+  color: #bdbdbd;
+}
+.page-contact #material-form .form-control:-ms-input-placeholder {
+  color: #bdbdbd;
+}
+.page-contact #material-form .form-control[disabled],
+.page-contact #material-form .form-control[readonly],
+.page-contact #material-form fieldset[disabled] .form-control {
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
+}
+.page-contact #material-form fieldset[disabled] .form-control:disabled,
+.page-contact #material-form .form-control-wrapper .form-control:disabled,
+.page-contact #material-form .form-control:disabled,
+.page-contact #material-form fieldset[disabled] .form-control:focus:disabled,
+.page-contact #material-form .form-control-wrapper .form-control:focus:disabled,
+.page-contact #material-form .form-control:focus:disabled,
+.page-contact #material-form fieldset[disabled] .form-control.focus:disabled,
+.page-contact #material-form .form-control-wrapper .form-control.focus:disabled,
+.page-contact #material-form .form-control.focus:disabled {
+  border: 0;
+}
+.page-contact #material-form .form-control:focus,
+.page-contact #material-form .form-control.focus {
+  outline: none;
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+  background-size: 100% 2px, 100% 1px;
+  box-shadow: none;
+  transition-duration: 0.3s;
+}
+.page-contact #material-form .form-control-wrapper {
+  position: relative;
+}
+.page-contact #material-form .form-control-wrapper .floating-label {
+  color: #bdbdbd;
+  position: absolute;
+  pointer-events: none;
+  left: 0px;
+  top: 5px;
+  transition: 0.3s ease all;
+}
+.page-contact #material-form .form-control-wrapper .floating-label {
+  font-size: 14px;
+}
+.page-contact #material-form .form-control-wrapper .form-control:focus ~ .floating-label,
+.page-contact #material-form .form-control-wrapper .form-control:not(.empty) ~ .floating-label {
+  top: -9.8px;
+  font-size: 9.8px;
+}
+.page-contact #material-form .form-control-wrapper .input-sm + .floating-label {
+  font-size: 12px;
+  top: 7px;
+}
+.page-contact #material-form .form-control-wrapper .form-control.input-sm:focus ~ .floating-label,
+.page-contact #material-form .form-control-wrapper .form-control.input-sm:not(.empty) ~ .floating-label {
+  top: -8.4px;
+  font-size: 8.4px;
+}
+.page-contact #material-form .form-control-wrapper .input-lg + .floating-label {
+  font-size: 18px;
+  top: 10px;
+}
+.page-contact #material-form .form-control-wrapper .form-control.input-lg:focus ~ .floating-label,
+.page-contact #material-form .form-control-wrapper .form-control.input-lg:not(.empty) ~ .floating-label {
+  top: -12.6px;
+  font-size: 12.6px;
+}
+.page-contact #material-form .form-control-wrapper .form-control:focus ~ .floating-label {
+  color: #4b516a;
+}
+.page-contact #material-form .form-control-wrapper .form-control:not(.empty):invalid ~ .floating-label,
+.page-contact #material-form .form-control-wrapper .form-control.focus:invalid ~ .floating-label {
+  color: #e74c3c;
+}
+.page-contact #material-form .form-control-wrapper .form-control:focus ~ .material-input:after,
+.page-contact #material-form .form-control-wrapper .form-control.focus ~ .material-input:after {
+  background-color: #4b516a;
+}
+.page-contact #material-form .form-control-wrapper .form-control:invalid {
+  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-control-wrapper textarea {
+  resize: none;
+}
+.page-contact #material-form .form-control-wrapper textarea ~ .form-control-highlight {
+  margin-top: -11px;
+}
+.page-contact #material-form .form-control-wrapper .hint {
+  position: absolute;
+  font-size: 80%;
+  display: none;
+}
+.page-contact #material-form .form-control-wrapper .form-control:focus ~ .hint,
+.page-contact #material-form .form-control-wrapper .form-control.focus ~ .hint {
+  display: block;
+}
+.page-contact #material-form .form-control-wrapper select ~ .material-input:after {
+  display: none;
+}
+.page-contact #material-form .form-control-wrapper select {
+  appearance: none;
+}
+.page-contact #material-form .form-group.has-warning .form-control {
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-warning .material-input:focus,
+.page-contact #material-form .form-group.has-warning .form-control:focus,
+.page-contact #material-form .form-group.has-warning .form-control.focus {
+  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-warning .control-label,
+.page-contact #material-form .form-group.has-warning input.form-control:focus ~ .floating-label {
+  color: #f39c12;
+}
+.page-contact #material-form .form-group.has-error .form-control {
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-error .material-input:focus,
+.page-contact #material-form .form-group.has-error .form-control:focus,
+.page-contact #material-form .form-group.has-error .form-control.focus {
+  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-error .control-label,
+.page-contact #material-form .form-group.has-error input.form-control:focus ~ .floating-label {
+  color: #e74c3c;
+}
+.page-contact #material-form .form-group.has-success .form-control {
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-success .material-input:focus,
+.page-contact #material-form .form-group.has-success .form-control:focus,
+.page-contact #material-form .form-group.has-success .form-control.focus {
+  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-success .control-label,
+.page-contact #material-form .form-group.has-success input.form-control:focus ~ .floating-label {
+  color: #2ecc71;
+}
+.page-contact #material-form .form-group.has-info .form-control {
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-info .material-input:focus,
+.page-contact #material-form .form-group.has-info .form-control:focus,
+.page-contact #material-form .form-group.has-info .form-control.focus {
+  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-info .control-label,
+.page-contact #material-form .form-group.has-info input.form-control:focus ~ .floating-label {
+  color: #3498db;
+}
+.page-contact #material-form .form-group .form-control:focus,
+.page-contact #material-form .form-group-default .form-control:focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-black .form-control:focus {
+  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-white .form-control:focus {
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-inverse .form-control:focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-primary .form-control:focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-success .form-control:focus {
+  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-info .form-control:focus {
+  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-warning .form-control:focus {
+  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-danger .form-control:focus {
+  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-red .form-control:focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-pink .form-control:focus {
+  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-purple .form-control:focus {
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-deep-purple .form-control:focus {
+  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-indigo .form-control:focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-blue .form-control:focus {
+  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-light-blue .form-control:focus {
+  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-cyan .form-control:focus {
+  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-teal .form-control:focus {
+  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-green .form-control:focus {
+  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-light-green .form-control:focus {
+  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-lime .form-control:focus {
+  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-yellow .form-control:focus {
+  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-amber .form-control:focus {
+  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-orange .form-control:focus {
+  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-deep-orange .form-control:focus {
+  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-brown .form-control:focus {
+  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-grey .form-control:focus {
+  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-blue-grey .form-control:focus {
+  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group .form-control.focus,
+.page-contact #material-form .form-group-default .form-control.focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-black .form-control.focus {
+  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-white .form-control.focus {
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-inverse .form-control.focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-primary .form-control.focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-success .form-control.focus {
+  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-info .form-control.focus {
+  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-warning .form-control.focus {
+  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-danger .form-control.focus {
+  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-red .form-control.focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-pink .form-control.focus {
+  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-purple .form-control.focus {
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-deep-purple .form-control.focus {
+  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-indigo .form-control.focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-blue .form-control.focus {
+  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-light-blue .form-control.focus {
+  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-cyan .form-control.focus {
+  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-teal .form-control.focus {
+  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-green .form-control.focus {
+  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-light-green .form-control.focus {
+  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-lime .form-control.focus {
+  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-yellow .form-control.focus {
+  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-amber .form-control.focus {
+  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-orange .form-control.focus {
+  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-deep-orange .form-control.focus {
+  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-brown .form-control.focus {
+  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-grey .form-control.focus {
+  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-blue-grey .form-control.focus {
+  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group .control-label,
+.page-contact #material-form .form-group-default .control-label {
+  color: rgba(0, 0, 0, 0.84);
+}
+.page-contact #material-form .form-group-black .control-label {
+  color: #000000;
+}
+.page-contact #material-form .form-group-white .control-label {
+  color: #ffffff;
+}
+.page-contact #material-form .form-group-inverse .control-label {
+  color: #3f51b5;
+}
+.page-contact #material-form .form-group-primary .control-label {
+  color: #4b516a;
+}
+.page-contact #material-form .form-group-success .control-label {
+  color: #2ecc71;
+}
+.page-contact #material-form .form-group-info .control-label {
+  color: #3498db;
+}
+.page-contact #material-form .form-group-warning .control-label {
+  color: #f39c12;
+}
+.page-contact #material-form .form-group-danger .control-label {
+  color: #e74c3c;
+}
+.page-contact #material-form .form-group-material-red .control-label {
+  color: #f44336;
+}
+.page-contact #material-form .form-group-material-pink .control-label {
+  color: #e91e63;
+}
+.page-contact #material-form .form-group-material-purple .control-label {
+  color: #9c27b0;
+}
+.page-contact #material-form .form-group-material-deep-purple .control-label {
+  color: #673ab7;
+}
+.page-contact #material-form .form-group-material-indigo .control-label {
+  color: #3f51b5;
+}
+.page-contact #material-form .form-group-material-blue .control-label {
+  color: #2196f3;
+}
+.page-contact #material-form .form-group-material-light-blue .control-label {
+  color: #03a9f4;
+}
+.page-contact #material-form .form-group-material-cyan .control-label {
+  color: #00bcd4;
+}
+.page-contact #material-form .form-group-material-teal .control-label {
+  color: #009688;
+}
+.page-contact #material-form .form-group-material-green .control-label {
+  color: #4caf50;
+}
+.page-contact #material-form .form-group-material-light-green .control-label {
+  color: #8bc34a;
+}
+.page-contact #material-form .form-group-material-lime .control-label {
+  color: #cddc39;
+}
+.page-contact #material-form .form-group-material-yellow .control-label {
+  color: #ffeb3b;
+}
+.page-contact #material-form .form-group-material-amber .control-label {
+  color: #ffc107;
+}
+.page-contact #material-form .form-group-material-orange .control-label {
+  color: #ff9800;
+}
+.page-contact #material-form .form-group-material-deep-orange .control-label {
+  color: #ff5722;
+}
+.page-contact #material-form .form-group-material-brown .control-label {
+  color: #795548;
+}
+.page-contact #material-form .form-group-material-grey .control-label {
+  color: #9e9e9e;
+}
+.page-contact #material-form .form-group-material-blue-grey .control-label {
+  color: #607d8b;
+}
+.page-contact #material-form .form-group input.form-control:focus ~ .floating-label,
+.page-contact #material-form .form-group-default input.form-control:focus ~ .floating-label {
+  color: #4b516a;
+}
+.page-contact #material-form .form-group-black input.form-control:focus ~ .floating-label {
+  color: #000000;
+}
+.page-contact #material-form .form-group-white input.form-control:focus ~ .floating-label {
+  color: #ffffff;
+}
+.page-contact #material-form .form-group-inverse input.form-control:focus ~ .floating-label {
+  color: #3f51b5;
+}
+.page-contact #material-form .form-group-primary input.form-control:focus ~ .floating-label {
+  color: #4b516a;
+}
+.page-contact #material-form .form-group-success input.form-control:focus ~ .floating-label {
+  color: #2ecc71;
+}
+.page-contact #material-form .form-group-info input.form-control:focus ~ .floating-label {
+  color: #3498db;
+}
+.page-contact #material-form .form-group-warning input.form-control:focus ~ .floating-label {
+  color: #f39c12;
+}
+.page-contact #material-form .form-group-danger input.form-control:focus ~ .floating-label {
+  color: #e74c3c;
+}
+.page-contact #material-form .form-group-material-red input.form-control:focus ~ .floating-label {
+  color: #f44336;
+}
+.page-contact #material-form .form-group-material-pink input.form-control:focus ~ .floating-label {
+  color: #e91e63;
+}
+.page-contact #material-form .form-group-material-purple input.form-control:focus ~ .floating-label {
+  color: #9c27b0;
+}
+.page-contact #material-form .form-group-material-deep-purple input.form-control:focus ~ .floating-label {
+  color: #673ab7;
+}
+.page-contact #material-form .form-group-material-indigo input.form-control:focus ~ .floating-label {
+  color: #3f51b5;
+}
+.page-contact #material-form .form-group-material-blue input.form-control:focus ~ .floating-label {
+  color: #2196f3;
+}
+.page-contact #material-form .form-group-material-light-blue input.form-control:focus ~ .floating-label {
+  color: #03a9f4;
+}
+.page-contact #material-form .form-group-material-cyan input.form-control:focus ~ .floating-label {
+  color: #00bcd4;
+}
+.page-contact #material-form .form-group-material-teal input.form-control:focus ~ .floating-label {
+  color: #009688;
+}
+.page-contact #material-form .form-group-material-green input.form-control:focus ~ .floating-label {
+  color: #4caf50;
+}
+.page-contact #material-form .form-group-material-light-green input.form-control:focus ~ .floating-label {
+  color: #8bc34a;
+}
+.page-contact #material-form .form-group-material-lime input.form-control:focus ~ .floating-label {
+  color: #cddc39;
+}
+.page-contact #material-form .form-group-material-yellow input.form-control:focus ~ .floating-label {
+  color: #ffeb3b;
+}
+.page-contact #material-form .form-group-material-amber input.form-control:focus ~ .floating-label {
+  color: #ffc107;
+}
+.page-contact #material-form .form-group-material-orange input.form-control:focus ~ .floating-label {
+  color: #ff9800;
+}
+.page-contact #material-form .form-group-material-deep-orange input.form-control:focus ~ .floating-label {
+  color: #ff5722;
+}
+.page-contact #material-form .form-group-material-brown input.form-control:focus ~ .floating-label {
+  color: #795548;
+}
+.page-contact #material-form .form-group-material-grey input.form-control:focus ~ .floating-label {
+  color: #9e9e9e;
+}
+.page-contact #material-form .form-group-material-blue-grey input.form-control:focus ~ .floating-label {
+  color: #607d8b;
+}
+.page-contact #material-form .input-group .form-control-wrapper {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.page-contact #material-form .input-group .form-control-wrapper .form-control {
+  float: none;
+}
+.page-contact #material-form .input-group .input-group-addon {
+  border: 0;
+  background: transparent;
+}
+.page-contact #material-form .input-group .input-group-btn .btn {
+  border-radius: 4px;
+  margin: 0;
+}
+.page-contact #material-form select.form-control {
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.page-contact #material-form select.form-control:focus,
+.page-contact #material-form select.form-control.focus {
+  box-shadow: none;
+  border-color: #757575;
+}
+.page-contact #material-form .form-control-wrapper input[type=file] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.page-contact #material-form .btn {
+  background: none;
+  box-shadow: none;
+  font-weight: 500;
+  background-color: #4b516a;
+  color: white;
+}
+.page-contact #material-form .btn:disabled {
+  color: #a8a8a8 !important;
+}
+.page-welcome .btn {
+  color: white !important;
+}
+/**
+ * Styling for the graph simulator pages
+ */
+.page-graph .bookmark-link {
+  color: #4b516a;
+  font-weight: bold;
+  font-size: 17px;
+}
+.page-graph .infinite-sym {
+  font-size: 30px;
+  vertical-align: middle;
+}
+.page-graph #graph_wrapper {
+  line-height: 24px;
+  padding: 3px 5px 30px 5px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
+  border-radius: 2px;
+  border: 0;
+}
+.page-graph #graph_wrapper.allele-graph {
+  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
+  background-color: #4b516a;
+}
+.page-graph #graph_wrapper.genotype-graph {
+  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
+  background-color: #6a4b51;
+}
+.page-graph #graph_wrapper.print-layout {
+  background-color: white;
+  background-image: none;
+  color: black;
+  box-shadow: none;
+}
+.page-graph #graph_wrapper.default-layout.allele-graph {
+  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
+  color: white;
+}
+.page-graph #graph_wrapper.default-layout.genotype-graph {
+  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
+  background-color: none;
+}
+.page-graph #graph_wrapper h1,
+.page-graph #graph_wrapper h2,
+.page-graph #graph_wrapper h3 {
+  font-weight: 300;
+}
+.page-graph #graph_wrapper h1 {
+  font-size: 16px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #graph_wrapper h1 {
+    font-size: 26px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #graph_wrapper h1 {
+    font-size: 36px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #graph_wrapper h1 {
+    font-size: 38px;
+  }
+}
+.page-graph #graph_wrapper p {
+  color: #fff;
+  font-weight: 300;
+}
+.page-graph #graph_wrapper #graph-canvas {
+  height: 250px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #graph_wrapper #graph-canvas {
+    height: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #graph_wrapper #graph-canvas {
+    height: 450px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #graph_wrapper #graph-canvas {
+    height: 550px;
+  }
+}
+.page-graph #graph_wrapper #graph-canvas jpg .canvasjs-chart-container {
+  color: #000;
+}
+.page-graph #variables h2 {
+  font-size: 25px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables h2 {
+    font-size: 30px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables h2 {
+    font-size: 35px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables h2 {
+    font-size: 35px;
+  }
+}
+.page-graph #variables h2 a {
+  font-size: 15px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables h2 a {
+    font-size: 20px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables h2 a {
+    font-size: 25px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables h2 a {
+    font-size: 25px;
+  }
+}
+.page-graph #variables h3 {
+  color: #777777;
+  font-weight: 300;
+}
+.page-graph #variables .error {
+  font-weight: bold;
+  color: red;
+}
+.page-graph #variables #multiple-legends-container .modified-value .legend-val {
+  color: #e74c3c;
+}
+.page-graph #variables #multiple-legends-container .legend {
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  padding: 8px;
+  border: 1px solid #f2f2f5;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
+}
+.page-graph #variables #multiple-legends-container .legend.hidden-legend {
+  height: 30px;
+  max-height: 30px;
+  overflow: hidden;
+  box-shadow: none;
+  border-radius: 2px;
+  border: 1px solid #f2f2f5;
+}
+.page-graph #variables #multiple-legends-container .legend.hidden-legend .legend-variables {
+  display: hidden;
+}
+.page-graph #variables #multiple-legends-container .legend.hidden-legend h3 {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+.page-graph #variables #multiple-legends-container .legend.hidden-legend h3 .togglelegend {
+  font-size: 15px;
+}
+.page-graph #variables #multiple-legends-container .legend h3 {
+  color: #4b516a;
+  margin-top: 8px;
+  font-size: 18px;
+  /* (tablets, 768px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables #multiple-legends-container .legend h3 {
+    font-size: 24px;
+  }
+  .page-graph #variables #multiple-legends-container .legend h3 .togglelegend {
+    font-size: 20px;
+  }
+}
+.page-graph #variables #multiple-legends-container .legend .legend-var {
+  padding-right: 4px;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-symbol {
+  padding-left: 2px;
+  padding-right: 5px;
+  font-size: 18px;
+  font-style: italic;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-symbol:after {
+  content: " = ";
+}
+.page-graph #variables #multiple-legends-container .legend .legend-val {
+  font-weight: 600;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-warning {
+  padding-left: 4px;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-exclamation-triangle,
+.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-exclamation,
+.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-tachometer {
+  color: #e74c3c;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-recycle {
+  color: #2ecc71;
+  color: #33983c;
+}
+.page-graph #variables #multiple-legends-container .legend p {
+  margin-top: 10px;
+}
+.page-graph #variables #graph_stats {
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  padding: 8px;
+  border: 1px solid #f2f2f5;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
+}
+.page-graph #variables #graph_stats h3 {
+  color: #4b516a;
+  margin-top: 8px;
+  font-size: 18px;
+  /* (tablets, 768px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables #graph_stats h3 {
+    font-size: 24px;
+  }
+  .page-graph #variables #graph_stats h3 .togglelegend {
+    font-size: 20px;
+  }
+}
+.page-graph #variables #graph_stats .legend-var {
+  padding-right: 4px;
+}
+.page-graph #variables #graph_stats .legend-val {
+  font-weight: 600;
+}
+.page-graph #variables .variable-section {
+  border-bottom: 1px solid rgba(85, 85, 85, 0.5);
+}
+.page-graph #variables .variable {
+  margin-top: 20px;
+  /**Variable Name**/
+  /**Helper Text*/
+  /*Variable Value*/
+}
+.page-graph #variables .variable input::selection {
+  background: rgba(20, 20, 37, 0.2);
+}
+.page-graph #variables .variable input::-moz-selection {
+  background: rgba(20, 20, 37, 0.2);
+}
+.page-graph #variables .variable label {
+  font-size: 18px;
+  font-weight: normal;
+  overflow: hidden;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables .variable label {
+    font-size: 19px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables .variable label {
+    font-size: 19px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables .variable label {
+    font-size: 20px;
+  }
+}
+.page-graph #variables .variable .help-block {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  /* Small devices (tablets, 768px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables .variable .help-block {
+    padding-left: 10px;
+  }
+}
+.page-graph #variables .variable .help-block .help-symbol-container {
+  font-size: 18px;
+  color: #4b516a;
+  font-weight: 900;
+}
+.page-graph #variables .variable .help-block .help-symbol-container .help-symbol {
+  font-size: 22px;
+  font-style: italic;
+}
+.page-graph #variables .variable .help-block p {
+  font-size: 15px;
+}
+.page-graph #variables .variable #label-infinite-sample-size {
+  font-style: normal;
+}
+.page-graph #variables .variable #infinite_sample_size {
+  margin-top: 3px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables .variable #infinite_sample_size {
+    margin-top: 8px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables .variable #infinite_sample_size {
+    font-size: 8px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables .variable #infinite_sample_size {
+    margin-top: 8px;
+  }
+}
+.page-graph #variables .variable .value {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+@media (min-width: 768px) {
+  .page-graph #variables .variable .value {
+    margin-top: 0;
+  }
+}
+.page-graph #variables .variable .value input {
+  border: none;
+  font-size: 26px;
+  box-shadow: none;
+  margin-top: 0;
+  padding-top: 0;
+  text-align: center;
+  height: 100%;
+}
+.page-graph #variables .variable .scientific-notation-container {
+  margin-left: 0;
+  padding-left: 0;
+  margin-top: 0;
+  padding-top: 0;
+  font-weight: 300;
+}
+.page-graph #variables .variable .scientific-notation-container .scientific-notation {
+  font-size: 20px;
+  text-align: right;
+  padding-right: 0;
+  margin-right: 0;
+}
+.page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
+  font-size: 18px;
+  height: 34px;
+  padding: 3px 3px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+}
+@media (max-width: 768px) {
+  .page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
+    font-size: 20px;
+    height: 38px;
+    padding: 6px 12px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
+    font-size: 20px;
+    height: 38px;
+    padding: 6px 12px;
+  }
+}
+.page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent option {
+  text-align: center;
+}
+.page-graph #variables #options {
+  margin-top: 20px;
+  text-align: center;
+}
+@media (min-width: 1200px) {
+  .page-graph #variables #options {
+    text-align: left;
+  }
+}
+.page-graph #variables #buttons {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.page-graph #variables #buttons a {
+  margin-top: 20px;
+}
+.page-graph #variables #buttons .btn {
+  border-radius: 4px;
+  text-transform: none;
+  font-size: 14px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables #buttons .btn {
+    font-size: 15px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables #buttons .btn {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables #buttons .btn {
+    font-size: 18px;
+  }
+}
+.page-graph #results_panel {
+  margin-top: 20px;
+}
+.page-graph #results_panel #results {
+  height: 800px;
+  overflow-y: scroll;
+}
+.page-graph #graph-computing-modal #graph-completion-precent {
+  text-align: center;
+}
+.page-graph #graph-computing-modal #graph-completion-precent.completed {
+  color: green;
+}
+.page-graph #graph-computing-modal #graph-completion-precent.failed {
+  color: red;
+}
+/**
+ * Canvas JS Style Override
+ * @author Josh Rogan (JoshJRogan@gmail.com)
+ * 
+ */
+.graph-genotype .canvasjs-chart-toolbar {
+  color: #6a4b51;
+}
+.graph-genotype .canvasjs-chart-toolbar button {
+  margin-top: 10px !important;
+  padding: 3px 10px 0px !important;
+  color: #6a4b51 !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+}
+.graph-genotype .canvasjs-chart-toolbar button:hover {
+  background-color: #6a4b51 !important;
+  color: white !important;
+}
+.graph-genotype .canvasjs-chart-toolbar button[state='menu'] {
+  margin-right: 8px !important;
+  background-color: white;
+}
+.graph-genotype .canvasjs-chart-toolbar > div {
+  margin-top: 11px;
+  margin-bottom: 0;
+  margin-right: 7px;
+  padding: 0 !important;
+  background-color: white;
+  width: 150px;
+  box-shadow: none !important;
+}
+.graph-genotype .canvasjs-chart-toolbar > div > div {
+  font-weight: bold;
+  padding: 10px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.graph-genotype .canvasjs-chart-toolbar > div > div:hover {
+  background-color: #6a4b51 !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+  color: white;
+}
+.graph-allele .canvasjs-chart-toolbar {
+  color: #4b516a;
+}
+.graph-allele .canvasjs-chart-toolbar button {
+  margin-top: 10px !important;
+  padding: 3px 10px 0px !important;
+  color: #4b516a !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+}
+.graph-allele .canvasjs-chart-toolbar button:hover {
+  background-color: #4b516a !important;
+  color: white !important;
+}
+.graph-allele .canvasjs-chart-toolbar button[state='menu'] {
+  margin-right: 8px !important;
+  background-color: white;
+}
+.graph-allele .canvasjs-chart-toolbar > div {
+  margin-top: 11px;
+  margin-bottom: 0;
+  margin-right: 7px;
+  padding: 0 !important;
+  background-color: white;
+  width: 150px;
+  box-shadow: none !important;
+}
+.graph-allele .canvasjs-chart-toolbar > div > div {
+  font-weight: bold;
+  padding: 10px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.graph-allele .canvasjs-chart-toolbar > div > div:hover {
+  background-color: #4b516a !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+  color: white;
+}
+/**
+ *	Material Bootstrap overrides 
+ * 	@author Josh Rogan (JoshJRogan@gmail.com)
+ */
+.btn,
+.btn-primary {
+  color: white !important;
+}
+.modal .modal-content {
+  box-shadow: none;
+  margin: inherit auto inherit;
+}
+.modal .alert a {
+  color: white !important;
 }
 /*
 
@@ -11417,1131 +12452,86 @@ Then, run this script to get the list.
     right: -8%;
   }
 }
-.page-contact #material-form fieldset[disabled] .form-control,
-.page-contact #material-form .form-control,
-.page-contact #material-form fieldset[disabled] .form-control:focus,
-.page-contact #material-form .form-control:focus,
-.page-contact #material-form fieldset[disabled] .form-control.focus,
-.page-contact #material-form .form-control.focus {
-  padding: 0;
-  float: none;
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-}
-.page-contact #material-form fieldset[disabled] .form-control:disabled,
-.page-contact #material-form .form-control:disabled,
-.page-contact #material-form fieldset[disabled] .form-control:focus:disabled,
-.page-contact #material-form .form-control:focus:disabled,
-.page-contact #material-form fieldset[disabled] .form-control.focus:disabled,
-.page-contact #material-form .form-control.focus:disabled {
-  border-style: dashed;
-  border-bottom: 1px solid #757575;
-}
-.page-contact #material-form fieldset[disabled] .form-control:textarea,
-.page-contact #material-form .form-control:textarea {
-  height: 40px;
-}
-.page-contact #material-form select[multiple].form-control,
-.page-contact #material-form select[multiple].form-control:focus,
-.page-contact #material-form select[multiple].form-control.focus {
-  height: 85px;
-}
-.page-contact #material-form .form-control {
-  border: 0;
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-  background-size: 0 2px, 100% 1px;
-  background-repeat: no-repeat;
-  background-position: center bottom, center calc(100% - 1px);
-  background-color: transparent;
-  background-color: rgba(0, 0, 0, 0);
-  transition: background 0s ease-out;
-}
-.page-contact #material-form .form-control::-webkit-input-placeholder {
-  color: #bdbdbd;
-}
-.page-contact #material-form .form-control::-moz-placeholder {
-  color: #bdbdbd;
-}
-.page-contact #material-form .form-control:-ms-input-placeholder {
-  color: #bdbdbd;
-}
-.page-contact #material-form .form-control[disabled],
-.page-contact #material-form .form-control[readonly],
-.page-contact #material-form fieldset[disabled] .form-control {
-  background-color: transparent;
-  background-color: rgba(0, 0, 0, 0);
-}
-.page-contact #material-form fieldset[disabled] .form-control:disabled,
-.page-contact #material-form .form-control-wrapper .form-control:disabled,
-.page-contact #material-form .form-control:disabled,
-.page-contact #material-form fieldset[disabled] .form-control:focus:disabled,
-.page-contact #material-form .form-control-wrapper .form-control:focus:disabled,
-.page-contact #material-form .form-control:focus:disabled,
-.page-contact #material-form fieldset[disabled] .form-control.focus:disabled,
-.page-contact #material-form .form-control-wrapper .form-control.focus:disabled,
-.page-contact #material-form .form-control.focus:disabled {
-  border: 0;
-}
-.page-contact #material-form .form-control:focus,
-.page-contact #material-form .form-control.focus {
-  outline: none;
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-  background-size: 100% 2px, 100% 1px;
-  box-shadow: none;
-  transition-duration: 0.3s;
-}
-.page-contact #material-form .form-control-wrapper {
-  position: relative;
-}
-.page-contact #material-form .form-control-wrapper .floating-label {
-  color: #bdbdbd;
-  position: absolute;
-  pointer-events: none;
-  left: 0px;
-  top: 5px;
-  transition: 0.3s ease all;
-}
-.page-contact #material-form .form-control-wrapper .floating-label {
-  font-size: 14px;
-}
-.page-contact #material-form .form-control-wrapper .form-control:focus ~ .floating-label,
-.page-contact #material-form .form-control-wrapper .form-control:not(.empty) ~ .floating-label {
-  top: -9.8px;
-  font-size: 9.8px;
-}
-.page-contact #material-form .form-control-wrapper .input-sm + .floating-label {
-  font-size: 12px;
-  top: 7px;
-}
-.page-contact #material-form .form-control-wrapper .form-control.input-sm:focus ~ .floating-label,
-.page-contact #material-form .form-control-wrapper .form-control.input-sm:not(.empty) ~ .floating-label {
-  top: -8.4px;
-  font-size: 8.4px;
-}
-.page-contact #material-form .form-control-wrapper .input-lg + .floating-label {
-  font-size: 18px;
-  top: 10px;
-}
-.page-contact #material-form .form-control-wrapper .form-control.input-lg:focus ~ .floating-label,
-.page-contact #material-form .form-control-wrapper .form-control.input-lg:not(.empty) ~ .floating-label {
-  top: -12.6px;
-  font-size: 12.6px;
-}
-.page-contact #material-form .form-control-wrapper .form-control:focus ~ .floating-label {
-  color: #4b516a;
-}
-.page-contact #material-form .form-control-wrapper .form-control:not(.empty):invalid ~ .floating-label,
-.page-contact #material-form .form-control-wrapper .form-control.focus:invalid ~ .floating-label {
-  color: #e74c3c;
-}
-.page-contact #material-form .form-control-wrapper .form-control:focus ~ .material-input:after,
-.page-contact #material-form .form-control-wrapper .form-control.focus ~ .material-input:after {
-  background-color: #4b516a;
-}
-.page-contact #material-form .form-control-wrapper .form-control:invalid {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-control-wrapper textarea {
-  resize: none;
-}
-.page-contact #material-form .form-control-wrapper textarea ~ .form-control-highlight {
-  margin-top: -11px;
-}
-.page-contact #material-form .form-control-wrapper .hint {
-  position: absolute;
-  font-size: 80%;
+.modal {
   display: none;
-}
-.page-contact #material-form .form-control-wrapper .form-control:focus ~ .hint,
-.page-contact #material-form .form-control-wrapper .form-control.focus ~ .hint {
-  display: block;
-}
-.page-contact #material-form .form-control-wrapper select ~ .material-input:after {
-  display: none;
-}
-.page-contact #material-form .form-control-wrapper select {
-  appearance: none;
-}
-.page-contact #material-form .form-group.has-warning .form-control {
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-warning .material-input:focus,
-.page-contact #material-form .form-group.has-warning .form-control:focus,
-.page-contact #material-form .form-group.has-warning .form-control.focus {
-  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-warning .control-label,
-.page-contact #material-form .form-group.has-warning input.form-control:focus ~ .floating-label {
-  color: #f39c12;
-}
-.page-contact #material-form .form-group.has-error .form-control {
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-error .material-input:focus,
-.page-contact #material-form .form-group.has-error .form-control:focus,
-.page-contact #material-form .form-group.has-error .form-control.focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-error .control-label,
-.page-contact #material-form .form-group.has-error input.form-control:focus ~ .floating-label {
-  color: #e74c3c;
-}
-.page-contact #material-form .form-group.has-success .form-control {
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-success .material-input:focus,
-.page-contact #material-form .form-group.has-success .form-control:focus,
-.page-contact #material-form .form-group.has-success .form-control.focus {
-  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-success .control-label,
-.page-contact #material-form .form-group.has-success input.form-control:focus ~ .floating-label {
-  color: #2ecc71;
-}
-.page-contact #material-form .form-group.has-info .form-control {
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-info .material-input:focus,
-.page-contact #material-form .form-group.has-info .form-control:focus,
-.page-contact #material-form .form-group.has-info .form-control.focus {
-  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-info .control-label,
-.page-contact #material-form .form-group.has-info input.form-control:focus ~ .floating-label {
-  color: #3498db;
-}
-.page-contact #material-form .form-group .form-control:focus,
-.page-contact #material-form .form-group-default .form-control:focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-black .form-control:focus {
-  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-white .form-control:focus {
-  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-inverse .form-control:focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-primary .form-control:focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-success .form-control:focus {
-  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-info .form-control:focus {
-  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-warning .form-control:focus {
-  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-danger .form-control:focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-red .form-control:focus {
-  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-pink .form-control:focus {
-  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-purple .form-control:focus {
-  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-deep-purple .form-control:focus {
-  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-indigo .form-control:focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-blue .form-control:focus {
-  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-light-blue .form-control:focus {
-  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-cyan .form-control:focus {
-  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-teal .form-control:focus {
-  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-green .form-control:focus {
-  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-light-green .form-control:focus {
-  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-lime .form-control:focus {
-  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-yellow .form-control:focus {
-  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-amber .form-control:focus {
-  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-orange .form-control:focus {
-  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-deep-orange .form-control:focus {
-  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-brown .form-control:focus {
-  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-grey .form-control:focus {
-  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-blue-grey .form-control:focus {
-  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group .form-control.focus,
-.page-contact #material-form .form-group-default .form-control.focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-black .form-control.focus {
-  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-white .form-control.focus {
-  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-inverse .form-control.focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-primary .form-control.focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-success .form-control.focus {
-  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-info .form-control.focus {
-  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-warning .form-control.focus {
-  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-danger .form-control.focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-red .form-control.focus {
-  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-pink .form-control.focus {
-  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-purple .form-control.focus {
-  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-deep-purple .form-control.focus {
-  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-indigo .form-control.focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-blue .form-control.focus {
-  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-light-blue .form-control.focus {
-  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-cyan .form-control.focus {
-  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-teal .form-control.focus {
-  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-green .form-control.focus {
-  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-light-green .form-control.focus {
-  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-lime .form-control.focus {
-  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-yellow .form-control.focus {
-  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-amber .form-control.focus {
-  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-orange .form-control.focus {
-  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-deep-orange .form-control.focus {
-  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-brown .form-control.focus {
-  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-grey .form-control.focus {
-  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-blue-grey .form-control.focus {
-  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group .control-label,
-.page-contact #material-form .form-group-default .control-label {
-  color: rgba(0, 0, 0, 0.84);
-}
-.page-contact #material-form .form-group-black .control-label {
-  color: #000000;
-}
-.page-contact #material-form .form-group-white .control-label {
-  color: #ffffff;
-}
-.page-contact #material-form .form-group-inverse .control-label {
-  color: #3f51b5;
-}
-.page-contact #material-form .form-group-primary .control-label {
-  color: #4b516a;
-}
-.page-contact #material-form .form-group-success .control-label {
-  color: #2ecc71;
-}
-.page-contact #material-form .form-group-info .control-label {
-  color: #3498db;
-}
-.page-contact #material-form .form-group-warning .control-label {
-  color: #f39c12;
-}
-.page-contact #material-form .form-group-danger .control-label {
-  color: #e74c3c;
-}
-.page-contact #material-form .form-group-material-red .control-label {
-  color: #f44336;
-}
-.page-contact #material-form .form-group-material-pink .control-label {
-  color: #e91e63;
-}
-.page-contact #material-form .form-group-material-purple .control-label {
-  color: #9c27b0;
-}
-.page-contact #material-form .form-group-material-deep-purple .control-label {
-  color: #673ab7;
-}
-.page-contact #material-form .form-group-material-indigo .control-label {
-  color: #3f51b5;
-}
-.page-contact #material-form .form-group-material-blue .control-label {
-  color: #2196f3;
-}
-.page-contact #material-form .form-group-material-light-blue .control-label {
-  color: #03a9f4;
-}
-.page-contact #material-form .form-group-material-cyan .control-label {
-  color: #00bcd4;
-}
-.page-contact #material-form .form-group-material-teal .control-label {
-  color: #009688;
-}
-.page-contact #material-form .form-group-material-green .control-label {
-  color: #4caf50;
-}
-.page-contact #material-form .form-group-material-light-green .control-label {
-  color: #8bc34a;
-}
-.page-contact #material-form .form-group-material-lime .control-label {
-  color: #cddc39;
-}
-.page-contact #material-form .form-group-material-yellow .control-label {
-  color: #ffeb3b;
-}
-.page-contact #material-form .form-group-material-amber .control-label {
-  color: #ffc107;
-}
-.page-contact #material-form .form-group-material-orange .control-label {
-  color: #ff9800;
-}
-.page-contact #material-form .form-group-material-deep-orange .control-label {
-  color: #ff5722;
-}
-.page-contact #material-form .form-group-material-brown .control-label {
-  color: #795548;
-}
-.page-contact #material-form .form-group-material-grey .control-label {
-  color: #9e9e9e;
-}
-.page-contact #material-form .form-group-material-blue-grey .control-label {
-  color: #607d8b;
-}
-.page-contact #material-form .form-group input.form-control:focus ~ .floating-label,
-.page-contact #material-form .form-group-default input.form-control:focus ~ .floating-label {
-  color: #4b516a;
-}
-.page-contact #material-form .form-group-black input.form-control:focus ~ .floating-label {
-  color: #000000;
-}
-.page-contact #material-form .form-group-white input.form-control:focus ~ .floating-label {
-  color: #ffffff;
-}
-.page-contact #material-form .form-group-inverse input.form-control:focus ~ .floating-label {
-  color: #3f51b5;
-}
-.page-contact #material-form .form-group-primary input.form-control:focus ~ .floating-label {
-  color: #4b516a;
-}
-.page-contact #material-form .form-group-success input.form-control:focus ~ .floating-label {
-  color: #2ecc71;
-}
-.page-contact #material-form .form-group-info input.form-control:focus ~ .floating-label {
-  color: #3498db;
-}
-.page-contact #material-form .form-group-warning input.form-control:focus ~ .floating-label {
-  color: #f39c12;
-}
-.page-contact #material-form .form-group-danger input.form-control:focus ~ .floating-label {
-  color: #e74c3c;
-}
-.page-contact #material-form .form-group-material-red input.form-control:focus ~ .floating-label {
-  color: #f44336;
-}
-.page-contact #material-form .form-group-material-pink input.form-control:focus ~ .floating-label {
-  color: #e91e63;
-}
-.page-contact #material-form .form-group-material-purple input.form-control:focus ~ .floating-label {
-  color: #9c27b0;
-}
-.page-contact #material-form .form-group-material-deep-purple input.form-control:focus ~ .floating-label {
-  color: #673ab7;
-}
-.page-contact #material-form .form-group-material-indigo input.form-control:focus ~ .floating-label {
-  color: #3f51b5;
-}
-.page-contact #material-form .form-group-material-blue input.form-control:focus ~ .floating-label {
-  color: #2196f3;
-}
-.page-contact #material-form .form-group-material-light-blue input.form-control:focus ~ .floating-label {
-  color: #03a9f4;
-}
-.page-contact #material-form .form-group-material-cyan input.form-control:focus ~ .floating-label {
-  color: #00bcd4;
-}
-.page-contact #material-form .form-group-material-teal input.form-control:focus ~ .floating-label {
-  color: #009688;
-}
-.page-contact #material-form .form-group-material-green input.form-control:focus ~ .floating-label {
-  color: #4caf50;
-}
-.page-contact #material-form .form-group-material-light-green input.form-control:focus ~ .floating-label {
-  color: #8bc34a;
-}
-.page-contact #material-form .form-group-material-lime input.form-control:focus ~ .floating-label {
-  color: #cddc39;
-}
-.page-contact #material-form .form-group-material-yellow input.form-control:focus ~ .floating-label {
-  color: #ffeb3b;
-}
-.page-contact #material-form .form-group-material-amber input.form-control:focus ~ .floating-label {
-  color: #ffc107;
-}
-.page-contact #material-form .form-group-material-orange input.form-control:focus ~ .floating-label {
-  color: #ff9800;
-}
-.page-contact #material-form .form-group-material-deep-orange input.form-control:focus ~ .floating-label {
-  color: #ff5722;
-}
-.page-contact #material-form .form-group-material-brown input.form-control:focus ~ .floating-label {
-  color: #795548;
-}
-.page-contact #material-form .form-group-material-grey input.form-control:focus ~ .floating-label {
-  color: #9e9e9e;
-}
-.page-contact #material-form .form-group-material-blue-grey input.form-control:focus ~ .floating-label {
-  color: #607d8b;
-}
-.page-contact #material-form .input-group .form-control-wrapper {
-  margin-right: 5px;
-  margin-left: 5px;
-}
-.page-contact #material-form .input-group .form-control-wrapper .form-control {
-  float: none;
-}
-.page-contact #material-form .input-group .input-group-addon {
-  border: 0;
-  background: transparent;
-}
-.page-contact #material-form .input-group .input-group-btn .btn {
-  border-radius: 4px;
-  margin: 0;
-}
-.page-contact #material-form select.form-control {
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-}
-.page-contact #material-form select.form-control:focus,
-.page-contact #material-form select.form-control.focus {
-  box-shadow: none;
-  border-color: #757575;
-}
-.page-contact #material-form .form-control-wrapper input[type=file] {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  position: fixed;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
-.page-contact #material-form .btn {
-  background: none;
-  box-shadow: none;
-  font-weight: 500;
-  background-color: #4b516a;
-  color: white;
-}
-.page-contact #material-form .btn:disabled {
-  color: #a8a8a8 !important;
-}
-.page-welcome .btn {
-  color: white !important;
-}
-/**
- * Styling for the graph simulator pages
- */
-.page-graph .bookmark-link {
-  color: #4b516a;
-  font-weight: bold;
-  font-size: 17px;
-}
-.page-graph .infinite-sym {
-  font-size: 30px;
-  vertical-align: middle;
-}
-.page-graph #graph_wrapper {
-  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
-  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
-  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
-  background-color: #141425;
-  line-height: 24px;
-  padding: 3px 5px 30px 5px;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
-  border-radius: 2px;
-  border: 0;
-}
-.page-graph #graph_wrapper.genotype-graph {
-  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
-  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
-  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
-}
-.page-graph #graph_wrapper h1,
-.page-graph #graph_wrapper h2,
-.page-graph #graph_wrapper h3 {
-  font-weight: 300;
-}
-.page-graph #graph_wrapper h1 {
-  font-size: 16px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #graph_wrapper h1 {
-    font-size: 26px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #graph_wrapper h1 {
-    font-size: 36px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #graph_wrapper h1 {
-    font-size: 38px;
-  }
-}
-.page-graph #graph_wrapper p {
-  color: #fff;
-  font-weight: 300;
-}
-.page-graph #graph_wrapper #graph-canvas {
-  height: 250px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #graph_wrapper #graph-canvas {
-    height: 300px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #graph_wrapper #graph-canvas {
-    height: 450px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #graph_wrapper #graph-canvas {
-    height: 550px;
-  }
-}
-.page-graph #graph_wrapper #graph-canvas jpg .canvasjs-chart-container {
-  color: #000;
-}
-.page-graph #variables h2 {
-  font-size: 25px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables h2 {
-    font-size: 30px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables h2 {
-    font-size: 35px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #variables h2 {
-    font-size: 35px;
-  }
-}
-.page-graph #variables h2 a {
-  font-size: 15px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables h2 a {
-    font-size: 20px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables h2 a {
-    font-size: 25px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #variables h2 a {
-    font-size: 25px;
-  }
-}
-.page-graph #variables h3 {
-  color: #777777;
-  font-weight: 300;
-}
-.page-graph #variables .error {
-  font-weight: bold;
-  color: red;
-}
-.page-graph #variables #multiple-legends-container .modified-value .legend-val {
-  color: #e74c3c;
-}
-.page-graph #variables #multiple-legends-container .legend {
-  margin-bottom: 5px;
-  background-color: #ffffff;
-  padding: 8px;
-  border: 1px solid #f2f2f5;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
-  border-radius: 2px;
-  border: 0;
-}
-.page-graph #variables #multiple-legends-container .legend.hidden-legend {
-  height: 30px;
-  max-height: 30px;
-  overflow: hidden;
-  box-shadow: none;
-  border-radius: 2px;
-  border: 1px solid #f2f2f5;
-}
-.page-graph #variables #multiple-legends-container .legend.hidden-legend .legend-variables {
-  display: hidden;
-}
-.page-graph #variables #multiple-legends-container .legend.hidden-legend h3 {
-  font-size: 15px;
-  margin: 0;
+  right: 0;
+  background-color: #fafafa;
   padding: 0;
-}
-.page-graph #variables #multiple-legends-container .legend.hidden-legend h3 .togglelegend {
-  font-size: 15px;
-}
-.page-graph #variables #multiple-legends-container .legend h3 {
-  color: #4b516a;
-  margin-top: 8px;
-  font-size: 18px;
-  /* (tablets, 768px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables #multiple-legends-container .legend h3 {
-    font-size: 24px;
-  }
-  .page-graph #variables #multiple-legends-container .legend h3 .togglelegend {
-    font-size: 20px;
-  }
-}
-.page-graph #variables #multiple-legends-container .legend .legend-var {
-  padding-right: 4px;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-symbol {
-  padding-left: 2px;
-  padding-right: 5px;
-  font-size: 18px;
-  font-style: italic;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-symbol:after {
-  content: " = ";
-}
-.page-graph #variables #multiple-legends-container .legend .legend-val {
-  font-weight: 600;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-warning {
-  padding-left: 4px;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-exclamation-triangle,
-.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-exclamation,
-.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-tachometer {
-  color: #e74c3c;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-recycle {
-  color: #2ecc71;
-  color: #33983c;
-}
-.page-graph #variables #multiple-legends-container .legend p {
-  margin-top: 10px;
-}
-.page-graph #variables #graph_stats {
-  margin-bottom: 5px;
-  background-color: #ffffff;
-  padding: 8px;
-  border: 1px solid #f2f2f5;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+  max-height: 70%;
+  width: 55%;
+  margin: auto;
+  overflow-y: auto;
   border-radius: 2px;
-  border: 0;
-}
-.page-graph #variables #graph_stats h3 {
-  color: #4b516a;
-  margin-top: 8px;
-  font-size: 18px;
-  /* (tablets, 768px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables #graph_stats h3 {
-    font-size: 24px;
-  }
-  .page-graph #variables #graph_stats h3 .togglelegend {
-    font-size: 20px;
-  }
-}
-.page-graph #variables #graph_stats .legend-var {
-  padding-right: 4px;
-}
-.page-graph #variables #graph_stats .legend-val {
-  font-weight: 600;
-}
-.page-graph #variables .variable-section {
-  border-bottom: 1px solid rgba(85, 85, 85, 0.5);
-}
-.page-graph #variables .variable {
-  margin-top: 20px;
-  /**Variable Name**/
-  /**Helper Text*/
-  /*Variable Value*/
-}
-.page-graph #variables .variable input::selection {
-  background: rgba(20, 20, 37, 0.2);
-}
-.page-graph #variables .variable input::-moz-selection {
-  background: rgba(20, 20, 37, 0.2);
-}
-.page-graph #variables .variable label {
-  font-size: 18px;
-  font-weight: normal;
-  overflow: hidden;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables .variable label {
-    font-size: 19px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables .variable label {
-    font-size: 19px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #variables .variable label {
-    font-size: 20px;
-  }
-}
-.page-graph #variables .variable .help-block {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-  /* Small devices (tablets, 768px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables .variable .help-block {
-    padding-left: 10px;
-  }
-}
-.page-graph #variables .variable .help-block .help-symbol-container {
-  font-size: 18px;
-  color: #4b516a;
-  font-weight: 900;
-}
-.page-graph #variables .variable .help-block .help-symbol-container .help-symbol {
-  font-size: 22px;
-  font-style: italic;
-}
-.page-graph #variables .variable .help-block p {
-  font-size: 15px;
-}
-.page-graph #variables .variable #label-infinite-sample-size {
-  font-style: normal;
-}
-.page-graph #variables .variable #infinite_sample_size {
-  margin-top: 3px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables .variable #infinite_sample_size {
-    margin-top: 8px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables .variable #infinite_sample_size {
-    font-size: 8px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #variables .variable #infinite_sample_size {
-    margin-top: 8px;
-  }
-}
-.page-graph #variables .variable .value {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 300;
-  margin-top: 10px;
-}
-@media (min-width: 768px) {
-  .page-graph #variables .variable .value {
-    margin-top: 0;
-  }
-}
-.page-graph #variables .variable .value input {
-  border: none;
-  font-size: 26px;
-  box-shadow: none;
-  margin-top: 0;
-  padding-top: 0;
-  text-align: center;
-  height: 100%;
-}
-.page-graph #variables .variable .scientific-notation-container {
-  margin-left: 0;
-  padding-left: 0;
-  margin-top: 0;
-  padding-top: 0;
-  font-weight: 300;
-}
-.page-graph #variables .variable .scientific-notation-container .scientific-notation {
-  font-size: 20px;
-  text-align: right;
-  padding-right: 0;
-  margin-right: 0;
-}
-.page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
-  font-size: 18px;
-  height: 34px;
-  padding: 3px 3px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
+  will-change: top, opacity;
 }
 @media (max-width: 768px) {
-  .page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
-    font-size: 20px;
-    height: 38px;
-    padding: 6px 12px;
+  .modal {
+    width: 80%;
   }
 }
-@media (min-width: 992px) {
-  .page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
-    font-size: 20px;
-    height: 38px;
-    padding: 6px 12px;
-  }
+.modal h1,
+.modal h2,
+.modal h3,
+.modal h4 {
+  margin-top: 0;
 }
-.page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent option {
-  text-align: center;
+.modal .modal-content {
+  padding: 24px;
 }
-.page-graph #variables #options {
-  margin-top: 20px;
-  text-align: center;
+.modal .modal-close {
+  cursor: pointer;
 }
-@media (min-width: 1200px) {
-  .page-graph #variables #options {
-    text-align: left;
-  }
+.modal .modal-footer {
+  border-radius: 0 0 2px 2px;
+  background-color: #fafafa;
+  padding: 4px 6px;
+  height: 56px;
+  width: 100%;
 }
-.page-graph #variables #buttons {
-  margin-top: 0px;
-  margin-bottom: 20px;
-  text-align: center;
+.modal .modal-footer .btn,
+.modal .modal-footer .btn-flat {
+  float: right;
+  margin: 6px 0;
 }
-.page-graph #variables #buttons a {
-  margin-top: 20px;
+.lean-overlay {
+  position: fixed;
+  z-index: 999;
+  top: -100px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 125%;
+  width: 100%;
+  background: #000;
+  display: none;
+  will-change: opacity;
 }
-.page-graph #variables #buttons .btn {
-  border-radius: 4px;
-  text-transform: none;
-  font-size: 14px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
+.modal.modal-fixed-footer {
+  padding: 0;
+  height: 70%;
 }
-@media (min-width: 768px) {
-  .page-graph #variables #buttons .btn {
-    font-size: 15px;
-  }
+.modal.modal-fixed-footer .modal-content {
+  position: absolute;
+  height: calc(44%);
+  max-height: 100%;
+  width: 100%;
+  overflow-y: auto;
 }
-@media (min-width: 992px) {
-  .page-graph #variables #buttons .btn {
-    font-size: 16px;
-  }
+.modal.modal-fixed-footer .modal-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
 }
-@media (min-width: 1200px) {
-  .page-graph #variables #buttons .btn {
-    font-size: 18px;
-  }
-}
-.page-graph #results_panel {
-  margin-top: 20px;
-}
-.page-graph #results_panel #results {
-  height: 800px;
-  overflow-y: scroll;
-}
-.page-graph #graph-computing-modal #graph-completion-precent {
-  text-align: center;
-}
-.page-graph #graph-computing-modal #graph-completion-precent.completed {
-  color: green;
-}
-.page-graph #graph-computing-modal #graph-completion-precent.failed {
-  color: red;
-}
-/**
- * Canvas JS Style Override
- * @author Josh Rogan (JoshJRogan@gmail.com)
- * 
- */
-.graph-genotype .canvasjs-chart-toolbar {
-  color: #6a4b51;
-}
-.graph-genotype .canvasjs-chart-toolbar button {
-  margin-top: 10px !important;
-  padding: 3px 10px 0px !important;
-  color: #6a4b51 !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-}
-.graph-genotype .canvasjs-chart-toolbar button:hover {
-  background-color: #6a4b51 !important;
-  color: white !important;
-}
-.graph-genotype .canvasjs-chart-toolbar button[state='menu'] {
-  margin-right: 8px !important;
-  background-color: white;
-}
-.graph-genotype .canvasjs-chart-toolbar > div {
-  margin-top: 11px;
-  margin-bottom: 0;
-  margin-right: 7px;
-  padding: 0 !important;
-  background-color: white;
-  width: 150px;
-  box-shadow: none !important;
-}
-.graph-genotype .canvasjs-chart-toolbar > div > div {
-  font-weight: bold;
-  padding: 10px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-.graph-genotype .canvasjs-chart-toolbar > div > div:hover {
-  background-color: #6a4b51 !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-  color: white;
-}
-.graph-allele .canvasjs-chart-toolbar {
-  color: #4b516a;
-}
-.graph-allele .canvasjs-chart-toolbar button {
-  margin-top: 10px !important;
-  padding: 3px 10px 0px !important;
-  color: #4b516a !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-}
-.graph-allele .canvasjs-chart-toolbar button:hover {
-  background-color: #4b516a !important;
-  color: white !important;
-}
-.graph-allele .canvasjs-chart-toolbar button[state='menu'] {
-  margin-right: 8px !important;
-  background-color: white;
-}
-.graph-allele .canvasjs-chart-toolbar > div {
-  margin-top: 11px;
-  margin-bottom: 0;
-  margin-right: 7px;
-  padding: 0 !important;
-  background-color: white;
-  width: 150px;
-  box-shadow: none !important;
-}
-.graph-allele .canvasjs-chart-toolbar > div > div {
-  font-weight: bold;
-  padding: 10px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-.graph-allele .canvasjs-chart-toolbar > div > div:hover {
-  background-color: #4b516a !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-  color: white;
-}
-/**
- *	Material Bootstrap overrides 
- * 	@author Josh Rogan (JoshJRogan@gmail.com)
- */
-.btn,
-.btn-primary {
-  color: white !important;
+.modal.bottom-sheet {
+  top: auto;
+  bottom: -100%;
+  margin: 0;
+  width: 100%;
+  max-height: 45%;
+  border-radius: 0;
+  will-change: bottom, opacity;
 }
 body .withripple {
   position: relative;
@@ -13085,12 +13075,6 @@ p a {
   color: #666666;
 }
 .page-welcome .welcome {
-  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
-  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
-  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
-  background-color: #141425;
   line-height: 24px;
   padding: 3px 5px 30px 5px;
   color: #fff;
@@ -13104,12 +13088,43 @@ p a {
   /* Medium devices (desktops, 992px and up) */
   /* Large devices (large desktops, 1200px and up) */
 }
+.page-welcome .welcome.allele-graph {
+  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
+  background-color: #4b516a;
+}
 .page-welcome .welcome.genotype-graph {
   background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
   background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
   background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
+  background-color: #6a4b51;
+}
+.page-welcome .welcome.print-layout {
+  background-color: white;
+  background-image: none;
+  color: black;
+  box-shadow: none;
+}
+.page-welcome .welcome.default-layout.allele-graph {
+  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
+  color: white;
+}
+.page-welcome .welcome.default-layout.genotype-graph {
+  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
+  background-color: none;
 }
 .page-welcome .welcome h1,
 .page-welcome .welcome h2,
