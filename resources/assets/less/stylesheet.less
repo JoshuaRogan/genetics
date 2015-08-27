@@ -1,21 +1,26 @@
-//Import bootstrap variables and mixins 
+//Import bootstrap variables, mixins, and helpers 
 @import "variables/variables.less";
 @import "vendors/bootstrap/variables.less";
 @import "vendors/bootstrap/mixins.less";
-
-
 @import "font-helpers.less";
 @import "helpers.less";
 @import "anchor-js.less";
 @import "transitions.less";
+
+//Font Awesome
+@import "vendors/font-awesome/less/font-awesome.less";
  
+// PopGen Components
+@import "components/buttons.less";
+@import "components/links.less";
+
 //Pages
+@import "pages/graph.less";
 @import "pages/contact.less";
 @import "pages/welcome.less";
 @import "pages/report-problem.less";
 
-// Genetics Components
-@import "components/graph.less";
+
 
 //Vendor Overides
 @import "_canvasjs.less";
@@ -83,6 +88,7 @@ p {
 
 // Printing 
 @media print {
+
     footer {
         display: none !important;
     }
@@ -268,6 +274,7 @@ footer {
         margin-left: 2%;
         margin-right: 2%;
     }
+    
     a {
         color: white;
         font-weight: bold

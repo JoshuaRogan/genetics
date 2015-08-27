@@ -31361,13 +31361,14 @@ popGen.htmlutil.genDOM.activateHelpSections = function(){
 	//Show All help button
 	$("#all-help").click(function(event) {
 	    event.preventDefault();
-	    if ($(this).html() == "[Show Help]"){
+	    console.log($(this).html());
+	    if ($(this).html() == '<span data-hover="Show Help">Show Help</span>'){
 	    	 popGen.velocity.showAllHelp();
-	    	 $(this).html("[Hide Help]");
+	    	 $(this).html('<span data-hover="Hide Help">Hide Help</span>');
 	    }
 	    else{
 	    	popGen.velocity.hideAllHelp();
-	    	$(this).html("[Show Help]");
+	    	$(this).html('<span data-hover="Show Help">Show Help</span>');
 	    }
 	});
 
@@ -31442,14 +31443,16 @@ popGen.htmlutil.genDOM.bulkSectionOpener = function(){
 	$("#all-sections").click(function(event) {
 	    event.preventDefault();
 
-	    if ($(this).html() == '[Open All]'){
+	    if ($(this).html() == '<span data-hover="Open All">Open All</span>'){
 	    	 popGen.velocity.showAll(); 
-	    	 $(this).html("[Close All]");
+	    	 $(this).html('<span data-hover="Close All">Close All</span>');
+	    	 $(this).trigger("mouseleave");
 	    }
 	    else{
 	    	popGen.velocity.hideAll(); 
-	    	$(this).html("[Open All]");
+	    	$(this).html('<span data-hover="Open All">Open All</span>');
 	    }
+
 	});
 };
 
@@ -31703,7 +31706,30 @@ popGen.htmlutil.updateCanvasMenu = function(){
 	$('.canvasjs-chart-credit').hide();
 };
 
-;
+
+/**
+ * Initialize flip buttons
+ * @return {[type]} [description]
+ */
+popGen.htmlutil.initFlipButtons = function() {
+	if ($('.flip-btn').length) {
+		var loading = function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			e.target.classList.add('loading');
+			e.target.setAttribute('disabled', 'disabled');
+			setTimeout(function() {
+				e.target.classList.remove('loading');
+				e.target.removeAttribute('disabled');
+			}, 1500);
+		};
+
+		var btns = document.querySelectorAll('.btn');
+		for (var i = btns.length - 1; i >= 0; i--) {
+			btns[i].addEventListener('click', loading);
+		}
+	}
+};;
 /*!
  * reveal.js
  * http://lab.hakim.se/reveal-js

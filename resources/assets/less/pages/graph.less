@@ -98,7 +98,8 @@
         border: 0;
     }
     #variables {
-        h2 {
+        h2#variable-header {
+
             font-size: 25px;
             /* Small devices (tablets, 768px and up) */
             @media (min-width: @screen-sm-min) {
@@ -114,19 +115,23 @@
             }
             a {
                 //open all and show help 
-                font-size: 15px;
+                font-size: 10px;
                 /* Small devices (tablets, 768px and up) */
                 @media (min-width: @screen-sm-min) {
-                    font-size: 20px;
+                    font-size: 15px;
                 }
                 /* Medium devices (desktops, 992px and up) */
                 @media (min-width:@screen-md-min) {
-                    font-size: 25px;
+                    font-size: 15px;
                 }
                 /* Large devices (large desktops, 1200px and up) */
                 @media (min-width:@screen-lg-min) {
-                    font-size: 25px;
+                    font-size: 20px;
                 }
+            }
+
+            #main-togggles{
+
             }
         }
         h3 {
@@ -390,7 +395,9 @@
                 //For when vertical collapse
             }
             //Modify the sizing of the buttons on different screen sizes 
+            
             .btn {
+
                 border-radius: @border-radius-base; 
                 text-transform: none;
 
@@ -427,6 +434,52 @@
             &.failed {
                 color: red;
             }
+        }
+    }
+}
+
+.graph-allele {
+    #buttons {
+        .wapasha(@brand-primary);
+    }
+    #variable-header {
+        #links .rolling(@brand-primary);
+    }
+    .variable-activator:not(.fa-check-square-o) {
+        transition: all 0.2s;
+
+        &:hover {
+            color: @brand-primary;
+            opacity: .8;
+            transform: scale(1.5);
+
+            &::before {
+                content: "\f046";
+            }
+        }
+    }
+
+    #main-togggles .fa{
+        transition: all 0.3s;
+
+        &:hover {
+            transform: scale(1.8);
+        } 
+    }
+}
+.graph-genotype {
+    .graph-allele(); //Copy all styles and only make changes 
+
+    #buttons {
+        .wapasha(@brand-genotype);
+    }
+    #variable-header {
+        #links .rolling(@brand-genotype);
+    }
+    
+    .variable-activator:not(.fa-check-square-o) {
+        &:hover {
+            color: @brand-genotype;
         }
     }
 }

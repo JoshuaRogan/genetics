@@ -47,11 +47,14 @@ foreach($_GET as $key => $value){
 <div id="variables" class="container"> 
 	
 	<form class="row" id="variables-form"> 
-		<h2 id="variable-header"> Simulation Parameters <a href="#" id="all-sections">[Open All]</a> <a href="#" id="all-help">[Show Help]</a>
-			<span class="pull-right"> 
+		<h2 id="variable-header"> Simulation Parameters 
+		<a href="#" id="all-sections"><span data-hover="Open All">Open All</span></a> 
+		<a href="#" id="all-help"><span data-hover="Show Help">Show Help</span></a>
+
+			<span class="pull-right" id='main-togggles'> 
 				<a href="#" id="screenFriendly" data-toggle="tooltip" data-placement="top" title="Switch to screen friendly version (default)"><i class="fa fa-desktop"></i></a>
 				<a href="#" id="printerFriendly" data-toggle="tooltip" data-placement="top" title="Switch to high contrast for printing and projecting"><i class="fa fa-sun-o"></i></a> 
-				<a href="#bookmark-link" id="getLink" data-target="#bookmark-link" data-toggle="modal" data-tooltip="true" data-placement="top" title="Generate a bookmarked link for these variables"><i class="fa fa-link"></i></a>
+				<a href="#bookmark-link" id="getLink" data-tooltip="true" data-placement="top" title="Generate a bookmarked link for these variables"><i class="fa fa-link"></i></a>
 				<a href="#" id="getRawData" data-toggle="tooltip" data-placement="top" title="View RAW data points"><i class="fa fa-file-text-o"></i></a>
 			</span>
 		</h2>
