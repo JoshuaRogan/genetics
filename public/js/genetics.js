@@ -31692,14 +31692,30 @@ popGen.htmlutil.updateCanvasMenu = function(){
 	var html_download = "<i class='fa fa-download'></i>";
 	var html_reset = "<i class='fa fa-refresh'></i>";
 	var html_pan = "<i class='fa fa-arrows'></i>";
+	var html_zoom = "<i class='fa fa-search'></i>";
 
+	//Switch the initial items
 	if($(toolbar).length){
 		$(toolbar + " button[state='menu']").html(html_download); 
 		$(toolbar + " button[state='reset']").html(html_reset); 
 		$(toolbar + " button[state='pan']").html(html_pan); 
+		$(toolbar + " button[state='zoom']").html(html_zoom); 
 	}
 
-}
+	//Switch pan and zoom after they are added 
+	var $toolbar = $(toolbar);
+	if($toolbar.length){
+		$toolbar.click(function(){
+			console.log("CLICK");
+			$(toolbar + " button[state='zoom']").html(html_zoom); 
+			$(toolbar + " button[state='pan']").html(html_pan); 
+		});
+	}
+
+	//Hide their logo
+	$('.canvasjs-chart-credit').hide();
+};
+
 ;
 /*!
  * reveal.js
