@@ -41,6 +41,7 @@ $(document).ready(function() {
 
         }
         popGen.htmlutil.initHome(); 
+        popGen.htmlutil.updateCanvasMenu();
     }
     else if($('.page-faq').length){
         popGen.faq.init();

@@ -13,6 +13,14 @@
 		.abstract(@default-delay, @default-duration, @item, @default-timing-function);
 	}
 
+	.default-duration(@item, @duration){
+		.abstract(@default-delay, @duration, @item, @default-timing-function);
+	}
+
+	.default-timing(@item, @timing){
+		.abstract(@default-delay, @default-duration, @item, @timing);
+	}
+
 	.off(){
 		transition: none; 
 	}
@@ -23,6 +31,8 @@
 		transition-property: @property;
 		transition-timing-function: @timing-function;
 	}
+
+
 
 
 

@@ -11362,6 +11362,7 @@ $(document).ready(function() {
 
         }
         popGen.htmlutil.initHome(); 
+        popGen.htmlutil.updateCanvasMenu();
     }
     else if($('.page-faq').length){
         popGen.faq.init();
@@ -31679,7 +31680,27 @@ popGen.htmlutil.supportsHTML5LocalStorage = function(func /*, 0..n args */) {
 popGen.htmlutil.getRootURL = function() {
 	if (!location.origin) location.origin = location.protocol + "//" + location.host;
 	return location.origin;
-};;
+};
+
+
+/**
+ * Change the Canvas JS button to the fontawesome icon sets
+ * @return {[type]} [description]
+ */
+popGen.htmlutil.updateCanvasMenu = function(){
+	var toolbar = ".canvasjs-chart-toolbar";
+	var html_download = "<i class='fa fa-download'></i>";
+	var html_reset = "<i class='fa fa-refresh'></i>";
+	var html_pan = "<i class='fa fa-arrows'></i>";
+
+	if($(toolbar).length){
+		$(toolbar + " button[state='menu']").html(html_download); 
+		$(toolbar + " button[state='reset']").html(html_reset); 
+		$(toolbar + " button[state='pan']").html(html_pan); 
+	}
+
+}
+;
 /*!
  * reveal.js
  * http://lab.hakim.se/reveal-js

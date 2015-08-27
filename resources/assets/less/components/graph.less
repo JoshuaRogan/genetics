@@ -1,0 +1,403 @@
+/**
+ * Styling for the graph simulator pages
+ */
+
+.page-graph {
+    .bookmark-link {
+        color: @brand-primary;
+        font-weight: bold;
+        font-size: 17px;
+    }
+    //Style for the infinite symbol
+    .infinite-sym {
+        font-size: 30px;
+        vertical-align: middle;
+    }
+    #graph_wrapper {
+        #gradient > .vertical(@brand-primary, darken(@brand-primary, 20%));
+        &.genotype-graph {
+            #gradient > .vertical(@brand-genotype, darken(@brand-genotype, 20%));
+        }
+        background-color: #141425;
+        line-height: 24px;
+        padding: 3px 5px 30px 5px;
+        color: #fff;
+        text-align: center;
+        h1, h2, h3 {
+            font-weight: 300;
+        }
+        h1 {
+            font-size: 16px;
+            /* Small devices (tablets, 768px and up) */
+            @media (min-width: @screen-sm-min) {
+                font-size: 26px;
+            }
+            /* Medium devices (desktops, 992px and up) */
+            @media (min-width:@screen-md-min) {
+                font-size: 36px;
+            }
+            /* Large devices (large desktops, 1200px and up) */
+            @media (min-width:@screen-lg-min) {
+                font-size: 38px;
+            }
+        }
+        p {
+            color: #fff;
+            font-weight: 300;
+        }
+        #graph-canvas {
+            height: 250px;
+            /* Small devices (tablets, 768px and up) */
+            @media (min-width: @screen-sm-min) {
+                height: 300px;
+            }
+            /* Medium devices (desktops, 992px and up) */
+            @media (min-width:@screen-md-min) {
+                height: 450px;
+            }
+            /* Large devices (large desktops, 1200px and up) */
+            @media (min-width:@screen-lg-min) {
+                height: 550px;
+            }
+            //Color of the text for saving graph as png,
+            jpg .canvasjs-chart-container {
+                color: #000;
+            }
+        }
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
+        border-radius: 2px;
+        border: 0;
+    }
+    #variables {
+        h2 {
+            font-size: 25px;
+            /* Small devices (tablets, 768px and up) */
+            @media (min-width: @screen-sm-min) {
+                font-size: 30px;
+            }
+            /* Medium devices (desktops, 992px and up) */
+            @media (min-width:@screen-md-min) {
+                font-size: 35px;
+            }
+            /* Large devices (large desktops, 1200px and up) */
+            @media (min-width:@screen-lg-min) {
+                font-size: 35px;
+            }
+            a {
+                //open all and show help 
+                font-size: 15px;
+                /* Small devices (tablets, 768px and up) */
+                @media (min-width: @screen-sm-min) {
+                    font-size: 20px;
+                }
+                /* Medium devices (desktops, 992px and up) */
+                @media (min-width:@screen-md-min) {
+                    font-size: 25px;
+                }
+                /* Large devices (large desktops, 1200px and up) */
+                @media (min-width:@screen-lg-min) {
+                    font-size: 25px;
+                }
+            }
+        }
+        h3 {
+            color: @gray-light;
+            font-weight: 300;
+        }
+        .error {
+            font-weight: bold;
+            color: red;
+        }
+        //New Legend 
+        #multiple-legends-container {
+            .modified-value .legend-val {
+                color: @brand-danger;
+            }
+            .legend {
+                margin-bottom: 5px;
+                background-color: lighten(@brand-primary, 70%);
+                padding: 8px;
+                border: 1px solid lighten(@brand-primary, 60%);
+                box-shadow: 0 1px 6px rgba(0, 0, 0, .12), 0 1px 6px rgba(0, 0, 0, .12);
+                border-radius: 2px;
+                border: 0;
+                //Style for hidden legend 
+                &.hidden-legend {
+                    .legend-variables {
+                        display: hidden;
+                    }
+                    height: 30px;
+                    max-height: 30px;
+                    overflow: hidden;
+                    h3 {
+                        font-size: 15px;
+                        margin: 0;
+                        padding: 0;
+                        .togglelegend {
+                            font-size: 15px;
+                        }
+                    }
+                    box-shadow: none;
+                    border-radius: 2px;
+                    border: 1px solid lighten(@brand-primary, 60%);
+                }
+                h3 {
+                    color: @brand-primary;
+                    margin-top: 8px;
+                    font-size: 18px;
+                    /* (tablets, 768px and up) */
+                    @media (min-width: @screen-sm-min) {
+                        font-size: 24px;
+                        .togglelegend {
+                            font-size: 20px;
+                        }
+                    }
+                }
+                //Variable Name
+                .legend-var {
+                    padding-right: 4px;
+                }
+                .legend-symbol {
+                    padding-left: 2px;
+                    padding-right: 5px;
+                    font-size: 18px;
+                    font-style: italic;
+                    &:after {
+                        content: " = ";
+                    }
+                }
+                //Variable Value 
+                .legend-val {
+                    font-weight: 600;
+                }
+                .legend-warning {
+                    padding-left: 4px;
+                    .fa-exclamation-triangle, .fa-exclamation, .fa-tachometer {
+                        color: #e74c3c;
+                    }
+                    .fa-recycle {
+                        color: #2ecc71;
+                        color: darken(#79D281, 25);
+                    }
+                }
+                //Raw Data Link
+                p {
+                    margin-top: 10px;
+                }
+            }
+        }
+        //Graph stats using the batch tool 
+        #graph_stats {
+            margin-bottom: 5px;
+            background-color: lighten(@brand-primary, 70%);
+            padding: 8px;
+            border: 1px solid lighten(@brand-primary, 60%);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, .12), 0 1px 6px rgba(0, 0, 0, .12);
+            border-radius: 2px;
+            border: 0;
+            h3 {
+                color: @brand-primary;
+                margin-top: 8px;
+                font-size: 18px;
+                /* (tablets, 768px and up) */
+                @media (min-width: @screen-sm-min) {
+                    font-size: 24px;
+                    .togglelegend {
+                        font-size: 20px;
+                    }
+                }
+            }
+            //Variable Name
+            .legend-var {
+                padding-right: 4px;
+            }
+            //Variable Value 
+            .legend-val {
+                font-weight: 600;
+            }
+        }
+        .variable-section {
+            border-bottom: 1px solid rgba(85, 85, 85, 0.50);
+        }
+        .variable {
+            margin-top: 20px;
+            input::selection {
+                background: rgba(20, 20, 37, 0.20);
+            }
+            input::-moz-selection {
+                background: rgba(20, 20, 37, 0.20);
+            }
+            /**Variable Name**/
+            label {
+                font-size: 18px;
+                font-weight: normal;
+                overflow: hidden;
+                /* Small devices (tablets, 768px and up) */
+                @media (min-width: @screen-sm-min) {
+                    font-size: 19px;
+                }
+                /* Medium devices (desktops, 992px and up) */
+                @media (min-width:@screen-md-min) {
+                    font-size: 19px;
+                }
+                /* Large devices (large desktops, 1200px and up) */
+                @media (min-width:@screen-lg-min) {
+                    font-size: 20px;
+                }
+            }
+            //Helper text 
+            .help-block {
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-left: 0;
+                /* Small devices (tablets, 768px and up) */
+                @media (min-width: @screen-sm-min) {
+                    padding-left: 10px;
+                }
+                .help-symbol-container {
+                    font-size: 18px;
+                    color: @brand-primary;
+                    font-weight: 900;
+                    .help-symbol {
+                        font-size: 22px;
+                        font-style: italic;
+                    }
+                }
+                p {
+                    font-size: 15px;
+                }
+            }
+            /**Helper Text*/
+            #label-infinite-sample-size {
+                font-style: normal;
+                // font-size:
+            }
+            #infinite_sample_size {
+                margin-top: 3px;
+                /* Small devices (tablets, 768px and up) */
+                @media (min-width: @screen-sm-min) {
+                    margin-top: 8px;
+                }
+                /* Medium devices (desktops, 992px and up) */
+                @media (min-width:@screen-md-min) {
+                    font-size: 8px;
+                }
+                /* Large devices (large desktops, 1200px and up) */
+                @media (min-width:@screen-lg-min) {
+                    margin-top: 8px;
+                }
+            }
+            /*Variable Value*/
+            .value {
+                text-align: center;
+                font-size: 28px;
+                font-weight: 300;
+                margin-top: 10px;
+                @media (min-width: @screen-sm-min) {
+                    margin-top: 0;
+                }
+                input {
+                    border: none;
+                    font-size: 26px;
+                    box-shadow: none;
+                    margin-top: 0;
+                    padding-top: 0;
+                    text-align: center;
+                    height: 100%;
+                }
+            }
+            .scientific-notation-container {
+                margin-left: 0;
+                padding-left: 0;
+                margin-top: 0;
+                padding-top: 0;
+                font-weight: 300;
+                //x10
+                .scientific-notation {
+                    font-size: 20px;
+                    text-align: right;
+                    padding-right: 0;
+                    margin-right: 0;
+                }
+                //Mutation exponent dropdown
+                .scientific-form-group .mutation-exponent {
+                    font-size: 18px;
+                    height: 34px;
+                    padding: 3px 3px;
+                    /* Small devices (tablets, 768px and up) */
+                    @media (max-width: @screen-sm-min) {
+                        font-size: 20px;
+                        height: 38px;
+                        padding: 6px 12px;
+                        //Defaults
+                    }
+                    /* Medium devices (desktops, 992px and up) */
+                    @media (min-width:@screen-md-min) {
+                        font-size: 20px;
+                        height: 38px;
+                        padding: 6px 12px;
+                        //Defaults
+                    }
+                    option {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        //Checkboxes and options for the form 
+        #options {
+            margin-top: 20px;
+            text-align: center;
+            @media (min-width: @screen-lg-min) {
+                text-align: left;
+            }
+        }
+        #buttons {
+            margin-top: 0px;
+            margin-bottom: 20px;
+            text-align: center;
+            a {
+                margin-top: 20px;
+                //For when vertical collapse
+            }
+            //Modify the sizing of the buttons on different screen sizes 
+            .btn {
+                border-radius: @border-radius-base; 
+                text-transform: none;
+
+                font-size: 14px;
+                /* Small devices (tablets, 768px and up) */
+                @media (min-width: @screen-sm-min) {
+                    font-size: 15px;
+                }
+                /* Medium devices (desktops, 992px and up) */
+                @media (min-width:@screen-md-min) {
+                    font-size: 16px;
+                }
+                /* Large devices (large desktops, 1200px and up) */
+                @media (min-width:@screen-lg-min) {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    #results_panel {
+        margin-top: 20px;
+        #results {
+            height: 800px;
+            overflow-y: scroll
+        }
+    }
+    //Graph Computing Modal that runs as the graph is being generated
+    #graph-computing-modal {
+        #graph-completion-precent {
+            text-align: center;
+            &.completed {
+                color: green;
+            }
+            &.failed {
+                color: red;
+            }
+        }
+    }
+}

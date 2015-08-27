@@ -1,0 +1,57 @@
+/**
+ * Canvas JS Style Override
+ * @author Josh Rogan (JoshJRogan@gmail.com)
+ * 
+ */
+.canvasjs-chart-container(@color) {
+	//Save Button Ovveride
+	.canvasjs-chart-toolbar {
+		color: @color;
+		
+		// #transition .default-duration(color, 0.25s);
+
+		button {
+			margin-top: 10px !important;
+			padding: 3px 10px 0px !important;
+			color: @color !important;
+			#transition .default-duration(all, 0.25s);
+
+			&:hover {
+				background-color: @color !important;
+				color: white !important;
+			}
+		}
+		button[state='menu'] {
+			margin-right: 8px !important;
+			background-color: white;
+		}
+		> div {
+			margin-top: 11px;
+			margin-bottom: 0;
+			margin-right: 7px;
+			padding: 0 !important;
+			background-color: white;
+			width: 150px;
+			box-shadow: none !important;
+
+			> div {
+				font-weight: bold;
+				padding: 10px !important;
+				margin-top: 0 !important;
+				margin-bottom: 0 !important;
+
+				&:hover {
+					background-color: @color !important;
+					#transition .default-duration(all, 0.25s);
+					color: white;
+				}
+			}
+		}
+	}
+}
+.graph-genotype {
+	.canvasjs-chart-container(@brand-genotype);
+}
+.graph-allele {
+	.canvasjs-chart-container(@brand-primary);
+}
