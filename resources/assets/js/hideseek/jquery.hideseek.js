@@ -45,109 +45,102 @@ or any similar structure...
             ignore_accents: false,
             hidden_mode: false,
             copy_to: false,
-            result_selector: false, 
+            result_selector: false,
             complete: false, //callback upcon completio, 
             first: false, //callback on first run
+            start: false, //callback on the start  run
+            empty: false, //callback on the no results
+            children_selector: '',
+            result_prefix: '', //The resuling elements id prefix
         };
         var options = $.extend(defaults, options);
         return this.each(function() {
             var $this = $(this);
             $this.opts = [];
-            $.map(['list', 'nodata', 'attribute', 'highlight', 'ignore', 'navigation', 'ignore_accents', 'hidden_mode', 'copy_to', 'result_selector', 'complete', 'first'], function(val, i) {
+            $.map(['list', 'nodata', 'attribute', 'highlight', 'ignore', 'navigation', 'ignore_accents', 'hidden_mode', 'copy_to', 'result_selector', 'complete', 'first', 'start', 'empty', 'children_selector'], function(val, i) {
                 $this.opts[val] = $this.data(val) || options[val];
             });
             var $list = $($this.opts.list);
             if ($this.opts.navigation) $this.attr('autocomplete', 'off');
             if ($this.opts.hidden_mode) $list.children().hide();
-            
-            
-            
+            var valid = {};
 
+            function add_valid(index, item) {}
+
+            function remove_valid(index, item) {}
             $this.keyup(function(e) {
                 if (e.keyCode != 38 && e.keyCode != 40 && e.keyCode != 13) {
-                    if($this.opts.first){
-                      $this.opts.first();
-                      $this.opts.first = false;
+                    if ($this.opts.first) {
+                        $this.opts.first();
+                        $this.opts.first = false;
+                    }
+                    if ($this.opts.start) {
+                        $this.opts.start();
                     }
                     var q = $this.val().toLowerCase();
-
-                    $this.results_loc = $($this.opts.copy_to);
-                    $this.results_loc.empty();
-                    
-                    $list.children($this.opts.ignore.trim() ? ":not(" + $this.opts.ignore + ")" : '').removeClass('selected').each(function() {
-                        
-                        /**
-                         *  Workaround for bootstrap panel search 
-                         *
-                         * 
-                         */
-                        if($($this.opts.copy_to).length){
-                          var clone = $(this).parent().parent().parent().clone();
-                          var panel_title = clone.find('h4.panel-title');
-                          
-                          panel_title.attr('id', function(index, value){
-                            return "search-result-" + value;  
-                          });
-
-                          clone.find('.question-content').attr('id', function(index, value){
-                            return "search-result-" + value; 
-                          });
-
-                          panel_title.find('a.accordion-toggle').attr('href', function(index, value){
-                            return "#" + clone.find('.question-content').attr('id');  
-                          });
-
-                          panel_title.find('a.accordion-toggle').attr('data-parent', $this.opts.copy_to);
-                          panel_title.find('.anchorjs-link').remove();
-
-                          var search_id = "search-result-" + clone.attr('id');
-                          if(!$this.results_loc.has("#" + search_id).length){
-                            clone.attr('id', "search-result-" + clone.attr('id'));
-                            clone.appendTo($this.results_loc);
-                           
-                          }
-
-
-                          
-                          
+                    if (q.length) {
+                        $this.results_loc = $($this.opts.copy_to);
+                        // $this.results_loc.empty();
+                        //Iterate through each item
+                        $list.children($this.opts.children_selector).each(function(ind, li_element) {
+                            var h4_id = $(li_element).find('h4.question-info-search').attr('id');
+                            var data_sid = "result-" + h4_id;
+                            var clone = $(li_element).clone(true);
+                            // clone.find().each(function(){
+                            //   $(this).removeAttr("id");
+                            // });
+                            clone.find('.anchorjs-link').remove();
+                            clone.attr('data-sid', data_sid);
+                            var selector = "[data-sid='" + data_sid + "']";
+                            var data = clone.find('.seo')
+                            data = $.trim(data.text().toLowerCase().replace(/\s\s+/g, ' '.removeAccents(true)));
+                            var contains = data.indexOf(q) != -1;
+                            if (!contains) {
+                                $(selector).removeClass('search-current-result');
+                                $(selector).velocity("transition.slideLeftOut", {
+                                    duration: 200,
+                                    stagger: 50,
+                                    drag: true,
+                                    complete: function(elements) {
+                                        $(elements).remove();
+                                    }
+                                });
+                                $(selector).remove();
+                                $this.trigger('_after_each');
+                            } else {
+                                if ($this.opts.highlight) {
+                                    $(selector).removeHighlight().highlight(q);
+                                    clone.removeHighlight().highlight(q);
+                                }
+                                if ($(selector).length == 0) {
+                                    clone.hide();
+                                    clone.addClass('search-current-result');
+                                    clone.appendTo($this.results_loc);
+                                } else {}
+                                $this.trigger('_after_each');
+                            }
+                        });
+                    } else {
+                        if ($this.opts.empty) {
+                            $this.opts.empty();
                         }
-
-                        var data = ($this.opts.attribute != 'text') ? $(this).attr($this.opts.attribute).toLowerCase() : $(this).text().toLowerCase();
-
-                        var treaty = data.removeAccents($this.opts.ignore_accents).indexOf(q) == -1 || q === ($this.opts.hidden_mode ? '' : false)
-                        if (treaty) {
-                            // $(this).hide();    
-                            clone.remove();   //Remove this element since it shouldn't be in the results
-
-                            $this.trigger('_after_each');
-                        } else {
-                            $this.opts.highlight ? $(this).removeHighlight().highlight(q).show() : $(this).show();
-                            $this.trigger('_after_each');
-                        }
-
-                        //If the length is 0 remove everything 
-                        if(q.length == 0){
-                          $this.results_loc.empty();
-                        }
-
-                    });                    
-
+                    }
                     // No results message
                     if ($this.opts.nodata) {
-                        $list.find('.no-results').remove();
-                        if (!$list.children(':not([style*="display: none"])').length) {
-                            $list.children().first().clone().removeHighlight().addClass('no-results').show().prependTo($this.opts.list).text($this.opts.nodata);  
-                        }
-                        
+                        // $list.find('.no-results').remove();
+                        // if (!$list.children(':not([style*="display: none"])').length) {
+                        //     $list.children().first().clone().removeHighlight().addClass('no-results').show().prependTo($this.opts.list).text($this.opts.nodata);  
+                        // }
                     }
-
-                    if($this.opts.complete){
+                    if ($this.opts.complete) {
                         // $this.opts.complete(q, $this.result_length, results_loc);
-                        $this.opts.complete(q, $this.results_loc.find('.panel').length);
+                        if (q.length) {
+                            $this.opts.complete(q, $this.results_loc.find('.search-current-result').length);
+                        } else {
+                            $this.opts.complete('', 0);
+                        }
                     }
-                    
-
-                    // $this.trigger('_after');
+                    $this.trigger('_after');
                 };
                 // Navigation
                 function current(element) {

@@ -5,7 +5,7 @@
 	@yield('pre-questions')
 	
 	{{-- The bootstrap panel group accordian to hold all of the questions --}}
-	<div class="panel-group" id="accordian-{{$id}}">
+	<div id="accordian-{{$id}}">
 		@yield('questions') {{-- All of the questions formated by  help/macros/question  --}}
 	</div>
 

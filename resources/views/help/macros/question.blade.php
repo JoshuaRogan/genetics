@@ -1,13 +1,18 @@
-<li>
+<li class='single-question'>
     <div class='collapsible-header question-question'>
-        @render('question-title') 
+        <i class="fa fa-clone"></i> <h4 class='question-info-search'> @render('question-title')
+            <span class='hidden seo'>
+                @render('question-title') 
+                @render('question-content')
+            </span>
+
+        </h4>
+
     </div>
 
     <div class="collapsible-body">
-        <div id='{{$question_set}}-question-@render("question-id")'>
-            <div class='panel-body'>
-                @render('question-content')
-            </div>
+        <div class='question-content'>
+             @render('question-content')
         </div>
     </div>
 </li>

@@ -64,7 +64,7 @@
 			<div class="filter-parent">
 				<label for="hideseek-search"><i class="fa fa-search"></i></label>
 				<div>
-					<input placeholder="Search Help Documents" id="hideseek-search" class="form-control input-lg"  type="text" data-list=".panel-title">
+					<input placeholder="Search Help Documents" id="hideseek-search" class="form-control input-lg"  type="text">
 				</div>
 				<span id="num-results" class="font-blue">0</span>
 				
@@ -72,9 +72,12 @@
 			
 			<section id="search-results">
 				<h3 class="no-anchor hidden"> Search Results for <span class='search-term font-blue'></span></h3>
-					<div class="panel-group no-anchor" id="accordian-search-results">
-						
-					</div>
+				
+				<ul class="list-unstyled question collapsible no-anchor" data-collapsible="accordion" id="accordian-search-results">
+
+				</ul>
+
+				<div class="alert-container"></div>
 			</section>
 
 			<section id="help-faq"> 

@@ -148,7 +148,7 @@
         @block('question-id', 'generate-url') 
 
         @block('question-content')
-            You can generate a link (URL) for a set of simulation parameters by clicking on the <i class="fa fa-link"></i>.  Navigating to this URL will prepopulate the set of simulation parameters that you currently have set. Feel free to modify the link to make the parameters more exact to your liking.      
+            <p>You can generate a link (URL) for a set of simulation parameters by clicking on the <i class="fa fa-link"></i>.  Navigating to this URL will prepopulate the set of simulation parameters that you currently have set. Feel free to modify the link to make the parameters more exact to your liking.      </p>
         @endblock
 @endpartial
 
@@ -157,7 +157,7 @@
         @block('question-id', 'get-raw-data') 
 
         @block('question-content')
-            You can access the simulation data by clicking on the <i class='fa fa-file-text-o'></i> icon located in the top right corner of the Simulation Parameters section.  This will take you to a seperate page containg scrollable, tab seperated x,y coordinates from each line that are currently on the graph. You can easily copy and paste this into your favorite data manipulation program to perform additional analysis. 
+            <p>You can access the simulation data by clicking on the <i class='fa fa-file-text-o'></i> icon located in the top right corner of the Simulation Parameters section.  This will take you to a seperate page containg scrollable, tab seperated x,y coordinates from each line that are currently on the graph. You can easily copy and paste this into your favorite data manipulation program to perform additional analysis. </p>
         @endblock
 @endpartial
 </ul>

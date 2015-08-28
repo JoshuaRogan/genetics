@@ -1164,10 +1164,10 @@ a.text-primary:hover {
   color: #363a4c;
 }
 .text-success {
-  color: #3c763d;
+  color: #2ecc71;
 }
 a.text-success:hover {
-  color: #2b542c;
+  color: #25a25a;
 }
 .text-info {
   color: #31708f;
@@ -1182,10 +1182,10 @@ a.text-warning:hover {
   color: #66512c;
 }
 .text-danger {
-  color: #a94442;
+  color: #f44336;
 }
 a.text-danger:hover {
-  color: #843534;
+  color: #ea1c0d;
 }
 .bg-primary {
   color: #fff;
@@ -2558,25 +2558,25 @@ select[multiple].input-lg {
 .has-success .checkbox,
 .has-success .radio-inline,
 .has-success .checkbox-inline {
-  color: #3c763d;
+  color: #2ecc71;
 }
 .has-success .form-control {
-  border-color: #3c763d;
+  border-color: #2ecc71;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .has-success .form-control:focus {
-  border-color: #2b542c;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
+  border-color: #25a25a;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7ee2a8;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7ee2a8;
 }
 .has-success .input-group-addon {
-  color: #3c763d;
-  border-color: #3c763d;
+  color: #2ecc71;
+  border-color: #2ecc71;
   background-color: #dff0d8;
 }
 .has-success .form-control-feedback {
-  color: #3c763d;
+  color: #2ecc71;
 }
 .has-warning .help-block,
 .has-warning .control-label,
@@ -2610,25 +2610,25 @@ select[multiple].input-lg {
 .has-error .checkbox,
 .has-error .radio-inline,
 .has-error .checkbox-inline {
-  color: #a94442;
+  color: #f44336;
 }
 .has-error .form-control {
-  border-color: #a94442;
+  border-color: #f44336;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .has-error .form-control:focus {
-  border-color: #843534;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+  border-color: #ea1c0d;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #f99d97;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #f99d97;
 }
 .has-error .input-group-addon {
-  color: #a94442;
-  border-color: #a94442;
+  color: #f44336;
+  border-color: #f44336;
   background-color: #f2dede;
 }
 .has-error .form-control-feedback {
-  color: #a94442;
+  color: #f44336;
 }
 .has-feedback label.sr-only ~ .form-control-feedback {
   top: 0;
@@ -2978,8 +2978,8 @@ fieldset[disabled] .btn-warning.active {
 }
 .btn-danger {
   color: #ffffff;
-  background-color: #e74c3c;
-  border-color: #e43725;
+  background-color: #f44336;
+  border-color: #f32c1e;
 }
 .btn-danger:hover,
 .btn-danger:focus,
@@ -2987,8 +2987,8 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger.active,
 .open > .dropdown-toggle.btn-danger {
   color: #ffffff;
-  background-color: #d62c1a;
-  border-color: #b62516;
+  background-color: #ea1c0d;
+  border-color: #c8180b;
 }
 .btn-danger:active,
 .btn-danger.active,
@@ -3010,11 +3010,11 @@ fieldset[disabled] .btn-danger:active,
 .btn-danger.disabled.active,
 .btn-danger[disabled].active,
 fieldset[disabled] .btn-danger.active {
-  background-color: #e74c3c;
-  border-color: #e43725;
+  background-color: #f44336;
+  border-color: #f32c1e;
 }
 .btn-danger .badge {
-  color: #e74c3c;
+  color: #f44336;
   background-color: #ffffff;
 }
 .btn-link {
@@ -4501,11 +4501,11 @@ a.label:focus {
   background-color: #c87f0a;
 }
 .label-danger {
-  background-color: #e74c3c;
+  background-color: #f44336;
 }
 .label-danger[href]:hover,
 .label-danger[href]:focus {
-  background-color: #d62c1a;
+  background-color: #ea1c0d;
 }
 .badge {
   display: inline-block;
@@ -4644,13 +4644,13 @@ a.thumbnail.active {
 .alert-success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
-  color: #3c763d;
+  color: #2ecc71;
 }
 .alert-success hr {
   border-top-color: #c9e2b3;
 }
 .alert-success .alert-link {
-  color: #2b542c;
+  color: #25a25a;
 }
 .alert-info {
   background-color: #d9edf7;
@@ -4677,13 +4677,13 @@ a.thumbnail.active {
 .alert-danger {
   background-color: #f2dede;
   border-color: #ebccd1;
-  color: #a94442;
+  color: #f44336;
 }
 .alert-danger hr {
   border-top-color: #e4b9c0;
 }
 .alert-danger .alert-link {
-  color: #843534;
+  color: #ea1c0d;
 }
 @-webkit-keyframes progress-bar-stripes {
   from {
@@ -4774,7 +4774,7 @@ a.thumbnail.active {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 .progress-bar-danger {
-  background-color: #e74c3c;
+  background-color: #f44336;
 }
 .progress-striped .progress-bar-danger {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -4889,26 +4889,26 @@ a.list-group-item:focus {
   color: #b6bacb;
 }
 .list-group-item-success {
-  color: #3c763d;
+  color: #2ecc71;
   background-color: #dff0d8;
 }
 a.list-group-item-success {
-  color: #3c763d;
+  color: #2ecc71;
 }
 a.list-group-item-success .list-group-item-heading {
   color: inherit;
 }
 a.list-group-item-success:hover,
 a.list-group-item-success:focus {
-  color: #3c763d;
+  color: #2ecc71;
   background-color: #d0e9c6;
 }
 a.list-group-item-success.active,
 a.list-group-item-success.active:hover,
 a.list-group-item-success.active:focus {
   color: #fff;
-  background-color: #3c763d;
-  border-color: #3c763d;
+  background-color: #2ecc71;
+  border-color: #2ecc71;
 }
 .list-group-item-info {
   color: #31708f;
@@ -4955,26 +4955,26 @@ a.list-group-item-warning.active:focus {
   border-color: #8a6d3b;
 }
 .list-group-item-danger {
-  color: #a94442;
+  color: #f44336;
   background-color: #f2dede;
 }
 a.list-group-item-danger {
-  color: #a94442;
+  color: #f44336;
 }
 a.list-group-item-danger .list-group-item-heading {
   color: inherit;
 }
 a.list-group-item-danger:hover,
 a.list-group-item-danger:focus {
-  color: #a94442;
+  color: #f44336;
   background-color: #ebcccc;
 }
 a.list-group-item-danger.active,
 a.list-group-item-danger.active:hover,
 a.list-group-item-danger.active:focus {
   color: #fff;
-  background-color: #a94442;
-  border-color: #a94442;
+  background-color: #f44336;
+  border-color: #f44336;
 }
 .list-group-item-heading {
   margin-top: 0;
@@ -5224,7 +5224,7 @@ a.list-group-item-danger.active:focus {
   border-color: #d6e9c6;
 }
 .panel-success > .panel-heading {
-  color: #3c763d;
+  color: #2ecc71;
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
@@ -5233,7 +5233,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-success > .panel-heading .badge {
   color: #dff0d8;
-  background-color: #3c763d;
+  background-color: #2ecc71;
 }
 .panel-success > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #d6e9c6;
@@ -5278,7 +5278,7 @@ a.list-group-item-danger.active:focus {
   border-color: #ebccd1;
 }
 .panel-danger > .panel-heading {
-  color: #a94442;
+  color: #f44336;
   background-color: #f2dede;
   border-color: #ebccd1;
 }
@@ -5287,7 +5287,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-danger > .panel-heading .badge {
   color: #f2dede;
-  background-color: #a94442;
+  background-color: #f44336;
 }
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ebccd1;
@@ -6133,6 +6133,45 @@ button.close {
 }
 .font-concrete {
   color: #95a5a6;
+}
+.bg-p {
+  background-color: #333333;
+}
+.bg-primary {
+  background-color: #4b516a;
+}
+.bg-purple {
+  background-color: #4b516a;
+}
+.bg-white {
+  background-color: #fff;
+}
+.bg-off-white {
+  background-color: #ecf0f1;
+}
+.bg-blue {
+  background-color: #3498db;
+}
+.bg-yellow {
+  background-color: #f1c40f;
+}
+.bg-purple {
+  background-color: #9b59b6;
+}
+.bg-green {
+  background-color: #2ecc71;
+}
+.bg-blue-green {
+  background-color: #1abc9c;
+}
+.bg-red {
+  background-color: #e74c3c;
+}
+.bg-orange {
+  background-color: #e67e22;
+}
+.bg-concrete {
+  background-color: #95a5a6;
 }
 .background-primary {
   background-color: #4b516a;
@@ -8399,2112 +8438,6 @@ button.close {
  */
 #links {
   /* Effect 2: 3D rolling links, idea from http://hakim.se/thoughts/rolling-links */
-}
-/**
- * Styling for the graph simulator pages
- */
-.page-graph .bookmark-link {
-  color: #4b516a;
-  font-weight: bold;
-  font-size: 17px;
-}
-.page-graph .infinite-sym {
-  font-size: 30px;
-  vertical-align: middle;
-}
-.page-graph #graph_wrapper {
-  line-height: 24px;
-  padding: 3px 5px 30px 5px;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
-  border-radius: 2px;
-  border: 0;
-}
-.page-graph #graph_wrapper.allele-graph {
-  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
-  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
-  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
-  background-color: #4b516a;
-}
-.page-graph #graph_wrapper.genotype-graph {
-  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
-  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
-  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
-  background-color: #6a4b51;
-}
-.page-graph #graph_wrapper.print-layout {
-  background-color: white;
-  background-image: none;
-  color: black;
-  box-shadow: none;
-}
-.page-graph #graph_wrapper.default-layout.allele-graph {
-  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
-  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
-  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
-  color: white;
-}
-.page-graph #graph_wrapper.default-layout.genotype-graph {
-  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
-  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
-  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
-  background-color: none;
-}
-.page-graph #graph_wrapper h1,
-.page-graph #graph_wrapper h2,
-.page-graph #graph_wrapper h3 {
-  font-weight: 300;
-}
-.page-graph #graph_wrapper h1 {
-  font-size: 16px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #graph_wrapper h1 {
-    font-size: 26px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #graph_wrapper h1 {
-    font-size: 36px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #graph_wrapper h1 {
-    font-size: 38px;
-  }
-}
-.page-graph #graph_wrapper p {
-  color: #fff;
-  font-weight: 300;
-}
-.page-graph #graph_wrapper #graph-canvas {
-  height: 250px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #graph_wrapper #graph-canvas {
-    height: 300px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #graph_wrapper #graph-canvas {
-    height: 450px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #graph_wrapper #graph-canvas {
-    height: 550px;
-  }
-}
-.page-graph #graph_wrapper #graph-canvas jpg .canvasjs-chart-container {
-  color: #000;
-}
-.page-graph #variables h2#variable-header {
-  font-size: 25px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables h2#variable-header {
-    font-size: 30px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables h2#variable-header {
-    font-size: 35px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #variables h2#variable-header {
-    font-size: 35px;
-  }
-}
-.page-graph #variables h2#variable-header a {
-  font-size: 10px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables h2#variable-header a {
-    font-size: 15px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables h2#variable-header a {
-    font-size: 15px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #variables h2#variable-header a {
-    font-size: 20px;
-  }
-}
-.page-graph #variables h3 {
-  color: #777777;
-  font-weight: 300;
-}
-.page-graph #variables .error {
-  font-weight: bold;
-  color: red;
-}
-.page-graph #variables #multiple-legends-container .modified-value .legend-val {
-  color: #e74c3c;
-}
-.page-graph #variables #multiple-legends-container .legend {
-  margin-bottom: 5px;
-  background-color: #ffffff;
-  padding: 8px;
-  border: 1px solid #f2f2f5;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
-  border-radius: 2px;
-  border: 0;
-}
-.page-graph #variables #multiple-legends-container .legend.hidden-legend {
-  height: 30px;
-  max-height: 30px;
-  overflow: hidden;
-  box-shadow: none;
-  border-radius: 2px;
-  border: 1px solid #f2f2f5;
-}
-.page-graph #variables #multiple-legends-container .legend.hidden-legend .legend-variables {
-  display: hidden;
-}
-.page-graph #variables #multiple-legends-container .legend.hidden-legend h3 {
-  font-size: 15px;
-  margin: 0;
-  padding: 0;
-}
-.page-graph #variables #multiple-legends-container .legend.hidden-legend h3 .togglelegend {
-  font-size: 15px;
-}
-.page-graph #variables #multiple-legends-container .legend h3 {
-  color: #4b516a;
-  margin-top: 8px;
-  font-size: 18px;
-  /* (tablets, 768px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables #multiple-legends-container .legend h3 {
-    font-size: 24px;
-  }
-  .page-graph #variables #multiple-legends-container .legend h3 .togglelegend {
-    font-size: 20px;
-  }
-}
-.page-graph #variables #multiple-legends-container .legend .legend-var {
-  padding-right: 4px;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-symbol {
-  padding-left: 2px;
-  padding-right: 5px;
-  font-size: 18px;
-  font-style: italic;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-symbol:after {
-  content: " = ";
-}
-.page-graph #variables #multiple-legends-container .legend .legend-val {
-  font-weight: 600;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-warning {
-  padding-left: 4px;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-exclamation-triangle,
-.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-exclamation,
-.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-tachometer {
-  color: #e74c3c;
-}
-.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-recycle {
-  color: #2ecc71;
-  color: #33983c;
-}
-.page-graph #variables #multiple-legends-container .legend p {
-  margin-top: 10px;
-}
-.page-graph #variables #graph_stats {
-  margin-bottom: 5px;
-  background-color: #ffffff;
-  padding: 8px;
-  border: 1px solid #f2f2f5;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
-  border-radius: 2px;
-  border: 0;
-}
-.page-graph #variables #graph_stats h3 {
-  color: #4b516a;
-  margin-top: 8px;
-  font-size: 18px;
-  /* (tablets, 768px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables #graph_stats h3 {
-    font-size: 24px;
-  }
-  .page-graph #variables #graph_stats h3 .togglelegend {
-    font-size: 20px;
-  }
-}
-.page-graph #variables #graph_stats .legend-var {
-  padding-right: 4px;
-}
-.page-graph #variables #graph_stats .legend-val {
-  font-weight: 600;
-}
-.page-graph #variables .variable-section {
-  border-bottom: 1px solid rgba(85, 85, 85, 0.5);
-}
-.page-graph #variables .variable {
-  margin-top: 20px;
-  /**Variable Name**/
-  /**Helper Text*/
-  /*Variable Value*/
-}
-.page-graph #variables .variable input::selection {
-  background: rgba(20, 20, 37, 0.2);
-}
-.page-graph #variables .variable input::-moz-selection {
-  background: rgba(20, 20, 37, 0.2);
-}
-.page-graph #variables .variable label {
-  font-size: 18px;
-  font-weight: normal;
-  overflow: hidden;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables .variable label {
-    font-size: 19px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables .variable label {
-    font-size: 19px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #variables .variable label {
-    font-size: 20px;
-  }
-}
-.page-graph #variables .variable .help-block {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-  /* Small devices (tablets, 768px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables .variable .help-block {
-    padding-left: 10px;
-  }
-}
-.page-graph #variables .variable .help-block .help-symbol-container {
-  font-size: 18px;
-  color: #4b516a;
-  font-weight: 900;
-}
-.page-graph #variables .variable .help-block .help-symbol-container .help-symbol {
-  font-size: 22px;
-  font-style: italic;
-}
-.page-graph #variables .variable .help-block p {
-  font-size: 15px;
-}
-.page-graph #variables .variable #label-infinite-sample-size {
-  font-style: normal;
-}
-.page-graph #variables .variable #infinite_sample_size {
-  margin-top: 3px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables .variable #infinite_sample_size {
-    margin-top: 8px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables .variable #infinite_sample_size {
-    font-size: 8px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #variables .variable #infinite_sample_size {
-    margin-top: 8px;
-  }
-}
-.page-graph #variables .variable .value {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 300;
-  margin-top: 10px;
-}
-@media (min-width: 768px) {
-  .page-graph #variables .variable .value {
-    margin-top: 0;
-  }
-}
-.page-graph #variables .variable .value input {
-  border: none;
-  font-size: 26px;
-  box-shadow: none;
-  margin-top: 0;
-  padding-top: 0;
-  text-align: center;
-  height: 100%;
-}
-.page-graph #variables .variable .scientific-notation-container {
-  margin-left: 0;
-  padding-left: 0;
-  margin-top: 0;
-  padding-top: 0;
-  font-weight: 300;
-}
-.page-graph #variables .variable .scientific-notation-container .scientific-notation {
-  font-size: 20px;
-  text-align: right;
-  padding-right: 0;
-  margin-right: 0;
-}
-.page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
-  font-size: 18px;
-  height: 34px;
-  padding: 3px 3px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-}
-@media (max-width: 768px) {
-  .page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
-    font-size: 20px;
-    height: 38px;
-    padding: 6px 12px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
-    font-size: 20px;
-    height: 38px;
-    padding: 6px 12px;
-  }
-}
-.page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent option {
-  text-align: center;
-}
-.page-graph #variables #options {
-  margin-top: 20px;
-  text-align: center;
-}
-@media (min-width: 1200px) {
-  .page-graph #variables #options {
-    text-align: left;
-  }
-}
-.page-graph #variables #buttons {
-  margin-top: 0px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.page-graph #variables #buttons a {
-  margin-top: 20px;
-}
-.page-graph #variables #buttons .btn {
-  border-radius: 4px;
-  text-transform: none;
-  font-size: 14px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-graph #variables #buttons .btn {
-    font-size: 15px;
-  }
-}
-@media (min-width: 992px) {
-  .page-graph #variables #buttons .btn {
-    font-size: 16px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-graph #variables #buttons .btn {
-    font-size: 18px;
-  }
-}
-.page-graph #results_panel {
-  margin-top: 20px;
-}
-.page-graph #results_panel #results {
-  height: 800px;
-  overflow-y: scroll;
-}
-.page-graph #graph-computing-modal #graph-completion-precent {
-  text-align: center;
-}
-.page-graph #graph-computing-modal #graph-completion-precent.completed {
-  color: green;
-}
-.page-graph #graph-computing-modal #graph-completion-precent.failed {
-  color: red;
-}
-.graph-allele #buttons .btn {
-  background: none;
-  color: inherit;
-  vertical-align: middle;
-  position: relative;
-  z-index: 1;
-  -webkit-backface-visibility: hidden;
-  background: #4b516a;
-  color: #fff;
-  transition: background-color 0.3s, color 0.3s;
-}
-.graph-allele #buttons .btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #4b516a;
-  z-index: -1;
-  border-radius: inherit;
-  opacity: 0;
-  transform: scale3d(0.6, 0.6, 1);
-  transition: transform 0.3s, opacity 0.3s;
-  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-}
-.graph-allele #buttons .btn:hover {
-  background-color: #fff;
-  color: #4b516a;
-}
-.graph-allele #buttons .btn:hover::before {
-  transform: scale3d(1, 1, 1);
-  opacity: 1;
-}
-.graph-allele #variable-header a {
-  perspective: 1000px;
-}
-.graph-allele #variable-header a span {
-  position: relative;
-  display: inline-block;
-  padding: 5px;
-  background: #4b516a;
-  color: white;
-  transition: transform 0.3s;
-  transform-origin: 50% 0;
-  transform-style: preserve-3d;
-}
-.graph-allele #variable-header a span::before {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #4b516a;
-  text-align: center;
-  font-family: 'FontAwesome';
-  content: "\f25a";
-  transition: background 0.3s;
-  transform: rotateX(-90deg);
-  transform-origin: 50% 0;
-  padding: 5px;
-}
-.graph-allele #variable-header a:hover span,
-.graph-allele #variable-header a:focus span {
-  transform: rotateX(90deg) translateY(-22px);
-}
-.graph-allele #variable-header a:hover span::before,
-.graph-allele #variable-header a:focus span::before {
-  background: #4b516a;
-}
-.graph-allele .variable-activator:not(.fa-check-square-o) {
-  transition: all 0.2s;
-}
-.graph-allele .variable-activator:not(.fa-check-square-o):hover {
-  color: #4b516a;
-  opacity: .8;
-  transform: scale(1.5);
-}
-.graph-allele .variable-activator:not(.fa-check-square-o):hover::before {
-  content: "\f046";
-}
-.graph-allele #main-togggles .fa {
-  transition: all 0.3s;
-}
-.graph-allele #main-togggles .fa:hover {
-  transform: scale(1.8);
-}
-.graph-genotype #buttons .btn {
-  background: none;
-  color: inherit;
-  vertical-align: middle;
-  position: relative;
-  z-index: 1;
-  -webkit-backface-visibility: hidden;
-  background: #4b516a;
-  color: #fff;
-  transition: background-color 0.3s, color 0.3s;
-}
-.graph-genotype #buttons .btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #4b516a;
-  z-index: -1;
-  border-radius: inherit;
-  opacity: 0;
-  transform: scale3d(0.6, 0.6, 1);
-  transition: transform 0.3s, opacity 0.3s;
-  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-}
-.graph-genotype #buttons .btn:hover {
-  background-color: #fff;
-  color: #4b516a;
-}
-.graph-genotype #buttons .btn:hover::before {
-  transform: scale3d(1, 1, 1);
-  opacity: 1;
-}
-.graph-genotype #variable-header a {
-  perspective: 1000px;
-}
-.graph-genotype #variable-header a span {
-  position: relative;
-  display: inline-block;
-  padding: 5px;
-  background: #4b516a;
-  color: white;
-  transition: transform 0.3s;
-  transform-origin: 50% 0;
-  transform-style: preserve-3d;
-}
-.graph-genotype #variable-header a span::before {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #4b516a;
-  text-align: center;
-  font-family: 'FontAwesome';
-  content: "\f25a";
-  transition: background 0.3s;
-  transform: rotateX(-90deg);
-  transform-origin: 50% 0;
-  padding: 5px;
-}
-.graph-genotype #variable-header a:hover span,
-.graph-genotype #variable-header a:focus span {
-  transform: rotateX(90deg) translateY(-22px);
-}
-.graph-genotype #variable-header a:hover span::before,
-.graph-genotype #variable-header a:focus span::before {
-  background: #4b516a;
-}
-.graph-genotype .variable-activator:not(.fa-check-square-o) {
-  transition: all 0.2s;
-}
-.graph-genotype .variable-activator:not(.fa-check-square-o):hover {
-  color: #4b516a;
-  opacity: .8;
-  transform: scale(1.5);
-}
-.graph-genotype .variable-activator:not(.fa-check-square-o):hover::before {
-  content: "\f046";
-}
-.graph-genotype #main-togggles .fa {
-  transition: all 0.3s;
-}
-.graph-genotype #main-togggles .fa:hover {
-  transform: scale(1.8);
-}
-.graph-genotype .canvasjs-chart-toolbar {
-  color: #4b516a;
-}
-.graph-genotype .canvasjs-chart-toolbar button {
-  margin-top: 10px !important;
-  padding: 3px 10px 0px !important;
-  color: #4b516a !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-}
-.graph-genotype .canvasjs-chart-toolbar button:hover {
-  background-color: #4b516a !important;
-  color: white !important;
-}
-.graph-genotype .canvasjs-chart-toolbar button[state='menu'] {
-  margin-right: 8px !important;
-  background-color: white;
-}
-.graph-genotype .canvasjs-chart-toolbar > div {
-  margin-top: 11px;
-  margin-bottom: 0;
-  margin-right: 7px;
-  padding: 0 !important;
-  background-color: white;
-  width: 150px;
-  box-shadow: none !important;
-}
-.graph-genotype .canvasjs-chart-toolbar > div > div {
-  font-weight: bold;
-  padding: 10px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-.graph-genotype .canvasjs-chart-toolbar > div > div:hover {
-  background-color: #4b516a !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-  color: white;
-}
-.graph-genotype .btn.btn-primary {
-  background: none;
-  box-shadow: none;
-  font-weight: 500;
-  background-color: #4b516a;
-  color: white;
-}
-.graph-genotype .btn.btn-primary:disabled {
-  color: #a8a8a8 !important;
-}
-.graph-genotype .slider {
-  margin-top: 10px;
-  /* Vert Centering*/
-}
-.graph-genotype .slider.active.noUi-connect {
-  background-color: #4b516a;
-}
-.graph-genotype .slider.noUi-connect {
-  background-color: #aaaaaa;
-}
-.graph-genotype .range-slider .slider.active .noUi-connect {
-  background-color: #4b516a;
-}
-.graph-genotype .range-slider .slider .noUi-connect {
-  background-color: #aaaaaa;
-}
-.graph-genotype #buttons .btn {
-  background: none;
-  color: inherit;
-  vertical-align: middle;
-  position: relative;
-  z-index: 1;
-  -webkit-backface-visibility: hidden;
-  background: #6a4b51;
-  color: #fff;
-  transition: background-color 0.3s, color 0.3s;
-}
-.graph-genotype #buttons .btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #6a4b51;
-  z-index: -1;
-  border-radius: inherit;
-  opacity: 0;
-  transform: scale3d(0.6, 0.6, 1);
-  transition: transform 0.3s, opacity 0.3s;
-  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-}
-.graph-genotype #buttons .btn:hover {
-  background-color: #fff;
-  color: #6a4b51;
-}
-.graph-genotype #buttons .btn:hover::before {
-  transform: scale3d(1, 1, 1);
-  opacity: 1;
-}
-.graph-genotype #variable-header a {
-  perspective: 1000px;
-}
-.graph-genotype #variable-header a span {
-  position: relative;
-  display: inline-block;
-  padding: 5px;
-  background: #6a4b51;
-  color: white;
-  transition: transform 0.3s;
-  transform-origin: 50% 0;
-  transform-style: preserve-3d;
-}
-.graph-genotype #variable-header a span::before {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #6a4b51;
-  text-align: center;
-  font-family: 'FontAwesome';
-  content: "\f25a";
-  transition: background 0.3s;
-  transform: rotateX(-90deg);
-  transform-origin: 50% 0;
-  padding: 5px;
-}
-.graph-genotype #variable-header a:hover span,
-.graph-genotype #variable-header a:focus span {
-  transform: rotateX(90deg) translateY(-22px);
-}
-.graph-genotype #variable-header a:hover span::before,
-.graph-genotype #variable-header a:focus span::before {
-  background: #6a4b51;
-}
-.graph-genotype .variable-activator:not(.fa-check-square-o):hover {
-  color: #6a4b51;
-}
-.page-contact #material-form fieldset[disabled] .form-control,
-.page-contact #material-form .form-control,
-.page-contact #material-form fieldset[disabled] .form-control:focus,
-.page-contact #material-form .form-control:focus,
-.page-contact #material-form fieldset[disabled] .form-control.focus,
-.page-contact #material-form .form-control.focus {
-  padding: 0;
-  float: none;
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-}
-.page-contact #material-form fieldset[disabled] .form-control:disabled,
-.page-contact #material-form .form-control:disabled,
-.page-contact #material-form fieldset[disabled] .form-control:focus:disabled,
-.page-contact #material-form .form-control:focus:disabled,
-.page-contact #material-form fieldset[disabled] .form-control.focus:disabled,
-.page-contact #material-form .form-control.focus:disabled {
-  border-style: dashed;
-  border-bottom: 1px solid #757575;
-}
-.page-contact #material-form fieldset[disabled] .form-control:textarea,
-.page-contact #material-form .form-control:textarea {
-  height: 40px;
-}
-.page-contact #material-form select[multiple].form-control,
-.page-contact #material-form select[multiple].form-control:focus,
-.page-contact #material-form select[multiple].form-control.focus {
-  height: 85px;
-}
-.page-contact #material-form .form-control {
-  border: 0;
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-  background-size: 0 2px, 100% 1px;
-  background-repeat: no-repeat;
-  background-position: center bottom, center calc(100% - 1px);
-  background-color: transparent;
-  background-color: rgba(0, 0, 0, 0);
-  transition: background 0s ease-out;
-}
-.page-contact #material-form .form-control::-webkit-input-placeholder {
-  color: #bdbdbd;
-}
-.page-contact #material-form .form-control::-moz-placeholder {
-  color: #bdbdbd;
-}
-.page-contact #material-form .form-control:-ms-input-placeholder {
-  color: #bdbdbd;
-}
-.page-contact #material-form .form-control[disabled],
-.page-contact #material-form .form-control[readonly],
-.page-contact #material-form fieldset[disabled] .form-control {
-  background-color: transparent;
-  background-color: rgba(0, 0, 0, 0);
-}
-.page-contact #material-form fieldset[disabled] .form-control:disabled,
-.page-contact #material-form .form-control-wrapper .form-control:disabled,
-.page-contact #material-form .form-control:disabled,
-.page-contact #material-form fieldset[disabled] .form-control:focus:disabled,
-.page-contact #material-form .form-control-wrapper .form-control:focus:disabled,
-.page-contact #material-form .form-control:focus:disabled,
-.page-contact #material-form fieldset[disabled] .form-control.focus:disabled,
-.page-contact #material-form .form-control-wrapper .form-control.focus:disabled,
-.page-contact #material-form .form-control.focus:disabled {
-  border: 0;
-}
-.page-contact #material-form .form-control:focus,
-.page-contact #material-form .form-control.focus {
-  outline: none;
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-  background-size: 100% 2px, 100% 1px;
-  box-shadow: none;
-  transition-duration: 0.3s;
-}
-.page-contact #material-form .form-control-wrapper {
-  position: relative;
-}
-.page-contact #material-form .form-control-wrapper .floating-label {
-  color: #bdbdbd;
-  position: absolute;
-  pointer-events: none;
-  left: 0px;
-  top: 5px;
-  transition: 0.3s ease all;
-}
-.page-contact #material-form .form-control-wrapper .floating-label {
-  font-size: 14px;
-}
-.page-contact #material-form .form-control-wrapper .form-control:focus ~ .floating-label,
-.page-contact #material-form .form-control-wrapper .form-control:not(.empty) ~ .floating-label {
-  top: -9.8px;
-  font-size: 9.8px;
-}
-.page-contact #material-form .form-control-wrapper .input-sm + .floating-label {
-  font-size: 12px;
-  top: 7px;
-}
-.page-contact #material-form .form-control-wrapper .form-control.input-sm:focus ~ .floating-label,
-.page-contact #material-form .form-control-wrapper .form-control.input-sm:not(.empty) ~ .floating-label {
-  top: -8.4px;
-  font-size: 8.4px;
-}
-.page-contact #material-form .form-control-wrapper .input-lg + .floating-label {
-  font-size: 18px;
-  top: 10px;
-}
-.page-contact #material-form .form-control-wrapper .form-control.input-lg:focus ~ .floating-label,
-.page-contact #material-form .form-control-wrapper .form-control.input-lg:not(.empty) ~ .floating-label {
-  top: -12.6px;
-  font-size: 12.6px;
-}
-.page-contact #material-form .form-control-wrapper .form-control:focus ~ .floating-label {
-  color: #4b516a;
-}
-.page-contact #material-form .form-control-wrapper .form-control:not(.empty):invalid ~ .floating-label,
-.page-contact #material-form .form-control-wrapper .form-control.focus:invalid ~ .floating-label {
-  color: #e74c3c;
-}
-.page-contact #material-form .form-control-wrapper .form-control:focus ~ .material-input:after,
-.page-contact #material-form .form-control-wrapper .form-control.focus ~ .material-input:after {
-  background-color: #4b516a;
-}
-.page-contact #material-form .form-control-wrapper .form-control:invalid {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-control-wrapper textarea {
-  resize: none;
-}
-.page-contact #material-form .form-control-wrapper textarea ~ .form-control-highlight {
-  margin-top: -11px;
-}
-.page-contact #material-form .form-control-wrapper .hint {
-  position: absolute;
-  font-size: 80%;
-  display: none;
-}
-.page-contact #material-form .form-control-wrapper .form-control:focus ~ .hint,
-.page-contact #material-form .form-control-wrapper .form-control.focus ~ .hint {
-  display: block;
-}
-.page-contact #material-form .form-control-wrapper select ~ .material-input:after {
-  display: none;
-}
-.page-contact #material-form .form-control-wrapper select {
-  appearance: none;
-}
-.page-contact #material-form .form-group.has-warning .form-control {
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-warning .material-input:focus,
-.page-contact #material-form .form-group.has-warning .form-control:focus,
-.page-contact #material-form .form-group.has-warning .form-control.focus {
-  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-warning .control-label,
-.page-contact #material-form .form-group.has-warning input.form-control:focus ~ .floating-label {
-  color: #f39c12;
-}
-.page-contact #material-form .form-group.has-error .form-control {
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-error .material-input:focus,
-.page-contact #material-form .form-group.has-error .form-control:focus,
-.page-contact #material-form .form-group.has-error .form-control.focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-error .control-label,
-.page-contact #material-form .form-group.has-error input.form-control:focus ~ .floating-label {
-  color: #e74c3c;
-}
-.page-contact #material-form .form-group.has-success .form-control {
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-success .material-input:focus,
-.page-contact #material-form .form-group.has-success .form-control:focus,
-.page-contact #material-form .form-group.has-success .form-control.focus {
-  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-success .control-label,
-.page-contact #material-form .form-group.has-success input.form-control:focus ~ .floating-label {
-  color: #2ecc71;
-}
-.page-contact #material-form .form-group.has-info .form-control {
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-info .material-input:focus,
-.page-contact #material-form .form-group.has-info .form-control:focus,
-.page-contact #material-form .form-group.has-info .form-control.focus {
-  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-contact #material-form .form-group.has-info .control-label,
-.page-contact #material-form .form-group.has-info input.form-control:focus ~ .floating-label {
-  color: #3498db;
-}
-.page-contact #material-form .form-group .form-control:focus,
-.page-contact #material-form .form-group-default .form-control:focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-black .form-control:focus {
-  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-white .form-control:focus {
-  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-inverse .form-control:focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-primary .form-control:focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-success .form-control:focus {
-  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-info .form-control:focus {
-  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-warning .form-control:focus {
-  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-danger .form-control:focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-red .form-control:focus {
-  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-pink .form-control:focus {
-  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-purple .form-control:focus {
-  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-deep-purple .form-control:focus {
-  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-indigo .form-control:focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-blue .form-control:focus {
-  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-light-blue .form-control:focus {
-  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-cyan .form-control:focus {
-  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-teal .form-control:focus {
-  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-green .form-control:focus {
-  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-light-green .form-control:focus {
-  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-lime .form-control:focus {
-  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-yellow .form-control:focus {
-  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-amber .form-control:focus {
-  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-orange .form-control:focus {
-  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-deep-orange .form-control:focus {
-  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-brown .form-control:focus {
-  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-grey .form-control:focus {
-  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-blue-grey .form-control:focus {
-  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group .form-control.focus,
-.page-contact #material-form .form-group-default .form-control.focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-black .form-control.focus {
-  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-white .form-control.focus {
-  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-inverse .form-control.focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-primary .form-control.focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-success .form-control.focus {
-  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-info .form-control.focus {
-  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-warning .form-control.focus {
-  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-danger .form-control.focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-red .form-control.focus {
-  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-pink .form-control.focus {
-  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-purple .form-control.focus {
-  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-deep-purple .form-control.focus {
-  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-indigo .form-control.focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-blue .form-control.focus {
-  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-light-blue .form-control.focus {
-  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-cyan .form-control.focus {
-  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-teal .form-control.focus {
-  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-green .form-control.focus {
-  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-light-green .form-control.focus {
-  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-lime .form-control.focus {
-  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-yellow .form-control.focus {
-  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-amber .form-control.focus {
-  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-orange .form-control.focus {
-  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-deep-orange .form-control.focus {
-  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-brown .form-control.focus {
-  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-grey .form-control.focus {
-  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group-material-blue-grey .form-control.focus {
-  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-contact #material-form .form-group .control-label,
-.page-contact #material-form .form-group-default .control-label {
-  color: rgba(0, 0, 0, 0.84);
-}
-.page-contact #material-form .form-group-black .control-label {
-  color: #000000;
-}
-.page-contact #material-form .form-group-white .control-label {
-  color: #ffffff;
-}
-.page-contact #material-form .form-group-inverse .control-label {
-  color: #3f51b5;
-}
-.page-contact #material-form .form-group-primary .control-label {
-  color: #4b516a;
-}
-.page-contact #material-form .form-group-success .control-label {
-  color: #2ecc71;
-}
-.page-contact #material-form .form-group-info .control-label {
-  color: #3498db;
-}
-.page-contact #material-form .form-group-warning .control-label {
-  color: #f39c12;
-}
-.page-contact #material-form .form-group-danger .control-label {
-  color: #e74c3c;
-}
-.page-contact #material-form .form-group-material-red .control-label {
-  color: #f44336;
-}
-.page-contact #material-form .form-group-material-pink .control-label {
-  color: #e91e63;
-}
-.page-contact #material-form .form-group-material-purple .control-label {
-  color: #9c27b0;
-}
-.page-contact #material-form .form-group-material-deep-purple .control-label {
-  color: #673ab7;
-}
-.page-contact #material-form .form-group-material-indigo .control-label {
-  color: #3f51b5;
-}
-.page-contact #material-form .form-group-material-blue .control-label {
-  color: #2196f3;
-}
-.page-contact #material-form .form-group-material-light-blue .control-label {
-  color: #03a9f4;
-}
-.page-contact #material-form .form-group-material-cyan .control-label {
-  color: #00bcd4;
-}
-.page-contact #material-form .form-group-material-teal .control-label {
-  color: #009688;
-}
-.page-contact #material-form .form-group-material-green .control-label {
-  color: #4caf50;
-}
-.page-contact #material-form .form-group-material-light-green .control-label {
-  color: #8bc34a;
-}
-.page-contact #material-form .form-group-material-lime .control-label {
-  color: #cddc39;
-}
-.page-contact #material-form .form-group-material-yellow .control-label {
-  color: #ffeb3b;
-}
-.page-contact #material-form .form-group-material-amber .control-label {
-  color: #ffc107;
-}
-.page-contact #material-form .form-group-material-orange .control-label {
-  color: #ff9800;
-}
-.page-contact #material-form .form-group-material-deep-orange .control-label {
-  color: #ff5722;
-}
-.page-contact #material-form .form-group-material-brown .control-label {
-  color: #795548;
-}
-.page-contact #material-form .form-group-material-grey .control-label {
-  color: #9e9e9e;
-}
-.page-contact #material-form .form-group-material-blue-grey .control-label {
-  color: #607d8b;
-}
-.page-contact #material-form .form-group input.form-control:focus ~ .floating-label,
-.page-contact #material-form .form-group-default input.form-control:focus ~ .floating-label {
-  color: #4b516a;
-}
-.page-contact #material-form .form-group-black input.form-control:focus ~ .floating-label {
-  color: #000000;
-}
-.page-contact #material-form .form-group-white input.form-control:focus ~ .floating-label {
-  color: #ffffff;
-}
-.page-contact #material-form .form-group-inverse input.form-control:focus ~ .floating-label {
-  color: #3f51b5;
-}
-.page-contact #material-form .form-group-primary input.form-control:focus ~ .floating-label {
-  color: #4b516a;
-}
-.page-contact #material-form .form-group-success input.form-control:focus ~ .floating-label {
-  color: #2ecc71;
-}
-.page-contact #material-form .form-group-info input.form-control:focus ~ .floating-label {
-  color: #3498db;
-}
-.page-contact #material-form .form-group-warning input.form-control:focus ~ .floating-label {
-  color: #f39c12;
-}
-.page-contact #material-form .form-group-danger input.form-control:focus ~ .floating-label {
-  color: #e74c3c;
-}
-.page-contact #material-form .form-group-material-red input.form-control:focus ~ .floating-label {
-  color: #f44336;
-}
-.page-contact #material-form .form-group-material-pink input.form-control:focus ~ .floating-label {
-  color: #e91e63;
-}
-.page-contact #material-form .form-group-material-purple input.form-control:focus ~ .floating-label {
-  color: #9c27b0;
-}
-.page-contact #material-form .form-group-material-deep-purple input.form-control:focus ~ .floating-label {
-  color: #673ab7;
-}
-.page-contact #material-form .form-group-material-indigo input.form-control:focus ~ .floating-label {
-  color: #3f51b5;
-}
-.page-contact #material-form .form-group-material-blue input.form-control:focus ~ .floating-label {
-  color: #2196f3;
-}
-.page-contact #material-form .form-group-material-light-blue input.form-control:focus ~ .floating-label {
-  color: #03a9f4;
-}
-.page-contact #material-form .form-group-material-cyan input.form-control:focus ~ .floating-label {
-  color: #00bcd4;
-}
-.page-contact #material-form .form-group-material-teal input.form-control:focus ~ .floating-label {
-  color: #009688;
-}
-.page-contact #material-form .form-group-material-green input.form-control:focus ~ .floating-label {
-  color: #4caf50;
-}
-.page-contact #material-form .form-group-material-light-green input.form-control:focus ~ .floating-label {
-  color: #8bc34a;
-}
-.page-contact #material-form .form-group-material-lime input.form-control:focus ~ .floating-label {
-  color: #cddc39;
-}
-.page-contact #material-form .form-group-material-yellow input.form-control:focus ~ .floating-label {
-  color: #ffeb3b;
-}
-.page-contact #material-form .form-group-material-amber input.form-control:focus ~ .floating-label {
-  color: #ffc107;
-}
-.page-contact #material-form .form-group-material-orange input.form-control:focus ~ .floating-label {
-  color: #ff9800;
-}
-.page-contact #material-form .form-group-material-deep-orange input.form-control:focus ~ .floating-label {
-  color: #ff5722;
-}
-.page-contact #material-form .form-group-material-brown input.form-control:focus ~ .floating-label {
-  color: #795548;
-}
-.page-contact #material-form .form-group-material-grey input.form-control:focus ~ .floating-label {
-  color: #9e9e9e;
-}
-.page-contact #material-form .form-group-material-blue-grey input.form-control:focus ~ .floating-label {
-  color: #607d8b;
-}
-.page-contact #material-form .input-group .form-control-wrapper {
-  margin-right: 5px;
-  margin-left: 5px;
-}
-.page-contact #material-form .input-group .form-control-wrapper .form-control {
-  float: none;
-}
-.page-contact #material-form .input-group .input-group-addon {
-  border: 0;
-  background: transparent;
-}
-.page-contact #material-form .input-group .input-group-btn .btn {
-  border-radius: 4px;
-  margin: 0;
-}
-.page-contact #material-form select.form-control {
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-}
-.page-contact #material-form select.form-control:focus,
-.page-contact #material-form select.form-control.focus {
-  box-shadow: none;
-  border-color: #757575;
-}
-.page-contact #material-form .form-control-wrapper input[type=file] {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
-.page-contact #material-form .btn {
-  background: none;
-  color: inherit;
-  vertical-align: middle;
-  position: relative;
-  z-index: 1;
-  -webkit-backface-visibility: hidden;
-  background: #4b516a;
-  color: #fff;
-  transition: background-color 0.3s, color 0.3s;
-}
-.page-contact #material-form .btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #4b516a;
-  z-index: -1;
-  border-radius: inherit;
-  opacity: 0;
-  transform: scale3d(0.6, 0.6, 1);
-  transition: transform 0.3s, opacity 0.3s;
-  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-}
-.page-contact #material-form .btn:hover {
-  background-color: #fff;
-  color: #4b516a;
-}
-.page-contact #material-form .btn:hover::before {
-  transform: scale3d(1, 1, 1);
-  opacity: 1;
-}
-.page-welcome .btn {
-  color: white !important;
-}
-.page-report-problem #form-contact fieldset[disabled] .form-control,
-.page-report-problem #form-contact .form-control,
-.page-report-problem #form-contact fieldset[disabled] .form-control:focus,
-.page-report-problem #form-contact .form-control:focus,
-.page-report-problem #form-contact fieldset[disabled] .form-control.focus,
-.page-report-problem #form-contact .form-control.focus {
-  padding: 0;
-  float: none;
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-}
-.page-report-problem #form-contact fieldset[disabled] .form-control:disabled,
-.page-report-problem #form-contact .form-control:disabled,
-.page-report-problem #form-contact fieldset[disabled] .form-control:focus:disabled,
-.page-report-problem #form-contact .form-control:focus:disabled,
-.page-report-problem #form-contact fieldset[disabled] .form-control.focus:disabled,
-.page-report-problem #form-contact .form-control.focus:disabled {
-  border-style: dashed;
-  border-bottom: 1px solid #757575;
-}
-.page-report-problem #form-contact fieldset[disabled] .form-control:textarea,
-.page-report-problem #form-contact .form-control:textarea {
-  height: 40px;
-}
-.page-report-problem #form-contact select[multiple].form-control,
-.page-report-problem #form-contact select[multiple].form-control:focus,
-.page-report-problem #form-contact select[multiple].form-control.focus {
-  height: 85px;
-}
-.page-report-problem #form-contact .form-control {
-  border: 0;
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-  background-size: 0 2px, 100% 1px;
-  background-repeat: no-repeat;
-  background-position: center bottom, center calc(100% - 1px);
-  background-color: transparent;
-  background-color: rgba(0, 0, 0, 0);
-  transition: background 0s ease-out;
-}
-.page-report-problem #form-contact .form-control::-webkit-input-placeholder {
-  color: #bdbdbd;
-}
-.page-report-problem #form-contact .form-control::-moz-placeholder {
-  color: #bdbdbd;
-}
-.page-report-problem #form-contact .form-control:-ms-input-placeholder {
-  color: #bdbdbd;
-}
-.page-report-problem #form-contact .form-control[disabled],
-.page-report-problem #form-contact .form-control[readonly],
-.page-report-problem #form-contact fieldset[disabled] .form-control {
-  background-color: transparent;
-  background-color: rgba(0, 0, 0, 0);
-}
-.page-report-problem #form-contact fieldset[disabled] .form-control:disabled,
-.page-report-problem #form-contact .form-control-wrapper .form-control:disabled,
-.page-report-problem #form-contact .form-control:disabled,
-.page-report-problem #form-contact fieldset[disabled] .form-control:focus:disabled,
-.page-report-problem #form-contact .form-control-wrapper .form-control:focus:disabled,
-.page-report-problem #form-contact .form-control:focus:disabled,
-.page-report-problem #form-contact fieldset[disabled] .form-control.focus:disabled,
-.page-report-problem #form-contact .form-control-wrapper .form-control.focus:disabled,
-.page-report-problem #form-contact .form-control.focus:disabled {
-  border: 0;
-}
-.page-report-problem #form-contact .form-control:focus,
-.page-report-problem #form-contact .form-control.focus {
-  outline: none;
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-  background-size: 100% 2px, 100% 1px;
-  box-shadow: none;
-  transition-duration: 0.3s;
-}
-.page-report-problem #form-contact .form-control-wrapper {
-  position: relative;
-}
-.page-report-problem #form-contact .form-control-wrapper .floating-label {
-  color: #bdbdbd;
-  position: absolute;
-  pointer-events: none;
-  left: 0px;
-  top: 5px;
-  transition: 0.3s ease all;
-}
-.page-report-problem #form-contact .form-control-wrapper .floating-label {
-  font-size: 14px;
-}
-.page-report-problem #form-contact .form-control-wrapper .form-control:focus ~ .floating-label,
-.page-report-problem #form-contact .form-control-wrapper .form-control:not(.empty) ~ .floating-label {
-  top: -9.8px;
-  font-size: 9.8px;
-}
-.page-report-problem #form-contact .form-control-wrapper .input-sm + .floating-label {
-  font-size: 12px;
-  top: 7px;
-}
-.page-report-problem #form-contact .form-control-wrapper .form-control.input-sm:focus ~ .floating-label,
-.page-report-problem #form-contact .form-control-wrapper .form-control.input-sm:not(.empty) ~ .floating-label {
-  top: -8.4px;
-  font-size: 8.4px;
-}
-.page-report-problem #form-contact .form-control-wrapper .input-lg + .floating-label {
-  font-size: 18px;
-  top: 10px;
-}
-.page-report-problem #form-contact .form-control-wrapper .form-control.input-lg:focus ~ .floating-label,
-.page-report-problem #form-contact .form-control-wrapper .form-control.input-lg:not(.empty) ~ .floating-label {
-  top: -12.6px;
-  font-size: 12.6px;
-}
-.page-report-problem #form-contact .form-control-wrapper .form-control:focus ~ .floating-label {
-  color: #4b516a;
-}
-.page-report-problem #form-contact .form-control-wrapper .form-control:not(.empty):invalid ~ .floating-label,
-.page-report-problem #form-contact .form-control-wrapper .form-control.focus:invalid ~ .floating-label {
-  color: #e74c3c;
-}
-.page-report-problem #form-contact .form-control-wrapper .form-control:focus ~ .material-input:after,
-.page-report-problem #form-contact .form-control-wrapper .form-control.focus ~ .material-input:after {
-  background-color: #4b516a;
-}
-.page-report-problem #form-contact .form-control-wrapper .form-control:invalid {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-control-wrapper textarea {
-  resize: none;
-}
-.page-report-problem #form-contact .form-control-wrapper textarea ~ .form-control-highlight {
-  margin-top: -11px;
-}
-.page-report-problem #form-contact .form-control-wrapper .hint {
-  position: absolute;
-  font-size: 80%;
-  display: none;
-}
-.page-report-problem #form-contact .form-control-wrapper .form-control:focus ~ .hint,
-.page-report-problem #form-contact .form-control-wrapper .form-control.focus ~ .hint {
-  display: block;
-}
-.page-report-problem #form-contact .form-control-wrapper select ~ .material-input:after {
-  display: none;
-}
-.page-report-problem #form-contact .form-control-wrapper select {
-  appearance: none;
-}
-.page-report-problem #form-contact .form-group.has-warning .form-control {
-  box-shadow: none;
-}
-.page-report-problem #form-contact .form-group.has-warning .material-input:focus,
-.page-report-problem #form-contact .form-group.has-warning .form-control:focus,
-.page-report-problem #form-contact .form-group.has-warning .form-control.focus {
-  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-report-problem #form-contact .form-group.has-warning .control-label,
-.page-report-problem #form-contact .form-group.has-warning input.form-control:focus ~ .floating-label {
-  color: #f39c12;
-}
-.page-report-problem #form-contact .form-group.has-error .form-control {
-  box-shadow: none;
-}
-.page-report-problem #form-contact .form-group.has-error .material-input:focus,
-.page-report-problem #form-contact .form-group.has-error .form-control:focus,
-.page-report-problem #form-contact .form-group.has-error .form-control.focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-report-problem #form-contact .form-group.has-error .control-label,
-.page-report-problem #form-contact .form-group.has-error input.form-control:focus ~ .floating-label {
-  color: #e74c3c;
-}
-.page-report-problem #form-contact .form-group.has-success .form-control {
-  box-shadow: none;
-}
-.page-report-problem #form-contact .form-group.has-success .material-input:focus,
-.page-report-problem #form-contact .form-group.has-success .form-control:focus,
-.page-report-problem #form-contact .form-group.has-success .form-control.focus {
-  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-report-problem #form-contact .form-group.has-success .control-label,
-.page-report-problem #form-contact .form-group.has-success input.form-control:focus ~ .floating-label {
-  color: #2ecc71;
-}
-.page-report-problem #form-contact .form-group.has-info .form-control {
-  box-shadow: none;
-}
-.page-report-problem #form-contact .form-group.has-info .material-input:focus,
-.page-report-problem #form-contact .form-group.has-info .form-control:focus,
-.page-report-problem #form-contact .form-group.has-info .form-control.focus {
-  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
-  box-shadow: none;
-}
-.page-report-problem #form-contact .form-group.has-info .control-label,
-.page-report-problem #form-contact .form-group.has-info input.form-control:focus ~ .floating-label {
-  color: #3498db;
-}
-.page-report-problem #form-contact .form-group .form-control:focus,
-.page-report-problem #form-contact .form-group-default .form-control:focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-black .form-control:focus {
-  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-white .form-control:focus {
-  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-inverse .form-control:focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-primary .form-control:focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-success .form-control:focus {
-  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-info .form-control:focus {
-  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-warning .form-control:focus {
-  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-danger .form-control:focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-red .form-control:focus {
-  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-pink .form-control:focus {
-  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-purple .form-control:focus {
-  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-deep-purple .form-control:focus {
-  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-indigo .form-control:focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-blue .form-control:focus {
-  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-light-blue .form-control:focus {
-  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-cyan .form-control:focus {
-  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-teal .form-control:focus {
-  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-green .form-control:focus {
-  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-light-green .form-control:focus {
-  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-lime .form-control:focus {
-  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-yellow .form-control:focus {
-  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-amber .form-control:focus {
-  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-orange .form-control:focus {
-  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-deep-orange .form-control:focus {
-  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-brown .form-control:focus {
-  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-grey .form-control:focus {
-  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-blue-grey .form-control:focus {
-  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group .form-control.focus,
-.page-report-problem #form-contact .form-group-default .form-control.focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-black .form-control.focus {
-  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-white .form-control.focus {
-  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-inverse .form-control.focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-primary .form-control.focus {
-  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-success .form-control.focus {
-  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-info .form-control.focus {
-  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-warning .form-control.focus {
-  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-danger .form-control.focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-red .form-control.focus {
-  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-pink .form-control.focus {
-  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-purple .form-control.focus {
-  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-deep-purple .form-control.focus {
-  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-indigo .form-control.focus {
-  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-blue .form-control.focus {
-  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-light-blue .form-control.focus {
-  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-cyan .form-control.focus {
-  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-teal .form-control.focus {
-  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-green .form-control.focus {
-  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-light-green .form-control.focus {
-  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-lime .form-control.focus {
-  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-yellow .form-control.focus {
-  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-amber .form-control.focus {
-  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-orange .form-control.focus {
-  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-deep-orange .form-control.focus {
-  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-brown .form-control.focus {
-  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-grey .form-control.focus {
-  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group-material-blue-grey .form-control.focus {
-  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
-}
-.page-report-problem #form-contact .form-group .control-label,
-.page-report-problem #form-contact .form-group-default .control-label {
-  color: rgba(0, 0, 0, 0.84);
-}
-.page-report-problem #form-contact .form-group-black .control-label {
-  color: #000000;
-}
-.page-report-problem #form-contact .form-group-white .control-label {
-  color: #ffffff;
-}
-.page-report-problem #form-contact .form-group-inverse .control-label {
-  color: #3f51b5;
-}
-.page-report-problem #form-contact .form-group-primary .control-label {
-  color: #4b516a;
-}
-.page-report-problem #form-contact .form-group-success .control-label {
-  color: #2ecc71;
-}
-.page-report-problem #form-contact .form-group-info .control-label {
-  color: #3498db;
-}
-.page-report-problem #form-contact .form-group-warning .control-label {
-  color: #f39c12;
-}
-.page-report-problem #form-contact .form-group-danger .control-label {
-  color: #e74c3c;
-}
-.page-report-problem #form-contact .form-group-material-red .control-label {
-  color: #f44336;
-}
-.page-report-problem #form-contact .form-group-material-pink .control-label {
-  color: #e91e63;
-}
-.page-report-problem #form-contact .form-group-material-purple .control-label {
-  color: #9c27b0;
-}
-.page-report-problem #form-contact .form-group-material-deep-purple .control-label {
-  color: #673ab7;
-}
-.page-report-problem #form-contact .form-group-material-indigo .control-label {
-  color: #3f51b5;
-}
-.page-report-problem #form-contact .form-group-material-blue .control-label {
-  color: #2196f3;
-}
-.page-report-problem #form-contact .form-group-material-light-blue .control-label {
-  color: #03a9f4;
-}
-.page-report-problem #form-contact .form-group-material-cyan .control-label {
-  color: #00bcd4;
-}
-.page-report-problem #form-contact .form-group-material-teal .control-label {
-  color: #009688;
-}
-.page-report-problem #form-contact .form-group-material-green .control-label {
-  color: #4caf50;
-}
-.page-report-problem #form-contact .form-group-material-light-green .control-label {
-  color: #8bc34a;
-}
-.page-report-problem #form-contact .form-group-material-lime .control-label {
-  color: #cddc39;
-}
-.page-report-problem #form-contact .form-group-material-yellow .control-label {
-  color: #ffeb3b;
-}
-.page-report-problem #form-contact .form-group-material-amber .control-label {
-  color: #ffc107;
-}
-.page-report-problem #form-contact .form-group-material-orange .control-label {
-  color: #ff9800;
-}
-.page-report-problem #form-contact .form-group-material-deep-orange .control-label {
-  color: #ff5722;
-}
-.page-report-problem #form-contact .form-group-material-brown .control-label {
-  color: #795548;
-}
-.page-report-problem #form-contact .form-group-material-grey .control-label {
-  color: #9e9e9e;
-}
-.page-report-problem #form-contact .form-group-material-blue-grey .control-label {
-  color: #607d8b;
-}
-.page-report-problem #form-contact .form-group input.form-control:focus ~ .floating-label,
-.page-report-problem #form-contact .form-group-default input.form-control:focus ~ .floating-label {
-  color: #4b516a;
-}
-.page-report-problem #form-contact .form-group-black input.form-control:focus ~ .floating-label {
-  color: #000000;
-}
-.page-report-problem #form-contact .form-group-white input.form-control:focus ~ .floating-label {
-  color: #ffffff;
-}
-.page-report-problem #form-contact .form-group-inverse input.form-control:focus ~ .floating-label {
-  color: #3f51b5;
-}
-.page-report-problem #form-contact .form-group-primary input.form-control:focus ~ .floating-label {
-  color: #4b516a;
-}
-.page-report-problem #form-contact .form-group-success input.form-control:focus ~ .floating-label {
-  color: #2ecc71;
-}
-.page-report-problem #form-contact .form-group-info input.form-control:focus ~ .floating-label {
-  color: #3498db;
-}
-.page-report-problem #form-contact .form-group-warning input.form-control:focus ~ .floating-label {
-  color: #f39c12;
-}
-.page-report-problem #form-contact .form-group-danger input.form-control:focus ~ .floating-label {
-  color: #e74c3c;
-}
-.page-report-problem #form-contact .form-group-material-red input.form-control:focus ~ .floating-label {
-  color: #f44336;
-}
-.page-report-problem #form-contact .form-group-material-pink input.form-control:focus ~ .floating-label {
-  color: #e91e63;
-}
-.page-report-problem #form-contact .form-group-material-purple input.form-control:focus ~ .floating-label {
-  color: #9c27b0;
-}
-.page-report-problem #form-contact .form-group-material-deep-purple input.form-control:focus ~ .floating-label {
-  color: #673ab7;
-}
-.page-report-problem #form-contact .form-group-material-indigo input.form-control:focus ~ .floating-label {
-  color: #3f51b5;
-}
-.page-report-problem #form-contact .form-group-material-blue input.form-control:focus ~ .floating-label {
-  color: #2196f3;
-}
-.page-report-problem #form-contact .form-group-material-light-blue input.form-control:focus ~ .floating-label {
-  color: #03a9f4;
-}
-.page-report-problem #form-contact .form-group-material-cyan input.form-control:focus ~ .floating-label {
-  color: #00bcd4;
-}
-.page-report-problem #form-contact .form-group-material-teal input.form-control:focus ~ .floating-label {
-  color: #009688;
-}
-.page-report-problem #form-contact .form-group-material-green input.form-control:focus ~ .floating-label {
-  color: #4caf50;
-}
-.page-report-problem #form-contact .form-group-material-light-green input.form-control:focus ~ .floating-label {
-  color: #8bc34a;
-}
-.page-report-problem #form-contact .form-group-material-lime input.form-control:focus ~ .floating-label {
-  color: #cddc39;
-}
-.page-report-problem #form-contact .form-group-material-yellow input.form-control:focus ~ .floating-label {
-  color: #ffeb3b;
-}
-.page-report-problem #form-contact .form-group-material-amber input.form-control:focus ~ .floating-label {
-  color: #ffc107;
-}
-.page-report-problem #form-contact .form-group-material-orange input.form-control:focus ~ .floating-label {
-  color: #ff9800;
-}
-.page-report-problem #form-contact .form-group-material-deep-orange input.form-control:focus ~ .floating-label {
-  color: #ff5722;
-}
-.page-report-problem #form-contact .form-group-material-brown input.form-control:focus ~ .floating-label {
-  color: #795548;
-}
-.page-report-problem #form-contact .form-group-material-grey input.form-control:focus ~ .floating-label {
-  color: #9e9e9e;
-}
-.page-report-problem #form-contact .form-group-material-blue-grey input.form-control:focus ~ .floating-label {
-  color: #607d8b;
-}
-.page-report-problem #form-contact .input-group .form-control-wrapper {
-  margin-right: 5px;
-  margin-left: 5px;
-}
-.page-report-problem #form-contact .input-group .form-control-wrapper .form-control {
-  float: none;
-}
-.page-report-problem #form-contact .input-group .input-group-addon {
-  border: 0;
-  background: transparent;
-}
-.page-report-problem #form-contact .input-group .input-group-btn .btn {
-  border-radius: 4px;
-  margin: 0;
-}
-.page-report-problem #form-contact select.form-control {
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-}
-.page-report-problem #form-contact select.form-control:focus,
-.page-report-problem #form-contact select.form-control.focus {
-  box-shadow: none;
-  border-color: #757575;
-}
-.page-report-problem #form-contact .form-control-wrapper input[type=file] {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
-.page-report-problem #form-contact .btn {
-  background: none;
-  color: inherit;
-  vertical-align: middle;
-  position: relative;
-  z-index: 1;
-  -webkit-backface-visibility: hidden;
-  background: #4b516a;
-  color: #fff;
-  transition: background-color 0.3s, color 0.3s;
-}
-.page-report-problem #form-contact .btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #4b516a;
-  z-index: -1;
-  border-radius: inherit;
-  opacity: 0;
-  transform: scale3d(0.6, 0.6, 1);
-  transition: transform 0.3s, opacity 0.3s;
-  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
-}
-.page-report-problem #form-contact .btn:hover {
-  background-color: #fff;
-  color: #4b516a;
-}
-.page-report-problem #form-contact .btn:hover::before {
-  transform: scale3d(1, 1, 1);
-  opacity: 1;
-}
-/**
- * Canvas JS Style Override
- * @author Josh Rogan (JoshJRogan@gmail.com)
- * 
- */
-.graph-genotype .canvasjs-chart-toolbar {
-  color: #6a4b51;
-}
-.graph-genotype .canvasjs-chart-toolbar button {
-  margin-top: 10px !important;
-  padding: 3px 10px 0px !important;
-  color: #6a4b51 !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-}
-.graph-genotype .canvasjs-chart-toolbar button:hover {
-  background-color: #6a4b51 !important;
-  color: white !important;
-}
-.graph-genotype .canvasjs-chart-toolbar button[state='menu'] {
-  margin-right: 8px !important;
-  background-color: white;
-}
-.graph-genotype .canvasjs-chart-toolbar > div {
-  margin-top: 11px;
-  margin-bottom: 0;
-  margin-right: 7px;
-  padding: 0 !important;
-  background-color: white;
-  width: 150px;
-  box-shadow: none !important;
-}
-.graph-genotype .canvasjs-chart-toolbar > div > div {
-  font-weight: bold;
-  padding: 10px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-.graph-genotype .canvasjs-chart-toolbar > div > div:hover {
-  background-color: #6a4b51 !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-  color: white;
-}
-.graph-allele .canvasjs-chart-toolbar {
-  color: #4b516a;
-}
-.graph-allele .canvasjs-chart-toolbar button {
-  margin-top: 10px !important;
-  padding: 3px 10px 0px !important;
-  color: #4b516a !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-}
-.graph-allele .canvasjs-chart-toolbar button:hover {
-  background-color: #4b516a !important;
-  color: white !important;
-}
-.graph-allele .canvasjs-chart-toolbar button[state='menu'] {
-  margin-right: 8px !important;
-  background-color: white;
-}
-.graph-allele .canvasjs-chart-toolbar > div {
-  margin-top: 11px;
-  margin-bottom: 0;
-  margin-right: 7px;
-  padding: 0 !important;
-  background-color: white;
-  width: 150px;
-  box-shadow: none !important;
-}
-.graph-allele .canvasjs-chart-toolbar > div > div {
-  font-weight: bold;
-  padding: 10px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-.graph-allele .canvasjs-chart-toolbar > div > div:hover {
-  background-color: #4b516a !important;
-  transition-delay: 0s;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: ease;
-  color: white;
-}
-/**
- *	Material Bootstrap overrides 
- * 	@author Josh Rogan (JoshJRogan@gmail.com)
- */
-.btn,
-.btn-primary {
-  color: white;
-}
-.modal .modal-content {
-  box-shadow: none;
-  margin: inherit auto inherit;
-}
-.modal .alert a {
-  color: white !important;
 }
 /*
 
@@ -13122,7 +11055,7 @@ Then, run this script to get the list.
   color: #f39c12;
 }
 .btn-danger.btn-flat:not(.btn-link) {
-  color: #e74c3c;
+  color: #f44336;
 }
 .btn-material-red.btn-flat:not(.btn-link) {
   color: #f44336;
@@ -13215,7 +11148,7 @@ Then, run this script to get the list.
   color: rgba(255, 255, 255, 0.84);
 }
 .btn-danger:not(.btn-link):not(.btn-flat) {
-  background-color: #e74c3c;
+  background-color: #f44336;
   color: rgba(255, 255, 255, 0.84);
 }
 .btn-material-red:not(.btn-link):not(.btn-flat) {
@@ -13320,7 +11253,7 @@ Then, run this script to get the list.
   background-color: #e5910c;
 }
 .btn-danger:hover:not(.btn-link):not(.btn-flat) {
-  background-color: #e95d4e;
+  background-color: #f55549;
 }
 .btn-material-red:hover:not(.btn-link):not(.btn-flat) {
   background-color: #f55549;
@@ -13405,7 +11338,7 @@ Then, run this script to get the list.
   background-color: #db8b0b;
 }
 .btn-danger:active:not(.btn-link):not(.btn-flat) {
-  background-color: #ea6557;
+  background-color: #f65e53;
 }
 .btn-material-red:active:not(.btn-link):not(.btn-flat) {
   background-color: #f65e53;
@@ -13490,7 +11423,7 @@ Then, run this script to get the list.
   background-color: #db8b0b;
 }
 .btn-danger.active:not(.btn-link):not(.btn-flat) {
-  background-color: #ea6557;
+  background-color: #f65e53;
 }
 .btn-material-red.active:not(.btn-link):not(.btn-flat) {
   background-color: #f65e53;
@@ -13575,7 +11508,7 @@ Then, run this script to get the list.
   background-color: rgba(243, 156, 18, 0.2);
 }
 .btn-danger.btn-flat:hover:not(.btn-ink) {
-  background-color: rgba(231, 76, 60, 0.2);
+  background-color: rgba(244, 67, 54, 0.2);
 }
 .btn-material-red.btn-flat:hover:not(.btn-ink) {
   background-color: rgba(244, 67, 54, 0.2);
@@ -13709,7 +11642,7 @@ Then, run this script to get the list.
 .btn.btn-fab-danger,
 .btn.btn-fab:hover-danger,
 .btn.btn-fab:active-danger {
-  background-color: #e74c3c;
+  background-color: #f44336;
 }
 .btn.btn-fab-material-red,
 .btn.btn-fab:hover-material-red,
@@ -13872,7 +11805,7 @@ Then, run this script to get the list.
   background-color: #f39c12;
 }
 .open > .dropdown-toggle.btn-danger {
-  background-color: #e74c3c;
+  background-color: #f44336;
 }
 .open > .dropdown-toggle.btn-material-red {
   background-color: #f44336;
@@ -14046,7 +11979,7 @@ Then, run this script to get the list.
   color: rgba(255, 255, 255, 0.84);
 }
 .alert-danger {
-  background-color: #e74c3c;
+  background-color: #f44336;
   color: rgba(255, 255, 255, 0.84);
 }
 .alert-danger a,
@@ -14366,14 +12299,14 @@ Then, run this script to get the list.
 }
 #material #forms .form-control-wrapper .form-control:not(.empty):invalid ~ .floating-label,
 #material #forms .form-control-wrapper .form-control.focus:invalid ~ .floating-label {
-  color: #e74c3c;
+  color: #f44336;
 }
 #material #forms .form-control-wrapper .form-control:focus ~ .material-input:after,
 #material #forms .form-control-wrapper .form-control.focus ~ .material-input:after {
   background-color: #4b516a;
 }
 #material #forms .form-control-wrapper .form-control:invalid {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
 }
 #material #forms .form-control-wrapper textarea {
   resize: none;
@@ -14415,12 +12348,12 @@ Then, run this script to get the list.
 #material #forms .form-group.has-error .material-input:focus,
 #material #forms .form-group.has-error .form-control:focus,
 #material #forms .form-group.has-error .form-control.focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
   box-shadow: none;
 }
 #material #forms .form-group.has-error .control-label,
 #material #forms .form-group.has-error input.form-control:focus ~ .floating-label {
-  color: #e74c3c;
+  color: #f44336;
 }
 #material #forms .form-group.has-success .form-control {
   box-shadow: none;
@@ -14474,7 +12407,7 @@ Then, run this script to get the list.
   background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
 }
 #material #forms .form-group-danger .form-control:focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
 }
 #material #forms .form-group-material-red .form-control:focus {
   background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
@@ -14559,7 +12492,7 @@ Then, run this script to get the list.
   background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
 }
 #material #forms .form-group-danger .form-control.focus {
-  background-image: linear-gradient(#e74c3c, #e74c3c), linear-gradient(#d2d2d2, #d2d2d2);
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
 }
 #material #forms .form-group-material-red .form-control.focus {
   background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
@@ -14644,7 +12577,7 @@ Then, run this script to get the list.
   color: #f39c12;
 }
 #material #forms .form-group-danger .control-label {
-  color: #e74c3c;
+  color: #f44336;
 }
 #material #forms .form-group-material-red .control-label {
   color: #f44336;
@@ -14729,7 +12662,7 @@ Then, run this script to get the list.
   color: #f39c12;
 }
 #material #forms .form-group-danger input.form-control:focus ~ .floating-label {
-  color: #e74c3c;
+  color: #f44336;
 }
 #material #forms .form-group-material-red input.form-control:focus ~ .floating-label {
   color: #f44336;
@@ -15652,6 +13585,2482 @@ Then, run this script to get the list.
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   margin: 16px 0;
 }
+.hoverable:hover {
+  transition: box-shadow 0.25s;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/**
+ * Canvas JS Style Override
+ * @author Josh Rogan (JoshJRogan@gmail.com)
+ * 
+ */
+.graph-genotype .canvasjs-chart-toolbar {
+  color: #6a4b51;
+}
+.graph-genotype .canvasjs-chart-toolbar button {
+  margin-top: 10px !important;
+  padding: 3px 10px 0px !important;
+  color: #6a4b51 !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+}
+.graph-genotype .canvasjs-chart-toolbar button:hover {
+  background-color: #6a4b51 !important;
+  color: white !important;
+}
+.graph-genotype .canvasjs-chart-toolbar button[state='menu'] {
+  margin-right: 8px !important;
+  background-color: white;
+}
+.graph-genotype .canvasjs-chart-toolbar > div {
+  margin-top: 11px;
+  margin-bottom: 0;
+  margin-right: 7px;
+  padding: 0 !important;
+  background-color: white;
+  width: 150px;
+  box-shadow: none !important;
+}
+.graph-genotype .canvasjs-chart-toolbar > div > div {
+  font-weight: bold;
+  padding: 10px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.graph-genotype .canvasjs-chart-toolbar > div > div:hover {
+  background-color: #6a4b51 !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+  color: white;
+}
+.graph-allele .canvasjs-chart-toolbar {
+  color: #4b516a;
+}
+.graph-allele .canvasjs-chart-toolbar button {
+  margin-top: 10px !important;
+  padding: 3px 10px 0px !important;
+  color: #4b516a !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+}
+.graph-allele .canvasjs-chart-toolbar button:hover {
+  background-color: #4b516a !important;
+  color: white !important;
+}
+.graph-allele .canvasjs-chart-toolbar button[state='menu'] {
+  margin-right: 8px !important;
+  background-color: white;
+}
+.graph-allele .canvasjs-chart-toolbar > div {
+  margin-top: 11px;
+  margin-bottom: 0;
+  margin-right: 7px;
+  padding: 0 !important;
+  background-color: white;
+  width: 150px;
+  box-shadow: none !important;
+}
+.graph-allele .canvasjs-chart-toolbar > div > div {
+  font-weight: bold;
+  padding: 10px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.graph-allele .canvasjs-chart-toolbar > div > div:hover {
+  background-color: #4b516a !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+  color: white;
+}
+/**
+ *	Material Bootstrap overrides 
+ * 	@author Josh Rogan (JoshJRogan@gmail.com)
+ */
+.btn,
+.btn-primary {
+  color: white;
+}
+.modal .modal-content {
+  box-shadow: none;
+  margin: inherit auto inherit;
+}
+.modal .alert a {
+  color: white !important;
+}
+.collapsible .collapsible-body {
+  padding: 2rem;
+}
+/**
+ * Styling for the graph simulator pages
+ */
+.page-graph .bookmark-link {
+  color: #4b516a;
+  font-weight: bold;
+  font-size: 17px;
+}
+.page-graph .infinite-sym {
+  font-size: 30px;
+  vertical-align: middle;
+}
+.page-graph #graph_wrapper {
+  line-height: 24px;
+  padding: 3px 5px 30px 5px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.23), 0 2px 5px rgba(0, 0, 0, 0.16);
+  border-radius: 2px;
+  border: 0;
+}
+.page-graph #graph_wrapper.allele-graph {
+  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
+  background-color: #4b516a;
+}
+.page-graph #graph_wrapper.genotype-graph {
+  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
+  background-color: #6a4b51;
+}
+.page-graph #graph_wrapper.print-layout {
+  background-color: white;
+  background-image: none;
+  color: black;
+  box-shadow: none;
+}
+.page-graph #graph_wrapper.default-layout.allele-graph {
+  background-image: -webkit-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: -o-linear-gradient(top, #4b516a 0%, #21232e 100%);
+  background-image: linear-gradient(to bottom, #4b516a 0%, #21232e 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4b516a', endColorstr='#ff21232e', GradientType=0);
+  color: white;
+}
+.page-graph #graph_wrapper.default-layout.genotype-graph {
+  background-image: -webkit-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: -o-linear-gradient(top, #6a4b51 0%, #2e2123 100%);
+  background-image: linear-gradient(to bottom, #6a4b51 0%, #2e2123 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6a4b51', endColorstr='#ff2e2123', GradientType=0);
+  background-color: none;
+}
+.page-graph #graph_wrapper h1,
+.page-graph #graph_wrapper h2,
+.page-graph #graph_wrapper h3 {
+  font-weight: 300;
+}
+.page-graph #graph_wrapper h1 {
+  font-size: 16px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #graph_wrapper h1 {
+    font-size: 26px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #graph_wrapper h1 {
+    font-size: 36px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #graph_wrapper h1 {
+    font-size: 38px;
+  }
+}
+.page-graph #graph_wrapper p {
+  color: #fff;
+  font-weight: 300;
+}
+.page-graph #graph_wrapper #graph-canvas {
+  height: 250px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #graph_wrapper #graph-canvas {
+    height: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #graph_wrapper #graph-canvas {
+    height: 450px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #graph_wrapper #graph-canvas {
+    height: 550px;
+  }
+}
+.page-graph #graph_wrapper #graph-canvas jpg .canvasjs-chart-container {
+  color: #000;
+}
+.page-graph #variables h2#variable-header {
+  font-size: 25px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables h2#variable-header {
+    font-size: 30px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables h2#variable-header {
+    font-size: 35px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables h2#variable-header {
+    font-size: 35px;
+  }
+}
+.page-graph #variables h2#variable-header a {
+  font-size: 10px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables h2#variable-header a {
+    font-size: 15px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables h2#variable-header a {
+    font-size: 15px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables h2#variable-header a {
+    font-size: 20px;
+  }
+}
+.page-graph #variables h3 {
+  color: #777777;
+  font-weight: 300;
+}
+.page-graph #variables .error {
+  font-weight: bold;
+  color: red;
+}
+.page-graph #variables #multiple-legends-container .modified-value .legend-val {
+  color: #f44336;
+}
+.page-graph #variables #multiple-legends-container .legend {
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  padding: 8px;
+  border: 1px solid #f2f2f5;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
+}
+.page-graph #variables #multiple-legends-container .legend.hidden-legend {
+  height: 30px;
+  max-height: 30px;
+  overflow: hidden;
+  box-shadow: none;
+  border-radius: 2px;
+  border: 1px solid #f2f2f5;
+}
+.page-graph #variables #multiple-legends-container .legend.hidden-legend .legend-variables {
+  display: hidden;
+}
+.page-graph #variables #multiple-legends-container .legend.hidden-legend h3 {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+.page-graph #variables #multiple-legends-container .legend.hidden-legend h3 .togglelegend {
+  font-size: 15px;
+}
+.page-graph #variables #multiple-legends-container .legend h3 {
+  color: #4b516a;
+  margin-top: 8px;
+  font-size: 18px;
+  /* (tablets, 768px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables #multiple-legends-container .legend h3 {
+    font-size: 24px;
+  }
+  .page-graph #variables #multiple-legends-container .legend h3 .togglelegend {
+    font-size: 20px;
+  }
+}
+.page-graph #variables #multiple-legends-container .legend .legend-var {
+  padding-right: 4px;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-symbol {
+  padding-left: 2px;
+  padding-right: 5px;
+  font-size: 18px;
+  font-style: italic;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-symbol:after {
+  content: " = ";
+}
+.page-graph #variables #multiple-legends-container .legend .legend-val {
+  font-weight: 600;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-warning {
+  padding-left: 4px;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-exclamation-triangle,
+.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-exclamation,
+.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-tachometer {
+  color: #e74c3c;
+}
+.page-graph #variables #multiple-legends-container .legend .legend-warning .fa-recycle {
+  color: #2ecc71;
+  color: #33983c;
+}
+.page-graph #variables #multiple-legends-container .legend p {
+  margin-top: 10px;
+}
+.page-graph #variables #graph_stats {
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  padding: 8px;
+  border: 1px solid #f2f2f5;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
+}
+.page-graph #variables #graph_stats h3 {
+  color: #4b516a;
+  margin-top: 8px;
+  font-size: 18px;
+  /* (tablets, 768px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables #graph_stats h3 {
+    font-size: 24px;
+  }
+  .page-graph #variables #graph_stats h3 .togglelegend {
+    font-size: 20px;
+  }
+}
+.page-graph #variables #graph_stats .legend-var {
+  padding-right: 4px;
+}
+.page-graph #variables #graph_stats .legend-val {
+  font-weight: 600;
+}
+.page-graph #variables .variable-section {
+  border-bottom: 1px solid rgba(85, 85, 85, 0.5);
+}
+.page-graph #variables .variable {
+  margin-top: 20px;
+  /**Variable Name**/
+  /**Helper Text*/
+  /*Variable Value*/
+}
+.page-graph #variables .variable input::selection {
+  background: rgba(20, 20, 37, 0.2);
+}
+.page-graph #variables .variable input::-moz-selection {
+  background: rgba(20, 20, 37, 0.2);
+}
+.page-graph #variables .variable label {
+  font-size: 18px;
+  font-weight: normal;
+  overflow: hidden;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables .variable label {
+    font-size: 19px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables .variable label {
+    font-size: 19px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables .variable label {
+    font-size: 20px;
+  }
+}
+.page-graph #variables .variable .help-block {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  /* Small devices (tablets, 768px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables .variable .help-block {
+    padding-left: 10px;
+  }
+}
+.page-graph #variables .variable .help-block .help-symbol-container {
+  font-size: 18px;
+  color: #4b516a;
+  font-weight: 900;
+}
+.page-graph #variables .variable .help-block .help-symbol-container .help-symbol {
+  font-size: 22px;
+  font-style: italic;
+}
+.page-graph #variables .variable .help-block p {
+  font-size: 15px;
+}
+.page-graph #variables .variable #label-infinite-sample-size {
+  font-style: normal;
+}
+.page-graph #variables .variable #infinite_sample_size {
+  margin-top: 3px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables .variable #infinite_sample_size {
+    margin-top: 8px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables .variable #infinite_sample_size {
+    font-size: 8px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables .variable #infinite_sample_size {
+    margin-top: 8px;
+  }
+}
+.page-graph #variables .variable .value {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+@media (min-width: 768px) {
+  .page-graph #variables .variable .value {
+    margin-top: 0;
+  }
+}
+.page-graph #variables .variable .value input {
+  border: none;
+  font-size: 26px;
+  box-shadow: none;
+  margin-top: 0;
+  padding-top: 0;
+  text-align: center;
+  height: 100%;
+}
+.page-graph #variables .variable .scientific-notation-container {
+  margin-left: 0;
+  padding-left: 0;
+  margin-top: 0;
+  padding-top: 0;
+  font-weight: 300;
+}
+.page-graph #variables .variable .scientific-notation-container .scientific-notation {
+  font-size: 20px;
+  text-align: right;
+  padding-right: 0;
+  margin-right: 0;
+}
+.page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
+  font-size: 18px;
+  height: 34px;
+  padding: 3px 3px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+}
+@media (max-width: 768px) {
+  .page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
+    font-size: 20px;
+    height: 38px;
+    padding: 6px 12px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent {
+    font-size: 20px;
+    height: 38px;
+    padding: 6px 12px;
+  }
+}
+.page-graph #variables .variable .scientific-notation-container .scientific-form-group .mutation-exponent option {
+  text-align: center;
+}
+.page-graph #variables #options {
+  margin-top: 20px;
+  text-align: center;
+}
+@media (min-width: 1200px) {
+  .page-graph #variables #options {
+    text-align: left;
+  }
+}
+.page-graph #variables #buttons {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.page-graph #variables #buttons a {
+  margin-top: 20px;
+}
+.page-graph #variables #buttons .btn {
+  border-radius: 4px;
+  text-transform: none;
+  font-size: 14px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-graph #variables #buttons .btn {
+    font-size: 15px;
+  }
+}
+@media (min-width: 992px) {
+  .page-graph #variables #buttons .btn {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-graph #variables #buttons .btn {
+    font-size: 18px;
+  }
+}
+.page-graph #results_panel {
+  margin-top: 20px;
+}
+.page-graph #results_panel #results {
+  height: 800px;
+  overflow-y: scroll;
+}
+.page-graph #graph-computing-modal #graph-completion-precent {
+  text-align: center;
+}
+.page-graph #graph-computing-modal #graph-completion-precent.completed {
+  color: green;
+}
+.page-graph #graph-computing-modal #graph-completion-precent.failed {
+  color: red;
+}
+.graph-allele #buttons .btn {
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  background: #4b516a;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.graph-allele #buttons .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #4b516a;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale3d(0.6, 0.6, 1);
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.graph-allele #buttons .btn:hover {
+  background-color: #fff;
+  color: #4b516a;
+}
+.graph-allele #buttons .btn:hover::before {
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+}
+.graph-allele #variable-header a {
+  perspective: 1000px;
+}
+.graph-allele #variable-header a span {
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+  background: #4b516a;
+  color: white;
+  transition: transform 0.3s;
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+}
+.graph-allele #variable-header a span::before {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4b516a;
+  text-align: center;
+  font-family: 'FontAwesome';
+  content: "\f25a";
+  transition: background 0.3s;
+  transform: rotateX(-90deg);
+  transform-origin: 50% 0;
+  padding: 5px;
+}
+.graph-allele #variable-header a:hover span,
+.graph-allele #variable-header a:focus span {
+  transform: rotateX(90deg) translateY(-22px);
+}
+.graph-allele #variable-header a:hover span::before,
+.graph-allele #variable-header a:focus span::before {
+  background: #4b516a;
+}
+.graph-allele .variable-activator:not(.fa-check-square-o) {
+  transition: all 0.2s;
+}
+.graph-allele .variable-activator:not(.fa-check-square-o):hover {
+  color: #4b516a;
+  opacity: .8;
+  transform: scale(1.5);
+}
+.graph-allele .variable-activator:not(.fa-check-square-o):hover::before {
+  content: "\f046";
+}
+.graph-allele #main-togggles .fa {
+  transition: all 0.3s;
+}
+.graph-allele #main-togggles .fa:hover {
+  transform: scale(1.8);
+}
+.graph-genotype .canvasjs-chart-toolbar {
+  color: #4b516a;
+}
+.graph-genotype .canvasjs-chart-toolbar button {
+  margin-top: 10px !important;
+  padding: 3px 10px 0px !important;
+  color: #4b516a !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+}
+.graph-genotype .canvasjs-chart-toolbar button:hover {
+  background-color: #4b516a !important;
+  color: white !important;
+}
+.graph-genotype .canvasjs-chart-toolbar button[state='menu'] {
+  margin-right: 8px !important;
+  background-color: white;
+}
+.graph-genotype .canvasjs-chart-toolbar > div {
+  margin-top: 11px;
+  margin-bottom: 0;
+  margin-right: 7px;
+  padding: 0 !important;
+  background-color: white;
+  width: 150px;
+  box-shadow: none !important;
+}
+.graph-genotype .canvasjs-chart-toolbar > div > div {
+  font-weight: bold;
+  padding: 10px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.graph-genotype .canvasjs-chart-toolbar > div > div:hover {
+  background-color: #4b516a !important;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: ease;
+  color: white;
+}
+.graph-genotype #buttons .btn {
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  background: #4b516a;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.graph-genotype #buttons .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #4b516a;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale3d(0.6, 0.6, 1);
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.graph-genotype #buttons .btn:hover {
+  background-color: #fff;
+  color: #4b516a;
+}
+.graph-genotype #buttons .btn:hover::before {
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+}
+.graph-genotype #variable-header a {
+  perspective: 1000px;
+}
+.graph-genotype #variable-header a span {
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+  background: #4b516a;
+  color: white;
+  transition: transform 0.3s;
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+}
+.graph-genotype #variable-header a span::before {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4b516a;
+  text-align: center;
+  font-family: 'FontAwesome';
+  content: "\f25a";
+  transition: background 0.3s;
+  transform: rotateX(-90deg);
+  transform-origin: 50% 0;
+  padding: 5px;
+}
+.graph-genotype #variable-header a:hover span,
+.graph-genotype #variable-header a:focus span {
+  transform: rotateX(90deg) translateY(-22px);
+}
+.graph-genotype #variable-header a:hover span::before,
+.graph-genotype #variable-header a:focus span::before {
+  background: #4b516a;
+}
+.graph-genotype .variable-activator:not(.fa-check-square-o) {
+  transition: all 0.2s;
+}
+.graph-genotype .variable-activator:not(.fa-check-square-o):hover {
+  color: #4b516a;
+  opacity: .8;
+  transform: scale(1.5);
+}
+.graph-genotype .variable-activator:not(.fa-check-square-o):hover::before {
+  content: "\f046";
+}
+.graph-genotype #main-togggles .fa {
+  transition: all 0.3s;
+}
+.graph-genotype #main-togggles .fa:hover {
+  transform: scale(1.8);
+}
+.graph-genotype .btn.btn-primary {
+  background: none;
+  box-shadow: none;
+  font-weight: 500;
+  background-color: #4b516a;
+  color: white;
+}
+.graph-genotype .btn.btn-primary:disabled {
+  color: #a8a8a8 !important;
+}
+.graph-genotype .slider {
+  margin-top: 10px;
+  /* Vert Centering*/
+}
+.graph-genotype .slider.active.noUi-connect {
+  background-color: #4b516a;
+}
+.graph-genotype .slider.noUi-connect {
+  background-color: #aaaaaa;
+}
+.graph-genotype .range-slider .slider.active .noUi-connect {
+  background-color: #4b516a;
+}
+.graph-genotype .range-slider .slider .noUi-connect {
+  background-color: #aaaaaa;
+}
+.graph-genotype #buttons .btn {
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  background: #6a4b51;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.graph-genotype #buttons .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #6a4b51;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale3d(0.6, 0.6, 1);
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.graph-genotype #buttons .btn:hover {
+  background-color: #fff;
+  color: #6a4b51;
+}
+.graph-genotype #buttons .btn:hover::before {
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+}
+.graph-genotype #variable-header a {
+  perspective: 1000px;
+}
+.graph-genotype #variable-header a span {
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+  background: #6a4b51;
+  color: white;
+  transition: transform 0.3s;
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+}
+.graph-genotype #variable-header a span::before {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #6a4b51;
+  text-align: center;
+  font-family: 'FontAwesome';
+  content: "\f25a";
+  transition: background 0.3s;
+  transform: rotateX(-90deg);
+  transform-origin: 50% 0;
+  padding: 5px;
+}
+.graph-genotype #variable-header a:hover span,
+.graph-genotype #variable-header a:focus span {
+  transform: rotateX(90deg) translateY(-22px);
+}
+.graph-genotype #variable-header a:hover span::before,
+.graph-genotype #variable-header a:focus span::before {
+  background: #6a4b51;
+}
+.graph-genotype .variable-activator:not(.fa-check-square-o):hover {
+  color: #6a4b51;
+}
+.page-contact #material-form fieldset[disabled] .form-control,
+.page-contact #material-form .form-control,
+.page-contact #material-form fieldset[disabled] .form-control:focus,
+.page-contact #material-form .form-control:focus,
+.page-contact #material-form fieldset[disabled] .form-control.focus,
+.page-contact #material-form .form-control.focus {
+  padding: 0;
+  float: none;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.page-contact #material-form fieldset[disabled] .form-control:disabled,
+.page-contact #material-form .form-control:disabled,
+.page-contact #material-form fieldset[disabled] .form-control:focus:disabled,
+.page-contact #material-form .form-control:focus:disabled,
+.page-contact #material-form fieldset[disabled] .form-control.focus:disabled,
+.page-contact #material-form .form-control.focus:disabled {
+  border-style: dashed;
+  border-bottom: 1px solid #757575;
+}
+.page-contact #material-form fieldset[disabled] .form-control:textarea,
+.page-contact #material-form .form-control:textarea {
+  height: 40px;
+}
+.page-contact #material-form select[multiple].form-control,
+.page-contact #material-form select[multiple].form-control:focus,
+.page-contact #material-form select[multiple].form-control.focus {
+  height: 85px;
+}
+.page-contact #material-form .form-control {
+  border: 0;
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background 0s ease-out;
+}
+.page-contact #material-form .form-control::-webkit-input-placeholder {
+  color: #bdbdbd;
+}
+.page-contact #material-form .form-control::-moz-placeholder {
+  color: #bdbdbd;
+}
+.page-contact #material-form .form-control:-ms-input-placeholder {
+  color: #bdbdbd;
+}
+.page-contact #material-form .form-control[disabled],
+.page-contact #material-form .form-control[readonly],
+.page-contact #material-form fieldset[disabled] .form-control {
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
+}
+.page-contact #material-form fieldset[disabled] .form-control:disabled,
+.page-contact #material-form .form-control-wrapper .form-control:disabled,
+.page-contact #material-form .form-control:disabled,
+.page-contact #material-form fieldset[disabled] .form-control:focus:disabled,
+.page-contact #material-form .form-control-wrapper .form-control:focus:disabled,
+.page-contact #material-form .form-control:focus:disabled,
+.page-contact #material-form fieldset[disabled] .form-control.focus:disabled,
+.page-contact #material-form .form-control-wrapper .form-control.focus:disabled,
+.page-contact #material-form .form-control.focus:disabled {
+  border: 0;
+}
+.page-contact #material-form .form-control:focus,
+.page-contact #material-form .form-control.focus {
+  outline: none;
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+  background-size: 100% 2px, 100% 1px;
+  box-shadow: none;
+  transition-duration: 0.3s;
+}
+.page-contact #material-form .form-control-wrapper {
+  position: relative;
+}
+.page-contact #material-form .form-control-wrapper .floating-label {
+  color: #bdbdbd;
+  position: absolute;
+  pointer-events: none;
+  left: 0px;
+  top: 5px;
+  transition: 0.3s ease all;
+}
+.page-contact #material-form .form-control-wrapper .floating-label {
+  font-size: 14px;
+}
+.page-contact #material-form .form-control-wrapper .form-control:focus ~ .floating-label,
+.page-contact #material-form .form-control-wrapper .form-control:not(.empty) ~ .floating-label {
+  top: -9.8px;
+  font-size: 9.8px;
+}
+.page-contact #material-form .form-control-wrapper .input-sm + .floating-label {
+  font-size: 12px;
+  top: 7px;
+}
+.page-contact #material-form .form-control-wrapper .form-control.input-sm:focus ~ .floating-label,
+.page-contact #material-form .form-control-wrapper .form-control.input-sm:not(.empty) ~ .floating-label {
+  top: -8.4px;
+  font-size: 8.4px;
+}
+.page-contact #material-form .form-control-wrapper .input-lg + .floating-label {
+  font-size: 18px;
+  top: 10px;
+}
+.page-contact #material-form .form-control-wrapper .form-control.input-lg:focus ~ .floating-label,
+.page-contact #material-form .form-control-wrapper .form-control.input-lg:not(.empty) ~ .floating-label {
+  top: -12.6px;
+  font-size: 12.6px;
+}
+.page-contact #material-form .form-control-wrapper .form-control:focus ~ .floating-label {
+  color: #4b516a;
+}
+.page-contact #material-form .form-control-wrapper .form-control:not(.empty):invalid ~ .floating-label,
+.page-contact #material-form .form-control-wrapper .form-control.focus:invalid ~ .floating-label {
+  color: #f44336;
+}
+.page-contact #material-form .form-control-wrapper .form-control:focus ~ .material-input:after,
+.page-contact #material-form .form-control-wrapper .form-control.focus ~ .material-input:after {
+  background-color: #4b516a;
+}
+.page-contact #material-form .form-control-wrapper .form-control:invalid {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-control-wrapper textarea {
+  resize: none;
+}
+.page-contact #material-form .form-control-wrapper textarea ~ .form-control-highlight {
+  margin-top: -11px;
+}
+.page-contact #material-form .form-control-wrapper .hint {
+  position: absolute;
+  font-size: 80%;
+  display: none;
+}
+.page-contact #material-form .form-control-wrapper .form-control:focus ~ .hint,
+.page-contact #material-form .form-control-wrapper .form-control.focus ~ .hint {
+  display: block;
+}
+.page-contact #material-form .form-control-wrapper select ~ .material-input:after {
+  display: none;
+}
+.page-contact #material-form .form-control-wrapper select {
+  appearance: none;
+}
+.page-contact #material-form .form-group.has-warning .form-control {
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-warning .material-input:focus,
+.page-contact #material-form .form-group.has-warning .form-control:focus,
+.page-contact #material-form .form-group.has-warning .form-control.focus {
+  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-warning .control-label,
+.page-contact #material-form .form-group.has-warning input.form-control:focus ~ .floating-label {
+  color: #f39c12;
+}
+.page-contact #material-form .form-group.has-error .form-control {
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-error .material-input:focus,
+.page-contact #material-form .form-group.has-error .form-control:focus,
+.page-contact #material-form .form-group.has-error .form-control.focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-error .control-label,
+.page-contact #material-form .form-group.has-error input.form-control:focus ~ .floating-label {
+  color: #f44336;
+}
+.page-contact #material-form .form-group.has-success .form-control {
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-success .material-input:focus,
+.page-contact #material-form .form-group.has-success .form-control:focus,
+.page-contact #material-form .form-group.has-success .form-control.focus {
+  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-success .control-label,
+.page-contact #material-form .form-group.has-success input.form-control:focus ~ .floating-label {
+  color: #2ecc71;
+}
+.page-contact #material-form .form-group.has-info .form-control {
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-info .material-input:focus,
+.page-contact #material-form .form-group.has-info .form-control:focus,
+.page-contact #material-form .form-group.has-info .form-control.focus {
+  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-contact #material-form .form-group.has-info .control-label,
+.page-contact #material-form .form-group.has-info input.form-control:focus ~ .floating-label {
+  color: #3498db;
+}
+.page-contact #material-form .form-group .form-control:focus,
+.page-contact #material-form .form-group-default .form-control:focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-black .form-control:focus {
+  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-white .form-control:focus {
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-inverse .form-control:focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-primary .form-control:focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-success .form-control:focus {
+  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-info .form-control:focus {
+  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-warning .form-control:focus {
+  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-danger .form-control:focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-red .form-control:focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-pink .form-control:focus {
+  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-purple .form-control:focus {
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-deep-purple .form-control:focus {
+  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-indigo .form-control:focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-blue .form-control:focus {
+  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-light-blue .form-control:focus {
+  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-cyan .form-control:focus {
+  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-teal .form-control:focus {
+  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-green .form-control:focus {
+  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-light-green .form-control:focus {
+  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-lime .form-control:focus {
+  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-yellow .form-control:focus {
+  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-amber .form-control:focus {
+  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-orange .form-control:focus {
+  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-deep-orange .form-control:focus {
+  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-brown .form-control:focus {
+  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-grey .form-control:focus {
+  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-blue-grey .form-control:focus {
+  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group .form-control.focus,
+.page-contact #material-form .form-group-default .form-control.focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-black .form-control.focus {
+  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-white .form-control.focus {
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-inverse .form-control.focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-primary .form-control.focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-success .form-control.focus {
+  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-info .form-control.focus {
+  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-warning .form-control.focus {
+  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-danger .form-control.focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-red .form-control.focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-pink .form-control.focus {
+  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-purple .form-control.focus {
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-deep-purple .form-control.focus {
+  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-indigo .form-control.focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-blue .form-control.focus {
+  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-light-blue .form-control.focus {
+  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-cyan .form-control.focus {
+  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-teal .form-control.focus {
+  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-green .form-control.focus {
+  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-light-green .form-control.focus {
+  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-lime .form-control.focus {
+  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-yellow .form-control.focus {
+  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-amber .form-control.focus {
+  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-orange .form-control.focus {
+  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-deep-orange .form-control.focus {
+  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-brown .form-control.focus {
+  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-grey .form-control.focus {
+  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group-material-blue-grey .form-control.focus {
+  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-contact #material-form .form-group .control-label,
+.page-contact #material-form .form-group-default .control-label {
+  color: rgba(0, 0, 0, 0.84);
+}
+.page-contact #material-form .form-group-black .control-label {
+  color: #000000;
+}
+.page-contact #material-form .form-group-white .control-label {
+  color: #ffffff;
+}
+.page-contact #material-form .form-group-inverse .control-label {
+  color: #3f51b5;
+}
+.page-contact #material-form .form-group-primary .control-label {
+  color: #4b516a;
+}
+.page-contact #material-form .form-group-success .control-label {
+  color: #2ecc71;
+}
+.page-contact #material-form .form-group-info .control-label {
+  color: #3498db;
+}
+.page-contact #material-form .form-group-warning .control-label {
+  color: #f39c12;
+}
+.page-contact #material-form .form-group-danger .control-label {
+  color: #f44336;
+}
+.page-contact #material-form .form-group-material-red .control-label {
+  color: #f44336;
+}
+.page-contact #material-form .form-group-material-pink .control-label {
+  color: #e91e63;
+}
+.page-contact #material-form .form-group-material-purple .control-label {
+  color: #9c27b0;
+}
+.page-contact #material-form .form-group-material-deep-purple .control-label {
+  color: #673ab7;
+}
+.page-contact #material-form .form-group-material-indigo .control-label {
+  color: #3f51b5;
+}
+.page-contact #material-form .form-group-material-blue .control-label {
+  color: #2196f3;
+}
+.page-contact #material-form .form-group-material-light-blue .control-label {
+  color: #03a9f4;
+}
+.page-contact #material-form .form-group-material-cyan .control-label {
+  color: #00bcd4;
+}
+.page-contact #material-form .form-group-material-teal .control-label {
+  color: #009688;
+}
+.page-contact #material-form .form-group-material-green .control-label {
+  color: #4caf50;
+}
+.page-contact #material-form .form-group-material-light-green .control-label {
+  color: #8bc34a;
+}
+.page-contact #material-form .form-group-material-lime .control-label {
+  color: #cddc39;
+}
+.page-contact #material-form .form-group-material-yellow .control-label {
+  color: #ffeb3b;
+}
+.page-contact #material-form .form-group-material-amber .control-label {
+  color: #ffc107;
+}
+.page-contact #material-form .form-group-material-orange .control-label {
+  color: #ff9800;
+}
+.page-contact #material-form .form-group-material-deep-orange .control-label {
+  color: #ff5722;
+}
+.page-contact #material-form .form-group-material-brown .control-label {
+  color: #795548;
+}
+.page-contact #material-form .form-group-material-grey .control-label {
+  color: #9e9e9e;
+}
+.page-contact #material-form .form-group-material-blue-grey .control-label {
+  color: #607d8b;
+}
+.page-contact #material-form .form-group input.form-control:focus ~ .floating-label,
+.page-contact #material-form .form-group-default input.form-control:focus ~ .floating-label {
+  color: #4b516a;
+}
+.page-contact #material-form .form-group-black input.form-control:focus ~ .floating-label {
+  color: #000000;
+}
+.page-contact #material-form .form-group-white input.form-control:focus ~ .floating-label {
+  color: #ffffff;
+}
+.page-contact #material-form .form-group-inverse input.form-control:focus ~ .floating-label {
+  color: #3f51b5;
+}
+.page-contact #material-form .form-group-primary input.form-control:focus ~ .floating-label {
+  color: #4b516a;
+}
+.page-contact #material-form .form-group-success input.form-control:focus ~ .floating-label {
+  color: #2ecc71;
+}
+.page-contact #material-form .form-group-info input.form-control:focus ~ .floating-label {
+  color: #3498db;
+}
+.page-contact #material-form .form-group-warning input.form-control:focus ~ .floating-label {
+  color: #f39c12;
+}
+.page-contact #material-form .form-group-danger input.form-control:focus ~ .floating-label {
+  color: #f44336;
+}
+.page-contact #material-form .form-group-material-red input.form-control:focus ~ .floating-label {
+  color: #f44336;
+}
+.page-contact #material-form .form-group-material-pink input.form-control:focus ~ .floating-label {
+  color: #e91e63;
+}
+.page-contact #material-form .form-group-material-purple input.form-control:focus ~ .floating-label {
+  color: #9c27b0;
+}
+.page-contact #material-form .form-group-material-deep-purple input.form-control:focus ~ .floating-label {
+  color: #673ab7;
+}
+.page-contact #material-form .form-group-material-indigo input.form-control:focus ~ .floating-label {
+  color: #3f51b5;
+}
+.page-contact #material-form .form-group-material-blue input.form-control:focus ~ .floating-label {
+  color: #2196f3;
+}
+.page-contact #material-form .form-group-material-light-blue input.form-control:focus ~ .floating-label {
+  color: #03a9f4;
+}
+.page-contact #material-form .form-group-material-cyan input.form-control:focus ~ .floating-label {
+  color: #00bcd4;
+}
+.page-contact #material-form .form-group-material-teal input.form-control:focus ~ .floating-label {
+  color: #009688;
+}
+.page-contact #material-form .form-group-material-green input.form-control:focus ~ .floating-label {
+  color: #4caf50;
+}
+.page-contact #material-form .form-group-material-light-green input.form-control:focus ~ .floating-label {
+  color: #8bc34a;
+}
+.page-contact #material-form .form-group-material-lime input.form-control:focus ~ .floating-label {
+  color: #cddc39;
+}
+.page-contact #material-form .form-group-material-yellow input.form-control:focus ~ .floating-label {
+  color: #ffeb3b;
+}
+.page-contact #material-form .form-group-material-amber input.form-control:focus ~ .floating-label {
+  color: #ffc107;
+}
+.page-contact #material-form .form-group-material-orange input.form-control:focus ~ .floating-label {
+  color: #ff9800;
+}
+.page-contact #material-form .form-group-material-deep-orange input.form-control:focus ~ .floating-label {
+  color: #ff5722;
+}
+.page-contact #material-form .form-group-material-brown input.form-control:focus ~ .floating-label {
+  color: #795548;
+}
+.page-contact #material-form .form-group-material-grey input.form-control:focus ~ .floating-label {
+  color: #9e9e9e;
+}
+.page-contact #material-form .form-group-material-blue-grey input.form-control:focus ~ .floating-label {
+  color: #607d8b;
+}
+.page-contact #material-form .input-group .form-control-wrapper {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.page-contact #material-form .input-group .form-control-wrapper .form-control {
+  float: none;
+}
+.page-contact #material-form .input-group .input-group-addon {
+  border: 0;
+  background: transparent;
+}
+.page-contact #material-form .input-group .input-group-btn .btn {
+  border-radius: 4px;
+  margin: 0;
+}
+.page-contact #material-form select.form-control {
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.page-contact #material-form select.form-control:focus,
+.page-contact #material-form select.form-control.focus {
+  box-shadow: none;
+  border-color: #757575;
+}
+.page-contact #material-form .form-control-wrapper input[type=file] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.page-contact #material-form .btn {
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  background: #4b516a;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.page-contact #material-form .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #4b516a;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale3d(0.6, 0.6, 1);
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.page-contact #material-form .btn:hover {
+  background-color: #fff;
+  color: #4b516a;
+}
+.page-contact #material-form .btn:hover::before {
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+}
+.page-welcome .btn {
+  color: white !important;
+}
+.page-report-problem #form-contact fieldset[disabled] .form-control,
+.page-report-problem #form-contact .form-control,
+.page-report-problem #form-contact fieldset[disabled] .form-control:focus,
+.page-report-problem #form-contact .form-control:focus,
+.page-report-problem #form-contact fieldset[disabled] .form-control.focus,
+.page-report-problem #form-contact .form-control.focus {
+  padding: 0;
+  float: none;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.page-report-problem #form-contact fieldset[disabled] .form-control:disabled,
+.page-report-problem #form-contact .form-control:disabled,
+.page-report-problem #form-contact fieldset[disabled] .form-control:focus:disabled,
+.page-report-problem #form-contact .form-control:focus:disabled,
+.page-report-problem #form-contact fieldset[disabled] .form-control.focus:disabled,
+.page-report-problem #form-contact .form-control.focus:disabled {
+  border-style: dashed;
+  border-bottom: 1px solid #757575;
+}
+.page-report-problem #form-contact fieldset[disabled] .form-control:textarea,
+.page-report-problem #form-contact .form-control:textarea {
+  height: 40px;
+}
+.page-report-problem #form-contact select[multiple].form-control,
+.page-report-problem #form-contact select[multiple].form-control:focus,
+.page-report-problem #form-contact select[multiple].form-control.focus {
+  height: 85px;
+}
+.page-report-problem #form-contact .form-control {
+  border: 0;
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background 0s ease-out;
+}
+.page-report-problem #form-contact .form-control::-webkit-input-placeholder {
+  color: #bdbdbd;
+}
+.page-report-problem #form-contact .form-control::-moz-placeholder {
+  color: #bdbdbd;
+}
+.page-report-problem #form-contact .form-control:-ms-input-placeholder {
+  color: #bdbdbd;
+}
+.page-report-problem #form-contact .form-control[disabled],
+.page-report-problem #form-contact .form-control[readonly],
+.page-report-problem #form-contact fieldset[disabled] .form-control {
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
+}
+.page-report-problem #form-contact fieldset[disabled] .form-control:disabled,
+.page-report-problem #form-contact .form-control-wrapper .form-control:disabled,
+.page-report-problem #form-contact .form-control:disabled,
+.page-report-problem #form-contact fieldset[disabled] .form-control:focus:disabled,
+.page-report-problem #form-contact .form-control-wrapper .form-control:focus:disabled,
+.page-report-problem #form-contact .form-control:focus:disabled,
+.page-report-problem #form-contact fieldset[disabled] .form-control.focus:disabled,
+.page-report-problem #form-contact .form-control-wrapper .form-control.focus:disabled,
+.page-report-problem #form-contact .form-control.focus:disabled {
+  border: 0;
+}
+.page-report-problem #form-contact .form-control:focus,
+.page-report-problem #form-contact .form-control.focus {
+  outline: none;
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+  background-size: 100% 2px, 100% 1px;
+  box-shadow: none;
+  transition-duration: 0.3s;
+}
+.page-report-problem #form-contact .form-control-wrapper {
+  position: relative;
+}
+.page-report-problem #form-contact .form-control-wrapper .floating-label {
+  color: #bdbdbd;
+  position: absolute;
+  pointer-events: none;
+  left: 0px;
+  top: 5px;
+  transition: 0.3s ease all;
+}
+.page-report-problem #form-contact .form-control-wrapper .floating-label {
+  font-size: 14px;
+}
+.page-report-problem #form-contact .form-control-wrapper .form-control:focus ~ .floating-label,
+.page-report-problem #form-contact .form-control-wrapper .form-control:not(.empty) ~ .floating-label {
+  top: -9.8px;
+  font-size: 9.8px;
+}
+.page-report-problem #form-contact .form-control-wrapper .input-sm + .floating-label {
+  font-size: 12px;
+  top: 7px;
+}
+.page-report-problem #form-contact .form-control-wrapper .form-control.input-sm:focus ~ .floating-label,
+.page-report-problem #form-contact .form-control-wrapper .form-control.input-sm:not(.empty) ~ .floating-label {
+  top: -8.4px;
+  font-size: 8.4px;
+}
+.page-report-problem #form-contact .form-control-wrapper .input-lg + .floating-label {
+  font-size: 18px;
+  top: 10px;
+}
+.page-report-problem #form-contact .form-control-wrapper .form-control.input-lg:focus ~ .floating-label,
+.page-report-problem #form-contact .form-control-wrapper .form-control.input-lg:not(.empty) ~ .floating-label {
+  top: -12.6px;
+  font-size: 12.6px;
+}
+.page-report-problem #form-contact .form-control-wrapper .form-control:focus ~ .floating-label {
+  color: #4b516a;
+}
+.page-report-problem #form-contact .form-control-wrapper .form-control:not(.empty):invalid ~ .floating-label,
+.page-report-problem #form-contact .form-control-wrapper .form-control.focus:invalid ~ .floating-label {
+  color: #f44336;
+}
+.page-report-problem #form-contact .form-control-wrapper .form-control:focus ~ .material-input:after,
+.page-report-problem #form-contact .form-control-wrapper .form-control.focus ~ .material-input:after {
+  background-color: #4b516a;
+}
+.page-report-problem #form-contact .form-control-wrapper .form-control:invalid {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-control-wrapper textarea {
+  resize: none;
+}
+.page-report-problem #form-contact .form-control-wrapper textarea ~ .form-control-highlight {
+  margin-top: -11px;
+}
+.page-report-problem #form-contact .form-control-wrapper .hint {
+  position: absolute;
+  font-size: 80%;
+  display: none;
+}
+.page-report-problem #form-contact .form-control-wrapper .form-control:focus ~ .hint,
+.page-report-problem #form-contact .form-control-wrapper .form-control.focus ~ .hint {
+  display: block;
+}
+.page-report-problem #form-contact .form-control-wrapper select ~ .material-input:after {
+  display: none;
+}
+.page-report-problem #form-contact .form-control-wrapper select {
+  appearance: none;
+}
+.page-report-problem #form-contact .form-group.has-warning .form-control {
+  box-shadow: none;
+}
+.page-report-problem #form-contact .form-group.has-warning .material-input:focus,
+.page-report-problem #form-contact .form-group.has-warning .form-control:focus,
+.page-report-problem #form-contact .form-group.has-warning .form-control.focus {
+  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-report-problem #form-contact .form-group.has-warning .control-label,
+.page-report-problem #form-contact .form-group.has-warning input.form-control:focus ~ .floating-label {
+  color: #f39c12;
+}
+.page-report-problem #form-contact .form-group.has-error .form-control {
+  box-shadow: none;
+}
+.page-report-problem #form-contact .form-group.has-error .material-input:focus,
+.page-report-problem #form-contact .form-group.has-error .form-control:focus,
+.page-report-problem #form-contact .form-group.has-error .form-control.focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-report-problem #form-contact .form-group.has-error .control-label,
+.page-report-problem #form-contact .form-group.has-error input.form-control:focus ~ .floating-label {
+  color: #f44336;
+}
+.page-report-problem #form-contact .form-group.has-success .form-control {
+  box-shadow: none;
+}
+.page-report-problem #form-contact .form-group.has-success .material-input:focus,
+.page-report-problem #form-contact .form-group.has-success .form-control:focus,
+.page-report-problem #form-contact .form-group.has-success .form-control.focus {
+  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-report-problem #form-contact .form-group.has-success .control-label,
+.page-report-problem #form-contact .form-group.has-success input.form-control:focus ~ .floating-label {
+  color: #2ecc71;
+}
+.page-report-problem #form-contact .form-group.has-info .form-control {
+  box-shadow: none;
+}
+.page-report-problem #form-contact .form-group.has-info .material-input:focus,
+.page-report-problem #form-contact .form-group.has-info .form-control:focus,
+.page-report-problem #form-contact .form-group.has-info .form-control.focus {
+  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
+  box-shadow: none;
+}
+.page-report-problem #form-contact .form-group.has-info .control-label,
+.page-report-problem #form-contact .form-group.has-info input.form-control:focus ~ .floating-label {
+  color: #3498db;
+}
+.page-report-problem #form-contact .form-group .form-control:focus,
+.page-report-problem #form-contact .form-group-default .form-control:focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-black .form-control:focus {
+  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-white .form-control:focus {
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-inverse .form-control:focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-primary .form-control:focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-success .form-control:focus {
+  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-info .form-control:focus {
+  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-warning .form-control:focus {
+  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-danger .form-control:focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-red .form-control:focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-pink .form-control:focus {
+  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-purple .form-control:focus {
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-deep-purple .form-control:focus {
+  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-indigo .form-control:focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-blue .form-control:focus {
+  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-light-blue .form-control:focus {
+  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-cyan .form-control:focus {
+  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-teal .form-control:focus {
+  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-green .form-control:focus {
+  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-light-green .form-control:focus {
+  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-lime .form-control:focus {
+  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-yellow .form-control:focus {
+  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-amber .form-control:focus {
+  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-orange .form-control:focus {
+  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-deep-orange .form-control:focus {
+  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-brown .form-control:focus {
+  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-grey .form-control:focus {
+  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-blue-grey .form-control:focus {
+  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group .form-control.focus,
+.page-report-problem #form-contact .form-group-default .form-control.focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-black .form-control.focus {
+  background-image: linear-gradient(#000000, #000000), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-white .form-control.focus {
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-inverse .form-control.focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-primary .form-control.focus {
+  background-image: linear-gradient(#4b516a, #4b516a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-success .form-control.focus {
+  background-image: linear-gradient(#2ecc71, #2ecc71), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-info .form-control.focus {
+  background-image: linear-gradient(#3498db, #3498db), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-warning .form-control.focus {
+  background-image: linear-gradient(#f39c12, #f39c12), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-danger .form-control.focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-red .form-control.focus {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-pink .form-control.focus {
+  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-purple .form-control.focus {
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-deep-purple .form-control.focus {
+  background-image: linear-gradient(#673ab7, #673ab7), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-indigo .form-control.focus {
+  background-image: linear-gradient(#3f51b5, #3f51b5), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-blue .form-control.focus {
+  background-image: linear-gradient(#2196f3, #2196f3), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-light-blue .form-control.focus {
+  background-image: linear-gradient(#03a9f4, #03a9f4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-cyan .form-control.focus {
+  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-teal .form-control.focus {
+  background-image: linear-gradient(#009688, #009688), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-green .form-control.focus {
+  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-light-green .form-control.focus {
+  background-image: linear-gradient(#8bc34a, #8bc34a), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-lime .form-control.focus {
+  background-image: linear-gradient(#cddc39, #cddc39), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-yellow .form-control.focus {
+  background-image: linear-gradient(#ffeb3b, #ffeb3b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-amber .form-control.focus {
+  background-image: linear-gradient(#ffc107, #ffc107), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-orange .form-control.focus {
+  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-deep-orange .form-control.focus {
+  background-image: linear-gradient(#ff5722, #ff5722), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-brown .form-control.focus {
+  background-image: linear-gradient(#795548, #795548), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-grey .form-control.focus {
+  background-image: linear-gradient(#9e9e9e, #9e9e9e), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group-material-blue-grey .form-control.focus {
+  background-image: linear-gradient(#607d8b, #607d8b), linear-gradient(#d2d2d2, #d2d2d2);
+}
+.page-report-problem #form-contact .form-group .control-label,
+.page-report-problem #form-contact .form-group-default .control-label {
+  color: rgba(0, 0, 0, 0.84);
+}
+.page-report-problem #form-contact .form-group-black .control-label {
+  color: #000000;
+}
+.page-report-problem #form-contact .form-group-white .control-label {
+  color: #ffffff;
+}
+.page-report-problem #form-contact .form-group-inverse .control-label {
+  color: #3f51b5;
+}
+.page-report-problem #form-contact .form-group-primary .control-label {
+  color: #4b516a;
+}
+.page-report-problem #form-contact .form-group-success .control-label {
+  color: #2ecc71;
+}
+.page-report-problem #form-contact .form-group-info .control-label {
+  color: #3498db;
+}
+.page-report-problem #form-contact .form-group-warning .control-label {
+  color: #f39c12;
+}
+.page-report-problem #form-contact .form-group-danger .control-label {
+  color: #f44336;
+}
+.page-report-problem #form-contact .form-group-material-red .control-label {
+  color: #f44336;
+}
+.page-report-problem #form-contact .form-group-material-pink .control-label {
+  color: #e91e63;
+}
+.page-report-problem #form-contact .form-group-material-purple .control-label {
+  color: #9c27b0;
+}
+.page-report-problem #form-contact .form-group-material-deep-purple .control-label {
+  color: #673ab7;
+}
+.page-report-problem #form-contact .form-group-material-indigo .control-label {
+  color: #3f51b5;
+}
+.page-report-problem #form-contact .form-group-material-blue .control-label {
+  color: #2196f3;
+}
+.page-report-problem #form-contact .form-group-material-light-blue .control-label {
+  color: #03a9f4;
+}
+.page-report-problem #form-contact .form-group-material-cyan .control-label {
+  color: #00bcd4;
+}
+.page-report-problem #form-contact .form-group-material-teal .control-label {
+  color: #009688;
+}
+.page-report-problem #form-contact .form-group-material-green .control-label {
+  color: #4caf50;
+}
+.page-report-problem #form-contact .form-group-material-light-green .control-label {
+  color: #8bc34a;
+}
+.page-report-problem #form-contact .form-group-material-lime .control-label {
+  color: #cddc39;
+}
+.page-report-problem #form-contact .form-group-material-yellow .control-label {
+  color: #ffeb3b;
+}
+.page-report-problem #form-contact .form-group-material-amber .control-label {
+  color: #ffc107;
+}
+.page-report-problem #form-contact .form-group-material-orange .control-label {
+  color: #ff9800;
+}
+.page-report-problem #form-contact .form-group-material-deep-orange .control-label {
+  color: #ff5722;
+}
+.page-report-problem #form-contact .form-group-material-brown .control-label {
+  color: #795548;
+}
+.page-report-problem #form-contact .form-group-material-grey .control-label {
+  color: #9e9e9e;
+}
+.page-report-problem #form-contact .form-group-material-blue-grey .control-label {
+  color: #607d8b;
+}
+.page-report-problem #form-contact .form-group input.form-control:focus ~ .floating-label,
+.page-report-problem #form-contact .form-group-default input.form-control:focus ~ .floating-label {
+  color: #4b516a;
+}
+.page-report-problem #form-contact .form-group-black input.form-control:focus ~ .floating-label {
+  color: #000000;
+}
+.page-report-problem #form-contact .form-group-white input.form-control:focus ~ .floating-label {
+  color: #ffffff;
+}
+.page-report-problem #form-contact .form-group-inverse input.form-control:focus ~ .floating-label {
+  color: #3f51b5;
+}
+.page-report-problem #form-contact .form-group-primary input.form-control:focus ~ .floating-label {
+  color: #4b516a;
+}
+.page-report-problem #form-contact .form-group-success input.form-control:focus ~ .floating-label {
+  color: #2ecc71;
+}
+.page-report-problem #form-contact .form-group-info input.form-control:focus ~ .floating-label {
+  color: #3498db;
+}
+.page-report-problem #form-contact .form-group-warning input.form-control:focus ~ .floating-label {
+  color: #f39c12;
+}
+.page-report-problem #form-contact .form-group-danger input.form-control:focus ~ .floating-label {
+  color: #f44336;
+}
+.page-report-problem #form-contact .form-group-material-red input.form-control:focus ~ .floating-label {
+  color: #f44336;
+}
+.page-report-problem #form-contact .form-group-material-pink input.form-control:focus ~ .floating-label {
+  color: #e91e63;
+}
+.page-report-problem #form-contact .form-group-material-purple input.form-control:focus ~ .floating-label {
+  color: #9c27b0;
+}
+.page-report-problem #form-contact .form-group-material-deep-purple input.form-control:focus ~ .floating-label {
+  color: #673ab7;
+}
+.page-report-problem #form-contact .form-group-material-indigo input.form-control:focus ~ .floating-label {
+  color: #3f51b5;
+}
+.page-report-problem #form-contact .form-group-material-blue input.form-control:focus ~ .floating-label {
+  color: #2196f3;
+}
+.page-report-problem #form-contact .form-group-material-light-blue input.form-control:focus ~ .floating-label {
+  color: #03a9f4;
+}
+.page-report-problem #form-contact .form-group-material-cyan input.form-control:focus ~ .floating-label {
+  color: #00bcd4;
+}
+.page-report-problem #form-contact .form-group-material-teal input.form-control:focus ~ .floating-label {
+  color: #009688;
+}
+.page-report-problem #form-contact .form-group-material-green input.form-control:focus ~ .floating-label {
+  color: #4caf50;
+}
+.page-report-problem #form-contact .form-group-material-light-green input.form-control:focus ~ .floating-label {
+  color: #8bc34a;
+}
+.page-report-problem #form-contact .form-group-material-lime input.form-control:focus ~ .floating-label {
+  color: #cddc39;
+}
+.page-report-problem #form-contact .form-group-material-yellow input.form-control:focus ~ .floating-label {
+  color: #ffeb3b;
+}
+.page-report-problem #form-contact .form-group-material-amber input.form-control:focus ~ .floating-label {
+  color: #ffc107;
+}
+.page-report-problem #form-contact .form-group-material-orange input.form-control:focus ~ .floating-label {
+  color: #ff9800;
+}
+.page-report-problem #form-contact .form-group-material-deep-orange input.form-control:focus ~ .floating-label {
+  color: #ff5722;
+}
+.page-report-problem #form-contact .form-group-material-brown input.form-control:focus ~ .floating-label {
+  color: #795548;
+}
+.page-report-problem #form-contact .form-group-material-grey input.form-control:focus ~ .floating-label {
+  color: #9e9e9e;
+}
+.page-report-problem #form-contact .form-group-material-blue-grey input.form-control:focus ~ .floating-label {
+  color: #607d8b;
+}
+.page-report-problem #form-contact .input-group .form-control-wrapper {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.page-report-problem #form-contact .input-group .form-control-wrapper .form-control {
+  float: none;
+}
+.page-report-problem #form-contact .input-group .input-group-addon {
+  border: 0;
+  background: transparent;
+}
+.page-report-problem #form-contact .input-group .input-group-btn .btn {
+  border-radius: 4px;
+  margin: 0;
+}
+.page-report-problem #form-contact select.form-control {
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.page-report-problem #form-contact select.form-control:focus,
+.page-report-problem #form-contact select.form-control.focus {
+  box-shadow: none;
+  border-color: #757575;
+}
+.page-report-problem #form-contact .form-control-wrapper input[type=file] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.page-report-problem #form-contact .btn {
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  background: #4b516a;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.page-report-problem #form-contact .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #4b516a;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale3d(0.6, 0.6, 1);
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.page-report-problem #form-contact .btn:hover {
+  background-color: #fff;
+  color: #4b516a;
+}
+.page-report-problem #form-contact .btn:hover::before {
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+}
+.page-faq {
+  /* Bootstrap Sidebar */
+  /* /Bootstrap Sidebar */
+}
+.page-faq ul.question,
+.page-faq #accordian-search-results {
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  margin-top: 10px;
+  border: none;
+  box-shadow: none;
+}
+.page-faq ul.question .collapsible-body,
+.page-faq #accordian-search-results .collapsible-body {
+  padding: 2rem;
+}
+.page-faq ul.question > li,
+.page-faq #accordian-search-results > li {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin: 0 24px;
+  transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.page-faq ul.question > li.active,
+.page-faq #accordian-search-results > li.active {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  margin: 16px 0;
+}
+.page-faq ul.question li,
+.page-faq #accordian-search-results li {
+  transition: all 0.2s;
+  padding: 0;
+}
+.page-faq ul.question li div h4,
+.page-faq #accordian-search-results li div h4 {
+  margin: 0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.page-faq mark.highlight {
+  background: none;
+  color: #f1c40f;
+  padding: 0;
+  font-weight: bold;
+}
+.page-faq .collapsible-body mark.highlight {
+  background-color: #4b516a;
+  background-color: #f1c40f;
+  color: white;
+  padding: 0 5px 0;
+  margin: 0 1px 0;
+}
+.page-faq .anchorjs-link {
+  transition: all .25s linear;
+}
+.page-faq *:hover > .anchorjs-link.left {
+  margin-left: -1.125em !important;
+}
+.page-faq *:hover > .anchorjs-link.right {
+  margin-right: -1.125em !important;
+}
+.page-faq .bs-docs-sidebar {
+  padding-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.page-faq .bs-docs-sidebar .nav > li > a {
+  color: #666;
+  border-left: 2px solid transparent;
+  padding: 4px 20px;
+  font-size: 12px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+  font-weight: 400;
+}
+@media (min-width: 768px) {
+  .page-faq .bs-docs-sidebar .nav > li > a {
+    font-size: 13.5px;
+  }
+}
+@media (min-width: 992px) {
+  .page-faq .bs-docs-sidebar .nav > li > a {
+    font-size: 14.25px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-faq .bs-docs-sidebar .nav > li > a {
+    font-size: 15px;
+  }
+}
+.page-faq .bs-docs-sidebar .nav > .active > a,
+.page-faq .bs-docs-sidebar .nav > li > a:hover,
+.page-faq .bs-docs-sidebar .nav > li > a:focus {
+  color: #4b516a;
+  text-decoration: none;
+  background-color: transparent;
+  border-left-color: #4b516a;
+}
+.page-faq .bs-docs-sidebar .nav > .active > a,
+.page-faq .bs-docs-sidebar .nav > .active:hover > a,
+.page-faq .bs-docs-sidebar .nav > .active:focus > a {
+  font-weight: 700;
+}
+.page-faq .bs-docs-sidebar .nav .nav > li > a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 30px;
+  font-size: 10.4px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-faq .bs-docs-sidebar .nav .nav > li > a {
+    font-size: 11.7px;
+  }
+}
+@media (min-width: 992px) {
+  .page-faq .bs-docs-sidebar .nav .nav > li > a {
+    font-size: 12.35px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-faq .bs-docs-sidebar .nav .nav > li > a {
+    font-size: 13px;
+  }
+}
+.page-faq .bs-docs-sidebar .nav .nav > .active > a,
+.page-faq .bs-docs-sidebar .nav .nav > .active:hover > a,
+.page-faq .bs-docs-sidebar .nav .nav > .active:focus > a {
+  font-weight: 500;
+}
+.page-faq .bs-docs-sidebar .nav ul.nav {
+  display: block;
+}
+.page-faq .bs-docs-sidebar .nav.nav > .active > ul.nav {
+  display: block;
+}
+.page-faq pre.formula {
+  font-size: 12.8px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .page-faq pre.formula {
+    font-size: 14.4px;
+  }
+}
+@media (min-width: 992px) {
+  .page-faq pre.formula {
+    font-size: 15.2px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-faq pre.formula {
+    font-size: 16px;
+  }
+}
+.page-faq .question .question-content img {
+  display: block;
+  width: 100% \9;
+  max-width: 100%;
+  height: auto;
+}
+.page-faq .question .image-loader {
+  text-align: center;
+  font-size: 30px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-faq .question .image-loader {
+    font-size: 50px;
+  }
+}
+@media (min-width: 992px) {
+  .page-faq .question .image-loader {
+    font-size: 50px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-faq .question .image-loader {
+    font-size: 60px;
+  }
+}
+.page-faq .filter-parent {
+  position: relative;
+  font-size: 18px;
+  padding-top: 40px;
+  margin: -20px auto 0px;
+}
+.page-faq .filter-parent label {
+  position: absolute;
+  left: 17px;
+  top: 50px;
+}
+.page-faq .filter-parent #hideseek-search,
+.page-faq .filter-parent .hint {
+  padding-left: 43px;
+  padding-right: 43px;
+}
+.page-faq .filter-parent #num-results {
+  text-decoration: none;
+  position: absolute;
+  right: 18px;
+  top: 53px;
+}
+.page-faq #slide-all-slides .slide {
+  position: relative;
+  height: 150px;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+.page-faq #slide-all-slides .slide .slide-download {
+  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  background-color: #606888;
+}
+@media (max-width: 767px) {
+  .page-faq #slide-all-slides .slide .slide-download {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+}
+.page-faq #slide-all-slides .slide .slide-download .icon a {
+  color: white;
+}
+.page-faq #slide-all-slides .slide .slide-download .icon .fa {
+  font-size: 30px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (min-width: 768px) {
+  .page-faq #slide-all-slides .slide .slide-download .icon .fa {
+    font-size: 30px;
+  }
+}
+@media (min-width: 992px) {
+  .page-faq #slide-all-slides .slide .slide-download .icon .fa {
+    font-size: 25px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-faq #slide-all-slides .slide .slide-download .icon .fa {
+    font-size: 20px;
+  }
+}
+@media (min-width: 480px) {
+  .page-faq #slide-all-slides .slide .slide-download .icon:hover .fa,
+  .page-faq #slide-all-slides .slide .slide-download .icon:active .fa {
+    font-size: 40px;
+    /* Small devices (tablets, 768px and up) */
+    /* Medium devices (desktops, 992px and up) */
+    /* Large devices (large desktops, 1200px and up) */
+  }
+}
+@media (min-width: 480px) and (min-width: 768px) {
+  .page-faq #slide-all-slides .slide .slide-download .icon:hover .fa,
+  .page-faq #slide-all-slides .slide .slide-download .icon:active .fa {
+    font-size: 40px;
+  }
+}
+@media (min-width: 480px) and (min-width: 992px) {
+  .page-faq #slide-all-slides .slide .slide-download .icon:hover .fa,
+  .page-faq #slide-all-slides .slide .slide-download .icon:active .fa {
+    font-size: 40px;
+  }
+}
+@media (min-width: 480px) and (min-width: 1200px) {
+  .page-faq #slide-all-slides .slide .slide-download .icon:hover .fa,
+  .page-faq #slide-all-slides .slide .slide-download .icon:active .fa {
+    font-size: 40px;
+  }
+}
+.page-faq #slide-all-slides .slide .slide-download div.vertical-align {
+  top: 40%;
+}
+.page-faq #slide-all-slides .slide .slide-background {
+  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+  background-image: url(/images/slide-bg-opt.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media (min-width: 768px) {
+  .page-faq #slide-all-slides .slide .slide-background {
+    font-size: 18px;
+  }
+}
+@media (min-width: 992px) {
+  .page-faq #slide-all-slides .slide .slide-background {
+    font-size: 19px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-faq #slide-all-slides .slide .slide-background {
+    font-size: 20px;
+  }
+}
+.page-faq #slide-all-slides .slide .slide-background div.vertical-align {
+  top: 30%;
+}
+@media (min-width: 480px) {
+  .page-faq #slide-all-slides .slide:hover .slide-download {
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+  }
+}
+.page-faq #slide-all-slides .slide-caption {
+  width: 100%;
+  padding: 3% 5% 2% 5%;
+  background: #FFF;
+  border: 1px solid #e3e3e3;
+  border-top: none;
+  position: relative;
+}
+.page-faq #slide-all-slides .slide-caption h5 {
+  font-weight: bold;
+  font-size: 12.8px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-faq #slide-all-slides .slide-caption h5 {
+    font-size: 14.4px;
+  }
+}
+@media (min-width: 992px) {
+  .page-faq #slide-all-slides .slide-caption h5 {
+    font-size: 15.2px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-faq #slide-all-slides .slide-caption h5 {
+    font-size: 16px;
+  }
+}
+.page-faq #slide-all-slides .slide-caption p {
+  color: #666666;
+}
 body .withripple {
   position: relative;
 }
@@ -15876,322 +16285,6 @@ p a {
   #multiple-legends-container {
     margin-top: 250px;
   }
-}
-.page-faq {
-  /* Bootstrap Sidebar */
-  /* /Bootstrap Sidebar */
-}
-.page-faq .anchorjs-link {
-  transition: all .25s linear;
-}
-.page-faq *:hover > .anchorjs-link.left {
-  margin-left: -1.125em !important;
-}
-.page-faq *:hover > .anchorjs-link.right {
-  margin-right: -1.125em !important;
-}
-.page-faq .bs-docs-sidebar {
-  padding-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.page-faq .bs-docs-sidebar .nav > li > a {
-  color: #666;
-  border-left: 2px solid transparent;
-  padding: 4px 20px;
-  font-size: 12px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-  font-weight: 400;
-}
-@media (min-width: 768px) {
-  .page-faq .bs-docs-sidebar .nav > li > a {
-    font-size: 13.5px;
-  }
-}
-@media (min-width: 992px) {
-  .page-faq .bs-docs-sidebar .nav > li > a {
-    font-size: 14.25px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-faq .bs-docs-sidebar .nav > li > a {
-    font-size: 15px;
-  }
-}
-.page-faq .bs-docs-sidebar .nav > .active > a,
-.page-faq .bs-docs-sidebar .nav > li > a:hover,
-.page-faq .bs-docs-sidebar .nav > li > a:focus {
-  color: #4b516a;
-  text-decoration: none;
-  background-color: transparent;
-  border-left-color: #4b516a;
-}
-.page-faq .bs-docs-sidebar .nav > .active > a,
-.page-faq .bs-docs-sidebar .nav > .active:hover > a,
-.page-faq .bs-docs-sidebar .nav > .active:focus > a {
-  font-weight: 700;
-}
-.page-faq .bs-docs-sidebar .nav .nav > li > a {
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 30px;
-  font-size: 10.4px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-faq .bs-docs-sidebar .nav .nav > li > a {
-    font-size: 11.7px;
-  }
-}
-@media (min-width: 992px) {
-  .page-faq .bs-docs-sidebar .nav .nav > li > a {
-    font-size: 12.35px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-faq .bs-docs-sidebar .nav .nav > li > a {
-    font-size: 13px;
-  }
-}
-.page-faq .bs-docs-sidebar .nav .nav > .active > a,
-.page-faq .bs-docs-sidebar .nav .nav > .active:hover > a,
-.page-faq .bs-docs-sidebar .nav .nav > .active:focus > a {
-  font-weight: 500;
-}
-.page-faq .bs-docs-sidebar .nav ul.nav {
-  display: block;
-}
-.page-faq .bs-docs-sidebar .nav.nav > .active > ul.nav {
-  display: block;
-}
-.page-faq pre.formula {
-  font-size: 12.8px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-  text-align: center;
-}
-@media (min-width: 768px) {
-  .page-faq pre.formula {
-    font-size: 14.4px;
-  }
-}
-@media (min-width: 992px) {
-  .page-faq pre.formula {
-    font-size: 15.2px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-faq pre.formula {
-    font-size: 16px;
-  }
-}
-.page-faq .question .question-content img {
-  display: block;
-  width: 100% \9;
-  max-width: 100%;
-  height: auto;
-}
-.page-faq .question .image-loader {
-  text-align: center;
-  font-size: 30px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-faq .question .image-loader {
-    font-size: 50px;
-  }
-}
-@media (min-width: 992px) {
-  .page-faq .question .image-loader {
-    font-size: 50px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-faq .question .image-loader {
-    font-size: 60px;
-  }
-}
-.page-faq .filter-parent {
-  position: relative;
-  font-size: 18px;
-  padding-top: 40px;
-  margin: -20px auto 0px;
-}
-.page-faq .filter-parent label {
-  position: absolute;
-  left: 17px;
-  top: 50px;
-}
-.page-faq .filter-parent #hideseek-search,
-.page-faq .filter-parent .hint {
-  padding-left: 43px;
-  padding-right: 43px;
-  border-radius: 23px;
-}
-.page-faq .filter-parent #num-results {
-  text-decoration: none;
-  position: absolute;
-  right: 18px;
-  top: 53px;
-}
-.page-faq #slide-all-slides .slide {
-  position: relative;
-  height: 150px;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-.page-faq #slide-all-slides .slide .slide-download {
-  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  filter: alpha(opacity=0);
-  background-color: #606888;
-}
-@media (max-width: 767px) {
-  .page-faq #slide-all-slides .slide .slide-download {
-    opacity: 1;
-    filter: alpha(opacity=100);
-  }
-}
-.page-faq #slide-all-slides .slide .slide-download .icon a {
-  color: white;
-}
-.page-faq #slide-all-slides .slide .slide-download .icon .fa {
-  font-size: 30px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
-}
-@media (min-width: 768px) {
-  .page-faq #slide-all-slides .slide .slide-download .icon .fa {
-    font-size: 30px;
-  }
-}
-@media (min-width: 992px) {
-  .page-faq #slide-all-slides .slide .slide-download .icon .fa {
-    font-size: 25px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-faq #slide-all-slides .slide .slide-download .icon .fa {
-    font-size: 20px;
-  }
-}
-@media (min-width: 480px) {
-  .page-faq #slide-all-slides .slide .slide-download .icon:hover .fa,
-  .page-faq #slide-all-slides .slide .slide-download .icon:active .fa {
-    font-size: 40px;
-    /* Small devices (tablets, 768px and up) */
-    /* Medium devices (desktops, 992px and up) */
-    /* Large devices (large desktops, 1200px and up) */
-  }
-}
-@media (min-width: 480px) and (min-width: 768px) {
-  .page-faq #slide-all-slides .slide .slide-download .icon:hover .fa,
-  .page-faq #slide-all-slides .slide .slide-download .icon:active .fa {
-    font-size: 40px;
-  }
-}
-@media (min-width: 480px) and (min-width: 992px) {
-  .page-faq #slide-all-slides .slide .slide-download .icon:hover .fa,
-  .page-faq #slide-all-slides .slide .slide-download .icon:active .fa {
-    font-size: 40px;
-  }
-}
-@media (min-width: 480px) and (min-width: 1200px) {
-  .page-faq #slide-all-slides .slide .slide-download .icon:hover .fa,
-  .page-faq #slide-all-slides .slide .slide-download .icon:active .fa {
-    font-size: 40px;
-  }
-}
-.page-faq #slide-all-slides .slide .slide-download div.vertical-align {
-  top: 40%;
-}
-.page-faq #slide-all-slides .slide .slide-background {
-  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 16px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-  background-image: url(/images/slide-bg-opt.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-@media (min-width: 768px) {
-  .page-faq #slide-all-slides .slide .slide-background {
-    font-size: 18px;
-  }
-}
-@media (min-width: 992px) {
-  .page-faq #slide-all-slides .slide .slide-background {
-    font-size: 19px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-faq #slide-all-slides .slide .slide-background {
-    font-size: 20px;
-  }
-}
-.page-faq #slide-all-slides .slide .slide-background div.vertical-align {
-  top: 30%;
-}
-@media (min-width: 480px) {
-  .page-faq #slide-all-slides .slide:hover .slide-download {
-    opacity: 0.9;
-    filter: alpha(opacity=90);
-  }
-}
-.page-faq #slide-all-slides .slide-caption {
-  width: 100%;
-  padding: 3% 5% 2% 5%;
-  background: #FFF;
-  border: 1px solid #e3e3e3;
-  border-top: none;
-  position: relative;
-}
-.page-faq #slide-all-slides .slide-caption h5 {
-  font-weight: bold;
-  font-size: 12.8px;
-  /* Small devices (tablets, 768px and up) */
-  /* Medium devices (desktops, 992px and up) */
-  /* Large devices (large desktops, 1200px and up) */
-}
-@media (min-width: 768px) {
-  .page-faq #slide-all-slides .slide-caption h5 {
-    font-size: 14.4px;
-  }
-}
-@media (min-width: 992px) {
-  .page-faq #slide-all-slides .slide-caption h5 {
-    font-size: 15.2px;
-  }
-}
-@media (min-width: 1200px) {
-  .page-faq #slide-all-slides .slide-caption h5 {
-    font-size: 16px;
-  }
-}
-.page-faq #slide-all-slides .slide-caption p {
-  color: #666666;
 }
 .page-welcome .welcome {
   line-height: 24px;
