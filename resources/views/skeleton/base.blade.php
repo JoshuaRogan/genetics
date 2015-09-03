@@ -59,20 +59,21 @@
 		
 		<!--Flash Messages -->
 
-		<!--FIRST TIME --> 
-		<div class="modal text-center" id="first-time-faq">
+		<!-- FIRST TIME --> 
+		<div class="modal" id="first-time-faq">
 
 			<div class="modal-content">
-				<h2> First time here? </h2>
-				<h3> Check out the <a href="#">FAQ</a></h3>
+				<h2> Welcome to the Population Generation Simulator </h2>
+				<div class="icon"><a href='/help'><i class="fa fa-lightbulb-o"></i></a></div>
+				<h3> First time here? Check out the <a href="/help">FAQ</a> </h3>
 			</div>
 
 			<div class="modal-footer">
-		      <a href="#!" class=" btn btn-primary modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+		      <a href="#!" class="btn btn-primary modal-action modal-close">Close</a>
 		    </div>
 
 		</div>
-		<!--FIRST TIME --> 
+		<!-- /FIRST TIME --> 
 	
 		@yield('content')
 	</div>

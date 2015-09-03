@@ -338,12 +338,13 @@ popGen.htmlutil.genDOM.activateLeanModal = function(){
 		$('#first-time-faq').openModal();
 		$.cookie("first_time", true);
 	}
+
+	$('#first-time-faq').openModal();
 };
 
+/**************************** /DOM MANIPULATION ****************************/
 
-
-/*END DOM*/
-
+/**************************** HTML Utilities ****************************/
 /**
  * Helper function to test first time modal
  * 
@@ -486,3 +487,4 @@ popGen.htmlutil.initFlipButtons = function() {
 		}
 	}
 };
+/*************************** /HTML Utilities ****************************/

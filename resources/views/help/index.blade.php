@@ -58,7 +58,7 @@
 
 		</div>
 
-		<div class="col-sm-9"> 
+		<div class="col-sm-9" id='faq-section'> 
 			<h2> Population Generation Simulator Help</h2>
 
 			<div class="filter-parent">

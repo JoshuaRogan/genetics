@@ -11,6 +11,91 @@
  * Factor to reduce the font for responsive fonts 
  *
  */
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  width: 100% \9;
+  max-width: 100%;
+  height: auto;
+}
+.form-horizontal .form-group-sm .form-control {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.form-horizontal .form-group-lg .form-control {
+  height: 46px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+.btn-group-lg > .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+.btn-group-sm > .btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.dl-horizontal dd:before,
+.dl-horizontal dd:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after,
+.btn-toolbar:before,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after,
+.pager:before,
+.pager:after,
+.panel-body:before,
+.panel-body:after {
+  content: " ";
+  display: table;
+}
+.dl-horizontal dd:after,
+.container:after,
+.container-fluid:after,
+.row:after,
+.form-horizontal .form-group:after,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after,
+.pager:after,
+.panel-body:after {
+  clear: both;
+}
 /**
  * Various font helper classes for colors and more
  * 	-Must have variables.less
@@ -263,6 +348,14 @@
   height: 0;
   margin: 0;
   padding: 0;
+}
+#transition .trans-hide:before,
+#transition .trans-hide:after {
+  content: " ";
+  display: table;
+}
+#transition .trans-hide:after {
+  clear: both;
 }
 #transition .trans-hide:before,
 #transition .trans-hide:after {
@@ -2372,6 +2465,113 @@
  */
 #links {
   /* Effect 2: 3D rolling links, idea from http://hakim.se/thoughts/rolling-links */
+}
+/**
+ * Modal Custom Styling
+ * @author: Josh Rogan
+ */
+#first-time-faq {
+  text-align: center;
+}
+#first-time-faq .modal-content .icon a {
+  font-size: 120px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+  /* Chrome, Safari, Opera */
+}
+@media (min-width: 768px) {
+  #first-time-faq .modal-content .icon a {
+    font-size: 135px;
+  }
+}
+@media (min-width: 992px) {
+  #first-time-faq .modal-content .icon a {
+    font-size: 142.5px;
+  }
+}
+@media (min-width: 1200px) {
+  #first-time-faq .modal-content .icon a {
+    font-size: 150px;
+  }
+}
+#first-time-faq .modal-content .icon a:active .fa {
+  animation: color-change 1s infinite;
+}
+#first-time-faq .modal-content .icon a:hover {
+  color: #f1c40f;
+}
+#first-time-faq .modal-content .icon a:visited .fa {
+  animation: color-change 1s infinite;
+}
+#first-time-faq .modal-content .icon a:focus .fa {
+  animation: color-change 1s infinite;
+}
+@keyframes color-change {
+  0% {
+    color: #f1c40f;
+  }
+  50% {
+    color: #f7dc6f;
+  }
+  100% {
+    color: #f1c40f;
+  }
+}
+#first-time-faq .modal-content h2 {
+  font-size: 30.4px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  #first-time-faq .modal-content h2 {
+    font-size: 34.2px;
+  }
+}
+@media (min-width: 992px) {
+  #first-time-faq .modal-content h2 {
+    font-size: 36.1px;
+  }
+}
+@media (min-width: 1200px) {
+  #first-time-faq .modal-content h2 {
+    font-size: 38px;
+  }
+}
+#first-time-faq .modal-footer .btn {
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  background: #4b516a;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+#first-time-faq .modal-footer .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #4b516a;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale3d(0.6, 0.6, 1);
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+#first-time-faq .modal-footer .btn:hover {
+  background-color: #fff;
+  color: #4b516a;
+}
+#first-time-faq .modal-footer .btn:hover::before {
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
 }
 /*
 
@@ -8137,7 +8337,7 @@ Then, run this script to get the list.
 .graph-allele #variable-header a span {
   position: relative;
   display: inline-block;
-  padding: 5px;
+  padding: 8px;
   background: #4b516a;
   color: white;
   transition: transform 0.3s;
@@ -8157,7 +8357,7 @@ Then, run this script to get the list.
   transition: background 0.3s;
   transform: rotateX(-90deg);
   transform-origin: 50% 0;
-  padding: 5px;
+  padding: 8px;
 }
 .graph-allele #variable-header a:hover span,
 .graph-allele #variable-header a:focus span {
@@ -8166,6 +8366,12 @@ Then, run this script to get the list.
 .graph-allele #variable-header a:hover span::before,
 .graph-allele #variable-header a:focus span::before {
   background: #4b516a;
+}
+.graph-allele #variable-header span {
+  border-radius: 4px;
+}
+.graph-allele #variable-header span:before {
+  border-radius: 4px;
 }
 .graph-allele .variable-activator:not(.fa-check-square-o) {
   transition: all 0.2s;
@@ -8267,7 +8473,7 @@ Then, run this script to get the list.
 .graph-genotype #variable-header a span {
   position: relative;
   display: inline-block;
-  padding: 5px;
+  padding: 8px;
   background: #4b516a;
   color: white;
   transition: transform 0.3s;
@@ -8287,7 +8493,7 @@ Then, run this script to get the list.
   transition: background 0.3s;
   transform: rotateX(-90deg);
   transform-origin: 50% 0;
-  padding: 5px;
+  padding: 8px;
 }
 .graph-genotype #variable-header a:hover span,
 .graph-genotype #variable-header a:focus span {
@@ -8296,6 +8502,12 @@ Then, run this script to get the list.
 .graph-genotype #variable-header a:hover span::before,
 .graph-genotype #variable-header a:focus span::before {
   background: #4b516a;
+}
+.graph-genotype #variable-header span {
+  border-radius: 4px;
+}
+.graph-genotype #variable-header span:before {
+  border-radius: 4px;
 }
 .graph-genotype .variable-activator:not(.fa-check-square-o) {
   transition: all 0.2s;
@@ -8380,7 +8592,7 @@ Then, run this script to get the list.
 .graph-genotype #variable-header a span {
   position: relative;
   display: inline-block;
-  padding: 5px;
+  padding: 8px;
   background: #6a4b51;
   color: white;
   transition: transform 0.3s;
@@ -8400,7 +8612,7 @@ Then, run this script to get the list.
   transition: background 0.3s;
   transform: rotateX(-90deg);
   transform-origin: 50% 0;
-  padding: 5px;
+  padding: 8px;
 }
 .graph-genotype #variable-header a:hover span,
 .graph-genotype #variable-header a:focus span {
@@ -9636,6 +9848,10 @@ Then, run this script to get the list.
   /* Bootstrap Sidebar */
   /* /Bootstrap Sidebar */
 }
+.page-faq #faq-section {
+  padding-left: 0;
+  padding-right: 0;
+}
 .page-faq ul.question,
 .page-faq #accordian-search-results {
   border-top: 1px solid #ddd;
@@ -9664,6 +9880,28 @@ Then, run this script to get the list.
 .page-faq #accordian-search-results li {
   transition: all 0.2s;
   padding: 0;
+  margin: 0 2px;
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */
+}
+@media (min-width: 768px) {
+  .page-faq ul.question li,
+  .page-faq #accordian-search-results li {
+    margin: 0 5px;
+  }
+}
+@media (min-width: 992px) {
+  .page-faq ul.question li,
+  .page-faq #accordian-search-results li {
+    margin: 0 15px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-faq ul.question li,
+  .page-faq #accordian-search-results li {
+    margin: 0 24px;
+  }
 }
 .page-faq ul.question li div h4,
 .page-faq #accordian-search-results li div h4 {
@@ -9995,6 +10233,36 @@ Then, run this script to get the list.
 .page-faq #slide-all-slides .slide-caption p {
   color: #666666;
 }
+.btn {
+  color: white;
+}
+p a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #4b516a;
+}
+p a:hover {
+  text-decoration: none;
+}
+p a::after {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #4b516a;
+  content: '';
+  opacity: 0;
+  transition: height 0.3s, opacity 0.3s, transform 0.3s;
+  transform: translateY(-10px);
+}
+p a:hover::after,
+p a:focus::after {
+  height: 3px;
+  opacity: 1;
+  transform: translateY(0px);
+}
 body .withripple {
   position: relative;
 }
@@ -10194,12 +10462,42 @@ p a {
   #variable-header:after {
     clear: both;
   }
+  #vars-section:before,
+  #buttons:before,
+  #variable-header:before,
+  #vars-section:after,
+  #buttons:after,
+  #variable-header:after {
+    content: " ";
+    display: table;
+  }
+  #vars-section:after,
+  #buttons:after,
+  #variable-header:after {
+    clear: both;
+  }
   #variables:before,
   #variables:after {
     content: " ";
     display: table;
   }
   #variables:after {
+    clear: both;
+  }
+  #variables:before,
+  #variables:after {
+    content: " ";
+    display: table;
+  }
+  #variables:after {
+    clear: both;
+  }
+  .legend:before,
+  .legend:after {
+    content: " ";
+    display: table;
+  }
+  .legend:after {
     clear: both;
   }
   .legend:before,
@@ -10409,6 +10707,63 @@ footer a {
 }
 footer a:hover {
   color: white;
+}
+footer a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+}
+footer a:hover {
+  text-decoration: none;
+}
+footer a::after {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #ffffff;
+  content: '';
+  opacity: 0;
+  transition: height 0.3s, opacity 0.3s, transform 0.3s;
+  transform: translateY(-10px);
+}
+footer a:hover::after,
+footer a:focus::after {
+  height: 3px;
+  opacity: 1;
+  transform: translateY(0px);
+}
+footer .html-validator::after {
+  content: none;
+}
+footer .nav-footer li a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+}
+footer .nav-footer li a:hover {
+  text-decoration: none;
+}
+footer .nav-footer li a::after {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #ffffff;
+  content: '';
+  opacity: 0;
+  transition: height 0.3s, opacity 0.3s, transform 0.3s;
+  transform: translateY(-10px);
+}
+footer .nav-footer li a:hover::after,
+footer .nav-footer li a:focus::after {
+  height: 3px;
+  opacity: 1;
+  transform: translateY(0px);
 }
 /******************NO UI SLIDER Modifications*******************/
 /* Functional styling;

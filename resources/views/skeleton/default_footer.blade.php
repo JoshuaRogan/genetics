@@ -51,7 +51,7 @@
 					<li> <a href="https://www.flickr.com/photos/pittpublichealth" target="_blank"><i class="fa fa-flickr fa-lg"></i></a> </li>
 			</ul>
 
-			<ul class="list-inline text-center">
+			<ul class="list-inline text-center nav-footer">
 				<li><a href="#">Home</a></li>
 				<!-- <li><a href="#">About Us</a></li> -->
 				<!-- <li><a href="#">Contact Us</a></li> -->

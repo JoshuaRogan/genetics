@@ -1,18 +1,17 @@
 /**
  * Creative hover links
  */
-
-
 #links {
+
 	/* Effect 2: 3D rolling links, idea from http://hakim.se/thoughts/rolling-links */
-	.rolling(@color){
+	.rolling(@color) {
 		.rolling(@color, "\f25a")
 	}
 	.rolling(@color, @icon) {
 		a {
-			@padding: 5px; 
-			
+			@padding: 8px;
 			perspective: 1000px;
+
 			span {
 				position: relative;
 				display: inline-block;
@@ -23,7 +22,7 @@
 				transform-origin: 50% 0;
 				transform-style: preserve-3d;
 
-				&::before{
+				&::before {
 					position: absolute;
 					top: 100%;
 					left: 0;
@@ -31,7 +30,7 @@
 					height: 100%;
 					background: @color;
 					text-align: center;
-					font-family: 'FontAwesome'; 
+					font-family: 'FontAwesome';
 					content: @icon;
 					transition: background 0.3s;
 					transform: rotateX(-90deg);
@@ -39,22 +38,20 @@
 					padding: @padding;
 				}
 			}
-
-			&:hover, &:focus{
-				span{
+			&:hover, &:focus {
+				span {
 					transform: rotateX(90deg) translateY(-22px);
 
-					&::before{
+					&::before {
 						background: @color;
 					}
 				}
 			}
 		}
-	}	
-
-	.circle(){
-		a{
-			&::before, &::after{
+	}
+	.circle() {
+		a {
+			&::before, &::after {
 				position: absolute;
 				top: 50%;
 				left: 50%;
@@ -67,23 +64,81 @@
 				transition: transform 0.3s, opacity 0.3s;
 				transform: translateX(-50%) translateY(-50%) scale(0.2);
 			}
-
-			&::after{
+			&::after {
 				width: 90px;
 				height: 90px;
 				border-width: 6px;
 				transform: translateX(-50%) translateY(-50%) scale(0.8);
 			}
-
-			&:hover, &:focus{
-				&::before, &::after{
+			&:hover, &:focus {
+				&::before, &::after {
 					opacity: 1;
 					transform: translateX(-50%) translateY(-50%) scale(1);
 				}
 			}
-
 		}
 	}
+	.underline() {
+		@padding: 8px;
 
+		a{
+			padding: @padding 0;
+
+			&::after {
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				height: 4px;
+				background: rgba(0, 0, 0, 0.1);
+				content: '';
+				opacity: 0;
+				-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+				-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+				transition: opacity 0.3s, transform 0.3s;
+				-webkit-transform: translateY(10px);
+				-moz-transform: translateY(10px);
+				transform: translateY(10px);
+			}
+			&:hover::after, &:focus::after{
+				opacity: 1;
+				-webkit-transform: translateY(0px);
+				-moz-transform: translateY(0px);
+				transform: translateY(0px);
+			}
+		}
+	}
+	.underline2(){
+		.underline2(@brand-primary);
+	}
+	.underline2(@color){
+		a{
+			position: relative;
+		    display: inline-block;
+		    text-decoration: none;
+		    color: @color;
+
+		    &:hover{
+		    	text-decoration: none;
+		    }
+
+		    &::after{
+			    position: absolute;
+				top: 90%;
+				left: 0;
+				width: 100%;
+				height: 1px;
+				background: @color;
+				content: '';
+				opacity: 0;
+				transition: height 0.3s, opacity 0.3s, transform 0.3s;
+				transform: translateY(-10px);
+		    }
+		    &:hover::after, &:focus::after{
+		    	height: 3px;
+				opacity: 1;;
+				transform: translateY(0px);
+		    }
+		}
+	}
 }
-

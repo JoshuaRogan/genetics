@@ -1,7 +1,6 @@
 //Import bootstrap variables, mixins, and helpers 
 @import "variables/variables.less";
-@import "vendors/bootstrap/variables.less";
-@import "vendors/bootstrap/mixins.less";
+@import (reference) "vendors/bootstrap/bootstrap.less";
 @import "font-helpers.less";
 @import "helpers.less";
 @import "anchor-js.less";
@@ -13,6 +12,7 @@
 // PopGen Components
 @import "components/buttons.less";
 @import "components/links.less";
+@import "components/modals.less";
 
 //Additional Vendors
 @import "vendors/material/my_material.less";
@@ -28,6 +28,8 @@
 @import "pages/welcome.less";
 @import "pages/report-problem.less";
 @import "pages/faq.less";
+
+@import "global.less";
 
 
 
@@ -166,6 +168,20 @@ footer {
     }
     a:hover {
         color: white;
+    }
+
+
+    #links .underline2(#fff);
+    
+    .html-validator{
+        &::after{
+            content: none;
+        }
+    }
+    
+
+    .nav-footer li{
+       #links .underline2(#fff);
     }
 }
 
