@@ -14430,7 +14430,7 @@ Then, run this script to get the list.
 .graph-allele #variable-header a span {
   position: relative;
   display: inline-block;
-  padding: 8px;
+  padding: 5px;
   background: #4b516a;
   color: white;
   transition: transform 0.3s;
@@ -14450,14 +14450,14 @@ Then, run this script to get the list.
   transition: background 0.3s;
   transform: rotateX(-90deg);
   transform-origin: 50% 0;
-  padding: 8px;
+  padding: 5px;
 }
 .graph-allele #variable-header a:hover span,
-.graph-allele #variable-header a:active span {
+.graph-allele #variable-header a:focus span {
   transform: rotateX(90deg) translateY(-22px);
 }
 .graph-allele #variable-header a:hover span::before,
-.graph-allele #variable-header a:active span::before {
+.graph-allele #variable-header a:focus span::before {
   background: #4b516a;
 }
 .graph-allele #variable-header span {
@@ -14566,7 +14566,7 @@ Then, run this script to get the list.
 .graph-genotype #variable-header a span {
   position: relative;
   display: inline-block;
-  padding: 8px;
+  padding: 5px;
   background: #4b516a;
   color: white;
   transition: transform 0.3s;
@@ -14586,14 +14586,14 @@ Then, run this script to get the list.
   transition: background 0.3s;
   transform: rotateX(-90deg);
   transform-origin: 50% 0;
-  padding: 8px;
+  padding: 5px;
 }
 .graph-genotype #variable-header a:hover span,
-.graph-genotype #variable-header a:active span {
+.graph-genotype #variable-header a:focus span {
   transform: rotateX(90deg) translateY(-22px);
 }
 .graph-genotype #variable-header a:hover span::before,
-.graph-genotype #variable-header a:active span::before {
+.graph-genotype #variable-header a:focus span::before {
   background: #4b516a;
 }
 .graph-genotype #variable-header span {
@@ -14685,7 +14685,7 @@ Then, run this script to get the list.
 .graph-genotype #variable-header a span {
   position: relative;
   display: inline-block;
-  padding: 8px;
+  padding: 5px;
   background: #6a4b51;
   color: white;
   transition: transform 0.3s;
@@ -14705,14 +14705,14 @@ Then, run this script to get the list.
   transition: background 0.3s;
   transform: rotateX(-90deg);
   transform-origin: 50% 0;
-  padding: 8px;
+  padding: 5px;
 }
 .graph-genotype #variable-header a:hover span,
-.graph-genotype #variable-header a:active span {
+.graph-genotype #variable-header a:focus span {
   transform: rotateX(90deg) translateY(-22px);
 }
 .graph-genotype #variable-header a:hover span::before,
-.graph-genotype #variable-header a:active span::before {
+.graph-genotype #variable-header a:focus span::before {
   background: #6a4b51;
 }
 .graph-genotype .variable-activator:not(.fa-check-square-o):hover {

@@ -4,14 +4,14 @@
 #links {
 
 	/* Effect 2: 3D rolling links, idea from http://hakim.se/thoughts/rolling-links */
-	.rolling(@color) {
+	.rolling(@color){
 		.rolling(@color, "\f25a")
 	}
 	.rolling(@color, @icon) {
-		a{
-			@padding: 8px;
+		a {
+			@padding: 5px; 
+			
 			perspective: 1000px;
-
 			span {
 				position: relative;
 				display: inline-block;
@@ -22,7 +22,7 @@
 				transform-origin: 50% 0;
 				transform-style: preserve-3d;
 
-				&::before {
+				&::before{
 					position: absolute;
 					top: 100%;
 					left: 0;
@@ -30,7 +30,7 @@
 					height: 100%;
 					background: @color;
 					text-align: center;
-					font-family: 'FontAwesome';
+					font-family: 'FontAwesome'; 
 					content: @icon;
 					transition: background 0.3s;
 					transform: rotateX(-90deg);
@@ -38,11 +38,12 @@
 					padding: @padding;
 				}
 			}
-			&:hover, &:active {
-				span {
+
+			&:hover, &:focus{
+				span{
 					transform: rotateX(90deg) translateY(-22px);
 
-					&::before {
+					&::before{
 						background: @color;
 					}
 				}

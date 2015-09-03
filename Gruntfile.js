@@ -30,12 +30,12 @@ module.exports = function(grunt) {
                 },
                 // safe: true,
                 processors: [
-                    require('pixrem')(), // add fallbacks for rem units
+                    // require('pixrem')(), // add fallbacks for rem units
                     require('autoprefixer-core')({
                         browsers: 'last 2 versions'
                     }), // add vendor prefixes
-                    require('cssnano')(), // minify the result
-                    require('cssnext')() // Plugins to use future CSS features now by adding backwards compatibility css processing
+                    // require('cssnano')(), // minify the result
+                    // require('cssnext')() // Plugins to use future CSS features now by adding backwards compatibility css processing
                 ]
             },
             dist: {
