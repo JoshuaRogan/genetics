@@ -13925,6 +13925,23 @@ Then, run this script to get the list.
 .collapsible .collapsible-body {
   padding: 2rem;
 }
+.collapsible .collapsible-header {
+  transition-delay: 0s;
+  transition-duration: 0.5s;
+  transition-property: all;
+  transition-timing-function: ease;
+  background-color: #4b516a;
+}
+.collapsible .collapsible-header:hover {
+  background-color: #363a4c;
+}
+.collapsible li.active {
+  border: 2px solid #4c3556;
+  border-radius: 4px;
+}
+.collapsible li.active .collapsible-header {
+  background-color: #4c3556;
+}
 /**
  * Styling for the graph simulator pages
  */
@@ -15970,6 +15987,27 @@ Then, run this script to get the list.
 .page-faq #accordian-search-results .collapsible-body {
   padding: 2rem;
 }
+.page-faq ul.question .collapsible-header,
+.page-faq #accordian-search-results .collapsible-header {
+  transition-delay: 0s;
+  transition-duration: 0.5s;
+  transition-property: all;
+  transition-timing-function: ease;
+  background-color: #4b516a;
+}
+.page-faq ul.question .collapsible-header:hover,
+.page-faq #accordian-search-results .collapsible-header:hover {
+  background-color: #363a4c;
+}
+.page-faq ul.question li.active,
+.page-faq #accordian-search-results li.active {
+  border: 2px solid #4c3556;
+  border-radius: 4px;
+}
+.page-faq ul.question li.active .collapsible-header,
+.page-faq #accordian-search-results li.active .collapsible-header {
+  background-color: #4c3556;
+}
 .page-faq ul.question > li,
 .page-faq #accordian-search-results > li {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -16844,8 +16882,35 @@ footer a:focus::after {
   opacity: 1;
   transform: translateY(0px);
 }
-footer .html-validator::after {
+footer .validators {
+  padding-bottom: 10px;
+}
+footer .validators .html-validator::after {
   content: none;
+}
+footer .validators .html-validator .fa-html5 {
+  padding-right: 10px;
+}
+footer .validators .html-validator:hover .fa-html5 {
+  transition-property: color;
+  transition-delay: 0s;
+  transition-duration: 0.5s;
+  transition-property: transform;
+  transition-timing-function: ease;
+  transform: scale(1.5);
+  color: #FF651D;
+}
+footer .validators .html-validator:hover .fa-css3 {
+  transition-property: color;
+  transition-delay: 0s;
+  transition-duration: 0.5s;
+  transition-property: transform;
+  transition-timing-function: ease;
+  transform: scale(1.5);
+  color: #008FD4;
+}
+footer .validators p {
+  padding-top: 10px;
 }
 footer .nav-footer li a {
   position: relative;

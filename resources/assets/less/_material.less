@@ -22,4 +22,23 @@
 	.collapsible-body{
 		padding: 2rem;
 	}
+
+	.collapsible-header{
+		#transition .default-duration(all, 0.50s);
+		background-color: @brand-primary;
+
+		&:hover{
+			background-color: darken(@brand-primary, 10%);
+		}
+	}
+	li.active{
+		@color: desaturate(darken(#8e44ad, 20%), 20%);
+		border: 2px solid @color;
+		border-radius: 4px;
+
+		.collapsible-header{
+			background-color: @color;
+			// color: @brand-primary
+		}
+	}
 }

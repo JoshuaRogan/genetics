@@ -35,9 +35,12 @@
 			<div class="col-md-3"> 
 				<h3> Report a Problem </h3>
 				<p> Found a problem? <a href="/report-problem">Report it!</a> </p>
-				<a class='html-validator' href='http://validator.w3.org/check?uri=http%3A%2F%2Fgenetics.melwood.jcubedworld.com%2F' target="_blank"><i class="fa fa-html5 fa-5x"></i></a>
+				<div class='validators center-block text-center'>
+					<a class='html-validator' href='http://validator.w3.org/check?uri=http%3A%2F%2Fgenetics.melwood.jcubedworld.com%2F' target="_blank"><i class="fa fa-html5 fa-3x"></i></a>
+					<a class='html-validator' href='http://validator.w3.org/check?uri=http%3A%2F%2Fgenetics.melwood.jcubedworld.com%2F' target="_blank" ><i class="fa fa-css3 fa-3x"></i></a>
+					<p> <small>Build with <a href='http://www.html5rocks.com/en/' target="_blank">HTML5</a> and <a href='http://www.html5rocks.com/en/' target="_blank">CSS3</a> </small></p>
 
-				<a class='html-validator' href='http://validator.w3.org/check?uri=http%3A%2F%2Fgenetics.melwood.jcubedworld.com%2F' target="_blank" ><i class="fa fa-css3 fa-5x"></i></a>
+				</div>
 			</div>
 
 		</div>
