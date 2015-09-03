@@ -338,8 +338,6 @@ popGen.htmlutil.genDOM.activateLeanModal = function(){
 		$('#first-time-faq').openModal();
 		$.cookie("first_time", true);
 	}
-
-	$('#first-time-faq').openModal();
 };
 
 /**************************** /DOM MANIPULATION ****************************/

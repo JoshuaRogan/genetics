@@ -8605,6 +8605,33 @@ button.close {
     font-size: 38px;
   }
 }
+#first-time-faq .modal-content h3 a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #4b516a;
+}
+#first-time-faq .modal-content h3 a:hover {
+  text-decoration: none;
+}
+#first-time-faq .modal-content h3 a::after {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #4b516a;
+  content: '';
+  opacity: 0;
+  transition: height 0.3s, opacity 0.3s, transform 0.3s;
+  transform: translateY(-10px);
+}
+#first-time-faq .modal-content h3 a:hover::after,
+#first-time-faq .modal-content h3 a:focus::after {
+  height: 3px;
+  opacity: 1;
+  transform: translateY(0px);
+}
 #first-time-faq .modal-footer .btn {
   background: none;
   color: inherit;
@@ -14426,11 +14453,11 @@ Then, run this script to get the list.
   padding: 8px;
 }
 .graph-allele #variable-header a:hover span,
-.graph-allele #variable-header a:focus span {
+.graph-allele #variable-header a:active span {
   transform: rotateX(90deg) translateY(-22px);
 }
 .graph-allele #variable-header a:hover span::before,
-.graph-allele #variable-header a:focus span::before {
+.graph-allele #variable-header a:active span::before {
   background: #4b516a;
 }
 .graph-allele #variable-header span {
@@ -14562,11 +14589,11 @@ Then, run this script to get the list.
   padding: 8px;
 }
 .graph-genotype #variable-header a:hover span,
-.graph-genotype #variable-header a:focus span {
+.graph-genotype #variable-header a:active span {
   transform: rotateX(90deg) translateY(-22px);
 }
 .graph-genotype #variable-header a:hover span::before,
-.graph-genotype #variable-header a:focus span::before {
+.graph-genotype #variable-header a:active span::before {
   background: #4b516a;
 }
 .graph-genotype #variable-header span {
@@ -14681,11 +14708,11 @@ Then, run this script to get the list.
   padding: 8px;
 }
 .graph-genotype #variable-header a:hover span,
-.graph-genotype #variable-header a:focus span {
+.graph-genotype #variable-header a:active span {
   transform: rotateX(90deg) translateY(-22px);
 }
 .graph-genotype #variable-header a:hover span::before,
-.graph-genotype #variable-header a:focus span::before {
+.graph-genotype #variable-header a:active span::before {
   background: #6a4b51;
 }
 .graph-genotype .variable-activator:not(.fa-check-square-o):hover {
@@ -15941,6 +15968,10 @@ Then, run this script to get the list.
 .page-faq #accordian-search-results > li.active {
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   margin: 16px 0;
+}
+.page-faq ul.question .collapsible-body p,
+.page-faq #accordian-search-results .collapsible-body p {
+  padding: 1rem 2rem;
 }
 .page-faq ul.question li,
 .page-faq #accordian-search-results li {

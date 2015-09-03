@@ -65,7 +65,7 @@
 			<div class="modal-content">
 				<h2> Welcome to the Population Generation Simulator </h2>
 				<div class="icon"><a href='/help'><i class="fa fa-lightbulb-o"></i></a></div>
-				<h3> First time here? Check out the <a href="/help">FAQ</a> </h3>
+				<h3> First time here? <br/><a href="/help#help-learn">FAQ - Learn</a> or <a href="/help#faq-simulator-usability">FAQ - Help</a></h3>
 			</div>
 
 			<div class="modal-footer">

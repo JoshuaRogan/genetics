@@ -49,8 +49,8 @@ foreach($_GET as $key => $value){
 	
 	<form class="row" id="variables-form"> 
 		<h2 id="variable-header"> Simulation Parameters 
-			<a href="#" id="all-sections"><span data-hover="Open All">Open All</span></a> 
-			<a href="#" id="all-help"><span data-hover="Show Help" >Show Help</span></a> 
+			<a id="all-sections" href='#'><span data-hover="Open All">Open All</span></a> 
+			<a id="all-help" href='#'><span data-hover="Show Help" >Show Help</span></a> 
 			
 			<span class="pull-right" id='main-togggles'> 
 				<a href="#" id="screenFriendly" data-toggle="tooltip" data-placement="top" title="Switch to screen friendly version (default)"><i class="fa fa-desktop"></i></a>

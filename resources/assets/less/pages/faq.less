@@ -1,13 +1,17 @@
 .page-faq {
-	#faq-section{
+	#faq-section {
 		padding-left: 0;
 		padding-right: 0;
 	}
 	ul.question, #accordian-search-results {
-		
 		.collapsible();
 		.collapsible.popout();
 
+		.collapsible-body {
+			p {
+				padding: 1rem 2rem;
+			}
+		}
 		li {
 			transition: all 0.2s;
 			padding: 0;

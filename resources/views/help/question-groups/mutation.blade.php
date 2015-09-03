@@ -1,6 +1,6 @@
 
 @set('question_set', 'learn-mutation')
-<ul class='list-unstyled question collapsible' data-collapsible="accordion"  id='question-panel-{{$question_set}}-@render("question-id")'>
+<ul class='list-unstyled question collapsible' data-collapsible="accordion">
 
 @partial('help.macros.question')
         @block('question-title', 'What is mutation?')

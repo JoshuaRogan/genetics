@@ -23,8 +23,8 @@
 			<nav class="visible-xs" id="mobile-sidebar"> 
 				<h2> Help Navigation </h2>
 				<ul class="nav nav-pills nav-stacked">
-					<li role='presentation' ><a href="#help-faq">Simulator F.A.Q.</a></li>
-					<li role='presentation' ><a href="#help-learn">Learn</a></li>
+					<li role='presentation'><a href="#help-learn">Learn</a></li>
+					<li role='presentation'><a href="#help-faq">Simulator F.A.Q.</a></li>
 				</ul>
 			</nav>
 			{{-- /XS Only stacked navigation bar  --}}
@@ -33,23 +33,19 @@
 			<nav class="bs-docs-sidebar hidden-xs">
 				<ul id="sidebar" class="nav nav-stacked fixed">
 					<li>
-						<a href="#help-faq">Simulator F.A.Q.</a>
+						<a href="#help-learn">Learn</a>
 						<ul class="nav nav-stacked">
-							<li><a href="#faq-simulator-usability">Simulator Usability</a></li>
-							<li><a href="#faq-simulator-technical">Technical Questions</a></li>
+							<li><a href="#faq-base-model">Base Model</a></li>
+							<li><a href="#faq-hardy-weinberg">Hardy-Weinberg Equilibrium</a></li>
+							<li><a href="#faq-forces">Forces</a></li>
 						</ul>
 					</li>
 
 					<li>
-						<a href="#help-learn">Learn</a>
+						<a href="#help-faq">Simulator F.A.Q.</a>
 						<ul class="nav nav-stacked">
-							<li><a href="#learn-genetic-drift">Unit 2.1 Drift</a></li>
-							<li><a href="#learn-selection">Unit 2.2 Selection</a></li>
-							<li><a href="#learn-mutation">Unit 2.3 Mutation</a></li>
-							<li><a href="#learn-migration">Unit 2.4 Migration</a></li>
-							<li><a href="#learn-assortative-mating">Unit 2.5 Assortative Mating</a></li>
-							<li><a href="#learn-inbreeding">Unit 2.6 Inbreeding</a></li>
-							<li><a href="#slide-all-slides">All Slides</a></li>
+							<li><a href="#faq-simulator-usability">Simulator Usability</a></li>
+							<li><a href="#faq-simulator-technical">Technical Questions</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -80,15 +76,19 @@
 				<div class="alert-container"></div>
 			</section>
 
-			<section id="help-faq"> 
-				<h3>Simulator F.A.Q.</h3>
-				@include('help.sections.faq')
-			</section>
 
 			<section id="help-learn"> 
 				<h3> Learn </h3>
 				@include('help.sections.learn')
 			</section>
+
+
+			<section id="help-faq"> 
+				<h3>Simulator F.A.Q.</h3>
+				@include('help.sections.faq')
+			</section>
+
+			
 		</div>
 
 		<div class='col-xs-12 visible-xs'>
@@ -96,8 +96,8 @@
 				<h2> Help Navigation </h2>
 				<ul class="nav nav-pills nav-stacked">
 					<li role='presentation' class='active'><a href="#population-generation-simulator-help">Back to Top</a></li>
-					<li role='presentation' class='active'><a href="#help-faq">Simulator F.A.Q.</a></li>
 					<li role='presentation' class='active'><a href="#help-learn">Learn</a></li>
+					<li role='presentation' class='active'><a href="#help-faq">Simulator F.A.Q.</a></li>
 				</ul>
 			</nav>
 		</div>

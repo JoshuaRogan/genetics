@@ -8,11 +8,10 @@
 --}}
 
 @set('question_set', 'faq-template-questions') {{-- UNIQUE ID FOR THE SET OF QUESTIONS [SHOULN'T HAVE TO CHANGE] --}}
-
+<ul class='list-unstyled question collapsible' data-collapsible="accordion">
 {{--Basic Layout (Copy and Paste this for each question)--}}
 @partial('help.macros.question')
     @block('question-title', 'QUESTION NAME')
-    @block('question-id', 'unique-id-for-this-set')
 
     @block('question-content')
         ANSWER 
@@ -101,3 +100,4 @@
        @endblock
 @endpartial
 
+</ul>
