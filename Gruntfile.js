@@ -51,7 +51,7 @@ module.exports = function(grunt) {
             },
             js: {
                 // the files to concatenate (modernizr, then jquery, then bootstrap, then everythign else)
-                src: ['resources/assets/js/jquery/**/*.js', 'resources/assets/js/bootstrap/**/*.js', 'resources/assets/js/index.js', 'resources/assets/js/popGen/config/**/*.js','resources/assets/js/**/*.js', '!resources/assets/js/popgen-config/**'],
+                src: ['resources/assets/js/jquery/jquery.js','resources/assets/js/jquery/jquery.cookie.js', 'resources/assets/js/bootstrap/**/*.js', 'resources/assets/js/index.js', 'resources/assets/js/popGen/config/**/*.js','resources/assets/js/**/*.js', '!resources/assets/js/popgen-config/**'],
                 // the location of the resulting JS file
                 dest: 'public/js/genetics.js'
             },

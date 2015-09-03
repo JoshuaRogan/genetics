@@ -299,7 +299,6 @@ popGen.htmlutil.genDOM.home.iconHandler = function(){
     	$("#bookmark-link .bookmark-link").attr("href", url);
     }); 
 
-
 }
 
 
@@ -320,19 +319,39 @@ popGen.htmlutil.genDOM.home.userConfig = function(){
 	    	$("#screenFriendly").addClass('hidden');
 		}
 	}
-
-
-
-}
-popGen.htmlutil.genDOM.activateLeanModal = function(){
-	// $('.modal-trigger').leanModal();
-	$('#getLink').leanModal();
-	$('#graph-computing-modal').leanModal();
-	$('#first-time-faq').openModal();
-
 };
 
+/**
+ * Activate lean modals 
+ */
+popGen.htmlutil.genDOM.activateLeanModal = function(){
+	$('#getLink').leanModal();
+	$('#graph-computing-modal').leanModal();
+
+	if(popGen.htmlutil.supportsHTML5LocalStorage()){
+		if(localStorage.getItem("first_time") != "true"){
+			$('#first-time-faq').openModal();
+			localStorage.setItem('first_time','true');
+		}
+	}
+	else if($.cookie('first_time') != true){
+		$('#first-time-faq').openModal();
+		$.cookie("first_time", true);
+	}
+};
+
+
+
 /*END DOM*/
+
+/**
+ * Helper function to test first time modal
+ * 
+ */
+popGen.htmlutil.clearFirstTime = function(){
+	$.removeCookie('first_time');
+	localStorage.removeItem('first_time');
+};
 
 
 /*Misc. Functions*/
