@@ -8359,6 +8359,10 @@ Then, run this script to get the list.
   opacity: 1;
 }
 .graph-allele #variable-header a {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
   perspective: 1000px;
 }
 .graph-allele #variable-header a span {
@@ -8495,6 +8499,10 @@ Then, run this script to get the list.
   opacity: 1;
 }
 .graph-genotype #variable-header a {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
   perspective: 1000px;
 }
 .graph-genotype #variable-header a span {
@@ -8614,6 +8622,10 @@ Then, run this script to get the list.
   opacity: 1;
 }
 .graph-genotype #variable-header a {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
   perspective: 1000px;
 }
 .graph-genotype #variable-header a span {
