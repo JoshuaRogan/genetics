@@ -142,10 +142,18 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
     	this.currentGenerationNum 	= 0;					//The current generation that is being produced 
  
     	for(var i=0; i<this.numGenerations; i++){
-    		this.buildRandomSample();
-
+    		if(i !== 0){
+                this.buildRandomSample();
+            }
+            else{
+                //Don't compute on the first run
+                this.currentGenerationNum++;
+                this.setCurrentAlleleFre(this.currentAlleleFre);
+                this.frequencies.push(this.currentAlleleFre);
+            }
     	}
     	this.finishTime = (new Date).getTime();
+
     }
 
     /**
