@@ -57,7 +57,7 @@
     @block('question-content')
        <p>The population size used in the simulator is normally the number of individuals in the population, i.e., the census population size.  The number of alleles is twice the population size.  </p>
        <p>Note, for sexually reproducing organisms with unequal sex ratios, the effective population size should be input, rather than the census population size.  The effective population size is calculated as follows:</p>
-       <h1>--------------ADD IMAGE HERE</h1>
+       <pre class='text-center'>N<sub>e</sub> = (4N<sub>M</sub> * N<sub>f</sub>) / (4<sub>M</sub> + N<sub>f</sub>)</pre>
        <p>where N<sub>e</sub> is the effective population size, and N<sub>m</sub> and N<sub>f</sub> are the number of males and females, respectively.  </p>
     @endblock
 @endpartial

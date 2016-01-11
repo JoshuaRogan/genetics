@@ -87,17 +87,17 @@
 
         <p>The first system requires user-specified relative fitness coefficients:  WAA, WAa, and Waa, which represent the relative probabilities that an individual with a particular genotype reproduces.  Typically one or more of the three fitness coefficients is set equal to 1 to serve as a reference, and the others are expressed as a fraction relative to the reference.  After one generation of random mating, the allele frequency is modeled as:</p>
 
-         <img src="http://placehold.it/300x300">
+         <img class='center-block' src="images/faq/new/how-selection-1.png">
 
         <p>Note, it is not required that the fitness of a reference allele be set equal to 1.  The three fitness coefficients need only to be proportional to each other. </p>
 
         <p>The second system for modeling selection uses two user-specified coefficients, the selection coefficient, s, and dominance coefficient, h.  The selection coefficient represents the degree of selection against the aa genotype group with respect to the AA genotype group.  The dominance coefficient represents the degree to which selection also impacts the heterozygote.  Selection and dominance coefficients can be expressed in terms of relative fitness coefficients as follows:</p>
 
-        <img src="http://placehold.it/300x300">
+        <img class='center-block' src="images/faq/new/how-selection-2.png">
 
         and
 
-        <img src="http://placehold.it/300x300">
+        <img class='center-block' src="images/faq/new/how-selection-3.png">
 
         <p>When selection and dominance coefficients are input by the user, the simulator will calculate the corresponding fitness coefficients, WAa and Waa, and set WAA equal to 1 as the reference.  The above formula is then used to calculate the effect on allele frequency.  </p>
 
@@ -132,7 +132,7 @@
 
     @block('question-content')
         <p>Mutation is modeled as a function of the forward (μ, A → a) and reverse (ν, a → A) mutation rates according the following formula: </p>
-        <img src="http://placehold.it/300x300">
+        <img class='center-block' src="images/faq/new/how-mutation.png">
     @endblock
 @endpartial
 
