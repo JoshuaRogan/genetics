@@ -21,6 +21,7 @@
         "cssnext": "~1.8.4"
     },
     "dependencies": {
+        "grunt-cli": "^1.4.1",
         "reveal.js": "~3.1.0"
     }
 }

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://popgensimulator.hgen.pitt.edu/graphs/allele -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="author" content="Josh Rogan">
+	<meta name="description" content="The Department of Human Genetics at the University of Pittsburgh&#39;s Graduate School of Public Health is dedicated to genetics research, teaching, and services. The department has three major research missions, which are (1) to develop and use genetic methods to investigate the causes and treatment of hereditary and acquired human illness, (2) to understand and explore the impact of genetics on public health, education, and disease prevention, and (3) to appreciate the role of genetic diversity within human populations.">
+	
+	<title> Genetic Simulator | Allele Graphing</title>
+
+
+	<link rel="shortcut icon" type="image/x-icon" href="http://popgensimulator.hgen.pitt.edu/favicon.ico">
+
+	<!-- iOS Options -->
+
+
+	<!-- STYLESHEETS  -->
+							<link rel="stylesheet" type="text/css" href="/style.min.css">
+		    
+
+	
+    <script async="" src="/analytics.js.download"></script><script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48474201-8', 'auto');
+	  ga('send', 'pageview');
+	</script>
+</head>
+
+<body> 
+
+	<!--HEADER --> 
+		<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		    	<span class="sr-only">Toggle navigation</span>
+		    	<span class="icon-bar"></span>
+		    	<span class="icon-bar"></span>
+		    	<span class="icon-bar"></span>
+		    </button>
+		    <a class="navbar-brand emboss" href="http://popgensimulator.hgen.pitt.edu/home"><img class="img-responsive" src="/logo.png" style="margin-top: -5px; margin-right: 10px;" width="70" alt="logo"></a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      		<ul class="nav navbar-nav">
+				<li><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele">Allele Simulator</a></li>
+				<li><a href="http://popgensimulator.hgen.pitt.edu/graphs/genotype">Genotype Simulator</a></li>
+        	</ul>
+
+     		<ul class="nav navbar-nav navbar-right"> 
+     			<li><a href="http://popgensimulator.hgen.pitt.edu/help">Help</a></li>
+     			<li><a href="http://popgensimulator.hgen.pitt.edu/contact">Contact Us</a></li>
+     		</ul>
+
+         	<ul class="hidden nav navbar-nav navbar-right">
+				<li><span class="label label-primary hidden-sm hidden-xs">DEV</span></li>
+				<li class="divider">&nbsp;</li>
+				<li><span class="label label-success hidden-sm hidden-xs">Last Update 6/29/15</span></li>
+			</ul> 
+			
+        </div>
+	</div>
+</nav>
+	<!--HEADER --> 
+
+
+
+
+	<!--CONTENT-->
+	<div id="main" class="page-graph graph-allele container-fluid"> 
+		<!--Flash Messages -->
+		
+				
+		<!--Flash Messages -->
+
+		<!-- FIRST TIME --> 
+		<div class="modal" id="first-time-faq">
+
+			<div class="modal-content">
+				<h2> Welcome to the Population Generation Simulator </h2>
+				<div class="icon"><a href="http://popgensimulator.hgen.pitt.edu/help"><i class="fa fa-lightbulb-o"></i></a></div>
+				<h3> 
+					First time here?  <br> 
+					Check our our helpful guides: <br> 
+					<a href="http://popgensimulator.hgen.pitt.edu/help#help-learn">FAQ - Learn</a> or <a href="http://popgensimulator.hgen.pitt.edu/help#faq-simulator-usability">FAQ - Tech Help</a>
+				</h3>
+			</div>
+
+			<div class="modal-footer">
+		      <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#!" class="btn btn-primary modal-action modal-close">Close</a>
+		    </div>
+
+		</div>
+		<!-- /FIRST TIME --> 
+	
+		
+<!-- Graph Completion Modal -->
+<div class="modal bottom-sheet" id="graph-computing-modal" tabindex="-1" role="dialog" aria-labelledby="graph-computing-title" aria-hidden="true">
+		<div class="modal-content">
+			
+			<button type="button" data-target="graph-computing-modal" class="close modal-trigger modal-close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="graph-computing-title">Graph Computing</h4>
+			
+			<div class="row center-block text-center">
+				<div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div> <!-- Would like to change to percentage --> 
+			</div>
+			
+			<div class="modal-footer">
+
+			</div>
+		</div>
+</div>
+<!-- Graph Completion Modal -->
+
+<!-- Bookmarking Modal -->
+<div class="modal bottom-sheet" id="bookmark-link" tabindex="-1" role="dialog" aria-labelledby="bookmark-link-title" aria-hidden="true">
+
+	<div class="modal-content">
+		<button data-target="bookmark-link" type="button" class="close modal-trigger modal-close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> 
+		<h2 class="modal-titles" id="bookmark-link-title">Generated Bookmark Link</h2>
+		<p> Bookmark the link below to prepopulate the variables with the values you currently have set and <strong>are active</strong>. </p>
+		<div class="alert alert-info" role="alert"> 
+			<p> <i class="fa fa-info-circle fa-lg"></i> A link shortner such as <strong><a href="https://goo.gl/" target="_blank">Google Link Shortner</a></strong> can be helpful! </p>
+		</div>
+		<pre class="text-center"><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele" class="bookmark-link" target="_blank">Bookmark Link is being generated!</a></pre>
+	</div>
+
+	<div class="modal-footer">
+      <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#!" class=" btn btn-primary modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+
+</div>
+<!-- Bookmarking Modal -->
+
+<div id="graph_wrapper" class="row default-layout allele-graph"> 
+	<div class="container"> 
+		<h1> Population Genetics Simulation</h1>
+		<div id="graph_container"> 
+			<div id="graph-canvas"><div class="canvasjs-chart-container" style="position: relative; text-align: left; cursor: auto;"><canvas class="canvasjs-chart-canvas" width="1140" height="550" style="position: absolute;"></canvas><canvas class="canvasjs-chart-canvas" width="1140" height="550" style="position: absolute; cursor: default;"></canvas><div class="canvasjs-chart-toolbar" style="position: absolute; right: 1px; top: 1px;"><button state="pan" type="button" title="Pan" style="display: none; position: relative; margin: 0px; padding: 3px 4px 0px; float: left;"><i class="fa fa-arrows"></i></button><button state="reset" type="button" title="Reset" style="display: none; position: relative; margin: 0px; padding: 3px 4px 0px; float: left;"><i class="fa fa-refresh"></i></button><button state="menu" type="button" title="More Options" style="position: relative; margin: 0px; padding: 3px 4px 0px; float: left;"><i class="fa fa-download"></i></button><div tabindex="-1" style="position: absolute; user-select: none; cursor: pointer; right: 1px; top: 25px; min-width: 120px; outline: 0px; border: 1px solid silver; font-size: 14px; font-family: Calibri, Verdana, sans-serif; padding: 5px 0px; text-align: left; background-color: rgb(255, 255, 255); line-height: 20px; box-shadow: rgb(136, 136, 136) 2px 2px 10px; display: none;"><div style="padding: 2px 15px 2px 10px;">Save as JPG</div><div style="padding: 2px 15px 2px 10px;">Save as PNG</div></div></div><div class="canvasjs-chart-tooltip" style="position: absolute; height: auto; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 2px; z-index: 1000; display: none; border-radius: 5px;"><div style=" width: auto;height: auto;min-width: 50px;line-height: auto;margin: 0px 0px 0px 0px;padding: 5px;font-family: Calibri, Arial, Georgia, serif;font-weight: normal;font-style: italic;font-size: 14px;color: #000000;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);text-align: left;border: 2px solid gray;background: rgba(255,255,255,.9);text-indent: 0px;white-space: nowrap;border-radius: 5px;-moz-user-select:none;-khtml-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none;} "> Sample Tooltip</div></div><a class="canvasjs-chart-credit" style="outline: none; margin: 0px; position: absolute; right: 3px; top: 536px; color: dimgrey; text-decoration: none; font-size: 10px; font-family: &quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, sans-serif; display: none;" tabindex="-1" target="_blank" href="http://canvasjs.com/">CanvasJS.com</a></div></div>  
+		</div>
+	</div>
+</div>
+
+<div id="variables" class="container"> 
+	
+	<form class="row" id="variables-form"> 
+		<h2 id="variable-header"> Simulation Parameters 
+			<a id="all-sections" href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><span data-hover="Open All">Open All</span></a> 
+			<a id="all-help" href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><span data-hover="Show Help">Show Help</span></a> 
+			
+			<span class="pull-right" id="main-togggles"> 
+				<a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" id="screenFriendly" data-toggle="tooltip" data-placement="top" title="Switch to screen friendly version (default)" class="hidden"><i class="fa fa-desktop"></i></a>
+				<a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" id="printerFriendly" data-toggle="tooltip" data-placement="top" title="Switch to high contrast for printing and projecting"><i class="fa fa-sun-o"></i></a> 
+				<a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#bookmark-link" id="getLink" data-tooltip="true" data-placement="top" title="Generate a bookmarked link for these variables"><i class="fa fa-link"></i></a>
+				<a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" id="getRawData" data-toggle="tooltip" data-placement="top" title="View RAW data points"><i class="fa fa-file-text-o"></i></a>
+			</span>
+		</h2>
+		<!-- Need to change font sizes on smaller displays  -->
+		
+		<div id="alerts-container"> 
+			<!--JS FILLED-->
+		</div>
+
+		<div id="buttons" class="row text-center center-block"> 
+
+			<div class="col-sm-6">
+				<a class="btn btn-primary btn-wapasha" role="button" id="newGraph" data-label="Generate Graph"><i class="fa fa-line-chart"></i> Generate Graph</a> 
+			</div>
+
+			<div class="col-sm-6">
+				<a class="btn btn-primary" role="button" id="addLine"><i class="fa fa-plus"></i> Add Line</a> 
+			</div>
+		</div>
+
+		<div id="multiple-legends-container" class="container"> 
+			<!--JS FILLED-->
+		</div> 
+
+		<div id="graph_stats" class="container hidden"> 
+			<!--JS FILLED-->
+			<div> 
+				<h3> <i class="fa fa-bar-chart"></i> <strong>Batch Graph Stats</strong> </h3>
+				<ul class="list-unstyled block-center">
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class="legend-var">Avg. Gens to A fixation, P(A)=1:</span><span class="legend-val" id="timeto1"></span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class="legend-var">No. of simulations reaching fixation:</span><span class="legend-val" id="timeshit1"></span> </li>
+
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class="legend-var">Avg. Gens to A elimination, P(A)=0:</span><span class="legend-val" id="timeto0"></span> </li>
+					<li class="col-xs-12 col-sm-6 col-md-6"><span class="legend-var">No. of simulations reaching elimination:</span><span class="legend-val" id="timeshit0"></span> </li>
+				</ul>
+			</div>
+		</div>
+
+
+
+		<div id="vars-section">
+ 			<div id="main-variables" class="variable-section open"> 
+				<h3><i class="fa fa-check-square-o fa-default"></i> Base Simulation Model <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" class="variable-section-toggle pull-right active default"><i class="fa fa-chevron-up"></i></a> </h3>
+				<div class="error"></div>
+				<div class="variables-section">
+					<div class="variable row">
+	<div class="col-sm-3">
+		<label>Generations: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">t</span> </div>
+			<p>This is the number of generations to be simulated.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="generations-slider" class="slider active"><div class="base"><div class="origin background" style="left: 4.9905%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="generations" name="generations" placeholder="0">
+	</div>
+</div>					<div class="variable row">
+	<div class="col-sm-3">
+		<label>Starting Allele Frequency: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">p</span> </div>
+			<p>This is the frequency of the allele of interest, A, at generation 0.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="starting-allele-frequency-slider" class="slider active"><div class="base"><div class="origin background" style="left: 50%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="starting-allele-frequency" name="starting-allele-frequency" placeholder="0">
+	</div>
+</div>				</div>
+			</div>
+
+			<div id="optional-variables">
+
+				<div id="population-variable" class="variable-section"> 
+					<h3><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><i class="variable-activator fa fa-square-o"></i></a> Finite Population<a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" class="variable-section-toggle pull-right"><i class="fa fa-chevron-down"></i></a></h3>
+					<div class="error"></div>
+					<div class="variables-section hidden">
+						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Population Size: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">N</span> </div>
+			<p>This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N. If this parameter is not enabled, the simulation will model the theoretical infinitely sized population.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="population-size-slider" class="slider"><div class="base"><div class="origin background" style="left: 4.9905%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="population-size" name="population-size" placeholder="0">
+	</div>
+</div>						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Number of Simulations: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol"></span> </div>
+			<p>This parameter sets the number of simulations that will be run and plotted simultaneously as a batch.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="batch-tool-runs-slider" class="slider"><div class="base"><div class="origin background" style="left: 2%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="batch-tool-runs" name="batch-tool-runs" placeholder="0">
+	</div>
+</div>					</div>
+				</div>
+
+
+				<div id="selection-variables" class="variable-section"> 
+					<h3><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><i class="variable-activator fa fa-square-o"></i></a> Selection <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" class="variable-section-toggle pull-right"><i class="fa fa-chevron-down"></i></a></h3>
+					<div class="error"></div>
+					<div class="variables-section hidden">
+						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Fitness Coefficient(w<sub>AA</sub>): <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">w<sub>AA</sub></span> </div>
+			<p>This describes the relative fitness of individuals with the AA genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., w<sub>Aa</sub> and w<sub>aa</sub>). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="fitness-coefficient-wAA-slider" class="slider"><div class="base"><div class="origin background stacking" style="left: 100%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="fitness-coefficient-wAA" name="fitness-coefficient-wAA" placeholder="0">
+	</div>
+</div>						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Fitness Coefficient(w<sub>Aa</sub>): <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">w<sub>Aa</sub></span> </div>
+			<p>This describes the relative fitness of individuals with the Aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., w<sub>AA</sub> and w<sub>aa</sub>). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="fitness-coefficient-wAa-slider" class="slider"><div class="base"><div class="origin background stacking" style="left: 100%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="fitness-coefficient-wAa" name="fitness-coefficient-wAa" placeholder="0">
+	</div>
+</div>						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Fitness Coefficient(w<sub>aa</sub>): <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">w<sub>aa</sub></span> </div>
+			<p>This describes the relative fitness of individuals with the aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., w<sub>AA</sub> and w<sub>Aa</sub>). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="fitness-coefficient-waa-slider" class="slider"><div class="base"><div class="origin background stacking" style="left: 100%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="fitness-coefficient-waa" name="fitness-coefficient-waa" placeholder="0">
+	</div>
+</div>						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Selection Coefficient: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">s</span> </div>
+			<p>This represents the degree of selection against the aa genotype group with respect to the AA genotype group. A value of s = 1 indicates 100% selection against the aa genotype group. A value of s = 0 indicates no selection against the aa genotype group. Note, selection can be defined in terms of the selection and dominance coefficients, or in terms of the three fitness coefficients, but not both.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="selection-coefficient-slider" class="slider"><div class="base"><div class="origin background" style="left: 0%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="selection-coefficient" name="selection-coefficient" placeholder="0">
+	</div>
+</div>						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Dominance Coefficient: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">h</span> </div>
+			<p>This represents the degree of dominance of the unfavored a allele in selection. The product of selection and dominance coefficients (i.e., s × h) represents the degree of selection against the Aa genotype group with respect to the AA genotype group. A value of h = 1 indicates that the Aa genotype group is equally unfavored as the aa genotype group. A value of h = 0 indicates that the Aa genotype group is equally favored as the AA genotype group. A value of h = 0.5 represents the additive model, where the selection against the Aa genotype group is half that of the aa genotype group. Negative values of h (representing over‐dominance or “heterozygote advantage”) are not implemented. Instead use fitness coefficients to describe situations of over‐ or under‐dominance. Note, selection can be defined in terms of selection and dominance coefficients, or in terms of the three fitness coefficients, but not both.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="dominance-coefficient-slider" class="slider"><div class="base"><div class="origin background stacking" style="left: 100%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="dominance-coefficient" name="dominance-coefficient" placeholder="0">
+	</div>
+</div>	
+					</div>
+				</div>
+
+
+				<div id="mutation-variables" class="variable-section"> 
+					<h3><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><i class="variable-activator fa fa-square-o"></i></a> Mutation <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" class="variable-section-toggle pull-right"><i class="fa fa-chevron-down"></i></a></h3>
+					<div class="error"></div>
+					<div class="variables-section hidden">
+						<div class="variable row">
+		<div class="col-sm-3">
+			<label>Forward Mutation Rate:<a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+
+			<div class="help-block hidden">
+				<div class="help-symbol-container"><span class="help-symbol">μ</span> </div>
+				<p>The rate at which allele A mutates to allele a per generation.</p>
+			</div>
+
+		</div>
+
+		<div class="col-sm-4">
+			<div id="mutation-rate-mu-slider" class="slider"><div class="base"><div class="origin background" style="left: 0%;"><div class="handle handle-lower"></div></div></div></div>
+		</div>
+
+		<div class="col-sm-2 value">
+			<input type="text" class="form-control" id="mutation-rate-mu" name="mutation-rate-mu" placeholder="0">
+		</div>
+
+		
+		<div class="col-sm-3 scientific-notation-container"> 
+
+			<div class="col-xs-6 scientific-notation">x10^</div>
+			
+			<div class="col-xs-6 form-group text-center scientific-form-group">
+			  <select class="form-control mutation-exponent" id="mutation-rate-mu-exponent" name="mutation-rate-mu-exponent">
+			    <option>-1</option>
+			    <option>-2</option>
+			    <option>-3</option>
+			    <option>-4</option>
+			    <option selected="selected">-5</option>
+			    <option>-6</option>
+			    <option>-7</option>
+			    <option>-8</option>
+			    <option>-9</option>
+			    <option>-10</option>
+			  </select>
+			</div>
+		</div>
+</div>						<div class="variable row">
+		<div class="col-sm-3">
+			<label>Reverse Mutation Rate:<a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+
+			<div class="help-block hidden">
+				<div class="help-symbol-container"><span class="help-symbol">ν</span> </div>
+				<p>The rate at which allele a mutates to allele A per generation.</p>
+			</div>
+
+		</div>
+
+		<div class="col-sm-4">
+			<div id="mutation-rate-nu-slider" class="slider"><div class="base"><div class="origin background" style="left: 0%;"><div class="handle handle-lower"></div></div></div></div>
+		</div>
+
+		<div class="col-sm-2 value">
+			<input type="text" class="form-control" id="mutation-rate-nu" name="mutation-rate-nu" placeholder="0">
+		</div>
+
+		
+		<div class="col-sm-3 scientific-notation-container"> 
+
+			<div class="col-xs-6 scientific-notation">x10^</div>
+			
+			<div class="col-xs-6 form-group text-center scientific-form-group">
+			  <select class="form-control mutation-exponent" id="mutation-rate-nu-exponent" name="mutation-rate-nu-exponent">
+			    <option>-1</option>
+			    <option>-2</option>
+			    <option>-3</option>
+			    <option>-4</option>
+			    <option selected="selected">-5</option>
+			    <option>-6</option>
+			    <option>-7</option>
+			    <option>-8</option>
+			    <option>-9</option>
+			    <option>-10</option>
+			  </select>
+			</div>
+		</div>
+</div>					</div>
+				</div>				
+
+				<div id="migration-variables" class="variable-section"> 
+					<h3><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><i class="variable-activator fa fa-square-o"></i></a> Migration <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" class="variable-section-toggle pull-right"><i class="fa fa-chevron-down"></i></a></h3>
+					<div class="error"></div>
+
+					<div class="variables-section hidden">
+						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Migration Rate: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">m</span> </div>
+			<p>The rate at which migrant alleles enter the population per generation.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="migration-rate-slider" class="slider"><div class="base"><div class="origin background" style="left: 0%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="migration-rate" name="migration-rate" placeholder="0">
+	</div>
+</div>						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Migrant Allele Frequency: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">p<sub>M</sub></span> </div>
+			<p>The frequency of the A allele among all migrant alleles entering the population.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="migrant-allele-frequency-slider" class="slider"><div class="base"><div class="origin background" style="left: 50%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="migrant-allele-frequency" name="migrant-allele-frequency" placeholder="0">
+	</div>
+</div>					</div>
+				</div>
+
+
+				<div id="inbreeding-variables" class="variable-section"> 
+					<h3><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><i class="variable-activator fa fa-square-o"></i></a> Inbreeding <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" class="variable-section-toggle pull-right"><i class="fa fa-chevron-down"></i></a></h3>
+					<div class="error"></div>
+
+					<div class="variables-section hidden">
+						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Inbreeding Coefficient: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">F</span> </div>
+			<p>This is the probability that both alleles in a randomly chosen individual in the population are identical‐by‐descent (IBD). A value of F = 0 indicates there is no inbreeding within the population. A value of 1 indicates that there is complete autozygosity such as found in inbred lines of model organisms.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="inbreeding-coefficient-slider" class="slider"><div class="base"><div class="origin background" style="left: 0%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="inbreeding-coefficient" name="inbreeding-coefficient" placeholder="0">
+	</div>
+</div>					</div>
+				</div>
+
+
+				<div id="assortative-mating" class="variable-section"> 
+					<h3><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><i class="variable-activator fa fa-square-o"></i></a> Assortative Mating <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" class="variable-section-toggle pull-right"><i class="fa fa-chevron-down"></i></a></h3>
+					<div class="error"></div>
+					<div class="variables-section hidden">
+						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Positive Assortative Mating Frequency: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">α</span> </div>
+			<p>This is the excess fraction of positive assortative matings in the population where 1 ‐ α is the fraction of random matings. A value of α = 1 indicates 100% positive assortative mating, and a value of α = 0 indicates total random mating.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="positive-assortative-mating-slider" class="slider"><div class="base"><div class="origin background" style="left: 0%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="positive-assortative-mating" name="positive-assortative-mating" placeholder="0">
+	</div>
+</div>					</div>
+				</div>
+
+				<div id="population-control" class="variable-section">
+					<h3><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><i class="variable-activator fa fa-square-o"></i></a> Bottleneck Generations <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#" class="variable-section-toggle pull-right"><i class="fa fa-chevron-down"></i></a></h3>
+					<div class="error"></div> 
+					<div class="variables-section hidden">
+						<div class="variable row range-slider">
+	<div class="col-sm-3">
+		<label>Generations to Override: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		<p class="help-block hidden">These parameters indicate the start and end generations, respectively, of the population bottleneck event.</p>
+	</div>
+
+	<div class="col-sm-5">
+		<div id="generation-to-override-slider" class="slider  ltr horizontal background"><div class="base"><div class="origin connect" style="left: 9.81964%;"><div class="handle handle-lower"></div></div><div class="origin background" style="left: 100%;"><div class="handle handle-upper"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-2 value">
+		<input type="text" class="form-control" id="generation-to-override-lower" name="generation-to-override-lower" placeholder="0">
+	</div>
+
+	<div class="col-sm-2 value">
+		<input type="text" class="form-control" id="generation-to-override-upper" name="generation-to-override-upper" placeholder="0">
+	</div>
+</div>						<div class="variable row">
+	<div class="col-sm-3">
+		<label>Population Size: <a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#"><sup><i class="fa fa-question fa-chevron-down"></i></sup></a></label>
+		
+		<div class="help-block hidden">
+			<div class="help-symbol-container"><span class="help-symbol">N<sub>B</sub></span> </div>
+			<p>This is the number of individuals in the population during the bottleneck event.  Note that the number of chromosomes simulated is 2NB.</p>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+		<div id="new-population-size-slider" class="slider"><div class="base"><div class="origin background" style="left: 49.995%;"><div class="handle handle-lower"></div></div></div></div>
+	</div>
+
+	<div class="col-sm-3 value">
+		<input type="text" class="form-control" id="new-population-size" name="new-population-size" placeholder="0">
+	</div>
+</div>					</div>
+				</div>
+
+				
+
+
+
+
+				
+			</div> <!-- End Optional Variables -->
+		</div> <!-- End Variables Section -->
+	</form>
+
+
+	<!-- Hidden form to update values with js later on when everything is loaded --> 
+	<form action="http://popgensimulator.hgen.pitt.edu/graphs/POST" class="hidden" id="bookmarking-values"> 
+			</form>
+</div>
+	</div>
+	<!--CONTENT-->
+
+	<!--FOOTER--> 
+	<footer> 
+	<div class="container-fluid ">
+
+
+		<div class="row">
+			<div class="col-md-3"> 
+				<h3> Credits: </h3>
+				<p>
+					<a href="http://www.publichealth.pitt.edu/home/directory/john-r-shaffer" target="_blank">John R Shaffer, PhD</a> <br>
+				 	<a href="http://www.publichealth.pitt.edu/human-genetics" target="_blank"> Department of Human Genetics</a> <br>
+				 	<a href="http://www.pitt.edu/" target="_blank">University of Pittsburgh</a>
+				 	
+				 </p>
+				<p> Application created by <a href="http://joshuarogan.com/" target="_blank">Josh Rogan</a></p>
+				<p>Copyright © 2015</p>
+			</div>
+
+			<div class="col-md-6"> 
+				<h3> About Us </h3>
+				<p> The Department of Human Genetics at the University of Pittsburgh's Graduate School of Public Health is dedicated to genetics research, teaching, and services. The department has three major research missions, which are (1) to develop and use genetic methods to investigate the causes and treatment of hereditary and acquired human illness, (2) to understand and explore the impact of genetics on public health, education, and disease prevention, and (3) to appreciate the role of genetic diversity within human populations.</p>
+
+
+				<h4>Department of Human Genetics: </h4>
+				<ul class="list-unstyled"> 
+					<li> 130 De Soto Street </li>
+					<li> Pittsburgh, PA 15261 </li>
+					<li> 412‐624‐3018 </li>
+				</ul>
+			
+
+				
+			</div>
+
+			<div class="col-md-3"> 
+				<h3> Report a Problem </h3>
+				<p> Found a problem? <a href="http://popgensimulator.hgen.pitt.edu/report-problem">Report it!</a> </p>
+				<div class="validators center-block text-center">
+					<a class="html-validator" href="http://validator.w3.org/check?uri=http://popgensimulator.hgen.pitt.edu" target="_blank"><i class="fa fa-html5 fa-3x"></i></a>
+					<a class="html-validator" href="http://validator.w3.org/check?uri=http://popgensimulator.hgen.pitt.edu" target="_blank"><i class="fa fa-css3 fa-3x"></i></a>
+					<p> <small>Build with <a href="http://www.html5rocks.com/en/" target="_blank">HTML5</a> and <a href="http://www.html5rocks.com/en/" target="_blank">CSS3</a> </small></p>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row"> 
+			<ul class="list-unstyled list-inline text-center"> 
+					<li> <a href="https://www.facebook.com/PittPublicHealth" target="_blank"><i class="fa fa-facebook fa-lg"></i></a> </li>
+					<li> <a href="https://twitter.com/PittHUGEN" target="_blank"><i class="fa fa-twitter fa-lg"></i></a> </li>
+					<li> <a href="http://www.linkedin.com/groups?home=&amp;gid=3295709&amp;trk=anet_ug_hm" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a> </li>
+					<li> <a href="http://www.youtube.com/user/PittPublicHealth" target="_blank"><i class="fa fa-youtube fa-lg"></i></a> </li>
+					<li> <a href="https://www.flickr.com/photos/pittpublichealth" target="_blank"><i class="fa fa-flickr fa-lg"></i></a> </li>
+			</ul>
+
+			<ul class="list-inline text-center nav-footer">
+				<li><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele#">Home</a></li>
+				<!-- <li><a href="#">About Us</a></li> -->
+				<!-- <li><a href="#">Contact Us</a></li> -->
+				<!-- <li><a href="#">Blog</a></li> -->
+				<li><a href="http://popgensimulator.hgen.pitt.edu/report-problem">Report a Problem</a></li>
+				<li><a href="http://popgensimulator.hgen.pitt.edu/faq">FAQ</a></li>
+			</ul>
+		</div> 
+	</div> 
+</footer>
+	<!--FOOTER-->
+
+	<!--LAZY SCRIPTS --> 
+							<script src="/genetics.js"></script>
+		
+		
+    
+
+	<!--LAZY SCRIPTS --> 
+
+	
+    	
+    	
+	
+
+
+
+
+
+<span style="position: absolute; left: 0px; top: -20000px; padding: 0px; margin: 0px; border: none; white-space: pre; line-height: normal; font-family: Calibri, Optima, Candara, Verdana, Geneva, sans-serif; font-size: 36px; font-weight: normal; display: none;">Mpgyi</span><div class="hiddendiv common"></div></body></html>

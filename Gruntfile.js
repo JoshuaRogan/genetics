@@ -1,13 +1,13 @@
 module.exports = function(grunt) {
-    grunt.loadNpmTasks('grunt-contrib-less');
+    // grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-postcss');
+    // grunt.loadNpmTasks('grunt-postcss');
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('prod', ['less', 'concat:css', 'concat:js', 'postcss', 'uglify']);
-    grunt.registerTask('dev', ['less', 'concat:css', 'concat:js']);
+    grunt.registerTask('prod', [/*'less', 'concat:css', */'concat:js', 'postcss', 'uglify']);
+    grunt.registerTask('dev', [/*'less', 'concat:css', */'concat:js']);
 
 
     grunt.initConfig({
@@ -17,8 +17,8 @@ module.exports = function(grunt) {
                     paths: ["assets/css"]
                 },
                 files: {
-                    "resources/assets/css/bootstrap.css": "resources/assets/less/vendors/bootstrap/bootstrap.less",
-                    "resources/assets/css/stylesheet.css": "resources/assets/less/stylesheet.less",
+                    // "resources/assets/css/bootstrap.css": "resources/assets/less/vendors/bootstrap/bootstrap.less",
+                    // "resources/assets/css/stylesheet.css": "resources/assets/less/stylesheet.less",
                 }
             }
         },
@@ -55,10 +55,10 @@ module.exports = function(grunt) {
                 // the location of the resulting JS file
                 dest: 'public/js/genetics.js'
             },
-            css: {
-                src: ['resources/assets/css/roboto.css', 'resources/assets/css/bootstrap.css', 'resources/assets/css/**/*.css'],
-                dest: 'public/styles/style.css'
-            }
+            // css: {
+            //     src: ['resources/assets/css/roboto.css', 'resources/assets/css/bootstrap.css', 'resources/assets/css/**/*.css'],
+            //     dest: 'public/styles/style.css'
+            // }
         },
         uglify: {
             options: {

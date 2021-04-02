@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://popgensimulator.hgen.pitt.edu/help -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="author" content="Josh Rogan">
+	<meta name="description" content="The Department of Human Genetics at the University of Pittsburgh&#39;s Graduate School of Public Health is dedicated to genetics research, teaching, and services. The department has three major research missions, which are (1) to develop and use genetic methods to investigate the causes and treatment of hereditary and acquired human illness, (2) to understand and explore the impact of genetics on public health, education, and disease prevention, and (3) to appreciate the role of genetic diversity within human populations.">
+	
+	<title> Genetic Simulator | Allele Graphing</title>
+
+
+	<link rel="shortcut icon" type="image/x-icon" href="http://popgensimulator.hgen.pitt.edu/favicon.ico">
+
+	<!-- iOS Options -->
+
+
+	<!-- STYLESHEETS  -->
+	    					<style class="anchorjs"></style><link rel="stylesheet" type="text/css" href="./Help_files/style.min.css">
+		    
+
+	
+    <script async="" src="./Help_files/analytics.js.download"></script><script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-48474201-8', 'auto');
+	  ga('send', 'pageview');
+	</script>
+</head>
+
+<body> 
+
+	<!--HEADER --> 
+		<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		    	<span class="sr-only">Toggle navigation</span>
+		    	<span class="icon-bar"></span>
+		    	<span class="icon-bar"></span>
+		    	<span class="icon-bar"></span>
+		    </button>
+		    <a class="navbar-brand emboss" href="http://popgensimulator.hgen.pitt.edu/home"><img class="img-responsive" src="./Help_files/logo.png" style="margin-top: -5px; margin-right: 10px;" width="70" alt="logo"></a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      		<ul class="nav navbar-nav">
+				<li><a href="http://popgensimulator.hgen.pitt.edu/graphs/allele">Allele Simulator</a></li>
+				<li><a href="http://popgensimulator.hgen.pitt.edu/graphs/genotype">Genotype Simulator</a></li>
+        	</ul>
+
+     		<ul class="nav navbar-nav navbar-right"> 
+     			<li><a href="http://popgensimulator.hgen.pitt.edu/help">Help</a></li>
+     			<li><a href="http://popgensimulator.hgen.pitt.edu/contact">Contact Us</a></li>
+     		</ul>
+
+         	<ul class="hidden nav navbar-nav navbar-right">
+				<li><span class="label label-primary hidden-sm hidden-xs">DEV</span></li>
+				<li class="divider">&nbsp;</li>
+				<li><span class="label label-success hidden-sm hidden-xs">Last Update 6/29/15</span></li>
+			</ul> 
+			
+        </div>
+	</div>
+</nav>
+	<!--HEADER --> 
+
+
+
+
+	<!--CONTENT-->
+	<div id="main" class="page-faq container-fluid"> 
+		<!--Flash Messages -->
+		
+				
+		<!--Flash Messages -->
+
+		<!-- FIRST TIME --> 
+		<div class="modal" id="first-time-faq">
+
+			<div class="modal-content">
+				<h2 id="welcome-to-the-population-generation-simulator"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#welcome-to-the-population-generation-simulator" aria-label="Anchor link for: welcome to the population generation simulator" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Welcome to the Population Generation Simulator </h2>
+				<div class="icon"><a href="http://popgensimulator.hgen.pitt.edu/help"><i class="fa fa-lightbulb-o"></i></a></div>
+				<h3 id="first-time-here-check-our-our-helpful-guides-faq-learn-or-faq-t"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#first-time-here-check-our-our-helpful-guides-faq-learn-or-faq-t" aria-label="Anchor link for: first time here check our our helpful guides faq learn or faq t" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> 
+					First time here?  <br> 
+					Check our our helpful guides: <br> 
+					<a href="http://popgensimulator.hgen.pitt.edu/help#help-learn">FAQ - Learn</a> or <a href="http://popgensimulator.hgen.pitt.edu/help#faq-simulator-usability">FAQ - Tech Help</a>
+				</h3>
+			</div>
+
+			<div class="modal-footer">
+		      <a href="http://popgensimulator.hgen.pitt.edu/help#!" class="btn btn-primary modal-action modal-close">Close</a>
+		    </div>
+
+		</div>
+		<!-- /FIRST TIME --> 
+	
+		<div class="container">
+	<div class="row"> 
+		<div class="col-sm-3 faq-nav"> 
+						<nav class="visible-xs" id="mobile-sidebar"> 
+				<h2 id="help-navigation"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#help-navigation" aria-label="Anchor link for: help navigation" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Help Navigation </h2>
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation"><a href="http://popgensimulator.hgen.pitt.edu/help#help-learn">Learn</a></li>
+					<li role="presentation"><a href="http://popgensimulator.hgen.pitt.edu/help#help-faq">Simulator F.A.Q.</a></li>
+				</ul>
+			</nav>
+			
+						<nav class="bs-docs-sidebar hidden-xs">
+				<ul id="sidebar" class="nav nav-stacked fixed">
+					<li>
+						<a href="http://popgensimulator.hgen.pitt.edu/help#help-learn">Learn</a>
+						<ul class="nav nav-stacked">
+							<li><a href="http://popgensimulator.hgen.pitt.edu/help#faq-base-model">Base Model</a></li>
+							<li><a href="http://popgensimulator.hgen.pitt.edu/help#faq-hardy-weinberg">Hardy-Weinberg Equilibrium</a></li>
+							<li><a href="http://popgensimulator.hgen.pitt.edu/help#faq-forces">Forces</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="http://popgensimulator.hgen.pitt.edu/help#help-faq">Simulator F.A.Q.</a>
+						<ul class="nav nav-stacked">
+							<li><a href="http://popgensimulator.hgen.pitt.edu/help#faq-simulator-usability">Simulator Usability</a></li>
+							<li><a href="http://popgensimulator.hgen.pitt.edu/help#faq-simulator-technical">Technical Questions</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			
+		</div>
+
+		<div class="col-sm-9" id="faq-section"> 
+			<h2 id="population-generation-simulator-help"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#population-generation-simulator-help" aria-label="Anchor link for: population generation simulator help" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Population Generation Simulator Help</h2>
+
+			<div class="filter-parent">
+				<label for="hideseek-search"><i class="fa fa-search"></i></label>
+				<div>
+					<input placeholder="Search Help Documents" id="hideseek-search" class="form-control input-lg" type="text">
+				</div>
+				<span id="num-results" class="font-blue">0</span>
+				
+			</div>
+			
+			<section id="search-results">
+				<h3 class="no-anchor hidden" id="search-results-for"> Search Results for <span class="search-term font-blue"></span></h3>
+				
+				<ul class="list-unstyled question collapsible no-anchor" data-collapsible="accordion" id="accordian-search-results">
+
+				</ul>
+
+				<div class="alert-container"></div>
+			</section>
+
+
+			<section id="help-learn"> 
+				<h3 id="learn"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#learn" aria-label="Anchor link for: learn" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Learn </h3>
+				<div id="faq-base-model"> 
+	<h4 id="base-model"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#base-model" aria-label="Anchor link for: base model" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Base Model </h4>
+
+			<p> 
+			 
+	</p>
+	
+		<div id="accordian-faq-base-model">
+			<ul class="list-unstyled question collapsible" data-collapsible="accordion">
+
+        
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-an-allele-what-is-an-allele-frequency-what-is-an-allele"> What is an allele?  What is an allele frequency?            <span class="hidden seo">
+                What is an allele?  What is an allele frequency? 
+                        <p>An allele is a particular variant at a genetic locus.  This simulator uses a two-allele system where "A" is the allele being modeled, and "a" is the other allele.</p>
+        <p>The allele frequency is the rate at which a given allele occurs in a population.  For this simulator, the frequency of the A allele is denoted p and can be calculated as the number of A alleles divided by the total number of alleles in the population.  Likewise, the frequency of the a allele can be calculated as the number of a alleles divided by the total number of alleles in the population, and is equal to 1-p.  The frequencies of the two alleles, A and a, sum to 1.</p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-an-allele-what-is-an-allele-frequency-what-is-an-allele" aria-label="Anchor link for: what is an allele what is an allele frequency what is an allele" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>An allele is a particular variant at a genetic locus.  This simulator uses a two-allele system where "A" is the allele being modeled, and "a" is the other allele.</p>
+        <p>The allele frequency is the rate at which a given allele occurs in a population.  For this simulator, the frequency of the A allele is denoted p and can be calculated as the number of A alleles divided by the total number of alleles in the population.  Likewise, the frequency of the a allele can be calculated as the number of a alleles divided by the total number of alleles in the population, and is equal to 1-p.  The frequencies of the two alleles, A and a, sum to 1.</p>
+            </div>
+    </div>
+</li>
+
+
+
+        
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-a-genotype-what-is-a-genotype-for-diploid-organisms-inc"> What is a genotype?            <span class="hidden seo">
+                What is a genotype? 
+                        <p>For diploid organisms including humans, individuals carry two copies of their genome, one inherited from each parent.  The set of two alleles at a genetic locus carried together in an individual is called a genotype.  In this simulator, the designations "AA", "Aa", and "aa" are used to refer to the three genotype groups.  The frequencies of the three genotype groups sum to 1.</p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-a-genotype-what-is-a-genotype-for-diploid-organisms-inc" aria-label="Anchor link for: what is a genotype what is a genotype for diploid organisms inc" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>For diploid organisms including humans, individuals carry two copies of their genome, one inherited from each parent.  The set of two alleles at a genetic locus carried together in an individual is called a genotype.  In this simulator, the designations "AA", "Aa", and "aa" are used to refer to the three genotype groups.  The frequencies of the three genotype groups sum to 1.</p>
+            </div>
+    </div>
+</li>
+
+
+
+        
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-a-generation-and-how-is-it-modeled-in-this-simulator-wh"> What is a generation and how is it modeled in this simulator?            <span class="hidden seo">
+                What is a generation and how is it modeled in this simulator? 
+                        <p>A generation refers to the descent from parents to offspring.  In this simulator, mating occurs only within a given generation, not across generations.  This process leads to a series of discreet generations where the alleles of the next generation are derived solely from the immediate previous generation.</p>
+        <p>The simulator achieves this system via “memory-less” sampling of alleles from the previous generation.  In other words, the alleles of a new generation are sampled from the previous generation without regard to which alleles have already been sampled and without regard to allelic composition of more ancestral generations.  </p>
+        <p>Note, the subscript 0 and 1 are used to denote generation numbers of parents and offspring, respectively, in this FAQ and other simulator documentation.</p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-a-generation-and-how-is-it-modeled-in-this-simulator-wh" aria-label="Anchor link for: what is a generation and how is it modeled in this simulator wh" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>A generation refers to the descent from parents to offspring.  In this simulator, mating occurs only within a given generation, not across generations.  This process leads to a series of discreet generations where the alleles of the next generation are derived solely from the immediate previous generation.</p>
+        <p>The simulator achieves this system via “memory-less” sampling of alleles from the previous generation.  In other words, the alleles of a new generation are sampled from the previous generation without regard to which alleles have already been sampled and without regard to allelic composition of more ancestral generations.  </p>
+        <p>Note, the subscript 0 and 1 are used to denote generation numbers of parents and offspring, respectively, in this FAQ and other simulator documentation.</p>
+            </div>
+    </div>
+</li>
+
+
+
+        
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="can-more-than-two-alleles-be-modeled-at-a-time-can-more-than-tw"> Can more than two alleles be modeled at a time?            <span class="hidden seo">
+                Can more than two alleles be modeled at a time? 
+                        <p>No.  This simulator is designed for a two-allele system.  However, in practice, multi-allele systems can be modeled by defining the A allele as the allele of interest, and defining the a allele as the collection of all non-A alleles combined.</p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#can-more-than-two-alleles-be-modeled-at-a-time-can-more-than-tw" aria-label="Anchor link for: can more than two alleles be modeled at a time can more than tw" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>No.  This simulator is designed for a two-allele system.  However, in practice, multi-allele systems can be modeled by defining the A allele as the allele of interest, and defining the a allele as the collection of all non-A alleles combined.</p>
+            </div>
+    </div>
+</li>
+
+
+
+        
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-the-population-size-what-is-the-population-size-the-pop"> What is the population size?            <span class="hidden seo">
+                What is the population size? 
+                       <p>The population size used in the simulator is normally the number of individuals in the population, i.e., the census population size.  The number of alleles is twice the population size.  </p>
+       <p>Note, for sexually reproducing organisms with unequal sex ratios, the effective population size should be input, rather than the census population size.  The effective population size is calculated as follows:</p>
+       <pre class="text-center">N<sub>e</sub> = (4N<sub>M</sub> * N<sub>f</sub>) / (4<sub>M</sub> + N<sub>f</sub>)</pre>
+       <p>where N<sub>e</sub> is the effective population size, and N<sub>m</sub> and N<sub>f</sub> are the number of males and females, respectively.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-the-population-size-what-is-the-population-size-the-pop" aria-label="Anchor link for: what is the population size what is the population size the pop" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                    <p>The population size used in the simulator is normally the number of individuals in the population, i.e., the census population size.  The number of alleles is twice the population size.  </p>
+       <p>Note, for sexually reproducing organisms with unequal sex ratios, the effective population size should be input, rather than the census population size.  The effective population size is calculated as follows:</p>
+       <pre class="text-center">N<sub>e</sub> = (4N<sub>M</sub> * N<sub>f</sub>) / (4<sub>M</sub> + N<sub>f</sub>)</pre>
+       <p>where N<sub>e</sub> is the effective population size, and N<sub>m</sub> and N<sub>f</sub> are the number of males and females, respectively.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+</ul> 	</div>
+
+			</div>
+ 
+<div id="faq-hardy-weinberg"> 
+	<h4 id="hardy-weinberg-equilibrium"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#hardy-weinberg-equilibrium" aria-label="Anchor link for: hardy weinberg equilibrium" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Hardy-Weinberg Equilibrium </h4>
+
+			<p> 
+			 
+	</p>
+	
+		<div id="accordian-faq-hardy-weinberg">
+			<ul class="list-unstyled question collapsible" data-collapsible="accordion">
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-hardy-weinberg-equilibrium-what-is-hardy-weinberg-equil"> What is Hardy-Weinberg Equilibrium?            <span class="hidden seo">
+                What is Hardy-Weinberg Equilibrium? 
+                        <p>The Hardy-Weinberg principal states that if a set of assumptions are met regarding the forces governing the genetics of the population, then the genotype frequencies will occur in the “Hardy-Weinberg proportions” and the allele and genotype frequencies will remain stable across generations.  The Hardy-Weinberg proportions reflect a simple relationship between genotype and allele frequencies.  Specifically, the genotype frequencies are: </p>
+        <pre class="text-center">P(AA) = p<sup>2</sup><br>P(Aa) = 2pq<br>P(aa) = q<sup>2</sup></pre>
+        <p>where p is the frequency of the A allele and q is the frequency of the a allele. </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-hardy-weinberg-equilibrium-what-is-hardy-weinberg-equil" aria-label="Anchor link for: what is hardy weinberg equilibrium what is hardy weinberg equil" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>The Hardy-Weinberg principal states that if a set of assumptions are met regarding the forces governing the genetics of the population, then the genotype frequencies will occur in the “Hardy-Weinberg proportions” and the allele and genotype frequencies will remain stable across generations.  The Hardy-Weinberg proportions reflect a simple relationship between genotype and allele frequencies.  Specifically, the genotype frequencies are: </p>
+        <pre class="text-center">P(AA) = p<sup>2</sup><br>P(Aa) = 2pq<br>P(aa) = q<sup>2</sup></pre>
+        <p>where p is the frequency of the A allele and q is the frequency of the a allele. </p>
+            </div>
+    </div>
+</li>
+
+
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-are-the-hardy-weinberg-assumptions-what-are-the-hardy-wein"> What are the Hardy-Weinberg assumptions?            <span class="hidden seo">
+                What are the Hardy-Weinberg assumptions? 
+                        <p>The assumptions central to Hardy-Weinberg equilibrium are as follows:</p>
+        <ul>
+            <li>diploid organism</li>
+            <li>sexual reproduction </li>
+            <li>non-overlapping generations </li>
+            <li>random mating</li>
+            <li>infinitely large population size</li>
+            <li>equal allele frequencies in the sexes</li>
+            <li>no migration, mutation, or selection</li>
+        </ul>
+        <p>Violations of any of these assumptions can lead to deviations from Hardy-Weinberg equilibrium.  Depending on which assumptions are violated, allele and genotype frequencies may change across generations, or the genotype frequencies may deviate from the Hardy-Weinberg proportions.  </p>
+        <p>Note that violations of these assumptions may result in deviations from Hardy-Weinberg equilibrium, but also may not.  Indeed, genotype frequencies may appear to be in Hardy-Weinberg equilibrium even if some assumptions are violated.  Moreover, observing that a population/locus is in Hardy-Weinberg equilibrium does not imply that all assumptions are met.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-are-the-hardy-weinberg-assumptions-what-are-the-hardy-wein" aria-label="Anchor link for: what are the hardy weinberg assumptions what are the hardy wein" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>The assumptions central to Hardy-Weinberg equilibrium are as follows:</p>
+        <ul>
+            <li>diploid organism</li>
+            <li>sexual reproduction </li>
+            <li>non-overlapping generations </li>
+            <li>random mating</li>
+            <li>infinitely large population size</li>
+            <li>equal allele frequencies in the sexes</li>
+            <li>no migration, mutation, or selection</li>
+        </ul>
+        <p>Violations of any of these assumptions can lead to deviations from Hardy-Weinberg equilibrium.  Depending on which assumptions are violated, allele and genotype frequencies may change across generations, or the genotype frequencies may deviate from the Hardy-Weinberg proportions.  </p>
+        <p>Note that violations of these assumptions may result in deviations from Hardy-Weinberg equilibrium, but also may not.  Indeed, genotype frequencies may appear to be in Hardy-Weinberg equilibrium even if some assumptions are violated.  Moreover, observing that a population/locus is in Hardy-Weinberg equilibrium does not imply that all assumptions are met.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-happens-if-hardy-weinberg-assumptions-are-violated-what-ha"> What happens if Hardy-Weinberg assumptions are violated?            <span class="hidden seo">
+                What happens if Hardy-Weinberg assumptions are violated? 
+                        <p>Answering this question forms the basis of the genetic simulator.  Many of the parameters set by the user represent forces that shape the genetic composition of the population.  These forces are violations of the Hardy-Weinberg assumptions.  Some have predictable effects on allele and genotype frequencies.  Others represent random processes governed by chance.  Combinations of forces can act simultaneously.</p>
+        <p>Overall, violations in Hardy-Weinberg assumptions may lead to interesting changes in the genetic composition of a population. </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-happens-if-hardy-weinberg-assumptions-are-violated-what-ha" aria-label="Anchor link for: what happens if hardy weinberg assumptions are violated what ha" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Answering this question forms the basis of the genetic simulator.  Many of the parameters set by the user represent forces that shape the genetic composition of the population.  These forces are violations of the Hardy-Weinberg assumptions.  Some have predictable effects on allele and genotype frequencies.  Others represent random processes governed by chance.  Combinations of forces can act simultaneously.</p>
+        <p>Overall, violations in Hardy-Weinberg assumptions may lead to interesting changes in the genetic composition of a population. </p>
+            </div>
+    </div>
+</li>
+
+
+</ul> 	</div>
+
+			</div>
+ 
+<div id="faq-forces"> 
+	<h4 id="forces-shaping-the-genetic-composition-of-a-population"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#forces-shaping-the-genetic-composition-of-a-population" aria-label="Anchor link for: forces shaping the genetic composition of a population" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Forces shaping the genetic composition of a population </h4>
+
+			<p> 
+			 
+	</p>
+	
+		<div id="accordian-faq-forces">
+			<ul class="list-unstyled question collapsible" data-collapsible="accordion">
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-genetic-drift-what-is-genetic-drift-genetic-drift-refer"> What is genetic drift?            <span class="hidden seo">
+                What is genetic drift? 
+                        <p>Genetic drift refers to the random changes in allele frequency that occur in finite populations due to the chance sampling of gametes. Drift is particularly important for small populations.  </p>
+        <p>In the absence of other evolutionary forces, drift will eventually bring about the fixation of one allele.  It could be any allele, and the probability of a given allele eventually becoming fixed in the future is its current allele frequency.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-genetic-drift-what-is-genetic-drift-genetic-drift-refer" aria-label="Anchor link for: what is genetic drift what is genetic drift genetic drift refer" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Genetic drift refers to the random changes in allele frequency that occur in finite populations due to the chance sampling of gametes. Drift is particularly important for small populations.  </p>
+        <p>In the absence of other evolutionary forces, drift will eventually bring about the fixation of one allele.  It could be any allele, and the probability of a given allele eventually becoming fixed in the future is its current allele frequency.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-is-genetic-drift-modeled-in-this-simulator-how-is-genetic-d"> How is genetic drift modeled in this simulator?            <span class="hidden seo">
+                How is genetic drift modeled in this simulator? 
+                        <p>Genetic drift is modeled by the random selection of alleles from a current generation chosen to be transmitted to the next generation.  This is achieved by random sampling with replacement.  Drift is activated as long as a finite population size is specified.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-is-genetic-drift-modeled-in-this-simulator-how-is-genetic-d" aria-label="Anchor link for: how is genetic drift modeled in this simulator how is genetic d" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Genetic drift is modeled by the random selection of alleles from a current generation chosen to be transmitted to the next generation.  This is achieved by random sampling with replacement.  Drift is activated as long as a finite population size is specified.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-a-population-bottleneck-what-is-a-population-bottleneck"> What is a population bottleneck?            <span class="hidden seo">
+                What is a population bottleneck? 
+                       <p>A population bottleneck occurs when the size of a population decreases for some number of generations, followed by an expansion.  The effects of genetic drift on the genetic composition of the population may be more pronounced during a population bottleneck.</p> 
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-a-population-bottleneck-what-is-a-population-bottleneck" aria-label="Anchor link for: what is a population bottleneck what is a population bottleneck" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                    <p>A population bottleneck occurs when the size of a population decreases for some number of generations, followed by an expansion.  The effects of genetic drift on the genetic composition of the population may be more pronounced during a population bottleneck.</p> 
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-is-a-population-bottleneck-modeled-in-this-simulator-how-is"> How is a population bottleneck modeled in this simulator?            <span class="hidden seo">
+                How is a population bottleneck modeled in this simulator? 
+                        <p>A population bottleneck is modeled by changing the size of the simulated population for a specified number of generations.  Note, while “bottleneck” generally refers to a temporary decrease in population size, the simulator allows any one-time change in size (i.e., decrease or increase) that lasts for any number of generations.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-is-a-population-bottleneck-modeled-in-this-simulator-how-is" aria-label="Anchor link for: how is a population bottleneck modeled in this simulator how is" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>A population bottleneck is modeled by changing the size of the simulated population for a specified number of generations.  Note, while “bottleneck” generally refers to a temporary decrease in population size, the simulator allows any one-time change in size (i.e., decrease or increase) that lasts for any number of generations.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-an-infinitely-large-population-what-is-an-infinitely-la"> What is an "infinitely large" population?            <span class="hidden seo">
+                What is an "infinitely large" population? 
+                        <p>An infinitely large population is simply a theoretical population comprising an infinite number of individuals.  This allows chance events (such as the random sampling of alleles) to converge in probability toward the expect value.  In other word, this assumption take chance out of the scenario. </p> 
+        <p>In infinitely-large populations, there is no random sampling of alleles.  Instead, allele frequencies of the next generation are derived precisely from the previous generation. </p> 
+        <p>Because infinitely-large populations do not experience the effects of genetic drift, modeling their behavior may be of interest, especially if the user is interested in the effects of other evolutionary forces </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-an-infinitely-large-population-what-is-an-infinitely-la" aria-label="Anchor link for: what is an infinitely large population what is an infinitely la" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>An infinitely large population is simply a theoretical population comprising an infinite number of individuals.  This allows chance events (such as the random sampling of alleles) to converge in probability toward the expect value.  In other word, this assumption take chance out of the scenario. </p> 
+        <p>In infinitely-large populations, there is no random sampling of alleles.  Instead, allele frequencies of the next generation are derived precisely from the previous generation. </p> 
+        <p>Because infinitely-large populations do not experience the effects of genetic drift, modeling their behavior may be of interest, especially if the user is interested in the effects of other evolutionary forces </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-is-an-infinitely-large-population-modeled-in-this-simulator"> How is an infinitely-large population modeled in this simulator?            <span class="hidden seo">
+                How is an infinitely-large population modeled in this simulator? 
+                        <p>Because there is no random sampling of alleles in infinitely-large populations, allele frequencies of the next generation can be derived precisely from those of the previous generation.</p>  
+        <p>The default setting of the simulator is to model the theoretical infinitely-large population.  Simply leave the Finite Population parameter unchecked (and Population Size parameter unspecified) to simulate an infinitely-large population.</p>
+        <p>Note, due to the “Law of Large Numbers”, a large finite population closely approximate the behavior of an infinitely-large population.  Because the computational burden of simulating an infinitely-large population is considerably less than that of simulating a large finite population, users may desire to simulate infinitely-large populations rather than large finite populations.</p>  
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-is-an-infinitely-large-population-modeled-in-this-simulator" aria-label="Anchor link for: how is an infinitely large population modeled in this simulator" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Because there is no random sampling of alleles in infinitely-large populations, allele frequencies of the next generation can be derived precisely from those of the previous generation.</p>  
+        <p>The default setting of the simulator is to model the theoretical infinitely-large population.  Simply leave the Finite Population parameter unchecked (and Population Size parameter unspecified) to simulate an infinitely-large population.</p>
+        <p>Note, due to the “Law of Large Numbers”, a large finite population closely approximate the behavior of an infinitely-large population.  Because the computational burden of simulating an infinitely-large population is considerably less than that of simulating a large finite population, users may desire to simulate infinitely-large populations rather than large finite populations.</p>  
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="can-population-growth-be-modeled-can-population-growth-be-model"> Can population growth be modeled?            <span class="hidden seo">
+                Can population growth be modeled? 
+                        <p>No. Population growth models are currently not implemented. </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#can-population-growth-be-modeled-can-population-growth-be-model" aria-label="Anchor link for: can population growth be modeled can population growth be model" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>No. Population growth models are currently not implemented. </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-selection-what-is-selection-selection-refers-to-the-dif"> What is selection?            <span class="hidden seo">
+                What is selection? 
+                        <p>Selection refers to the differing rates at which alleles are transmitted across generations, due to differences in viability or fertility among the genotype groups</p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-selection-what-is-selection-selection-refers-to-the-dif" aria-label="Anchor link for: what is selection what is selection selection refers to the dif" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Selection refers to the differing rates at which alleles are transmitted across generations, due to differences in viability or fertility among the genotype groups</p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-is-selection-modeled-in-this-simulator-how-is-selection-mod"> How is selection modeled in this simulator?            <span class="hidden seo">
+                How is selection modeled in this simulator? 
+                        <p>Two systems are available for defining selection models, but only one of these systems can be active at a time.  </p>
+
+        <p>The first system requires user-specified relative fitness coefficients:  WAA, WAa, and Waa, which represent the relative probabilities that an individual with a particular genotype reproduces.  Typically one or more of the three fitness coefficients is set equal to 1 to serve as a reference, and the others are expressed as a fraction relative to the reference.  After one generation of random mating, the allele frequency is modeled as:</p>
+
+         <img class="center-block" src="./Help_files/how-selection-1.png">
+
+        <p>Note, it is not required that the fitness of a reference allele be set equal to 1.  The three fitness coefficients need only to be proportional to each other. </p>
+
+        <p>The second system for modeling selection uses two user-specified coefficients, the selection coefficient, s, and dominance coefficient, h.  The selection coefficient represents the degree of selection against the aa genotype group with respect to the AA genotype group.  The dominance coefficient represents the degree to which selection also impacts the heterozygote.  Selection and dominance coefficients can be expressed in terms of relative fitness coefficients as follows:</p>
+
+        <img class="center-block" src="./Help_files/how-selection-2.png">
+
+        and
+
+        <img class="center-block" src="./Help_files/how-selection-3.png">
+
+        <p>When selection and dominance coefficients are input by the user, the simulator will calculate the corresponding fitness coefficients, WAa and Waa, and set WAA equal to 1 as the reference.  The above formula is then used to calculate the effect on allele frequency.  </p>
+
+        <p>Both systems can be used to specify models of directional selection (also called positive selection), which in this context means that one allele is clearly favored and the other allele is clearly disfavored.  </p>
+
+        <p>Models of over-dominance (also called heterozygote advantage), a form of balancing selection, can be specified using fitness coefficients.  However, over-dominance cannot be specified in this simulator using selection and dominance coefficients. Other forms of balancing selection, such as frequency-dependent selection, are not implemented at this time.</p>
+
+        <p>Models of under-dominance (also called heterozygote disadvantage), a form of disruptive selection, can be specified using fitness coefficients.  However, under-dominance cannot be specified using selection and dominance coefficients.  </p>
+
+
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-is-selection-modeled-in-this-simulator-how-is-selection-mod" aria-label="Anchor link for: how is selection modeled in this simulator how is selection mod" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Two systems are available for defining selection models, but only one of these systems can be active at a time.  </p>
+
+        <p>The first system requires user-specified relative fitness coefficients:  WAA, WAa, and Waa, which represent the relative probabilities that an individual with a particular genotype reproduces.  Typically one or more of the three fitness coefficients is set equal to 1 to serve as a reference, and the others are expressed as a fraction relative to the reference.  After one generation of random mating, the allele frequency is modeled as:</p>
+
+         <img class="center-block" src="./Help_files/how-selection-1.png">
+
+        <p>Note, it is not required that the fitness of a reference allele be set equal to 1.  The three fitness coefficients need only to be proportional to each other. </p>
+
+        <p>The second system for modeling selection uses two user-specified coefficients, the selection coefficient, s, and dominance coefficient, h.  The selection coefficient represents the degree of selection against the aa genotype group with respect to the AA genotype group.  The dominance coefficient represents the degree to which selection also impacts the heterozygote.  Selection and dominance coefficients can be expressed in terms of relative fitness coefficients as follows:</p>
+
+        <img class="center-block" src="./Help_files/how-selection-2.png">
+
+        and
+
+        <img class="center-block" src="./Help_files/how-selection-3.png">
+
+        <p>When selection and dominance coefficients are input by the user, the simulator will calculate the corresponding fitness coefficients, WAa and Waa, and set WAA equal to 1 as the reference.  The above formula is then used to calculate the effect on allele frequency.  </p>
+
+        <p>Both systems can be used to specify models of directional selection (also called positive selection), which in this context means that one allele is clearly favored and the other allele is clearly disfavored.  </p>
+
+        <p>Models of over-dominance (also called heterozygote advantage), a form of balancing selection, can be specified using fitness coefficients.  However, over-dominance cannot be specified in this simulator using selection and dominance coefficients. Other forms of balancing selection, such as frequency-dependent selection, are not implemented at this time.</p>
+
+        <p>Models of under-dominance (also called heterozygote disadvantage), a form of disruptive selection, can be specified using fitness coefficients.  However, under-dominance cannot be specified using selection and dominance coefficients.  </p>
+
+
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="can-x-linkedsex-linked-selection-be-modeled-can-x-linkedsex-lin"> Can X-linked/sex-linked selection be modeled?            <span class="hidden seo">
+                Can X-linked/sex-linked selection be modeled? 
+                        <p>No.  Currently selection occurring at a locus on an autosomal chromosome is implemented.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#can-x-linkedsex-linked-selection-be-modeled-can-x-linkedsex-lin" aria-label="Anchor link for: can x linkedsex linked selection be modeled can x linkedsex lin" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>No.  Currently selection occurring at a locus on an autosomal chromosome is implemented.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-mutation-what-is-mutation-mutation-is-defined-as-a-spon"> What is mutation?            <span class="hidden seo">
+                What is mutation? 
+                        <p>Mutation is defined as a spontaneous change in genetic material.  In some cases, mutation is a unique event.  In other contexts, mutation can be conceptualized as a recurrent event, which occurs at some rate per generation.  In the context of this simulator, mutation means that a given allele spontaneously changes into the other allele.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-mutation-what-is-mutation-mutation-is-defined-as-a-spon" aria-label="Anchor link for: what is mutation what is mutation mutation is defined as a spon" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Mutation is defined as a spontaneous change in genetic material.  In some cases, mutation is a unique event.  In other contexts, mutation can be conceptualized as a recurrent event, which occurs at some rate per generation.  In the context of this simulator, mutation means that a given allele spontaneously changes into the other allele.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-is-mutation-modeled-in-this-simulator-how-is-mutation-model"> How is mutation modeled in this simulator?            <span class="hidden seo">
+                How is mutation modeled in this simulator? 
+                        <p>Mutation is modeled as a function of the forward (μ, A → a) and reverse (ν, a → A) mutation rates according the following formula: </p>
+        <img class="center-block" src="./Help_files/how-mutation.png">
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-is-mutation-modeled-in-this-simulator-how-is-mutation-model" aria-label="Anchor link for: how is mutation modeled in this simulator how is mutation model" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Mutation is modeled as a function of the forward (μ, A → a) and reverse (ν, a → A) mutation rates according the following formula: </p>
+        <img class="center-block" src="./Help_files/how-mutation.png">
+            </div>
+    </div>
+</li>
+
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-genetic-migration-what-is-genetic-migration-genetic-mig"> What is genetic migration?            <span class="hidden seo">
+                What is genetic migration? 
+                        <p>Genetic migration refers to the movement of outside alleles into the population of interest.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-genetic-migration-what-is-genetic-migration-genetic-mig" aria-label="Anchor link for: what is genetic migration what is genetic migration genetic mig" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Genetic migration refers to the movement of outside alleles into the population of interest.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-is-genetic-migration-modeled-in-this-simulator-how-is-genet"> How is genetic migration modeled in this simulator?            <span class="hidden seo">
+                How is genetic migration modeled in this simulator? 
+                        <p> Migration is modeled as a function of the migration rate, m, and the migrant allele frequency, pM, according to the following formula:  </p>
+        <p>The migration rate corresponds to the proportion of alleles in the next generation that come from outside the population of interest.  The migrant allele frequency is the allele frequency of the A allele in the set of alleles entering the population.  </p>
+        <p>Note, this migration model may result in changes in allele frequency in the population of interest across generations.  However, this model assumes there is no change in allele frequency in the migrant alleles. Therefore this model is applicable for many simplistic migration scenarios such as the “source-sink”, “continent-to-island”, “one island”, and “Wright’s island” models. </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-is-genetic-migration-modeled-in-this-simulator-how-is-genet" aria-label="Anchor link for: how is genetic migration modeled in this simulator how is genet" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p> Migration is modeled as a function of the migration rate, m, and the migrant allele frequency, pM, according to the following formula:  </p>
+        <p>The migration rate corresponds to the proportion of alleles in the next generation that come from outside the population of interest.  The migrant allele frequency is the allele frequency of the A allele in the set of alleles entering the population.  </p>
+        <p>Note, this migration model may result in changes in allele frequency in the population of interest across generations.  However, this model assumes there is no change in allele frequency in the migrant alleles. Therefore this model is applicable for many simplistic migration scenarios such as the “source-sink”, “continent-to-island”, “one island”, and “Wright’s island” models. </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="can-migration-be-modeled-between-two-or-more-populations-of-int"> Can migration be modeled between two or more populations of interest?            <span class="hidden seo">
+                Can migration be modeled between two or more populations of interest? 
+                        <p>No. The simulator assumes one population of interest (which may evolve across generations), and one static source of migrant alleles.  Models where sources of migrant alleles are themselves changing in genetic composition are not currently implemented. </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#can-migration-be-modeled-between-two-or-more-populations-of-int" aria-label="Anchor link for: can migration be modeled between two or more populations of int" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>No. The simulator assumes one population of interest (which may evolve across generations), and one static source of migrant alleles.  Models where sources of migrant alleles are themselves changing in genetic composition are not currently implemented. </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-inbreeding-what-is-the-inbreeding-coefficient-what-is-i"> What is inbreeding?  What is the inbreeding coefficient?              <span class="hidden seo">
+                What is inbreeding?  What is the inbreeding coefficient?   
+                        <p>Inbreeding refers to the mating between two related individuals.   Inbreeding in a population in excess of that expected due to chance alone can be described by the inbreeding coefficient, F.  </p>
+        <p>Note, the inbreeding coefficient, F, is one of a family of “genetics F statistics”, also called fixation statistics, that measure various aspects of heterozygosity in individuals and strata within populations and between populations.  In the context of this simulator, the inbreeding coefficient F is equivalent to Wright’s FIS and is equivalent to the average kinship coefficient between pairs of individuals in the previous generation.   </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-inbreeding-what-is-the-inbreeding-coefficient-what-is-i" aria-label="Anchor link for: what is inbreeding what is the inbreeding coefficient what is i" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Inbreeding refers to the mating between two related individuals.   Inbreeding in a population in excess of that expected due to chance alone can be described by the inbreeding coefficient, F.  </p>
+        <p>Note, the inbreeding coefficient, F, is one of a family of “genetics F statistics”, also called fixation statistics, that measure various aspects of heterozygosity in individuals and strata within populations and between populations.  In the context of this simulator, the inbreeding coefficient F is equivalent to Wright’s FIS and is equivalent to the average kinship coefficient between pairs of individuals in the previous generation.   </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-is-inbreeding-modeled-in-the-simulator-how-is-inbreeding-mo"> How is inbreeding modeled in the simulator?              <span class="hidden seo">
+                How is inbreeding modeled in the simulator?   
+                        <p>Inbreeding alone does not alter allele frequencies, and therefore it alone will not impact an allele frequency simulation.  Inbreeding will alter the genotype proportions (and therefore impact the genotype frequency simulator).  Other evolutionary forces such as selection operate on genotype groups, and therefore inbreeding may influence the actions of selection on a population.  </p>
+        <p>Inbreeding is specified by the inbreeding coefficient, F, where genotype frequencies occur as follows:</p>
+        <pre class="text-center">P(AA) = p<sup>2</sup> – Fpq <br>P(Aa) = 2pq + 2Fpq <br>P(aa) = q<sup>2</sup> – Fpq</pre>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-is-inbreeding-modeled-in-the-simulator-how-is-inbreeding-mo" aria-label="Anchor link for: how is inbreeding modeled in the simulator how is inbreeding mo" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Inbreeding alone does not alter allele frequencies, and therefore it alone will not impact an allele frequency simulation.  Inbreeding will alter the genotype proportions (and therefore impact the genotype frequency simulator).  Other evolutionary forces such as selection operate on genotype groups, and therefore inbreeding may influence the actions of selection on a population.  </p>
+        <p>Inbreeding is specified by the inbreeding coefficient, F, where genotype frequencies occur as follows:</p>
+        <pre class="text-center">P(AA) = p<sup>2</sup> – Fpq <br>P(Aa) = 2pq + 2Fpq <br>P(aa) = q<sup>2</sup> – Fpq</pre>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="what-is-assortative-mating-what-is-assortative-mating-assortati"> What is assortative mating?            <span class="hidden seo">
+                What is assortative mating? 
+                        <p>Assortative mating is the tendency of individuals to choose mates with similar (or dissimilar) genotypes.  This bias influences the genotype frequencies of the next generation.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#what-is-assortative-mating-what-is-assortative-mating-assortati" aria-label="Anchor link for: what is assortative mating what is assortative mating assortati" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Assortative mating is the tendency of individuals to choose mates with similar (or dissimilar) genotypes.  This bias influences the genotype frequencies of the next generation.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-is-assortative-mating-modeled-in-the-simulator-how-is-assor"> How is assortative mating modeled in the simulator?            <span class="hidden seo">
+                How is assortative mating modeled in the simulator? 
+                        <p>Assortative mating alone does not alter allele frequencies, and therefore it alone will not impact an allele frequency simulation.  Assortative mating will alter genotype proportions (and therefore will impact the genotype frequency simulator).  Other evolutionary forces such as selection operate on genotype groups, and therefore assortative mating may influence the action of selection on a population.  </p>
+        <p>Positive assortative mating is specified by the positive assortative mating fraction, α.  The genotype frequencies in the next generation are:</p>
+        <pre class="text-center">P(AA) = [(1 – α)p<sup>2</sup> + α(p<sup>2</sup> + pq/2)] / D <br>P(Aa) = [(1 – α)2pq + α(pq)] / D <br>P(aa) = [(1 – α)q<sup>2</sup> + α(q<sup>2</sup> + pq/2)] / D</pre>
+
+        <p>where D = [(1 – α)p<sup>2</sup> + α(p<sup>2</sup> + pq/2)] + [(1 – α)2pq + α(pq)] + [(1 – α)q<sup>2</sup> + α(q<sup>2</sup> + pq/2)]</p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-is-assortative-mating-modeled-in-the-simulator-how-is-assor" aria-label="Anchor link for: how is assortative mating modeled in the simulator how is assor" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Assortative mating alone does not alter allele frequencies, and therefore it alone will not impact an allele frequency simulation.  Assortative mating will alter genotype proportions (and therefore will impact the genotype frequency simulator).  Other evolutionary forces such as selection operate on genotype groups, and therefore assortative mating may influence the action of selection on a population.  </p>
+        <p>Positive assortative mating is specified by the positive assortative mating fraction, α.  The genotype frequencies in the next generation are:</p>
+        <pre class="text-center">P(AA) = [(1 – α)p<sup>2</sup> + α(p<sup>2</sup> + pq/2)] / D <br>P(Aa) = [(1 – α)2pq + α(pq)] / D <br>P(aa) = [(1 – α)q<sup>2</sup> + α(q<sup>2</sup> + pq/2)] / D</pre>
+
+        <p>where D = [(1 – α)p<sup>2</sup> + α(p<sup>2</sup> + pq/2)] + [(1 – α)2pq + α(pq)] + [(1 – α)q<sup>2</sup> + α(q<sup>2</sup> + pq/2)]</p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="is-negative-assortative-mating-disassortative-mating-modeled-in"> Is negative assortative mating / disassortative mating modeled in the simulator?            <span class="hidden seo">
+                Is negative assortative mating / disassortative mating modeled in the simulator? 
+                        <p>No, currently only simple-to-define scenarios of positive assortative mating are implemented. </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#is-negative-assortative-mating-disassortative-mating-modeled-in" aria-label="Anchor link for: is negative assortative mating disassortative mating modeled in" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>No, currently only simple-to-define scenarios of positive assortative mating are implemented. </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="can-the-simulator-model-multiple-evolutionary-forces-simultaneo"> Can the simulator model multiple evolutionary forces simultaneously?            <span class="hidden seo">
+                Can the simulator model multiple evolutionary forces simultaneously? 
+                        <p>Yes.  One of the major strengths of simulation is that multiple forces can easily be applied simultaneously. </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#can-the-simulator-model-multiple-evolutionary-forces-simultaneo" aria-label="Anchor link for: can the simulator model multiple evolutionary forces simultaneo" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Yes.  One of the major strengths of simulation is that multiple forces can easily be applied simultaneously. </p>
+            </div>
+    </div>
+</li>
+
+
+
+</ul> 	</div>
+
+			</div>
+ 
+<div id="faq-miscellany "> 
+	<h4 id="miscellany"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#miscellany" aria-label="Anchor link for: miscellany" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Miscellany  </h4>
+
+			<p> 
+			 
+	</p>
+	
+		<div id="accordian-faq-miscellany ">
+			<ul class="list-unstyled question collapsible" data-collapsible="accordion">
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="can-the-parameters-of-the-simulation-change-across-generations"> Can the parameters of the simulation change across generations?            <span class="hidden seo">
+                Can the parameters of the simulation change across generations? 
+                        <p>Generally, no.  Once set, the parameters set by the user remain fixed for the duration of the simulation.  However, some complex scenarios can be simulated in pieces, where the result (ending allele frequency) of a simulation be input as the starting point for a second phase under a new set of parameters.  Multiple simulations can be strung together in this fashion to create multi-phase scenario.  </p>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#can-the-parameters-of-the-simulation-change-across-generations" aria-label="Anchor link for: can the parameters of the simulation change across generations" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <p>Generally, no.  Once set, the parameters set by the user remain fixed for the duration of the simulation.  However, some complex scenarios can be simulated in pieces, where the result (ending allele frequency) of a simulation be input as the starting point for a second phase under a new set of parameters.  Multiple simulations can be strung together in this fashion to create multi-phase scenario.  </p>
+            </div>
+    </div>
+</li>
+
+
+
+    
+    <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-cite-the-simulator-how-can-i-cite-the-simulator-john"> How can I cite the simulator?             <span class="hidden seo">
+                How can I cite the simulator?  
+                        <cite>John R. Shaffer, Joshua Rogan.  Online human population genetics simulator: a tool for genetics/genomics education and research.  (2015) American Society of Human Genetics 65th Annual Meeting.  Oct. 9, 2015.  Baltimore, MD. Abstract #1701F.</cite>
+                </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-cite-the-simulator-how-can-i-cite-the-simulator-john" aria-label="Anchor link for: how can i cite the simulator how can i cite the simulator john" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                     <cite>John R. Shaffer, Joshua Rogan.  Online human population genetics simulator: a tool for genetics/genomics education and research.  (2015) American Society of Human Genetics 65th Annual Meeting.  Oct. 9, 2015.  Baltimore, MD. Abstract #1701F.</cite>
+            </div>
+    </div>
+</li>
+
+
+
+
+</ul> 	</div>
+
+			</div>			</section>
+
+
+			<section id="help-faq"> 
+				<h3 id="simulator-faq"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#simulator-faq" aria-label="Anchor link for: simulator faq" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Simulator F.A.Q.</h3>
+				<div id="faq-simulator-usability"> 
+	<h4 id="simulator-usability"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#simulator-usability" aria-label="Anchor link for: simulator usability" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Simulator Usability </h4>
+
+			<p> 
+			 
+	</p>
+	
+		<div id="accordian-faq-simulator-usability">
+			<ul class="list-unstyled question collapsible" data-collapsible="accordion">
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-create-a-graph-of-my-simulation-how-can-i-create-a-gr"> How can I create a graph of my simulation?             <span class="hidden seo">
+                How can I create a graph of my simulation?  
+                            <p>To generate a <strong>new</strong> graph you can simply set the simulation parameters that you are interested in and click the "Generate Graph" button. You can then <strong>add</strong> more simulations to the existing graph by clicking the "Add Line" button. You can  <strong>replace</strong> the existing graph with a new simulation by clicking the "Generate Graph" button."  </p>
+            <p><a href="http://i.imgur.com/DDdDLC9.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="How can I create a graph of my simulation?" src="./Help_files/create_graph.gif" data-isloaded="true">
+             
+
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-create-a-graph-of-my-simulation-how-can-i-create-a-gr" aria-label="Anchor link for: how can i create a graph of my simulation how can i create a gr" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>To generate a <strong>new</strong> graph you can simply set the simulation parameters that you are interested in and click the "Generate Graph" button. You can then <strong>add</strong> more simulations to the existing graph by clicking the "Add Line" button. You can  <strong>replace</strong> the existing graph with a new simulation by clicking the "Generate Graph" button."  </p>
+            <p><a href="http://i.imgur.com/DDdDLC9.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="How can I create a graph of my simulation?" src="./Help_files/create_graph.gif" data-isloaded="true">
+             
+
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-change-the-simulation-parameters-how-can-i-change-the"> How can I change the simulation parameters?             <span class="hidden seo">
+                How can I change the simulation parameters?  
+                            <p>To change any of the simulation parameters you can open up the appropriate section by either clicking the checkbox to the left of the section name or the down arrow on the right. Once the section is opened you can either move the slider or click on the parameter value to directly input a new value using your keyboard. </p>
+            <p><a href="http://i.imgur.com/KMVO51x.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>     
+            <img class="faq-lazy" alt="How can I change the simluation parameters" src="./Help_files/input.gif" data-isloaded="true">
+             
+        
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-change-the-simulation-parameters-how-can-i-change-the" aria-label="Anchor link for: how can i change the simulation parameters how can i change the" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>To change any of the simulation parameters you can open up the appropriate section by either clicking the checkbox to the left of the section name or the down arrow on the right. Once the section is opened you can either move the slider or click on the parameter value to directly input a new value using your keyboard. </p>
+            <p><a href="http://i.imgur.com/KMVO51x.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>     
+            <img class="faq-lazy" alt="How can I change the simluation parameters" src="./Help_files/input.gif" data-isloaded="true">
+             
+        
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-activate-a-simulation-parameter-how-can-i-activate-a"> How can I activate a simulation parameter?             <span class="hidden seo">
+                How can I activate a simulation parameter?  
+                            <p>The parameters automatically activate upon moving the slider or inputting a value. If the variable is active the corresponding slider will be shown in color and a check will be present next to the section name. </p>
+             
+            <p><a href="http://i.imgur.com/XDkBJh6.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>
+            <img class="faq-lazy" alt="How can I activate a simulation parameter?" src="./Help_files/activate.gif" data-isloaded="true">
+                  
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-activate-a-simulation-parameter-how-can-i-activate-a" aria-label="Anchor link for: how can i activate a simulation parameter how can i activate a" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>The parameters automatically activate upon moving the slider or inputting a value. If the variable is active the corresponding slider will be shown in color and a check will be present next to the section name. </p>
+             
+            <p><a href="http://i.imgur.com/XDkBJh6.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>
+            <img class="faq-lazy" alt="How can I activate a simulation parameter?" src="./Help_files/activate.gif" data-isloaded="true">
+                  
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-deactivate-a-simulation-parameter-how-can-i-deactivat"> How can I deactivate a simulation parameter?             <span class="hidden seo">
+                How can I deactivate a simulation parameter?  
+                            <p>If a parameter is active (i.e., slider shown in color), you deactivate it by de-selecting the checkbox to the left of the section you would like to deactivate. Once a value is deselected the slider will be grayed out. </p>
+            
+            <p><a href="http://i.imgur.com/XDkBJh6.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>
+            <img class="faq-lazy" alt="How can I deactivate a simulation parameter?" src="./Help_files/activate.gif" data-isloaded="true">
+                   
+     
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-deactivate-a-simulation-parameter-how-can-i-deactivat" aria-label="Anchor link for: how can i deactivate a simulation parameter how can i deactivat" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>If a parameter is active (i.e., slider shown in color), you deactivate it by de-selecting the checkbox to the left of the section you would like to deactivate. Once a value is deselected the slider will be grayed out. </p>
+            
+            <p><a href="http://i.imgur.com/XDkBJh6.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>
+            <img class="faq-lazy" alt="How can I deactivate a simulation parameter?" src="./Help_files/activate.gif" data-isloaded="true">
+                   
+     
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-zoom-in-the-graph-how-can-i-zoom-in-the-graph-to-zoom"> How can I zoom in the graph?             <span class="hidden seo">
+                How can I zoom in the graph?  
+                            <p>To zoom in the graph simply click and drag across the area you would like to zoom in.  </p>
+            <p><a href="http://i.imgur.com/Ln5MnIi.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="How can I zoom in the graph?" src="./Help_files/zoom_pan.gif" data-isloaded="true">
+             
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-zoom-in-the-graph-how-can-i-zoom-in-the-graph-to-zoom" aria-label="Anchor link for: how can i zoom in the graph how can i zoom in the graph to zoom" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>To zoom in the graph simply click and drag across the area you would like to zoom in.  </p>
+            <p><a href="http://i.imgur.com/Ln5MnIi.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="How can I zoom in the graph?" src="./Help_files/zoom_pan.gif" data-isloaded="true">
+             
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-to-pan-left-and-right-in-the-zoomed-graph-how-to-pan-left-a"> How to pan left and right in the zoomed graph?             <span class="hidden seo">
+                How to pan left and right in the zoomed graph?  
+                            <p>Click the directional button on the top right of the graph and click and drag to pan along the x axis of the graph. </p>
+            <p><a href="http://i.imgur.com/Ln5MnIi.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="How can I pan the graph?" src="./Help_files/zoom_pan.gif" data-isloaded="true">
+             
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-to-pan-left-and-right-in-the-zoomed-graph-how-to-pan-left-a" aria-label="Anchor link for: how to pan left and right in the zoomed graph how to pan left a" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>Click the directional button on the top right of the graph and click and drag to pan along the x axis of the graph. </p>
+            <p><a href="http://i.imgur.com/Ln5MnIi.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="How can I pan the graph?" src="./Help_files/zoom_pan.gif" data-isloaded="true">
+             
+                </div>
+    </div>
+</li>
+
+
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-reset-the-graph-how-can-i-reset-the-graph-to-reset-th"> How can I reset the graph?             <span class="hidden seo">
+                How can I reset the graph?  
+                            <p>To reset the graph click the circular arrow on the top right of the graph.  </p>
+            <p><a href="http://i.imgur.com/Ln5MnIi.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="reset the graph" src="./Help_files/zoom_pan.gif" data-isloaded="true">
+             
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-reset-the-graph-how-can-i-reset-the-graph-to-reset-th" aria-label="Anchor link for: how can i reset the graph how can i reset the graph to reset th" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>To reset the graph click the circular arrow on the top right of the graph.  </p>
+            <p><a href="http://i.imgur.com/Ln5MnIi.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="reset the graph" src="./Help_files/zoom_pan.gif" data-isloaded="true">
+             
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-save-the-graph-as-an-image-how-can-i-save-the-graph-a"> How can I save the graph as an image?             <span class="hidden seo">
+                How can I save the graph as an image?  
+                            <p>To save the graph as an image file (jpg and png) click the triple dot in the upper left corner of the graph. </p>
+            <p><a href="http://i.imgur.com/135lVeP.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="save graph as an image" src="./Help_files/save_image.gif" data-isloaded="true">
+             
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-save-the-graph-as-an-image-how-can-i-save-the-graph-a" aria-label="Anchor link for: how can i save the graph as an image how can i save the graph a" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>To save the graph as an image file (jpg and png) click the triple dot in the upper left corner of the graph. </p>
+            <p><a href="http://i.imgur.com/135lVeP.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="save graph as an image" src="./Help_files/save_image.gif" data-isloaded="true">
+             
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-increase-the-contrast-for-printing-or-projecting-how"> How can I increase the contrast for printing or projecting?             <span class="hidden seo">
+                How can I increase the contrast for printing or projecting?  
+                            <p>To choose a high contrast version of the graph for printing and projecting you can click the icon in the upper right hand corner of the variables section. </p>
+            <p><a href="http://i.imgur.com/Rywoz9S.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="increase contrast for printing and projecting" src="./Help_files/display.gif" data-isloaded="true">
+             
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-increase-the-contrast-for-printing-or-projecting-how" aria-label="Anchor link for: how can i increase the contrast for printing or projecting how" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>To choose a high contrast version of the graph for printing and projecting you can click the icon in the upper right hand corner of the variables section. </p>
+            <p><a href="http://i.imgur.com/Rywoz9S.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="increase contrast for printing and projecting" src="./Help_files/display.gif" data-isloaded="true">
+             
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-view-different-legends-how-can-i-view-different-legen"> How can I view different legends?            <span class="hidden seo">
+                How can I view different legends? 
+                            <p>Legends are automatically created for each simulation. Only the most recent simulation is shown. But, you can open legends of any previous simulation by clicking <strong>[Show Legend]</strong> </p>
+            <p><a href="http://i.imgur.com/LjDVaj8.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="view different legends" src="./Help_files/legend.gif" data-isloaded="true">
+             
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-view-different-legends-how-can-i-view-different-legen" aria-label="Anchor link for: how can i view different legends how can i view different legen" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>Legends are automatically created for each simulation. Only the most recent simulation is shown. But, you can open legends of any previous simulation by clicking <strong>[Show Legend]</strong> </p>
+            <p><a href="http://i.imgur.com/LjDVaj8.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="view different legends" src="./Help_files/legend.gif" data-isloaded="true">
+             
+                </div>
+    </div>
+</li>
+
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="where-can-i-find-more-information-on-the-simulation-parameters"> Where can I find more information on the simulation parameters?             <span class="hidden seo">
+                Where can I find more information on the simulation parameters?  
+                            <p> You can click the small question mark next to each variable in order to see a short explanation of the variable or click <strong>[Show Help]</strong> to open all of the parameter descriptions at once. </p>
+            <p> There is also a plethoral of help in the <a href="http://popgensimulator.hgen.pitt.edu/help#help-learn">learn</a> section of the this help area! </p>
+
+            <p><a href="http://i.imgur.com/eqw4Rmb.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="ALTTEXT" src="./Help_files/helper.gif" data-isloaded="true">
+             
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#where-can-i-find-more-information-on-the-simulation-parameters" aria-label="Anchor link for: where can i find more information on the simulation parameters" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p> You can click the small question mark next to each variable in order to see a short explanation of the variable or click <strong>[Show Help]</strong> to open all of the parameter descriptions at once. </p>
+            <p> There is also a plethoral of help in the <a href="http://popgensimulator.hgen.pitt.edu/help#help-learn">learn</a> section of the this help area! </p>
+
+            <p><a href="http://i.imgur.com/eqw4Rmb.gif"> <i class="fa fa-picture-o"></i><strong> View High Res Gif</strong></a></p>      
+            <img class="faq-lazy" alt="ALTTEXT" src="./Help_files/helper.gif" data-isloaded="true">
+             
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-generate-a-link-url-for-a-simulation-how-can-i-genera"> How can I generate a link (URL) for a simulation?             <span class="hidden seo">
+                How can I generate a link (URL) for a simulation?  
+                            <p>You can generate a link (URL) for a set of simulation parameters by clicking on the <i class="fa fa-link"></i>.  Navigating to this URL will prepopulate the set of simulation parameters that you currently have set. Feel free to modify the link to make the parameters more exact to your liking.      </p>
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-generate-a-link-url-for-a-simulation-how-can-i-genera" aria-label="Anchor link for: how can i generate a link url for a simulation how can i genera" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>You can generate a link (URL) for a set of simulation parameters by clicking on the <i class="fa fa-link"></i>.  Navigating to this URL will prepopulate the set of simulation parameters that you currently have set. Feel free to modify the link to make the parameters more exact to your liking.      </p>
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-access-the-data-represented-in-the-graph-how-can-i-ac"> How can I access the data represented in the graph?             <span class="hidden seo">
+                How can I access the data represented in the graph?  
+                            <p>You can access the simulation data by clicking on the <i class="fa fa-file-text-o"></i> icon located in the top right corner of the Simulation Parameters section.  This will take you to a seperate page containg scrollable, tab seperated x,y coordinates from each line that are currently on the graph. You can easily copy and paste this into your favorite data manipulation program to perform additional analysis. </p>
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-access-the-data-represented-in-the-graph-how-can-i-ac" aria-label="Anchor link for: how can i access the data represented in the graph how can i ac" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>You can access the simulation data by clicking on the <i class="fa fa-file-text-o"></i> icon located in the top right corner of the Simulation Parameters section.  This will take you to a seperate page containg scrollable, tab seperated x,y coordinates from each line that are currently on the graph. You can easily copy and paste this into your favorite data manipulation program to perform additional analysis. </p>
+                </div>
+    </div>
+</li>
+
+
+</ul> 	</div>
+
+			</div>
+
+ 
+<div id="faq-simulator-technical"> 
+	<h4 id="technical-questions"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#technical-questions" aria-label="Anchor link for: technical questions" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Technical Questions </h4>
+
+			<p> 
+			
+	</p>
+	
+		<div id="accordian-faq-simulator-technical">
+			<ul class="list-unstyled question collapsible" data-collapsible="accordion">
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-submit-a-bug-or-potential-new-feature-how-can-i-submi"> How can I submit a bug or potential new feature?             <span class="hidden seo">
+                How can I submit a bug or potential new feature?  
+                            <p>You can navigate to the <a href="http://popgensimulator.hgen.pitt.edu/report-problem">Report a Problem</a> page to either submit a bug/error or suggest new features.</p>
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-submit-a-bug-or-potential-new-feature-how-can-i-submi" aria-label="Anchor link for: how can i submit a bug or potential new feature how can i submi" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>You can navigate to the <a href="http://popgensimulator.hgen.pitt.edu/report-problem">Report a Problem</a> page to either submit a bug/error or suggest new features.</p>
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-was-this-application-created-how-was-this-application-creat"> How was this application created?             <span class="hidden seo">
+                How was this application created?  
+                            <p>This application was created by <a href="http://joshuarogan.com/" target="_blank"> Josh Rogan </a> and commissioned by <a href="http://www.publichealth.pitt.edu/home/directory/john-r-shaffer" target="_blank">Dr. John Shaffer</a>, Assistant Professor of <a href="http://www.publichealth.pitt.edu/human-genetics" target="_blank">Human Genetics</a> at the <a href="http://www.pitt.edu/" target="_blank">University of Pittsburgh</a>.</p> 
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-was-this-application-created-how-was-this-application-creat" aria-label="Anchor link for: how was this application created how was this application creat" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>This application was created by <a href="http://joshuarogan.com/" target="_blank"> Josh Rogan </a> and commissioned by <a href="http://www.publichealth.pitt.edu/home/directory/john-r-shaffer" target="_blank">Dr. John Shaffer</a>, Assistant Professor of <a href="http://www.publichealth.pitt.edu/human-genetics" target="_blank">Human Genetics</a> at the <a href="http://www.pitt.edu/" target="_blank">University of Pittsburgh</a>.</p> 
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-was-this-application-developed-how-was-this-application-dev"> How was this application developed?            <span class="hidden seo">
+                How was this application developed? 
+                            <p>The graphing application is powered by JavaScript with heavy usage of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers#Web_Workers_API" target="_blank">Web Workers</a> for performance. The graphing library for both the simulators is <a href="http://canvasjs.com/" target="_blank">CanvasJS</a> as it out performed all other responsive graphing libraries. The frontend design is built with the responsive frontend framework <a href="http://trends.builtwith.com/docinfo/Twitter-Bootstrap" target="_blank">Twitter Bootstrap</a>. The backend utilizes the PHP framework <a href="http://trends.builtwith.com/framework/Laravel" target="_blank">Laravel</a> heavily utilizing the Blade templating engine.</p>
+
+            <strong>Everything Else: </strong> 
+            <ul class="list-unstyled list-inline"> 
+                <li><a href="http://trends.builtwith.com/Web-Server/Apache" target="_blank">Apache</a></li>
+                <li><a href="http://trends.builtwith.com/javascript/jQuery" target="_blank">JQuery</a></li>
+                <li><a href="http://refreshless.com/nouislider/" target="_blank">noUISlider</a></li>
+                <li><a href="http://trends.builtwith.com/widgets/Font-Awesome" target="_blank">FontAwesome</a></li>
+                <li><a href="http://trends.builtwith.com/javascript/LESS" target="_blank">LESS</a></li>
+                <li><a href="http://trends.builtwith.com/cdn/CloudFlare" target="_blank">CloudFlare</a></li>
+                <li><a href="http://trends.builtwith.com/analytics/Google-Analytics" target="_blank">Google Analytics</a></li>
+                <li><a href="http://trends.builtwith.com/widgets/Imgur" target="_blank">Imgur</a></li>
+                <li><a href="http://trends.builtwith.com/Server/mod_pagespeed" target="_blank">PageSpeed</a></li>
+                <li><a href="http://gruntjs.com/" target="_blank">Grunt</a></li>
+                <li><a href="https://nodejs.org/" target="_blank">NodeJS</a></li>
+            </ul>
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-was-this-application-developed-how-was-this-application-dev" aria-label="Anchor link for: how was this application developed how was this application dev" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>The graphing application is powered by JavaScript with heavy usage of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers#Web_Workers_API" target="_blank">Web Workers</a> for performance. The graphing library for both the simulators is <a href="http://canvasjs.com/" target="_blank">CanvasJS</a> as it out performed all other responsive graphing libraries. The frontend design is built with the responsive frontend framework <a href="http://trends.builtwith.com/docinfo/Twitter-Bootstrap" target="_blank">Twitter Bootstrap</a>. The backend utilizes the PHP framework <a href="http://trends.builtwith.com/framework/Laravel" target="_blank">Laravel</a> heavily utilizing the Blade templating engine.</p>
+
+            <strong>Everything Else: </strong> 
+            <ul class="list-unstyled list-inline"> 
+                <li><a href="http://trends.builtwith.com/Web-Server/Apache" target="_blank">Apache</a></li>
+                <li><a href="http://trends.builtwith.com/javascript/jQuery" target="_blank">JQuery</a></li>
+                <li><a href="http://refreshless.com/nouislider/" target="_blank">noUISlider</a></li>
+                <li><a href="http://trends.builtwith.com/widgets/Font-Awesome" target="_blank">FontAwesome</a></li>
+                <li><a href="http://trends.builtwith.com/javascript/LESS" target="_blank">LESS</a></li>
+                <li><a href="http://trends.builtwith.com/cdn/CloudFlare" target="_blank">CloudFlare</a></li>
+                <li><a href="http://trends.builtwith.com/analytics/Google-Analytics" target="_blank">Google Analytics</a></li>
+                <li><a href="http://trends.builtwith.com/widgets/Imgur" target="_blank">Imgur</a></li>
+                <li><a href="http://trends.builtwith.com/Server/mod_pagespeed" target="_blank">PageSpeed</a></li>
+                <li><a href="http://gruntjs.com/" target="_blank">Grunt</a></li>
+                <li><a href="https://nodejs.org/" target="_blank">NodeJS</a></li>
+            </ul>
+                </div>
+    </div>
+</li>
+
+
+
+                 
+
+        <li class="single-question">
+    <div class="collapsible-header question-question">
+        <i class="fa fa-clone"></i> <h4 class="question-info-search" id="how-can-i-support-this-project-how-can-i-support-this-project-t"> How can I support this project?             <span class="hidden seo">
+                How can I support this project?  
+                            <p>To support this project you can submit <a href="http://popgensimulator.hgen.pitt.edu/report-problem" target="_blank">bugs</a>, submit issues to the <a href="https://github.com/JoshuaRogan/genetics" target="_blank">github repository</a>, or contact us!</p>
+                    </span>
+
+        <a class="anchorjs-link right" href="http://popgensimulator.hgen.pitt.edu/help#how-can-i-support-this-project-how-can-i-support-this-project-t" aria-label="Anchor link for: how can i support this project how can i support this project t" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; padding-left: 0.375em;"></a></h4>
+
+    </div>
+
+    <div class="collapsible-body" style="">
+        <div class="question-content">
+                         <p>To support this project you can submit <a href="http://popgensimulator.hgen.pitt.edu/report-problem" target="_blank">bugs</a>, submit issues to the <a href="https://github.com/JoshuaRogan/genetics" target="_blank">github repository</a>, or contact us!</p>
+                </div>
+    </div>
+</li>
+
+
+</ul> 	</div>
+
+			</div>			</section>
+
+			
+		</div>
+
+		<div class="col-xs-12 visible-xs">
+			<nav> 
+				<h2 id="help-navigation-1"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#help-navigation-1" aria-label="Anchor link for: help navigation 1" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Help Navigation </h2>
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="active"><a href="http://popgensimulator.hgen.pitt.edu/help#population-generation-simulator-help">Back to Top</a></li>
+					<li role="presentation" class="active"><a href="http://popgensimulator.hgen.pitt.edu/help#help-learn">Learn</a></li>
+					<li role="presentation" class="active"><a href="http://popgensimulator.hgen.pitt.edu/help#help-faq">Simulator F.A.Q.</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+	</div>
+	<!--CONTENT-->
+
+	<!--FOOTER--> 
+	<footer> 
+	<div class="container-fluid ">
+
+
+		<div class="row">
+			<div class="col-md-3"> 
+				<h3 id="credits"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#credits" aria-label="Anchor link for: credits" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Credits: </h3>
+				<p>
+					<a href="http://www.publichealth.pitt.edu/home/directory/john-r-shaffer" target="_blank">John R Shaffer, PhD</a> <br>
+				 	<a href="http://www.publichealth.pitt.edu/human-genetics" target="_blank"> Department of Human Genetics</a> <br>
+				 	<a href="http://www.pitt.edu/" target="_blank">University of Pittsburgh</a>
+				 	
+				 </p>
+				<p> Application created by <a href="http://joshuarogan.com/" target="_blank">Josh Rogan</a></p>
+				<p>Copyright © 2015</p>
+			</div>
+
+			<div class="col-md-6"> 
+				<h3 id="about-us"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#about-us" aria-label="Anchor link for: about us" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> About Us </h3>
+				<p> The Department of Human Genetics at the University of Pittsburgh's Graduate School of Public Health is dedicated to genetics research, teaching, and services. The department has three major research missions, which are (1) to develop and use genetic methods to investigate the causes and treatment of hereditary and acquired human illness, (2) to understand and explore the impact of genetics on public health, education, and disease prevention, and (3) to appreciate the role of genetic diversity within human populations.</p>
+
+
+				<h4 id="department-of-human-genetics"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#department-of-human-genetics" aria-label="Anchor link for: department of human genetics" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Department of Human Genetics: </h4>
+				<ul class="list-unstyled"> 
+					<li> 130 De Soto Street </li>
+					<li> Pittsburgh, PA 15261 </li>
+					<li> 412‐624‐3018 </li>
+				</ul>
+			
+
+				
+			</div>
+
+			<div class="col-md-3"> 
+				<h3 id="report-a-problem"><a class="anchorjs-link left" href="http://popgensimulator.hgen.pitt.edu/help#report-a-problem" aria-label="Anchor link for: report a problem" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a> Report a Problem </h3>
+				<p> Found a problem? <a href="http://popgensimulator.hgen.pitt.edu/report-problem">Report it!</a> </p>
+				<div class="validators center-block text-center">
+					<a class="html-validator" href="http://validator.w3.org/check?uri=http://popgensimulator.hgen.pitt.edu" target="_blank"><i class="fa fa-html5 fa-3x"></i></a>
+					<a class="html-validator" href="http://validator.w3.org/check?uri=http://popgensimulator.hgen.pitt.edu" target="_blank"><i class="fa fa-css3 fa-3x"></i></a>
+					<p> <small>Build with <a href="http://www.html5rocks.com/en/" target="_blank">HTML5</a> and <a href="http://www.html5rocks.com/en/" target="_blank">CSS3</a> </small></p>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row"> 
+			<ul class="list-unstyled list-inline text-center"> 
+					<li> <a href="https://www.facebook.com/PittPublicHealth" target="_blank"><i class="fa fa-facebook fa-lg"></i></a> </li>
+					<li> <a href="https://twitter.com/PittHUGEN" target="_blank"><i class="fa fa-twitter fa-lg"></i></a> </li>
+					<li> <a href="http://www.linkedin.com/groups?home=&amp;gid=3295709&amp;trk=anet_ug_hm" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a> </li>
+					<li> <a href="http://www.youtube.com/user/PittPublicHealth" target="_blank"><i class="fa fa-youtube fa-lg"></i></a> </li>
+					<li> <a href="https://www.flickr.com/photos/pittpublichealth" target="_blank"><i class="fa fa-flickr fa-lg"></i></a> </li>
+			</ul>
+
+			<ul class="list-inline text-center nav-footer">
+				<li><a href="http://popgensimulator.hgen.pitt.edu/help#">Home</a></li>
+				<!-- <li><a href="#">About Us</a></li> -->
+				<!-- <li><a href="#">Contact Us</a></li> -->
+				<!-- <li><a href="#">Blog</a></li> -->
+				<li><a href="http://popgensimulator.hgen.pitt.edu/report-problem">Report a Problem</a></li>
+				<li><a href="http://popgensimulator.hgen.pitt.edu/faq">FAQ</a></li>
+			</ul>
+		</div> 
+	</div> 
+</footer>
+	<!--FOOTER-->
+
+	<!--LAZY SCRIPTS --> 
+	    					<script src="./Help_files/genetics.min.js.download"></script>
+		
+		
+    
+	<!--LAZY SCRIPTS --> 
+
+	
+    	
+    	
+	
+
+
+
+
+
+<div class="hiddendiv common"></div></body></html>
