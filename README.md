@@ -1,7 +1,7 @@
 Human Genetics Graphing
 ==============
-Visit the website *in development* [Here](http://genetics.melwood.jcubedworld.com/)
-Production website at popgensimulator.com
+Visit the website *in development* [Here](https://eloquent-williams-76e898.netlify.app/)
+Production website at https://eloquent-williams-76e898.netlify.app/
 A population genetics simulator that allows students to explore the effects and interactions of several evolutionary forces.
 
 Features
