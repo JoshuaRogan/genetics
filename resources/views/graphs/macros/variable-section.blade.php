@@ -1,1 +1,0 @@
-Consider making this an abstration of all of the variables (Since they are all shared between allele and genotype)

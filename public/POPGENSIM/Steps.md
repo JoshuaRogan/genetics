@@ -1,2 +1,0 @@
-Remove Classes:
-* noUi-target
