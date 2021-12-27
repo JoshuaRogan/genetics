@@ -116,7 +116,7 @@ const Input = styled.input`
   }
 `;
 
-export default function SliderOne( { name, label, required = false,  }) {
+export default function SliderOne( { name, label, required = false, }) {
   const [value, setValue] = React.useState(50);
 
   const onChange = (e) => {
@@ -133,6 +133,7 @@ export default function SliderOne( { name, label, required = false,  }) {
       'aria-valuemax': 100,
       'aria-valuenow': value,
       'aria-required': required,
+      'aria-label': label,
   };
 
   return (
