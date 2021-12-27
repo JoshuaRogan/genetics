@@ -34,8 +34,7 @@ onmessage = function(e) {
 }
 
 function initGeneration(data){
-	generation = new popGen.generations(data.numGenerations || 500 , data.populationSize, data.startingFrequency || .5);
-	// generation.setInfinitePopulation();
+	generation = new popGen.generations(data.numGenerations || 5000 , data.populationSize || 1000, data.startingFrequency || .5);
 	console.log(generation);
 }
 
