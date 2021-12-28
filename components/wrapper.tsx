@@ -9,8 +9,10 @@ const THEME = {
 	backgroundColor: 'white',
 	primaryColor: '#4b516a',
 	textColor: '#333333',
+	textColorLightGray: '#737373',
 	main: 'red',
 	spaceBetweenNum: 15,
+	spaceBetweenSmall: '10px',
 	spaceBetweenPx: '15px',
 	spaceBetweenPx2x: '30px',
 };

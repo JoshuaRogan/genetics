@@ -1,5 +1,8 @@
+import FinitePopulation from '../components/optionSections/FinitePopulation';
+import BaseSimulation from '../components/optionSections/BaseSimulation';
 import OptionsSection from '../components/OptionsSection';
 import styled from 'styled-components';
+import React from 'react';
 import IndexPage from '../components/wrapper';
 import HighChart from '../components/highChart';
 
@@ -67,6 +70,18 @@ const RightSection = styled.div`
 `;
 
 function HomePage() {
+	// Base
+	const [numGenerations, setNumberGenerations] = React.useState(500);
+	const [startingAlleleFreq, setStartingAlleleFreq] = React.useState(0.500);
+
+	// Finite Population
+	const [populationSize, setPopulationSize] = React.useState(500);
+	const [numberOfSimulations, setNumberOfSimulations] = React.useState(1);
+
+	const onChange = (name, newValue) => {
+		console.log(name, newValue);
+	};
+
 	return (
 		<IndexPage>
 			<NavBarWrapper>
@@ -102,10 +117,10 @@ function HomePage() {
 			</NavBarWrapper>
 
 			<h2>Accessibility Page Test</h2>
-
 			<HighChart />
-
-			<OptionsSection isActive={true}></OptionsSection>
+			<h2>Simulation Parameters</h2>
+			<BaseSimulation isActive={true} name={'Base Simulation Model'} onChange={onChange} />
+			<FinitePopulation isActive={false} name={'Finite Population'} onChange={onChange} />
 		</IndexPage>
 	);
 }
