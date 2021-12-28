@@ -160,7 +160,7 @@ function HomePage() {
 			<h2>Simulation Parameters </h2>
 
 			<BaseSimulation isActive={true} name={'Base Simulation Model'} onChange={onChange} />
-			<FinitePopulation isActive={false} name={'Finite Population'} onChange={onChange} />
+			<FinitePopulation isActive={true} name={'Finite Population'} onChange={onChange} />
 
 			<Pre>
 				<h4>Inputs (Debugging Purposes)</h4>
