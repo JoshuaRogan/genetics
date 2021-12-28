@@ -213,20 +213,34 @@ function createSeries() {
 	return ret;
 }
 
-const options = {
-	title: {
-		text: 'My chart',
-	},
-	series: [
-		{
-			data: createSeries(),
+function createOptions(line) {
+	return {
+		title: {
+			text: 'Population Genetics Simulation',
 		},
-	],
-};
+		xAxis: {
+			title: {
+				text: 'Generation Number'
+			}
+    	},
+    	yAxis: {
+			min: 0,
+			max: 1,
+        	title: {
+            	text: 'Frequency of the A allele'
+        	}
+    	},
+		series: [
+			{
+				data: line ?? createSeries(),
+			},
+		],
+	};
+}
 
-const App = () => (
+const App = ({ line }) => (
 	<div>
-		<HighchartsReact highcharts={Highcharts} options={options} />
+		<HighchartsReact highcharts={Highcharts} options={createOptions(line)} />
 	</div>
 );
 
