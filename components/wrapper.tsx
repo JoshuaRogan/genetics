@@ -21,7 +21,7 @@ function IndexPage({ children }) {
 	return (
 		<RootStyles>
 			<Head>
-				<title>My page title</title>
+				<title>Population Genetics Simulator</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
 				<link rel="preconnect" href="https://fonts.googleapis.com" />

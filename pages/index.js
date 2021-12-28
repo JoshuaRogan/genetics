@@ -1,9 +1,6 @@
 import { ApplicationContextProvider } from '../context/application';
 import ApplicationGen from '../components/ApplicationGen';
 
-
-
-
 function HomePage() {
 	return (
 		<ApplicationContextProvider>

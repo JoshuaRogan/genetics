@@ -26,13 +26,13 @@ export function SectionHeaderWrapper({ isActive, name }) {
 
 const HelpContentContainer = styled.div`
 	display: ${(props) => (props.isOpen ? 'block' : 'none')};
-  padding: 5px;
+	padding: 5px;
 `;
 
 const HelpContentVariable = styled.div`
 	font-size: 22px;
 	font-style: italic;
-	 color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.primaryColor};
 	font-weight: 900;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -40,7 +40,7 @@ const HelpContentVariable = styled.div`
 
 const HelpContentDescription = styled.div`
 	font-size: 15px;
-  	color: ${(props) => props.theme.textColorLightGray};
+	color: ${(props) => props.theme.textColorLightGray};
 `;
 
 export function HelpContent({ inputName, variable, description, isOpen = false }) {
@@ -58,9 +58,9 @@ const HelpContentToggleStyled = styled.span`
 	&:hover {
 		cursor: pointer;
 	}
-  	margin-left: 5px;
-    position: relative;
-  	top: -5px;
+	margin-left: 5px;
+	position: relative;
+	top: -5px;
 `;
 
 export function HelpContentToggle({ onClick }) {

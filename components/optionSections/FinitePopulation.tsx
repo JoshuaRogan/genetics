@@ -6,9 +6,9 @@ import {
 	NameColumn,
 	SectionHeaderWrapper,
 	SingleRowWrapper,
-	SliderColumnAndValue
+	SliderColumnAndValue,
 } from './optionHelpers';
-import Slider from "../sliders/Slider";
+import Slider from '../sliders/Slider';
 
 export default function FinitePopulation({ isActive, name, onChange }) {
 	const [isPopulationSizeActive, setIsPopulationSizeActive] = React.useState(false);

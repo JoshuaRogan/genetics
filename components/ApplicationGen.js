@@ -73,18 +73,17 @@ const RightSection = styled.div`
 `;
 
 const Pre = styled.pre`
-  max-width: 100%;
-  overflow: scroll;
-  background: rgba(123, 133, 120, 0.07);
-  padding: 15px;
-  margin-bottom: 200px;
-  border-radius: 4px;
-`
+	max-width: 100%;
+	overflow: scroll;
+	background: rgba(123, 133, 120, 0.07);
+	padding: 15px;
+	margin-bottom: 200px;
+	border-radius: 4px;
+`;
 
 function HomePage() {
 	const context = React.useContext(ApplicationContext);
 	const [lastResult, setLastResult] = React.useState({});
-
 
 	React.useEffect(() => {
 		listenToWorker((event) => {
@@ -92,8 +91,7 @@ function HomePage() {
 			setLastResult(event);
 			context.setLastResult(event);
 		});
-	}, [])
-
+	}, []);
 
 	// bootstrap
 	React.useEffect(() => {
@@ -104,22 +102,22 @@ function HomePage() {
 			return;
 		}
 
-
 		console.log(context.popGenVars.p);
-		worker.postMessage({"cmd":"initGeneration",
-				"populationSize": context.popGenVars.N,
-				"numGenerations": context.popGenVars.t,
-				"startingFrequency": context.popGenVars.p}); // Send data to our worker.
+		worker.postMessage({
+			cmd: 'initGeneration',
+			populationSize: context.popGenVars.N,
+			numGenerations: context.popGenVars.t,
+			startingFrequency: context.popGenVars.p,
+		}); // Send data to our worker.
 		worker.postMessage({ cmd: 'run' });
 
 		// Set Vars based on the context
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': wAA, 'wAa': wAa, 'waa': waa});
 	}, [context.popGenVars]);
 
-
 	const onChange = debounce((name, newValue) => {
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
-	}, 100 );
+	}, 100);
 
 	return (
 		<IndexPage>
@@ -156,7 +154,7 @@ function HomePage() {
 			</NavBarWrapper>
 
 			<h2>Accessibility Page Test</h2>
-			<HighChart line={context.lastResult}/>
+			<HighChart line={context.lastResult} />
 			<h2>Simulation Parameters </h2>
 
 			<BaseSimulation isActive={true} name={'Base Simulation Model'} onChange={onChange} />
@@ -169,8 +167,6 @@ function HomePage() {
 				<h4>Outputs</h4>
 				{JSON.stringify(lastResult)}
 			</Pre>
-
-
 		</IndexPage>
 	);
 }

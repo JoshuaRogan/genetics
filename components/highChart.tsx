@@ -220,16 +220,16 @@ function createOptions(line) {
 		},
 		xAxis: {
 			title: {
-				text: 'Generation Number'
-			}
-    	},
-    	yAxis: {
+				text: 'Generation Number',
+			},
+		},
+		yAxis: {
 			min: 0,
 			max: 1,
-        	title: {
-            	text: 'Frequency of the A allele'
-        	}
-    	},
+			title: {
+				text: 'Frequency of the A allele',
+			},
+		},
 		series: [
 			{
 				data: line ?? createSeries(),
