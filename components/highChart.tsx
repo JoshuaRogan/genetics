@@ -204,7 +204,7 @@ const testSeriesTwo = [
 ];
 
 function createSeries() {
-	const N = 5000;
+	const N = 500;
 	const ret = [];
 
 	for (let i = 0; i < N; i++) {
