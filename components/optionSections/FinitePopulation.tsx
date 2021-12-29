@@ -10,12 +10,12 @@ import {
 } from './optionHelpers';
 import Slider from '../sliders/Slider';
 
-export default function FinitePopulation({ isActive, name, onChange }) {
+export default function FinitePopulation({ isActive, name, onChange, toggleActive }) {
 	const [isPopulationSizeActive, setIsPopulationSizeActive] = React.useState(false);
 
 	return (
 		<div aria-label="Finite Population Simulator Inputs">
-			<SectionHeaderWrapper isActive={isActive} name={name} />
+			<SectionHeaderWrapper isActive={isActive} name={name} onClick={() => toggleActive()} />
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>

@@ -1,4 +1,5 @@
-import { DebugHeader } from '../utils/debugging';
+import { VALID_SECTIONS } from '../data/popGenVariables';
+import { DebugHeader, Pre } from '../utils/debugging';
 import { getWorker, listenToWorker } from '../workers/generationWorker';
 import { ApplicationContext } from '../context/application';
 import FinitePopulation from '../components/optionSections/FinitePopulation';
@@ -72,15 +73,6 @@ const RightSection = styled.div`
 	display: flex;
 `;
 
-const Pre = styled.pre`
-	max-width: 100%;
-	overflow: scroll;
-	background: rgba(123, 133, 120, 0.07);
-	padding: 15px;
-	margin-bottom: 200px;
-	border-radius: 4px;
-`;
-
 function HomePage() {
 	const context = React.useContext(ApplicationContext);
 	const [lastResult, setLastResult] = React.useState({});
@@ -119,6 +111,12 @@ function HomePage() {
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
 	}, 100);
 
+	const toggleActiveSection = (section) => {
+		const currentState = context.activeSections[section];
+		context.setActiveSession(section, !currentState);
+	};
+
+	console.log(context);
 	return (
 		<IndexPage>
 			<NavBarWrapper>
@@ -154,12 +152,22 @@ function HomePage() {
 			</NavBarWrapper>
 
 			<main role="main">
-				 <h1>Simulator</h1>
-				 <HighChart line={context.lastResult} />
-				 <h2>Simulation Parameters </h2>
+				<h1>Simulator</h1>
+				<HighChart line={context.lastResult} />
+				<h2>Simulation Parameters </h2>
 				<div role="form" aria-label="All simulator inputs">
-				 	<BaseSimulation isActive={true} name={'Base Simulation Model'} onChange={onChange} />
-				 	<FinitePopulation isActive={true} name={'Finite Population'} onChange={onChange} />
+					<BaseSimulation
+						isActive={context.activeSections[VALID_SECTIONS.BASE]}
+						name={'Base Simulation Model'}
+						onChange={onChange}
+						toggleActive={() => toggleActiveSection(VALID_SECTIONS.BASE)}
+					/>
+					<FinitePopulation
+						isActive={context.activeSections[VALID_SECTIONS.FINITE]}
+						name={'Finite Population'}
+						onChange={onChange}
+						toggleActive={() => toggleActiveSection(VALID_SECTIONS.FINITE)}
+					/>
 				</div>
 			</main>
 

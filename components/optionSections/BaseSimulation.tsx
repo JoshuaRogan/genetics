@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import Slider from '../sliders/Slider';
+
 import {
 	NameColumn,
 	SectionHeaderWrapper,
@@ -15,12 +16,18 @@ function formatThousandToDecimal(number: number) {
 }
 
 export default function BaseSimulation({ isActive, name, onChange }) {
+	const [isSectionActive, setIsSectionActive] = React.useState(true);
 	const [isNumberOfGenHelpActive, setIsNumberOfGenHelpActive] = React.useState(false);
 	const [isStartingAlleleFreqActive, setIsStartingAlleleFreqActive] = React.useState(false);
 
 	return (
 		<div aria-label="Base Simulation inputs">
-			<SectionHeaderWrapper isActive={isActive} name={name} />
+			<SectionHeaderWrapper
+				isActive={isSectionActive}
+				name={name}
+				isCheckable={false}
+				onClick={() => setIsSectionActive(!isSectionActive)}
+			/>
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>

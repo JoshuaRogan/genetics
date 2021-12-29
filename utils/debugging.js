@@ -9,3 +9,12 @@ export const DebugHeader = styled.div`
     margin-inline-end: 0px;
     font-weight: bold;
 `;
+
+export const Pre = styled.pre`
+	max-width: 100%;
+	overflow: scroll;
+	background: rgba(123, 133, 120, 0.07);
+	padding: 15px;
+	margin-bottom: 200px;
+	border-radius: 4px;
+`;

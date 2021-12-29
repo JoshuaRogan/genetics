@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
+import { FaCheckSquare, FaRegSquare } from 'react-icons/fa';
 
 export const SingleRowWrapper = styled.div`
 	display: flex;
@@ -16,10 +18,25 @@ export const NameColumn = styled.div`
 
 const SectionHeaderWrapperH3 = styled.h3``;
 
-export function SectionHeaderWrapper({ isActive, name }) {
+const IconWrapper = styled.span`
+	&:hover {
+		cursor: ${(props) => (props.isCheckable ? 'pointer' : 'default')};
+	}
+`;
+
+export function SectionHeaderWrapper({ isActive, name, isCheckable = true, onClick = (isActive) => {} }) {
+	const handleOnClick = () => {
+		if (!isCheckable) {
+			return;
+		}
+		onClick(!isActive);
+	};
+
 	return (
 		<SectionHeaderWrapperH3>
-			[{isActive ? 'X' : ''}] {name}
+			<IconWrapper isCheckable={isCheckable} onClick={handleOnClick}>
+				{isActive ? <FaCheckSquare size="16px" /> : <FaRegSquare size="16px" />} {name}
+			</IconWrapper>
 		</SectionHeaderWrapperH3>
 	);
 }

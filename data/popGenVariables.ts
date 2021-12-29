@@ -1,5 +1,5 @@
 
-export const VALIDSECTIONS = {
+export const VALID_SECTIONS = {
 	BASE: 'base-simulation',
 	FINITE: 'finite-population',
 	SELECTION: 'selection',
@@ -27,20 +27,20 @@ export const popGenVariables = [
 		name: VALID_VARIABLES.NUM_GENERATIONS,
 		variable: 't',
 		description: 'This is the number of generations to be simulated',
-		section: VALIDSECTIONS.BASE,
+		section: VALID_SECTIONS.BASE,
 		order: 0,
 	},
 	{
 		name: VALID_VARIABLES.STARTING_ALLELE_FREQ,
 		variable: 'p',
 		description: 'This is the frequency of the allele of interest, A, at generation 0.',
-		section: VALIDSECTIONS.BASE,
+		section: VALID_SECTIONS.BASE,
 		order: 1,
 	},
 	{
 		name: VALID_VARIABLES.POPULATION_SIZE,
 		variable: 'N',
-		section: VALIDSECTIONS.FINITE,
+		section: VALID_SECTIONS.FINITE,
 		order: 0,
 	}
 ] as PopGenVariable[];
