@@ -14,7 +14,7 @@ export default function FinitePopulation({ isActive, name, onChange }) {
 	const [isPopulationSizeActive, setIsPopulationSizeActive] = React.useState(false);
 
 	return (
-		<div>
+		<div aria-label="Finite Population Simulator Inputs">
 			<SectionHeaderWrapper isActive={isActive} name={name} />
 			<SingleRowWrapper>
 				<NameColumn>

@@ -154,18 +154,16 @@ function HomePage() {
 			</NavBarWrapper>
 
 			<main role="main">
-				 <h2>Simulator</h2>
-
+				 <h1>Simulator</h1>
 				 <HighChart line={context.lastResult} />
-
-				 <h3>Simulation Parameters </h3>
-
-				<div role="form">
+				 <h2>Simulation Parameters </h2>
+				<div role="form" aria-label="All simulator inputs">
 				 	<BaseSimulation isActive={true} name={'Base Simulation Model'} onChange={onChange} />
 				 	<FinitePopulation isActive={true} name={'Finite Population'} onChange={onChange} />
 				</div>
 			</main>
-			<Pre>
+
+			<Pre role="figure" aria-label="Debugging information">
 				<DebugHeader>Inputs (Debugging Purposes)</DebugHeader>
 				{JSON.stringify(context.popGenVars)}
 

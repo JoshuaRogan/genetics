@@ -14,13 +14,13 @@ export const NameColumn = styled.div`
 	flex-basis: 25%;
 `;
 
-const SectionHeaderWrapperH4 = styled.h4``;
+const SectionHeaderWrapperH3 = styled.h3``;
 
 export function SectionHeaderWrapper({ isActive, name }) {
 	return (
-		<SectionHeaderWrapperH4>
+		<SectionHeaderWrapperH3>
 			[{isActive ? 'X' : ''}] {name}
-		</SectionHeaderWrapperH4>
+		</SectionHeaderWrapperH3>
 	);
 }
 

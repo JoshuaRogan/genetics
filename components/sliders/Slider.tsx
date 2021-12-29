@@ -158,7 +158,7 @@ export default function Slider({
 		'aria-valuemin': min,
 		'aria-valuemax': max,
 		'aria-valuenow': value,
-		'aria-required': required,
+		required: required,
 	};
 
 	return (
