@@ -1,6 +1,11 @@
 import React from 'react';
 import Highcharts from 'highcharts';
+import styled from 'styled-components';
 import HighchartsReact from 'highcharts-react-official';
+
+const HighChartLoader = styled.div`
+	min-height: 400px;
+`
 
 function createOptions(line) {
 	return {
@@ -28,9 +33,9 @@ function createOptions(line) {
 }
 
 const App = ({ line }) => (
-	<div aria-label="Graph displaying the results of the Simulator" role="figure">
+	<HighChartLoader aria-label="Graph displaying the results of the Simulator" role="figure">
 		<HighchartsReact highcharts={Highcharts} options={createOptions(line)} />
-	</div>
+	</HighChartLoader>
 );
 
 export default App;
