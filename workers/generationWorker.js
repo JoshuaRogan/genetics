@@ -3,7 +3,6 @@ let worker = null;
 function parseMessageJson(event) {
 	try {
 		const data = JSON.parse(event.data);
-		console.log('Always Listen', data);
 		return data;
 	} catch(e) {
 		console.error('Failed to parse json', e);
@@ -13,7 +12,7 @@ function parseMessageJson(event) {
 function listener(event) {
 	try {
 		const data = JSON.parse(event.data);
-		console.log(data);
+		// console.log(data.type);
 	} catch(e) {
 		console.error('Failed to parse json', e);
 	}
@@ -21,7 +20,7 @@ function listener(event) {
 
 if (worker === null && typeof Worker !== 'undefined') {
 	worker = new Worker('/workers/generationWorker.js');
-	worker.addEventListener('message', listener, false);
+	// worker.addEventListener('message', listener, false);
 }
 
 export function getWorker() {

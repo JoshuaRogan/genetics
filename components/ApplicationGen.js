@@ -78,7 +78,6 @@ function HomePage() {
 	const [lastResult, setLastResult] = React.useState({});
 
 	React.useEffect(() => {
-		console.log('useEffect');
 		listenToWorker((event) => {
 			// console.log(event);
 			setLastResult(event);
@@ -101,11 +100,26 @@ function HomePage() {
 			numGenerations: context.popGenVars.t,
 			startingFrequency: context.popGenVars.p,
 		}); // Send data to our worker.
+
+		if (!context.activeSections[VALID_SECTIONS.FINITE]) {
+			worker.postMessage({'cmd':'setVar', 'varName': 'inifinite-pop'});
+		}
+
+		// All Other Variables
+		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': .3, 'wAa': .2, 'waa': .5});
+		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-DS', 'selectionCoef': .3, 'dominaceCoef': .2});
+		// worker.postMessage({'cmd':'setVar', 'varName': 'mutation', 'mu': .0003, 'nu': .003});
+		// worker.postMessage({'cmd':'setVar', 'varName': 'migration', 'migrationRate': .145, 'migrantAlleleFreq': .333});
+		// worker.postMessage({'cmd':'setVar', 'varName': 'inbreeding', 'inbreedCoef': .255});
+		// worker.postMessage({'cmd':'setVar', 'varName': 'assortative-mating', 'matingFreq': .99});
+		// worker.postMessage({'cmd':'setVar', 'varName': 'population-bottleneck', 'generationStart': 3, 'generationEnd': 50, 'newPopulationSize': 500});
+
+		// Kick it off
 		worker.postMessage({ cmd: 'run' });
 
 		// Set Vars based on the context
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': wAA, 'wAa': wAa, 'waa': waa});
-	}, [context.popGenVars]);
+	}, [context.popGenVars, context.activeSections]);
 
 	const onChange = debounce((name, newValue) => {
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
@@ -116,7 +130,6 @@ function HomePage() {
 		context.setActiveSession(section, !currentState);
 	};
 
-	console.log(context);
 	return (
 		<IndexPage>
 			<NavBarWrapper>

@@ -128,6 +128,7 @@ const StyledDirectInput = styled.input`
 	padding-top: 0;
 	text-align: center;
 	height: 100%;
+  width: 120px;
 `;
 
 export default function Slider({
