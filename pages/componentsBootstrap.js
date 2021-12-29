@@ -55,7 +55,7 @@ function HomePage() {
 			<NavBarWrapper>
 				<Nav className="navbar">
 					<Logo href="https://freecodecamp.org" className="logo">
-						<img src="https://s3.amazonaws.com/freecodecamp/freecodecamp_logo.svg" alt="freeCodeCamp logo" />
+						<img src="https://s3.amazonaws.com/freecodecamp/freecodecamp_logo.svg" alt="Genetics Logo" />
 					</Logo>
 					<NavList className="nav-links">
 						<NavItem className="nav-item">

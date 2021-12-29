@@ -86,8 +86,9 @@ function HomePage() {
 	const [lastResult, setLastResult] = React.useState({});
 
 	React.useEffect(() => {
+		console.log('useEffect');
 		listenToWorker((event) => {
-			console.log(event);
+			// console.log(event);
 			setLastResult(event);
 			context.setLastResult(event);
 		});
@@ -102,7 +103,6 @@ function HomePage() {
 			return;
 		}
 
-		console.log(context.popGenVars.p);
 		worker.postMessage({
 			cmd: 'initGeneration',
 			populationSize: context.popGenVars.N,
@@ -161,10 +161,10 @@ function HomePage() {
 			<FinitePopulation isActive={true} name={'Finite Population'} onChange={onChange} />
 
 			<Pre>
-				<h4>Inputs (Debugging Purposes)</h4>
+				<h3>Inputs (Debugging Purposes)</h3>
 				{JSON.stringify(context.popGenVars)}
 
-				<h4>Outputs</h4>
+				<h3>Outputs</h3>
 				{JSON.stringify(lastResult)}
 			</Pre>
 		</IndexPage>

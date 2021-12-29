@@ -3,6 +3,7 @@ let worker = null;
 function parseMessageJson(event) {
 	try {
 		const data = JSON.parse(event.data);
+		console.log('Always Listen', data);
 		return data;
 	} catch(e) {
 		console.error('Failed to parse json', e);

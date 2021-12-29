@@ -40,7 +40,6 @@ export const ApplicationContextProvider = ({ children }) => {
 	};
 
 	const setLastResult = (lastResult) => {
-		console.log(lastResult);
 		setLastResultState(lastResult.results);
 	};
 

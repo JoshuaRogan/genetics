@@ -47,7 +47,7 @@ export function HelpContent({ inputName, variable, description, isOpen = false }
 	return (
 		<HelpContentContainer isOpen={isOpen}>
 			<HelpContentVariable> {variable} </HelpContentVariable>
-			<HelpContentDescription id={inputName}> {description} </HelpContentDescription>
+			<HelpContentDescription id={`help-content-${inputName}`}> {description} </HelpContentDescription>
 		</HelpContentContainer>
 	);
 }
