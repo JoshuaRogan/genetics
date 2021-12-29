@@ -159,7 +159,6 @@ export default function Slider({
 		'aria-valuemax': max,
 		'aria-valuenow': value,
 		'aria-required': required,
-		'aria-label': label,
 	};
 
 	return (
@@ -168,6 +167,7 @@ export default function Slider({
 				{...commonInputProps}
 				id={`slider-${name}`}
 				type="range"
+				aria-label={`Range input for ${label}`}
 				style={{
 					width: '100%',
 					'--min': min,
@@ -178,10 +178,10 @@ export default function Slider({
 			<StyledDirectInput
 				{...commonInputProps}
 				id={`direct-input-${name}`}
+				aria-label={`Direct input for ${label}`}
 				type="number"
 				value={formatter(value)}
 				inputmode={'numeric'}
-				alt={'test'}
 				inputMode={isDecimal ? 'decimal' : 'numeric'}
 			/>
 		</Wrapper>
