@@ -1,8 +1,8 @@
+import { DebugHeader } from '../utils/debugging';
 import { getWorker, listenToWorker } from '../workers/generationWorker';
 import { ApplicationContext } from '../context/application';
 import FinitePopulation from '../components/optionSections/FinitePopulation';
 import BaseSimulation from '../components/optionSections/BaseSimulation';
-import OptionsSection from './OptionsSection';
 import styled from 'styled-components';
 import React, { useEffect } from 'react';
 import IndexPage from './wrapper';
@@ -127,7 +127,7 @@ function HomePage() {
 						<Logo href="https://freecodecamp.org" className="logo">
 							<LogoImage src="https://eloquent-williams-76e898.netlify.app/logo.png" alt="freeCodeCamp logo" />
 						</Logo>
-						<ApplicationList>
+						<ApplicationList aria-label="Simulator Links">
 							<NavItem>
 								<NavLink href="#">Allele</NavLink>
 							</NavItem>
@@ -138,7 +138,7 @@ function HomePage() {
 					</LeftSection>
 
 					<RightSection>
-						<NavList className="nav-links">
+						<NavList className="nav-links" aria-label="Additional Links">
 							<NavItem>
 								<NavLink href="#">About</NavLink>
 							</NavItem>
@@ -153,18 +153,23 @@ function HomePage() {
 				</Nav>
 			</NavBarWrapper>
 
-			<h2>Accessibility Page Test</h2>
-			<HighChart line={context.lastResult} />
-			<h2>Simulation Parameters </h2>
+			<main role="main">
+				 <h2>Simulator</h2>
 
-			<BaseSimulation isActive={true} name={'Base Simulation Model'} onChange={onChange} />
-			<FinitePopulation isActive={true} name={'Finite Population'} onChange={onChange} />
+				 <HighChart line={context.lastResult} />
 
+				 <h3>Simulation Parameters </h3>
+
+				<div role="form">
+				 	<BaseSimulation isActive={true} name={'Base Simulation Model'} onChange={onChange} />
+				 	<FinitePopulation isActive={true} name={'Finite Population'} onChange={onChange} />
+				</div>
+			</main>
 			<Pre>
-				<h3>Inputs (Debugging Purposes)</h3>
+				<DebugHeader>Inputs (Debugging Purposes)</DebugHeader>
 				{JSON.stringify(context.popGenVars)}
 
-				<h3>Outputs</h3>
+				<DebugHeader>Outputs</DebugHeader>
 				{JSON.stringify(lastResult)}
 			</Pre>
 		</IndexPage>
