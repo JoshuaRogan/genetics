@@ -19,7 +19,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 	const [isStartingAlleleFreqActive, setIsStartingAlleleFreqActive] = React.useState(false);
 
 	return (
-		<div>
+		<div aria-label="Base Simulation inputs">
 			<SectionHeaderWrapper isActive={isActive} name={name} />
 			<SingleRowWrapper>
 				<NameColumn>
