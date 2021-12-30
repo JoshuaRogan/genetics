@@ -10,69 +10,6 @@ import IndexPage from './wrapper';
 import HighChart from './highChart';
 import debounce from 'debounce';
 
-const NavBarWrapper = styled.div`
-	background: red;
-	height: 50px;
-`;
-
-const Nav = styled.nav`
-	background-color: ${(props) => props.theme.backgroundColor};
-	padding-left: 30px;
-	padding-right: 10px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-`;
-
-const Logo = styled.a`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-
-const LogoImage = styled.img`
-	max-height: 50px;
-`;
-
-const NavList = styled.ul`
-	list-style: none;
-	display: flex;
-`;
-
-const ApplicationList = styled.ul`
-	list-style: none;
-	display: flex;
-	align-self: flex-start;
-`;
-
-const NavItem = styled.li`
-	&:hover {
-		background-color: ${(props) => props.theme.primaryColor};
-
-		a {
-			color: white;
-		}
-	}
-`;
-
-const NavLink = styled.a`
-	display: inline-block;
-	padding: 10px 15px;
-	text-decoration: none;
-	color: ${(props) => props.theme.primaryColor};
-
-	&:hover {
-	}
-`;
-
-const LeftSection = styled.div`
-	display: flex;
-`;
-
-const RightSection = styled.div`
-	display: flex;
-`;
-
 function HomePage() {
 	const context = React.useContext(ApplicationContext);
 	const [lastResult, setLastResult] = React.useState({});
@@ -102,7 +39,7 @@ function HomePage() {
 		}); // Send data to our worker.
 
 		if (!context.activeSections[VALID_SECTIONS.FINITE]) {
-			worker.postMessage({'cmd':'setVar', 'varName': 'inifinite-pop'});
+			worker.postMessage({ cmd: 'setVar', varName: 'inifinite-pop' });
 		}
 
 		// All Other Variables
@@ -132,38 +69,6 @@ function HomePage() {
 
 	return (
 		<IndexPage>
-			<NavBarWrapper>
-				<Nav className="navbar">
-					<LeftSection>
-						<Logo href="https://freecodecamp.org" className="logo">
-							<LogoImage src="https://eloquent-williams-76e898.netlify.app/logo.png" alt="freeCodeCamp logo" />
-						</Logo>
-						<ApplicationList aria-label="Simulator Links">
-							<NavItem>
-								<NavLink href="#">Allele</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink href="#">Genotype</NavLink>
-							</NavItem>
-						</ApplicationList>
-					</LeftSection>
-
-					<RightSection>
-						<NavList className="nav-links" aria-label="Additional Links">
-							<NavItem>
-								<NavLink href="#">About</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink href="#">FAQ</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink href="#">Contact</NavLink>
-							</NavItem>
-						</NavList>
-					</RightSection>
-				</Nav>
-			</NavBarWrapper>
-
 			<main role="main">
 				<h1>Simulator</h1>
 				<HighChart line={context.lastResult} />

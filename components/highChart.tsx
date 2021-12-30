@@ -5,7 +5,7 @@ import HighchartsReact from 'highcharts-react-official';
 
 const HighChartLoader = styled.div`
 	min-height: 400px;
-`
+`;
 
 function createOptions(line) {
 	return {
