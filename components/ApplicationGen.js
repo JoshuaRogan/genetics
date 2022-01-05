@@ -60,7 +60,7 @@ function HomePage() {
 
 	const onChange = debounce((name, newValue) => {
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
-	}, 100);
+	}, 400);
 
 	const toggleActiveSection = (section) => {
 		const currentState = context.activeSections[section];
