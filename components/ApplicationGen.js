@@ -8,26 +8,27 @@ import styled from 'styled-components';
 import React, { useEffect } from 'react';
 import IndexPage from './wrapper';
 import HighChart from './highChart';
-import debounce from 'debounce';
+
+const ChartControls = styled.div`
+	display: flex;
+	justify-content: space-around;
+`;
 
 function HomePage() {
 	const context = React.useContext(ApplicationContext);
-	const [lastResult, setLastResult] = React.useState({});
 
 	React.useEffect(() => {
 		listenToWorker((event) => {
-			// console.log(event);
-			setLastResult(event);
-			context.setLastResult(event);
+			console.log(event);
+			context.addMoreResults(event);
 		});
 	}, []);
 
-	// bootstrap
-	React.useEffect(() => {
+	const updateChart = () => {
 		const worker = getWorker();
 
 		if (!worker) {
-			console.error('no worker');
+			console.error('Error no worker');
 			return;
 		}
 
@@ -36,7 +37,7 @@ function HomePage() {
 			populationSize: context.popGenVars.N,
 			numGenerations: context.popGenVars.t,
 			startingFrequency: context.popGenVars.p,
-		}); // Send data to our worker.
+		});
 
 		if (!context.activeSections[VALID_SECTIONS.FINITE]) {
 			worker.postMessage({ cmd: 'setVar', varName: 'inifinite-pop' });
@@ -56,11 +57,11 @@ function HomePage() {
 
 		// Set Vars based on the context
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': wAA, 'wAa': wAa, 'waa': waa});
-	}, [context.popGenVars, context.activeSections]);
+	};
 
-	const onChange = debounce((name, newValue) => {
+	const onChange = (name, newValue) => {
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
-	}, 400);
+	};
 
 	const toggleActiveSection = (section) => {
 		const currentState = context.activeSections[section];
@@ -71,7 +72,20 @@ function HomePage() {
 		<IndexPage>
 			<main role="main">
 				<h1>Simulator</h1>
-				<HighChart line={context.lastResult} />
+				<HighChart lines={context.allResults} />
+
+				<ChartControls>
+					<button
+						onClick={() => {
+							context.clearResults();
+						}}
+					>
+						Reset Chart
+					</button>
+					<button onClick={() => updateChart()}>Add Line</button>
+					{/*<button>Batch Run</button>*/}
+				</ChartControls>
+
 				<h2>Simulation Parameters </h2>
 				<div role="form" aria-label="All simulator inputs">
 					<BaseSimulation
@@ -94,7 +108,7 @@ function HomePage() {
 				{JSON.stringify(context.popGenVars)}
 
 				<DebugHeader>Outputs</DebugHeader>
-				{JSON.stringify(lastResult)}
+				{JSON.stringify(context.allResults)}
 			</Pre>
 		</IndexPage>
 	);
