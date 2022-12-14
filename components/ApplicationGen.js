@@ -86,20 +86,26 @@ function HomePage() {
 					{/*<button>Batch Run</button>*/}
 				</ChartControls>
 
-				<h2>Simulation Parameters </h2>
+				<h2>Simulation Settings </h2>
 				<div role="form" aria-label="All simulator inputs">
-					<BaseSimulation
-						isActive={context.activeSections[VALID_SECTIONS.BASE]}
-						name={'Base Simulation Model'}
-						onChange={onChange}
-						toggleActive={() => toggleActiveSection(VALID_SECTIONS.BASE)}
-					/>
-					<FinitePopulation
-						isActive={context.activeSections[VALID_SECTIONS.FINITE]}
-						name={'Finite Population'}
-						onChange={onChange}
-						toggleActive={() => toggleActiveSection(VALID_SECTIONS.FINITE)}
-					/>
+					<section aria-label="Basic simulator settings">
+						<BaseSimulation
+							isActive={context.activeSections[VALID_SECTIONS.BASE]}
+							name={'Base Simulation Model'}
+							onChange={onChange}
+							toggleActive={() => toggleActiveSection(VALID_SECTIONS.BASE)}
+						/>
+						<FinitePopulation
+							isActive={context.activeSections[VALID_SECTIONS.FINITE]}
+							name={'Finite Population'}
+							onChange={onChange}
+							toggleActive={() => toggleActiveSection(VALID_SECTIONS.FINITE)}
+						/>
+					</section>
+					<section aria-label="Advanced simulator settings">
+						<h3>Advanced Factors + </h3>
+						<p>Add more sliders here</p>
+					</section>
 				</div>
 			</main>
 

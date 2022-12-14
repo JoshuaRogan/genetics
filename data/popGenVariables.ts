@@ -4,6 +4,10 @@ export const VALID_SECTIONS = {
 	FINITE: 'finite-population',
 	SELECTION: 'selection',
 	MUTATION: 'mutation',
+	MIGRATION: 'migration',
+	INBREEDING: 'inbreeding',
+	ASSORT_MATING: 'assortative-mating',
+	BOTTLENECK_GEN: 'bottleneck-generations',
 	// ...continue
 }
 
