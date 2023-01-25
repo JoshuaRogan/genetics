@@ -1,4 +1,4 @@
-import IndexPage from '../components/wrapper';
+import IndexPage from 'components/wrapper';
 import ReactSlider from 'react-slider';
 
 function HomePage() {

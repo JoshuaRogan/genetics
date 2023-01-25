@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import SliderOne from '../components/SliderOne';
-import IndexPage from '../components/wrapper';
-import HighChart from '../components/highChart';
+import SliderOne from 'components/SliderOne';
+import IndexPage from 'components/wrapper';
+import HighChart from 'components/highChart';
 
 const PaddedWrapper = styled.div`
 	padding: 5px;

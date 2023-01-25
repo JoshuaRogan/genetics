@@ -9,7 +9,7 @@ import {
 	SliderColumnAndValue,
 } from './optionHelpers';
 import Slider from '../sliders/Slider';
-import {getPopGenVariableByName, VALID_VARIABLES} from "../../data/popGenVariables";
+import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 
 export default function AssortativeMating({ isActive, name, onChange, toggleActive }) {
 	const [isPositiveAssortMatFreqActive, setIsPositiveAssortMatFreqActive] = React.useState(false);
@@ -37,15 +37,13 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 						onChange={onChange}
 						min={0}
 						max={1}
-						step={.001}
+						step={0.001}
 						start={0}
 						label={positiveAssortMatingFreq.sliderName}
 						name={positiveAssortMatingFreq.name}
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
-
-
 
 			{/*<SingleRowWrapper>*/}
 			{/*	<NameColumn>*/}

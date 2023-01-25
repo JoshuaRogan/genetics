@@ -9,7 +9,7 @@ import {
 	SliderColumnAndValue,
 } from './optionHelpers';
 import Slider from '../sliders/Slider';
-import {getPopGenVariableByName, VALID_VARIABLES} from "../../data/popGenVariables";
+import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 
 export default function AssortativeMating({ isActive, name, onChange, toggleActive }) {
 	const [isPositiveAssortMatFreqActive, setIsPositiveAssortMatFreqActive] = React.useState(false);
@@ -40,7 +40,7 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 					<Slider
 						onChange={onChange}
 						min={0}
-						max={500}/* Get this number from the value of another liser*/
+						max={500} /* Get this number from the value of another liser*/
 						step={1}
 						start={0}
 						label={generationToOverrideStart.sliderName}
@@ -51,7 +51,7 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 					<Slider
 						onChange={onChange}
 						min={0}
-						max={500}/* Get this number from the value of another liser*/
+						max={500} /* Get this number from the value of another liser*/
 						step={1}
 						start={50}
 						label={generationToOverrideEnd.sliderName}
@@ -59,8 +59,6 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
-
-
 
 			<SingleRowWrapper>
 				<NameColumn>
@@ -88,8 +86,6 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
-
-
 
 			{/*<SingleRowWrapper>*/}
 			{/*	<NameColumn>*/}

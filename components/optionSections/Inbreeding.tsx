@@ -9,7 +9,7 @@ import {
 	SliderColumnAndValue,
 } from './optionHelpers';
 import Slider from '../sliders/Slider';
-import {getPopGenVariableByName, VALID_VARIABLES} from "../../data/popGenVariables";
+import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 
 export default function Inbreeding({ isActive, name, onChange, toggleActive }) {
 	const [isMigrationRateActive, setIsMigrationRateActive] = React.useState(false);
@@ -38,15 +38,13 @@ export default function Inbreeding({ isActive, name, onChange, toggleActive }) {
 						onChange={onChange}
 						min={0}
 						max={1}
-						step={.001}
+						step={0.001}
 						start={0}
 						label={inbreedingCoef.sliderName}
 						name={inbreedingCoef.name}
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
-
-
 
 			{/*<SingleRowWrapper>*/}
 			{/*	<NameColumn>*/}

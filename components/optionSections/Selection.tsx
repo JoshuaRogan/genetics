@@ -19,7 +19,6 @@ export default function Selection({ isActive, name, onChange, toggleActive }) {
 	const [isSelectionCoefActive, setIsSelectionCoefActive] = React.useState(false);
 	const [isDominanceCoefActive, setIsDominanceCoefActive] = React.useState(false);
 
-
 	return (
 		<div aria-label="Selection">
 			<SectionHeaderWrapper isActive={isActive} name={name} onClick={() => toggleActive()} />
@@ -49,7 +48,6 @@ export default function Selection({ isActive, name, onChange, toggleActive }) {
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
-
 
 			<SingleRowWrapper>
 				<NameColumn>
@@ -103,8 +101,6 @@ export default function Selection({ isActive, name, onChange, toggleActive }) {
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
 
-
-
 			{/*<SingleRowWrapper>*/}
 			{/*	<NameColumn>*/}
 			{/*		<div>*/}
@@ -131,7 +127,6 @@ export default function Selection({ isActive, name, onChange, toggleActive }) {
 			{/*	</SliderColumnAndValue>*/}
 			{/*</SingleRowWrapper>*/}
 
-
 			{/*<SingleRowWrapper>*/}
 			{/*	<NameColumn>*/}
 			{/*		<div>*/}
@@ -157,8 +152,6 @@ export default function Selection({ isActive, name, onChange, toggleActive }) {
 			{/*		/>*/}
 			{/*	</SliderColumnAndValue>*/}
 			{/*</SingleRowWrapper>*/}
-
-
 
 			{/*<SingleRowWrapper>*/}
 			{/*	<NameColumn>*/}

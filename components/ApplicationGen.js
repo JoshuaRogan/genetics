@@ -1,4 +1,3 @@
-
 import AssortativeMating from '../components/optionSections/AssortativeMating';
 import BottleNeckGenerations from '../components/optionSections/BottleNeckGenerations';
 import Inbreeding from '../components/optionSections/Inbreeding';
@@ -55,39 +54,54 @@ function HomePage() {
 		}
 
 		if (context.activeSections[VALID_SECTIONS.SELECTION]) {
-			const message = {'cmd':'setVar', 'varName': 'selection-W', 'wAA': context.popGenVars.WAA, 'wAa': context.popGenVars.WAa, 'waa': context.popGenVars.Waa};
+			const message = {
+				cmd: 'setVar',
+				varName: 'selection-W',
+				wAA: context.popGenVars.WAA,
+				wAa: context.popGenVars.WAa,
+				waa: context.popGenVars.Waa,
+			};
 			worker.postMessage(message);
-			worker.postMessage({'cmd':'setVar', 'varName': 'selection-DS', 'selectionCoef': 0, 'dominaceCoef': 1});
+			worker.postMessage({ cmd: 'setVar', varName: 'selection-DS', selectionCoef: 0, dominaceCoef: 1 });
 		}
 
 		if (context.activeSections[VALID_SECTIONS.MUTATION]) {
 			const mu = popGenVars.mu * Math.pow(10, popGenVars['mu-exp']);
 			const nu = popGenVars.nu * Math.pow(10, popGenVars['nu-exp']);
 
-			worker.postMessage({'cmd':'setVar', 'varName': 'mutation', 'mu': mu, 'nu': nu})
+			worker.postMessage({ cmd: 'setVar', varName: 'mutation', mu: mu, nu: nu });
 		}
 
 		if (context.activeSections[VALID_SECTIONS.MIGRATION]) {
-			worker.postMessage({'cmd':'setVar', 'varName': 'migration', 'migrationRate': popGenVars.m, 'migrantAlleleFreq': popGenVars.pm});
+			worker.postMessage({
+				cmd: 'setVar',
+				varName: 'migration',
+				migrationRate: popGenVars.m,
+				migrantAlleleFreq: popGenVars.pm,
+			});
 		}
 
 		if (context.activeSections[VALID_SECTIONS.INBREEDING]) {
-			worker.postMessage({'cmd':'setVar', 'varName': 'inbreeding', 'inbreedCoef': popGenVars.F});
+			worker.postMessage({ cmd: 'setVar', varName: 'inbreeding', inbreedCoef: popGenVars.F });
 		}
 
 		if (context.activeSections[VALID_SECTIONS.ASSORT_MATING]) {
-			worker.postMessage({'cmd':'setVar', 'varName': 'assortative-mating', 'matingFreq': popGenVars.assortMating});
+			worker.postMessage({ cmd: 'setVar', varName: 'assortative-mating', matingFreq: popGenVars.assortMating });
 		}
 
 		if (context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]) {
-			worker.postMessage({'cmd':'setVar', 'varName': 'population-bottleneck', 'generationStart': popGenVars['gen-to-over-start'], 'generationEnd': popGenVars['gen-to-over-end'], 'newPopulationSize': popGenVars.Nb});
+			worker.postMessage({
+				cmd: 'setVar',
+				varName: 'population-bottleneck',
+				generationStart: popGenVars['gen-to-over-start'],
+				generationEnd: popGenVars['gen-to-over-end'],
+				newPopulationSize: popGenVars.Nb,
+			});
 		}
-
 
 		// All Other Variables
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': .3, 'wAa': .2, 'waa': .5});
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-DS', 'selectionCoef': .3, 'dominaceCoef': .2});
-
 
 		// worker.postMessage({'cmd':'setVar', 'varName': 'mutation', 'mu': .0003, 'nu': .003});
 		// worker.postMessage({'cmd':'setVar', 'varName': 'migration', 'migrationRate': .145, 'migrantAlleleFreq': .333});
@@ -181,7 +195,6 @@ function HomePage() {
 							onChange={onChange}
 							toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
 						/>
-
 					</section>
 					<section aria-label="Advanced simulator settings">
 						<h3>Advanced Factors + </h3>
@@ -192,9 +205,8 @@ function HomePage() {
 
 			<Pre role="figure" aria-label="Debugging information">
 				<DebugHeader>Inputs (Debugging Purposes)</DebugHeader>
-				{JSON.stringify(context.popGenVars)} <br/>
+				{JSON.stringify(context.popGenVars)} <br />
 				{JSON.stringify(context.activeSections)}
-
 				<DebugHeader>Outputs</DebugHeader>
 				{JSON.stringify(context.allResults)}
 			</Pre>

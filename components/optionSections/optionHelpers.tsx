@@ -65,7 +65,7 @@ export function HelpContent({ inputName, variable, variableHTML = null, descript
 
 	return (
 		<HelpContentContainer isOpen={isOpen}>
-			<HelpContentVariable dangerouslySetInnerHTML={{ __html: variableFinal}}/>
+			<HelpContentVariable dangerouslySetInnerHTML={{ __html: variableFinal }} />
 			<HelpContentDescription id={`help-content-${inputName}`}> {description} </HelpContentDescription>
 		</HelpContentContainer>
 	);

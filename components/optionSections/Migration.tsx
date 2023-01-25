@@ -9,7 +9,7 @@ import {
 	SliderColumnAndValue,
 } from './optionHelpers';
 import Slider from '../sliders/Slider';
-import {getPopGenVariableByName, VALID_VARIABLES} from "../../data/popGenVariables";
+import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 
 export default function Migration({ isActive, name, onChange, toggleActive }) {
 	const [isMigrationRateActive, setIsMigrationRateActive] = React.useState(false);
@@ -40,14 +40,13 @@ export default function Migration({ isActive, name, onChange, toggleActive }) {
 						onChange={onChange}
 						min={0}
 						max={1}
-						step={.001}
+						step={0.001}
 						start={0}
 						label={migrationRate.sliderName}
 						name={VALID_VARIABLES.MIGRATION_MIGRATION_RATE}
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
-
 
 			<SingleRowWrapper>
 				<NameColumn>
@@ -68,8 +67,8 @@ export default function Migration({ isActive, name, onChange, toggleActive }) {
 						onChange={onChange}
 						min={0}
 						max={1}
-						step={.001}
-						start={0.500}
+						step={0.001}
+						start={0.5}
 						label={migrantAllelFreq.sliderName}
 						name={VALID_VARIABLES.MIGRATION_MIGRANT_ALLELE_FREQ}
 					/>

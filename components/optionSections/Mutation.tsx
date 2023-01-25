@@ -9,7 +9,7 @@ import {
 	SliderColumnAndValue,
 } from './optionHelpers';
 import Slider from '../sliders/Slider';
-import {getPopGenVariableByName, VALID_VARIABLES} from '../../data/popGenVariables';
+import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 
 export default function Mutation({ isActive, name, onChange, toggleActive }) {
 	const [isFowardMutationActive, setIsFowardMutationActive] = React.useState(false);
@@ -19,7 +19,6 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 	const backwardMutation = getPopGenVariableByName(VALID_VARIABLES.MUTATION_BACKWARD_MUTATION);
 	const fowardMutationEpon = getPopGenVariableByName(VALID_VARIABLES.MUTATION_FORWARD_MUTATION_EXPONENT);
 	const backwardMutationExpon = getPopGenVariableByName(VALID_VARIABLES.MUTATION_BACKWARD_MUTATION_EXPONENT);
-
 
 	return (
 		<div aria-label="Mutation">
@@ -63,7 +62,6 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
 
-
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>
@@ -101,9 +99,6 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
-
-
-
 
 			{/*<SingleRowWrapper>*/}
 			{/*	<NameColumn>*/}

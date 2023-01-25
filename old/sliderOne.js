@@ -1,5 +1,5 @@
-import IndexPage from '../components/wrapper';
-import SliderOne from '../components/SliderOne';
+import IndexPage from 'components/wrapper';
+import SliderOne from 'components/SliderOne';
 
 function HomePage() {
 	return (
