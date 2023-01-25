@@ -37,6 +37,7 @@ export default function Migration({ isActive, name, onChange, toggleActive }) {
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={1}
@@ -64,6 +65,7 @@ export default function Migration({ isActive, name, onChange, toggleActive }) {
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={1}

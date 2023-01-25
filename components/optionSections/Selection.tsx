@@ -45,6 +45,7 @@ export default function Selection({ isActive, name, onChange, toggleActive }) {
 						step={0.001}
 						label={'Fitness Coefficient (WAA)'}
 						name={VALID_VARIABLES.SELECTION_WAA}
+						isActive={isActive}
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
@@ -64,6 +65,7 @@ export default function Selection({ isActive, name, onChange, toggleActive }) {
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={1}
@@ -90,6 +92,7 @@ export default function Selection({ isActive, name, onChange, toggleActive }) {
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={1}

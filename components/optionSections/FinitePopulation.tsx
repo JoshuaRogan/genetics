@@ -31,6 +31,7 @@ export default function FinitePopulation({ isActive, name, onChange, toggleActiv
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={1}
 						max={10000}

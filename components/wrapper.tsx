@@ -32,6 +32,7 @@ const THEME = {
 	primaryColor: '#4b516a',
 	textColor: '#333333',
 	textColorLightGray: '#737373',
+	disabledGray: 'rgb(171,169,169)',
 	main: 'red',
 	spaceBetweenNum: 15,
 	spaceBetweenSmall: '10px',

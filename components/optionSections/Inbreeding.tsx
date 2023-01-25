@@ -35,6 +35,7 @@ export default function Inbreeding({ isActive, name, onChange, toggleActive }) {
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={1}

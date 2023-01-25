@@ -40,6 +40,7 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={9.9999}
@@ -51,6 +52,7 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 				</SliderColumnAndValue>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={-10}
 						max={-1}
@@ -78,6 +80,7 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={9.9999}
@@ -89,6 +92,7 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 				</SliderColumnAndValue>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={-10}
 						max={-1}

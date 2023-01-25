@@ -9,7 +9,8 @@ const track = css`
 	box-sizing: border-box;
 	border: none;
 	height: 4px;
-	background: ${(props) => props.theme.primaryColor};
+	background: ${(props) => (props.isActive ? props.theme.disabledGray : props.theme.primaryColor)};
+	transition: background 0.2s ease-in-out;
 	border-radius: 8px;
 `;
 
@@ -17,11 +18,15 @@ const trackFill = css`
 	${track};
 	height: 6px;
 	background-color: transparent;
-	background-image: linear-gradient(${(props) => props.theme.primaryColor}, ${(props) => props.theme.primaryColor}),
+	background-image: linear-gradient(
+			${(props) => (props.isActive ? props.theme.primaryColor : props.theme.disabledGray)},
+			${(props) => (props.isActive ? props.theme.primaryColor : props.theme.disabledGray)}
+		),
 		linear-gradient(${trackC}, ${trackC});
 	background-size: var(--sx) 6px, calc(100% - var(--sx)) 4px;
 	background-position: left center, right center;
 	background-repeat: no-repeat;
+	transition: background-image 0.2s ease-in-out;
 `;
 
 const fill = css`
@@ -142,6 +147,7 @@ export default function Slider({
 	onChange = (name, number) => {},
 	formatter = (num) => num,
 	isDecimal = false,
+	isActive = false,
 }) {
 	const [value, setValue] = React.useState(start);
 
@@ -165,6 +171,7 @@ export default function Slider({
 	return (
 		<Wrapper>
 			<Input
+				isActive={isActive}
 				{...commonInputProps}
 				id={`slider-${name}`}
 				type="range"
@@ -184,6 +191,7 @@ export default function Slider({
 				value={formatter(value)}
 				inputmode={'numeric'}
 				inputMode={isDecimal ? 'decimal' : 'numeric'}
+				isActive={isActive}
 			/>
 		</Wrapper>
 	);

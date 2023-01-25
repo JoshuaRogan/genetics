@@ -38,6 +38,7 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={500} /* Get this number from the value of another liser*/
@@ -49,6 +50,7 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 				</SliderColumnAndValue>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={500} /* Get this number from the value of another liser*/
@@ -76,6 +78,7 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 				</NameColumn>
 				<SliderColumnAndValue>
 					<Slider
+						isActive={isActive}
 						onChange={onChange}
 						min={0}
 						max={10000}
