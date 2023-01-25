@@ -4,6 +4,8 @@ import Navigation from '../components/Navigation';
 
 const RootStyles = styled.div`
 	font-family: 'Roboto', sans-serif;
+	padding-left: 20px;
+	padding-right: 20px;
 `;
 
 const size = {

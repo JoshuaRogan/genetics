@@ -184,7 +184,7 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.BOTTLENECK_GEN,
 		order: 0,
 		description: 'These parameters indicate the start and end generations, respectively, of the population bottleneck event.',
-		sliderName: 'Generations to Override Start'
+		sliderName: 'Generations to Override Start/End'
 	},
 	{
 		name: VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_END,

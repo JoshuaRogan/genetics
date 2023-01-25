@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const NavBarWrapper = styled.div`
 	height: 50px;
@@ -61,6 +62,7 @@ const NavLink = styled.a`
 	color: ${(props) => props.theme.primaryColor};
 
 	&:hover {
+		cursor: pointer;
 	}
 `;
 
@@ -119,16 +121,28 @@ export default function Navigation() {
 		<NavBarWrapper>
 			<Nav className="navbar">
 				<LeftSection>
-					<Logo href="https://freecodecamp.org" className="logo">
+					<Logo href="/" className="logo">
 						<LogoImage src="https://eloquent-williams-76e898.netlify.app/logo.png" alt="freeCodeCamp logo" />
 					</Logo>
 					<DesktopNavigation>
 						<ApplicationList aria-label="Simulator Links">
 							<NavItem>
-								<NavLink href="#">Allele</NavLink>
+								{/* eslint-disable-next-line @next/next/link-passhref */}
+								<Link href="/">
+									<NavLink>Home</NavLink>
+								</Link>
 							</NavItem>
 							<NavItem>
-								<NavLink href="#">Genotype</NavLink>
+								{/* eslint-disable-next-line @next/next/link-passhref */}
+								<Link href={'/individual'}>
+									<NavLink>Individual Simulations</NavLink>
+								</Link>
+							</NavItem>
+							<NavItem>
+								{/* eslint-disable-next-line @next/next/link-passhref */}
+								<Link href={'/replicated'}>
+									<NavLink>Replicated Simulation</NavLink>
+								</Link>
 							</NavItem>
 						</ApplicationList>
 					</DesktopNavigation>
@@ -139,13 +153,22 @@ export default function Navigation() {
 					<DesktopNavigation>
 						<NavList className="nav-links" aria-label="Additional Links">
 							<NavItem>
-								<NavLink href="#">About</NavLink>
+								{/* eslint-disable-next-line @next/next/link-passhref */}
+								<Link href={'/comingsoon'}>
+									<NavLink>About</NavLink>
+								</Link>
 							</NavItem>
 							<NavItem>
-								<NavLink href="#">FAQ</NavLink>
+								{/* eslint-disable-next-line @next/next/link-passhref */}
+								<Link href={'/comingsoon'}>
+									<NavLink>FAQ</NavLink>
+								</Link>
 							</NavItem>
 							<NavItem>
-								<NavLink href="#">Contact</NavLink>
+								{/* eslint-disable-next-line @next/next/link-passhref */}
+								<Link href={'/comingsoon'}>
+									<NavLink>Contact</NavLink>
+								</Link>
 							</NavItem>
 						</NavList>
 					</DesktopNavigation>

@@ -20,6 +20,10 @@ const ChartControls = styled.div`
 	justify-content: space-around;
 `;
 
+const DebugTitle = styled.h2`
+	color: red;
+`;
+
 function HomePage() {
 	const context = React.useContext(ApplicationContext);
 
@@ -111,7 +115,6 @@ function HomePage() {
 		// Kick it off
 		worker.postMessage({ cmd: 'run' });
 
-
 		// Set Vars based on the context
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': wAA, 'wAa': wAa, 'waa': waa});
 	};
@@ -129,20 +132,7 @@ function HomePage() {
 	return (
 		<IndexPage>
 			<main role="main">
-				<h1>Simulator</h1>
-				<HighChart lines={context.alleleResults} title='Graph 1: Allele Frequency Change Over Generations'/>
-				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'}/>
-				<ChartControls>
-					<button
-						onClick={() => {
-							context.clearResults();
-						}}
-					>
-						Reset Chart
-					</button>
-					<button onClick={() => updateChart()}>Add Line</button>
-					{/*<button>Batch Run</button>*/}
-				</ChartControls>
+				<h1>Individual Simulator</h1>
 
 				<h2>Simulation Settings </h2>
 				<div role="form" aria-label="All simulator inputs">
@@ -201,9 +191,25 @@ function HomePage() {
 						<p>Add more sliders here</p>
 					</section>
 				</div>
+
+				<ChartControls>
+					<button
+						onClick={() => {
+							context.clearResults();
+							updateChart();
+						}}
+					>
+						Run Simulation
+					</button>
+					<button onClick={() => updateChart()}>Add as a new simulation (Allele only)</button>
+				</ChartControls>
+
+				<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
 			</main>
 
 			<Pre role="figure" aria-label="Debugging information">
+				<DebugTitle>Debug Information + Content for Legend:</DebugTitle>
 				<DebugHeader>Current Input Values</DebugHeader>
 				{JSON.stringify(context.popGenVars)} <br />
 				{JSON.stringify(context.activeSections)}
