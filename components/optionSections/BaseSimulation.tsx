@@ -50,6 +50,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 						label={'Number of generations'}
 						name={'number-of-generations'}
 						required
+						isActive={true}
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
@@ -78,6 +79,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 						name={'starting-allele-frequency'}
 						required
 						isDecimal
+						isActive={true}
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
