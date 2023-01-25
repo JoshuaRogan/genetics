@@ -60,7 +60,29 @@ function HomePage() {
 			worker.postMessage({'cmd':'setVar', 'varName': 'selection-DS', 'selectionCoef': 0, 'dominaceCoef': 1});
 		}
 
-		// if (context)
+		if (context.activeSections[VALID_SECTIONS.MUTATION]) {
+			const mu = popGenVars.mu * Math.pow(10, popGenVars['mu-exp']);
+			const nu = popGenVars.nu * Math.pow(10, popGenVars['nu-exp']);
+
+			worker.postMessage({'cmd':'setVar', 'varName': 'mutation', 'mu': mu, 'nu': nu})
+		}
+
+		if (context.activeSections[VALID_SECTIONS.MIGRATION]) {
+			worker.postMessage({'cmd':'setVar', 'varName': 'migration', 'migrationRate': popGenVars.m, 'migrantAlleleFreq': popGenVars.pm});
+		}
+
+		if (context.activeSections[VALID_SECTIONS.INBREEDING]) {
+			worker.postMessage({'cmd':'setVar', 'varName': 'inbreeding', 'inbreedCoef': popGenVars.F});
+		}
+
+		if (context.activeSections[VALID_SECTIONS.ASSORT_MATING]) {
+			worker.postMessage({'cmd':'setVar', 'varName': 'assortative-mating', 'matingFreq': popGenVars.assortMating});
+		}
+
+		if (context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]) {
+			worker.postMessage({'cmd':'setVar', 'varName': 'population-bottleneck', 'generationStart': popGenVars['gen-to-over-start'], 'generationEnd': popGenVars['gen-to-over-end'], 'newPopulationSize': popGenVars.Nb});
+		}
+
 
 		// All Other Variables
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': .3, 'wAa': .2, 'waa': .5});

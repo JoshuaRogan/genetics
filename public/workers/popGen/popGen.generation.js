@@ -83,7 +83,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 
     this.setInbreedingCoefficient = function(inbreedingCoefficient) {
         this.inbreeding = true;
-        this.inbreedingCoefficient = inbreedingCoefficient;
+        this.inbreedingCoefficient = parseFloat(inbreedingCoefficient);
     }
 
     //Assortative Mating

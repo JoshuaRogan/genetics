@@ -9,11 +9,16 @@ import {
 	SliderColumnAndValue,
 } from './optionHelpers';
 import Slider from '../sliders/Slider';
-import { VALID_VARIABLES } from '../../data/popGenVariables';
+import {getPopGenVariableByName, VALID_VARIABLES} from '../../data/popGenVariables';
 
 export default function Mutation({ isActive, name, onChange, toggleActive }) {
 	const [isFowardMutationActive, setIsFowardMutationActive] = React.useState(false);
 	const [isBackwardMutationActive, setIsBackwardMutationActive] = React.useState(false);
+
+	const forwardMutation = getPopGenVariableByName(VALID_VARIABLES.MUTATION_FORWARD_MUTATION);
+	const backwardMutation = getPopGenVariableByName(VALID_VARIABLES.MUTATION_BACKWARD_MUTATION);
+	const fowardMutationEpon = getPopGenVariableByName(VALID_VARIABLES.MUTATION_FORWARD_MUTATION_EXPONENT);
+	const backwardMutationExpon = getPopGenVariableByName(VALID_VARIABLES.MUTATION_BACKWARD_MUTATION_EXPONENT);
 
 
 	return (
@@ -23,11 +28,12 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>
-						Forward Mutation Rate
+						{forwardMutation.sliderName}
 						<HelpContentToggle onClick={() => setIsFowardMutationActive(!isFowardMutationActive)} />{' '}
 					</div>
 					<HelpContent
-						variable={'μ'}
+						variable={forwardMutation.variable}
+						variableHTML={forwardMutation.variableHTML}
 						description="The rate at which allele A mutates to allele a per generation."
 						inputName={'foward-mutation-rate'}
 						isOpen={isFowardMutationActive}
@@ -40,7 +46,7 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 						max={9.9999}
 						start={0}
 						step={0.001}
-						label={'Forward Mutation Rate'}
+						label={forwardMutation.sliderName}
 						name={VALID_VARIABLES.MUTATION_FORWARD_MUTATION}
 					/>
 				</SliderColumnAndValue>
@@ -61,11 +67,12 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>
-						Backward Mutation Rate
+						{backwardMutation.sliderName}
 						<HelpContentToggle onClick={() => setIsBackwardMutationActive(!isBackwardMutationActive)} />{' '}
 					</div>
 					<HelpContent
-						variable={'v'}
+						variable={backwardMutation.variable}
+						variableHTML={backwardMutation.variableHTML}
 						description="The rate at which allele a mutates to allele A per generation."
 						inputName={'backward-mutation-rate'}
 						isOpen={isBackwardMutationActive}
@@ -78,7 +85,7 @@ export default function Mutation({ isActive, name, onChange, toggleActive }) {
 						max={9.9999}
 						start={0}
 						step={0.001}
-						label={'Backward Mutation Rate'}
+						label={backwardMutation.sliderName}
 						name={VALID_VARIABLES.MUTATION_BACKWARD_MUTATION}
 					/>
 				</SliderColumnAndValue>

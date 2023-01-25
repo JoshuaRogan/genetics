@@ -15,7 +15,8 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 	const [isPositiveAssortMatFreqActive, setIsPositiveAssortMatFreqActive] = React.useState(false);
 	const [isBottleNeckPopSizeActive, setIsBottleNeckPopSizeActive] = React.useState(false);
 
-	const generationToOverride = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_GEN_TO_OVVERRIDE);
+	const generationToOverrideStart = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_START);
+	const generationToOverrideEnd = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_END);
 	const bottleNeckPopSize = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_POPULATION_SIZE);
 
 	return (
@@ -25,13 +26,13 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>
-						{generationToOverride.sliderName}
+						{generationToOverrideStart.sliderName}
 						<HelpContentToggle onClick={() => setIsPositiveAssortMatFreqActive(!isPositiveAssortMatFreqActive)} />{' '}
 					</div>
 					<HelpContent
 						variable={''}
-						description={generationToOverride.description}
-						inputName={generationToOverride.name}
+						description={generationToOverrideStart.description}
+						inputName={generationToOverrideStart.name}
 						isOpen={isPositiveAssortMatFreqActive}
 					/>
 				</NameColumn>
@@ -39,11 +40,22 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 					<Slider
 						onChange={onChange}
 						min={0}
-						max={1}
-						step={.001}
+						max={500}/* Get this number from the value of another liser*/
+						step={1}
 						start={0}
-						label={generationToOverride.sliderName}
-						name={generationToOverride.name}
+						label={generationToOverrideStart.sliderName}
+						name={generationToOverrideStart.name}
+					/>
+				</SliderColumnAndValue>
+				<SliderColumnAndValue>
+					<Slider
+						onChange={onChange}
+						min={0}
+						max={500}/* Get this number from the value of another liser*/
+						step={1}
+						start={50}
+						label={generationToOverrideEnd.sliderName}
+						name={generationToOverrideEnd.name}
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
@@ -68,9 +80,9 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 					<Slider
 						onChange={onChange}
 						min={0}
-						max={1}
-						step={.001}
-						start={0}
+						max={10000}
+						step={1}
+						start={5000}
 						label={bottleNeckPopSize.sliderName}
 						name={bottleNeckPopSize.name}
 					/>

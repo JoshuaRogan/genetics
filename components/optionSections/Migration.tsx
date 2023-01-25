@@ -9,11 +9,14 @@ import {
 	SliderColumnAndValue,
 } from './optionHelpers';
 import Slider from '../sliders/Slider';
-import {VALID_VARIABLES} from "../../data/popGenVariables";
+import {getPopGenVariableByName, VALID_VARIABLES} from "../../data/popGenVariables";
 
 export default function Migration({ isActive, name, onChange, toggleActive }) {
 	const [isMigrationRateActive, setIsMigrationRateActive] = React.useState(false);
 	const [isMigrantAlleleFreqActive, setIsMigrantAlleleFreqActive] = React.useState(false);
+
+	const migrationRate = getPopGenVariableByName(VALID_VARIABLES.MIGRATION_MIGRATION_RATE);
+	const migrantAllelFreq = getPopGenVariableByName(VALID_VARIABLES.MIGRATION_MIGRANT_ALLELE_FREQ);
 
 	return (
 		<div aria-label="Migration Inputs">
@@ -21,12 +24,13 @@ export default function Migration({ isActive, name, onChange, toggleActive }) {
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>
-						Migration Rate
+						{migrationRate.sliderName}
 						<HelpContentToggle onClick={() => setIsMigrationRateActive(!isMigrationRateActive)} />{' '}
 					</div>
 					<HelpContent
-						variable={'m'}
-						description="The rate at which migrant alleles enter the population per generation."
+						variable={migrationRate.variable}
+						variableHTML={migrationRate.variableHTML}
+						description={migrationRate.description}
 						inputName={'migration-rate'}
 						isOpen={isMigrationRateActive}
 					/>
@@ -38,7 +42,7 @@ export default function Migration({ isActive, name, onChange, toggleActive }) {
 						max={1}
 						step={.001}
 						start={0}
-						label={'Migration Rate'}
+						label={migrationRate.sliderName}
 						name={VALID_VARIABLES.MIGRATION_MIGRATION_RATE}
 					/>
 				</SliderColumnAndValue>
@@ -48,12 +52,13 @@ export default function Migration({ isActive, name, onChange, toggleActive }) {
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>
-						Migrant Allele Frequency
+						{migrantAllelFreq.sliderName}
 						<HelpContentToggle onClick={() => setIsMigrantAlleleFreqActive(!isMigrantAlleleFreqActive)} />{' '}
 					</div>
 					<HelpContent
-						variable={'Pm'}
-						description="The frequency of the A allele among all migrant alleles entering the population."
+						variable={migrantAllelFreq.variable}
+						variableHTML={migrantAllelFreq.variableHTML}
+						description={migrantAllelFreq.description}
 						inputName={'migrant-allele-frequency'}
 						isOpen={isMigrantAlleleFreqActive}
 					/>
@@ -64,21 +69,12 @@ export default function Migration({ isActive, name, onChange, toggleActive }) {
 						min={0}
 						max={1}
 						step={.001}
-						start={0}
-						label={'Migrant Allele Frequency'}
+						start={0.500}
+						label={migrantAllelFreq.sliderName}
 						name={VALID_VARIABLES.MIGRATION_MIGRANT_ALLELE_FREQ}
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
-
-			{/*<SingleRowWrapper>*/}
-			{/*	<NameColumn>*/}
-			{/*		<div>Number of Simulations</div>*/}
-			{/*	</NameColumn>*/}
-			{/*	<SliderColumnAndValue>*/}
-			{/*		<SliderOne label={'Number of Simulations'} name={'number-of-simulations'} required />*/}
-			{/*	</SliderColumnAndValue>*/}
-			{/*</SingleRowWrapper>*/}
 		</div>
 	);
 }

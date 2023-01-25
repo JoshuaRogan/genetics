@@ -34,7 +34,8 @@ export const VALID_VARIABLES = {
 
 	ASSORT_MATING_POSITIVE_FREQ: 'positive-assortative-mating-frequency',
 
-	BOTTLENECK_GEN_TO_OVVERRIDE: 'bottle-neck-gen-to-override',
+	BOTTLENECK_GEN_TO_OVERRIDE_START: 'bottle-neck-gen-to-override-start',
+	BOTTLENECK_GEN_TO_OVERRIDE_END: 'bottle-neck-gen-to-override-end',
 	BOTTLENECK_POPULATION_SIZE: 'bottle-neck-population-size'
 };
 
@@ -107,25 +108,29 @@ export const popGenVariables = [
 	// MUTATION
 	{
 		name: VALID_VARIABLES.MUTATION_FORWARD_MUTATION,
-		variable: 'μ',
+		variable: 'mu',
+		variableHTML: 'μ',
 		section: VALID_SECTIONS.MUTATION,
 		order: 0,
+		sliderName: 'Forward Mutation Rate'
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_BACKWARD_MUTATION,
-		variable: 'v',
+		variable: 'nu',
+		variableHTML: 'v',
 		section: VALID_SECTIONS.MUTATION,
 		order: 1,
+		sliderName: 'Backward Mutation Rate'
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_FORWARD_MUTATION_EXPONENT,
-		variable: 'μ-exp',
+		variable: 'mu-exp',
 		section: VALID_SECTIONS.MUTATION,
 		order: 0,
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_BACKWARD_MUTATION_EXPONENT,
-		variable: 'v-exp',
+		variable: 'nu-exp',
 		section: VALID_SECTIONS.MUTATION,
 		order: 1,
 	},
@@ -136,12 +141,17 @@ export const popGenVariables = [
 		name: VALID_VARIABLES.MIGRATION_MIGRATION_RATE,
 		variable: 'm',
 		section: VALID_SECTIONS.MIGRATION,
+		sliderName: 'Migration Rate',
+		description: "The rate at which migrant alleles enter the population per generation.",
 		order: 0,
 	},
 	{
 		name: VALID_VARIABLES.MIGRATION_MIGRANT_ALLELE_FREQ,
-		variable: 'Pm',
+		variable: 'pm',
+		variableHTML: 'P<sub>M</sub>',
+		sliderName: 'Migrant Allele Frequency',
 		section: VALID_SECTIONS.MIGRATION,
+		description: 'The frequency of the A allele among all migrant alleles entering the population.',
 		order: 1,
 	},
 
@@ -159,7 +169,8 @@ export const popGenVariables = [
 	// Assort
 	{
 		name: VALID_VARIABLES.ASSORT_MATING_POSITIVE_FREQ,
-		variable: 'α',
+		variable: 'assortMating',
+		variableHTML: 'α',
 		section: VALID_SECTIONS.ASSORT_MATING,
 		order: 0,
 		description: 'This is the excess fraction of positive assortative matings in the population where 1 ‐ α is the fraction of random matings. A value of α = 1 indicates 100% positive assortative mating, and a value of α = 0 indicates total random mating.',
@@ -168,16 +179,24 @@ export const popGenVariables = [
 
 	// Bottleneck
 	{
-		name: VALID_VARIABLES.BOTTLENECK_GEN_TO_OVVERRIDE,
-		variable: 'gen-to-over',
+		name: VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_START,
+		variable: 'gen-to-over-start',
 		section: VALID_SECTIONS.BOTTLENECK_GEN,
 		order: 0,
 		description: 'These parameters indicate the start and end generations, respectively, of the population bottleneck event.',
-		sliderName: 'Generations to Override'
+		sliderName: 'Generations to Override Start'
+	},
+	{
+		name: VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_END,
+		variable: 'gen-to-over-end',
+		section: VALID_SECTIONS.BOTTLENECK_GEN,
+		order: 0,
+		description: 'These parameters indicate the start and end generations, respectively, of the population bottleneck event.',
+		sliderName: 'Generations to Override End'
 	},
 	{
 		name: VALID_VARIABLES.BOTTLENECK_POPULATION_SIZE,
-		variable: 'N-sub-B',
+		variable: 'Nb',
 		variableHTML: 'N<sub>B</sub>',
 		section: VALID_SECTIONS.BOTTLENECK_GEN,
 		order: 0,

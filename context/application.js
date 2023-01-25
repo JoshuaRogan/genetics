@@ -13,6 +13,8 @@ function valueToProper(name, value) {
 
 export const defaultContext = {
 	b: '123',
+
+	// Default values for variables in popGenVariablesFile
 	popGenVars: {
 		t: 500,
 		p: 0.5,
@@ -20,11 +22,34 @@ export const defaultContext = {
 		numSims: 1,
 
 		// selection
-		WAA: undefined,
-		WAa: undefined,
-		Waa: undefined,
-		s: undefined,
-		h: undefined,
+		WAA: 1,
+		WAa: 1,
+		Waa: 1,
+		s: 0,
+		h: 1,
+
+		// Mutation
+		mu: 0, // forward mutation
+		'mu-exp': -5,
+		nu: 0, // reverse mutation
+		'nu-exp': -5,
+
+		// Migration
+		m: 0,
+		pm: 0.500,
+
+		// Inbreeding
+		F: 0,
+
+		// Assortative Mating
+		assortMating: 0,
+
+		// Bottleneck
+		'gen-to-over-start': 0,
+		'gen-to-over-end': 50,
+		Nb: 5000,
+
+
 
 	},
 	setPopGenVar: () => {},
@@ -33,6 +58,11 @@ export const defaultContext = {
 		[VALID_SECTIONS.BASE]: true,
 		[VALID_SECTIONS.FINITE]: true,
 		[VALID_SECTIONS.SELECTION]: false,
+		[VALID_SECTIONS.MUTATION]: false,
+		[VALID_SECTIONS.MIGRATION]: false,
+		[VALID_SECTIONS.INBREEDING]: false,
+		[VALID_SECTIONS.ASSORT_MATING]: false,
+		[VALID_SECTIONS.BOTTLENECK_GEN]: false,
 	},
 	setActiveSession: (name) => {},
 	addMoreResults: (moreResult) => {},
