@@ -30,8 +30,7 @@ function HomePage() {
 		});
 	}, []);
 
-	const updateChart = () => {
-		console.log(context.activeSections);
+	const updateChart = (isAllele = true) => {
 		const worker = getWorker();
 
 		if (!worker) {
@@ -112,6 +111,7 @@ function HomePage() {
 		// Kick it off
 		worker.postMessage({ cmd: 'run' });
 
+
 		// Set Vars based on the context
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': wAA, 'wAa': wAa, 'waa': waa});
 	};
@@ -130,8 +130,8 @@ function HomePage() {
 		<IndexPage>
 			<main role="main">
 				<h1>Simulator</h1>
-				<HighChart lines={context.allResults} />
-
+				<HighChart lines={context.alleleResults} title='Graph 1: Allele Frequency Change Over Generations'/>
+				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'}/>
 				<ChartControls>
 					<button
 						onClick={() => {
@@ -204,11 +204,15 @@ function HomePage() {
 			</main>
 
 			<Pre role="figure" aria-label="Debugging information">
-				<DebugHeader>Inputs (Debugging Purposes)</DebugHeader>
+				<DebugHeader>Current Input Values</DebugHeader>
 				{JSON.stringify(context.popGenVars)} <br />
 				{JSON.stringify(context.activeSections)}
-				<DebugHeader>Outputs</DebugHeader>
-				{JSON.stringify(context.allResults)}
+				<DebugHeader>Allele Output</DebugHeader>
+				{JSON.stringify(context.alleleResults)} <br />
+				<DebugHeader>Genotype Output</DebugHeader>
+				{JSON.stringify(context.alleleResults)} <br />
+				<DebugHeader>Legend Data</DebugHeader>
+				{JSON.stringify(context.settingResults, null, 2)}
 			</Pre>
 		</IndexPage>
 	);

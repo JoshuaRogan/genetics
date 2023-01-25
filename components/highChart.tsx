@@ -7,19 +7,23 @@ const HighChartLoader = styled.div`
 	min-height: 400px;
 `;
 
-function createLinesFromArray(lines) {
-	return lines.map((line) => {
+const genoTypeOrder = ['AA', 'Aa', 'aa'];
+
+function createLinesFromArray(lines, isGeno = false) {
+	return lines.map((line, index) => {
 		return {
 			data: line,
+			name: isGeno ? genoTypeOrder[index] : 'Run ' + (index + 1),
 		};
 	});
 }
 
-function createOptions(lines) {
+function createOptions(lines, title) {
+	const isGenoType = title.toLowerCase().includes('genotype');
 	console.log('lines updating', lines.length, lines);
 	return {
 		title: {
-			text: 'Population Genetics Simulation',
+			text: title ?? 'Population Genetics Simulation',
 		},
 		xAxis: {
 			title: {
@@ -33,13 +37,13 @@ function createOptions(lines) {
 				text: 'Frequency of the A allele',
 			},
 		},
-		series: createLinesFromArray(lines),
+		series: createLinesFromArray(lines, isGenoType),
 	};
 }
 
-const App = ({ lines }) => (
+const App = ({ lines, title }) => (
 	<HighChartLoader aria-label="Graph displaying the results of the Simulator" role="figure">
-		<HighchartsReact highcharts={Highcharts} options={createOptions(lines)} />
+		<HighchartsReact highcharts={Highcharts} options={createOptions(lines, title)} />
 	</HighChartLoader>
 );
 

@@ -53,7 +53,9 @@ export const defaultContext = {
 
 	},
 	setPopGenVar: () => {},
-	allResults: [],
+	alleleResults: [],
+	genoTypeResults: [],
+	settingResults: [],
 	activeSections: {
 		[VALID_SECTIONS.BASE]: true,
 		[VALID_SECTIONS.FINITE]: true,
@@ -74,10 +76,14 @@ export const ApplicationProvider = ApplicationContext.Provider;
 export const ApplicationConsumer = ApplicationContext.Consumer;
 
 
+
+
 export const ApplicationContextProvider = ({ children }) => {
 	const [popGenVars, setPopGenVars] = React.useState(defaultContext.popGenVars);
 	const [activeSections, setActiveSessionState] = React.useState(defaultContext.activeSections);
-	const [allResults, setAllResults] = React.useState([]);
+	const [alleleResults, setAlleleResults] = React.useState([]);
+	const [genoTypeResults, setGenoTypeResults] = React.useState([]);
+	const [settingResults, setSettingsResults] = React.useState([]);
 
 	const setPopGenVar = (varName, value) => {
 		if (!nameToVariable(varName)) {
@@ -90,9 +96,46 @@ export const ApplicationContextProvider = ({ children }) => {
 		setPopGenVars({ ...popGenVars, ...newVar});
 	};
 
-	const addMoreResults = (newResult) => setAllResults((allPreviousResults => {
-		return [...allPreviousResults, newResult.results];
-	}));
+	const addMoreResults = (workerResults) => {
+		if (workerResults.type === 'results-allele') {
+			const alleleResults = workerResults.results;
+			setAlleleResults((previousAlleleResults) => {
+				return [...previousAlleleResults, workerResults.results];
+			});
+
+			// Only do this once
+			setSettingsResults((previousSettingResults) => {
+				return [...previousSettingResults, popGenVars];
+			});
+
+			const A1A1 = [];
+			const A1A2 = [];
+			const A2A2 = [];
+
+			alleleResults.forEach((alleleRes) => {
+				const A = alleleRes;
+				const a = 1 - A;
+				A1A1.push(Math.pow(A, 2)); // genotype AA is determined by squaring the allele frequency A
+				A1A2.push(2*A * a); // genotype Aa is determined by multiplying 2 times the frequency of A times the frequency of a.
+				A2A2.push(Math.pow(a, 2)); //  frequency of aa is determined by squaring a.
+			})
+			setGenoTypeResults([A1A1, A1A2, A2A2]);
+		}
+
+		if (workerResults.type === 'results-genotype') {
+			setGenoTypeResults(() => {
+				return [workerResults.AA, alleleResults.Aa, alleleResults.aa];
+			});
+		}
+		// Pass in instead of grabing from here
+
+
+	};
+
+	// const addMoreResults = (newResult) => setAlleleResults((allPreviousResults => {
+	//
+	// 	return [...allPreviousResults, newResult.results];
+	// }));
 
 	const setActiveSession = (name, status) => {
 		const newVar = {};
@@ -101,11 +144,13 @@ export const ApplicationContextProvider = ({ children }) => {
 	};
 
 	const clearResults = () => {
-		setAllResults([]);
+		setAlleleResults([]);
+		setGenoTypeResults([]);
+		setSettingsResults([]);
 	}
 
   return (
-    <ApplicationContext.Provider value={{ popGenVars, b: '123', setPopGenVar, addMoreResults, allResults, clearResults, activeSections, setActiveSession }}>
+    <ApplicationContext.Provider value={{ popGenVars, b: '123', setPopGenVar, addMoreResults, alleleResults: alleleResults, settingResults, genoTypeResults, clearResults, activeSections, setActiveSession }}>
       {children}
     </ApplicationContext.Provider>
   )
