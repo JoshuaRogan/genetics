@@ -1,3 +1,4 @@
+"use client"
 import { nameToVariable, VALID_SECTIONS } from '/data/popGenVariables';
 import React from 'react';
 

@@ -48,6 +48,7 @@ const ApplicationList = styled.ul`
 const NavItem = styled.li`
 	&:hover {
 		background-color: ${(props) => props.theme.primaryColor};
+		border-radius: 5px;
 
 		a {
 			color: white;
@@ -55,7 +56,7 @@ const NavItem = styled.li`
 	}
 `;
 
-const NavLink = styled.a`
+const NavLink = styled.div`
 	display: inline-block;
 	padding: 10px 15px;
 	text-decoration: none;
@@ -63,6 +64,7 @@ const NavLink = styled.a`
 
 	&:hover {
 		cursor: pointer;
+		color: white;
 	}
 `;
 
@@ -127,19 +129,16 @@ export default function Navigation() {
 					<DesktopNavigation>
 						<ApplicationList aria-label="Simulator Links">
 							<NavItem>
-								{/* eslint-disable-next-line @next/next/link-passhref */}
 								<Link href="/">
 									<NavLink>Home</NavLink>
 								</Link>
 							</NavItem>
 							<NavItem>
-								{/* eslint-disable-next-line @next/next/link-passhref */}
 								<Link href={'/individual'}>
 									<NavLink>Individual Simulations</NavLink>
 								</Link>
 							</NavItem>
 							<NavItem>
-								{/* eslint-disable-next-line @next/next/link-passhref */}
 								<Link href={'/replicated'}>
 									<NavLink>Replicated Simulation</NavLink>
 								</Link>
@@ -153,19 +152,16 @@ export default function Navigation() {
 					<DesktopNavigation>
 						<NavList className="nav-links" aria-label="Additional Links">
 							<NavItem>
-								{/* eslint-disable-next-line @next/next/link-passhref */}
 								<Link href={'/comingsoon'}>
 									<NavLink>About</NavLink>
 								</Link>
 							</NavItem>
 							<NavItem>
-								{/* eslint-disable-next-line @next/next/link-passhref */}
 								<Link href={'/comingsoon'}>
 									<NavLink>FAQ</NavLink>
 								</Link>
 							</NavItem>
 							<NavItem>
-								{/* eslint-disable-next-line @next/next/link-passhref */}
 								<Link href={'/comingsoon'}>
 									<NavLink>Contact</NavLink>
 								</Link>

@@ -1,8 +1,9 @@
-'use client';
-
+"use client"
 import Head from 'next/head';
 import styled, { ThemeProvider } from 'styled-components';
 import Navigation from '../components/Navigation';
+import StyledComponentsRegistry from '../utils/StyledComponentRegistry';
+
 
 const RootStyles = styled.div`
 	font-family: 'Roboto', sans-serif;
@@ -49,7 +50,8 @@ const THEME = {
 
 function IndexPage({ children }) {
 	return (
-		<RootStyles>
+		<html>
+
 			<Head>
 				<title>Population Genetics Simulator</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -61,11 +63,19 @@ function IndexPage({ children }) {
 					rel="stylesheet"
 				/>
 			</Head>
+			<body>
+		<StyledComponentsRegistry>
+			<RootStyles>
 			<ThemeProvider theme={THEME}>
-				<Navigation />
-				{children}
+					<>
+						<Navigation />
+						{children}
+					</>
 			</ThemeProvider>
-		</RootStyles>
+			</RootStyles>
+		</StyledComponentsRegistry>
+			</body>
+		</html>
 	);
 }
 
