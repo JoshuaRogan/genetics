@@ -60,10 +60,12 @@ const HelpContentDescription = styled.div`
 	color: ${(props) => props.theme.textColorLightGray};
 `;
 
-export function HelpContent({ inputName, variable, description, isOpen = false }) {
+export function HelpContent({ inputName, variable, variableHTML = null, description, isOpen = false }) {
+	const variableFinal = variableHTML ?? variable;
+
 	return (
 		<HelpContentContainer isOpen={isOpen}>
-			<HelpContentVariable> {variable} </HelpContentVariable>
+			<HelpContentVariable dangerouslySetInnerHTML={{ __html: variableFinal}}/>
 			<HelpContentDescription id={`help-content-${inputName}`}> {description} </HelpContentDescription>
 		</HelpContentContainer>
 	);

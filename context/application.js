@@ -18,12 +18,21 @@ export const defaultContext = {
 		p: 0.5,
 		N: 500,
 		numSims: 1,
+
+		// selection
+		WAA: undefined,
+		WAa: undefined,
+		Waa: undefined,
+		s: undefined,
+		h: undefined,
+
 	},
 	setPopGenVar: () => {},
 	allResults: [],
 	activeSections: {
 		[VALID_SECTIONS.BASE]: true,
 		[VALID_SECTIONS.FINITE]: true,
+		[VALID_SECTIONS.SELECTION]: false,
 	},
 	setActiveSession: (name) => {},
 	addMoreResults: (moreResult) => {},
@@ -41,6 +50,11 @@ export const ApplicationContextProvider = ({ children }) => {
 	const [allResults, setAllResults] = React.useState([]);
 
 	const setPopGenVar = (varName, value) => {
+		if (!nameToVariable(varName)) {
+			console.error("Failed to set population gen var for " + varName)
+			return;
+		}
+
 		const newVar = {};
 		newVar[nameToVariable(varName)] = valueToProper(varName, value);
 		setPopGenVars({ ...popGenVars, ...newVar});

@@ -1,9 +1,16 @@
-import { VALID_SECTIONS } from '../data/popGenVariables';
+
+import AssortativeMating from '../components/optionSections/AssortativeMating';
+import BottleNeckGenerations from '../components/optionSections/BottleNeckGenerations';
+import Inbreeding from '../components/optionSections/Inbreeding';
+import Migration from '../components/optionSections/Migration';
+import { popGenVariables, VALID_SECTIONS } from '../data/popGenVariables';
 import { DebugHeader, Pre } from '../utils/debugging';
 import { getWorker, listenToWorker } from '../workers/generationWorker';
 import { ApplicationContext } from '../context/application';
 import FinitePopulation from '../components/optionSections/FinitePopulation';
 import BaseSimulation from '../components/optionSections/BaseSimulation';
+import Selection from '../components/optionSections/Selection';
+import Mutation from '../components/optionSections/Mutation';
 import styled from 'styled-components';
 import React, { useEffect } from 'react';
 import IndexPage from './wrapper';
@@ -25,6 +32,7 @@ function HomePage() {
 	}, []);
 
 	const updateChart = () => {
+		console.log(context.activeSections);
 		const worker = getWorker();
 
 		if (!worker) {
@@ -32,20 +40,33 @@ function HomePage() {
 			return;
 		}
 
+		const popGenVars = context.popGenVars;
+
 		worker.postMessage({
 			cmd: 'initGeneration',
-			populationSize: context.popGenVars.N,
+			populationSize: popGenVars.N,
 			numGenerations: context.popGenVars.t,
 			startingFrequency: context.popGenVars.p,
 		});
 
+		// Inverse of finite being active to enable infinite population
 		if (!context.activeSections[VALID_SECTIONS.FINITE]) {
 			worker.postMessage({ cmd: 'setVar', varName: 'inifinite-pop' });
 		}
 
+		if (context.activeSections[VALID_SECTIONS.SELECTION]) {
+			const message = {'cmd':'setVar', 'varName': 'selection-W', 'wAA': context.popGenVars.WAA, 'wAa': context.popGenVars.WAa, 'waa': context.popGenVars.Waa};
+			worker.postMessage(message);
+			worker.postMessage({'cmd':'setVar', 'varName': 'selection-DS', 'selectionCoef': 0, 'dominaceCoef': 1});
+		}
+
+		// if (context)
+
 		// All Other Variables
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': .3, 'wAa': .2, 'waa': .5});
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-DS', 'selectionCoef': .3, 'dominaceCoef': .2});
+
+
 		// worker.postMessage({'cmd':'setVar', 'varName': 'mutation', 'mu': .0003, 'nu': .003});
 		// worker.postMessage({'cmd':'setVar', 'varName': 'migration', 'migrationRate': .145, 'migrantAlleleFreq': .333});
 		// worker.postMessage({'cmd':'setVar', 'varName': 'inbreeding', 'inbreedCoef': .255});
@@ -60,6 +81,7 @@ function HomePage() {
 	};
 
 	const onChange = (name, newValue) => {
+		console.debug(name, newValue);
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
 	};
 
@@ -101,6 +123,43 @@ function HomePage() {
 							onChange={onChange}
 							toggleActive={() => toggleActiveSection(VALID_SECTIONS.FINITE)}
 						/>
+						<Selection
+							isActive={context.activeSections[VALID_SECTIONS.SELECTION]}
+							name={'Selection'}
+							onChange={onChange}
+							toggleActive={() => toggleActiveSection(VALID_SECTIONS.SELECTION)}
+						/>
+						<Mutation
+							isActive={context.activeSections[VALID_SECTIONS.MUTATION]}
+							name={'Mutation'}
+							onChange={onChange}
+							toggleActive={() => toggleActiveSection(VALID_SECTIONS.MUTATION)}
+						/>
+						<Migration
+							isActive={context.activeSections[VALID_SECTIONS.MIGRATION]}
+							name={'Migration'}
+							onChange={onChange}
+							toggleActive={() => toggleActiveSection(VALID_SECTIONS.MIGRATION)}
+						/>
+						<Inbreeding
+							isActive={context.activeSections[VALID_SECTIONS.INBREEDING]}
+							name={'Inbreeding'}
+							onChange={onChange}
+							toggleActive={() => toggleActiveSection(VALID_SECTIONS.INBREEDING)}
+						/>
+						<AssortativeMating
+							isActive={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
+							name={'Assortative Mating'}
+							onChange={onChange}
+							toggleActive={() => toggleActiveSection(VALID_SECTIONS.ASSORT_MATING)}
+						/>
+						<BottleNeckGenerations
+							isActive={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
+							name={'Bottleneck Generations'}
+							onChange={onChange}
+							toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
+						/>
+
 					</section>
 					<section aria-label="Advanced simulator settings">
 						<h3>Advanced Factors + </h3>
@@ -111,7 +170,8 @@ function HomePage() {
 
 			<Pre role="figure" aria-label="Debugging information">
 				<DebugHeader>Inputs (Debugging Purposes)</DebugHeader>
-				{JSON.stringify(context.popGenVars)}
+				{JSON.stringify(context.popGenVars)} <br/>
+				{JSON.stringify(context.activeSections)}
 
 				<DebugHeader>Outputs</DebugHeader>
 				{JSON.stringify(context.allResults)}

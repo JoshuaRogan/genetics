@@ -15,15 +15,38 @@ export const VALID_VARIABLES = {
 	NUM_GENERATIONS: 'number-of-generations',
 	STARTING_ALLELE_FREQ: 'starting-allele-frequency',
 	POPULATION_SIZE: 'population-size',
+
+	SELECTION_WAA: 'selection-wAA',
+	SELECTION_WAa: 'selection-WAa',
+	SELECTION_Waa: 'selection-Waa',
+	SELECTION_COEFFICIENT: 'selection-coefficient',
+	SELECTION_DOMINANCE_COEFFICIENT: 'selection-dominance-coefficient',
+
+	MUTATION_FORWARD_MUTATION: 'mutation-forward',
+	MUTATION_BACKWARD_MUTATION: 'mutation-backward',
+	MUTATION_FORWARD_MUTATION_EXPONENT: 'mutation-forward-exponent',
+	MUTATION_BACKWARD_MUTATION_EXPONENT: 'mutation-backward-exponent',
+
+	MIGRATION_MIGRATION_RATE: 'migration-rate',
+	MIGRATION_MIGRANT_ALLELE_FREQ: 'migration-migrant-allele-freq',
+
+	INBREEDING_COEFFICIENT: 'inbreeding-coeff',
+
+	ASSORT_MATING_POSITIVE_FREQ: 'positive-assortative-mating-frequency',
+
+	BOTTLENECK_GEN_TO_OVVERRIDE: 'bottle-neck-gen-to-override',
+	BOTTLENECK_POPULATION_SIZE: 'bottle-neck-population-size'
 };
 
 
 interface PopGenVariable {
 	name: string;
 	variable: string;
+	variableHTML?: string;
 	description: string;
 	section: string;
-	order: number; // the order it appears within its section
+	sliderName?: string;
+	order: number;
 }
 
 export const popGenVariables = [
@@ -46,15 +69,141 @@ export const popGenVariables = [
 		variable: 'N',
 		section: VALID_SECTIONS.FINITE,
 		order: 0,
-	}
+	},
+
+
+	// SELECTION
+	{
+		name: VALID_VARIABLES.SELECTION_WAA,
+		variable: 'WAA',
+		section: VALID_SECTIONS.SELECTION,
+		order: 0,
+	},
+	{
+		name: VALID_VARIABLES.SELECTION_WAa,
+		variable: 'WAa',
+		section: VALID_SECTIONS.SELECTION,
+		order: 1,
+	},
+	{
+		name: VALID_VARIABLES.SELECTION_Waa,
+		variable: 'Waa',
+		section: VALID_SECTIONS.SELECTION,
+		order: 2,
+	},
+	{
+		name: VALID_VARIABLES.SELECTION_COEFFICIENT,
+		variable: 's',
+		section: VALID_SECTIONS.SELECTION,
+		order: 3,
+	},
+	{
+		name: VALID_VARIABLES.SELECTION_DOMINANCE_COEFFICIENT,
+		variable: 'h',
+		section: VALID_SECTIONS.SELECTION,
+		order: 4,
+	},
+
+	// MUTATION
+	{
+		name: VALID_VARIABLES.MUTATION_FORWARD_MUTATION,
+		variable: 'μ',
+		section: VALID_SECTIONS.MUTATION,
+		order: 0,
+	},
+	{
+		name: VALID_VARIABLES.MUTATION_BACKWARD_MUTATION,
+		variable: 'v',
+		section: VALID_SECTIONS.MUTATION,
+		order: 1,
+	},
+	{
+		name: VALID_VARIABLES.MUTATION_FORWARD_MUTATION_EXPONENT,
+		variable: 'μ-exp',
+		section: VALID_SECTIONS.MUTATION,
+		order: 0,
+	},
+	{
+		name: VALID_VARIABLES.MUTATION_BACKWARD_MUTATION_EXPONENT,
+		variable: 'v-exp',
+		section: VALID_SECTIONS.MUTATION,
+		order: 1,
+	},
+
+
+	// Migration
+	{
+		name: VALID_VARIABLES.MIGRATION_MIGRATION_RATE,
+		variable: 'm',
+		section: VALID_SECTIONS.MIGRATION,
+		order: 0,
+	},
+	{
+		name: VALID_VARIABLES.MIGRATION_MIGRANT_ALLELE_FREQ,
+		variable: 'Pm',
+		section: VALID_SECTIONS.MIGRATION,
+		order: 1,
+	},
+
+	// Inbreeding
+	{
+		name: VALID_VARIABLES.INBREEDING_COEFFICIENT,
+		variable: 'F',
+		section: VALID_SECTIONS.INBREEDING,
+		order: 0,
+		description: 'This is the probability that both alleles in a randomly chosen individual in the population are identical‐by‐descent (IBD). A value of F = 0 indicates there is no inbreeding within the population. A value of 1 indicates that there is complete autozygosity such as found in inbred lines of model organisms',
+		sliderName: 'Inbreeding Coefficient'
+	},
+
+
+	// Assort
+	{
+		name: VALID_VARIABLES.ASSORT_MATING_POSITIVE_FREQ,
+		variable: 'α',
+		section: VALID_SECTIONS.ASSORT_MATING,
+		order: 0,
+		description: 'This is the excess fraction of positive assortative matings in the population where 1 ‐ α is the fraction of random matings. A value of α = 1 indicates 100% positive assortative mating, and a value of α = 0 indicates total random mating.',
+		sliderName: 'Positive Assortative Mating Frequency'
+	},
+
+	// Bottleneck
+	{
+		name: VALID_VARIABLES.BOTTLENECK_GEN_TO_OVVERRIDE,
+		variable: 'gen-to-over',
+		section: VALID_SECTIONS.BOTTLENECK_GEN,
+		order: 0,
+		description: 'These parameters indicate the start and end generations, respectively, of the population bottleneck event.',
+		sliderName: 'Generations to Override'
+	},
+	{
+		name: VALID_VARIABLES.BOTTLENECK_POPULATION_SIZE,
+		variable: 'N-sub-B',
+		variableHTML: 'N<sub>B</sub>',
+		section: VALID_SECTIONS.BOTTLENECK_GEN,
+		order: 0,
+		description: 'This is the number of individuals in the population during the bottleneck event. Note that the number of chromosomes simulated is 2NB',
+		sliderName: 'Population Size'
+	},
+
+
+
+
+
+
 ] as PopGenVariable[];
 
 export function getPopGenVariableByName(name: string) : PopGenVariable {
 	return popGenVariables.find(popgenVar => popgenVar.name === name);
 }
 
-export function nameToVariable(name: string) : string {
-	return getPopGenVariableByName(name).variable;
+export function nameToVariable(name: string) : string|null {
+	try {
+		return getPopGenVariableByName(name).variable;
+	} catch(e) {
+		console.error('NameToVariable issue for ' + name)
+		throw null;
+	}
+
 }
 
 

@@ -5,33 +5,33 @@ popGen.generations = popGen.generations || {};
 
 
 /**
- *  Represents the population through its changes. Primarily used to updated the the startingAlleleFreq so the random 
- *	sampling is correct. Several different optional variables are here with setter functions to keep the class manageable.  
- *	
- *		-Currently storing each population in populations array (could be removed to reduce memory overhead) 
+ *  Represents the population through its changes. Primarily used to updated the the startingAlleleFreq so the random
+ *	sampling is correct. Several different optional variables are here with setter functions to keep the class manageable.
+ *
+ *		-Currently storing each population in populations array (could be removed to reduce memory overhead)
  */
 popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 	this.numGenerations 		= numGenerations; 		//Total number of generations
-    this.currentGenerationNum 	= 0; 					//The generation number we are now on    
+    this.currentGenerationNum 	= 0; 					//The generation number we are now on
     this.populationSize 		= populationSize; 		//The population size of each population
     this.startAlleleFreq 		= startAlleleFreq; 		//Starting allele frequency
-    this.startOtherAlleleFreq 	= 1 - this.startAlleleFreq; 	//The implicit other allele frequency 
-    this.currentAlleleFre 		= this.startAlleleFreq; 		//Current allele frequency of the population we just generated 
-    this.currentOtherAlleleFre 	= 1 - this.startAlleleFreq; 	//Currrent implicit other allele frequency 
-    this.currentGenerationNum 	= 0;					//The current generation that is being produced 
+    this.startOtherAlleleFreq 	= 1 - this.startAlleleFreq; 	//The implicit other allele frequency
+    this.currentAlleleFre 		= this.startAlleleFreq; 		//Current allele frequency of the population we just generated
+    this.currentOtherAlleleFre 	= 1 - this.startAlleleFreq; 	//Currrent implicit other allele frequency
+    this.currentGenerationNum 	= 0;					//The current generation that is being produced
     this.infinitePopulationSize = false; 				//Generate equations instead of random sampling
 
     this.frequencies = Array(); //An array of each frequency that was generated (These are the values that are graphed)
     this.populations = Array(); //An array of all of the populations (Remove with optimized flag)
 
-    this.optimized = true; //Flag to prevent storing of some variables 
+    this.optimized = true; //Flag to prevent storing of some variables
 
-    this.startTime = (new Date).getTime(); 
-	this.finishTime = null; 
+    this.startTime = (new Date).getTime();
+	this.finishTime = null;
 
-    //Update the current allele frequency 
+    //Update the current allele frequency
     this.setCurrentAlleleFre = function(newFreq) {
-        this.currentAlleleFre = newFreq; 
+        this.currentAlleleFre = newFreq;
         this.currentOtherAlleleFre = 1 - this.currentAlleleFre;
     }
 
@@ -59,13 +59,14 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
     this.waa = 1.0;
 
     this.setFitnessCoefficients = function(wAA, wAa, waa) {
+		console.log('setting fitness', wAA, wAa, waa);
         this.fitnessCoefficients = true;
         this.wAA = wAA;
         this.wAa = wAa;
         this.waa = waa;
     }
 
-    //Dominance and Selection 
+    //Dominance and Selection
     this.selectionDominanceCoe = false;
     this.selectionCoefficient = 0.0;
     this.dominaceCoefficient = 0.0;
@@ -78,7 +79,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 
     //Inbreeding
     this.inbreeding = false;
-    this.inbreedingCoefficient = 0.0;	//Important Always needs to be set 
+    this.inbreedingCoefficient = 0.0;	//Important Always needs to be set
 
     this.setInbreedingCoefficient = function(inbreedingCoefficient) {
         this.inbreeding = true;
@@ -104,7 +105,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 
 
 
-    //Migration Variables 
+    //Migration Variables
     this.migration = false;
     this.migrationRate = 0.0;
     this.migrantAlleleFreq = 0.0;
@@ -119,28 +120,29 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
      *  Population bottleneck
      *  Modifies the population size for a specific number of generations (startget - endgen)
      */
-    this.populationBottleneck = false; 
+    this.populationBottleneck = false;
     this.startGeneration = 0;
-    this.endGeneration = 0; 
+    this.endGeneration = 0;
     this.modifiedPopulationSize = 0;
 
     this.setpopulationBottleneck = function(startGeneration, endGeneration, modifiedPopulationSize){
-        this.populationBottleneck = true; 
+        this.populationBottleneck = true;
         this.startGeneration = startGeneration;
-        this.endGeneration = endGeneration; 
+        this.endGeneration = endGeneration;
         this.modifiedPopulationSize = modifiedPopulationSize;
     }
 
     /**
-     *  Simple function that manages the loop for all of the random samples.
-     *  This is the function to use to run the generations. 
+     *  Simple function that manages the loop for all the random samples.
+     *  This is the function to use to run the generations.
      *
      */
     this.buildRandomSamples = function(){
  		this.startTime = (new Date).getTime();
- 		this.currentAlleleFre 		= startAlleleFreq; 		//Current allele frequency of the population we just generated 
-    	this.currentGenerationNum 	= 0;					//The current generation that is being produced 
- 
+ 		this.currentAlleleFre 		= startAlleleFreq; 		//Current allele frequency of the population we just generated
+    	this.currentGenerationNum 	= 0;					//The current generation that is being produced
+
+		console.log(this)
     	for(var i=0; i<this.numGenerations; i++){
     		if(i !== 0){
                 this.buildRandomSample();
@@ -157,8 +159,8 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
     }
 
     /**
-     *	Sets up the current allele frequency based on the optional variables that are set. 
-	 *	
+     *	Sets up the current allele frequency based on the optional variables that are set.
+	 *
 	 *
 	 *
      */
@@ -174,7 +176,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         //The order these operations are performed is very important (Consult the formula last slide pdf)
 
         //Update the starting frequency due to mutation
-        if (this.mutation) {	
+        if (this.mutation) {
         	this.modifyFreqMutation();
         }
 
@@ -187,21 +189,21 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         	this.modifyFreqSelectAndDomCoef(); //Updates with inbreeding too
         }
 
-        //Update the starting frequency due to the selection/dominance coefficients     
+        //Update the starting frequency due to the selection/dominance coefficients
         if(this.possitiveAssortativeMating && (this.selectionDominanceCoe || this.fitnessCoefficients)){
             this.modifyFreqPosAssortMat();
         }
 
         //Update the starting frequency due to migration
         if(this.migration){
-        	this.modifyFreqMigration(); 
+        	this.modifyFreqMigration();
         }
 
-        var bottleneck_generation = false; //Determine if this is an actual bottlneck generation 
-        //Modifying the population size temporarily if population bottleneck is active 
+        var bottleneck_generation = false; //Determine if this is an actual bottlneck generation
+        //Modifying the population size temporarily if population bottleneck is active
         if(this.populationBottleneck){
             if(this.currentGenerationNum > this.startGeneration && this.currentGenerationNum < this.endGeneration){
-                var bottleneck_generation = true; 
+                var bottleneck_generation = true;
                 var actualPopulationSize = this.modifiedPopulationSize; //There is a population bottle neck for this generation
             }
             else{
@@ -219,39 +221,39 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         else{
             var currentPopulation = new popGen.population(actualPopulationSize, this.currentAlleleFre);
             currentPopulation.buildRandomSample();
-            if(!this.optimized)this.populations.push(currentPopulation); //This adds the actual populations to an array for later use. 
+            if(!this.optimized)this.populations.push(currentPopulation); //This adds the actual populations to an array for later use.
             this.frequencies.push(currentPopulation.currentAlleleFre);  //This is the value that is being graphed
             this.setCurrentAlleleFre(currentPopulation.currentAlleleFre);
-        } 
+        }
     }
 
-    
+
 
     /**
-     * 	Starting allele frequency private modifiers 
-     *	These functions modify the starting allele frequency based on what optional variables are set 
+     * 	Starting allele frequency private modifiers
+     *	These functions modify the starting allele frequency based on what optional variables are set
      */
 
-    //Update the frequency due to mutation effects 
+    //Update the frequency due to mutation effects
     this.modifyFreqMutation = function (){
         this.currentAlleleFre = this.currentAlleleFre * (1 - this.forwardMutationRate) + (1 - this.currentAlleleFre) * this.reverseMutationRate;
     }
 
-    //Update the frequency due to selection effects and Inbreeding and assortative mating if they are set 
-    this.modifyFreqSelection = function(){ 
-    	//Not neccessary 
+    //Update the frequency due to selection effects and Inbreeding and assortative mating if they are set
+    this.modifyFreqSelection = function(){
+    	//Not neccessary
     }
 
     /**
      *	Update the frequency due to selection effects from the fitness coefficients (Waa, WAA, WAa)
      *	-Accounts for inbreeding here (equation when inbreedingCoef = 0 simplifies down to the same without inbreeding)
      */
-    this.modifyFreqFitnessCoef = function(){
-    	var p0 = this.currentAlleleFre; //Current or starting 
-		var q0 = this.currentOtherAlleleFre; //Current or starting 
-		var F = this.inbreedingCoefficient; 
+    this.modifyFreqFitnessCoef = function() {
+    	var p0 = this.currentAlleleFre; //Current or starting
+		var q0 = this.currentOtherAlleleFre; //Current or starting
+		var F = this.inbreedingCoefficient;
 
-        //New equations with inbreeding 
+        //New equations with inbreeding
         var numerator = ((Math.pow(p0, 2) + (F*p0*q0))*this.wAA) + ((1*p0*q0) - (F*p0*q0))*this.wAa;
         var denom = ((Math.pow(p0, 2) + (F*p0*q0))*this.wAA) + ((2*p0*q0) - (2*F*p0*q0))*this.wAa + (Math.pow(q0, 2) + (F*p0*q0))*this.waa
         this.setCurrentAlleleFre(numerator / denom);
@@ -260,7 +262,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
     //Update the frequency due to possitiveAssortativeMating
     this.modifyFreqPosAssortMat = function(){
         p0 = this.currentAlleleFre; //The allele frequeny at this time
-        q0 = 1 - p0; 
+        q0 = 1 - p0;
 
         //The previous values of d,h,r
         var d0 = this.d_assortativeMating;
@@ -268,7 +270,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         var r0 = this.r_assortativeMating;
         var alpha = this.positiveAssortativeFreq;
 
-        //Specify each numerator first since the denominator is the same between all of them 
+        //Specify each numerator first since the denominator is the same between all of them
         var d_numerator = ((1 - alpha) * Math.pow(p0, 2)) + (alpha * (d0 + h0/4));
         var h_numerator = (2 * (1 - alpha) * p0 * q0) + (alpha * (h0/2));
         var r_numerator = ((1 - alpha) * Math.pow(q0, 2)) + (alpha * (r0 + h0/4));
@@ -277,42 +279,42 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 
         console.log(d_numerator, h_numerator, r_numerator);
 
-        //Update the d,h,r values 
+        //Update the d,h,r values
         this.d_assortativeMating = d_numerator / commonDenom;
         this.h_assortativeMating = h_numerator / commonDenom;
         this.r_assortativeMating = r_numerator / commonDenom;
 
 
-        //Short hand variables for the new variables 
+        //Short hand variables for the new variables
         var d_n = this.d_assortativeMating;
         var h_n = this.h_assortativeMating; 	//Change from d_assortative...
         var r_n = this.r_assortativeMating;		//Changed from d_assortative..
 
-        //New equations with positive mating 
+        //New equations with positive mating
         //Default value for wAA, wAa, and waa is 1.0
         var numerator = (d_n * this.wAA) + ((h_n / 2) * this.wAa);
         var denom = (d_n * this.wAA) + (h_n * this.wAa) + (r_n * this.waa);
 
-        this.setCurrentAlleleFre(numerator / denom); //Updates the current allele frequency  
+        this.setCurrentAlleleFre(numerator / denom); //Updates the current allele frequency
     }
 
-    //Update the frequency due to the selection effects from the selection and dominance coefficients 
+    //Update the frequency due to the selection effects from the selection and dominance coefficients
     this.modifyFreqSelectAndDomCoef = function(){
 		//Only needs to be calculated once
 		if(!this.fitnessCoefficients){
 			this.wAA = 1.0; //See selection documentation
 			this.wAa = 1 - (this.selectionCoefficient * this.dominaceCoefficient);
 			this.waa = 1 - this.selectionCoefficient;
-			this.fitnessCoefficients = true; 
+			this.fitnessCoefficients = true;
 		}
 
-		//Once the fitness coefficients are set it is the same equation so just call that 
-		this.modifyFreqFitnessCoef(); 
+		//Once the fitness coefficients are set it is the same equation so just call that
+		this.modifyFreqFitnessCoef();
     }
 
-    //Update the frequency due to migration effects 
-    this.modifyFreqMigration = function(){ 
-		// this.currentAlleleFre = this.migrantAlleleFreq + (this.currentAlleleFre - this.migrantAlleleFreq) 
+    //Update the frequency due to migration effects
+    this.modifyFreqMigration = function(){
+		// this.currentAlleleFre = this.migrantAlleleFreq + (this.currentAlleleFre - this.migrantAlleleFreq)
 		// 	* Math.pow((1-this.migrationRate),this.currentGenerationNum);
 
 		this.currentAlleleFre = this.currentAlleleFre * (1 - this.migrationRate) + (this.migrantAlleleFreq) * this.migrationRate;
@@ -337,6 +339,6 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         output += "Finish Time (ms): " + this.finishTime + "\n";
         output += "Time Ran (ms): " + (this.finishTime - this.startTime) + "\n";
         output += "----------------COMPUTATION DATA----------------\n";
-        return output; 
+        return output;
     }
 }

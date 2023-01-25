@@ -74,7 +74,7 @@ function setVar(data){
 			break;
 		default:
 			postMessage("Variable Name not found");
-	};
+	}
 
 	// console.log("Changed Value", generation);
 }
@@ -204,7 +204,8 @@ function checkGeneration(){
 		postMessage('{"type": "error", "message": "You must initalize the generation first"}');
 		return false;
 	}
-	else return true;
+
+	return true;
 }
 
 
