@@ -10,6 +10,7 @@ import {
 	HelpContent,
 	HelpContentToggle,
 } from './optionHelpers';
+import {getPopGenVariableByName, VALID_VARIABLES} from "../../data/popGenVariables";
 
 function formatThousandToDecimal(number: number) {
 	return number / 1000;
@@ -19,6 +20,8 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 	const [isSectionActive, setIsSectionActive] = React.useState(true);
 	const [isNumberOfGenHelpActive, setIsNumberOfGenHelpActive] = React.useState(false);
 	const [isStartingAlleleFreqActive, setIsStartingAlleleFreqActive] = React.useState(false);
+
+	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
 
 	return (
 		<div aria-label="Base Simulation inputs">
@@ -31,7 +34,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>
-						Number of Generations
+						{numberOfGenerations.sliderName}
 						<HelpContentToggle onClick={() => setIsNumberOfGenHelpActive(!isNumberOfGenHelpActive)} />{' '}
 					</div>
 					<HelpContent
@@ -46,7 +49,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 						onChange={onChange}
 						min={1}
 						max={10000}
-						start={500}
+						start={numberOfGenerations.defaultValue}
 						label={'Number of generations'}
 						name={'number-of-generations'}
 						required

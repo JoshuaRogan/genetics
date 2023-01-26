@@ -1,5 +1,5 @@
 "use client"
-import { nameToVariable, VALID_SECTIONS } from '/data/popGenVariables';
+import { nameToVariable, VALID_SECTIONS, popGenVariables, Settings } from '../data/popGenVariables';
 import React from 'react';
 
 
@@ -12,47 +12,14 @@ function valueToProper(name, value) {
 	return value;
 }
 
+const defaultValuesForSettings = {} as Settings;
+popGenVariables.forEach(popGenVar => {
+	defaultValuesForSettings[popGenVar.variable] = popGenVar.defaultValue
+});
+
 export const defaultContext = {
-	b: '123',
-
 	// Default values for variables in popGenVariablesFile
-	popGenVars: {
-		t: 500,
-		p: 0.5,
-		N: 500,
-		numSims: 1,
-
-		// selection
-		WAA: 1,
-		WAa: 1,
-		Waa: 1,
-		s: 0,
-		h: 1,
-
-		// Mutation
-		mu: 0, // forward mutation
-		'mu-exp': -5,
-		nu: 0, // reverse mutation
-		'nu-exp': -5,
-
-		// Migration
-		m: 0,
-		pm: 0.500,
-
-		// Inbreeding
-		F: 0,
-
-		// Assortative Mating
-		assortMating: 0,
-
-		// Bottleneck
-		'gen-to-over-start': 0,
-		'gen-to-over-end': 50,
-		Nb: 5000,
-
-
-
-	},
+	popGenVars: defaultValuesForSettings as Settings,
 	setPopGenVar: () => {},
 	alleleResults: [],
 	genoTypeResults: [],
@@ -72,19 +39,19 @@ export const defaultContext = {
 	clearResults: () => {}
 }
 
+
+
 export const ApplicationContext = React.createContext(defaultContext);
 export const ApplicationProvider = ApplicationContext.Provider;
 export const ApplicationConsumer = ApplicationContext.Consumer;
 
-
-
-
-export const ApplicationContextProvider = ({ children }) => {
+export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) => {
 	const [popGenVars, setPopGenVars] = React.useState(defaultContext.popGenVars);
 	const [activeSections, setActiveSessionState] = React.useState(defaultContext.activeSections);
 	const [alleleResults, setAlleleResults] = React.useState([]);
 	const [genoTypeResults, setGenoTypeResults] = React.useState([]);
 	const [settingResults, setSettingsResults] = React.useState([]);
+	const [isBulkSimulator, setIsBulkSimulator] = React.useState(isBulkSimulatorProp ?? false);
 
 	const setPopGenVar = (varName, value) => {
 		if (!nameToVariable(varName)) {
@@ -117,7 +84,7 @@ export const ApplicationContextProvider = ({ children }) => {
 				const A = alleleRes;
 				const a = 1 - A;
 				A1A1.push(Math.pow(A, 2)); // genotype AA is determined by squaring the allele frequency A
-				A1A2.push(2*A * a); // genotype Aa is determined by multiplying 2 times the frequency of A times the frequency of a.
+				A1A2.push(2 * A * a); // genotype Aa is determined by multiplying 2 times the frequency of A times the frequency of a.
 				A2A2.push(Math.pow(a, 2)); //  frequency of aa is determined by squaring a.
 			})
 			setGenoTypeResults([A1A1, A1A2, A2A2]);
@@ -151,7 +118,17 @@ export const ApplicationContextProvider = ({ children }) => {
 	}
 
   return (
-    <ApplicationContext.Provider value={{ popGenVars, b: '123', setPopGenVar, addMoreResults, alleleResults: alleleResults, settingResults, genoTypeResults, clearResults, activeSections, setActiveSession }}>
+    <ApplicationContext.Provider value={{
+		activeSections,
+		addMoreResults,
+		alleleResults: alleleResults,
+		clearResults,
+		genoTypeResults,
+		popGenVars,
+		setActiveSession,
+		setPopGenVar,
+		settingResults,
+	}}>
       {children}
     </ApplicationContext.Provider>
   )

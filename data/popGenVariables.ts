@@ -39,6 +39,41 @@ export const VALID_VARIABLES = {
 	BOTTLENECK_POPULATION_SIZE: 'bottle-neck-population-size'
 };
 
+// IMPORTANT THIS IS JUST A MECHANISM TO HELP AUTOCOMPLETE. NEED TO KEEP UPDATED WITH THE VARIABLES BELOW
+export interface Settings {
+	t: number;
+	p: number;
+	N: number;
+	numSims: number;
+
+	// selection
+	WAA: number;
+	WAa: number;
+	Waa: number;
+	s: number;
+	h: number;
+
+	// Mutation
+	mu: number; // forward mutation
+	'mu-exp': number;
+	nu: number; // reverse mutation
+	'nu-exp': number;
+
+	// Migration
+	m: number;
+	pm: number;
+
+	// Inbreeding
+	F: number;
+
+	// Assortative Mating
+	assortMating: number;
+
+	// Bottleneck
+	'gen-to-over-start': number;
+	'gen-to-over-end': number;
+	Nb: number;
+}
 
 interface PopGenVariable {
 	name: string;
@@ -48,6 +83,7 @@ interface PopGenVariable {
 	section: string;
 	sliderName?: string;
 	order: number;
+	defaultValue: number;
 }
 
 export const popGenVariables = [
@@ -57,6 +93,8 @@ export const popGenVariables = [
 		description: 'This is the number of generations to be simulated',
 		section: VALID_SECTIONS.BASE,
 		order: 0,
+		defaultValue: 200,
+		sliderName: 'Number of Generations',
 	},
 	{
 		name: VALID_VARIABLES.STARTING_ALLELE_FREQ,
@@ -64,12 +102,16 @@ export const popGenVariables = [
 		description: 'This is the frequency of the allele of interest, A, at generation 0.',
 		section: VALID_SECTIONS.BASE,
 		order: 1,
+		defaultValue: 0.5,
+		sliderName: 'Starting Allele Frequency',
 	},
 	{
 		name: VALID_VARIABLES.POPULATION_SIZE,
 		variable: 'N',
 		section: VALID_SECTIONS.FINITE,
 		order: 0,
+		defaultValue: 500,
+		sliderName: 'Population Size',
 	},
 
 
@@ -79,30 +121,35 @@ export const popGenVariables = [
 		variable: 'WAA',
 		section: VALID_SECTIONS.SELECTION,
 		order: 0,
+		defaultValue: 1,
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_WAa,
 		variable: 'WAa',
 		section: VALID_SECTIONS.SELECTION,
 		order: 1,
+		defaultValue: 1,
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_Waa,
 		variable: 'Waa',
 		section: VALID_SECTIONS.SELECTION,
 		order: 2,
+		defaultValue: 1,
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_COEFFICIENT,
 		variable: 's',
 		section: VALID_SECTIONS.SELECTION,
 		order: 3,
+		defaultValue: 0,
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_DOMINANCE_COEFFICIENT,
 		variable: 'h',
 		section: VALID_SECTIONS.SELECTION,
 		order: 4,
+		defaultValue: 1,
 	},
 
 	// MUTATION
@@ -112,7 +159,8 @@ export const popGenVariables = [
 		variableHTML: 'μ',
 		section: VALID_SECTIONS.MUTATION,
 		order: 0,
-		sliderName: 'Forward Mutation Rate'
+		sliderName: 'Forward Mutation Rate',
+		defaultValue: 0,
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_BACKWARD_MUTATION,
@@ -120,19 +168,22 @@ export const popGenVariables = [
 		variableHTML: 'v',
 		section: VALID_SECTIONS.MUTATION,
 		order: 1,
-		sliderName: 'Backward Mutation Rate'
+		sliderName: 'Backward Mutation Rate',
+		defaultValue: 0,
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_FORWARD_MUTATION_EXPONENT,
 		variable: 'mu-exp',
 		section: VALID_SECTIONS.MUTATION,
 		order: 0,
+		defaultValue: -5,
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_BACKWARD_MUTATION_EXPONENT,
 		variable: 'nu-exp',
 		section: VALID_SECTIONS.MUTATION,
 		order: 1,
+		defaultValue: -5,
 	},
 
 
@@ -144,6 +195,7 @@ export const popGenVariables = [
 		sliderName: 'Migration Rate',
 		description: "The rate at which migrant alleles enter the population per generation.",
 		order: 0,
+		defaultValue: 0,
 	},
 	{
 		name: VALID_VARIABLES.MIGRATION_MIGRANT_ALLELE_FREQ,
@@ -153,6 +205,7 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.MIGRATION,
 		description: 'The frequency of the A allele among all migrant alleles entering the population.',
 		order: 1,
+		defaultValue: 0.500,
 	},
 
 	// Inbreeding
@@ -162,7 +215,8 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.INBREEDING,
 		order: 0,
 		description: 'This is the probability that both alleles in a randomly chosen individual in the population are identical‐by‐descent (IBD). A value of F = 0 indicates there is no inbreeding within the population. A value of 1 indicates that there is complete autozygosity such as found in inbred lines of model organisms',
-		sliderName: 'Inbreeding Coefficient'
+		sliderName: 'Inbreeding Coefficient',
+		defaultValue: 0,
 	},
 
 
@@ -174,7 +228,8 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.ASSORT_MATING,
 		order: 0,
 		description: 'This is the excess fraction of positive assortative matings in the population where 1 ‐ α is the fraction of random matings. A value of α = 1 indicates 100% positive assortative mating, and a value of α = 0 indicates total random mating.',
-		sliderName: 'Positive Assortative Mating Frequency'
+		sliderName: 'Positive Assortative Mating Frequency',
+		defaultValue: 0,
 	},
 
 	// Bottleneck
@@ -184,7 +239,8 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.BOTTLENECK_GEN,
 		order: 0,
 		description: 'These parameters indicate the start and end generations, respectively, of the population bottleneck event.',
-		sliderName: 'Generations to Override Start/End'
+		sliderName: 'Generations to Override Start/End',
+		defaultValue: 0,
 	},
 	{
 		name: VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_END,
@@ -192,7 +248,8 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.BOTTLENECK_GEN,
 		order: 0,
 		description: 'These parameters indicate the start and end generations, respectively, of the population bottleneck event.',
-		sliderName: 'Generations to Override End'
+		sliderName: 'Generations to Override End',
+		defaultValue: 50,
 	},
 	{
 		name: VALID_VARIABLES.BOTTLENECK_POPULATION_SIZE,
@@ -201,7 +258,8 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.BOTTLENECK_GEN,
 		order: 0,
 		description: 'This is the number of individuals in the population during the bottleneck event. Note that the number of chromosomes simulated is 2NB',
-		sliderName: 'Population Size'
+		sliderName: 'Population Size',
+		defaultValue: 5000,
 	},
 
 

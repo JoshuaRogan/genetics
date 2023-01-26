@@ -1,7 +1,7 @@
-import { ApplicationContextProvider } from '../context/application';
+import { ApplicationContextProvider } from 'context/application';
 import ApplicationGen from '../components/ApplicationGen';
 
-function HomePage() {
+function IndividualSimulator() {
 	return (
 		<ApplicationContextProvider>
 			<ApplicationGen />
@@ -9,4 +9,4 @@ function HomePage() {
 	);
 }
 
-export default HomePage;
+export default IndividualSimulator;

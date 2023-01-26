@@ -35,7 +35,7 @@ function HomePage() {
 			</p>
 
 			<ButtonWrapper>
-				<Link href="/individual">
+				<Link href="/IndividualSimulator">
 					<button>Go to Individual Simulations</button>
 				</Link>
 

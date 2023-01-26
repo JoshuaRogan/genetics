@@ -1,3 +1,4 @@
+import LegendContainer from 'components/LegendContainer';
 import AssortativeMating from '../components/optionSections/AssortativeMating';
 import BottleNeckGenerations from '../components/optionSections/BottleNeckGenerations';
 import Inbreeding from '../components/optionSections/Inbreeding';
@@ -5,7 +6,7 @@ import Migration from '../components/optionSections/Migration';
 import { popGenVariables, VALID_SECTIONS } from '../data/popGenVariables';
 import { DebugHeader, Pre } from '../utils/debugging';
 import { getWorker, listenToWorker } from '../workers/generationWorker';
-import { ApplicationContext } from '../context/application';
+import { ApplicationContext } from 'context/application';
 import FinitePopulation from '../components/optionSections/FinitePopulation';
 import BaseSimulation from '../components/optionSections/BaseSimulation';
 import Selection from '../components/optionSections/Selection';
@@ -205,8 +206,12 @@ function HomePage() {
 				</ChartControls>
 
 				<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+				<LegendContainer alleleResults={context.alleleResults} settings={context.settingResults} />
+
 				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+				<LegendContainer alleleResults={context.alleleResults} genoTypeResults={context.genoTypeResults} settings={context.settingResults} />
 			</main>
+
 
 			<Pre role="figure" aria-label="Debugging information">
 				<DebugTitle>Debug Information + Content for Legend:</DebugTitle>

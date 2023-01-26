@@ -41,10 +41,14 @@ function createOptions(lines, title) {
 	};
 }
 
-const App = ({ lines, title }) => (
-	<HighChartLoader aria-label="Graph displaying the results of the Simulator" role="figure">
-		<HighchartsReact highcharts={Highcharts} options={createOptions(lines, title)} />
-	</HighChartLoader>
-);
+const App = ({ lines, title }) => {
+	// UseEffect / State here for the lines to prevent constant re-rendering
+
+	return (
+		<HighChartLoader aria-label="Graph displaying the results of the Simulator" role="figure">
+			<HighchartsReact highcharts={Highcharts} options={createOptions(lines, title)}/>
+		</HighChartLoader>
+	);
+};
 
 export default App;
