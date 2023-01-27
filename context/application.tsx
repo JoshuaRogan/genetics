@@ -1,11 +1,11 @@
 "use client"
-import { nameToVariable, VALID_SECTIONS, popGenVariables, Settings } from '../data/popGenVariables';
+import { nameToVariable, VALID_SECTIONS, popGenVariables, VALID_VARIABLES, Settings } from '../data/popGenVariables';
 import React from 'react';
 
 
 function valueToProper(name, value) {
 	// Need to convert back to decimal
-	if (name === 'starting-allele-frequency') {
+	if (name === VALID_VARIABLES.STARTING_ALLELE_FREQ) {
 		return value / 1000;
 	}
 
