@@ -30,7 +30,8 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 						<HelpContentToggle onClick={() => setIsPositiveAssortMatFreqActive(!isPositiveAssortMatFreqActive)} />{' '}
 					</div>
 					<HelpContent
-						variable={''}
+						variable={generationToOverrideStart.variable}
+						variableHTML={''}
 						description={generationToOverrideStart.description}
 						inputName={generationToOverrideStart.name}
 						isOpen={isPositiveAssortMatFreqActive}

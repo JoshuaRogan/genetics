@@ -27,8 +27,9 @@ function LegendSettings({ settings }: { settings: Settings }) {
 				<li>Inbreeding coefficient (F) = {settings.F} </li>
 				<li> Positive assortative mating frequency (α) = {settings.assortMating} </li>
 				<li>
-					Bottleneck population size (NB) = {settings['gen-to-over-start']} to {settings['gen-to-over-end']}
+					Bottleneck Generations: {settings['gen-to-over-start']} to {settings['gen-to-over-end']}
 				</li>
+				<li>Bottleneck population size (NB) = {settings.Nb}</li>
 			</ul>
 		</div>
 	);
