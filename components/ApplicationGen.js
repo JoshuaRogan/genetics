@@ -28,6 +28,8 @@ const DebugTitle = styled.h2`
 function HomePage() {
 	const context = React.useContext(ApplicationContext);
 
+	console.log(context.settingResults);
+
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
 		listenToWorker((event) => {

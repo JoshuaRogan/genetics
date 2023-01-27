@@ -73,9 +73,8 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 			});
 
 
-			console.log(popGenVars);
 			setSettingsResults((previousSettingResults) => {
-				return [...previousSettingResults, popGenVars];
+				return [...previousSettingResults, {...popGenVars}];
 			});
 
 			const A1A1 = [];

@@ -75,21 +75,7 @@ function LegendManager({ settings, result, index }: { settings: Settings; result
 }
 
 function AlleleLegend({ settings, results }: { settings: Settings; results: number[][] }) {
-	const [indexOfActiveLegends, setIndexOfActiveLegends] = React.useState([]);
-
-	const addActiveLegend = (indexToAdd: number) => {
-		setIndexOfActiveLegends((currentActive) => {
-			return [...currentActive, indexToAdd].sort();
-		});
-	};
-
-	const removeActiveLegend = (graphNumberToRemove: number) => {
-		setIndexOfActiveLegends((currentActive) => {
-			currentActive.splice(graphNumberToRemove, 1);
-			return currentActive;
-		});
-	};
-
+	// Make the initial settings immutable
 	return (
 		<div>
 			{results.map(function (result, index) {
@@ -134,7 +120,7 @@ export default function LegendContainer({ alleleResults, genoTypeResults, settin
 	return (
 		<LegendStyled>
 			<h3>{isGenoType ? 'Genotype Legend' : 'Allele Legend'} </h3>
-			<GenoTypeLegend settings={settings[0]} results={genoTypeResults} />
+			<GenoTypeLegend settings={settings[settings.length - 1]} results={genoTypeResults} />
 		</LegendStyled>
 	);
 }
