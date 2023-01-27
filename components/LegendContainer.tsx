@@ -51,33 +51,30 @@ const LegendStyled = styled.div`
 	padding: 2px 10px;
 `;
 
-function AlleleLegend({ settings, results }: { settings: Settings; results: number[] }) {
+const LegendHider = styled.div`
+	display: ${(props) => (props.isActive ? 'block' : 'none')};
+`;
+
+const LegendChecker = styled.h3`
+	&:hover {
+		cursor: pointer;
+	}
+`;
+function LegendManager({ settings, result, index }: { settings: Settings; result: number[]; index: number }) {
+	const [isActive, setIsActive] = React.useState(false);
+
 	return (
-		<div>
-			<LegendSettings settings={settings} />
-			<LegendStats result={results} />
+		<div key={index}>
+			<LegendChecker onClick={() => setIsActive(!isActive)}>Simulation #{index + 1}</LegendChecker>
+			<LegendHider isActive={isActive}>
+				<LegendSettings settings={settings} />
+				<LegendStats result={result} />
+			</LegendHider>
 		</div>
 	);
 }
 
-function GenoTypeLegend({ settings, results }) {
-	return (
-		<div>
-			<h4> Stats </h4>
-			<ul>
-				<li>Initial frequency of genotype A1A1 = {results[0][0]}</li>
-				<li>Initial frequency of genotype A1A2 = {results[1][0]}</li>
-				<li>Initial frequency of genotype A2A2 = {results[2][0]}</li>
-				<li>Final frequency of genotype A1A1 = {results[0][results[0].length - 1].toFixed(4)}</li>
-				<li>Final frequency of genotype A1A2 = {results[1][results[1].length - 1].toFixed(4)}</li>
-				<li>Final frequency of genotype A2A2 = {results[2][results[2].length - 1].toFixed(4)}</li>
-			</ul>
-		</div>
-	);
-}
-
-export default function LegendContainer({ alleleResults, genoTypeResults, settings }) {
-	const isGenoType = genoTypeResults;
+function AlleleLegend({ settings, results }: { settings: Settings; results: number[][] }) {
 	const [indexOfActiveLegends, setIndexOfActiveLegends] = React.useState([]);
 
 	const addActiveLegend = (indexToAdd: number) => {
@@ -93,6 +90,34 @@ export default function LegendContainer({ alleleResults, genoTypeResults, settin
 		});
 	};
 
+	return (
+		<div>
+			{results.map(function (result, index) {
+				return <LegendManager key={index} index={index} result={result} settings={settings[index]} />;
+			})}
+		</div>
+	);
+}
+
+function GenoTypeLegend({ settings, results }) {
+	return (
+		<div>
+			<h4> Stats (Last Simulation) </h4>
+			<ul>
+				<li>Initial frequency of genotype A1A1 = {results[0][0]}</li>
+				<li>Initial frequency of genotype A1A2 = {results[1][0]}</li>
+				<li>Initial frequency of genotype A2A2 = {results[2][0]}</li>
+				<li>Final frequency of genotype A1A1 = {results[0][results[0].length - 1].toFixed(4)}</li>
+				<li>Final frequency of genotype A1A2 = {results[1][results[1].length - 1].toFixed(4)}</li>
+				<li>Final frequency of genotype A2A2 = {results[2][results[2].length - 1].toFixed(4)}</li>
+			</ul>
+		</div>
+	);
+}
+
+export default function LegendContainer({ alleleResults, genoTypeResults, settings }) {
+	const isGenoType = genoTypeResults;
+
 	if (alleleResults.length === 0) {
 		return null;
 	}
@@ -101,7 +126,7 @@ export default function LegendContainer({ alleleResults, genoTypeResults, settin
 		return (
 			<LegendStyled>
 				<h3>{isGenoType ? 'Genotype Legend' : 'Allele Legend'} </h3>
-				<AlleleLegend settings={settings[0]} results={alleleResults[0]} />
+				<AlleleLegend settings={settings} results={alleleResults} />
 			</LegendStyled>
 		);
 	}

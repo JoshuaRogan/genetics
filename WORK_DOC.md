@@ -19,6 +19,7 @@
 * Collapsable graph sections
 * Create 'infinite' button instead of slider
 * Create footer
+* Introduce multiple legends per run for allele
 
 ## Design
 * Match slider design
