@@ -28,10 +28,11 @@ const DebugTitle = styled.h2`
 function HomePage() {
 	const context = React.useContext(ApplicationContext);
 
+	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
 		listenToWorker((event) => {
 			console.log(event);
-			context.addMoreResults(event);
+			context.addMoreResults(event); // Needs to be handled as it won't work if it's in the context
 		});
 	}, []);
 
@@ -209,9 +210,12 @@ function HomePage() {
 				<LegendContainer alleleResults={context.alleleResults} settings={context.settingResults} />
 
 				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
-				<LegendContainer alleleResults={context.alleleResults} genoTypeResults={context.genoTypeResults} settings={context.settingResults} />
+				<LegendContainer
+					alleleResults={context.alleleResults}
+					genoTypeResults={context.genoTypeResults}
+					settings={context.settingResults}
+				/>
 			</main>
-
 
 			<Pre role="figure" aria-label="Debugging information">
 				<DebugTitle>Debug Information + Content for Legend:</DebugTitle>

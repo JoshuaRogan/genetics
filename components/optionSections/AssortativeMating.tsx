@@ -27,6 +27,7 @@ export default function AssortativeMating({ isActive, name, onChange, toggleActi
 					</div>
 					<HelpContent
 						variable={positiveAssortMatingFreq.variable}
+						variableHTML={positiveAssortMatingFreq.variableHTML}
 						description={positiveAssortMatingFreq.description}
 						inputName={positiveAssortMatingFreq.name}
 						isOpen={isPositiveAssortMatFreqActive}

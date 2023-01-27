@@ -93,7 +93,7 @@ export const popGenVariables = [
 		description: 'This is the number of generations to be simulated',
 		section: VALID_SECTIONS.BASE,
 		order: 0,
-		defaultValue: 200,
+		defaultValue: 500,
 		sliderName: 'Number of Generations',
 	},
 	{
@@ -108,6 +108,7 @@ export const popGenVariables = [
 	{
 		name: VALID_VARIABLES.POPULATION_SIZE,
 		variable: 'N',
+		description: 'This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N. If this parameter is not enabled, the simulation will model the theoretical infinitely sized population.',
 		section: VALID_SECTIONS.FINITE,
 		order: 0,
 		defaultValue: 500,

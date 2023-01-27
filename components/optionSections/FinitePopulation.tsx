@@ -9,9 +9,11 @@ import {
 	SliderColumnAndValue,
 } from './optionHelpers';
 import Slider from '../sliders/Slider';
+import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 
 export default function FinitePopulation({ isActive, name, onChange, toggleActive }) {
 	const [isPopulationSizeActive, setIsPopulationSizeActive] = React.useState(false);
+	const populationSize = getPopGenVariableByName(VALID_VARIABLES.POPULATION_SIZE);
 
 	return (
 		<div aria-label="Finite Population Simulator Inputs">
@@ -19,12 +21,12 @@ export default function FinitePopulation({ isActive, name, onChange, toggleActiv
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>
-						Population Size
+						{populationSize.sliderName}
 						<HelpContentToggle onClick={() => setIsPopulationSizeActive(!isPopulationSizeActive)} />{' '}
 					</div>
 					<HelpContent
-						variable={'N'}
-						description="This is the number of individuals, N, per generation in the simulation. Note, the number of chromosomes is 2N. If this parameter is not enabled, the simulation will model the theoretical infinitely sized population."
+						variable={populationSize.variable}
+						description={populationSize.description}
 						inputName={'population-size'}
 						isOpen={isPopulationSizeActive}
 					/>
@@ -35,21 +37,12 @@ export default function FinitePopulation({ isActive, name, onChange, toggleActiv
 						onChange={onChange}
 						min={1}
 						max={10000}
-						start={500}
-						label={'Population Size'}
+						start={populationSize.defaultValue}
+						label={populationSize.sliderName}
 						name={'population-size'}
 					/>
 				</SliderColumnAndValue>
 			</SingleRowWrapper>
-
-			{/*<SingleRowWrapper>*/}
-			{/*	<NameColumn>*/}
-			{/*		<div>Number of Simulations</div>*/}
-			{/*	</NameColumn>*/}
-			{/*	<SliderColumnAndValue>*/}
-			{/*		<SliderOne label={'Number of Simulations'} name={'number-of-simulations'} required />*/}
-			{/*	</SliderColumnAndValue>*/}
-			{/*</SingleRowWrapper>*/}
 		</div>
 	);
 }

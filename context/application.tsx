@@ -20,7 +20,7 @@ popGenVariables.forEach(popGenVar => {
 export const defaultContext = {
 	// Default values for variables in popGenVariablesFile
 	popGenVars: defaultValuesForSettings as Settings,
-	setPopGenVar: () => {},
+	setPopGenVar: (varName, value) => {},
 	alleleResults: [],
 	genoTypeResults: [],
 	settingResults: [],
@@ -34,8 +34,8 @@ export const defaultContext = {
 		[VALID_SECTIONS.ASSORT_MATING]: false,
 		[VALID_SECTIONS.BOTTLENECK_GEN]: false,
 	},
-	setActiveSession: (name) => {},
-	addMoreResults: (moreResult) => {},
+	setActiveSession: (name, status) => {},
+	addMoreResults: (moreResult, settingsResults) => {},
 	clearResults: () => {}
 }
 
@@ -59,9 +59,10 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 			return;
 		}
 
-		const newVar = {};
-		newVar[nameToVariable(varName)] = valueToProper(varName, value);
-		setPopGenVars({ ...popGenVars, ...newVar});
+		setPopGenVars((currentState) => {
+			currentState[nameToVariable(varName)] = valueToProper(varName, value);
+			return currentState
+		})
 	};
 
 	const addMoreResults = (workerResults) => {
@@ -71,7 +72,8 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 				return [...previousAlleleResults, workerResults.results];
 			});
 
-			// Only do this once
+
+			console.log(popGenVars);
 			setSettingsResults((previousSettingResults) => {
 				return [...previousSettingResults, popGenVars];
 			});
@@ -89,13 +91,6 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 			})
 			setGenoTypeResults([A1A1, A1A2, A2A2]);
 		}
-
-		if (workerResults.type === 'results-genotype') {
-			setGenoTypeResults(() => {
-				return [workerResults.AA, alleleResults.Aa, alleleResults.aa];
-			});
-		}
-		// Pass in instead of grabing from here
 
 
 	};

@@ -10,7 +10,7 @@ import {
 	HelpContent,
 	HelpContentToggle,
 } from './optionHelpers';
-import {getPopGenVariableByName, VALID_VARIABLES} from "../../data/popGenVariables";
+import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 
 function formatThousandToDecimal(number: number) {
 	return number / 1000;
@@ -22,6 +22,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 	const [isStartingAlleleFreqActive, setIsStartingAlleleFreqActive] = React.useState(false);
 
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
+	const startingAlleleFreq = getPopGenVariableByName(VALID_VARIABLES.STARTING_ALLELE_FREQ);
 
 	return (
 		<div aria-label="Base Simulation inputs">
@@ -38,7 +39,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 						<HelpContentToggle onClick={() => setIsNumberOfGenHelpActive(!isNumberOfGenHelpActive)} />{' '}
 					</div>
 					<HelpContent
-						variable={'t'}
+						variable={numberOfGenerations.variable}
 						description="This is the number of generations to be simulated"
 						inputName={'number-of-generations'}
 						isOpen={isNumberOfGenHelpActive}
@@ -61,12 +62,12 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 			<SingleRowWrapper>
 				<NameColumn>
 					<div>
-						Starting Allele Frequency
+						{startingAlleleFreq.sliderName}
 						<HelpContentToggle onClick={() => setIsStartingAlleleFreqActive(!isStartingAlleleFreqActive)} />{' '}
 					</div>
 					<HelpContent
-						variable={'p'}
-						description="This is the frequency of the allele of interest, A, at generation 0."
+						variable={startingAlleleFreq.variable}
+						description={startingAlleleFreq.description}
 						inputName={'starting-allele-frequency'}
 						isOpen={isStartingAlleleFreqActive}
 					/>
@@ -76,7 +77,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 						onChange={onChange}
 						min={0}
 						max={1000}
-						start={500}
+						start={startingAlleleFreq.defaultValue * 1000}
 						formatter={formatThousandToDecimal}
 						label={'Starting Allele Frequency'}
 						name={'starting-allele-frequency'}

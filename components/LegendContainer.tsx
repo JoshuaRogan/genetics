@@ -1,44 +1,114 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import { Settings } from '../data/popGenVariables';
 
+function LegendSettings({ settings }: { settings: Settings }) {
+	return (
+		<div>
+			<h4>Settings</h4>
+			<ul>
+				<li>Generations (t) = {settings.t} </li>
+				<li>Population Size (N) = {settings.N} </li>
+				<li>
+					Initial frequency of Allele A (p<sub>0</sub>) = {settings.p}{' '}
+				</li>
+				<li>Fitness coefficient for A1A1 (WA1A1) = {settings.WAA}</li>
+				<li>Fitness coefficient for A1A2 (WA1A2) = {settings.WAa}</li>
+				<li>Fitness coefficient for A2A2 (WA2A2) = {settings.Waa}</li>
 
-function LegendSettings({ settings }) {
-	return <div> Settings </div>
+				<li>
+					Forward mutation rate (μ) = {settings.mu}*10<sup>{settings['mu-exp']}</sup>
+				</li>
+				<li>
+					Reverse mutation rate (v) = {settings.nu}*10<sup>{settings['nu-exp']}</sup>
+				</li>
+
+				<li> Migrant allele frequency (pM) = {settings.pm}</li>
+				<li>Inbreeding coefficient (F) = {settings.F} </li>
+				<li> Positive assortative mating frequency (α) = {settings.assortMating} </li>
+				<li>
+					Bottleneck population size (NB) = {settings['gen-to-over-start']} to {settings['gen-to-over-end']}
+				</li>
+			</ul>
+		</div>
+	);
 }
 
+function LegendStats({ result }: { result: number[] }) {
+	return (
+		<div>
+			<h4>Stats</h4>
+			<ul>
+				<li> Final Allele Freq = {result[result.length - 1]}</li>
+			</ul>
+		</div>
+	);
+}
 
 const LegendStyled = styled.div`
-  background: ${(props) => (props.theme.disabledGray)};
-  padding: 2px 10px;
+	background: ${(props) => props.theme.disabledGray};
+	padding: 2px 10px;
 `;
 
-function Legend({ settings, results }) {
-	return <div>
-		<LegendSettings settings={settings} />
-	</div>
+function AlleleLegend({ settings, results }: { settings: Settings; results: number[] }) {
+	return (
+		<div>
+			<LegendSettings settings={settings} />
+			<LegendStats result={results} />
+		</div>
+	);
 }
 
+function GenoTypeLegend({ settings, results }) {
+	return (
+		<div>
+			<h4> Stats </h4>
+			<ul>
+				<li>Initial frequency of genotype A1A1 = {results[0][0]}</li>
+				<li>Initial frequency of genotype A1A2 = {results[1][0]}</li>
+				<li>Initial frequency of genotype A2A2 = {results[2][0]}</li>
+				<li>Final frequency of genotype A1A1 = {results[0][results[0].length - 1].toFixed(4)}</li>
+				<li>Final frequency of genotype A1A2 = {results[1][results[1].length - 1].toFixed(4)}</li>
+				<li>Final frequency of genotype A2A2 = {results[2][results[2].length - 1].toFixed(4)}</li>
+			</ul>
+		</div>
+	);
+}
 
 export default function LegendContainer({ alleleResults, genoTypeResults, settings }) {
-	const isGenoType = !genoTypeResults;
+	const isGenoType = genoTypeResults;
 	const [indexOfActiveLegends, setIndexOfActiveLegends] = React.useState([]);
 
-	const addActiveLegend = (indexToAdd : number) => {
+	const addActiveLegend = (indexToAdd: number) => {
 		setIndexOfActiveLegends((currentActive) => {
 			return [...currentActive, indexToAdd].sort();
 		});
 	};
 
-	const removeActiveLegend = (graphNumberToRemove : number) => {
+	const removeActiveLegend = (graphNumberToRemove: number) => {
 		setIndexOfActiveLegends((currentActive) => {
 			currentActive.splice(graphNumberToRemove, 1);
 			return currentActive;
 		});
 	};
 
-	return <LegendStyled>
-		<h3>{isGenoType ? 'Genotype Legend' : 'Allele Legend'} </h3>
-		<Legend settings={settings[0]} results={alleleResults[0]} />
-	</LegendStyled>
+	if (alleleResults.length === 0) {
+		return null;
+	}
 
+	if (!isGenoType) {
+		return (
+			<LegendStyled>
+				<h3>{isGenoType ? 'Genotype Legend' : 'Allele Legend'} </h3>
+				<AlleleLegend settings={settings[0]} results={alleleResults[0]} />
+			</LegendStyled>
+		);
+	}
+
+	return (
+		<LegendStyled>
+			<h3>{isGenoType ? 'Genotype Legend' : 'Allele Legend'} </h3>
+			<GenoTypeLegend settings={settings[0]} results={genoTypeResults} />
+		</LegendStyled>
+	);
 }

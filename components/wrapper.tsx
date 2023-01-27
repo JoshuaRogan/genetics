@@ -53,7 +53,6 @@ function IndexPage({ children }) {
 			<Head>
 				<title>Population Genetics Simulator</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-
 			</Head>
 			<ThemeProvider theme={THEME}>
 				<Navigation />

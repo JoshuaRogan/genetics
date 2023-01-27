@@ -46,7 +46,7 @@ const App = ({ lines, title }) => {
 
 	return (
 		<HighChartLoader aria-label="Graph displaying the results of the Simulator" role="figure">
-			<HighchartsReact highcharts={Highcharts} options={createOptions(lines, title)}/>
+			<HighchartsReact highcharts={Highcharts} options={createOptions(lines, title)} />
 		</HighChartLoader>
 	);
 };
