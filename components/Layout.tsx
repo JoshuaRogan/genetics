@@ -1,14 +1,13 @@
-"use client"
+'use client';
 import Head from 'next/head';
 import styled, { ThemeProvider } from 'styled-components';
 import Navigation from '../components/Navigation';
 import StyledComponentsRegistry from '../utils/StyledComponentRegistry';
-
+import Footer from './Footer';
 
 const RootStyles = styled.div`
-  font-family: 'Roboto', sans-serif;
-  padding-left: 20px;
-  padding-right: 20px;
+	font-family: 'Roboto', sans-serif;
+	min-height: 100vh;
 `;
 
 const size = {
@@ -48,35 +47,20 @@ const THEME = {
 	},
 };
 
-function IndexPage({children}) {
+function Layout({ children }) {
 	return (
-		<html>
-
-		<Head>
-			<title>Population Genetics Simulator</title>
-			<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-
-			<link rel="preconnect" href="https://fonts.googleapis.com"/>
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={'true'}/>
-			<link
-				href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-				rel="stylesheet"
-			/>
-		</Head>
-		<body>
 		<StyledComponentsRegistry>
 			<RootStyles>
 				<ThemeProvider theme={THEME}>
 					<>
-						<Navigation/>
+						<Navigation />
 						{children}
+						<Footer />
 					</>
 				</ThemeProvider>
 			</RootStyles>
 		</StyledComponentsRegistry>
-		</body>
-		</html>
 	);
 }
 
-export default IndexPage;
+export default Layout;
