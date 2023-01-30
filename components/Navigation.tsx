@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-const NavBarWrapper = styled.div`
-	height: 50px;
-`;
+const NavBarWrapper = styled.div``;
 
 const Nav = styled.nav`
 	background-color: ${(props) => props.theme.backgroundColor};
@@ -18,6 +16,8 @@ const Nav = styled.nav`
 
 	@media ${(props) => props.theme._mq.tablet} {
 	}
+
+	background-color: red;
 `;
 
 const Logo = styled.a`
