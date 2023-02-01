@@ -38,7 +38,7 @@ function HomePage() {
 		});
 	}, []);
 
-	const updateChart = (isAllele = true) => {
+	const updateChart = () => {
 		const worker = getWorker();
 
 		if (!worker) {
