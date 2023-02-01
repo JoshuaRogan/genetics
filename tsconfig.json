@@ -24,6 +24,7 @@
 	"exclude": ["node_modules"],
 	"baseUrl": ".",
 	"paths": {
-		"@/components/*": ["components/*"]
+		"@/components/*": ["components/*"],
+		"@/styles/*": ["styles/*"]
 	}
 }
