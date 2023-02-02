@@ -20,6 +20,8 @@ NavigationList.Item = styled.li`
 	text-align: center;
 	font-weight: 400;
 	letter-spacing: 1px;
+	background-color: ${(props) => (props.isActive ? '#e0e0e0' : props.theme.textColor)};
+	transition: all 0.2s ease-in-out;
 
 	&:hover {
 		background-color: #e0e0e0;
@@ -31,7 +33,12 @@ NavigationList.Item = styled.li`
 
 	a {
 		display: block;
-		color: ${(props) => props.theme.headerTextColor ?? '#ffffff'};
+
+		/* If link is active set highlight theme */
+		${(props) => props.isActive && `color: ${props.theme.textColor ?? '#ffffff'}`};
+
+		/* Default color if not active */
+		${(props) => !props.isActive && `color: ${props.theme.headerTextColor ?? '#ffffff'}`};
 		padding: 15px;
 		text-decoration: none;
 	}

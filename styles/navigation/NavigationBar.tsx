@@ -7,7 +7,7 @@ const NavigationBar = styled.nav`
 	width: 100%;
 	min-height: 48px;
 	height: 48px;
-	background-color: ${(props) => props.theme.backgroundColor ?? '#333333'};
+	background-color: ${(props) => props.theme.colors.background};
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 

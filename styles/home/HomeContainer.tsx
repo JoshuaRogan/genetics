@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 const HomeContainer = styled.div`
-	padding: 0 30px;
-	margin-bottom: 30px;
+	padding: 0 30px 30px 30px;
 
 	@media ${(props) => props.theme._mq.TABLET} {
 		margin-left: auto;

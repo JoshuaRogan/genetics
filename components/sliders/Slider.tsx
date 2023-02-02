@@ -9,7 +9,7 @@ const track = css`
 	box-sizing: border-box;
 	border: none;
 	height: 4px;
-	background: ${(props) => (props.isActive ? props.theme.disabledGray : props.theme.primaryColor)};
+	background: ${(props) => (props.isActive ? props.theme.colors.disabled : props.theme.colors.primary)};
 	transition: background 0.2s ease-in-out;
 	border-radius: 8px;
 `;
@@ -19,8 +19,8 @@ const trackFill = css`
 	height: 6px;
 	background-color: transparent;
 	background-image: linear-gradient(
-			${(props) => (props.isActive ? props.theme.primaryColor : props.theme.disabledGray)},
-			${(props) => (props.isActive ? props.theme.primaryColor : props.theme.disabledGray)}
+			${(props) => (props.isActive ? props.theme.colors.primary : props.theme.colors.disabled)},
+			${(props) => (props.isActive ? props.theme.colors.primary : props.theme.colors.disabled)}
 		),
 		linear-gradient(${trackC}, ${trackC});
 	background-size: var(--sx) 6px, calc(100% - var(--sx)) 4px;
@@ -31,7 +31,7 @@ const trackFill = css`
 
 const fill = css`
 	height: ${trackH};
-	background: ${(props) => props.theme.primaryColor};
+	background: ${(props) => props.theme.colors.primary};
 	border-radius: 4px;
 `;
 
@@ -76,7 +76,7 @@ const Input = styled.input`
 	height: ${thumbD};
 	background: transparent;
 	font: 1em/1 arial, sans-serif;
-	margin-right: ${(props) => props.theme.spaceBetweenPx};
+	margin-right: ${(props) => props.theme.space._2x};
 
 	&::-webkit-slider-runnable-track {
 		${trackFill};

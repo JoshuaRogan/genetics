@@ -1,7 +1,6 @@
-"use client"
+'use client';
 import { nameToVariable, VALID_SECTIONS, popGenVariables, VALID_VARIABLES, Settings } from '../data/popGenVariables';
 import React from 'react';
-
 
 function valueToProper(name, value) {
 	// Need to convert back to decimal
@@ -13,8 +12,8 @@ function valueToProper(name, value) {
 }
 
 const defaultValuesForSettings = {} as Settings;
-popGenVariables.forEach(popGenVar => {
-	defaultValuesForSettings[popGenVar.variable] = popGenVar.defaultValue
+popGenVariables.forEach((popGenVar) => {
+	defaultValuesForSettings[popGenVar.variable] = popGenVar.defaultValue;
 });
 
 export const defaultContext = {
@@ -36,33 +35,31 @@ export const defaultContext = {
 	},
 	setActiveSession: (name, status) => {},
 	addMoreResults: (moreResult, settingsResults) => {},
-	clearResults: () => {}
-}
-
-
+	clearResults: () => {},
+};
 
 export const ApplicationContext = React.createContext(defaultContext);
 export const ApplicationProvider = ApplicationContext.Provider;
 export const ApplicationConsumer = ApplicationContext.Consumer;
 
-export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) => {
+export const ApplicationContextProvider = ({ children }) => {
 	const [popGenVars, setPopGenVars] = React.useState(defaultContext.popGenVars);
 	const [activeSections, setActiveSessionState] = React.useState(defaultContext.activeSections);
 	const [alleleResults, setAlleleResults] = React.useState([]);
 	const [genoTypeResults, setGenoTypeResults] = React.useState([]);
 	const [settingResults, setSettingsResults] = React.useState([]);
-	const [isBulkSimulator, setIsBulkSimulator] = React.useState(isBulkSimulatorProp ?? false);
+	// const [isBulkSimulator, setIsBulkSimulator] = React.useState(isBulkSimulatorProp ?? false);
 
 	const setPopGenVar = (varName, value) => {
 		if (!nameToVariable(varName)) {
-			console.error("Failed to set population gen var for " + varName)
+			console.error('Failed to set population gen var for ' + varName);
 			return;
 		}
 
 		setPopGenVars((currentState) => {
 			currentState[nameToVariable(varName)] = valueToProper(varName, value);
-			return currentState
-		})
+			return currentState;
+		});
 	};
 
 	const addMoreResults = (workerResults) => {
@@ -72,9 +69,8 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 				return [...previousAlleleResults, workerResults.results];
 			});
 
-
 			setSettingsResults((previousSettingResults) => {
-				return [...previousSettingResults, {...popGenVars}];
+				return [...previousSettingResults, { ...popGenVars }];
 			});
 
 			const A1A1 = [];
@@ -87,11 +83,9 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 				A1A1.push(Math.pow(A, 2)); // genotype AA is determined by squaring the allele frequency A
 				A1A2.push(2 * A * a); // genotype Aa is determined by multiplying 2 times the frequency of A times the frequency of a.
 				A2A2.push(Math.pow(a, 2)); //  frequency of aa is determined by squaring a.
-			})
+			});
 			setGenoTypeResults([A1A1, A1A2, A2A2]);
 		}
-
-
 	};
 
 	// const addMoreResults = (newResult) => setAlleleResults((allPreviousResults => {
@@ -102,28 +96,30 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 	const setActiveSession = (name, status) => {
 		const newVar = {};
 		newVar[name] = status;
-		setActiveSessionState({...activeSections, ...newVar })
+		setActiveSessionState({ ...activeSections, ...newVar });
 	};
 
 	const clearResults = () => {
 		setAlleleResults([]);
 		setGenoTypeResults([]);
 		setSettingsResults([]);
-	}
+	};
 
-  return (
-    <ApplicationContext.Provider value={{
-		activeSections,
-		addMoreResults,
-		alleleResults: alleleResults,
-		clearResults,
-		genoTypeResults,
-		popGenVars,
-		setActiveSession,
-		setPopGenVar,
-		settingResults,
-	}}>
-      {children}
-    </ApplicationContext.Provider>
-  )
-}
+	return (
+		<ApplicationContext.Provider
+			value={{
+				activeSections,
+				addMoreResults,
+				alleleResults: alleleResults,
+				clearResults,
+				genoTypeResults,
+				popGenVars,
+				setActiveSession,
+				setPopGenVar,
+				settingResults,
+			}}
+		>
+			{children}
+		</ApplicationContext.Provider>
+	);
+};

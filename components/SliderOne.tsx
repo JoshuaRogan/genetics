@@ -9,7 +9,7 @@ const track = css`
 	box-sizing: border-box;
 	border: none;
 	height: 4px;
-	background: ${(props) => props.theme.primaryColor};
+	background: ${(props) => props.theme.colors.primary};
 	border-radius: 8px;
 `;
 
@@ -17,7 +17,7 @@ const trackFill = css`
 	${track};
 	height: 6px;
 	background-color: transparent;
-	background-image: linear-gradient(${(props) => props.theme.primaryColor}, ${(props) => props.theme.primaryColor}),
+	background-image: linear-gradient(${(props) => props.theme.colors.primary}, ${(props) => props.theme.colors.primary}),
 		linear-gradient(${trackC}, ${trackC});
 	background-size: var(--sx) 6px, calc(100% - var(--sx)) 4px;
 	background-position: left center, right center;
@@ -26,7 +26,7 @@ const trackFill = css`
 
 const fill = css`
 	height: ${trackH};
-	background: ${(props) => props.theme.primaryColor};
+	background: ${(props) => props.theme.colors.primary};
 	border-radius: 4px;
 `;
 
@@ -71,7 +71,7 @@ const Input = styled.input`
 	height: ${thumbD};
 	background: transparent;
 	font: 1em/1 arial, sans-serif;
-	margin-right: ${(props) => props.theme.spaceBetweenPx};
+	margin-right: ${(props) => props.theme.space._2x};
 
 	&::-webkit-slider-runnable-track {
 		${trackFill};

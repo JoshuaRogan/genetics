@@ -49,7 +49,7 @@ const HelpContentContainer = styled.div`
 const HelpContentVariable = styled.div`
 	font-size: 22px;
 	font-style: italic;
-	color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.colors.primary};
 	font-weight: 900;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -57,7 +57,7 @@ const HelpContentVariable = styled.div`
 
 const HelpContentDescription = styled.div`
 	font-size: 15px;
-	color: ${(props) => props.theme.textColorLightGray};
+	color: ${(props) => props.theme.colors.primary};
 `;
 
 export function HelpContent({ inputName, variable, variableHTML = null, description, isOpen = false }) {
@@ -72,7 +72,7 @@ export function HelpContent({ inputName, variable, variableHTML = null, descript
 }
 
 const HelpContentToggleStyled = styled.span`
-	color: ${(props) => props.theme.primaryColor};
+	color: ${(props) => props.theme.colors.primary};
 	font-weight: bold;
 	&:hover {
 		cursor: pointer;

@@ -13,7 +13,7 @@ import Selection from '../components/optionSections/Selection';
 import Mutation from '../components/optionSections/Mutation';
 import styled from 'styled-components';
 import React, { useEffect } from 'react';
-import IndexPage from './wrapper';
+import MainWrapper from './MainWrapper';
 import HighChart from './highChart';
 
 const ChartControls = styled.div`
@@ -134,7 +134,7 @@ function HomePage() {
 	};
 
 	return (
-		<IndexPage>
+		<MainWrapper>
 			<main role="main">
 				<h1>Individual Simulator</h1>
 
@@ -231,7 +231,7 @@ function HomePage() {
 				<DebugHeader>Legend Data</DebugHeader>
 				{JSON.stringify(context.settingResults, null, 2)}
 			</Pre>
-		</IndexPage>
+		</MainWrapper>
 	);
 }
 
