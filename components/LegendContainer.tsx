@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Settings } from '../data/popGenVariables';
+import Checkbox from './Checkbox';
+import Collapsible from './Collapsible';
 
 function LegendSettings({ settings }: { settings: Settings }) {
 	return (
@@ -47,7 +49,7 @@ function LegendStats({ result }: { result: number[] }) {
 }
 
 const LegendStyled = styled.div`
-	background: ${(props) => props.theme.disabledGray};
+	background: transparent;
 	padding: 2px 10px;
 `;
 
@@ -55,21 +57,30 @@ const LegendHider = styled.div`
 	display: ${(props) => (props.isActive ? 'block' : 'none')};
 `;
 
-const LegendChecker = styled.h3`
-	&:hover {
-		cursor: pointer;
-	}
-`;
+const LegendChecker = styled.div``;
+
 function LegendManager({ settings, result, index }: { settings: Settings; result: number[]; index: number }) {
-	const [isActive, setIsActive] = React.useState(false);
+	const [isActive, setIsActive] = React.useState(true);
+	const simualtionNumber = index + 1;
+
+	const handleCheckboxChange = (event) => {
+		setIsActive(event.target.checked);
+	};
 
 	return (
 		<div key={index}>
-			<LegendChecker onClick={() => setIsActive(!isActive)}>Simulation #{index + 1}</LegendChecker>
-			<LegendHider isActive={isActive}>
-				<LegendSettings settings={settings} />
-				<LegendStats result={result} />
-			</LegendHider>
+			<Collapsible header={`Legend for Graph ${simualtionNumber}`}>
+				<LegendChecker>
+					<label>
+						<Checkbox checked={isActive} onChange={handleCheckboxChange} />
+						<span style={{ marginLeft: 8 }}>{`Simulation ${simualtionNumber}`}</span>
+					</label>
+				</LegendChecker>
+				<LegendHider isActive={isActive}>
+					<LegendSettings settings={settings} />
+					<LegendStats result={result} />
+				</LegendHider>
+			</Collapsible>
 		</div>
 	);
 }
@@ -111,7 +122,6 @@ export default function LegendContainer({ alleleResults, genoTypeResults, settin
 	if (!isGenoType) {
 		return (
 			<LegendStyled>
-				<h3>{isGenoType ? 'Genotype Legend' : 'Allele Legend'} </h3>
 				<AlleleLegend settings={settings} results={alleleResults} />
 			</LegendStyled>
 		);
@@ -119,7 +129,6 @@ export default function LegendContainer({ alleleResults, genoTypeResults, settin
 
 	return (
 		<LegendStyled>
-			<h3>{isGenoType ? 'Genotype Legend' : 'Allele Legend'} </h3>
 			<GenoTypeLegend settings={settings[settings.length - 1]} results={genoTypeResults} />
 		</LegendStyled>
 	);
