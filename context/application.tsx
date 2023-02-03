@@ -42,13 +42,13 @@ export const ApplicationContext = React.createContext(defaultContext);
 export const ApplicationProvider = ApplicationContext.Provider;
 export const ApplicationConsumer = ApplicationContext.Consumer;
 
-export const ApplicationContextProvider = ({ children }) => {
+export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) => {
 	const [popGenVars, setPopGenVars] = React.useState(defaultContext.popGenVars);
 	const [activeSections, setActiveSessionState] = React.useState(defaultContext.activeSections);
 	const [alleleResults, setAlleleResults] = React.useState([]);
 	const [genoTypeResults, setGenoTypeResults] = React.useState([]);
 	const [settingResults, setSettingsResults] = React.useState([]);
-	// const [isBulkSimulator, setIsBulkSimulator] = React.useState(isBulkSimulatorProp ?? false);
+	const [isBulkSimulator, setIsBulkSimulator] = React.useState(isBulkSimulatorProp ?? false);
 
 	const setPopGenVar = (varName, value) => {
 		if (!nameToVariable(varName)) {
