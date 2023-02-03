@@ -9,6 +9,7 @@ interface ThemeInterface {
 		title: string
 		disabled: string
 		navigationHover: string,
+		sectionBackground: string,
   }
 	space: {
 		_1x: string
@@ -58,7 +59,7 @@ const defaultTheme = {
 const lightTheme: ThemeInterface = {
   colors: {
     primary: '#4b516a',
-		accent: '#0070f3',
+		accent: '#E0E0E0',
 		secondary: '#0070f3',
 		background: '#333333',
 		body: '#ffffff',
@@ -66,6 +67,7 @@ const lightTheme: ThemeInterface = {
 		title: '#1b3039',
 		disabled: '#aba9a9',
 		navigationHover: '#E0E0E0',
+		sectionBackground: '#E0E0E0',
   },
 	...defaultTheme
 };
@@ -73,7 +75,7 @@ const lightTheme: ThemeInterface = {
 const darkTheme: ThemeInterface = {
 	colors: {
 		primary: '#4b516a',
-		accent: '#0070f3',
+		accent: '#333333',
 		secondary: '#0070f3',
 		background: '#333333',
 		body: '#17141D',
@@ -81,6 +83,7 @@ const darkTheme: ThemeInterface = {
 		title: '#ffffff',
 		disabled: '#aba9a9',
 		navigationHover: '#5b5959',
+		sectionBackground: '#1d1b23',
 	},
 	...defaultTheme
 };

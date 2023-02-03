@@ -1,14 +1,15 @@
 import React from 'react';
+
 import { ApplicationContextProvider } from '../context/application';
 
-import IndividualGen from '../components/simulators/IndividualGen';
+import ReplicatedGen from '../components/simulators/ReplicatedGen';
 
-function IndividualSimulatorPage() {
+function ReplicatedSimulatorPage() {
 	return (
 		<ApplicationContextProvider isBulkSimulatorProp={false}>
-			<IndividualGen />
+			<ReplicatedGen />
 		</ApplicationContextProvider>
 	);
 }
 
-export default IndividualSimulatorPage;
+export default ReplicatedSimulatorPage;
