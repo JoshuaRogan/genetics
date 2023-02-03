@@ -9,11 +9,11 @@ interface StyledButtonLinkProps {
 
 const StyledButtonLink = styled.button<StyledButtonLinkProps>`
 	padding: 12px 40px;
-	color: ${(props) => props.textColor ?? props.theme.textColorLightGray};
+	color: ${(props) => props.textColor ?? props.theme.colors.primary};
 	background-color: ${(props) => props.backgroundColor ?? '#bdbdbd'};
 	border: none;
 	border-radius: 8px;
-	width: 100%;
+	width: 260px;
 	font-size: 0.8rem;
 	font-weight: 600;
 	text-align: center;

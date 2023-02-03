@@ -1,11 +1,11 @@
-import IndexPage from '../components/wrapper';
+import MainWrapper from '../components/MainWrapper';
 
 function HomePage() {
 	return (
-		<IndexPage>
+		<MainWrapper>
 			<h2>Section </h2>
 			<p>Coming soon...</p>
-		</IndexPage>
+		</MainWrapper>
 	);
 }
 

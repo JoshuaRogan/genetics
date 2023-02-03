@@ -4,10 +4,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import NavigationBar from '../styles/navigation/NavigationBar';
 import NavigationList from '../styles/navigation/NavigationList';
+import { useRouter } from 'next/router';
 
 const NavigationItems = styled.div`
 	display: ${(props) => (props.isOpen ? 'block' : 'none')};
-	background-color: ${(props) => props.theme.backgroundColor ?? '#333333'};
+	background-color: ${(props) => props.theme.colors.background};
 
 	@media ${(props) => props.theme._mq.TABLET} {
 		display: flex;
@@ -26,6 +27,7 @@ const MenuIconBar = styled.span`
 
 export default function Navigation() {
 	const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
+	const router = useRouter();
 
 	const onMenuNavigationClicked = () => {
 		setMobileNavOpen(!mobileNavOpen);
@@ -51,10 +53,10 @@ export default function Navigation() {
 				</NavigationBar.Header>
 				<NavigationItems isOpen={mobileNavOpen}>
 					<NavigationList>
-						<NavigationList.Item>
+						<NavigationList.Item isActive={router.pathname === '/individual'}>
 							<Link href={'/individual'}>Individual Simulations</Link>
 						</NavigationList.Item>
-						<NavigationList.Item>
+						<NavigationList.Item isActive={router.pathname === '/replicated'}>
 							<Link href={'/replicated'}>Replicated Simulations</Link>
 						</NavigationList.Item>
 					</NavigationList>

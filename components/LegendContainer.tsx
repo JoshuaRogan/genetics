@@ -47,7 +47,7 @@ function LegendStats({ result }: { result: number[] }) {
 }
 
 const LegendStyled = styled.div`
-	background: ${(props) => props.theme.disabledGray};
+	background: ${(props) => props.theme.colors.disabled};
 	padding: 2px 10px;
 `;
 
