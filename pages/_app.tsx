@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
 		min-height: 100vh;
 		color: ${(props) => props.theme.colors.text};
 		background-color: ${(props) => props.theme.colors.body};
-		transition: all 0.4s ease-in-out;
   }
 `;
 
