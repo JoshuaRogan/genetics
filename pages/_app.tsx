@@ -18,8 +18,8 @@ const GlobalStyle = createGlobalStyle`
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-    margin: 0;
-    padding: 0;
+		margin: 0;
+		padding: 0;
 		min-height: 100vh;
 		color: ${(props) => props.theme.colors.text};
 		background-color: ${(props) => props.theme.colors.body};

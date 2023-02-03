@@ -8,6 +8,7 @@ interface ThemeInterface {
 		text: string
 		title: string
 		disabled: string
+		navigationHover: string,
   }
 	space: {
 		_1x: string
@@ -65,6 +66,7 @@ const lightTheme: ThemeInterface = {
 		text: '#333333',
 		title: '#1b3039',
 		disabled: '#aba9a9',
+		navigationHover: '#E0E0E0',
   },
 	...defaultTheme
 };
@@ -79,6 +81,7 @@ const darkTheme: ThemeInterface = {
 		text: '#ffffff',
 		title: '#ffffff',
 		disabled: '#aba9a9',
+		navigationHover: '#5b5959',
 	},
 	...defaultTheme
 };
