@@ -62,7 +62,48 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 		});
 	};
 
+	interface WorkerSettings {
+		assortMating: boolean;
+		d_assortativeMating: number;
+		h_assortativeMating: number;
+		hasInbreeding: boolean;
+		inbreedingCoefficient: number|string;
+		positiveAssortativeFreq: number|string;
+		r_assortativeMating: number | string;
+	}
+
+// How to Calculate Assortative mating values
+// p0 = this.currentAlleleFre; //The allele frequency at this time
+// q0 = 1 - p0;
+//
+// //The previous values of d,h,r
+// var d0 = this.d_assortativeMating;
+// var h0 = this.h_assortativeMating;
+// var r0 = this.r_assortativeMating;
+// var alpha = this.positiveAssortativeFreq;
+//
+// //Specify each numerator first since the denominator is the same between all of them
+// var d_numerator = ((1 - alpha) * Math.pow(p0, 2)) + (alpha * (d0 + h0/4));
+// var h_numerator = (2 * (1 - alpha) * p0 * q0) + (alpha * (h0/2));
+// var r_numerator = ((1 - alpha) * Math.pow(q0, 2)) + (alpha * (r0 + h0/4));
+// var commonDenom = d_numerator + h_numerator + r_numerator;
+//
+//
+// console.log(d_numerator, h_numerator, r_numerator);
+//
+// //Update the d,h,r values
+// this.d_assortativeMating = d_numerator / commonDenom;
+// this.h_assortativeMating = h_numerator / commonDenom;
+// this.r_assortativeMating = r_numerator / commonDenom;
+//
+//
+// // Short hand variables for the new variables
+// var d_n = this.d_assortativeMating;
+// var h_n = this.h_assortativeMating; 	//Change from d_assortative...
+// var r_n = this.r_assortativeMating;		//Changed from d_assortative..
+
 	const addMoreResults = (workerResults) => {
+		console.log(workerResults);
 		if (workerResults.type === 'results-allele') {
 			const alleleResults = workerResults.results;
 			setAlleleResults((previousAlleleResults) => {
@@ -72,19 +113,64 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 			setSettingsResults((previousSettingResults) => {
 				return [...previousSettingResults, { ...popGenVars }];
 			});
-
-			const A1A1 = [];
-			const A1A2 = [];
-			const A2A2 = [];
-
-			alleleResults.forEach((alleleRes) => {
-				const A = alleleRes;
-				const a = 1 - A;
-				A1A1.push(Math.pow(A, 2)); // genotype AA is determined by squaring the allele frequency A
-				A1A2.push(2 * A * a); // genotype Aa is determined by multiplying 2 times the frequency of A times the frequency of a.
-				A2A2.push(Math.pow(a, 2)); //  frequency of aa is determined by squaring a.
-			});
+			const genoTypeFreqs = workerResults.genotypeFreqs;
+			const A1A1 = genoTypeFreqs.AA;
+			const A1A2 = genoTypeFreqs.Aa;
+			const A2A2 = genoTypeFreqs.aa;
 			setGenoTypeResults([A1A1, A1A2, A2A2]);
+
+			// // Short settings used for genotype calc
+			// const settings = workerResults.settings as WorkerSettings;
+			// const hasAssort = workerResults.settings.assortMating;
+			// const hasInbreeding = workerResults.settings.hasInbreeding;
+
+			// alleleResults.forEach((alleleRes) => {
+			// 	const A = alleleRes;
+			// 	const a = 1 - A;
+			//
+			//
+			// 	if (hasAssort) {
+			// 		// var d0 = this.d_assortativeMating;
+			// 		// var h0 = this.h_assortativeMating;
+			// 		// var r0 = this.r_assortativeMating;
+			// 		// var alpha = this.positiveAssortativeFreq;
+			// 		//
+			// 		// //Specify each numerator first since the denominator is the same between all of them
+			// 		// var d_numerator = ((1 - alpha) * Math.pow(p0, 2)) + (alpha * (d0 + h0/4));
+			// 		// var h_numerator = (2 * (1 - alpha) * p0 * q0) + (alpha * (h0/2));
+			// 		// var r_numerator = ((1 - alpha) * Math.pow(q0, 2)) + (alpha * (r0 + h0/4));
+			// 		// var commonDenom = d_numerator + h_numerator + r_numerator;
+			// 		// console.log(d_numerator, h_numerator, r_numerator);
+			// 		// //Update the d,h,r values
+			// 		// this.d_assortativeMating = d_numerator / commonDenom;
+			// 		// this.h_assortativeMating = h_numerator / commonDenom;
+			// 		// this.r_assortativeMating = r_numerator / commonDenom;
+			// 	}
+			//
+			// 	// P(AA)t = Dt + Fpt (1‐pt)
+			//     // P(Aa)t = Ht – 2Fpt (1‐pt)
+			//     // P(aa)t = Rt + Fpt (1‐pt)
+			// 	if (hasInbreeding && hasAssort) {
+			//
+			// 	} else if(hasInbreeding) {
+			//
+			//
+			// 	} else if(hasAssort) {
+			// 	// P(AA)t = Dt
+			// 	// P(Aa)t = Ht
+			// 	// P(aa)t = Rt
+			//
+			//
+			// 	} else {
+			//
+			// 	}
+			//
+			// 	A1A1.push(Math.pow(A, 2)); // genotype AA is determined by squaring the allele frequency A
+			// 	A1A2.push(2 * A * a); // genotype Aa is determined by multiplying 2 times the frequency of A times the frequency of a.
+			// 	A2A2.push(Math.pow(a, 2)); //  frequency of aa is determined by squaring a.
+			//
+			// });
+
 		}
 	};
 

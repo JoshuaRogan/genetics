@@ -5,7 +5,7 @@ popGen.generations = popGen.generation || {};
 
 importScripts("/workers/popGen/popGen.population.js");
 importScripts("/workers/popGen/popGen.generation.js");
-importScripts("/workers/lodash/lodash.js"); //Used for cloning the generation
+importScripts("/workers/lodash/lodash.js"); //Used for cloning the generation TODO - Update and limit size
 
 var generation = null;
 var genotypeGraph = false;
@@ -87,10 +87,16 @@ function setVar(data){
 function run(){
 	if(checkGeneration()){
 		if(!genotypeGraph){
+			var settings_short = generation.getInputs();
 			generation.buildRandomSamples();
-			outputResultsAllele(generation.frequencies);
+			const genotypeFreqs = {
+				AA: generation.AA,
+				Aa: generation.Aa,
+				aa: generation.aa,
+			}
+			outputResultsAllele(generation.frequencies, genotypeFreqs);
 		}
-		else{//Geno type run
+		else{ //Geno type run
 			genotypeRun();
 		}
 	}
@@ -101,10 +107,12 @@ function run(){
  *
  */
 function batchRun(){
-	if(checkGeneration()){
+	if (checkGeneration()){
 		var generation_clone = _.cloneDeep(generation);
+		var settings_short = generation.getInputs();
 		generation_clone.buildRandomSamples();
-		outputResultsAllele(generation_clone.frequencies);
+
+		outputResultsAllele(generation_clone.frequencies, settings_short);
 	}
 }
 
@@ -112,7 +120,7 @@ function batchRun(){
  *	Results for genotype graphs
  *
  */
- function genotypeRun(){
+ function genotypeRun(randomNumberArray){
 	var AA = Array();
 	var Aa = Array();
 	var aa = Array();
@@ -129,11 +137,12 @@ function batchRun(){
 	var r = 0.0;
 
 
-	//Need to get data on every new random sample so needs to be ran one sample at a time
-	for(var i=0; i<generation.numGenerations; i++){
+	// Need to get data on every new random sample so needs to be ran one sample at a time
+	for(var i=0; i<generation.numGenerations; i++) {
 		p = generation.currentAlleleFre;
 
-		if(generation.inbreeding && generation.possitiveAssortativeMating){ //Inbreeding and assortative mating
+		// Inbreeding and assortative mating
+		if(generation.inbreeding && generation.possitiveAssortativeMating){
 			f = generation.inbreedingCoefficient;
 
 			d = generation.d_assortativeMating;
@@ -169,7 +178,7 @@ function batchRun(){
 		//Remove this and put into the else statement
 
 
-		generation.buildRandomSample();
+		generation.buildRandomSample(randomNumberArray); // TODO - If used only pass in the one number
 	}
 
 	outputResultsGenotype(AA, Aa, aa);
@@ -181,8 +190,8 @@ function batchRun(){
  *	Output the an array of frequency data in JSON format
  *
  */
-function outputResultsAllele(frequencies){
-	postMessage('{"type":"results-allele", "results":' + JSON.stringify(frequencies) + '}');
+function outputResultsAllele(frequencies, genoTypeFreq){
+	postMessage('{"type":"results-allele", "results":' + JSON.stringify(frequencies) + ', "genotypeFreqs": ' + JSON.stringify(genoTypeFreq || '{}') + '}');
 }
 
 /**

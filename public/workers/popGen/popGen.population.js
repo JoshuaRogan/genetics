@@ -20,23 +20,27 @@ popGen.population = function(populationSize, startAlleleFreq) {
      *		- If the random number is outside the range (i.e. greater than) the frequency then it
      *		is considered now an implicit allele (i.e. it will count against the new frequency)
      */
-    this.buildRandomSample = function() {
+    this.buildRandomSample = function(randomNumbers) {
 
     	//The number of alleles drawn based on the starting allele frequency
         var directAlleleCounter = 0;
 
         //Perform the random sampling
         for (var i = 0; i < (this.populationSize * 2); i++) {
-            if (this.currentAlleleFre == 1.0 || this.currentAlleleFre == 0.0) break;
+            if (this.currentAlleleFre == 1.0 || this.currentAlleleFre == 0.0) {
+				break;
+			}
 
-            var rand = Math.floor(Math.random() * (1 - 0)) + 0;
-
-            if (Math.random() <= this.currentAlleleFre) {
+            // var rand = Math.floor(Math.random() * (1 - 0)) + 0;
+			var rand = randomNumbers ? randomNumbers[i] : Math.random()
+            if (rand <= this.currentAlleleFre) {
                 directAlleleCounter++;
             }
         }
         // Recompute the currentAllele frequency after random sampling
-        if(i != 0) this.currentAlleleFre = directAlleleCounter / (i);
+        if (i != 0) {
+			this.currentAlleleFre = directAlleleCounter / (i);
+		}
     }
 
     //

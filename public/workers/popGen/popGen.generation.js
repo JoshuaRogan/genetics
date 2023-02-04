@@ -6,25 +6,29 @@ popGen.generations = popGen.generations || {};
 
 /**
  *  Represents the population through its changes. Primarily used to updated the the startingAlleleFreq so the random
- *	sampling is correct. Several different optional variables are here with setter functions to keep the class manageable.
+ *	sampling is correct. Several optional variables are here with setter functions to keep the class manageable.
  *
  *		-Currently storing each population in populations array (could be removed to reduce memory overhead)
  */
 popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
-	this.numGenerations 		= numGenerations; 		//Total number of generations
-    this.currentGenerationNum 	= 0; 					//The generation number we are now on
-    this.populationSize 		= populationSize; 		//The population size of each population
-    this.startAlleleFreq 		= startAlleleFreq; 		//Starting allele frequency
-    this.startOtherAlleleFreq 	= 1 - this.startAlleleFreq; 	//The implicit other allele frequency
-    this.currentAlleleFre 		= this.startAlleleFreq; 		//Current allele frequency of the population we just generated
-    this.currentOtherAlleleFre 	= 1 - this.startAlleleFreq; 	//Currrent implicit other allele frequency
-    this.currentGenerationNum 	= 0;					//The current generation that is being produced
-    this.infinitePopulationSize = false; 				//Generate equations instead of random sampling
+	this.numGenerations 		= numGenerations; 		// Total number of generations
+    this.currentGenerationNum 	= 0; 					// The generation number we are now on
+    this.populationSize 		= populationSize; 		// The population size of each population
+    this.startAlleleFreq 		= startAlleleFreq; 		// Starting allele frequency
+    this.startOtherAlleleFreq 	= 1 - this.startAlleleFreq; 	// The implicit other allele frequency
+    this.currentAlleleFre 		= this.startAlleleFreq; 		// Current allele frequency of the population we just generated
+    this.currentOtherAlleleFre 	= 1 - this.currentAlleleFre; 	// Current implicit other allele frequency
+    this.currentGenerationNum 	= 0;					// The current generation that is being produced
+    this.infinitePopulationSize = false; 				// Generate equations instead of random sampling
 
-    this.frequencies = Array(); //An array of each frequency that was generated (These are the values that are graphed)
-    this.populations = Array(); //An array of all of the populations (Remove with optimized flag)
+    this.frequencies = Array(); // An array of each frequency that was generated (These are the values that are graphed)
+    this.populations = Array(); // An array of all the populations (Remove with optimized flag)
 
-    this.optimized = true; //Flag to prevent storing of some variables
+	this.AA = [];
+	this.Aa = [];
+	this.aa = [];
+
+    this.optimized = true; // Flag to prevent storing of some variables
 
     this.startTime = (new Date).getTime();
 	this.finishTime = null;
@@ -39,6 +43,18 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
     this.setInfinitePopulation = function(){
     	this.infinitePopulationSize = true;
     }
+
+	this.getInputs = function() {
+		return {
+			hasInbreeding: this.inbreeding,
+			inbreedingCoefficient: this.inbreedingCoefficient,
+			assortMating: this.possitiveAssortativeMating,
+			positiveAssortativeFreq: this.positiveAssortativeFreq,
+			d_assortativeMating: this.d_assortativeMating,
+			h_assortativeMating: this.h_assortativeMating,
+			r_assortativeMating: this.r_assortativeMating,
+		}
+	}
 
 
     //Mutation Variables
@@ -137,18 +153,18 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
      *  This is the function to use to run the generations.
      *
      */
-    this.buildRandomSamples = function(){
+    this.buildRandomSamples = function(randomNumbers){
  		this.startTime = (new Date).getTime();
- 		this.currentAlleleFre 		= startAlleleFreq; 		//Current allele frequency of the population we just generated
-    	this.currentGenerationNum 	= 0;					//The current generation that is being produced
+ 		this.currentAlleleFre 		= startAlleleFreq; 		// Current allele frequency of the population we just generated
+    	this.currentGenerationNum 	= 0;					// The current generation that is being produced
 
 		console.log(this)
     	for(var i=0; i<this.numGenerations; i++){
     		if(i !== 0){
-                this.buildRandomSample();
+                this.buildRandomSample(randomNumbers);
             }
             else{
-                //Don't compute on the first run
+                // Don't compute on the first run
                 this.currentGenerationNum++;
                 this.setCurrentAlleleFre(this.currentAlleleFre);
                 this.frequencies.push(this.currentAlleleFre);
@@ -194,8 +210,8 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
             this.modifyFreqPosAssortMat();
         }
 
-        //Update the starting frequency due to migration
-        if(this.migration){
+        // Update the starting frequency due to migration
+        if (this.migration){
         	this.modifyFreqMigration();
         }
 
@@ -204,7 +220,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         if(this.populationBottleneck){
             if(this.currentGenerationNum > this.startGeneration && this.currentGenerationNum < this.endGeneration){
                 var bottleneck_generation = true;
-                var actualPopulationSize = this.modifiedPopulationSize; //There is a population bottle neck for this generation
+                var actualPopulationSize = this.modifiedPopulationSize; //There is a population bottleneck for this generation
             }
             else{
                 var actualPopulationSize = this.populationSize; //THere is a population bottleneck but not for this generation
@@ -214,14 +230,63 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
             var actualPopulationSize = this.populationSize;
         }
 
-        // Only do random sampling on non infinite population sizes
-        if(this.infinitePopulationSize && !bottleneck_generation){
+		// Current Allele Freq Calculated here
+		p = this.currentAlleleFre;
+
+		// Inbreeding and assortative mating
+		if(this.inbreeding && this.possitiveAssortativeMating) {
+			console.log('both')
+			var f = this.inbreedingCoefficient;
+
+			var d = this.d_assortativeMating;
+			var h = this.h_assortativeMating;
+			var r = this.r_assortativeMating;
+
+			this.AA.push(d + f*p * (1-p));
+			this.Aa.push(h - 2*f*p * (1-p));
+			this.aa.push(r + f*p*(1-p));
+		}
+		else if(generation.inbreeding){ // Just inbreeding
+			console.log('inbreed')
+			var f = this.inbreedingCoefficient;
+			this.AA.push(Math.pow(p,2) + f*p * (1-p)) ;
+			this.Aa.push((2*p)*(1-p) - 2*f*p * (1-p) );
+			this.aa.push(Math.pow((1-p),2) + f*p*(1-p));
+		}
+		else if(generation.possitiveAssortativeMating){ // Just assortative mating
+			console.log('asort')
+			var d = this.d_assortativeMating;
+			var h = this.h_assortativeMating;
+			var r = this.r_assortativeMating;
+
+			this.AA.push(d);
+			this.Aa.push(h);
+			this.aa.push(r);
+
+		}
+		else{ //No inbreeding or assortative mating
+			console.log('basic');
+			this.AA.push(Math.pow(p,2));
+			this.Aa.push(2 * p * (1 - p));
+			this.aa.push(Math.pow((1 - p),2));
+		}
+
+
+        // Only do random sampling on non-infinite population sizes
+        if (this.infinitePopulationSize && !bottleneck_generation){
             this.frequencies.push(this.currentAlleleFre);  //This is the value that is being graphed
         }
         else{
             var currentPopulation = new popGen.population(actualPopulationSize, this.currentAlleleFre);
             currentPopulation.buildRandomSample();
-            if(!this.optimized)this.populations.push(currentPopulation); //This adds the actual populations to an array for later use.
+
+			if (!this.optimized) {
+				this.populations.push(currentPopulation);
+			} // This adds the actual populations to an array for later use.
+
+			// TODO - Set the genotypes results here
+
+
             this.frequencies.push(currentPopulation.currentAlleleFre);  //This is the value that is being graphed
             this.setCurrentAlleleFre(currentPopulation.currentAlleleFre);
         }
@@ -241,7 +306,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 
     //Update the frequency due to selection effects and Inbreeding and assortative mating if they are set
     this.modifyFreqSelection = function(){
-    	//Not neccessary
+    	// Not necessary
     }
 
     /**
@@ -259,9 +324,9 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         this.setCurrentAlleleFre(numerator / denom);
     }
 
-    //Update the frequency due to possitiveAssortativeMating
+    // Update the frequency due to positiveAssortativeMating
     this.modifyFreqPosAssortMat = function(){
-        p0 = this.currentAlleleFre; //The allele frequeny at this time
+        p0 = this.currentAlleleFre; //The allele frequency at this time
         q0 = 1 - p0;
 
         //The previous values of d,h,r
@@ -277,18 +342,16 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         var commonDenom = d_numerator + h_numerator + r_numerator;
 
 
-        console.log(d_numerator, h_numerator, r_numerator);
-
         //Update the d,h,r values
         this.d_assortativeMating = d_numerator / commonDenom;
         this.h_assortativeMating = h_numerator / commonDenom;
         this.r_assortativeMating = r_numerator / commonDenom;
 
 
-        //Short hand variables for the new variables
+        // Shorthand variables for the new variables
         var d_n = this.d_assortativeMating;
-        var h_n = this.h_assortativeMating; 	//Change from d_assortative...
-        var r_n = this.r_assortativeMating;		//Changed from d_assortative..
+        var h_n = this.h_assortativeMating; 	// Change from d_assortative...
+        var r_n = this.r_assortativeMating;		// Changed from r_assortative...
 
         //New equations with positive mating
         //Default value for wAA, wAa, and waa is 1.0
