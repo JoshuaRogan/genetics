@@ -39,7 +39,7 @@ export default class MyDocument extends Document {
 						rel="stylesheet"
 					/>
 				</Head>
-				<body style={{'margin': 0}}>
+				<body>
 					<Main />
 					<NextScript />
 				</body>

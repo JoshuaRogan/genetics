@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const HomePageTitle = styled.h1`
+const SimulatorTitle = styled.h1`
 	color: ${(props) => props.theme.colors.title};
-	font-size: clamp(2rem, 7vw, 4rem);
+	font-size: clamp(1.1rem, 5vw, 2rem);
 	text-align: center;
 `;
 
-export default HomePageTitle;
+export default SimulatorTitle;

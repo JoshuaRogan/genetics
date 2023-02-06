@@ -7,17 +7,15 @@ interface StyledButtonLinkProps {
 	hoverBgColor?: string;
 }
 
-const StyledButtonLink = styled.button<StyledButtonLinkProps>`
+const Button = styled.button<StyledButtonLinkProps>`
 	padding: 12px 40px;
-	color: ${(props) => props.textColor ?? props.theme.colors.primary};
-	background-color: ${(props) => props.backgroundColor ?? '#bdbdbd'};
+
 	border: none;
 	border-radius: 8px;
 	width: 260px;
 	font-size: 0.8rem;
 	font-weight: 600;
 	text-align: center;
-	text-decoration: none;
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
 
@@ -29,11 +27,24 @@ const StyledButtonLink = styled.button<StyledButtonLinkProps>`
 	@media ${(props) => props.theme._mq.TABLET} {
 		font-size: 1rem;
 	}
+`;
+
+const PrimaryButton = styled(Button)`
+	color: #ffffff;
+	background-color: ${(props) => props.theme.colors.background};
 
 	&:hover {
-		color: ${(props) => props.hoverColor ?? '#ffffff'};
-		background-color: ${(props) => props.hoverBgColor ?? '#333333'};
+		background-color: ${(props) => props.theme.colors.background}db;
 	}
 `;
 
-export default StyledButtonLink;
+const AccentButton = styled(Button)`
+	color: ${(props) => props.theme.colors.text};
+	background-color: ${(props) => props.theme.colors.accent};
+
+	&:hover {
+		background-color: ${(props) => props.theme.colors.accent}db;
+	}
+`;
+
+export { PrimaryButton, AccentButton };

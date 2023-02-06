@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import MainWrapper from 'components/wrapper';
+import MainWrapper from 'components/MainWrapper';
 
 import HomeContainer from 'styles/home/HomeContainer';
 import ButtonWrapper from 'styles/home/ButtonWrapper';
@@ -10,6 +10,7 @@ import BoldText from 'styles/shared/BoldText';
 
 
 function HomePage() {
+
 	return (
 		<MainWrapper>
 			<HomeContainer>
