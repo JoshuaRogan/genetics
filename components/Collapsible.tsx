@@ -98,11 +98,6 @@ const Collapsible: React.FC<Props> = ({ open, children, header }) => {
 						<StyledTitle>{header}</StyledTitle>
 						<StyledIconButton type="button" onClick={handleFilterOpening}>
 							<StyledIcon isOpen={isOpen} />
-							<i
-								className={`fas-edonec fa-chevron-down-edonec ${
-									isOpen ? 'rotate-center-edonec down' : 'rotate-center-edonec up'
-								}`}
-							/>
 						</StyledIconButton>
 					</StyledHeader>
 				</div>
