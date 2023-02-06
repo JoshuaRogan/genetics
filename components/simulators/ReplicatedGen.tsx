@@ -229,6 +229,7 @@ function HomePage() {
 					alleleResults={context.alleleResults}
 					genoTypeResults={null}
 					settings={context.settingResults}
+					graphNumber={1}
 				/>
 
 				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
@@ -236,6 +237,7 @@ function HomePage() {
 					alleleResults={context.alleleResults}
 					genoTypeResults={context.genoTypeResults}
 					settings={context.settingResults}
+					graphNumber={2}
 				/>
 
 				<ButtonWrapper marginTop={45}>
