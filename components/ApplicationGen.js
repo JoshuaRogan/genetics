@@ -209,13 +209,14 @@ function HomePage() {
 				</ChartControls>
 
 				<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
-				<LegendContainer alleleResults={context.alleleResults} settings={context.settingResults} />
+				<LegendContainer alleleResults={context.alleleResults} settings={context.settingResults} graphNumber={1} />
 
 				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
 				<LegendContainer
 					alleleResults={context.alleleResults}
 					genoTypeResults={context.genoTypeResults}
 					settings={context.settingResults}
+					graphNumber={2}
 				/>
 			</main>
 
