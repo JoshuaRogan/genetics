@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import { SlArrowUp } from 'react-icons/sl';
+
 interface Props {
 	open?: boolean;
 	header: string | React.ReactNode;
@@ -52,6 +54,16 @@ const StyledContentContainer = styled.div`
 	padding: 20px 10px 20px 10px;
 `;
 
+const StyledIcon = styled(SlArrowUp)`
+	transform: ${(props) => (props.isOpen ? 'rotate(0deg)' : 'rotate(180deg)')};
+	background: transparent;
+	color: black;
+	stroke-width: 30px;
+	stroke: black;
+	width: 20px;
+	height: 20px;
+`;
+
 const Collapsible: React.FC<Props> = ({ open, children, header }) => {
 	const [isOpen, setIsOpen] = useState(open);
 	const [height, setHeight] = useState<number | undefined>(open ? undefined : 0);
@@ -85,6 +97,7 @@ const Collapsible: React.FC<Props> = ({ open, children, header }) => {
 					<StyledHeader>
 						<StyledTitle>{header}</StyledTitle>
 						<StyledIconButton type="button" onClick={handleFilterOpening}>
+							<StyledIcon isOpen={isOpen} />
 							<i
 								className={`fas-edonec fa-chevron-down-edonec ${
 									isOpen ? 'rotate-center-edonec down' : 'rotate-center-edonec up'
