@@ -166,6 +166,16 @@ const StyledCheckboxLabel = styled.label`
 	text-transform: uppercase;
 `;
 
+const StyledLegendManagerWrapper = styled.div`
+	border-bottom: 1px solid #4f4f4f;
+	margin-bottom: 10px;
+
+	&:last-child {
+		border-bottom: none;
+		margin-bottom: 0px;
+	}
+`;
+
 function LegendManager({ settings, result, index }: { settings: Settings; result: number[]; index: number }) {
 	const [isActive, setIsActive] = React.useState(true);
 	const simualtionNumber = index + 1;
@@ -175,30 +185,38 @@ function LegendManager({ settings, result, index }: { settings: Settings; result
 	};
 
 	return (
-		<div key={index}>
-			<Collapsible header={`Legend for Graph ${simualtionNumber}`}>
-				<LegendChecker>
-					<StyledCheckboxLabel>
-						<Checkbox checked={isActive} onChange={handleCheckboxChange} />
-						<span style={{ marginLeft: 8 }}>{`Simulation ${simualtionNumber}`}</span>
-					</StyledCheckboxLabel>
-				</LegendChecker>
-				<LegendHider isActive={isActive}>
-					<LegendSettings settings={settings} />
-					<LegendStats result={result} />
-				</LegendHider>
-			</Collapsible>
-		</div>
+		<StyledLegendManagerWrapper key={index}>
+			<LegendChecker>
+				<StyledCheckboxLabel>
+					<Checkbox checked={isActive} onChange={handleCheckboxChange} />
+					<span style={{ marginLeft: 8 }}>{`Simulation ${simualtionNumber}`}</span>
+				</StyledCheckboxLabel>
+			</LegendChecker>
+			<LegendHider isActive={isActive}>
+				<LegendSettings settings={settings} />
+				<LegendStats result={result} />
+			</LegendHider>
+		</StyledLegendManagerWrapper>
 	);
 }
 
-function AlleleLegend({ settings, results }: { settings: Settings; results: number[][] }) {
+function AlleleLegend({
+	settings,
+	results,
+	graphNumber,
+}: {
+	settings: Settings;
+	results: number[][];
+	graphNumber: number;
+}) {
 	// Make the initial settings immutable
 	return (
 		<div>
-			{results.map(function (result, index) {
-				return <LegendManager key={index} index={index} result={result} settings={settings[index]} />;
-			})}
+			<Collapsible header={`Legend for Graph ${graphNumber}`}>
+				{results.map(function (result, index) {
+					return <LegendManager key={index} index={index} result={result} settings={settings[index]} />;
+				})}
+			</Collapsible>
 		</div>
 	);
 }
@@ -219,7 +237,7 @@ function GenoTypeLegend({ settings, results }) {
 	);
 }
 
-export default function LegendContainer({ alleleResults, genoTypeResults, settings }) {
+export default function LegendContainer({ alleleResults, genoTypeResults, settings, graphNumber }) {
 	const isGenoType = genoTypeResults;
 
 	if (alleleResults.length === 0) {
@@ -229,7 +247,7 @@ export default function LegendContainer({ alleleResults, genoTypeResults, settin
 	if (!isGenoType) {
 		return (
 			<LegendStyled>
-				<AlleleLegend settings={settings} results={alleleResults} />
+				<AlleleLegend settings={settings} results={alleleResults} graphNumber={graphNumber} />
 			</LegendStyled>
 		);
 	}
