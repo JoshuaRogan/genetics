@@ -8,20 +8,21 @@ import StyledButtonLink from 'styles/home/StyledButtonLink';
 import HomePageTitle from 'styles/home/HomePageTitle';
 import BoldText from 'styles/shared/BoldText';
 
-
 function HomePage() {
-
 	return (
 		<MainWrapper>
 			<HomeContainer>
 				<HomePageTitle>Population Genetics Explorer</HomePageTitle>
 				<p>What is allele frequency? What is genotype frequency?</p>
-				<p> Why does it matter? What do scientists use them for? Give some relatable examples. possibly use pictures.</p>
 				<p>
-					What’s H-W equilibrium? What are the assumption for H-W equilibrium. (Do we need to introduce the equation?) How
-					does the allele frequency look when it’s at a H-W equilibrium for 100 generation (static image)? How does the
-					genotype frequency look like when it’s at a H-W equilibrium for 100 generation (static image) maybe they can
-					toggle between the two images.
+					{' '}
+					Why does it matter? What do scientists use them for? Give some relatable examples. possibly use pictures.
+				</p>
+				<p>
+					What’s H-W equilibrium? What are the assumption for H-W equilibrium. (Do we need to introduce the equation?)
+					How does the allele frequency look when it’s at a H-W equilibrium for 100 generation (static image)? How does
+					the genotype frequency look like when it’s at a H-W equilibrium for 100 generation (static image) maybe they
+					can toggle between the two images.
 				</p>
 				<BoldText>Lead to the simulator</BoldText>
 				<p>
@@ -32,14 +33,10 @@ function HomePage() {
 
 				<ButtonWrapper marginTop={30}>
 					<Link href="/individual">
-						<StyledButtonLink textColor={'#333333'}>
-							Go to Individual Simulations
-						</StyledButtonLink>
+						<StyledButtonLink textColor={'#333333'}>Go to Individual Simulations</StyledButtonLink>
 					</Link>
 					<Link href="/replicated">
-						<StyledButtonLink textColor={'#333333'}>
-							Go to Replicated Simulations
-						</StyledButtonLink>
+						<StyledButtonLink textColor={'#333333'}>Go to Replicated Simulations</StyledButtonLink>
 					</Link>
 				</ButtonWrapper>
 			</HomeContainer>
