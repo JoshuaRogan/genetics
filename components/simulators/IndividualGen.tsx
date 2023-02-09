@@ -33,7 +33,6 @@ function HomePage() {
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
 		listenToWorker((event) => {
-			console.log(event);
 			context.addMoreResults(event, null); // Needs to be handled as it won't work if it's in the context
 		});
 	}, []);

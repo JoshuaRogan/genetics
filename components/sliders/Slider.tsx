@@ -2,28 +2,28 @@ import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 const trackH = '0.4em';
-const thumbD = '1.5em';
-const trackC = '#ccced0';
+const thumbWidth = '.75em';
+const thumbHeight = '1.5em';
+const trackC = '#ffffff';
 
 const track = css`
 	box-sizing: border-box;
-	border: none;
-	height: 4px;
-	background: ${(props) => (props.isActive ? props.theme.colors.disabled : props.theme.colors.primary)};
+	height: 10px;
+	border: 1px solid #828282;
+	background: ${(props) => (props.isActive ? props.theme.colors.disabled : '#ffffff')};
 	transition: background 0.2s ease-in-out;
-	border-radius: 8px;
 `;
 
 const trackFill = css`
 	${track};
-	height: 6px;
+	height: 10px;
 	background-color: transparent;
 	background-image: linear-gradient(
-			${(props) => (props.isActive ? props.theme.colors.primary : props.theme.colors.disabled)},
-			${(props) => (props.isActive ? props.theme.colors.primary : props.theme.colors.disabled)}
+			${(props) => (props.isActive ? '#828282' : props.theme.colors.disabled)},
+			${(props) => (props.isActive ? '#828282' : props.theme.colors.disabled)}
 		),
 		linear-gradient(${trackC}, ${trackC});
-	background-size: var(--sx) 6px, calc(100% - var(--sx)) 4px;
+	background-size: var(--sx) 6px, calc(100% - var(--sx)) 10px;
 	background-position: left center, right center;
 	background-repeat: no-repeat;
 	transition: background-image 0.2s ease-in-out;
@@ -38,11 +38,10 @@ const fill = css`
 const thumb = css`
 	box-sizing: border-box;
 	border: none;
-	width: ${thumbD};
-	height: ${thumbD};
-	border-radius: 50%;
-	background: white;
-	box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5);
+	width: ${thumbWidth};
+	height: ${thumbHeight};
+	background: ${(props) => props.theme.colors.background};
+	/* box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5); */
 `;
 
 const Input = styled.input`
@@ -69,11 +68,11 @@ const Input = styled.input`
 
 	--range: calc(var(--max) - var(--min));
 	--ratio: calc((var(--val) - var(--min)) / var(--range));
-	--sx: calc(0.5 * ${thumbD} + var(--ratio) * (100% - ${thumbD}));
+	--sx: calc(0.5 * ${thumbWidth} + var(--ratio) * (100% - ${thumbWidth}));
 
 	margin: 0;
 	padding: 0;
-	height: ${thumbD};
+	height: ${thumbWidth};
 	background: transparent;
 	font: 1em/1 arial, sans-serif;
 	margin-right: ${(props) => props.theme.space._2x};
@@ -99,7 +98,7 @@ const Input = styled.input`
 	}
 
 	&::-webkit-slider-thumb {
-		margin-top: calc(0.5 * (${trackH} - ${thumbD}));
+		margin-top: calc(0.5 * (${trackH} - ${thumbHeight}));
 		${thumb};
 	}
 

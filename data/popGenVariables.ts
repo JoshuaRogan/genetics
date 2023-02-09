@@ -94,7 +94,7 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.BASE,
 		order: 0,
 		defaultValue: 500,
-		sliderName: 'Number of Generations',
+		sliderName: 'Generations',
 	},
 	{
 		name: VALID_VARIABLES.STARTING_ALLELE_FREQ,

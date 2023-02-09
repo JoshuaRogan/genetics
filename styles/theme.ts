@@ -10,6 +10,7 @@ interface ThemeInterface {
 		disabled: string
 		navigationHover: string,
 		sectionBackground: string,
+		tooltip: string,
   }
 	space: {
 		_1x: string
@@ -68,6 +69,7 @@ const lightTheme: ThemeInterface = {
 		disabled: '#aba9a9',
 		navigationHover: '#E0E0E0',
 		sectionBackground: '#E0E0E0',
+		tooltip: '#828282',
   },
 	...defaultTheme
 };
@@ -84,6 +86,7 @@ const darkTheme: ThemeInterface = {
 		disabled: '#aba9a9',
 		navigationHover: '#5b5959',
 		sectionBackground: '#1d1b23',
+		tooltip: '#828282',
 	},
 	...defaultTheme
 };

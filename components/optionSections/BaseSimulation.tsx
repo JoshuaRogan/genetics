@@ -11,10 +11,16 @@ import {
 	HelpContentToggle,
 } from './optionHelpers';
 import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
+import HelpContentWrapper from './HelpContentWrapper';
+import { NoteType } from '../../styles/shared/Note';
 
 function formatThousandToDecimal(number: number) {
 	return number / 1000;
 }
+
+const SliderWrapper = styled.div`
+	display: grid;
+`;
 
 export default function BaseSimulation({ isActive, name, onChange }) {
 	const [isSectionActive, setIsSectionActive] = React.useState(true);
@@ -26,13 +32,32 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 
 	return (
 		<div aria-label="Base Simulation inputs">
-			<SectionHeaderWrapper
+			<SliderWrapper>
+				<HelpContentWrapper
+					title={numberOfGenerations.sliderName + `「 ${numberOfGenerations.variable} 」`}
+					message={numberOfGenerations.description}
+					priority={NoteType.INFO}
+				>
+					<p>{numberOfGenerations.sliderName}</p>
+					<Slider
+						onChange={onChange}
+						min={1}
+						max={10000}
+						start={numberOfGenerations.defaultValue}
+						label={'Number of generations'}
+						name={'number-of-generations'}
+						required
+						isActive={true}
+					/>
+				</HelpContentWrapper>
+			</SliderWrapper>
+			{/* <SectionHeaderWrapper
 				isActive={isSectionActive}
 				name={name}
 				isCheckable={false}
 				onClick={() => setIsSectionActive(!isSectionActive)}
-			/>
-			<SingleRowWrapper>
+			/> */}
+			{/* <SingleRowWrapper>
 				<NameColumn>
 					<div>
 						{numberOfGenerations.sliderName}
@@ -86,7 +111,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 						isActive={true}
 					/>
 				</SliderColumnAndValue>
-			</SingleRowWrapper>
+			</SingleRowWrapper> */}
 		</div>
 	);
 }
