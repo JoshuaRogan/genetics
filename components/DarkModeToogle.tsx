@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import MoonIcon from '../public/images/ic_moon.png';
 import SunIcon from '../public/images/ic_sun.png';
 import Image from 'next/image';
+import { useColorMode } from '@chakra-ui/react';
 
 const FloatingButton = styled.button`
 	z-index: 100;
@@ -25,10 +26,13 @@ const FloatingButton = styled.button`
 	}
 `;
 
-const DarkModeToggle = ({ isDarkTheme, toggleTheme }) => {
+const DarkModeToggle = () => {
+	const { colorMode, toggleColorMode } = useColorMode();
+	const isDarkTheme = colorMode === 'dark';
+
 	const ariaLabel = isDarkTheme ? 'Toggle for light mode' : 'Toggle for dark mode';
 	return (
-		<FloatingButton title={ariaLabel} aria-label={ariaLabel} onClick={toggleTheme}>
+		<FloatingButton title={ariaLabel} aria-label={ariaLabel} onClick={toggleColorMode}>
 			<Image src={isDarkTheme ? SunIcon : MoonIcon} alt={ariaLabel} />
 		</FloatingButton>
 	);

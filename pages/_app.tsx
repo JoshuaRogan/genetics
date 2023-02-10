@@ -1,7 +1,9 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { useEffect, useState } from 'react';
-import { darkTheme, lightTheme } from '../styles/theme';
+import { darkTheme, lightTheme } from '../styles/theme2';
+import theme from '../styles/theme';
 import DarkModeToggle from '../components/DarkModeToogle';
+import { ChakraProvider, useColorMode } from '@chakra-ui/react';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -27,36 +29,18 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default function App({ Component, pageProps }) {
-	const [theme, setTheme] = useState('light');
 	const [isMounted, setIsMounted] = useState(false);
-	const isDarkTheme = theme === 'dark';
-
-	const toggleTheme = () => {
-		const updatedTheme = isDarkTheme ? 'light' : 'dark';
-		setTheme(updatedTheme);
-		localStorage.setItem('theme', updatedTheme);
-	};
-
 	useEffect(() => {
 		setIsMounted(true);
 	}, []);
-
-	useEffect(() => {
-		const savedTheme = localStorage.getItem('theme');
-		const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-		if (savedTheme && ['dark', 'light'].includes(savedTheme)) {
-			setTheme(savedTheme);
-		} else if (prefersDark) {
-			setTheme('dark');
-		}
-	}, []);
-
 	return (
 		<>
-			<ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-				<GlobalStyle />
-				{isMounted && <Component {...pageProps} />}
-				<DarkModeToggle isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
+			<ThemeProvider theme={lightTheme}>
+				<ChakraProvider theme={theme}>
+					<GlobalStyle />
+					{isMounted && <Component {...pageProps} />}
+					<DarkModeToggle />
+				</ChakraProvider>
 			</ThemeProvider>
 		</>
 	);
