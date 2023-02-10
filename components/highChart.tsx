@@ -30,6 +30,7 @@ function createOptions(lines, title) {
 				text: 'Generation Number',
 			},
 			allowDecimals: false,
+			min: 1,
 		},
 		yAxis: {
 			min: 0,
