@@ -37,13 +37,17 @@ const theme = extendTheme({
 			default: '#333333',
 			_dark: '#ffffff',
 		},
-		heroGradientStart: {
-			default: '#7928CA',
-			_dark: '#e3a7f9',
+		navBarText: {
+			default: '#ffffff',
+			_dark: '#ffffff',
 		},
-		heroGradientEnd: {
-			default: '#FF0080',
-			_dark: '#fbec8f',
+		navBar: {
+			default: '#333333',
+			_dark: 'gray.900',
+		},
+		body: {
+			default: '#ffffff',
+			_dark: '#333333',
 		},
 	},
 	radii: {

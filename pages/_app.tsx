@@ -2,8 +2,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { useEffect, useState } from 'react';
 import { darkTheme, lightTheme } from '../styles/theme2';
 import theme from '../styles/theme';
-import DarkModeToggle from '../components/DarkModeToogle';
-import { ChakraProvider, useColorMode } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -23,8 +22,7 @@ const GlobalStyle = createGlobalStyle`
 		margin: 0;
 		padding: 0;
 		min-height: 100vh;
-		color: ${(props) => props.theme.colors.text};
-		background-color: ${(props) => props.theme.colors.body};
+		
   }
 `;
 
@@ -39,7 +37,6 @@ export default function App({ Component, pageProps }) {
 				<ChakraProvider theme={theme}>
 					<GlobalStyle />
 					{isMounted && <Component {...pageProps} />}
-					<DarkModeToggle />
 				</ChakraProvider>
 			</ThemeProvider>
 		</>

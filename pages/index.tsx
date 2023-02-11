@@ -5,8 +5,6 @@ import MainWrapper from '../components/MainWrapper';
 import HomeContainer from '../styles/home/HomeContainer';
 import ButtonWrapper from '../styles/home/ButtonWrapper';
 import StyledButtonLink from '../styles/home/StyledButtonLink';
-import HomePageTitle from '../styles/home/HomePageTitle';
-import BoldText from '../styles/shared/BoldText';
 import { Text } from '@chakra-ui/react';
 
 function HomePage() {
