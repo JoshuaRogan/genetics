@@ -1,6 +1,8 @@
+import { Box, CloseButton, HStack, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
 import styled from 'styled-components';
-import Note, { NoteType } from '../../styles/shared/Note';
+
+import { Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
 
 // create a styled component which is a small gray circle with a question mark
 const HelpContentToggle = styled.div`
@@ -22,22 +24,33 @@ const HelpContentToggle = styled.div`
 interface HelpContentWrapperProps {
 	title?: string;
 	message?: string;
-	priority?: NoteType;
+	status?: 'success' | 'error' | 'warning' | 'info';
 	children: React.ReactNode;
 }
 
-export default function HelpContentWrapper({ children, title, message, priority }: HelpContentWrapperProps) {
-	const [showHelp, setShowHelp] = React.useState(false);
+export default function HelpContentWrapper({ children, title, message, status = 'info' }: HelpContentWrapperProps) {
+	const { isOpen, onClose, onOpen } = useDisclosure({ defaultIsOpen: false });
 
-	const toggleHelp = () => setShowHelp(!showHelp);
+	const ariaLabel = `Show description for term: ${title}`;
 
 	return (
 		<>
-			<HelpContentToggle title={''} aria-label={''} onClick={toggleHelp}>
-				?
-			</HelpContentToggle>
-			{children}
-			{showHelp && <Note priority={priority || NoteType.INFO} title={title} message={message} />}
+			<HStack spacing={4}>
+				<HelpContentToggle title={ariaLabel} aria-label={ariaLabel} onClick={isOpen ? onClose : onOpen}>
+					?
+				</HelpContentToggle>
+				{children}
+			</HStack>
+			{isOpen && (
+				<Alert variant="top-accent" status={status} my="10px">
+					<AlertIcon />
+					<Box>
+						<AlertTitle>{title}</AlertTitle>
+						<AlertDescription>{message}</AlertDescription>
+					</Box>
+					<CloseButton alignSelf="flex-start" position="absolute" right={'10px'} top={0} onClick={onClose} />
+				</Alert>
+			)}
 		</>
 	);
 }

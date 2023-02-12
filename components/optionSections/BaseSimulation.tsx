@@ -1,18 +1,25 @@
 import styled from 'styled-components';
 import React from 'react';
-import Slider from '../sliders/Slider';
 
-import {
-	NameColumn,
-	SectionHeaderWrapper,
-	SingleRowWrapper,
-	SliderColumnAndValue,
-	HelpContent,
-	HelpContentToggle,
-} from './optionHelpers';
 import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
 import { NoteType } from '../../styles/shared/Note';
+import {
+	Box,
+	Flex,
+	HStack,
+	NumberDecrementStepper,
+	NumberIncrementStepper,
+	NumberInput,
+	NumberInputField,
+	NumberInputStepper,
+	Stack,
+	Text,
+	VStack,
+} from '@chakra-ui/react';
+import Slider from '../sliders/Slider';
+
+// import { Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark } from '@chakra-ui/react';
 
 function formatThousandToDecimal(number: number) {
 	return number / 1000;
@@ -23,95 +30,75 @@ const SliderWrapper = styled.div`
 `;
 
 export default function BaseSimulation({ isActive, name, onChange }) {
-	const [isSectionActive, setIsSectionActive] = React.useState(true);
-	const [isNumberOfGenHelpActive, setIsNumberOfGenHelpActive] = React.useState(false);
-	const [isStartingAlleleFreqActive, setIsStartingAlleleFreqActive] = React.useState(false);
-
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
+	const populationSize = getPopGenVariableByName(VALID_VARIABLES.POPULATION_SIZE);
 	const startingAlleleFreq = getPopGenVariableByName(VALID_VARIABLES.STARTING_ALLELE_FREQ);
 
 	return (
-		<div aria-label="Base Simulation inputs">
+		<Box aria-label="Base Simulation inputs">
+			<SliderWrapper>
+				<HelpContentWrapper
+					title={populationSize.sliderName + `「 ${populationSize.variable} 」`}
+					message={populationSize.description}
+					status="info"
+				>
+					<Text fontWeight="bold">{populationSize.sliderName}</Text>
+				</HelpContentWrapper>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
+					<Slider
+						onChange={onChange}
+						min={1}
+						max={10000}
+						defaultValue={populationSize.defaultValue}
+						label={'Population size'}
+						name={populationSize.name}
+						isActive={true}
+					/>
+				</Stack>
+			</SliderWrapper>
+
 			<SliderWrapper>
 				<HelpContentWrapper
 					title={numberOfGenerations.sliderName + `「 ${numberOfGenerations.variable} 」`}
 					message={numberOfGenerations.description}
-					priority={NoteType.INFO}
+					status="info"
 				>
-					<p>{numberOfGenerations.sliderName}</p>
-					<Slider
-						onChange={onChange}
-						min={1}
-						max={10000}
-						start={numberOfGenerations.defaultValue}
-						label={'Number of generations'}
-						name={'number-of-generations'}
-						required
-						isActive={true}
-					/>
+					<Text fontWeight="bold">{numberOfGenerations.sliderName}</Text>
 				</HelpContentWrapper>
-			</SliderWrapper>
-			{/* <SectionHeaderWrapper
-				isActive={isSectionActive}
-				name={name}
-				isCheckable={false}
-				onClick={() => setIsSectionActive(!isSectionActive)}
-			/> */}
-			{/* <SingleRowWrapper>
-				<NameColumn>
-					<div>
-						{numberOfGenerations.sliderName}
-						<HelpContentToggle onClick={() => setIsNumberOfGenHelpActive(!isNumberOfGenHelpActive)} />{' '}
-					</div>
-					<HelpContent
-						variable={numberOfGenerations.variable}
-						description="This is the number of generations to be simulated"
-						inputName={'number-of-generations'}
-						isOpen={isNumberOfGenHelpActive}
-					/>
-				</NameColumn>
-				<SliderColumnAndValue>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
 						min={1}
 						max={10000}
-						start={numberOfGenerations.defaultValue}
+						defaultValue={numberOfGenerations.defaultValue}
 						label={'Number of generations'}
-						name={'number-of-generations'}
-						required
+						name={numberOfGenerations.name}
 						isActive={true}
 					/>
-				</SliderColumnAndValue>
-			</SingleRowWrapper>
+				</Stack>
+			</SliderWrapper>
 
-			<SingleRowWrapper>
-				<NameColumn>
-					<div>
-						{startingAlleleFreq.sliderName}
-						<HelpContentToggle onClick={() => setIsStartingAlleleFreqActive(!isStartingAlleleFreqActive)} />{' '}
-					</div>
-					<HelpContent
-						variable={startingAlleleFreq.variable}
-						description={startingAlleleFreq.description}
-						inputName={'starting-allele-frequency'}
-						isOpen={isStartingAlleleFreqActive}
-					/>
-				</NameColumn>
-				<SliderColumnAndValue>
+			<SliderWrapper>
+				<HelpContentWrapper
+					title={startingAlleleFreq.sliderName + `「 ${startingAlleleFreq.variable} 」`}
+					message={startingAlleleFreq.description}
+					status="info"
+				>
+					<Text fontWeight="bold">{startingAlleleFreq.sliderName}</Text>
+				</HelpContentWrapper>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
-						min={0}
-						max={1000}
-						start={startingAlleleFreq.defaultValue * 1000}
-						formatter={formatThousandToDecimal}
-						label={'Starting Allele Frequency'}
-						name={'starting-allele-frequency'}
-						required
-						isDecimal
+						min={startingAlleleFreq.min}
+						max={startingAlleleFreq.max}
+						step={startingAlleleFreq.step}
+						defaultValue={startingAlleleFreq.defaultValue}
+						label={'Number of generations'}
+						name={startingAlleleFreq.name}
 						isActive={true}
 					/>
-				</SliderColumnAndValue>
-			</SingleRowWrapper> */}
-		</div>
+				</Stack>
+			</SliderWrapper>
+		</Box>
 	);
 }

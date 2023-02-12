@@ -17,11 +17,10 @@ import MainWrapper from '../MainWrapper';
 import HighChart from '../highChart';
 
 import SimulatorContainer from '../../styles/simulators/SimulatorContainer';
-import SimulatorTitle from '../../styles/simulators/SimulatorTitle';
-import { Section, ThemedSection } from '../../styles/simulators/Section';
 import { AccentButton, PrimaryButton } from '../../styles/shared/Buttons';
 import InputContainer from '../../styles/simulators/InputContainer';
 import ButtonWrapper from '../../styles/simulators/ButtonWrapper';
+import { Box, Text, useColorModeValue } from '@chakra-ui/react';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -35,6 +34,7 @@ function HomePage() {
 		listenToWorker((event) => {
 			context.addMoreResults(event, null); // Needs to be handled as it won't work if it's in the context
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const updateChart = (isAllele = true) => {
@@ -123,7 +123,7 @@ function HomePage() {
 	};
 
 	const onChange = (name, newValue) => {
-		console.debug(name, newValue);
+		// console.debug(name, newValue);
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
 	};
 
@@ -135,26 +135,40 @@ function HomePage() {
 	return (
 		<MainWrapper>
 			<SimulatorContainer role="main">
-				<Section margin={'40px 0'}>
-					<SimulatorTitle>Individual Simulations</SimulatorTitle>
-					<p>
+				<Box as="section" m={'40px 0'}>
+					<Text textStyle="title" align="center">
+						Individual Simulations
+					</Text>
+					<Text as="p" my={4}>
 						(Place holder text) Use this paragrah to explain 1) the purpose of this page. 2) what the default graph is.
 						3) what the users should do on this page.
-					</p>
-					<p>
+					</Text>
+					<Text as="p" my={4}>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
 						ea commodo consequat.
-					</p>
-					<p>
+					</Text>
+					<Text as="p" my={4}>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
 						ea commodo consequat.
-					</p>
-				</Section>
+					</Text>
+				</Box>
 
-				<ThemedSection fullWidth={true} padding={'30px 0'}>
-					<SimulatorTitle>Simulation Settings</SimulatorTitle>
+				<Box
+					as="section"
+					position="relative"
+					left="50%"
+					right="50%"
+					mx="-50vw"
+					py="40px"
+					w="100vw"
+					px={{ base: '0', md: '30px' }}
+					bg={useColorModeValue('gray.100', ' gray.700')}
+				>
+					<Text as="h2" textStyle="subtitle" align="center">
+						Simulator Settings
+					</Text>
 
 					<InputContainer role="form" aria-label="All simulator inputs">
 						<section aria-label="Basic simulator settings">
@@ -163,7 +177,7 @@ function HomePage() {
 								name={'Base Simulation Model'}
 								onChange={onChange}
 							/>
-							<FinitePopulation
+							{/* <FinitePopulation
 								isActive={context.activeSections[VALID_SECTIONS.FINITE]}
 								name={'Finite Population'}
 								onChange={onChange}
@@ -204,7 +218,7 @@ function HomePage() {
 								name={'Bottleneck Generations'}
 								onChange={onChange}
 								toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
-							/>
+							/> */}
 						</section>
 						<p>
 							You can change the settings above, and then “Runs Simulation” to get a new simulation based on the latest
@@ -222,7 +236,7 @@ function HomePage() {
 							<PrimaryButton onClick={() => updateChart()}>Add as a new simulation</PrimaryButton>
 						</ButtonWrapper>
 					</InputContainer>
-				</ThemedSection>
+				</Box>
 
 				<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
 				<LegendContainer

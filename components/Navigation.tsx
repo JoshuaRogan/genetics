@@ -47,7 +47,7 @@ export default function Navigation() {
 								onClick={toggleColorMode}
 								aria-label={colorModeLabel}
 								title={colorModeLabel}
-								color="#cfcfcf"
+								color="yellow.400"
 								bg={useColorModeValue('whiteAlpha.200', 'whiteAlpha.200')}
 								_hover={{
 									bg: useColorModeValue('whiteAlpha.300', 'whiteAlpha.300'),
@@ -60,6 +60,8 @@ export default function Navigation() {
 								icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
 								aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
 								display={{ md: 'none' }}
+								color="whitesmoke"
+								bg={useColorModeValue('whiteAlpha.200', 'whiteAlpha.200')}
 								onClick={isOpen ? onClose : onOpen}
 							/>
 						</Stack>

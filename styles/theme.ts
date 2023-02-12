@@ -18,11 +18,16 @@ const breakpoints = {
 }
 
 const textStyles = {
-	h1: {
-		fontSize: ['48px', '72px'],
+	title: {
+		fontSize: { base: '24px', md: '32px', lg: '40px' },
 		fontWeight: 'bold',
 		lineHeight: '110%',
-		letterSpacing: '-2%',
+		marginY: '16px',
+	},
+	subtitle: {
+		fontSize: { base: '18px', md: '24px', lg: '28px' },
+		fontWeight: 'bold',
+		lineHeight: '110%',
 	},
 }
 
@@ -48,6 +53,14 @@ const theme = extendTheme({
 		body: {
 			default: '#ffffff',
 			_dark: '#333333',
+		},
+		sliderTrack: {
+			default: 'red.100',
+			_dark: 'red.100',
+		},
+		sliderFilledTrack: {
+			default: 'tomato',
+			_dark: 'tomato',
 		},
 	},
 	radii: {

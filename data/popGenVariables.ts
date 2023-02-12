@@ -83,6 +83,9 @@ interface PopGenVariable {
 	section: string;
 	sliderName?: string;
 	order: number;
+	min?: number,
+	max?: number,
+	step?: number,
 	defaultValue: number;
 }
 
@@ -94,6 +97,9 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.BASE,
 		order: 0,
 		defaultValue: 500,
+		min: 1,
+		max: 10000,
+		step: 1,
 		sliderName: 'Generations',
 	},
 	{
@@ -103,6 +109,9 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.BASE,
 		order: 1,
 		defaultValue: 0.5,
+		min: 0,
+		max: 1,
+		step: 0.1,
 		sliderName: 'Starting Allele Frequency',
 	},
 	{
@@ -112,6 +121,9 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.FINITE,
 		order: 0,
 		defaultValue: 500,
+		min: 1,
+		max: 10000,
+		step: 1,
 		sliderName: 'Population Size',
 	},
 
