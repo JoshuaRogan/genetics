@@ -4,7 +4,7 @@ import Slider from '../sliders/Slider';
 import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
 
-export default function AssortativeMating({ isActive, name, onChange, toggleActive }) {
+export default function AssortativeMating({ isActive, name, onChange }) {
 	const positiveAssortMatingFreq = getPopGenVariableByName(VALID_VARIABLES.ASSORT_MATING_POSITIVE_FREQ);
 
 	return (

@@ -4,14 +4,19 @@ import React, { useState } from 'react';
 interface FactorManagerProps {
 	title: string;
 	isActive: boolean;
+	toggleActive?: () => void;
 	children: React.ReactNode;
 }
 
-function FactorManager({ title, isActive, children }: FactorManagerProps) {
+function FactorManager({ title, isActive, children, toggleActive }: FactorManagerProps) {
 	const [isOpen, setIsOpen] = React.useState(false);
 
 	const handleCheckboxChange = (event) => {
 		setIsOpen(event.target.checked);
+
+		if (toggleActive !== undefined) {
+			toggleActive();
+		}
 	};
 
 	return (

@@ -4,7 +4,7 @@ import Slider from '../sliders/Slider';
 import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
 
-export default function Inbreeding({ isActive, name, onChange, toggleActive }) {
+export default function Inbreeding({ isActive, name, onChange }) {
 	const inbreedingCoef = getPopGenVariableByName(VALID_VARIABLES.INBREEDING_COEFFICIENT);
 
 	return (

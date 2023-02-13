@@ -172,65 +172,92 @@ function HomePage() {
 					</Text>
 
 					<InputContainer role="form" aria-label="All simulator inputs">
-						<section aria-label="Basic simulator settings">
-							<BaseSimulation
-								isActive={context.activeSections[VALID_SECTIONS.BASE]}
-								name={'Base Simulation Model'}
-								onChange={onChange}
-							/>
-							<Box my={6}>
-								<Collapsible header={`Advanced Factors`} open={true}>
-									<FactorManager isActive={true} title="Selection">
-										<Selection
-											isActive={context.activeSections[VALID_SECTIONS.SELECTION]}
-											name={'Selection'}
-											onChange={onChange}
-											toggleActive={() => toggleActiveSection(VALID_SECTIONS.SELECTION)}
-										/>
-									</FactorManager>
-									<FactorManager isActive={true} title="Mutation">
-										<Mutation
-											isActive={context.activeSections[VALID_SECTIONS.MUTATION]}
-											name={'Mutation'}
-											onChange={onChange}
-											toggleActive={() => toggleActiveSection(VALID_SECTIONS.MUTATION)}
-										/>
-									</FactorManager>
-									<FactorManager isActive={true} title="Migration">
-										<Migration
-											isActive={context.activeSections[VALID_SECTIONS.MIGRATION]}
-											name={'Migration'}
-											onChange={onChange}
-											toggleActive={() => toggleActiveSection(VALID_SECTIONS.MIGRATION)}
-										/>
-									</FactorManager>
-									<FactorManager isActive={true} title="Inbreeding">
-										<Inbreeding
-											isActive={context.activeSections[VALID_SECTIONS.INBREEDING]}
-											name={'Inbreeding'}
-											onChange={onChange}
-											toggleActive={() => toggleActiveSection(VALID_SECTIONS.INBREEDING)}
-										/>
-									</FactorManager>
-									<FactorManager isActive={true} title="Assortative Mating">
-										<AssortativeMating
-											isActive={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
-											name={'Assortative Mating'}
-											onChange={onChange}
-											toggleActive={() => toggleActiveSection(VALID_SECTIONS.ASSORT_MATING)}
-										/>
-									</FactorManager>
-									<FactorManager isActive={true} title="Bottleneck Generations">
-										<BottleNeckGenerations
-											isActive={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
-											name={'Bottleneck Generations'}
-											onChange={onChange}
-											toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
-										/>
-									</FactorManager>
-								</Collapsible>
-							</Box>
-						</section>
+						<BaseSimulation
+							isActive={context.activeSections[VALID_SECTIONS.BASE]}
+							name={'Base Simulation Model'}
+							onChange={onChange}
+						/>
+						<Box my={6}>
+							<Collapsible header={`Advanced Factors`} open={true}>
+								{/* Selection Input */}
+								<FactorManager
+									isActive={true}
+									title="Selection"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.SELECTION)}
+								>
+									<Selection
+										isActive={context.activeSections[VALID_SECTIONS.SELECTION]}
+										name={'Selection'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Mutation Input */}
+								<FactorManager
+									isActive={true}
+									title="Mutation"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.MUTATION)}
+								>
+									<Mutation
+										isActive={context.activeSections[VALID_SECTIONS.MUTATION]}
+										name={'Mutation'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Migration Input */}
+								<FactorManager
+									isActive={true}
+									title="Migration"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.MIGRATION)}
+								>
+									<Migration
+										isActive={context.activeSections[VALID_SECTIONS.MIGRATION]}
+										name={'Migration'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Inbreeding Input */}
+								<FactorManager
+									isActive={true}
+									title="Inbreeding"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.INBREEDING)}
+								>
+									<Inbreeding
+										isActive={context.activeSections[VALID_SECTIONS.INBREEDING]}
+										name={'Inbreeding'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Assortative Mating Input */}
+								<FactorManager
+									isActive={true}
+									title="Assortative Mating"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.ASSORT_MATING)}
+								>
+									<AssortativeMating
+										isActive={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
+										name={'Assortative Mating'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Population Bottleneck Input */}
+								<FactorManager
+									isActive={true}
+									title="Bottleneck Generations"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
+								>
+									<BottleNeckGenerations
+										isActive={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
+										name={'Bottleneck Generations'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+							</Collapsible>
+						</Box>
 						<Text my={4}>
 							You can change the settings above, and then “Runs Simulation” to get a new simulation based on the latest
 							settings, or “Add As A New Simulation” to the graphs without erasing the last smulation.

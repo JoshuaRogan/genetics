@@ -5,7 +5,7 @@ import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVaria
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 import HelpContentWrapper from './HelpContentWrapper';
 
-export default function Selection({ isActive, name, onChange, toggleActive }) {
+export default function Selection({ isActive, name, onChange }) {
 	const fitnessFactorWAA = getPopGenVariableByName(VALID_VARIABLES.SELECTION_WAA);
 	const fitnessFactorWAa = getPopGenVariableByName(VALID_VARIABLES.SELECTION_WAa);
 	const fitnessFactorWaa = getPopGenVariableByName(VALID_VARIABLES.SELECTION_Waa);
