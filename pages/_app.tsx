@@ -1,7 +1,7 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { useEffect, useState } from 'react';
 import { darkTheme, lightTheme } from '../styles/theme2';
-import theme from '../styles/theme';
+import theme from '../theme';
 import { ChakraProvider } from '@chakra-ui/react';
 
 const GlobalStyle = createGlobalStyle`

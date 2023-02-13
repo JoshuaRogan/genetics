@@ -20,7 +20,7 @@ import SimulatorContainer from '../../styles/simulators/SimulatorContainer';
 import { AccentButton, PrimaryButton } from '../../styles/shared/Buttons';
 import InputContainer from '../../styles/simulators/InputContainer';
 import ButtonWrapper from '../../styles/simulators/ButtonWrapper';
-import { Box, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Flex, Spacer, Text, useColorModeValue } from '@chakra-ui/react';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -224,17 +224,35 @@ function HomePage() {
 							You can change the settings above, and then “Runs Simulation” to get a new simulation based on the latest
 							settings, or “Add As A New Simulation” to the graphs without erasing the last smulation.
 						</p>
-						<ButtonWrapper marginTop={25}>
-							<PrimaryButton
+						<ButtonGroup
+							w="100%"
+							display={'flex'}
+							flexDirection={{ base: 'column', md: 'row' }}
+							justifyContent={{ base: 'center', md: 'space-around' }}
+							alignItems={'center'}
+							marginTop={25}
+							marginBottom={25}
+							spacing={0}
+						>
+							<Button
+								w={{ base: '70%', md: '30%' }}
 								onClick={() => {
 									context.clearResults();
 									updateChart();
 								}}
+								bg={'buttonPrimary'}
 							>
 								Run Simulation
-							</PrimaryButton>
-							<PrimaryButton onClick={() => updateChart()}>Add as a new simulation</PrimaryButton>
-						</ButtonWrapper>
+							</Button>
+							<Button
+								onClick={() => updateChart()}
+								w={{ base: '70%', md: '30%' }}
+								marginTop={{ base: 2, md: 0 }}
+								bg={'buttonPrimary'}
+							>
+								Add as a new simulation
+							</Button>
+						</ButtonGroup>
 					</InputContainer>
 				</Box>
 
@@ -254,16 +272,27 @@ function HomePage() {
 					graphNumber={2}
 				/>
 
-				<ButtonWrapper marginTop={45}>
-					<AccentButton>Show Data Table</AccentButton>
-					<AccentButton
+				<ButtonGroup
+					w="100%"
+					display={'flex'}
+					flexDirection={{ base: 'column', md: 'row' }}
+					justifyContent={{ base: 'center', md: 'space-around' }}
+					alignItems={'center'}
+					marginTop={25}
+					marginBottom={25}
+					spacing={0}
+				>
+					<Button w={{ base: '80%', md: '30%' }}>Show Data Table</Button>
+					<Button
 						onClick={() => {
 							context.clearResults();
 						}}
+						w={{ base: '80%', md: '30%' }}
+						marginTop={{ base: 2, md: 0 }}
 					>
 						Reset Simulator
-					</AccentButton>
-				</ButtonWrapper>
+					</Button>
+				</ButtonGroup>
 
 				<Pre role="figure" aria-label="Debugging information">
 					<DebugTitle>Debug Information + Content for Legend:</DebugTitle>
