@@ -90,6 +90,9 @@ interface PopGenVariable {
 }
 
 export const popGenVariables = [
+
+
+	// BASE SIMULATION INPUTS
 	{
 		name: VALID_VARIABLES.NUM_GENERATIONS,
 		variable: 't',
@@ -135,6 +138,11 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.SELECTION,
 		order: 0,
 		defaultValue: 1,
+		min: 0,
+		max: 1,
+		step: 0.001,
+		sliderName: 'Fitness Coefficient (WAA)',
+		description: 'This describes the relative fitness of individuals with the AA genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAa and waa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.',
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_WAa,
@@ -142,6 +150,11 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.SELECTION,
 		order: 1,
 		defaultValue: 1,
+		min: 0,
+		max: 1,
+		step: 0.001,
+		sliderName: 'Fitness Coefficient (WAa)',
+		description: 'This describes the relative fitness of individuals with the Aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAA and waa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.',
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_Waa,
@@ -149,6 +162,11 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.SELECTION,
 		order: 2,
 		defaultValue: 1,
+		min: 0,
+		max: 1,
+		step: 0.001,
+		sliderName: 'Fitness Coefficient (Waa)',
+		description: 'This describes the relative fitness of individuals with the aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAA and wAa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.',
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_COEFFICIENT,
@@ -174,6 +192,10 @@ export const popGenVariables = [
 		order: 0,
 		sliderName: 'Forward Mutation Rate',
 		defaultValue: 0,
+		min: 0,
+		max: 9.9999,
+		step: 0.001,
+		description: 'The rate at which allele A mutates to allele a per generation.',
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_BACKWARD_MUTATION,
@@ -183,6 +205,10 @@ export const popGenVariables = [
 		order: 1,
 		sliderName: 'Backward Mutation Rate',
 		defaultValue: 0,
+		min: 0,
+		max: 1,
+		step: 0.001,
+		description: 'The rate at which allele a mutates to allele A per generation',
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_FORWARD_MUTATION_EXPONENT,
@@ -190,6 +216,10 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.MUTATION,
 		order: 0,
 		defaultValue: -5,
+		min: -10,
+		max: -1,
+		step: 1,
+		description: '10 to the nth power (-10 to -1) for forward mutation',
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_BACKWARD_MUTATION_EXPONENT,
@@ -197,6 +227,10 @@ export const popGenVariables = [
 		section: VALID_SECTIONS.MUTATION,
 		order: 1,
 		defaultValue: -5,
+		min: -10,
+		max: -1,
+		step: 1,
+		description: '10 to the nth power (-10 to -1) for backward mutation',
 	},
 
 
@@ -209,6 +243,9 @@ export const popGenVariables = [
 		description: "The rate at which migrant alleles enter the population per generation.",
 		order: 0,
 		defaultValue: 0,
+		min: 0,
+		max: 1,
+		step: 0.001,
 	},
 	{
 		name: VALID_VARIABLES.MIGRATION_MIGRANT_ALLELE_FREQ,
@@ -219,6 +256,9 @@ export const popGenVariables = [
 		description: 'The frequency of the A allele among all migrant alleles entering the population.',
 		order: 1,
 		defaultValue: 0.500,
+		min: 0,
+		max: 1,
+		step: 0.001,
 	},
 
 	// Inbreeding
@@ -230,6 +270,9 @@ export const popGenVariables = [
 		description: 'This is the probability that both alleles in a randomly chosen individual in the population are identical‐by‐descent (IBD). A value of F = 0 indicates there is no inbreeding within the population. A value of 1 indicates that there is complete autozygosity such as found in inbred lines of model organisms',
 		sliderName: 'Inbreeding Coefficient',
 		defaultValue: 0,
+		min: 0,
+		max: 1,
+		step: 0.001,
 	},
 
 
@@ -243,6 +286,9 @@ export const popGenVariables = [
 		description: 'This is the excess fraction of positive assortative matings in the population where 1 ‐ α is the fraction of random matings. A value of α = 1 indicates 100% positive assortative mating, and a value of α = 0 indicates total random mating.',
 		sliderName: 'Positive Assortative Mating Frequency',
 		defaultValue: 0,
+		min: 0,
+		max: 1,
+		step: 0.001,
 	},
 
 	// Bottleneck
@@ -254,6 +300,9 @@ export const popGenVariables = [
 		description: 'These parameters indicate the start and end generations, respectively, of the population bottleneck event.',
 		sliderName: 'Generations to Override Start/End',
 		defaultValue: 0,
+		min: 0,
+		max: 500,
+		step: 1,
 	},
 	{
 		name: VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_END,
@@ -263,6 +312,9 @@ export const popGenVariables = [
 		description: 'These parameters indicate the start and end generations, respectively, of the population bottleneck event.',
 		sliderName: 'Generations to Override End',
 		defaultValue: 50,
+		min: 0,
+		max: 500,
+		step: 1,
 	},
 	{
 		name: VALID_VARIABLES.BOTTLENECK_POPULATION_SIZE,
@@ -273,12 +325,10 @@ export const popGenVariables = [
 		description: 'This is the number of individuals in the population during the bottleneck event. Note that the number of chromosomes simulated is 2NB',
 		sliderName: 'Population Size',
 		defaultValue: 5000,
+		min: 0,
+		max: 10000,
+		step: 1,		
 	},
-
-
-
-
-
 
 ] as PopGenVariable[];
 

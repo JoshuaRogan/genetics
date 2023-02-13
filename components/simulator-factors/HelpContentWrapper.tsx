@@ -46,7 +46,7 @@ export default function HelpContentWrapper({ children, title, message, status = 
 					<AlertIcon />
 					<Box>
 						<AlertTitle>{title}</AlertTitle>
-						<AlertDescription>{message}</AlertDescription>
+						<AlertDescription maxW="90%">{message}</AlertDescription>
 					</Box>
 					<CloseButton alignSelf="flex-start" position="absolute" right={'10px'} top={0} onClick={onClose} />
 				</Alert>

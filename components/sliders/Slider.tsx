@@ -10,12 +10,19 @@ import {
 	SliderMark,
 	SliderThumb,
 	SliderTrack,
+	useColorModeValue,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
-const labelStyles = {
-	mt: '4',
-	ml: '-2.5px',
+const minLabelStyles = {
+	mt: '2',
+	ml: '0',
+	fontSize: 'sm',
+};
+
+const maxLabelStyles = {
+	mt: '2',
+	ml: { base: '-10', md: '-10' },
 	fontSize: 'sm',
 };
 
@@ -42,6 +49,7 @@ function SliderInput({ name, label, defaultValue, min, max, step = 1, onChange, 
 			<Slider
 				name={name}
 				flex="1"
+				mb={{ base: 2, md: 8 }}
 				aria-label={label}
 				defaultValue={defaultValue || min}
 				min={min}
@@ -52,10 +60,10 @@ function SliderInput({ name, label, defaultValue, min, max, step = 1, onChange, 
 				onChange={handleChange}
 				isDisabled={!isActive}
 			>
-				<SliderMark value={min} {...labelStyles}>
+				<SliderMark value={min} {...minLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
 					{min}
 				</SliderMark>
-				<SliderMark value={max} {...labelStyles}>
+				<SliderMark value={max} {...maxLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
 					{max}
 				</SliderMark>
 				<SliderTrack bg="sliderTrack">

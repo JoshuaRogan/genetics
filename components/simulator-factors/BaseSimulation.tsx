@@ -1,33 +1,9 @@
-import styled from 'styled-components';
 import React from 'react';
 
 import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
-import { NoteType } from '../../styles/shared/Note';
-import {
-	Box,
-	Flex,
-	HStack,
-	NumberDecrementStepper,
-	NumberIncrementStepper,
-	NumberInput,
-	NumberInputField,
-	NumberInputStepper,
-	Stack,
-	Text,
-	VStack,
-} from '@chakra-ui/react';
+import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
-
-// import { Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark } from '@chakra-ui/react';
-
-function formatThousandToDecimal(number: number) {
-	return number / 1000;
-}
-
-const SliderWrapper = styled.div`
-	display: grid;
-`;
 
 export default function BaseSimulation({ isActive, name, onChange }) {
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
@@ -35,8 +11,8 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 	const startingAlleleFreq = getPopGenVariableByName(VALID_VARIABLES.STARTING_ALLELE_FREQ);
 
 	return (
-		<Box aria-label="Base Simulation inputs">
-			<SliderWrapper>
+		<Box aria-label={name}>
+			<Grid>
 				<HelpContentWrapper
 					title={populationSize.sliderName + `「 ${populationSize.variable} 」`}
 					message={populationSize.description}
@@ -47,17 +23,18 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
-						min={1}
-						max={10000}
+						min={populationSize.min}
+						max={populationSize.max}
+						step={populationSize.step}
 						defaultValue={populationSize.defaultValue}
-						label={'Population size'}
+						label={populationSize.sliderName}
 						name={populationSize.name}
 						isActive={true}
 					/>
 				</Stack>
-			</SliderWrapper>
+			</Grid>
 
-			<SliderWrapper>
+			<Grid>
 				<HelpContentWrapper
 					title={numberOfGenerations.sliderName + `「 ${numberOfGenerations.variable} 」`}
 					message={numberOfGenerations.description}
@@ -68,17 +45,18 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
-						min={1}
-						max={10000}
+						min={numberOfGenerations.min}
+						max={numberOfGenerations.max}
+						step={numberOfGenerations.step}
 						defaultValue={numberOfGenerations.defaultValue}
-						label={'Number of generations'}
+						label={numberOfGenerations.sliderName}
 						name={numberOfGenerations.name}
 						isActive={true}
 					/>
 				</Stack>
-			</SliderWrapper>
+			</Grid>
 
-			<SliderWrapper>
+			<Grid>
 				<HelpContentWrapper
 					title={startingAlleleFreq.sliderName + `「 ${startingAlleleFreq.variable} 」`}
 					message={startingAlleleFreq.description}
@@ -93,12 +71,12 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 						max={startingAlleleFreq.max}
 						step={startingAlleleFreq.step}
 						defaultValue={startingAlleleFreq.defaultValue}
-						label={'Number of generations'}
+						label={startingAlleleFreq.sliderName}
 						name={startingAlleleFreq.name}
 						isActive={true}
 					/>
 				</Stack>
-			</SliderWrapper>
+			</Grid>
 		</Box>
 	);
 }

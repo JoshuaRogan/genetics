@@ -1,16 +1,16 @@
 import LegendContainer from '../LegendContainer';
-import AssortativeMating from '../optionSections/AssortativeMating';
-import BottleNeckGenerations from '../optionSections/BottleNeckGenerations';
-import Inbreeding from '../optionSections/Inbreeding';
-import Migration from '../optionSections/Migration';
+import AssortativeMating from '../simulator-factors/AssortativeMating';
+import BottleNeckGenerations from '../simulator-factors/BottleNeckGenerations';
+import Inbreeding from '../simulator-factors/Inbreeding';
+import Migration from '../simulator-factors/Migration';
 import { popGenVariables, VALID_SECTIONS } from '../../data/popGenVariables';
 import { DebugHeader, Pre } from '../../utils/debugging';
 import { getWorker, listenToWorker } from '../../workers/generationWorker';
 import { ApplicationContext } from '../../context/application';
-import FinitePopulation from '../optionSections/FinitePopulation';
-import BaseSimulation from '../optionSections/BaseSimulation';
-import Selection from '../optionSections/Selection';
-import Mutation from '../optionSections/Mutation';
+import FinitePopulation from '../simulator-factors/FinitePopulation';
+import BaseSimulation from '../simulator-factors/BaseSimulation';
+import Selection from '../simulator-factors/Selection';
+import Mutation from '../simulator-factors/Mutation';
 import styled from 'styled-components';
 import React, { useEffect } from 'react';
 import MainWrapper from '../MainWrapper';
@@ -21,6 +21,8 @@ import { AccentButton, PrimaryButton } from '../../styles/shared/Buttons';
 import InputContainer from '../../styles/simulators/InputContainer';
 import ButtonWrapper from '../../styles/simulators/ButtonWrapper';
 import { Box, Text, useColorModeValue } from '@chakra-ui/react';
+import Collapsible from '../Collapsible';
+import FactorManager from '../FactorManager';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -177,53 +179,63 @@ function HomePage() {
 								name={'Base Simulation Model'}
 								onChange={onChange}
 							/>
-							{/* <FinitePopulation
-								isActive={context.activeSections[VALID_SECTIONS.FINITE]}
-								name={'Finite Population'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.FINITE)}
-							/>
-							<Selection
-								isActive={context.activeSections[VALID_SECTIONS.SELECTION]}
-								name={'Selection'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.SELECTION)}
-							/>
-							<Mutation
-								isActive={context.activeSections[VALID_SECTIONS.MUTATION]}
-								name={'Mutation'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.MUTATION)}
-							/>
-							<Migration
-								isActive={context.activeSections[VALID_SECTIONS.MIGRATION]}
-								name={'Migration'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.MIGRATION)}
-							/>
-							<Inbreeding
-								isActive={context.activeSections[VALID_SECTIONS.INBREEDING]}
-								name={'Inbreeding'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.INBREEDING)}
-							/>
-							<AssortativeMating
-								isActive={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
-								name={'Assortative Mating'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.ASSORT_MATING)}
-							/>
-							<BottleNeckGenerations
-								isActive={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
-								name={'Bottleneck Generations'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
-							/> */}
+							<Box my={6}>
+								<Collapsible header={`Advanced Factors`} open={true}>
+									<FactorManager isActive={true} title="Selection">
+										<Selection
+											isActive={context.activeSections[VALID_SECTIONS.SELECTION]}
+											name={'Selection'}
+											onChange={onChange}
+											toggleActive={() => toggleActiveSection(VALID_SECTIONS.SELECTION)}
+										/>
+									</FactorManager>
+									<FactorManager isActive={true} title="Mutation">
+										<Mutation
+											isActive={context.activeSections[VALID_SECTIONS.MUTATION]}
+											name={'Mutation'}
+											onChange={onChange}
+											toggleActive={() => toggleActiveSection(VALID_SECTIONS.MUTATION)}
+										/>
+									</FactorManager>
+									<FactorManager isActive={true} title="Migration">
+										<Migration
+											isActive={context.activeSections[VALID_SECTIONS.MIGRATION]}
+											name={'Migration'}
+											onChange={onChange}
+											toggleActive={() => toggleActiveSection(VALID_SECTIONS.MIGRATION)}
+										/>
+									</FactorManager>
+									<FactorManager isActive={true} title="Inbreeding">
+										<Inbreeding
+											isActive={context.activeSections[VALID_SECTIONS.INBREEDING]}
+											name={'Inbreeding'}
+											onChange={onChange}
+											toggleActive={() => toggleActiveSection(VALID_SECTIONS.INBREEDING)}
+										/>
+									</FactorManager>
+									<FactorManager isActive={true} title="Assortative Mating">
+										<AssortativeMating
+											isActive={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
+											name={'Assortative Mating'}
+											onChange={onChange}
+											toggleActive={() => toggleActiveSection(VALID_SECTIONS.ASSORT_MATING)}
+										/>
+									</FactorManager>
+									<FactorManager isActive={true} title="Bottleneck Generations">
+										<BottleNeckGenerations
+											isActive={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
+											name={'Bottleneck Generations'}
+											onChange={onChange}
+											toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
+										/>
+									</FactorManager>
+								</Collapsible>
+							</Box>
 						</section>
-						<p>
+						<Text my={4}>
 							You can change the settings above, and then “Runs Simulation” to get a new simulation based on the latest
 							settings, or “Add As A New Simulation” to the graphs without erasing the last smulation.
-						</p>
+						</Text>
 						<ButtonWrapper marginTop={25}>
 							<PrimaryButton
 								onClick={() => {
