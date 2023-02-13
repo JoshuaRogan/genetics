@@ -4,10 +4,6 @@ import React from 'react';
 
 function valueToProper(name, value) {
 	// Need to convert back to decimal
-	if (name === VALID_VARIABLES.STARTING_ALLELE_FREQ) {
-		return value / 1000;
-	}
-
 	return value;
 }
 

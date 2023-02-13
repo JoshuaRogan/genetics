@@ -76,9 +76,9 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 					<Slider
 						onChange={onChange}
 						min={0}
-						max={1000}
-						start={startingAlleleFreq.defaultValue * 1000}
-						formatter={formatThousandToDecimal}
+						max={1}
+						step={0.001}
+						start={startingAlleleFreq.defaultValue}
 						label={'Starting Allele Frequency'}
 						name={'starting-allele-frequency'}
 						required
