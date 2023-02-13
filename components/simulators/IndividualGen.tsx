@@ -16,12 +16,10 @@ import MainWrapper from '../MainWrapper';
 import HighChart from '../highChart';
 
 import SimulatorContainer from '../../styles/simulators/SimulatorContainer';
-import { AccentButton, PrimaryButton } from '../../styles/shared/Buttons';
 import InputContainer from '../../styles/simulators/InputContainer';
-import ButtonWrapper from '../../styles/simulators/ButtonWrapper';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
-import { Box, Button, ButtonGroup, Flex, Spacer, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Text, useColorModeValue } from '@chakra-ui/react';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -278,7 +276,7 @@ function HomePage() {
 									context.clearResults();
 									updateChart();
 								}}
-								bg={'buttonPrimary'}
+								variant={'primary'}
 							>
 								Run Simulation
 							</Button>
@@ -286,7 +284,7 @@ function HomePage() {
 								onClick={() => updateChart()}
 								w={{ base: '70%', md: '30%' }}
 								marginTop={{ base: 2, md: 0 }}
-								bg={'buttonPrimary'}
+								variant={'primary'}
 							>
 								Add as a new simulation
 							</Button>
@@ -320,13 +318,16 @@ function HomePage() {
 					marginBottom={25}
 					spacing={0}
 				>
-					<Button w={{ base: '80%', md: '30%' }}>Show Data Table</Button>
+					<Button w={{ base: '80%', md: '30%' }} variant={'primary'}>
+						Show Data Table
+					</Button>
 					<Button
 						onClick={() => {
 							context.clearResults();
 						}}
 						w={{ base: '80%', md: '30%' }}
 						marginTop={{ base: 2, md: 0 }}
+						variant={'primary'}
 					>
 						Reset Simulator
 					</Button>

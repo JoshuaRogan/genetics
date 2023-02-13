@@ -19,9 +19,8 @@ import HighChart from '../highChart';
 import SimulatorContainer from '../../styles/simulators/SimulatorContainer';
 import SimulatorTitle from '../../styles/simulators/SimulatorTitle';
 import { Section, ThemedSection } from '../../styles/simulators/Section';
-import { AccentButton, PrimaryButton } from '../../styles/shared/Buttons';
 import InputContainer from '../../styles/simulators/InputContainer';
-import ButtonWrapper from '../../styles/simulators/ButtonWrapper';
+import { Button, ButtonGroup } from '@chakra-ui/react';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -211,16 +210,28 @@ function HomePage() {
 							You can change the settings above, and then “Runs Simulation” to get a new simulation based on the latest
 							settings.
 						</p>
-						<ButtonWrapper numberOfButtons={1} marginTop={25}>
-							<PrimaryButton
+
+						<ButtonGroup
+							w="100%"
+							display={'flex'}
+							flexDirection={{ base: 'column', md: 'row' }}
+							justifyContent={{ base: 'center', md: 'space-around' }}
+							alignItems={'center'}
+							marginTop={25}
+							marginBottom={25}
+							spacing={0}
+						>
+							<Button
+								w={{ base: '70%', md: '30%' }}
 								onClick={() => {
 									context.clearResults();
 									updateChart();
 								}}
+								variant={'primary'}
 							>
 								Run Simulation
-							</PrimaryButton>
-						</ButtonWrapper>
+							</Button>
+						</ButtonGroup>
 					</InputContainer>
 				</ThemedSection>
 
@@ -240,16 +251,26 @@ function HomePage() {
 					graphNumber={2}
 				/>
 
-				<ButtonWrapper marginTop={45}>
-					<AccentButton>Show Data Table</AccentButton>
-					<AccentButton
+				<ButtonGroup
+					w="100%"
+					display={'flex'}
+					flexDirection={{ base: 'column', md: 'row' }}
+					justifyContent={{ base: 'center', md: 'space-around' }}
+					alignItems={'center'}
+					marginTop={25}
+					marginBottom={25}
+					spacing={0}
+				>
+					<Button
 						onClick={() => {
 							context.clearResults();
 						}}
+						w={{ base: '80%', md: '30%' }}
+						variant={'primary'}
 					>
 						Reset Simulator
-					</AccentButton>
-				</ButtonWrapper>
+					</Button>
+				</ButtonGroup>
 
 				<Pre role="figure" aria-label="Debugging information">
 					<DebugTitle>Debug Information + Content for Legend:</DebugTitle>
