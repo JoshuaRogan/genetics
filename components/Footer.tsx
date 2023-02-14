@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import Image from 'next/image';
-import { Box, Container, Stack, useColorModeValue, Text, Link } from '@chakra-ui/react';
+import { Box, Container, Stack, Link } from '@chakra-ui/react';
 
 export default function Footer() {
 	return (

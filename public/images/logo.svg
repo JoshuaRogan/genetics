@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 359 173">
+<circle fill="rgb(77,69,114)" fill-opacity="1.000" cx="325.38" cy="38.73" r="29.71"/>
+<circle fill="rgb(99,88,145)" fill-opacity="1.000" cx="142.81" cy="28.17" r="17.80"/>
+<path fill="rgb(46,53,58)" fill-opacity="0.078" d="M 354.67 15.31 Q 355.30 18.33 354.99 21.44 Q 354.94 21.98 354.83 21.45 Q 354.20 18.42 354.51 15.31 Q 354.56 14.77 354.67 15.31 Z"/>
+<circle fill="rgb(86,75,128)" fill-opacity="1.000" cx="53.82" cy="18.70" r="3.74"/>
+<ellipse fill="rgb(103,92,152)" fill-opacity="1.000" cx="0" cy="0" rx="14.33" ry="14.06" transform="translate(187.50,30.47) rotate(1.7)"/>
+<ellipse fill="rgb(46,53,58)" fill-opacity="0.078" cx="0" cy="0" rx="2.12" ry="0.85" transform="translate(120.84,26.71) rotate(101.7)"/>
+<circle fill="rgb(75,67,111)" fill-opacity="1.000" cx="97.36" cy="48.86" r="20.78"/>
+<circle fill="rgb(55,49,81)" fill-opacity="1.000" cx="64.72" cy="42.14" r="5.27"/>
+<circle fill="rgb(103,92,152)" fill-opacity="1.000" cx="223.22" cy="50.29" r="11.14"/>
+<circle fill="rgb(55,49,81)" fill-opacity="1.000" cx="62.07" cy="88.17" r="24.32"/>
+<circle fill="rgb(103,92,152)" fill-opacity="1.000" cx="247.70" cy="77.99" r="7.10"/>
+<circle fill="rgb(94,84,139)" fill-opacity="1.000" cx="294.88" cy="96.20" r="24.96"/>
+<ellipse fill="rgb(75,67,111)" fill-opacity="1.000" cx="0" cy="0" rx="7.37" ry="7.14" transform="translate(108.96,105.48) rotate(-12.0)"/>
+<path fill="rgb(46,53,58)" fill-opacity="0.078" d="M 84.20 107.31 Q 84.81 108.27 83.65 108.27 Q 83.12 108.27 82.86 108.31 Q 79.39 108.84 83.29 107.04 A 0.73 0.72 61.4 0 1 84.20 107.31 Z"/>
+<ellipse fill="rgb(46,53,58)" fill-opacity="0.078" cx="0" cy="0" rx="4.85" ry="0.84" transform="translate(30.30,112.06) rotate(1.2)"/>
+<path fill="rgb(46,53,58)" fill-opacity="0.078" d="M 48.66 112.08 Q 50.83 113.81 49.73 114.78 Q 49.30 115.16 49.12 115.53 Q 48.56 116.62 47.92 115.51 A 1.70 1.61 85.9 0 0 47.22 114.87 Q 45.40 114.03 46.47 112.42 A 1.50 1.50 -53.8 0 1 48.66 112.08 Z"/>
+<circle fill="rgb(103,92,152)" fill-opacity="1.000" cx="259.14" cy="134.48" r="20.45"/>
+<path fill="rgb(77,69,114)" fill-opacity="1.000" d="M 51.71 124.03 Q 58.94 131.83 59.25 143.00 Q 59.69 159.05 45.69 168.44 Q 41.91 170.97 34.44 173.00 Q 29.94 173.00 25.44 173.00 Q 14.29 170.85 7.56 163.16 Q 0.95 155.61 0.34 145.38 Q -0.37 133.56 8.19 123.68 Q 12.88 118.26 19.70 116.10 Q 28.75 113.23 37.29 115.41 Q 45.72 117.56 51.71 124.03 Z"/>
+<circle fill="rgb(99,88,145)" fill-opacity="1.000" cx="133.46" cy="132.88" r="10.97"/>
+<path fill="rgb(46,53,58)" fill-opacity="0.078" d="M 3.89 126.15 A 0.43 0.43 -31.3 0 1 3.73 126.79 Q 1.80 127.75 2.08 125.93 A 0.77 0.57 -85.0 0 1 2.65 125.28 Q 3.26 125.26 3.89 126.15 Z"/>
+<ellipse fill="rgb(46,53,58)" fill-opacity="0.078" cx="0" cy="0" rx="1.48" ry="0.81" transform="translate(161.36,136.20) rotate(-6.2)"/>
+<circle fill="rgb(103,92,152)" fill-opacity="1.000" cx="290.90" cy="141.30" r="5.37"/>
+<circle fill="rgb(103,92,152)" fill-opacity="1.000" cx="213.72" cy="154.87" r="17.98"/>
+<ellipse fill="rgb(103,92,152)" fill-opacity="1.000" cx="0" cy="0" rx="14.30" ry="14.04" transform="translate(169.02,152.63) rotate(-8.0)"/>
+<circle fill="rgb(86,75,128)" fill-opacity="1.000" cx="301.66" cy="164.39" r="4.90"/>
+<path fill="rgb(46,53,58)" fill-opacity="0.078" d="M 58.31 162.66 Q 57.96 162.76 57.63 162.90 Q 57.36 163.03 57.09 163.35 Q 56.21 164.37 54.97 164.84 A 0.44 0.42 -15.3 0 1 54.38 164.52 Q 54.19 163.28 55.47 162.82 A 1.47 1.45 -82.4 0 0 56.19 162.26 Q 56.82 161.34 57.98 160.95 Q 59.51 160.44 58.99 162.09 A 1.02 0.79 -2.0 0 1 58.31 162.66 Z"/>
+</svg>

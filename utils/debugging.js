@@ -11,6 +11,7 @@ export const DebugHeader = styled.div`
 `;
 
 export const Pre = styled.pre`
+	font-size: .8rem;
 	max-width: 100%;
 	overflow: scroll;
 	background: rgba(123, 133, 120, 0.07);

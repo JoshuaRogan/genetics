@@ -44,7 +44,7 @@ export default function HelpContentWrapper({ children, title, message, status = 
 			{isOpen && (
 				<Alert variant="top-accent" status={status} my="10px">
 					<AlertIcon />
-					<Box>
+					<Box maxW="90%">
 						<AlertTitle>{title}</AlertTitle>
 						<AlertDescription maxW="90%">{message}</AlertDescription>
 					</Box>

@@ -30,7 +30,7 @@ export default function Navigation() {
 				<Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
 					<HStack spacing={8} alignItems={'center'}>
 						<Link href={'/'} as={NextLink}>
-							<Image src="/images/logo.png" width={60} height={25} alt="Logo from the Population Genetics Simulator" />
+							<Image src="/images/logo.svg" width={60} height={25} alt="Logo from the Population Genetics Simulator" />
 						</Link>
 						<HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }} color="navBarText">
 							<NavLink href="/individual">

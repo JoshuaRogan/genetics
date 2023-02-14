@@ -3,7 +3,7 @@ import AssortativeMating from '../simulator-factors/AssortativeMating';
 import BottleNeckGenerations from '../simulator-factors/BottleNeckGenerations';
 import Inbreeding from '../simulator-factors/Inbreeding';
 import Migration from '../simulator-factors/Migration';
-import { popGenVariables, VALID_SECTIONS } from '../../data/popGenVariables';
+import { VALID_SECTIONS } from '../../data/popGenVariables';
 import { DebugHeader, Pre } from '../../utils/debugging';
 import { getWorker, listenToWorker } from '../../workers/generationWorker';
 import { ApplicationContext } from '../../context/application';
@@ -11,23 +11,21 @@ import BaseSimulation from '../simulator-factors/BaseSimulation';
 import Selection from '../simulator-factors/Selection';
 import Mutation from '../simulator-factors/Mutation';
 import styled from 'styled-components';
-import React, { useEffect } from 'react';
+import React from 'react';
 import MainWrapper from '../MainWrapper';
 import HighChart from '../highChart';
 
 import SimulatorContainer from '../../styles/simulators/SimulatorContainer';
-import { AccentButton, PrimaryButton } from '../../styles/shared/Buttons';
 import InputContainer from '../../styles/simulators/InputContainer';
-import ButtonWrapper from '../../styles/simulators/ButtonWrapper';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
-import { Box, Button, ButtonGroup, Flex, Spacer, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Text, useColorModeValue } from '@chakra-ui/react';
 
 const DebugTitle = styled.h2`
 	color: red;
 `;
 
-function HomePage() {
+function Index() {
 	const context = React.useContext(ApplicationContext);
 
 	// This is interacting with an imperative API. Might need to remove the useEffect
@@ -178,7 +176,7 @@ function HomePage() {
 							onChange={onChange}
 						/>
 						<Box my={6}>
-							<Collapsible header={`Advanced Factors`} open={true}>
+							<Collapsible header={`Advanced Factors`} variant="solid" iconDirection="left">
 								{/* Selection Input */}
 								<FactorManager
 									isActive={true}
@@ -294,7 +292,9 @@ function HomePage() {
 					</InputContainer>
 				</Box>
 
-				<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+				<Box my={6}>
+					<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+				</Box>
 				<LegendContainer
 					alleleResults={context.alleleResults}
 					genoTypeResults={null}
@@ -302,7 +302,9 @@ function HomePage() {
 					graphNumber={1}
 				/>
 
-				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+				<Box my={6}>
+					<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+				</Box>
 				<LegendContainer
 					alleleResults={context.alleleResults}
 					genoTypeResults={context.genoTypeResults}
@@ -349,4 +351,4 @@ function HomePage() {
 	);
 }
 
-export default HomePage;
+export default Index;

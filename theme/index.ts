@@ -8,6 +8,7 @@ import * as foundations from './foundations';
 
 // Component style overrides
 import Button from './components/button';
+import Accordion from './components/accordion';
 
 // color mode config
 const config: ThemeConfig = {
@@ -33,6 +34,7 @@ const overrides = {
 	...foundations,
 	components: {
 		Button,
+		Accordion,
 		// Other components go here
 	},
 };

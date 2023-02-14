@@ -32,7 +32,7 @@ function FactorManager({ title, isActive, children, toggleActive }: FactorManage
 			}}
 		>
 			<HStack as="label" fontWeight={600} fontSize="18px" textTransform="uppercase">
-				<Checkbox checked={isActive} onChange={handleCheckboxChange} size="lg" />
+				<Checkbox checked={isActive} onChange={handleCheckboxChange} size="lg" colorScheme="red" />
 				<Text as="text" ml={8} cursor="pointer" userSelect="none">
 					{title}
 				</Text>

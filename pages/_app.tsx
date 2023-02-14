@@ -6,15 +6,6 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 const GlobalStyle = createGlobalStyle`
 
-	* {
-		box-sizing: border-box;
-	}
-
-	body {
-		margin: 0;
-		font-family: 'Roboto', sans-serif;
-	}
-
   #__next {
 		display: flex;
 		flex-direction: column;
