@@ -276,7 +276,7 @@ function Index() {
 									context.clearResults();
 									updateChart();
 								}}
-								bg={'buttonPrimary'}
+								variant={'primary'}
 							>
 								Run Simulation
 							</Button>
@@ -284,7 +284,7 @@ function Index() {
 								onClick={() => updateChart()}
 								w={{ base: '70%', md: '30%' }}
 								marginTop={{ base: 2, md: 0 }}
-								bg={'buttonPrimary'}
+								variant={'primary'}
 							>
 								Add as a new simulation
 							</Button>
@@ -322,13 +322,16 @@ function Index() {
 					marginBottom={25}
 					spacing={0}
 				>
-					<Button w={{ base: '80%', md: '30%' }}>Show Data Table</Button>
+					<Button w={{ base: '80%', md: '30%' }} variant={'primary'}>
+						Show Data Table
+					</Button>
 					<Button
 						onClick={() => {
 							context.clearResults();
 						}}
 						w={{ base: '80%', md: '30%' }}
 						marginTop={{ base: 2, md: 0 }}
+						variant={'primary'}
 					>
 						Reset Simulator
 					</Button>

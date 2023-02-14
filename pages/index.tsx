@@ -3,7 +3,6 @@ import Link from 'next/link';
 import MainWrapper from '../components/MainWrapper';
 
 import HomeContainer from '../styles/home/HomeContainer';
-import ButtonWrapper from '../styles/home/ButtonWrapper';
 import StyledButtonLink from '../styles/home/StyledButtonLink';
 import { Text } from '@chakra-ui/react';
 
@@ -33,14 +32,14 @@ function HomePage() {
 					explore how the frequencies will look like with different factors.{' '}
 				</Text>
 
-				<ButtonWrapper marginTop={30}>
+				<div>
 					<Link href="/individual">
 						<StyledButtonLink textColor={'#333333'}>Go to Individual Simulations</StyledButtonLink>
 					</Link>
 					<Link href="/replicated">
 						<StyledButtonLink textColor={'#333333'}>Go to Replicated Simulations</StyledButtonLink>
 					</Link>
-				</ButtonWrapper>
+				</div>
 			</HomeContainer>
 		</MainWrapper>
 	);
