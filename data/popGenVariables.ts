@@ -114,7 +114,7 @@ export const popGenVariables = [
 		defaultValue: 0.5,
 		min: 0,
 		max: 1,
-		step: 0.1,
+		step: 0.001,
 		sliderName: 'Starting Allele Frequency',
 	},
 	{

@@ -42,7 +42,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{numberOfGenerations.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mb={4} spacing="24px" align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
 						min={numberOfGenerations.min}
