@@ -4,7 +4,7 @@ import MainWrapper from '../components/MainWrapper';
 
 import HomeContainer from '../styles/home/HomeContainer';
 import StyledButtonLink from '../styles/home/StyledButtonLink';
-import { Text } from '@chakra-ui/react';
+import { Button, ButtonGroup, Text } from '@chakra-ui/react';
 
 function HomePage() {
 	return (
@@ -32,14 +32,39 @@ function HomePage() {
 					explore how the frequencies will look like with different factors.{' '}
 				</Text>
 
-				<div>
+				<ButtonGroup
+					w="100%"
+					display={'flex'}
+					flexDirection={{ base: 'column', md: 'row' }}
+					justifyContent={{ base: 'center', md: 'space-around' }}
+					alignItems={'center'}
+					marginTop={25}
+					marginBottom={25}
+					spacing={0}
+				>
+					<Button as={Link} href="/individual" w={{ base: '80%', md: '30%' }} variant={'primary'}>
+						Go to Individual Simulations
+					</Button>
+
+					<Button
+						as={Link}
+						href="/replicated"
+						w={{ base: '80%', md: '30%' }}
+						marginTop={{ base: 2, md: 0 }}
+						variant={'primary'}
+					>
+						Go to Replicated Simulations
+					</Button>
+				</ButtonGroup>
+
+				{/* <div>
 					<Link href="/individual">
 						<StyledButtonLink textColor={'#333333'}>Go to Individual Simulations</StyledButtonLink>
 					</Link>
 					<Link href="/replicated">
 						<StyledButtonLink textColor={'#333333'}>Go to Replicated Simulations</StyledButtonLink>
 					</Link>
-				</div>
+				</div> */}
 			</HomeContainer>
 		</MainWrapper>
 	);

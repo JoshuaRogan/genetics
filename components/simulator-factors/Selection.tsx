@@ -20,7 +20,7 @@ export default function Selection({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{fitnessFactorWAA.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} mb={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
 						min={fitnessFactorWAA.min}
@@ -41,7 +41,7 @@ export default function Selection({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{fitnessFactorWAa.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} mb={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
 						min={fitnessFactorWAa.min}

@@ -12,7 +12,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 
 	return (
 		<Box aria-label={name}>
-			<Grid>
+			<Grid mb={4}>
 				<HelpContentWrapper
 					title={populationSize.sliderName + `「 ${populationSize.variable} 」`}
 					message={populationSize.description}
@@ -20,7 +20,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{populationSize.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
 						min={populationSize.min}
@@ -34,7 +34,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 				</Stack>
 			</Grid>
 
-			<Grid>
+			<Grid mb={4}>
 				<HelpContentWrapper
 					title={numberOfGenerations.sliderName + `「 ${numberOfGenerations.variable} 」`}
 					message={numberOfGenerations.description}
@@ -42,7 +42,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{numberOfGenerations.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} mb={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
 						min={numberOfGenerations.min}
@@ -56,7 +56,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 				</Stack>
 			</Grid>
 
-			<Grid>
+			<Grid mb={4}>
 				<HelpContentWrapper
 					title={startingAlleleFreq.sliderName + `「 ${startingAlleleFreq.variable} 」`}
 					message={startingAlleleFreq.description}
@@ -64,7 +64,7 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{startingAlleleFreq.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider
 						onChange={onChange}
 						min={startingAlleleFreq.min}
