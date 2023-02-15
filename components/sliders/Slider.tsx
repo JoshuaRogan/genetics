@@ -77,6 +77,7 @@ function SliderInput({ name, label, defaultValue, min, max, step = 1, onChange, 
 				defaultValue={defaultValue || min}
 				min={min}
 				max={max}
+				step={step}
 				value={value}
 				onChange={handleChange}
 			>
