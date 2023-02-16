@@ -1,198 +1,94 @@
-import React, { useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import {
+	Box,
+	NumberDecrementStepper,
+	NumberIncrementStepper,
+	NumberInput,
+	NumberInputField,
+	NumberInputStepper,
+	Slider,
+	SliderFilledTrack,
+	SliderMark,
+	SliderThumb,
+	SliderTrack,
+	useColorModeValue,
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
 
-const trackH = '0.4em';
-const thumbD = '1.5em';
-const trackC = '#ccced0';
+const minLabelStyles = {
+	mt: '2',
+	ml: '0',
+	fontSize: 'sm',
+};
 
-const track = css`
-	box-sizing: border-box;
-	border: none;
-	height: 4px;
-	background: ${(props) => (props.isActive ? props.theme.colors.disabled : props.theme.colors.primary)};
-	transition: background 0.2s ease-in-out;
-	border-radius: 8px;
-`;
+const maxLabelStyles = {
+	mt: '2',
+	ml: { base: '-10', md: '-10' },
+	fontSize: 'sm',
+};
 
-const trackFill = css`
-	${track};
-	height: 6px;
-	background-color: transparent;
-	background-image: linear-gradient(
-			${(props) => (props.isActive ? props.theme.colors.primary : props.theme.colors.disabled)},
-			${(props) => (props.isActive ? props.theme.colors.primary : props.theme.colors.disabled)}
-		),
-		linear-gradient(${trackC}, ${trackC});
-	background-size: var(--sx) 6px, calc(100% - var(--sx)) 4px;
-	background-position: left center, right center;
-	background-repeat: no-repeat;
-	transition: background-image 0.2s ease-in-out;
-`;
+interface SliderInputProps {
+	name: string;
+	label: string;
+	min: number;
+	max: number;
+	step?: number;
+	defaultValue?: number;
+	onChange: (varName: string, value: number) => void;
+	isActive?: boolean;
+}
 
-const fill = css`
-	height: ${trackH};
-	background: ${(props) => props.theme.colors.primary};
-	border-radius: 4px;
-`;
-
-const thumb = css`
-	box-sizing: border-box;
-	border: none;
-	width: ${thumbD};
-	height: ${thumbD};
-	border-radius: 50%;
-	background: white;
-	box-shadow: 0px 0px 5px rgba(66, 97, 255, 0.5);
-`;
-
-const Input = styled.input`
-	&,
-	&::-webkit-slider-thumb {
-		-webkit-appearance: none;
-	}
-
-	&:focus {
-		outline: none;
-	}
-
-	&:focus::-webkit-slider-thumb {
-		outline: -webkit-focus-ring-color auto 5px;
-	}
-
-	&:focus::-moz-range-thumb {
-		outline: -webkit-focus-ring-color auto 5px;
-	}
-
-	&:focus::-ms-thumb {
-		outline: -webkit-focus-ring-color auto 5px;
-	}
-
-	--range: calc(var(--max) - var(--min));
-	--ratio: calc((var(--val) - var(--min)) / var(--range));
-	--sx: calc(0.5 * ${thumbD} + var(--ratio) * (100% - ${thumbD}));
-
-	margin: 0;
-	padding: 0;
-	height: ${thumbD};
-	background: transparent;
-	font: 1em/1 arial, sans-serif;
-	margin-right: ${(props) => props.theme.space._2x};
-
-	&::-webkit-slider-runnable-track {
-		${trackFill};
-	}
-
-	&::-moz-range-track {
-		${track};
-	}
-
-	&::-ms-track {
-		${track};
-	}
-
-	&::-moz-range-progress {
-		${fill};
-	}
-
-	&::-ms-fill-lower {
-		${fill};
-	}
-
-	&::-webkit-slider-thumb {
-		margin-top: calc(0.5 * (${trackH} - ${thumbD}));
-		${thumb};
-	}
-
-	&::-moz-range-thumb {
-		${thumb};
-	}
-
-	&::-ms-thumb {
-		margin-top: 0;
-		${thumb};
-	}
-
-	&::-ms-tooltip {
-		display: none;
-	}
-
-	&::-moz-focus-outer {
-		border: 0;
-	}
-`;
-
-const Wrapper = styled.div`
-	display: flex;
-`;
-
-const StyledDirectInput = styled.input`
-	border: none;
-	font-size: 26px;
-	box-shadow: none;
-	margin-top: 0;
-	padding-top: 0;
-	text-align: center;
-	height: 100%;
-	width: 120px;
-`;
-
-export default function Slider({
-	name,
-	label,
-	start = 50,
-	min = 0,
-	max = 100,
-	step = 1,
-	required = false,
-	onChange = (name, number) => {},
-	formatter = (num) => num,
-	isDecimal = false,
-	isActive = false,
-}) {
-	const [value, setValue] = React.useState(start);
-
-	const onChangeFunc = (e) => {
-		setValue(e.target.value);
-		onChange(name, e.target.value);
-	};
-
-	const commonInputProps = {
-		onChange: onChangeFunc,
-		min: min,
-		max: max,
-		value: value,
-		step: step,
-		'aria-valuemin': min,
-		'aria-valuemax': max,
-		'aria-valuenow': value,
-		required: required,
+function SliderInput({ name, label, defaultValue, min, max, step = 1, onChange, isActive = true }: SliderInputProps) {
+	const [value, setValue] = useState(defaultValue || min);
+	const handleChange = (value) => {
+		setValue(value);
+		onChange(name, value);
 	};
 
 	return (
-		<Wrapper>
-			<Input
-				isActive={isActive}
-				{...commonInputProps}
-				id={`slider-${name}`}
-				type="range"
-				aria-label={`Range input for ${label}`}
-				style={{
-					width: '100%',
-					'--min': min,
-					'--max': max,
-					'--val': value,
-				}}
-			/>
-			<StyledDirectInput
-				{...commonInputProps}
-				id={`direct-input-${name}`}
-				aria-label={`Direct input for ${label}`}
-				type="number"
-				value={formatter(value)}
-				inputmode={'numeric'}
-				inputMode={isDecimal ? 'decimal' : 'numeric'}
-				isActive={isActive}
-			/>
-		</Wrapper>
+		<>
+			<Slider
+				name={name}
+				flex="1"
+				mb={{ base: 2, md: 8 }}
+				aria-label={label}
+				defaultValue={defaultValue || min}
+				min={min}
+				max={max}
+				step={step}
+				focusThumbOnChange={false}
+				value={value}
+				onChange={handleChange}
+				isDisabled={!isActive}
+			>
+				<SliderMark value={min} {...minLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
+					{min}
+				</SliderMark>
+				<SliderMark value={max} {...maxLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
+					{max}
+				</SliderMark>
+				<SliderTrack bg="sliderTrack">
+					<SliderFilledTrack bg="sliderFilledTrack" />
+				</SliderTrack>
+				<SliderThumb boxSize={6}>{/* <Box color="tomato" as={} /> */}</SliderThumb>
+			</Slider>
+			<NumberInput
+				maxW="100px"
+				mr="2rem"
+				defaultValue={defaultValue || min}
+				min={min}
+				max={max}
+				step={step}
+				value={value}
+				onChange={handleChange}
+			>
+				<NumberInputField />
+				<NumberInputStepper>
+					<NumberIncrementStepper />
+					<NumberDecrementStepper />
+				</NumberInputStepper>
+			</NumberInput>
+		</>
 	);
 }
+
+export default SliderInput;

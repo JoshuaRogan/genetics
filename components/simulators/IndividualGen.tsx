@@ -1,41 +1,39 @@
 import LegendContainer from '../LegendContainer';
-import AssortativeMating from '../optionSections/AssortativeMating';
-import BottleNeckGenerations from '../optionSections/BottleNeckGenerations';
-import Inbreeding from '../optionSections/Inbreeding';
-import Migration from '../optionSections/Migration';
-import { popGenVariables, VALID_SECTIONS } from '../../data/popGenVariables';
+import AssortativeMating from '../simulator-factors/AssortativeMating';
+import BottleNeckGenerations from '../simulator-factors/BottleNeckGenerations';
+import Inbreeding from '../simulator-factors/Inbreeding';
+import Migration from '../simulator-factors/Migration';
+import { VALID_SECTIONS } from '../../data/popGenVariables';
 import { DebugHeader, Pre } from '../../utils/debugging';
 import { getWorker, listenToWorker } from '../../workers/generationWorker';
 import { ApplicationContext } from '../../context/application';
-import FinitePopulation from '../optionSections/FinitePopulation';
-import BaseSimulation from '../optionSections/BaseSimulation';
-import Selection from '../optionSections/Selection';
-import Mutation from '../optionSections/Mutation';
+import BaseSimulation from '../simulator-factors/BaseSimulation';
+import Selection from '../simulator-factors/Selection';
+import Mutation from '../simulator-factors/Mutation';
 import styled from 'styled-components';
-import React, { useEffect } from 'react';
+import React from 'react';
 import MainWrapper from '../MainWrapper';
 import HighChart from '../highChart';
 
 import SimulatorContainer from '../../styles/simulators/SimulatorContainer';
-import SimulatorTitle from '../../styles/simulators/SimulatorTitle';
-import { Section, ThemedSection } from '../../styles/simulators/Section';
-import { AccentButton, PrimaryButton } from '../../styles/shared/Buttons';
 import InputContainer from '../../styles/simulators/InputContainer';
-import ButtonWrapper from '../../styles/simulators/ButtonWrapper';
+import Collapsible from '../Collapsible';
+import FactorManager from '../FactorManager';
+import { Box, Button, ButtonGroup, Text, useColorModeValue } from '@chakra-ui/react';
 
 const DebugTitle = styled.h2`
 	color: red;
 `;
 
-function HomePage() {
+function Index() {
 	const context = React.useContext(ApplicationContext);
 
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
 		listenToWorker((event) => {
-			console.log(event);
 			context.addMoreResults(event, null); // Needs to be handled as it won't work if it's in the context
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const updateChart = (isAllele = true) => {
@@ -124,7 +122,7 @@ function HomePage() {
 	};
 
 	const onChange = (name, newValue) => {
-		console.debug(name, newValue);
+		// console.debug(name, newValue);
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
 	};
 
@@ -136,96 +134,167 @@ function HomePage() {
 	return (
 		<MainWrapper>
 			<SimulatorContainer role="main">
-				<Section margin={'40px 0'}>
-					<SimulatorTitle>Individual Simulations</SimulatorTitle>
-					<p>
+				<Box as="section" m={'40px 0'}>
+					<Text textStyle="title" align="center">
+						Individual Simulations
+					</Text>
+					<Text as="p" my={4}>
 						(Place holder text) Use this paragrah to explain 1) the purpose of this page. 2) what the default graph is.
 						3) what the users should do on this page.
-					</p>
-					<p>
+					</Text>
+					<Text as="p" my={4}>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
 						ea commodo consequat.
-					</p>
-					<p>
+					</Text>
+					<Text as="p" my={4}>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
 						ea commodo consequat.
-					</p>
-				</Section>
+					</Text>
+				</Box>
 
-				<ThemedSection fullWidth={true} padding={'30px 0'}>
-					<SimulatorTitle>Simulation Settings</SimulatorTitle>
+				<Box
+					as="section"
+					position="relative"
+					left="50%"
+					right="50%"
+					mx="-50vw"
+					py="40px"
+					w="100vw"
+					px={{ base: '0', md: '30px' }}
+					bg={useColorModeValue('gray.100', ' gray.700')}
+				>
+					<Text as="h2" textStyle="subtitle" align="center">
+						Simulator Settings
+					</Text>
 
 					<InputContainer role="form" aria-label="All simulator inputs">
-						<section aria-label="Basic simulator settings">
-							<BaseSimulation
-								isActive={context.activeSections[VALID_SECTIONS.BASE]}
-								name={'Base Simulation Model'}
-								onChange={onChange}
-							/>
-							<FinitePopulation
-								isActive={context.activeSections[VALID_SECTIONS.FINITE]}
-								name={'Finite Population'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.FINITE)}
-							/>
-							<Selection
-								isActive={context.activeSections[VALID_SECTIONS.SELECTION]}
-								name={'Selection'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.SELECTION)}
-							/>
-							<Mutation
-								isActive={context.activeSections[VALID_SECTIONS.MUTATION]}
-								name={'Mutation'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.MUTATION)}
-							/>
-							<Migration
-								isActive={context.activeSections[VALID_SECTIONS.MIGRATION]}
-								name={'Migration'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.MIGRATION)}
-							/>
-							<Inbreeding
-								isActive={context.activeSections[VALID_SECTIONS.INBREEDING]}
-								name={'Inbreeding'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.INBREEDING)}
-							/>
-							<AssortativeMating
-								isActive={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
-								name={'Assortative Mating'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.ASSORT_MATING)}
-							/>
-							<BottleNeckGenerations
-								isActive={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
-								name={'Bottleneck Generations'}
-								onChange={onChange}
-								toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
-							/>
-						</section>
-						<p>
+						<BaseSimulation
+							isActive={context.activeSections[VALID_SECTIONS.BASE]}
+							name={'Base Simulation Model'}
+							onChange={onChange}
+						/>
+						<Box my={6}>
+							<Collapsible header={`Advanced Factors`} variant="solid" iconDirection="left">
+								{/* Selection Input */}
+								<FactorManager
+									isActive={true}
+									title="Selection"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.SELECTION)}
+								>
+									<Selection
+										isActive={context.activeSections[VALID_SECTIONS.SELECTION]}
+										name={'Selection'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Mutation Input */}
+								<FactorManager
+									isActive={true}
+									title="Mutation"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.MUTATION)}
+								>
+									<Mutation
+										isActive={context.activeSections[VALID_SECTIONS.MUTATION]}
+										name={'Mutation'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Migration Input */}
+								<FactorManager
+									isActive={true}
+									title="Migration"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.MIGRATION)}
+								>
+									<Migration
+										isActive={context.activeSections[VALID_SECTIONS.MIGRATION]}
+										name={'Migration'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Inbreeding Input */}
+								<FactorManager
+									isActive={true}
+									title="Inbreeding"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.INBREEDING)}
+								>
+									<Inbreeding
+										isActive={context.activeSections[VALID_SECTIONS.INBREEDING]}
+										name={'Inbreeding'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Assortative Mating Input */}
+								<FactorManager
+									isActive={true}
+									title="Assortative Mating"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.ASSORT_MATING)}
+								>
+									<AssortativeMating
+										isActive={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
+										name={'Assortative Mating'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+
+								{/* Population Bottleneck Input */}
+								<FactorManager
+									isActive={true}
+									title="Bottleneck Generations"
+									toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
+								>
+									<BottleNeckGenerations
+										isActive={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
+										name={'Bottleneck Generations'}
+										onChange={onChange}
+									/>
+								</FactorManager>
+							</Collapsible>
+						</Box>
+						<Text my={4}>
 							You can change the settings above, and then “Runs Simulation” to get a new simulation based on the latest
 							settings, or “Add As A New Simulation” to the graphs without erasing the last smulation.
-						</p>
-						<ButtonWrapper marginTop={25}>
-							<PrimaryButton
+						</Text>
+						<ButtonGroup
+							w="100%"
+							display={'flex'}
+							flexDirection={{ base: 'column', md: 'row' }}
+							justifyContent={{ base: 'center', md: 'space-around' }}
+							alignItems={'center'}
+							marginTop={25}
+							marginBottom={25}
+							spacing={0}
+						>
+							<Button
+								w={{ base: '70%', md: '30%' }}
 								onClick={() => {
 									context.clearResults();
 									updateChart();
 								}}
+								variant={'primary'}
 							>
 								Run Simulation
-							</PrimaryButton>
-							<PrimaryButton onClick={() => updateChart()}>Add as a new simulation</PrimaryButton>
-						</ButtonWrapper>
+							</Button>
+							<Button
+								onClick={() => updateChart()}
+								w={{ base: '70%', md: '30%' }}
+								marginTop={{ base: 2, md: 0 }}
+								variant={'primary'}
+							>
+								Add as a new simulation
+							</Button>
+						</ButtonGroup>
 					</InputContainer>
-				</ThemedSection>
+				</Box>
 
-				<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+				<Box my={6}>
+					<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+				</Box>
 				<LegendContainer
 					alleleResults={context.alleleResults}
 					genoTypeResults={null}
@@ -233,7 +302,9 @@ function HomePage() {
 					graphNumber={1}
 				/>
 
-				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+				<Box my={6}>
+					<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+				</Box>
 				<LegendContainer
 					alleleResults={context.alleleResults}
 					genoTypeResults={context.genoTypeResults}
@@ -241,16 +312,30 @@ function HomePage() {
 					graphNumber={2}
 				/>
 
-				<ButtonWrapper marginTop={45}>
-					<AccentButton>Show Data Table</AccentButton>
-					<AccentButton
+				<ButtonGroup
+					w="100%"
+					display={'flex'}
+					flexDirection={{ base: 'column', md: 'row' }}
+					justifyContent={{ base: 'center', md: 'space-around' }}
+					alignItems={'center'}
+					marginTop={25}
+					marginBottom={25}
+					spacing={0}
+				>
+					<Button w={{ base: '80%', md: '30%' }} variant={'primary'}>
+						Show Data Table
+					</Button>
+					<Button
 						onClick={() => {
 							context.clearResults();
 						}}
+						w={{ base: '80%', md: '30%' }}
+						marginTop={{ base: 2, md: 0 }}
+						variant={'primary'}
 					>
 						Reset Simulator
-					</AccentButton>
-				</ButtonWrapper>
+					</Button>
+				</ButtonGroup>
 
 				<Pre role="figure" aria-label="Debugging information">
 					<DebugTitle>Debug Information + Content for Legend:</DebugTitle>
@@ -269,4 +354,4 @@ function HomePage() {
 	);
 }
 
-export default HomePage;
+export default Index;
