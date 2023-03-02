@@ -30,7 +30,7 @@ function createOptions(lines, title) {
 				text: 'Generation Number',
 			},
 			allowDecimals: false,
-			min: 1,
+			min: 0,
 		},
 		yAxis: {
 			min: 0,
@@ -42,7 +42,7 @@ function createOptions(lines, title) {
 		series: createLinesFromArray(lines, isGenoType),
 		plotOptions: {
 			series: {
-				pointStart: 1,
+				pointStart: 0,
 			},
 		},
 	};
