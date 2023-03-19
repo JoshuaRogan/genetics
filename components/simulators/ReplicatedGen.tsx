@@ -37,7 +37,7 @@ function Index() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const updateChart = (isAllele: true) => {
+	const updateChart = () => {
 		const popGenVars = context.popGenVars;
 		const numberOfSims = popGenVars.numSims;
 
