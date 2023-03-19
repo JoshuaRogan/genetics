@@ -230,9 +230,32 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
         }
 
 		// Current Allele Freq Calculated here
-		p = this.currentAlleleFre;
+
 
 		// Inbreeding and assortative mating
+
+
+
+        // Only do random sampling on non-infinite population sizes
+        if (this.infinitePopulationSize && !bottleneck_generation){
+            this.frequencies.push(this.currentAlleleFre);  // This is the value that is being graphed
+        }
+        else{
+            var currentPopulation = new popGen.population(actualPopulationSize, this.currentAlleleFre);
+            currentPopulation.buildRandomSample();
+
+			if (!this.optimized) {
+				this.populations.push(currentPopulation);
+			} // This adds the actual populations to an array for later use.
+
+			// TODO - Set the genotypes results here
+
+
+            this.frequencies.push(currentPopulation.currentAlleleFre);  //This is the value that is being graphed
+            this.setCurrentAlleleFre(currentPopulation.currentAlleleFre);
+        }
+
+		p = currentPopulation.currentAlleleFre;
 		if(this.inbreeding && this.possitiveAssortativeMating) {
 			console.log('both')
 			var f = this.inbreedingCoefficient;
@@ -269,26 +292,6 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 			this.Aa.push(2 * p * (1 - p));
 			this.aa.push(Math.pow((1 - p),2));
 		}
-
-
-        // Only do random sampling on non-infinite population sizes
-        if (this.infinitePopulationSize && !bottleneck_generation){
-            this.frequencies.push(this.currentAlleleFre);  // This is the value that is being graphed
-        }
-        else{
-            var currentPopulation = new popGen.population(actualPopulationSize, this.currentAlleleFre);
-            currentPopulation.buildRandomSample();
-
-			if (!this.optimized) {
-				this.populations.push(currentPopulation);
-			} // This adds the actual populations to an array for later use.
-
-			// TODO - Set the genotypes results here
-
-
-            this.frequencies.push(currentPopulation.currentAlleleFre);  //This is the value that is being graphed
-            this.setCurrentAlleleFre(currentPopulation.currentAlleleFre);
-        }
     }
 
 
