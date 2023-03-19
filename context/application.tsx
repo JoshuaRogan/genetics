@@ -3,6 +3,7 @@ import { nameToVariable, VALID_SECTIONS, popGenVariables, VALID_VARIABLES, Setti
 import React from 'react';
 
 function valueToProper(name, value) {
+
 	// Need to convert back to decimal
 	return value;
 }
