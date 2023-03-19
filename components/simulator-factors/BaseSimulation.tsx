@@ -5,10 +5,11 @@ import HelpContentWrapper from './HelpContentWrapper';
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
 
-export default function BaseSimulation({ isActive, name, onChange }) {
+export default function BaseSimulation({ isActive, name, onChange, isReplicated }) {
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
 	const populationSize = getPopGenVariableByName(VALID_VARIABLES.POPULATION_SIZE);
 	const startingAlleleFreq = getPopGenVariableByName(VALID_VARIABLES.STARTING_ALLELE_FREQ);
+	const bulkSimulator = getPopGenVariableByName(VALID_VARIABLES.NUM_REPLICATED);
 
 	return (
 		<Box aria-label={name}>
@@ -77,6 +78,30 @@ export default function BaseSimulation({ isActive, name, onChange }) {
 					/>
 				</Stack>
 			</Grid>
+
+			{isReplicated && (
+				<Grid mb={4}>
+					<HelpContentWrapper
+						title={bulkSimulator.sliderName + `「 ${bulkSimulator.variable} 」`}
+						message={bulkSimulator.description}
+						status="info"
+					>
+						<Text fontWeight="bold">{bulkSimulator.sliderName}</Text>
+					</HelpContentWrapper>
+					<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
+						<Slider
+							onChange={onChange}
+							min={bulkSimulator.min}
+							max={bulkSimulator.max}
+							step={bulkSimulator.step}
+							defaultValue={bulkSimulator.defaultValue}
+							label={bulkSimulator.sliderName}
+							name={bulkSimulator.name}
+							isActive={true}
+						/>
+					</Stack>
+				</Grid>
+			)}
 		</Box>
 	);
 }

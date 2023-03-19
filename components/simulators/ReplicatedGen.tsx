@@ -30,13 +30,23 @@ function Index() {
 
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
+		context.setPopGenVar('number-replicated', 3);
 		listenToWorker((event) => {
 			context.addMoreResults(event, null); // Needs to be handled as it won't work if it's in the context
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const updateChart = (isAllele = true) => {
+	const updateChart = (isAllele: true) => {
+		const popGenVars = context.popGenVars;
+		const numberOfSims = popGenVars.numSims;
+
+		for (let i = 0; i < numberOfSims; i++) {
+			updateCharts();
+		}
+	};
+
+	const updateCharts = (isAllele = true) => {
 		const worker = getWorker();
 
 		if (!worker) {
@@ -45,6 +55,7 @@ function Index() {
 		}
 
 		const popGenVars = context.popGenVars;
+		const numberOfSims = popGenVars.numSims;
 
 		worker.postMessage({
 			cmd: 'initGeneration',
@@ -174,6 +185,7 @@ function Index() {
 							isActive={context.activeSections[VALID_SECTIONS.BASE]}
 							name={'Base Simulation Model'}
 							onChange={onChange}
+							isReplicated={true}
 						/>
 						<Box my={6}>
 							<Collapsible header={`Advanced Factors`} open={true}>
@@ -290,6 +302,7 @@ function Index() {
 					genoTypeResults={null}
 					settings={context.settingResults}
 					graphNumber={1}
+					isReplicated={true}
 				/>
 
 				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
@@ -298,6 +311,7 @@ function Index() {
 					genoTypeResults={context.genoTypeResults}
 					settings={context.settingResults}
 					graphNumber={2}
+					isReplicated={true}
 				/>
 
 				<ButtonGroup

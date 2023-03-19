@@ -30,6 +30,7 @@ function Index() {
 
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
+		context.setPopGenVar('number-replicated', 1);
 		listenToWorker((event) => {
 			context.addMoreResults(event, null); // Needs to be handled as it won't work if it's in the context
 		});
@@ -37,6 +38,7 @@ function Index() {
 	}, []);
 
 	const updateChart = (isAllele = true) => {
+		context.setPopGenVar('number-replicated', 1); // bubble up changes for the backend
 		const worker = getWorker();
 
 		if (!worker) {
@@ -124,6 +126,7 @@ function Index() {
 	const onChange = (name, newValue) => {
 		// console.debug(name, newValue);
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
+		context.setPopGenVar('number-replicated', 1); // bubble up changes for the backend
 	};
 
 	const toggleActiveSection = (section) => {
@@ -174,6 +177,7 @@ function Index() {
 							isActive={context.activeSections[VALID_SECTIONS.BASE]}
 							name={'Base Simulation Model'}
 							onChange={onChange}
+							isReplicated={false}
 						/>
 						<Box my={6}>
 							<Collapsible header={`Advanced Factors`} variant="solid" iconDirection="left">
@@ -300,6 +304,7 @@ function Index() {
 					genoTypeResults={null}
 					settings={context.settingResults}
 					graphNumber={1}
+					isReplicated={false}
 				/>
 
 				<Box my={6}>
@@ -310,6 +315,7 @@ function Index() {
 					genoTypeResults={context.genoTypeResults}
 					settings={context.settingResults}
 					graphNumber={2}
+					isReplicated={false}
 				/>
 
 				<ButtonGroup

@@ -15,6 +15,7 @@ export const VALID_VARIABLES = {
 	NUM_GENERATIONS: 'number-of-generations',
 	STARTING_ALLELE_FREQ: 'starting-allele-frequency',
 	POPULATION_SIZE: 'population-size',
+	NUM_REPLICATED: 'number-replicated',
 
 	SELECTION_WAA: 'selection-wAA',
 	SELECTION_WAa: 'selection-WAa',
@@ -104,6 +105,18 @@ export const popGenVariables = [
 		max: 10000,
 		step: 1,
 		sliderName: 'Generations',
+	},
+	{
+		name: VALID_VARIABLES.NUM_REPLICATED,
+		variable: 'numSims',
+		description: 'temp desc',
+		section: VALID_SECTIONS.BASE,
+		order: 1,
+		defaultValue: 3,
+		min: 1,
+		max: 50,
+		step: 1,
+		sliderName: 'Number of Populations',
 	},
 	{
 		name: VALID_VARIABLES.STARTING_ALLELE_FREQ,
@@ -327,7 +340,7 @@ export const popGenVariables = [
 		defaultValue: 5000,
 		min: 0,
 		max: 10000,
-		step: 1,		
+		step: 1,
 	},
 
 ] as PopGenVariable[];

@@ -3,6 +3,13 @@ import styled from 'styled-components';
 import { Settings } from '../data/popGenVariables';
 import Checkbox from './Checkbox';
 import Collapsible from './Collapsible';
+import {
+	findAverageElimIndex,
+	findAverageFixationIndex,
+	findNumOfEliminations,
+	findNumOfFixations,
+	getAverageFinalFreq,
+} from '../utils/bulkStats';
 
 const StyledListCategory = styled.ul`
 	display: flex;
@@ -66,6 +73,12 @@ function LegendSettings({ settings }: { settings: Settings }) {
 		<StyledLegendContainer>
 			<StyledSubtitle>Settings</StyledSubtitle>
 			<StyledList>
+				<StyledListItem>
+					<StyledListCategory>
+						<StyledCategoryItem>Number of Populations = {settings.numSims} </StyledCategoryItem>
+					</StyledListCategory>
+				</StyledListItem>
+
 				<StyledListItem>
 					<StyledListCategory>
 						<StyledCategoryItem>Generations (t) = {settings.t} </StyledCategoryItem>
@@ -146,6 +159,45 @@ function LegendStats({ result }: { result: number[] }) {
 	);
 }
 
+function BulkLegendStats({ results }: { results: number[][] }) {
+	return (
+		<StyledLegendContainer>
+			<StyledSubtitle>Statistics</StyledSubtitle>
+			<StyledListStats>
+				<StyledListItemStats>
+					{' '}
+					Average generations for A1 to reach fixation = {findAverageFixationIndex(results)}
+				</StyledListItemStats>
+				<StyledListItemStats>
+					{' '}
+					Number of simulations where A1 reaches fixation = {findNumOfFixations(results)}{' '}
+				</StyledListItemStats>
+				<StyledListItemStats>
+					{' '}
+					Percentage of simulations where A1 reaches fixation = {(findNumOfFixations(results) / results.length) *
+						100}%{' '}
+				</StyledListItemStats>
+
+				<StyledListItemStats>
+					{' '}
+					Average generations for A1 to reach elimination = {findAverageElimIndex(results)}
+				</StyledListItemStats>
+				<StyledListItemStats>
+					{' '}
+					Number of simulations where A1 reaches elimination = {findNumOfEliminations(results)}{' '}
+				</StyledListItemStats>
+				<StyledListItemStats>
+					{' '}
+					Percentage of simulations where A1 reaches elimination ={' '}
+					{(findNumOfEliminations(results) / results.length) * 100}%{' '}
+				</StyledListItemStats>
+
+				<StyledListItemStats> Average Freq {getAverageFinalFreq(results)}</StyledListItemStats>
+			</StyledListStats>
+		</StyledLegendContainer>
+	);
+}
+
 const LegendStyled = styled.div`
 	background: transparent;
 	padding: 2px 10px;
@@ -176,7 +228,19 @@ const StyledLegendManagerWrapper = styled.div`
 	}
 `;
 
-function LegendManager({ settings, result, index }: { settings: Settings; result: number[]; index: number }) {
+function LegendManager({
+	settings,
+	result,
+	index,
+	isReplicated,
+	results,
+}: {
+	settings: Settings;
+	result: number[];
+	results: number[][];
+	index: number;
+	isReplicated: boolean;
+}) {
 	const [isActive, setIsActive] = React.useState(true);
 	const simualtionNumber = index + 1;
 
@@ -200,28 +264,50 @@ function LegendManager({ settings, result, index }: { settings: Settings; result
 	);
 }
 
+function BulkLegend({ settings, results }: { settings: Settings; results: number[][] }) {
+	return (
+		<>
+			<LegendSettings settings={settings} />
+			<BulkLegendStats results={results} />
+		</>
+	);
+}
+
 function AlleleLegend({
 	settings,
 	results,
 	graphNumber,
+	isReplicated,
 }: {
 	settings: Settings;
 	results: number[][];
 	graphNumber: number;
+	isReplicated: boolean;
 }) {
 	// Make the initial settings immutable
 	return (
 		<div>
 			<Collapsible header={`Legend for Graph ${graphNumber}`}>
-				{results.map(function (result, index) {
-					return <LegendManager key={index} index={index} result={result} settings={settings[index]} />;
-				})}
+				{isReplicated ? <BulkLegend settings={settings[0]} results={results} /> : null}
+				{!isReplicated &&
+					results.map(function (result, index) {
+						return (
+							<LegendManager
+								key={index}
+								index={index}
+								result={result}
+								results={results}
+								settings={settings[index]}
+								isReplicated={isReplicated}
+							/>
+						);
+					})}
 			</Collapsible>
 		</div>
 	);
 }
 
-function GenoTypeLegend({ settings, results }) {
+function GenoTypeLegend({ settings, results, isReplicated }) {
 	return (
 		<div>
 			<h4> Stats (Last Simulation) </h4>
@@ -237,7 +323,7 @@ function GenoTypeLegend({ settings, results }) {
 	);
 }
 
-export default function LegendContainer({ alleleResults, genoTypeResults, settings, graphNumber }) {
+export default function LegendContainer({ alleleResults, genoTypeResults, settings, graphNumber, isReplicated }) {
 	const isGenoType = genoTypeResults;
 
 	if (alleleResults.length === 0) {
@@ -247,14 +333,19 @@ export default function LegendContainer({ alleleResults, genoTypeResults, settin
 	if (!isGenoType) {
 		return (
 			<LegendStyled>
-				<AlleleLegend settings={settings} results={alleleResults} graphNumber={graphNumber} />
+				<AlleleLegend
+					settings={settings}
+					results={alleleResults}
+					graphNumber={graphNumber}
+					isReplicated={isReplicated}
+				/>
 			</LegendStyled>
 		);
 	}
 
 	return (
 		<LegendStyled>
-			<GenoTypeLegend settings={settings[settings.length - 1]} results={genoTypeResults} />
+			<GenoTypeLegend settings={settings[settings.length - 1]} results={genoTypeResults} isReplicated={isReplicated} />
 		</LegendStyled>
 	);
 }
