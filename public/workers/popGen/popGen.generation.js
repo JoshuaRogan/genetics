@@ -11,7 +11,7 @@ popGen.generations = popGen.generations || {};
  *		-Currently storing each population in populations array (could be removed to reduce memory overhead)
  */
 popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
-	this.numGenerations 		= numGenerations; 		// Total number of generations
+	this.numGenerations 		= parseInt(numGenerations) + 1; 		// Total number of generations
     this.currentGenerationNum 	= 0; 					// The generation number we are now on
     this.populationSize 		= populationSize; 		// The population size of each population
     this.startAlleleFreq 		= startAlleleFreq; 		// Starting allele frequency
@@ -168,6 +168,11 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
                 this.currentGenerationNum++;
                 this.setCurrentAlleleFre(this.currentAlleleFre);
                 this.frequencies.push(this.currentAlleleFre);
+
+				// TODO Need to add Genotypes here
+				this.AA.push(Math.pow(this.currentAlleleFre,2));
+				this.Aa.push(2 * this.currentOtherAlleleFre * (1 - this.currentAlleleFre));
+				this.aa.push(Math.pow((1 - this.currentAlleleFre),2));
             }
     	}
     	this.finishTime = (new Date).getTime();
@@ -181,12 +186,6 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 	 *
      */
     this.buildRandomSample = function(){
-        //Hard coded DOM update
-        // var percentage = (this.currentGenerationNum / this.numGenerations) * 100;
-        // $("#graph-completion-precent").html((percentage.toFixed(2)) + "%");
-        // $("#graph-computing-title").html("Computing Generation Number <strong>" + this.currentGenerationNum + "</strong> of " + this.numGenerations);
-        // console.log("Assortative Mating D: ", this.d_assortativeMating);
-
         this.currentGenerationNum++;
 
         //The order these operations are performed is very important (Consult the formula last slide pdf)
@@ -274,7 +273,7 @@ popGen.generations = function(numGenerations, populationSize, startAlleleFreq) {
 
         // Only do random sampling on non-infinite population sizes
         if (this.infinitePopulationSize && !bottleneck_generation){
-            this.frequencies.push(this.currentAlleleFre);  //This is the value that is being graphed
+            this.frequencies.push(this.currentAlleleFre);  // This is the value that is being graphed
         }
         else{
             var currentPopulation = new popGen.population(actualPopulationSize, this.currentAlleleFre);
