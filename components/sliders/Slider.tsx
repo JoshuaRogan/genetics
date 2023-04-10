@@ -35,9 +35,20 @@ interface SliderInputProps {
 	defaultValue?: number;
 	onChange: (varName: string, value: number) => void;
 	isActive?: boolean;
+	isInfinite?: boolean;
 }
 
-function SliderInput({ name, label, defaultValue, min, max, step = 1, onChange, isActive = true }: SliderInputProps) {
+function SliderInput({
+	name,
+	label,
+	defaultValue,
+	min,
+	max,
+	step = 1,
+	onChange,
+	isActive = true,
+	isInfinite = false,
+}: SliderInputProps) {
 	const [value, setValue] = useState(defaultValue || min);
 	const handleChange = (value) => {
 		setValue(value);
@@ -58,7 +69,7 @@ function SliderInput({ name, label, defaultValue, min, max, step = 1, onChange, 
 				focusThumbOnChange={false}
 				value={value}
 				onChange={handleChange}
-				isDisabled={!isActive}
+				isDisabled={!isActive || isInfinite}
 			>
 				<SliderMark value={min} {...minLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
 					{min}
@@ -80,6 +91,7 @@ function SliderInput({ name, label, defaultValue, min, max, step = 1, onChange, 
 				step={step}
 				value={value}
 				onChange={handleChange}
+				isDisabled={!isActive || isInfinite}
 			>
 				<NumberInputField />
 				<NumberInputStepper>

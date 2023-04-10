@@ -15,6 +15,7 @@ export const VALID_VARIABLES = {
 	NUM_GENERATIONS: 'number-of-generations',
 	STARTING_ALLELE_FREQ: 'starting-allele-frequency',
 	POPULATION_SIZE: 'population-size',
+	NUM_OF_POPULATIONS: 'number-of-populations',
 
 	SELECTION_WAA: 'selection-wAA',
 	SELECTION_WAa: 'selection-WAa',
@@ -129,6 +130,19 @@ export const popGenVariables = [
 		step: 1,
 		sliderName: 'Population Size',
 	},
+	{
+		name: VALID_VARIABLES.NUM_OF_POPULATIONS,
+		variable: 'Nb',
+		description: 'This is the number of individuals in the population during the event. Note that the number of chromosomes simulated is 2NB',
+		section: VALID_SECTIONS.BASE,
+		order: 0,
+		defaultValue: 1,
+		min: 1,
+		max: 50,
+		step: 1,
+		sliderName: 'Number of Populations',
+	},
+
 
 
 	// SELECTION

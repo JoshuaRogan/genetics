@@ -20,6 +20,7 @@ import InputContainer from '../../styles/simulators/InputContainer';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
 import { Box, Button, ButtonGroup, Text, useColorModeValue } from '@chakra-ui/react';
+import ReplicatedSimulation from '../simulator-factors/ReplicatedSimulation';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -170,7 +171,7 @@ function Index() {
 					</Text>
 
 					<InputContainer role="form" aria-label="All simulator inputs">
-						<BaseSimulation
+						<ReplicatedSimulation
 							isActive={context.activeSections[VALID_SECTIONS.BASE]}
 							name={'Base Simulation Model'}
 							onChange={onChange}
