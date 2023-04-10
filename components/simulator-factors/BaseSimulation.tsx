@@ -5,7 +5,7 @@ import HelpContentWrapper from './HelpContentWrapper';
 import { Box, Checkbox, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
 
-export default function BaseSimulation({ name, onChange, isReplicated, toggleActiveSection }) {
+export default function BaseSimulation({ isActive, name, onChange, isReplicated, toggleActiveSection }) {
 	const [isInfinitePopulation, setIsInfinitePopulation] = React.useState(false);
 
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
