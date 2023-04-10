@@ -1,5 +1,4 @@
 import {
-	Box,
 	NumberDecrementStepper,
 	NumberIncrementStepper,
 	NumberInput,
