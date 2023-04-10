@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
+import { getPopGenVariableByName, VALID_SECTIONS, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
 import { Box, Checkbox, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
 
-export default function BaseSimulation({ isActive, name, onChange, isReplicated }) {
+export default function BaseSimulation({ name, onChange, isReplicated, toggleActiveSection }) {
 	const [isInfinitePopulation, setIsInfinitePopulation] = React.useState(false);
 
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
@@ -15,7 +15,7 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated 
 
 	const onInfinitePopulationChecked = (e) => {
 		setIsInfinitePopulation(e.target.checked);
-		onChange(populationSize.name, e.target.checked ? 1000000 : populationSize.defaultValue);
+		toggleActiveSection(VALID_SECTIONS.FINITE);
 	};
 
 	return (
