@@ -255,7 +255,7 @@ popGen.generations = function (numGenerations, populationSize, startAlleleFreq) 
 			this.setCurrentAlleleFre(currentPopulation.currentAlleleFre);
 		}
 
-		p = currentPopulation.currentAlleleFre;
+		p = currentPopulation ? currentPopulation.currentAlleleFre : this.currentAlleleFre;
 		if (this.inbreeding && this.possitiveAssortativeMating) {
 			console.log('both')
 			var f = this.inbreedingCoefficient;
