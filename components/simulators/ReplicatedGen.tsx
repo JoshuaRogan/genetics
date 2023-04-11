@@ -20,6 +20,7 @@ import InputContainer from '../../styles/simulators/InputContainer';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
 import { Box, Button, ButtonGroup, Text, useColorModeValue } from '@chakra-ui/react';
+import ReplicatedSimulation from '../simulator-factors/ReplicatedSimulation';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -31,6 +32,7 @@ function Index() {
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
 		context.setPopGenVar('number-replicated', 3);
+		context.setActiveSession(VALID_SECTIONS.FINITE, false);
 		listenToWorker((event) => {
 			context.addMoreResults(event, null); // Needs to be handled as it won't work if it's in the context
 		});
@@ -181,11 +183,10 @@ function Index() {
 					</Text>
 
 					<InputContainer role="form" aria-label="All simulator inputs">
-						<BaseSimulation
+						<ReplicatedSimulation
 							isActive={context.activeSections[VALID_SECTIONS.BASE]}
 							name={'Base Simulation Model'}
 							onChange={onChange}
-							isReplicated={true}
 						/>
 						<Box my={6}>
 							<Collapsible header={`Advanced Factors`} open={true}>

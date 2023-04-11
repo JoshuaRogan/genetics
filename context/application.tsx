@@ -3,7 +3,6 @@ import { nameToVariable, VALID_SECTIONS, popGenVariables, VALID_VARIABLES, Setti
 import React from 'react';
 
 function valueToProper(name, value) {
-
 	// Need to convert back to decimal
 	return value;
 }
@@ -64,8 +63,8 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 		d_assortativeMating: number;
 		h_assortativeMating: number;
 		hasInbreeding: boolean;
-		inbreedingCoefficient: number|string;
-		positiveAssortativeFreq: number|string;
+		inbreedingCoefficient: number | string;
+		positiveAssortativeFreq: number | string;
 		r_assortativeMating: number | string;
 	}
 

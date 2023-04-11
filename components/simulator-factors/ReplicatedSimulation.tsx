@@ -1,22 +1,15 @@
 import React from 'react';
 
-import { getPopGenVariableByName, VALID_SECTIONS, VALID_VARIABLES } from '../../data/popGenVariables';
+import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
 import { Box, Checkbox, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
 
-export default function BaseSimulation({ isActive, name, onChange, isReplicated, toggleActiveSection }) {
-	const [isInfinitePopulation, setIsInfinitePopulation] = React.useState(false);
-
+export default function ReplicatedSimulation({ isActive, name, onChange }) {
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
 	const populationSize = getPopGenVariableByName(VALID_VARIABLES.POPULATION_SIZE);
 	const startingAlleleFreq = getPopGenVariableByName(VALID_VARIABLES.STARTING_ALLELE_FREQ);
-	const bulkSimulator = getPopGenVariableByName(VALID_VARIABLES.NUM_REPLICATED);
-
-	const onInfinitePopulationChecked = (e) => {
-		setIsInfinitePopulation(e.target.checked);
-		toggleActiveSection(VALID_SECTIONS.FINITE);
-	};
+	const numPopulation = getPopGenVariableByName(VALID_VARIABLES.NUM_OF_POPULATIONS);
 
 	return (
 		<Box aria-label={name}>
@@ -34,13 +27,13 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 						min={populationSize.min}
 						max={populationSize.max}
 						step={populationSize.step}
-						defaultValue={populationSize.defaultValue}
+						defaultValue={populationSize.max}
 						label={populationSize.sliderName}
 						name={populationSize.name}
 						isActive={true}
-						isInfinite={isInfinitePopulation}
+						isInfinite={true}
 					/>
-					<Checkbox size="lg" colorScheme="red" onChange={onInfinitePopulationChecked}>
+					<Checkbox defaultChecked size="lg" colorScheme="red" isDisabled>
 						Infinite (∞)
 					</Checkbox>
 				</Stack>
@@ -90,29 +83,27 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 				</Stack>
 			</Grid>
 
-			{isReplicated && (
-				<Grid mb={4}>
-					<HelpContentWrapper
-						title={bulkSimulator.sliderName + `「 ${bulkSimulator.variable} 」`}
-						message={bulkSimulator.description}
-						status="info"
-					>
-						<Text fontWeight="bold">{bulkSimulator.sliderName}</Text>
-					</HelpContentWrapper>
-					<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-						<Slider
-							onChange={onChange}
-							min={bulkSimulator.min}
-							max={bulkSimulator.max}
-							step={bulkSimulator.step}
-							defaultValue={bulkSimulator.defaultValue}
-							label={bulkSimulator.sliderName}
-							name={bulkSimulator.name}
-							isActive={true}
-						/>
-					</Stack>
-				</Grid>
-			)}
+			<Grid mb={4}>
+				<HelpContentWrapper
+					title={numPopulation.sliderName + `「 ${numPopulation.variable} 」`}
+					message={numPopulation.description}
+					status="info"
+				>
+					<Text fontWeight="bold">{numPopulation.sliderName}</Text>
+				</HelpContentWrapper>
+				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
+					<Slider
+						onChange={onChange}
+						min={numPopulation.min}
+						max={numPopulation.max}
+						step={numPopulation.step}
+						defaultValue={numPopulation.defaultValue}
+						label={numPopulation.sliderName}
+						name={numPopulation.name}
+						isActive={true}
+					/>
+				</Stack>
+			</Grid>
 		</Box>
 	);
 }

@@ -178,6 +178,7 @@ function Index() {
 							name={'Base Simulation Model'}
 							onChange={onChange}
 							isReplicated={false}
+							toggleActiveSection={toggleActiveSection}
 						/>
 						<Box my={6}>
 							<Collapsible header={`Advanced Factors`} variant="solid" iconDirection="left">
