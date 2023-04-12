@@ -30,17 +30,23 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider
-						onChange={onChange}
+						name={populationSize.name}
+						label={populationSize.sliderName}
+						defaultValue={populationSize.defaultValue}
 						min={populationSize.min}
 						max={populationSize.max}
 						step={populationSize.step}
-						defaultValue={populationSize.defaultValue}
-						label={populationSize.sliderName}
-						name={populationSize.name}
 						isActive={true}
 						isInfinite={isInfinitePopulation}
+						onChange={onChange}
 					/>
-					<Checkbox size="lg" colorScheme="red" onChange={onInfinitePopulationChecked}>
+					<Checkbox
+						role="checkbox"
+						aria-label="Changes population size to infinite for the current simulation"
+						size="lg"
+						colorScheme="red"
+						onChange={onInfinitePopulationChecked}
+					>
 						Infinite (∞)
 					</Checkbox>
 				</Stack>
@@ -56,14 +62,14 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider
-						onChange={onChange}
+						name={numberOfGenerations.name}
+						label={numberOfGenerations.sliderName}
+						defaultValue={numberOfGenerations.defaultValue}
 						min={numberOfGenerations.min}
 						max={numberOfGenerations.max}
 						step={numberOfGenerations.step}
-						defaultValue={numberOfGenerations.defaultValue}
-						label={numberOfGenerations.sliderName}
-						name={numberOfGenerations.name}
 						isActive={true}
+						onChange={onChange}
 					/>
 				</Stack>
 			</Grid>
@@ -78,14 +84,14 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider
-						onChange={onChange}
+						name={startingAlleleFreq.name}
+						label={startingAlleleFreq.sliderName}
+						defaultValue={startingAlleleFreq.defaultValue}
 						min={startingAlleleFreq.min}
 						max={startingAlleleFreq.max}
 						step={startingAlleleFreq.step}
-						defaultValue={startingAlleleFreq.defaultValue}
-						label={startingAlleleFreq.sliderName}
-						name={startingAlleleFreq.name}
 						isActive={true}
+						onChange={onChange}
 					/>
 				</Stack>
 			</Grid>
@@ -101,14 +107,15 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 					</HelpContentWrapper>
 					<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 						<Slider
-							onChange={onChange}
+							name={bulkSimulator.name}
+							label={bulkSimulator.sliderName}
+							aria-label={bulkSimulator.sliderName}
+							defaultValue={bulkSimulator.defaultValue}
 							min={bulkSimulator.min}
 							max={bulkSimulator.max}
 							step={bulkSimulator.step}
-							defaultValue={bulkSimulator.defaultValue}
-							label={bulkSimulator.sliderName}
-							name={bulkSimulator.name}
 							isActive={true}
+							onChange={onChange}
 						/>
 					</Stack>
 				</Grid>
