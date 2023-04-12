@@ -21,6 +21,7 @@ import SimulatorContainer from '../../styles/simulators/SimulatorContainer';
 import InputContainer from '../../styles/simulators/InputContainer';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
+import { LinkIcon } from '@chakra-ui/icons';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -187,6 +188,37 @@ function Index() {
 		context.setActiveSession(section, !currentState);
 	};
 
+	const generateShareableLink = () => {
+		const url = new URL(window.location.href);
+		const params = new URLSearchParams(url.search);
+
+		for (const genVar in context.popGenVars) {
+			if (context.popGenVars.hasOwnProperty(genVar)) {
+				params.set(genVar, context.popGenVars[genVar]);
+			}
+		}
+
+		// params.set('p', context.popGenVars.p.toPrecision(3));
+		// params.set('N', context.popGenVars.N.toPrecision(3));
+		// params.set('t', context.popGenVars.t.toPrecision(3));
+		// params.set('mu', context.popGenVars.mu.toPrecision(3));
+		// params.set('nu', context.popGenVars.nu.toPrecision(3));
+		// params.set('m', context.popGenVars.m.toPrecision(3));
+		// params.set('pm', context.popGenVars.pm.toPrecision(3));
+		// params.set('F', context.popGenVars.F.toPrecision(3));
+		// params.set('assortMating', context.popGenVars.assortMating.toPrecision(3));
+		// params.set('gen-to-over-start', context.popGenVars['gen-to-over-start'].toPrecision(3));
+		// params.set('gen-to-over-end', context.popGenVars['gen-to-over-end'].toPrecision(3));
+		// params.set('Nb', context.popGenVars.Nb.toPrecision(3));
+		// params.set('WAA', context.popGenVars.WAA.toPrecision(3));
+		// params.set('WAa', context.popGenVars.WAa.toPrecision(3));
+		// params.set('Waa', context.popGenVars.Waa.toPrecision(3));
+
+		url.search = params.toString();
+		console.log(url.href);
+		return url.toString();
+	};
+
 	return (
 		<MainWrapper>
 			<SimulatorContainer role="main">
@@ -313,6 +345,30 @@ function Index() {
 									/>
 								</FactorManager>
 							</Collapsible>
+							<Button
+								mt={4}
+								colorScheme="whatsapp"
+								variant="outline"
+								alignContent="center"
+								rightIcon={<LinkIcon />}
+								onClick={() => {
+									// generate link
+									const link = generateShareableLink();
+
+									// and copy to clipboard
+									navigator.clipboard.writeText(link);
+
+									// toast({
+									// 	title: 'Link copied to clipboard',
+									// 	description: 'You can now share this link with others',
+									// 	status: 'success',
+									// 	duration: 9000,
+									// 	isClosable: true,
+									// });
+								}}
+							>
+								Export settings
+							</Button>
 						</Box>
 						<Text my={4}>
 							You can change the settings above, and then “Runs Simulation” to get a new simulation based on the latest
