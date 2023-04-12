@@ -287,7 +287,6 @@ popGen.generations = function (numGenerations, populationSize, startAlleleFreq) 
 
 		}
 		else { //No inbreeding or assortative mating
-			console.log('basic');
 			this.AA.push(Math.pow(p, 2));
 			this.Aa.push(2 * p * (1 - p));
 			this.aa.push(Math.pow((1 - p), 2));

@@ -1,3 +1,7 @@
+import styled from 'styled-components';
+import React, { useState } from 'react';
+import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
+
 import LegendContainer from '../LegendContainer';
 import AssortativeMating from '../simulator-factors/AssortativeMating';
 import BottleNeckGenerations from '../simulator-factors/BottleNeckGenerations';
@@ -10,8 +14,6 @@ import { ApplicationContext } from '../../context/application';
 import BaseSimulation from '../simulator-factors/BaseSimulation';
 import Selection from '../simulator-factors/Selection';
 import Mutation from '../simulator-factors/Mutation';
-import styled from 'styled-components';
-import React from 'react';
 import MainWrapper from '../MainWrapper';
 import HighChart from '../highChart';
 
@@ -19,7 +21,6 @@ import SimulatorContainer from '../../styles/simulators/SimulatorContainer';
 import InputContainer from '../../styles/simulators/InputContainer';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
-import { Box, Button, ButtonGroup, Text, useColorModeValue } from '@chakra-ui/react';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -27,6 +28,8 @@ const DebugTitle = styled.h2`
 
 function Index() {
 	const context = React.useContext(ApplicationContext);
+	const toast = useToast();
+	const [isCompleteToastDisplayed, setIsCompleteToastDisplayed] = useState(false);
 
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
@@ -39,7 +42,7 @@ function Index() {
 
 	const updateChart = (isAllele = true) => {
 		context.setPopGenVar('number-replicated', 1); // bubble up changes for the backend
-		const worker = getWorker();
+		const worker: Worker = getWorker();
 
 		if (!worker) {
 			console.error('Error no worker');
@@ -115,6 +118,55 @@ function Index() {
 		// worker.postMessage({'cmd':'setVar', 'varName': 'inbreeding', 'inbreedCoef': .255});
 		// worker.postMessage({'cmd':'setVar', 'varName': 'assortative-mating', 'matingFreq': .99});
 		// worker.postMessage({'cmd':'setVar', 'varName': 'population-bottleneck', 'generationStart': 3, 'generationEnd': 50, 'newPopulationSize': 500});
+
+		// Listen for messages from the worker
+		worker.addEventListener('message', (event) => {
+			const workerResult = JSON.parse(event.data);
+
+			// If the worker started a new generation show toast
+			if (workerResult.status === 'running' && !toast.isActive('simulation-started')) {
+				// Close all toasts before starting a new simulation
+				toast.closeAll();
+
+				// Show a toast to let the user know the simulation has started
+				toast({
+					id: 'simulation-started',
+					title: 'Simulation Started',
+					description: 'The simulation has started and will complete in the background.',
+					status: 'info',
+					duration: 3000,
+					position: 'bottom-right',
+					isClosable: true,
+				});
+
+				return;
+			}
+
+			// If work was completed successfully, show a toast to let the user know
+			if (workerResult.status === 'complete' && !isCompleteToastDisplayed) {
+				setIsCompleteToastDisplayed(true);
+
+				// This timeout exists to smooth out the transition between the simulation complete toast and the results
+				setTimeout(() => {
+					if (!toast.isActive('simulation-complete')) {
+						toast({
+							id: 'simulation-complete',
+							title: 'Simulation Complete',
+							description: 'The simulation has completed and the results are ready to view.',
+							status: 'success',
+							duration: 4000,
+							position: 'bottom-right',
+							isClosable: true,
+							onCloseComplete: () => {
+								setIsCompleteToastDisplayed(false);
+							},
+						});
+					}
+				}, 2000);
+
+				return;
+			}
+		});
 
 		// Kick it off
 		worker.postMessage({ cmd: 'run' });
@@ -334,7 +386,22 @@ function Index() {
 					</Button>
 					<Button
 						onClick={() => {
+							// clear the results on the graph
 							context.clearResults();
+
+							// reset the input values
+							context.resetInputValues();
+
+							if (!toast.isActive('simulation-reset')) {
+								toast({
+									id: 'simulation-reset',
+									title: 'Simulator Reset',
+									description: 'The simulator has been reset to default values.',
+									status: 'warning',
+									duration: 5000,
+									isClosable: true,
+								});
+							}
 						}}
 						w={{ base: '80%', md: '30%' }}
 						marginTop={{ base: 2, md: 0 }}
