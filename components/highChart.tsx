@@ -2,6 +2,15 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import styled from 'styled-components';
 import HighchartsReact from 'highcharts-react-official';
+import HighchartsExporting from 'highcharts/modules/exporting';
+import HighchartsExportData from 'highcharts/modules/export-data';
+import HighchartsAccessibility from 'highcharts/modules/accessibility';
+
+if (typeof Highcharts === 'object') {
+	HighchartsExporting(Highcharts);
+	HighchartsExportData(Highcharts);
+	HighchartsAccessibility(Highcharts);
+}
 
 const HighChartLoader = styled.div`
 	min-height: 400px;
@@ -20,10 +29,19 @@ function createLinesFromArray(lines, isGeno = false) {
 
 function createOptions(lines, title) {
 	const isGenoType = title.toLowerCase().includes('genotype');
-	console.log('lines updating', lines.length, lines);
+	// console.log('lines updating', lines.length, lines);
 	return {
 		title: {
 			text: title ?? 'Population Genetics Simulation',
+		},
+		chart: {
+			zoomType: 'xy',
+			resetZoomButton: {
+				position: {
+					x: -5,
+					y: 5,
+				},
+			},
 		},
 		xAxis: {
 			title: {
@@ -44,6 +62,9 @@ function createOptions(lines, title) {
 			series: {
 				pointStart: 0,
 			},
+		},
+		credits: {
+			enabled: false,
 		},
 	};
 }
