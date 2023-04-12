@@ -29,7 +29,9 @@ const DebugTitle = styled.h2`
 function Index() {
 	const context = React.useContext(ApplicationContext);
 	const toast = useToast();
+
 	const [isCompleteToastDisplayed, setIsCompleteToastDisplayed] = useState(false);
+	const [resetValue, setResetValue] = useState(0);
 
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
@@ -176,7 +178,6 @@ function Index() {
 	};
 
 	const onChange = (name, newValue) => {
-		// console.debug(name, newValue);
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
 		context.setPopGenVar('number-replicated', 1); // bubble up changes for the backend
 	};
@@ -224,7 +225,7 @@ function Index() {
 						Simulator Settings
 					</Text>
 
-					<InputContainer role="form" aria-label="All simulator inputs">
+					<InputContainer key={`reset-key-${resetValue}`} role="form" aria-label="All simulator inputs">
 						<BaseSimulation
 							isActive={context.activeSections[VALID_SECTIONS.BASE]}
 							name={'Base Simulation Model'}
@@ -401,6 +402,8 @@ function Index() {
 									duration: 5000,
 									isClosable: true,
 								});
+
+								setResetValue(resetValue + 1);
 							}
 						}}
 						w={{ base: '80%', md: '30%' }}

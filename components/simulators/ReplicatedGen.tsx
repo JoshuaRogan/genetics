@@ -29,7 +29,9 @@ const DebugTitle = styled.h2`
 function Index() {
 	const context = React.useContext(ApplicationContext);
 	const toast = useToast();
+
 	const [isCompleteToastDisplayed, setIsCompleteToastDisplayed] = useState(false);
+	const [resetValue, setResetValue] = useState(0);
 
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
@@ -233,7 +235,7 @@ function Index() {
 						Simulator Settings
 					</Text>
 
-					<InputContainer role="form" aria-label="All simulator inputs">
+					<InputContainer key={`reset-key-${resetValue}`} role="form" aria-label="All simulator inputs">
 						<ReplicatedSimulation
 							isActive={context.activeSections[VALID_SECTIONS.BASE]}
 							name={'Base Simulation Model'}
@@ -378,7 +380,24 @@ function Index() {
 				>
 					<Button
 						onClick={() => {
+							// clear the results on the graph
 							context.clearResults();
+
+							// reset the input values
+							context.resetInputValues();
+
+							if (!toast.isActive('simulation-reset')) {
+								toast({
+									id: 'simulation-reset',
+									title: 'Simulator Reset',
+									description: 'The simulator has been reset to default values.',
+									status: 'warning',
+									duration: 5000,
+									isClosable: true,
+								});
+
+								setResetValue(resetValue + 1);
+							}
 						}}
 						w={{ base: '80%', md: '30%' }}
 						variant={'primary'}

@@ -32,6 +32,7 @@ export const defaultContext = {
 	setActiveSession: (name, status) => {},
 	addMoreResults: (moreResult, settingsResults) => {},
 	clearResults: () => {},
+	resetInputValues: () => {},
 };
 
 export const ApplicationContext = React.createContext(defaultContext);
@@ -99,6 +100,10 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 		setSettingsResults([]);
 	};
 
+	const resetInputValues = () => {
+		setPopGenVars(defaultContext.popGenVars);
+	};
+
 	return (
 		<ApplicationContext.Provider
 			value={{
@@ -111,6 +116,7 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 				setActiveSession,
 				setPopGenVar,
 				settingResults,
+				resetInputValues,
 			}}
 		>
 			{children}
