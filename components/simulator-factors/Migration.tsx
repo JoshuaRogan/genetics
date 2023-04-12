@@ -18,7 +18,12 @@ export default function Migration({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{migrationRate.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center', md: 'self-start' }}>
+				<Stack
+					direction={{ base: 'column', md: 'row' }}
+					spacing="24px"
+					mt={2}
+					align={{ base: 'center', md: 'self-start' }}
+				>
 					<Slider
 						onChange={onChange}
 						min={migrationRate.min}
@@ -39,7 +44,12 @@ export default function Migration({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{migrantAllelFreq.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center', md: 'self-start' }}>
+				<Stack
+					direction={{ base: 'column', md: 'row' }}
+					spacing="24px"
+					mt={2}
+					align={{ base: 'center', md: 'self-start' }}
+				>
 					<Slider
 						onChange={onChange}
 						min={migrantAllelFreq.min}

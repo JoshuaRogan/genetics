@@ -82,6 +82,7 @@ function SliderInput({
 				<SliderThumb boxSize={6}>{/* <Box color="tomato" as={} /> */}</SliderThumb>
 			</Slider>
 			<NumberInput
+				aria-label={`${label} number input`}
 				maxW="120px"
 				mr="2rem"
 				defaultValue={defaultValue || min}
