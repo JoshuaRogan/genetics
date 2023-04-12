@@ -82,7 +82,7 @@ function SliderInput({
 				<SliderThumb boxSize={6}>{/* <Box color="tomato" as={} /> */}</SliderThumb>
 			</Slider>
 			<NumberInput
-				maxW="100px"
+				maxW="120px"
 				mr="2rem"
 				defaultValue={defaultValue || min}
 				min={min}

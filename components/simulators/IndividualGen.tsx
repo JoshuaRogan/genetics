@@ -216,12 +216,12 @@ function Index() {
 					left="50%"
 					right="50%"
 					mx="-50vw"
-					py="40px"
 					w="100vw"
+					py={{ base: '20px', md: '40px' }}
 					px={{ base: '0', md: '30px' }}
 					bg={useColorModeValue('gray.100', ' gray.700')}
 				>
-					<Text as="h2" textStyle="subtitle" align="center">
+					<Text as="h2" textStyle="subtitle" align="center" mb={4}>
 						Simulator Settings
 					</Text>
 
