@@ -20,26 +20,31 @@ export default function Mutation({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{forwardMutation.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center', md: 'self-start' }}>
+				<Stack
+					direction={{ base: 'column', md: 'row' }}
+					spacing="24px"
+					mt={2}
+					align={{ base: 'center', md: 'self-start' }}
+				>
 					<Slider
-						onChange={onChange}
+						name={forwardMutation.name}
+						label={forwardMutation.sliderName}
+						defaultValue={forwardMutation.defaultValue}
 						min={forwardMutation.min}
 						max={forwardMutation.max}
 						step={forwardMutation.step}
-						defaultValue={forwardMutation.defaultValue}
-						label={forwardMutation.sliderName}
-						name={forwardMutation.name}
 						isActive={true}
+						onChange={onChange}
 					/>
 					<Slider
-						onChange={onChange}
+						name={fowardMutationEpon.name}
+						label={fowardMutationEpon.sliderName}
+						defaultValue={fowardMutationEpon.defaultValue}
 						min={fowardMutationEpon.min}
 						max={fowardMutationEpon.max}
 						step={fowardMutationEpon.step}
-						defaultValue={fowardMutationEpon.defaultValue}
-						label={fowardMutationEpon.sliderName}
-						name={fowardMutationEpon.name}
 						isActive={true}
+						onChange={onChange}
 					/>
 				</Stack>
 			</Grid>
@@ -51,7 +56,12 @@ export default function Mutation({ isActive, name, onChange }) {
 				>
 					<Text fontWeight="bold">{backwardMutation.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center', md: 'self-start' }}>
+				<Stack
+					direction={{ base: 'column', md: 'row' }}
+					spacing="24px"
+					mt={2}
+					align={{ base: 'center', md: 'self-start' }}
+				>
 					<Slider
 						onChange={onChange}
 						min={backwardMutation.min}
