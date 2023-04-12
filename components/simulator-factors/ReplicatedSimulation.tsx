@@ -31,7 +31,7 @@ export default function ReplicatedSimulation({ isActive, name, onChange }) {
 						label={populationSize.sliderName}
 						name={populationSize.name}
 						isActive={true}
-						isInfinite={true}
+						isInfinite={false}
 					/>
 					<Checkbox defaultChecked size="lg" colorScheme="red">
 						Infinite (∞)
