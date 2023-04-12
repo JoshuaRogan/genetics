@@ -33,7 +33,7 @@ export default function ReplicatedSimulation({ isActive, name, onChange }) {
 						isActive={true}
 						isInfinite={true}
 					/>
-					<Checkbox defaultChecked size="lg" colorScheme="red" isDisabled>
+					<Checkbox defaultChecked size="lg" colorScheme="red">
 						Infinite (∞)
 					</Checkbox>
 				</Stack>
