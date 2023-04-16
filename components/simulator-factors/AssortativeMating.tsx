@@ -4,7 +4,7 @@ import Slider from '../sliders/Slider';
 import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
 
-export default function AssortativeMating({ isActive, name, onChange }) {
+export default function AssortativeMating({ name, onChange }) {
 	const positiveAssortMatingFreq = getPopGenVariableByName(VALID_VARIABLES.ASSORT_MATING_POSITIVE_FREQ);
 
 	return (
@@ -24,14 +24,14 @@ export default function AssortativeMating({ isActive, name, onChange }) {
 					align={{ base: 'center', md: 'self-start' }}
 				>
 					<Slider
-						onChange={onChange}
+						name={positiveAssortMatingFreq.name}
+						label={positiveAssortMatingFreq.sliderName}
 						min={positiveAssortMatingFreq.min}
 						max={positiveAssortMatingFreq.max}
 						step={positiveAssortMatingFreq.step}
 						defaultValue={positiveAssortMatingFreq.defaultValue}
-						label={positiveAssortMatingFreq.sliderName}
-						name={positiveAssortMatingFreq.name}
 						isActive={true}
+						onChange={onChange}
 					/>
 				</Stack>
 			</Grid>

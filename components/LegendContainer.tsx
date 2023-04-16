@@ -242,7 +242,7 @@ function LegendManager({
 	isReplicated: boolean;
 }) {
 	const [isActive, setIsActive] = React.useState(true);
-	const simualtionNumber = index + 1;
+	const simulationNumber = index + 1;
 
 	const handleCheckboxChange = (event) => {
 		setIsActive(event.target.checked);
@@ -253,7 +253,7 @@ function LegendManager({
 			<LegendChecker>
 				<StyledCheckboxLabel>
 					<Checkbox checked={isActive} onChange={handleCheckboxChange} />
-					<span style={{ marginLeft: 8 }}>{`Simulation ${simualtionNumber}`}</span>
+					<span style={{ marginLeft: 8 }}>{`Simulation ${simulationNumber}`}</span>
 				</StyledCheckboxLabel>
 			</LegendChecker>
 			<LegendHider isActive={isActive}>
