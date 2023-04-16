@@ -129,7 +129,7 @@ function LegendSettings({ settings }: { settings: Settings }) {
 						<StyledCategoryItem>
 							Bottleneck Generations: {settings['gen-to-over-start']} to {settings['gen-to-over-end']}
 						</StyledCategoryItem>
-						<StyledCategoryItem>Bottleneck population size (NB) = {settings.Nb}</StyledCategoryItem>
+						<StyledCategoryItem>Bottleneck population size (NB) = {settings.BNb}</StyledCategoryItem>
 					</StyledListCategory>
 				</StyledListItem>
 			</StyledList>
