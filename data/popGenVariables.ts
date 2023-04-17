@@ -73,7 +73,7 @@ export interface Settings {
 	// Bottleneck
 	'gen-to-over-start': number;
 	'gen-to-over-end': number;
-	Nb: number;
+	BNb: number;
 }
 
 interface PopGenVariable {
@@ -349,8 +349,8 @@ export const popGenVariables = [
 	},
 	{
 		name: VALID_VARIABLES.BOTTLENECK_POPULATION_SIZE,
-		variable: 'Nb',
-		variableHTML: 'N<sub>B</sub>',
+		variable: 'BNb',
+		variableHTML: 'BN<sub>B</sub>',
 		section: VALID_SECTIONS.BOTTLENECK_GEN,
 		order: 0,
 		description:
@@ -365,6 +365,10 @@ export const popGenVariables = [
 
 export function getPopGenVariableByName(name: string): PopGenVariable {
 	return popGenVariables.find((popgenVar) => popgenVar.name === name);
+}
+
+export function getPopGenVariableByVariable(variable: string): PopGenVariable {
+	return popGenVariables.find((popgenVar) => popgenVar.variable === variable);
 }
 
 export function nameToVariable(name: string): string | null {

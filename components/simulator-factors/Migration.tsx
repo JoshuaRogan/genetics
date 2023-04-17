@@ -4,7 +4,7 @@ import Slider from '../sliders/Slider';
 import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
 
-export default function Migration({ isActive, name, onChange }) {
+export default function Migration({ name, onChange }) {
 	const migrationRate = getPopGenVariableByName(VALID_VARIABLES.MIGRATION_MIGRATION_RATE);
 	const migrantAllelFreq = getPopGenVariableByName(VALID_VARIABLES.MIGRATION_MIGRANT_ALLELE_FREQ);
 

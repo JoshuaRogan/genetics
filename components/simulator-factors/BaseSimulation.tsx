@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { getPopGenVariableByName, VALID_SECTIONS, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
@@ -6,10 +6,10 @@ import { Box, Checkbox, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
 
 export default function BaseSimulation({ isActive, name, onChange, isReplicated, toggleActiveSection }) {
-	const [isInfinitePopulation, setIsInfinitePopulation] = React.useState(false);
+	const [isInfinitePopulation, setIsInfinitePopulation] = useState(false);
 
-	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
 	const populationSize = getPopGenVariableByName(VALID_VARIABLES.POPULATION_SIZE);
+	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
 	const startingAlleleFreq = getPopGenVariableByName(VALID_VARIABLES.STARTING_ALLELE_FREQ);
 	const bulkSimulator = getPopGenVariableByName(VALID_VARIABLES.NUM_REPLICATED);
 

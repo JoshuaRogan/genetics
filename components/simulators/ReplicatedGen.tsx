@@ -21,6 +21,7 @@ import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
 import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
 import ReplicatedSimulation from '../simulator-factors/ReplicatedSimulation';
+import { LinkIcon } from '@chakra-ui/icons';
 
 const DebugTitle = styled.h2`
 	color: red;
@@ -36,7 +37,6 @@ function Index() {
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
 		context.setPopGenVar('number-replicated', 3);
-		context.setActiveSession(VALID_SECTIONS.FINITE, false);
 		listenToWorker((event) => {
 			context.addMoreResults(event, null); // Needs to be handled as it won't work if it's in the context
 		});
@@ -117,7 +117,7 @@ function Index() {
 				varName: 'population-bottleneck',
 				generationStart: popGenVars['gen-to-over-start'],
 				generationEnd: popGenVars['gen-to-over-end'],
-				newPopulationSize: popGenVars.Nb,
+				newPopulationSize: popGenVars.BNb,
 			});
 		}
 
@@ -188,13 +188,34 @@ function Index() {
 	};
 
 	const onChange = (name, newValue) => {
-		// console.debug(name, newValue);
 		context.setPopGenVar(name, newValue); // bubble up changes for the backend
 	};
 
 	const toggleActiveSection = (section) => {
 		const currentState = context.activeSections[section];
 		context.setActiveSession(section, !currentState);
+	};
+
+	const generateShareableLink = () => {
+		const url = new URL(window.location.href);
+		const params = new URLSearchParams(url.search);
+
+		for (const genVar in context.popGenVars) {
+			params.set(genVar, context.popGenVars[genVar]);
+		}
+
+		url.search = params.toString();
+
+		// copy link to clipboard
+		navigator.clipboard.writeText(url.toString());
+
+		toast({
+			title: 'Link copied to clipboard',
+			description: 'You can now share this link with others',
+			status: 'success',
+			duration: 4000,
+			isClosable: true,
+		});
 	};
 
 	return (
@@ -239,88 +260,83 @@ function Index() {
 						<ReplicatedSimulation
 							isActive={context.activeSections[VALID_SECTIONS.BASE]}
 							name={'Base Simulation Model'}
+							toggleActiveSection={toggleActiveSection}
 							onChange={onChange}
 						/>
 						<Box my={6}>
-							<Collapsible header={`Advanced Factors`} open={true}>
+							<Collapsible header={`Advanced Factors`} variant="solid" iconDirection="left">
 								{/* Selection Input */}
 								<FactorManager
-									isActive={true}
+									isFactorActive={true}
+									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.SELECTION]}
 									title="Selection"
 									toggleActive={() => toggleActiveSection(VALID_SECTIONS.SELECTION)}
 								>
-									<Selection
-										isActive={context.activeSections[VALID_SECTIONS.SELECTION]}
-										name={'Selection'}
-										onChange={onChange}
-									/>
+									<Selection name={'Selection'} onChange={onChange} />
 								</FactorManager>
 
 								{/* Mutation Input */}
 								<FactorManager
-									isActive={true}
+									isFactorActive={true}
+									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.MUTATION]}
 									title="Mutation"
 									toggleActive={() => toggleActiveSection(VALID_SECTIONS.MUTATION)}
 								>
-									<Mutation
-										isActive={context.activeSections[VALID_SECTIONS.MUTATION]}
-										name={'Mutation'}
-										onChange={onChange}
-									/>
+									<Mutation name={'Mutation'} onChange={onChange} />
 								</FactorManager>
 
 								{/* Migration Input */}
 								<FactorManager
-									isActive={true}
+									isFactorActive={true}
+									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.MIGRATION]}
 									title="Migration"
 									toggleActive={() => toggleActiveSection(VALID_SECTIONS.MIGRATION)}
 								>
-									<Migration
-										isActive={context.activeSections[VALID_SECTIONS.MIGRATION]}
-										name={'Migration'}
-										onChange={onChange}
-									/>
+									<Migration name={'Migration'} onChange={onChange} />
 								</FactorManager>
 
 								{/* Inbreeding Input */}
 								<FactorManager
-									isActive={true}
+									isFactorActive={true}
+									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.INBREEDING]}
 									title="Inbreeding"
 									toggleActive={() => toggleActiveSection(VALID_SECTIONS.INBREEDING)}
 								>
-									<Inbreeding
-										isActive={context.activeSections[VALID_SECTIONS.INBREEDING]}
-										name={'Inbreeding'}
-										onChange={onChange}
-									/>
+									<Inbreeding name={'Inbreeding'} onChange={onChange} />
 								</FactorManager>
 
 								{/* Assortative Mating Input */}
 								<FactorManager
-									isActive={true}
+									isFactorActive={true}
+									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
 									title="Assortative Mating"
 									toggleActive={() => toggleActiveSection(VALID_SECTIONS.ASSORT_MATING)}
 								>
-									<AssortativeMating
-										isActive={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
-										name={'Assortative Mating'}
-										onChange={onChange}
-									/>
+									<AssortativeMating name={'Assortative Mating'} onChange={onChange} />
 								</FactorManager>
 
 								{/* Population Bottleneck Input */}
 								<FactorManager
-									isActive={true}
+									isFactorActive={true}
+									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
 									title="Bottleneck Generations"
 									toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
 								>
-									<BottleNeckGenerations
-										isActive={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
-										name={'Bottleneck Generations'}
-										onChange={onChange}
-									/>
+									<BottleNeckGenerations name={'Bottleneck Generations'} onChange={onChange} />
 								</FactorManager>
 							</Collapsible>
+							<Button
+								display="flex"
+								mx="auto"
+								mt={4}
+								colorScheme="whatsapp"
+								variant="outline"
+								alignContent="center"
+								rightIcon={<LinkIcon />}
+								onClick={generateShareableLink}
+							>
+								Generate Shareable Link
+							</Button>
 						</Box>
 						<Text my={4}>
 							You can change the settings below, and then “Runs Simulation” to get a new simulation based on the latest
@@ -350,7 +366,9 @@ function Index() {
 					</InputContainer>
 				</Box>
 
-				<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+				<Box my={6}>
+					<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+				</Box>
 				<LegendContainer
 					alleleResults={context.alleleResults}
 					genoTypeResults={null}
@@ -359,7 +377,9 @@ function Index() {
 					isReplicated={true}
 				/>
 
-				<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+				<Box my={6}>
+					<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+				</Box>
 				<LegendContainer
 					alleleResults={context.alleleResults}
 					genoTypeResults={context.genoTypeResults}
@@ -400,6 +420,7 @@ function Index() {
 							}
 						}}
 						w={{ base: '80%', md: '30%' }}
+						marginTop={{ base: 2, md: 0 }}
 						variant={'primary'}
 					>
 						Reset Simulator

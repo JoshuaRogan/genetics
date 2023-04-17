@@ -4,7 +4,7 @@ import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVaria
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 import HelpContentWrapper from './HelpContentWrapper';
 
-export default function Mutation({ isActive, name, onChange }) {
+export default function Mutation({ name, onChange }) {
 	const forwardMutation = getPopGenVariableByName(VALID_VARIABLES.MUTATION_FORWARD_MUTATION);
 	const backwardMutation = getPopGenVariableByName(VALID_VARIABLES.MUTATION_BACKWARD_MUTATION);
 	const fowardMutationEpon = getPopGenVariableByName(VALID_VARIABLES.MUTATION_FORWARD_MUTATION_EXPONENT);

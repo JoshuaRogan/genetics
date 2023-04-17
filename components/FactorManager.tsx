@@ -2,14 +2,20 @@ import { Box, Checkbox, HStack, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 interface FactorManagerProps {
+	// This is the title of the factor, as seen on the dropdown collapsible component
 	title: string;
-	isActive: boolean;
+	// This is a boolean that is used to determine if the factor should be opened by default
+	factorShouldBeOpened: boolean;
+	// This is a boolean that is used to determine if the factor is disabled for input or not
+	isFactorActive: boolean;
+	// This is a function that is used to toggle the active state of the factor
 	toggleActive?: () => void;
+	// This is the children of the factor manager, which is the content of the collapsible component
 	children: React.ReactNode;
 }
 
-function FactorManager({ title, isActive, children, toggleActive }: FactorManagerProps) {
-	const [isOpen, setIsOpen] = React.useState(false);
+function FactorManager({ title, isFactorActive, factorShouldBeOpened, children, toggleActive }: FactorManagerProps) {
+	const [isOpen, setIsOpen] = React.useState(factorShouldBeOpened);
 
 	const handleCheckboxChange = (event) => {
 		setIsOpen(event.target.checked);
@@ -32,8 +38,14 @@ function FactorManager({ title, isActive, children, toggleActive }: FactorManage
 			}}
 		>
 			<HStack as="label" fontWeight={600} fontSize="18px" textTransform="uppercase">
-				<Checkbox checked={isActive} onChange={handleCheckboxChange} size="lg" colorScheme="red" />
-				<Text as="p" ml={8} cursor="pointer" userSelect="none">
+				<Checkbox
+					size="lg"
+					colorScheme="red"
+					defaultChecked={factorShouldBeOpened}
+					isDisabled={!isFactorActive}
+					onChange={handleCheckboxChange}
+				/>
+				<Text as="p" ml={8} cursor="pointer" userSelect="none" color={isFactorActive ? 'white' : 'gray.400'}>
 					{title}
 				</Text>
 			</HStack>

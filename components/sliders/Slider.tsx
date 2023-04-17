@@ -11,7 +11,9 @@ import {
 	SliderTrack,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { ApplicationContext } from '../../context/application';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
 
 const minLabelStyles = {
 	mt: '2',
@@ -48,7 +50,10 @@ function SliderInput({
 	isActive = true,
 	isInfinite = false,
 }: SliderInputProps) {
-	const [value, setValue] = useState(defaultValue || min);
+	const sliderVariable = getPopGenVariableByName(name).variable;
+	const context = useContext(ApplicationContext);
+	const [value, setValue] = useState(context.popGenVars[sliderVariable] || defaultValue || min);
+
 	const handleChange = (value) => {
 		setValue(value);
 		onChange(name, value);

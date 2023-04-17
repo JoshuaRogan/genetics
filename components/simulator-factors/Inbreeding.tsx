@@ -4,7 +4,7 @@ import Slider from '../sliders/Slider';
 import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
 
-export default function Inbreeding({ isActive, name, onChange }) {
+export default function Inbreeding({ name, onChange }) {
 	const inbreedingCoef = getPopGenVariableByName(VALID_VARIABLES.INBREEDING_COEFFICIENT);
 
 	return (
@@ -24,14 +24,14 @@ export default function Inbreeding({ isActive, name, onChange }) {
 					align={{ base: 'center', md: 'self-start' }}
 				>
 					<Slider
-						onChange={onChange}
+						name={inbreedingCoef.name}
+						label={inbreedingCoef.sliderName}
 						min={inbreedingCoef.min}
 						max={inbreedingCoef.max}
 						step={inbreedingCoef.step}
 						defaultValue={inbreedingCoef.defaultValue}
-						label={inbreedingCoef.sliderName}
-						name={inbreedingCoef.name}
 						isActive={true}
+						onChange={onChange}
 					/>
 				</Stack>
 			</Grid>

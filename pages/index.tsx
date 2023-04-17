@@ -3,7 +3,6 @@ import Link from 'next/link';
 import MainWrapper from '../components/MainWrapper';
 
 import HomeContainer from '../styles/home/HomeContainer';
-import StyledButtonLink from '../styles/home/StyledButtonLink';
 import { Button, ButtonGroup, Text } from '@chakra-ui/react';
 
 function HomePage() {
@@ -42,29 +41,20 @@ function HomePage() {
 					marginBottom={25}
 					spacing={0}
 				>
-					<Button as={Link} href="/individual" w={{ base: '80%', md: '30%' }} variant={'primary'}>
+					<Button as={Link} href="/individual" variant={'primary'} w={{ base: '70%', md: '40%' }}>
 						Go to Individual Simulations
 					</Button>
 
 					<Button
 						as={Link}
 						href="/replicated"
-						w={{ base: '80%', md: '30%' }}
-						marginTop={{ base: 2, md: 0 }}
 						variant={'primary'}
+						w={{ base: '70%', md: '40%' }}
+						marginTop={{ base: 2, md: 0 }}
 					>
 						Go to Replicated Simulations
 					</Button>
 				</ButtonGroup>
-
-				{/* <div>
-					<Link href="/individual">
-						<StyledButtonLink textColor={'#333333'}>Go to Individual Simulations</StyledButtonLink>
-					</Link>
-					<Link href="/replicated">
-						<StyledButtonLink textColor={'#333333'}>Go to Replicated Simulations</StyledButtonLink>
-					</Link>
-				</div> */}
 			</HomeContainer>
 		</MainWrapper>
 	);
