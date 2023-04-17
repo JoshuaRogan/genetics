@@ -73,7 +73,7 @@ export interface Settings {
 	// Bottleneck
 	'gen-to-over-start': number;
 	'gen-to-over-end': number;
-	Nb: number;
+	BNb: number;
 }
 
 interface PopGenVariable {
