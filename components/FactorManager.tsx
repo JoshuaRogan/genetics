@@ -1,4 +1,4 @@
-import { Box, Checkbox, HStack, Text } from '@chakra-ui/react';
+import { Box, Checkbox, HStack, Text, useColorModeValue } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 interface FactorManagerProps {
@@ -16,6 +16,8 @@ interface FactorManagerProps {
 
 function FactorManager({ title, isFactorActive, factorShouldBeOpened, children, toggleActive }: FactorManagerProps) {
 	const [isOpen, setIsOpen] = React.useState(factorShouldBeOpened);
+	const titleColor = useColorModeValue('gray.800', 'gray.300');
+	const titleColorDisabled = useColorModeValue('blackAlpha.600', 'gray.600');
 
 	const handleCheckboxChange = (event) => {
 		setIsOpen(event.target.checked);
@@ -40,12 +42,12 @@ function FactorManager({ title, isFactorActive, factorShouldBeOpened, children, 
 			<HStack as="label" fontWeight={600} fontSize="18px" textTransform="uppercase">
 				<Checkbox
 					size="lg"
-					colorScheme="red"
+					variant="redBox"
 					defaultChecked={factorShouldBeOpened}
 					isDisabled={!isFactorActive}
 					onChange={handleCheckboxChange}
 				/>
-				<Text as="p" ml={8} cursor="pointer" userSelect="none" color={isFactorActive ? 'white' : 'gray.400'}>
+				<Text as="p" ml={8} cursor="pointer" userSelect="none" color={isFactorActive ? titleColor : titleColorDisabled}>
 					{title}
 				</Text>
 			</HStack>

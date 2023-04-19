@@ -30,6 +30,7 @@ export const defaultContext = {
 	alleleResults: [],
 	genoTypeResults: [],
 	settingResults: [],
+	activeSectionsResults: [],
 	activeSections: Object.assign({}, defaultActiveSectionState),
 	setActiveSession: (name, status) => {},
 	addMoreResults: (moreResult, settingsResults) => {},
@@ -62,10 +63,11 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 	});
 
 	const [popGenVars, setPopGenVars] = React.useState(popGenValues || defaultContext.popGenVars);
-	const [activeSections, setActiveSessionState] = React.useState(defaultContext.activeSections);
+	const [activeSections, setActiveSectionState] = React.useState(defaultContext.activeSections);
 	const [alleleResults, setAlleleResults] = React.useState([]);
 	const [genoTypeResults, setGenoTypeResults] = React.useState([]);
 	const [settingResults, setSettingsResults] = React.useState([]);
+	const [activeSectionsResults, setActiveSectionsResults] = React.useState([]);
 	const [isBulkSimulator, setIsBulkSimulator] = React.useState(isBulkSimulatorProp ?? false);
 
 	const setPopGenVar = (varName, value) => {
@@ -82,7 +84,6 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 
 	const addMoreResults = (workerResults) => {
 		if (workerResults.type === 'results-allele') {
-			const alleleResults = workerResults.results;
 			setAlleleResults((previousAlleleResults) => {
 				return [...previousAlleleResults, workerResults.results];
 			});
@@ -90,6 +91,11 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 			setSettingsResults((previousSettingResults) => {
 				return [...previousSettingResults, { ...popGenVars }];
 			});
+
+			setActiveSectionsResults((previousActiveSectionsResults) => {
+				return [...previousActiveSectionsResults, workerResults.resultsSettings];
+			});
+
 			const genoTypeFreqs = workerResults.genotypeFreqs;
 			const A1A1 = genoTypeFreqs.AA;
 			const A1A2 = genoTypeFreqs.Aa;
@@ -101,13 +107,14 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 	const setActiveSession = (name, status) => {
 		const newVar = {};
 		newVar[name] = status;
-		setActiveSessionState({ ...activeSections, ...newVar });
+		setActiveSectionState({ ...activeSections, ...newVar });
 	};
 
 	const clearResults = () => {
 		setAlleleResults([]);
 		setGenoTypeResults([]);
 		setSettingsResults([]);
+		setActiveSectionsResults([]);
 	};
 
 	const resetInputValues = () => {
@@ -119,21 +126,22 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 	};
 
 	const resetDefaultActiveSections = () => {
-		setActiveSessionState(defaultActiveSectionState);
+		setActiveSectionState(defaultActiveSectionState);
 	};
 
 	return (
 		<ApplicationContext.Provider
 			value={{
 				activeSections,
-				addMoreResults,
-				alleleResults: alleleResults,
-				clearResults,
+				alleleResults,
+				settingResults,
 				genoTypeResults,
 				popGenVars,
+				activeSectionsResults,
+				addMoreResults,
+				clearResults,
 				setActiveSession,
 				setPopGenVar,
-				settingResults,
 				resetInputValues,
 				resetDefaultActiveSections,
 			}}

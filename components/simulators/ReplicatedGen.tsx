@@ -36,7 +36,9 @@ function Index() {
 
 	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
-		context.setPopGenVar('number-replicated', 3);
+		context.setPopGenVar('number-replicated', 1);
+		context.setActiveSession(VALID_SECTIONS.FINITE, false);
+
 		listenToWorker((event) => {
 			context.addMoreResults(event, null); // Needs to be handled as it won't work if it's in the context
 		});
@@ -68,6 +70,12 @@ function Index() {
 			populationSize: popGenVars.N,
 			numGenerations: context.popGenVars.t,
 			startingFrequency: context.popGenVars.p,
+		});
+
+		worker.postMessage({
+			cmd: 'setVar',
+			varName: 'simSettings',
+			vars: context.activeSections,
 		});
 
 		// Inverse of finite being active to enable infinite population
@@ -373,6 +381,7 @@ function Index() {
 					alleleResults={context.alleleResults}
 					genoTypeResults={null}
 					settings={context.settingResults}
+					enabledSettings={context.activeSectionsResults}
 					graphNumber={1}
 					isReplicated={true}
 				/>
@@ -384,6 +393,7 @@ function Index() {
 					alleleResults={context.alleleResults}
 					genoTypeResults={context.genoTypeResults}
 					settings={context.settingResults}
+					enabledSettings={context.activeSectionsResults}
 					graphNumber={2}
 					isReplicated={true}
 				/>

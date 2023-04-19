@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Settings } from '../data/popGenVariables';
-import Checkbox from './Checkbox';
+import { Settings, VALID_SECTIONS } from '../data/popGenVariables';
+
 import Collapsible from './Collapsible';
 import {
 	findAverageElimIndex,
@@ -10,6 +10,8 @@ import {
 	findNumOfFixations,
 	getAverageFinalFreq,
 } from '../utils/bulkStats';
+import { ApplicationContext } from '../context/application';
+import { Checkbox, Text } from '@chakra-ui/react';
 
 const StyledListCategory = styled.ul`
 	display: flex;
@@ -68,7 +70,9 @@ const StyledLegendContainer = styled.div`
 `;
 
 // TODO: Extract this into a separate component
-function LegendSettings({ settings }: { settings: Settings }) {
+function LegendSettings({ settings, enabledSettings }: { settings: Settings; enabledSettings: any }) {
+	const context = useContext(ApplicationContext);
+
 	return (
 		<StyledLegendContainer>
 			<StyledSubtitle>Settings</StyledSubtitle>
@@ -79,59 +83,79 @@ function LegendSettings({ settings }: { settings: Settings }) {
 					</StyledListCategory>
 				</StyledListItem>
 
-				<StyledListItem>
-					<StyledListCategory>
-						<StyledCategoryItem>Generations (t) = {settings.t} </StyledCategoryItem>
-						<StyledCategoryItem>Population Size (N) = {settings.N} </StyledCategoryItem>
-						<StyledCategoryItem>
-							Initial frequency of Allele A (p<sub>0</sub>) = {settings.p}{' '}
-						</StyledCategoryItem>
-					</StyledListCategory>
-				</StyledListItem>
-				<StyledListItem>
-					<StyledListCategory>
-						<StyledCategoryItem>Fitness coefficient for A1A1 (WA1A1) = {settings.WAA}</StyledCategoryItem>
-						<StyledCategoryItem>Fitness coefficient for A1A2 (WA1A2) = {settings.WAa}</StyledCategoryItem>
-						<StyledCategoryItem>Fitness coefficient for A2A2 (WA2A2) = {settings.Waa}</StyledCategoryItem>
-					</StyledListCategory>
-				</StyledListItem>
-				<StyledListItem>
-					<StyledListCategory>
-						<StyledCategoryItem>
-							Forward mutation rate (μ) = {settings.mu}*10<sup>{settings['mu-exp']}</sup>
-						</StyledCategoryItem>
-						<StyledCategoryItem>
-							Reverse mutation rate (v) = {settings.nu}*10<sup>{settings['nu-exp']}</sup>
-						</StyledCategoryItem>
-					</StyledListCategory>
-				</StyledListItem>
-				<StyledListItem>
-					<StyledListCategory>
-						<StyledCategoryItem> Migrant rate (m) = {settings.m}</StyledCategoryItem>
-						<StyledCategoryItem> Migrant allele frequency (pM) = {settings.pm}</StyledCategoryItem>
-					</StyledListCategory>
-				</StyledListItem>
-				<StyledListItem>
-					<StyledListCategory>
-						<StyledCategoryItem>Inbreeding coefficient (F) = {settings.F} </StyledCategoryItem>
-					</StyledListCategory>
-				</StyledListItem>
-				<StyledListItem>
-					<StyledListCategory>
-						<StyledCategoryItem>
-							{' '}
-							Positive assortative mating frequency (α) = {settings.assortMating}{' '}
-						</StyledCategoryItem>
-					</StyledListCategory>
-				</StyledListItem>
-				<StyledListItem>
-					<StyledListCategory>
-						<StyledCategoryItem>
-							Bottleneck Generations: {settings['gen-to-over-start']} to {settings['gen-to-over-end']}
-						</StyledCategoryItem>
-						<StyledCategoryItem>Bottleneck population size (NB) = {settings.BNb}</StyledCategoryItem>
-					</StyledListCategory>
-				</StyledListItem>
+				{enabledSettings[VALID_SECTIONS.BASE] && (
+					<StyledListItem>
+						<StyledListCategory>
+							<StyledCategoryItem>Generations (t) = {settings.t} </StyledCategoryItem>
+							<StyledCategoryItem>Population Size (N) = {settings.N} </StyledCategoryItem>
+							<StyledCategoryItem>
+								Initial frequency of Allele A (p<sub>0</sub>) = {settings.p}{' '}
+							</StyledCategoryItem>
+						</StyledListCategory>
+					</StyledListItem>
+				)}
+
+				{enabledSettings[VALID_SECTIONS.SELECTION] && (
+					<StyledListItem>
+						<StyledListCategory>
+							<StyledCategoryItem>Fitness coefficient for A1A1 (WA1A1) = {settings.WAA}</StyledCategoryItem>
+							<StyledCategoryItem>Fitness coefficient for A1A2 (WA1A2) = {settings.WAa}</StyledCategoryItem>
+							<StyledCategoryItem>Fitness coefficient for A2A2 (WA2A2) = {settings.Waa}</StyledCategoryItem>
+						</StyledListCategory>
+					</StyledListItem>
+				)}
+
+				{enabledSettings[VALID_SECTIONS.MUTATION] && (
+					<StyledListItem>
+						<StyledListCategory>
+							<StyledCategoryItem>
+								Forward mutation rate (μ) = {settings.mu}*10<sup>{settings['mu-exp']}</sup>
+							</StyledCategoryItem>
+							<StyledCategoryItem>
+								Reverse mutation rate (v) = {settings.nu}*10<sup>{settings['nu-exp']}</sup>
+							</StyledCategoryItem>
+						</StyledListCategory>
+					</StyledListItem>
+				)}
+
+				{enabledSettings[VALID_SECTIONS.MIGRATION] && (
+					<StyledListItem>
+						<StyledListCategory>
+							<StyledCategoryItem> Migrant rate (m) = {settings.m}</StyledCategoryItem>
+							<StyledCategoryItem> Migrant allele frequency (pM) = {settings.pm}</StyledCategoryItem>
+						</StyledListCategory>
+					</StyledListItem>
+				)}
+
+				{enabledSettings[VALID_SECTIONS.INBREEDING] && (
+					<StyledListItem>
+						<StyledListCategory>
+							<StyledCategoryItem>Inbreeding coefficient (F) = {settings.F} </StyledCategoryItem>
+						</StyledListCategory>
+					</StyledListItem>
+				)}
+
+				{enabledSettings[VALID_SECTIONS.ASSORT_MATING] && (
+					<StyledListItem>
+						<StyledListCategory>
+							<StyledCategoryItem>
+								{' '}
+								Positive assortative mating frequency (α) = {settings.assortMating}{' '}
+							</StyledCategoryItem>
+						</StyledListCategory>
+					</StyledListItem>
+				)}
+
+				{enabledSettings[VALID_SECTIONS.BOTTLENECK_GEN] && (
+					<StyledListItem>
+						<StyledListCategory>
+							<StyledCategoryItem>
+								Bottleneck Generations: {settings['gen-to-over-start']} to {settings['gen-to-over-end']}
+							</StyledCategoryItem>
+							<StyledCategoryItem>Bottleneck population size (NB) = {settings.BNb}</StyledCategoryItem>
+						</StyledListCategory>
+					</StyledListItem>
+				)}
 			</StyledList>
 		</StyledLegendContainer>
 	);
@@ -210,11 +234,12 @@ const LegendHider = styled.div`
 const LegendChecker = styled.div``;
 
 const StyledCheckboxLabel = styled.label`
+	display: flex;
+	color: #2f80ed;
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 20px;
 	letter-spacing: 0.3px;
-	color: #2f80ed;
 	text-transform: uppercase;
 `;
 
@@ -232,17 +257,19 @@ function LegendManager({
 	settings,
 	result,
 	index,
+	enabledSettings,
 	isReplicated,
 	results,
 }: {
 	settings: Settings;
 	result: number[];
 	results: number[][];
+	enabledSettings: any;
 	index: number;
 	isReplicated: boolean;
 }) {
 	const [isActive, setIsActive] = React.useState(true);
-	const simulationNumber = index + 1;
+	const simualtionNumber = index + 1;
 
 	const handleCheckboxChange = (event) => {
 		setIsActive(event.target.checked);
@@ -252,22 +279,30 @@ function LegendManager({
 		<StyledLegendManagerWrapper key={index}>
 			<LegendChecker>
 				<StyledCheckboxLabel>
-					<Checkbox checked={isActive} onChange={handleCheckboxChange} />
-					<span style={{ marginLeft: 8 }}>{`Simulation ${simulationNumber}`}</span>
+					<Checkbox variant="redBox" isChecked={isActive} onChange={handleCheckboxChange} />
+					<Text as="p" style={{ marginLeft: 8 }}>{`Simulation #${simualtionNumber}`}</Text>
 				</StyledCheckboxLabel>
 			</LegendChecker>
 			<LegendHider isActive={isActive}>
-				<LegendSettings settings={settings} />
+				<LegendSettings settings={settings} enabledSettings={enabledSettings} />
 				<LegendStats result={result} />
 			</LegendHider>
 		</StyledLegendManagerWrapper>
 	);
 }
 
-function BulkLegend({ settings, results }: { settings: Settings; results: number[][] }) {
+function BulkLegend({
+	settings,
+	results,
+	enabledSettings,
+}: {
+	settings: Settings;
+	results: number[][];
+	enabledSettings: any;
+}) {
 	return (
 		<>
-			<LegendSettings settings={settings} />
+			<LegendSettings settings={settings} enabledSettings={enabledSettings} />
 			<BulkLegendStats results={results} />
 		</>
 	);
@@ -278,9 +313,11 @@ function AlleleLegend({
 	results,
 	graphNumber,
 	isReplicated,
+	enabledSettings,
 }: {
 	settings: Settings;
 	results: number[][];
+	enabledSettings: any;
 	graphNumber: number;
 	isReplicated: boolean;
 }) {
@@ -288,7 +325,9 @@ function AlleleLegend({
 	return (
 		<div>
 			<Collapsible header={`Legend for Graph ${graphNumber}`}>
-				{isReplicated ? <BulkLegend settings={settings[0]} results={results} /> : null}
+				{isReplicated ? (
+					<BulkLegend settings={settings[0]} results={results} enabledSettings={enabledSettings[0]} />
+				) : null}
 				{!isReplicated &&
 					results.map(function (result, index) {
 						return (
@@ -298,6 +337,7 @@ function AlleleLegend({
 								result={result}
 								results={results}
 								settings={settings[index]}
+								enabledSettings={enabledSettings[index]}
 								isReplicated={isReplicated}
 							/>
 						);
@@ -323,7 +363,14 @@ function GenoTypeLegend({ settings, results, isReplicated }) {
 	);
 }
 
-export default function LegendContainer({ alleleResults, genoTypeResults, settings, graphNumber, isReplicated }) {
+export default function LegendContainer({
+	alleleResults,
+	genoTypeResults,
+	settings,
+	enabledSettings,
+	graphNumber,
+	isReplicated,
+}) {
 	const isGenoType = genoTypeResults;
 
 	if (alleleResults.length === 0) {
@@ -336,6 +383,7 @@ export default function LegendContainer({ alleleResults, genoTypeResults, settin
 				<AlleleLegend
 					settings={settings}
 					results={alleleResults}
+					enabledSettings={enabledSettings}
 					graphNumber={graphNumber}
 					isReplicated={isReplicated}
 				/>

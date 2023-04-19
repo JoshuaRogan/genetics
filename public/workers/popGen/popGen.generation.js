@@ -32,6 +32,7 @@ popGen.generations = function (numGenerations, populationSize, startAlleleFreq) 
 
 	this.startTime = (new Date).getTime();
 	this.finishTime = null;
+	this.simulationSettings = null;
 
 	//Update the current allele frequency
 	this.setCurrentAlleleFre = function (newFreq) {
@@ -42,6 +43,14 @@ popGen.generations = function (numGenerations, populationSize, startAlleleFreq) 
 	// Activate infinite population size
 	this.setInfinitePopulation = function () {
 		this.infinitePopulationSize = true;
+	}
+
+	this.setSimulationSettings = function (settings) {
+		this.simulationSettings = settings;
+	}
+
+	this.getSimulationSettings = function () {
+		return this.simulationSettings;
 	}
 
 	this.getInputs = function () {
@@ -75,7 +84,6 @@ popGen.generations = function (numGenerations, populationSize, startAlleleFreq) 
 	this.waa = 1.0;
 
 	this.setFitnessCoefficients = function (wAA, wAa, waa) {
-		console.log('setting fitness', wAA, wAa, waa);
 		this.fitnessCoefficients = true;
 		this.wAA = wAA;
 		this.wAa = wAa;
@@ -257,7 +265,6 @@ popGen.generations = function (numGenerations, populationSize, startAlleleFreq) 
 
 		p = currentPopulation ? currentPopulation.currentAlleleFre : this.currentAlleleFre;
 		if (this.inbreeding && this.possitiveAssortativeMating) {
-			console.log('both')
 			var f = this.inbreedingCoefficient;
 
 			var d = this.d_assortativeMating;
@@ -269,14 +276,12 @@ popGen.generations = function (numGenerations, populationSize, startAlleleFreq) 
 			this.aa.push(r + f * p * (1 - p));
 		}
 		else if (generation.inbreeding) { // Just inbreeding
-			console.log('inbreed')
 			var f = this.inbreedingCoefficient;
 			this.AA.push(Math.pow(p, 2) + f * p * (1 - p));
 			this.Aa.push((2 * p) * (1 - p) - 2 * f * p * (1 - p));
 			this.aa.push(Math.pow((1 - p), 2) + f * p * (1 - p));
 		}
 		else if (generation.possitiveAssortativeMating) { // Just assortative mating
-			console.log('asort')
 			var d = this.d_assortativeMating;
 			var h = this.h_assortativeMating;
 			var r = this.r_assortativeMating;

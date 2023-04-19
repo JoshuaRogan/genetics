@@ -63,6 +63,12 @@ function Index() {
 			startingFrequency: context.popGenVars.p,
 		});
 
+		worker.postMessage({
+			cmd: 'setVar',
+			varName: 'simSettings',
+			vars: context.activeSections,
+		});
+
 		// Inverse of finite being active to enable infinite population
 		if (!context.activeSections[VALID_SECTIONS.FINITE]) {
 			worker.postMessage({ cmd: 'setVar', varName: 'inifinite-pop' });
@@ -376,6 +382,7 @@ function Index() {
 					alleleResults={context.alleleResults}
 					genoTypeResults={null}
 					settings={context.settingResults}
+					enabledSettings={context.activeSectionsResults}
 					graphNumber={1}
 					isReplicated={false}
 				/>
@@ -387,6 +394,7 @@ function Index() {
 					alleleResults={context.alleleResults}
 					genoTypeResults={context.genoTypeResults}
 					settings={context.settingResults}
+					enabledSettings={context.activeSectionsResults}
 					graphNumber={2}
 					isReplicated={false}
 				/>

@@ -72,11 +72,13 @@ function setVar(data) {
 		case 'population-bottleneck':
 			generation.setpopulationBottleneck(data.generationStart, data.generationEnd, data.newPopulationSize);
 			break;
+		case 'simSettings':
+			generation.setSimulationSettings(data.vars);
+			break;
+
 		default:
 			postMessage("Variable Name not found");
 	}
-
-	// console.log("Changed Value", generation);
 }
 
 
@@ -86,7 +88,7 @@ function setVar(data) {
  */
 function run() {
 
-	postMessage(JSON.stringify({ status: "running"}));
+	postMessage(JSON.stringify({ status: "running" }));
 	if (checkGeneration()) {
 		if (!genotypeGraph) {
 			var settings_short = generation.getInputs();
@@ -102,7 +104,7 @@ function run() {
 			genotypeRun();
 		}
 	}
-	postMessage(JSON.stringify({ status: "complete"}));
+	postMessage(JSON.stringify({ status: "complete" }));
 }
 
 /**
@@ -194,7 +196,15 @@ function genotypeRun(randomNumberArray) {
  *
  */
 function outputResultsAllele(frequencies, genoTypeFreq) {
-	postMessage('{"type":"results-allele", "results":' + JSON.stringify(frequencies) + ', "genotypeFreqs": ' + JSON.stringify(genoTypeFreq || '{}') + '}');
+
+	const alleleResults = {
+		type: "results-allele",
+		results: frequencies,
+		genotypeFreqs: genoTypeFreq || '{}',
+		resultsSettings: generation.getSimulationSettings(),
+	};
+
+	postMessage(JSON.stringify(alleleResults));
 }
 
 /**
@@ -202,8 +212,16 @@ function outputResultsAllele(frequencies, genoTypeFreq) {
  *
  */
 function outputResultsGenotype(AA, Aa, aa) {
-	//postMessage('{"type":"results-genotype", "AA":' + JSON.stringify(AA) +  '}');
-	postMessage('{"type":"results-genotype", "AA":' + JSON.stringify(AA) + ', "Aa":' + JSON.stringify(Aa) + ', "aa":' + JSON.stringify(aa) + '}')
+
+	const genoTypeResult = {
+		type: "results-genotype",
+		AA,
+		Aa,
+		aa,
+		resultsSettings: generation.getSimulationSettings(),
+	};
+
+	postMessage(JSON.stringify(genoTypeResult));
 }
 
 
@@ -213,7 +231,13 @@ function outputResultsGenotype(AA, Aa, aa) {
  */
 function checkGeneration() {
 	if (generation == null) {
-		postMessage('{"type": "error", "message": "You must initalize the generation first"}');
+
+		const error = {
+			type: "error",
+			message: "You must initalize the generation first",
+		};
+
+		postMessage(JSON.stringify(error));
 		return false;
 	}
 
