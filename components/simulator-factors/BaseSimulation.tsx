@@ -41,10 +41,10 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 						onChange={onChange}
 					/>
 					<Checkbox
+						variant="redBox"
 						role="checkbox"
 						aria-label="Changes population size to infinite for the current simulation"
 						size="lg"
-						colorScheme="red"
 						onChange={onInfinitePopulationChecked}
 					>
 						Infinite (∞)

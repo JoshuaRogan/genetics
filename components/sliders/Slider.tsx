@@ -97,6 +97,11 @@ function SliderInput({
 				value={value}
 				onChange={handleChange}
 				isDisabled={!isActive || isInfinite}
+				sx={{
+					'& input': {
+						borderColor: useColorModeValue('gray.500', 'whitesmoke'),
+					},
+				}}
 			>
 				<NumberInputField />
 				<NumberInputStepper>
