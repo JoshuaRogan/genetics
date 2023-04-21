@@ -5,6 +5,8 @@ import HighchartsReact from 'highcharts-react-official';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsExportData from 'highcharts/modules/export-data';
 import HighchartsAccessibility from 'highcharts/modules/accessibility';
+import { useColorMode } from '@chakra-ui/react';
+import { darkTheme, lightTheme } from '../theme/highchartTheme';
 
 if (typeof Highcharts === 'object') {
 	HighchartsExporting(Highcharts);
@@ -29,12 +31,13 @@ function createLinesFromArray(lines, isGeno = false) {
 
 function createOptions(lines, title) {
 	const isGenoType = title.toLowerCase().includes('genotype');
-	// console.log('lines updating', lines.length, lines);
+
 	return {
 		title: {
 			text: title ?? 'Population Genetics Simulation',
 		},
 		chart: {
+			styledMode: false,
 			zoomType: 'xy',
 			resetZoomButton: {
 				position: {
@@ -69,14 +72,17 @@ function createOptions(lines, title) {
 	};
 }
 
-const App = ({ lines, title }) => {
-	// UseEffect / State here for the lines to prevent constant re-rendering
+const HighchartWrapper = ({ lines, title }) => {
+	const { colorMode } = useColorMode();
+	const theme = colorMode === 'light' ? lightTheme : darkTheme;
+
+	Highcharts.setOptions(theme);
 
 	return (
 		<HighChartLoader aria-label="Graph displaying the results of the Simulator" role="figure">
-			<HighchartsReact highcharts={Highcharts} options={createOptions(lines, title)} />
+			<HighchartsReact key={colorMode} highcharts={Highcharts} options={createOptions(lines, title)} />
 		</HighChartLoader>
 	);
 };
 
-export default App;
+export default HighchartWrapper;
