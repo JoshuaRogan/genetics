@@ -8,7 +8,7 @@ const ButtonStyle: ComponentStyleConfig = {
 	// styles for different visual variants ("outline", "solid")
 	variants: {
 		primary: {
-			bg: 'buttonPrimary',
+			bg: 'gray.900',
 			color: 'white',
 			_hover: {
 				bg: 'blue.500',
