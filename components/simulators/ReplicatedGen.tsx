@@ -1,31 +1,25 @@
-import LegendContainer from '../LegendContainer';
+import React, { useState } from 'react';
+import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
+import { LinkIcon } from '@chakra-ui/icons';
+
+import ReplicatedSimulation from '../simulator-factors/ReplicatedSimulation';
+import Selection from '../simulator-factors/Selection';
+import Mutation from '../simulator-factors/Mutation';
 import AssortativeMating from '../simulator-factors/AssortativeMating';
-import BottleNeckGenerations from '../simulator-factors/BottleNeckGenerations';
 import Inbreeding from '../simulator-factors/Inbreeding';
 import Migration from '../simulator-factors/Migration';
+import BottleNeckGenerations from '../simulator-factors/BottleNeckGenerations';
+
 import { VALID_SECTIONS } from '../../data/popGenVariables';
 import { DebugHeader, Pre } from '../../utils/debugging';
 import { getWorker, listenToWorker } from '../../workers/generationWorker';
 import { ApplicationContext } from '../../context/application';
-import BaseSimulation from '../simulator-factors/BaseSimulation';
-import Selection from '../simulator-factors/Selection';
-import Mutation from '../simulator-factors/Mutation';
-import styled from 'styled-components';
-import React, { useEffect, useState } from 'react';
+
+import LegendContainer from '../LegendContainer';
 import MainWrapper from '../MainWrapper';
 import HighChart from '../highChart';
-
-import SimulatorContainer from '../../styles/simulators/SimulatorContainer';
-import InputContainer from '../../styles/simulators/InputContainer';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
-import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
-import ReplicatedSimulation from '../simulator-factors/ReplicatedSimulation';
-import { LinkIcon } from '@chakra-ui/icons';
-
-const DebugTitle = styled.h2`
-	color: red;
-`;
 
 function Index() {
 	const context = React.useContext(ApplicationContext);
@@ -228,7 +222,12 @@ function Index() {
 
 	return (
 		<MainWrapper>
-			<SimulatorContainer role="main">
+			<Box
+				as="main"
+				padding={{ base: '0 15px 15px 15px', sm: '0 30px 30px 30px', md: '0' }}
+				maxWidth={{ md: '90%', lg: '80%', xl: '70%' }}
+				mx={{ sm: 'auto' }}
+			>
 				<Box as="section" m={'40px 0'}>
 					<Text textStyle="title" align="center">
 						Replicated Simulations
@@ -264,7 +263,14 @@ function Index() {
 						Simulator Settings
 					</Text>
 
-					<InputContainer key={`reset-key-${resetValue}`} role="form" aria-label="All simulator inputs">
+					<Box
+						key={`reset-key-${resetValue}`}
+						as="div"
+						role="form"
+						aria-label="All simulator inputs"
+						padding={{ base: '0 15px 15px 15px', sm: '0 30px 30px 30px', md: '0' }}
+						maxWidth={{ md: '90%', lg: '80%', xl: '70%' }}
+					>
 						<ReplicatedSimulation
 							isActive={context.activeSections[VALID_SECTIONS.BASE]}
 							name={'Base Simulation Model'}
@@ -371,7 +377,7 @@ function Index() {
 								Run Simulation
 							</Button>
 						</ButtonGroup>
-					</InputContainer>
+					</Box>
 				</Box>
 
 				<Box my={6}>
@@ -438,7 +444,9 @@ function Index() {
 				</ButtonGroup>
 
 				<Pre role="figure" aria-label="Debugging information">
-					<DebugTitle>Debug Information + Content for Legend:</DebugTitle>
+					<Box as="h2" color={'red'}>
+						Debug Information + Content for Legend:
+					</Box>
 					<DebugHeader>Current Input Values</DebugHeader>
 					{JSON.stringify(context.popGenVars)} <br />
 					{JSON.stringify(context.activeSections)}
@@ -449,7 +457,7 @@ function Index() {
 					<DebugHeader>Legend Data</DebugHeader>
 					{JSON.stringify(context.settingResults, null, 2)}
 				</Pre>
-			</SimulatorContainer>
+			</Box>
 		</MainWrapper>
 	);
 }

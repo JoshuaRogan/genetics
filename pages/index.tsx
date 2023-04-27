@@ -2,27 +2,34 @@ import Link from 'next/link';
 
 import MainWrapper from '../components/MainWrapper';
 
-import HomeContainer from '../styles/home/HomeContainer';
-import { Button, ButtonGroup, Text } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Text } from '@chakra-ui/react';
 
 function HomePage() {
 	return (
 		<MainWrapper>
-			<HomeContainer>
-				<Text color="text" fontWeight={'extrabold'} fontSize={{ base: '24px', md: '40px', lg: '56px' }} align="center">
+			<Box as="section" p={7} maxWidth={{ base: '550px', md: '786px', lg: '860px', xl: '1080px' }} mx={{ sm: 'auto' }}>
+				<Text
+					color="text"
+					fontWeight={'extrabold'}
+					fontSize={{ base: '24px', md: '40px', lg: '56px' }}
+					align="center"
+					padding={{ base: 2, md: 0 }}
+				>
 					Population Genetics Explorer
 				</Text>
-				<Text color="text">What is allele frequency? What is genotype frequency?</Text>
-				<Text color="text">
+				<Text color="text" marginY={{ base: 3, md: 4 }}>
+					What is allele frequency? What is genotype frequency?
+				</Text>
+				<Text color="text" marginY={{ base: 3, md: 4 }}>
 					Why does it matter? What do scientists use them for? Give some relatable examples. possibly use pictures.
 				</Text>
-				<Text color="text">
+				<Text color="text" marginY={{ base: 3, md: 4 }}>
 					What’s H-W equilibrium? What are the assumption for H-W equilibrium. (Do we need to introduce the equation?)
 					How does the allele frequency look when it’s at a H-W equilibrium for 100 generation (static image)? How does
 					the genotype frequency look like when it’s at a H-W equilibrium for 100 generation (static image) maybe they
 					can toggle between the two images.
 				</Text>
-				<Text color="text" fontWeight="bold">
+				<Text color="text" fontWeight="bold" marginY={{ base: 3, md: 6 }}>
 					Lead to the simulator
 				</Text>
 				<Text color="text">
@@ -55,7 +62,7 @@ function HomePage() {
 						Go to Replicated Simulations
 					</Button>
 				</ButtonGroup>
-			</HomeContainer>
+			</Box>
 		</MainWrapper>
 	);
 }

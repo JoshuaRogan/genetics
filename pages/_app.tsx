@@ -1,8 +1,9 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { useEffect, useState } from 'react';
-import { darkTheme, lightTheme } from '../styles/theme2';
 import theme from '../theme';
 import { ChakraProvider } from '@chakra-ui/react';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -48,17 +49,19 @@ const GlobalStyle = createGlobalStyle`
 
 export default function App({ Component, pageProps }) {
 	const [isMounted, setIsMounted] = useState(false);
+
 	useEffect(() => {
 		setIsMounted(true);
 	}, []);
+
 	return (
 		<>
-			<ThemeProvider theme={lightTheme}>
+			<Provider store={store}>
 				<ChakraProvider theme={theme}>
 					<GlobalStyle />
 					{isMounted && <Component {...pageProps} />}
 				</ChakraProvider>
-			</ThemeProvider>
+			</Provider>
 		</>
 	);
 }

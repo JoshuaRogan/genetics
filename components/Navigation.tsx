@@ -16,7 +16,7 @@ import {
 	IconButton,
 } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
-import NavLink from '../styles/navigation/NavLink';
+import NavLink from './NavLink';
 
 export default function Navigation() {
 	const { colorMode, toggleColorMode } = useColorMode();

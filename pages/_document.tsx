@@ -44,7 +44,6 @@ export default class MyDocument extends Document {
 					<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
 				</Head>
 				<body>
-					{/* 👇 Here's the script */}
 					<ColorModeScript initialColorMode={theme.config.initialColorMode} />
 					<Main />
 					<NextScript />
