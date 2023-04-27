@@ -22,11 +22,6 @@ const StyledListCategory = styled.ul`
 	align-items: center;
 	border-top: 1px dashed #708690;
 	padding-inline-start: 20px;
-
-	/* @media ${(props) => props.theme._mq.MOBILE} {
-		flex-direction: column;
-		align-items: flex-start;
-	} */
 `;
 
 const StyledListItem = styled.li`
@@ -43,10 +38,6 @@ const StyledCategoryItem = styled.li`
 	padding-right: 20px;
 	padding: 5px 0;
 	list-style-position: inside;
-
-	/* @media ${(props) => props.theme._mq.MOBILE} {
-		margin-right: 0;
-	} */
 `;
 
 const StyledList = styled.ul`

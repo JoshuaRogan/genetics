@@ -262,6 +262,7 @@ function Index() {
 						aria-label="All simulator inputs"
 						padding={{ base: '0 15px 15px 15px', sm: '0 30px 30px 30px', md: '0' }}
 						maxWidth={{ md: '90%', lg: '80%', xl: '70%' }}
+						marginX={{ sm: 'auto' }}
 					>
 						<BaseSimulation
 							isActive={context.activeSections[VALID_SECTIONS.BASE]}
