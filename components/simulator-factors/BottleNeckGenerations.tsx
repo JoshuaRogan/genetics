@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
+import HelpContentWrapper from './HelpContentWrapper';
 import Slider from '../sliders/Slider';
 import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
-import HelpContentWrapper from './HelpContentWrapper';
 
 export default function BottleneckGenerations({ name, onChange }) {
 	const generationToOverrideStart = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_START);
@@ -27,14 +27,14 @@ export default function BottleneckGenerations({ name, onChange }) {
 					align={{ base: 'center', md: 'self-start' }}
 				>
 					<Slider
-						onChange={onChange}
+						name={generationToOverrideStart.name}
+						label={generationToOverrideStart.sliderName}
+						defaultValue={generationToOverrideStart.defaultValue}
 						min={generationToOverrideStart.min}
 						max={generationToOverrideStart.max}
 						step={generationToOverrideStart.step}
-						defaultValue={generationToOverrideStart.defaultValue}
-						label={generationToOverrideStart.sliderName}
-						name={generationToOverrideStart.name}
 						isActive={true}
+						onChange={onChange}
 					/>
 					<Slider
 						onChange={onChange}
