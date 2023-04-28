@@ -1,10 +1,10 @@
 import React from 'react';
-
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
-import Slider from '../sliders/Slider';
-import { getPopGenVariableByName } from '../../data/popGenVariables';
-import HelpContentWrapper from './HelpContentWrapper';
+
 import { VALID_VARIABLES } from '../../types';
+import Slider from '../sliders/Slider';
+import HelpContentWrapper from './HelpContentWrapper';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
 
 export default function BottleneckGenerations() {
 	const generationToOverrideStart = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_START);

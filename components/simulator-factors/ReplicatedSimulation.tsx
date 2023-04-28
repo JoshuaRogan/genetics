@@ -6,17 +6,10 @@ import { Box, Checkbox, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
 
 export default function ReplicatedSimulation({ isActive, name, onChange, toggleActiveSection }) {
-	const [isInfinitePopulation, setIsInfinitePopulation] = useState(true);
-
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
 	const populationSize = getPopGenVariableByName(VALID_VARIABLES.POPULATION_SIZE);
 	const startingAlleleFreq = getPopGenVariableByName(VALID_VARIABLES.STARTING_ALLELE_FREQ);
 	const numPopulation = getPopGenVariableByName(VALID_VARIABLES.NUM_OF_POPULATIONS);
-
-	const onInfinitePopulationChecked = (e) => {
-		setIsInfinitePopulation(e.target.checked);
-		toggleActiveSection(VALID_SECTIONS.FINITE);
-	};
 
 	return (
 		<Box aria-label={name}>
@@ -37,19 +30,9 @@ export default function ReplicatedSimulation({ isActive, name, onChange, toggleA
 						step={populationSize.step}
 						defaultValue={populationSize.max}
 						isActive={true}
-						isInfinite={true}
+						isInfinite={false}
 						onChange={onChange}
 					/>
-					<Checkbox
-						variant="redBox"
-						aria-label="Changes population size to infinite for the current simulation"
-						size="lg"
-						isChecked={true}
-						isDisabled
-						onChange={onInfinitePopulationChecked}
-					>
-						Infinite (∞)
-					</Checkbox>
 				</Stack>
 			</Grid>
 
