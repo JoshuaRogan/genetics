@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
@@ -9,7 +9,7 @@ import AssortativeMating from '../simulator-factors/AssortativeMating';
 import BottleNeckGenerations from '../simulator-factors/BottleNeckGenerations';
 import Inbreeding from '../simulator-factors/Inbreeding';
 import Migration from '../simulator-factors/Migration';
-import BaseSimulation from '../simulator-factors/BaseSimulation';
+import BaseIndividualSimulation from '../simulator-factors/BaseIndividualSimulation';
 import Mutation from '../simulator-factors/Mutation';
 
 import { DebugHeader, Pre } from '../../utils/debugging';
@@ -28,7 +28,6 @@ import {
 	setPopGenVar,
 } from '../../redux/reducers/rootSlice';
 import { StoreState, VALID_SECTIONS } from '../../types';
-import LastSimulationStats from '../legend/LastSimulationStats';
 
 function Index() {
 	const dispatch = useDispatch();
@@ -263,7 +262,7 @@ function Index() {
 						maxWidth={{ md: '90%', lg: '80%', xl: '70%' }}
 						marginX={{ sm: 'auto' }}
 					>
-						<BaseSimulation
+						<BaseIndividualSimulation
 							name={'Base Simulation Model'}
 							isActive={activeSections[VALID_SECTIONS.BASE]}
 							isReplicated={false}

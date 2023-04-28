@@ -8,7 +8,7 @@ import { VALID_SECTIONS, VALID_VARIABLES } from '../../types';
 import { useDispatch } from 'react-redux';
 import { setActiveSectionStatus } from '../../redux/reducers/rootSlice';
 
-export default function BaseSimulation({ isActive, name, isReplicated }) {
+export default function BaseIndividualSimulation({ isActive, name, isReplicated }) {
 	const dispatch = useDispatch();
 	const [isInfinitePopulation, setIsInfinitePopulation] = useState(false);
 
