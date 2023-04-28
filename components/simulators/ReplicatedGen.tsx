@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
 import { LinkIcon } from '@chakra-ui/icons';
 
-import ReplicatedSimulation from '../simulator-factors/ReplicatedSimulation';
+import BaseReplicatedSimulation from '../simulator-factors/BaseReplicatedSimulation';
 import Selection from '../simulator-factors/Selection';
 import Mutation from '../simulator-factors/Mutation';
 import AssortativeMating from '../simulator-factors/AssortativeMating';
@@ -271,7 +271,7 @@ function Index() {
 						maxWidth={{ md: '90%', lg: '80%', xl: '70%' }}
 						marginX={{ sm: 'auto' }}
 					>
-						<ReplicatedSimulation
+						<BaseReplicatedSimulation
 							name={'Base Simulation Model'}
 							isActive={activeSections[VALID_SECTIONS.BASE]}
 							toggleActiveSection={null}
