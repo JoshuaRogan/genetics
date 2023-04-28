@@ -1,6 +1,6 @@
 import React from 'react';
 import Highcharts from 'highcharts';
-import styled from 'styled-components';
+import { Box } from '@chakra-ui/react';
 import HighchartsReact from 'highcharts-react-official';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsExportData from 'highcharts/modules/export-data';
@@ -12,16 +12,12 @@ if (typeof Highcharts === 'object') {
 	HighchartsAccessibility(Highcharts);
 }
 
-const HighChartLoader = styled.div`
-	min-height: 400px;
-`;
-
 const genoTypeOrder = ['AA', 'Aa', 'aa'];
 
 function createLinesFromArray(lines, isGeno = false) {
 	return lines.map((line, index) => {
 		return {
-			data: line,
+			data: [...line],
 			name: isGeno ? genoTypeOrder[index] : 'Run ' + (index + 1),
 		};
 	});
@@ -29,10 +25,10 @@ function createLinesFromArray(lines, isGeno = false) {
 
 function createOptions(lines, title) {
 	const isGenoType = title.toLowerCase().includes('genotype');
-	// console.log('lines updating', lines.length, lines);
+
 	return {
 		title: {
-			text: title ?? 'Population Genetics Simulation',
+			text: title || 'Population Genetics Simulation',
 		},
 		chart: {
 			zoomType: 'xy',
@@ -73,9 +69,9 @@ const App = ({ lines, title }) => {
 	// UseEffect / State here for the lines to prevent constant re-rendering
 
 	return (
-		<HighChartLoader aria-label="Graph displaying the results of the Simulator" role="figure">
+		<Box minHeight="400px" aria-label="Graph displaying the results of the Simulator" role="figure">
 			<HighchartsReact highcharts={Highcharts} options={createOptions(lines, title)} />
-		</HighChartLoader>
+		</Box>
 	);
 };
 

@@ -166,7 +166,6 @@ popGen.generations = function (numGenerations, populationSize, startAlleleFreq) 
 		this.currentAlleleFre = startAlleleFreq; 		// Current allele frequency of the population we just generated
 		this.currentGenerationNum = 0;					// The current generation that is being produced
 
-		console.log(this)
 		for (var i = 0; i < this.numGenerations; i++) {
 			if (i !== 0) {
 				this.buildRandomSample(randomNumbers);

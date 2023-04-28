@@ -12,7 +12,6 @@ function parseMessageJson(event) {
 function listener(event) {
 	try {
 		const data = JSON.parse(event.data);
-		// console.log(data.type);
 	} catch(e) {
 		console.error('Failed to parse json', e);
 	}
