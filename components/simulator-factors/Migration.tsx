@@ -1,10 +1,11 @@
 import React from 'react';
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
-import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
+import { VALID_VARIABLES } from '../../types';
 
-export default function Migration({ name, onChange }) {
+export default function Migration() {
 	const migrationRate = getPopGenVariableByName(VALID_VARIABLES.MIGRATION_MIGRATION_RATE);
 	const migrantAllelFreq = getPopGenVariableByName(VALID_VARIABLES.MIGRATION_MIGRANT_ALLELE_FREQ);
 
@@ -24,16 +25,7 @@ export default function Migration({ name, onChange }) {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider
-						onChange={onChange}
-						min={migrationRate.min}
-						max={migrationRate.max}
-						step={migrationRate.step}
-						defaultValue={migrationRate.defaultValue}
-						label={migrationRate.sliderName}
-						name={migrationRate.name}
-						isActive={true}
-					/>
+					<Slider popVariable={migrationRate} isActive={true} isInfinite={false} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -50,16 +42,7 @@ export default function Migration({ name, onChange }) {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider
-						onChange={onChange}
-						min={migrantAllelFreq.min}
-						max={migrantAllelFreq.max}
-						step={migrantAllelFreq.step}
-						defaultValue={migrantAllelFreq.defaultValue}
-						label={migrantAllelFreq.sliderName}
-						name={migrantAllelFreq.name}
-						isActive={true}
-					/>
+					<Slider popVariable={migrantAllelFreq} isActive={true} isInfinite={false} />
 				</Stack>
 			</Grid>
 		</Box>

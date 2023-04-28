@@ -1,4 +1,6 @@
 import React, { useContext, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
 import { LinkIcon } from '@chakra-ui/icons';
 
@@ -10,37 +12,47 @@ import Migration from '../simulator-factors/Migration';
 import BaseSimulation from '../simulator-factors/BaseSimulation';
 import Mutation from '../simulator-factors/Mutation';
 
-import { VALID_SECTIONS } from '../../data/popGenVariables';
 import { DebugHeader, Pre } from '../../utils/debugging';
 import { getWorker, listenToWorker } from '../../workers/generationWorker';
-import { ApplicationContext } from '../../context/application';
 
 import LegendContainer from '../LegendContainer';
 import MainWrapper from '../MainWrapper';
 import HighChart from '../highChart';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
+import {
+	addMoreResults,
+	clearResults,
+	resetDefaultActiveSections,
+	resetInputValues,
+	setPopGenVar,
+} from '../../redux/reducers/rootSlice';
+import { StoreState, VALID_SECTIONS } from '../../types';
+import LastSimulationStats from '../legend/LastSimulationStats';
 
 function Index() {
-	const context = useContext(ApplicationContext);
+	const dispatch = useDispatch();
+	const popGenVars = useSelector((state: StoreState) => state.root.popGenVars);
+	const activeSections = useSelector((state: StoreState) => state.root.activeSections);
+	const alleleResults = useSelector((state: StoreState) => state.root.alleleResults);
+	const genotypeResults = useSelector((state: StoreState) => state.root.genoTypeResults);
+	const settingResults = useSelector((state: StoreState) => state.root.settingResults);
+	const activeSectionsResults = useSelector((state: StoreState) => state.root.activeSectionsResults);
+
 	const toast = useToast();
-
 	const [isCompleteToastDisplayed, setIsCompleteToastDisplayed] = useState(false);
-	const [resetValue, setResetValue] = useState(0);
 
-	// This is interacting with an imperative API. Might need to remove the useEffect
 	React.useEffect(() => {
-		context.setPopGenVar('number-replicated', 1);
+		dispatch(setPopGenVar({ varName: 'number-replicated', value: 1 }));
 
 		listenToWorker((event) => {
-			context.addMoreResults(event, null); // Needs to be handled as it won't work if it's in the context
+			dispatch(addMoreResults({ workerResults: event }));
 		});
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const updateChart = (isAllele = true) => {
-		context.setPopGenVar('number-replicated', 1); // bubble up changes for the backend
+	const updateChart = () => {
 		const worker: Worker = getWorker();
 
 		if (!worker) {
@@ -48,46 +60,44 @@ function Index() {
 			return;
 		}
 
-		const popGenVars = context.popGenVars;
-
 		worker.postMessage({
 			cmd: 'initGeneration',
 			populationSize: popGenVars.N,
-			numGenerations: context.popGenVars.t,
-			startingFrequency: context.popGenVars.p,
+			numGenerations: popGenVars.t,
+			startingFrequency: popGenVars.p,
 		});
 
 		worker.postMessage({
 			cmd: 'setVar',
 			varName: 'simSettings',
-			vars: context.activeSections,
+			vars: activeSections,
 		});
 
 		// Inverse of finite being active to enable infinite population
-		if (!context.activeSections[VALID_SECTIONS.FINITE]) {
+		if (!activeSections[VALID_SECTIONS.FINITE]) {
 			worker.postMessage({ cmd: 'setVar', varName: 'inifinite-pop' });
 		}
 
-		if (context.activeSections[VALID_SECTIONS.SELECTION]) {
+		if (activeSections[VALID_SECTIONS.SELECTION]) {
 			const message = {
 				cmd: 'setVar',
 				varName: 'selection-W',
-				wAA: context.popGenVars.WAA,
-				wAa: context.popGenVars.WAa,
-				waa: context.popGenVars.Waa,
+				wAA: popGenVars.WAA,
+				wAa: popGenVars.WAa,
+				waa: popGenVars.Waa,
 			};
 			worker.postMessage(message);
 			worker.postMessage({ cmd: 'setVar', varName: 'selection-DS', selectionCoef: 0, dominaceCoef: 1 });
 		}
 
-		if (context.activeSections[VALID_SECTIONS.MUTATION]) {
+		if (activeSections[VALID_SECTIONS.MUTATION]) {
 			const mu = popGenVars.mu * Math.pow(10, popGenVars['mu-exp']);
 			const nu = popGenVars.nu * Math.pow(10, popGenVars['nu-exp']);
 
 			worker.postMessage({ cmd: 'setVar', varName: 'mutation', mu: mu, nu: nu });
 		}
 
-		if (context.activeSections[VALID_SECTIONS.MIGRATION]) {
+		if (activeSections[VALID_SECTIONS.MIGRATION]) {
 			worker.postMessage({
 				cmd: 'setVar',
 				varName: 'migration',
@@ -96,15 +106,15 @@ function Index() {
 			});
 		}
 
-		if (context.activeSections[VALID_SECTIONS.INBREEDING]) {
+		if (activeSections[VALID_SECTIONS.INBREEDING]) {
 			worker.postMessage({ cmd: 'setVar', varName: 'inbreeding', inbreedCoef: popGenVars.F });
 		}
 
-		if (context.activeSections[VALID_SECTIONS.ASSORT_MATING]) {
+		if (activeSections[VALID_SECTIONS.ASSORT_MATING]) {
 			worker.postMessage({ cmd: 'setVar', varName: 'assortative-mating', matingFreq: popGenVars.assortMating });
 		}
 
-		if (context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]) {
+		if (activeSections[VALID_SECTIONS.BOTTLENECK_GEN]) {
 			worker.postMessage({
 				cmd: 'setVar',
 				varName: 'population-bottleneck',
@@ -180,22 +190,12 @@ function Index() {
 		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': wAA, 'wAa': wAa, 'waa': waa});
 	};
 
-	const onChange = (name, newValue) => {
-		context.setPopGenVar(name, newValue);
-		context.setPopGenVar('number-replicated', 1); // bubble up changes for the backend
-	};
-
-	const toggleActiveSection = (section) => {
-		const currentState = context.activeSections[section];
-		context.setActiveSession(section, !currentState);
-	};
-
 	const generateShareableLink = () => {
 		const url = new URL(window.location.href);
 		const params = new URLSearchParams(url.search);
 
-		for (const genVar in context.popGenVars) {
-			params.set(genVar, context.popGenVars[genVar]);
+		for (const genVar in popGenVars) {
+			params.set(genVar, popGenVars[genVar]);
 		}
 
 		url.search = params.toString();
@@ -256,7 +256,6 @@ function Index() {
 					</Text>
 
 					<Box
-						key={`reset-key-${resetValue}`}
 						as="div"
 						role="form"
 						aria-label="All simulator inputs"
@@ -265,72 +264,40 @@ function Index() {
 						marginX={{ sm: 'auto' }}
 					>
 						<BaseSimulation
-							isActive={context.activeSections[VALID_SECTIONS.BASE]}
 							name={'Base Simulation Model'}
-							onChange={onChange}
+							isActive={activeSections[VALID_SECTIONS.BASE]}
 							isReplicated={false}
-							toggleActiveSection={toggleActiveSection}
 						/>
 						<Box my={6}>
 							<Collapsible header={`Advanced Factors`} variant="solid" iconDirection="left">
 								{/* Selection Input */}
-								<FactorManager
-									isFactorActive={true}
-									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.SELECTION]}
-									title="Selection"
-									toggleActive={() => toggleActiveSection(VALID_SECTIONS.SELECTION)}
-								>
-									<Selection name={'Selection'} onChange={onChange} />
+								<FactorManager title={VALID_SECTIONS.SELECTION} isFactorActive={true}>
+									<Selection />
 								</FactorManager>
 
 								{/* Mutation Input */}
-								<FactorManager
-									isFactorActive={true}
-									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.MUTATION]}
-									title="Mutation"
-									toggleActive={() => toggleActiveSection(VALID_SECTIONS.MUTATION)}
-								>
-									<Mutation name={'Mutation'} onChange={onChange} />
+								<FactorManager title={VALID_SECTIONS.MUTATION} isFactorActive={true}>
+									<Mutation />
 								</FactorManager>
 
 								{/* Migration Input */}
-								<FactorManager
-									isFactorActive={true}
-									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.MIGRATION]}
-									title="Migration"
-									toggleActive={() => toggleActiveSection(VALID_SECTIONS.MIGRATION)}
-								>
-									<Migration name={'Migration'} onChange={onChange} />
+								<FactorManager title={VALID_SECTIONS.MIGRATION} isFactorActive={true}>
+									<Migration />
 								</FactorManager>
 
 								{/* Inbreeding Input */}
-								<FactorManager
-									isFactorActive={true}
-									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.INBREEDING]}
-									title="Inbreeding"
-									toggleActive={() => toggleActiveSection(VALID_SECTIONS.INBREEDING)}
-								>
-									<Inbreeding name={'Inbreeding'} onChange={onChange} />
+								<FactorManager title={VALID_SECTIONS.INBREEDING} isFactorActive={true}>
+									<Inbreeding />
 								</FactorManager>
 
 								{/* Assortative Mating Input */}
-								<FactorManager
-									isFactorActive={true}
-									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.ASSORT_MATING]}
-									title="Assortative Mating"
-									toggleActive={() => toggleActiveSection(VALID_SECTIONS.ASSORT_MATING)}
-								>
-									<AssortativeMating name={'Assortative Mating'} onChange={onChange} />
+								<FactorManager title={VALID_SECTIONS.ASSORT_MATING} isFactorActive={true}>
+									<AssortativeMating />
 								</FactorManager>
 
 								{/* Population Bottleneck Input */}
-								<FactorManager
-									isFactorActive={true}
-									factorShouldBeOpened={context.activeSections[VALID_SECTIONS.BOTTLENECK_GEN]}
-									title="Bottleneck Generations"
-									toggleActive={() => toggleActiveSection(VALID_SECTIONS.BOTTLENECK_GEN)}
-								>
-									<BottleNeckGenerations name={'Bottleneck Generations'} onChange={onChange} />
+								<FactorManager title={VALID_SECTIONS.BOTTLENECK_GEN} isFactorActive={true}>
+									<BottleNeckGenerations />
 								</FactorManager>
 							</Collapsible>
 							<Button
@@ -364,7 +331,7 @@ function Index() {
 								variant={'primary'}
 								w={{ base: '70%', md: '30%' }}
 								onClick={() => {
-									context.clearResults();
+									dispatch(clearResults());
 									updateChart();
 								}}
 							>
@@ -383,25 +350,25 @@ function Index() {
 				</Box>
 
 				<Box my={6}>
-					<HighChart lines={context.alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+					<HighChart lines={alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
 				</Box>
 				<LegendContainer
-					alleleResults={context.alleleResults}
+					alleleResults={alleleResults}
 					genoTypeResults={null}
-					settings={context.settingResults}
-					enabledSettings={context.activeSectionsResults}
+					settings={settingResults}
+					enabledSettings={activeSectionsResults}
 					graphNumber={1}
 					isReplicated={false}
 				/>
 
 				<Box my={6}>
-					<HighChart lines={context.genoTypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+					<HighChart lines={genotypeResults} title="Graph 2: Genotype Frequency Change Over Generations" />
 				</Box>
 				<LegendContainer
-					alleleResults={context.alleleResults}
-					genoTypeResults={context.genoTypeResults}
-					settings={context.settingResults}
-					enabledSettings={context.activeSectionsResults}
+					alleleResults={alleleResults}
+					genoTypeResults={genotypeResults}
+					settings={settingResults}
+					enabledSettings={activeSectionsResults}
 					graphNumber={2}
 					isReplicated={false}
 				/>
@@ -419,10 +386,13 @@ function Index() {
 					<Button
 						onClick={() => {
 							// clear the results on the graph
-							context.clearResults();
+							dispatch(clearResults());
 
 							// reset the input values
-							context.resetInputValues();
+							dispatch(resetInputValues());
+
+							// reset the active sections
+							dispatch(resetDefaultActiveSections());
 
 							if (!toast.isActive('simulation-reset')) {
 								toast({
@@ -433,8 +403,6 @@ function Index() {
 									duration: 5000,
 									isClosable: true,
 								});
-
-								setResetValue(resetValue + 1);
 							}
 						}}
 						w={{ base: '80%', md: '30%' }}
@@ -450,14 +418,14 @@ function Index() {
 						Debug Information + Content for Legend:
 					</Box>
 					<DebugHeader>Current Input Values</DebugHeader>
-					{JSON.stringify(context.popGenVars)} <br />
-					{JSON.stringify(context.activeSections)}
+					{JSON.stringify(popGenVars)} <br />
+					{JSON.stringify(activeSections)}
 					<DebugHeader>Allele Output</DebugHeader>
-					{JSON.stringify(context.alleleResults)} <br />
+					{JSON.stringify(alleleResults)} <br />
 					<DebugHeader>Genotype Output</DebugHeader>
-					{JSON.stringify(context.alleleResults)} <br />
+					{JSON.stringify(alleleResults)} <br />
 					<DebugHeader>Legend Data</DebugHeader>
-					{JSON.stringify(context.settingResults, null, 2)}
+					{JSON.stringify(settingResults, null, 2)}
 				</Pre>
 			</Box>
 		</MainWrapper>

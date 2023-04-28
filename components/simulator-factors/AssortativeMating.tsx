@@ -1,10 +1,11 @@
 import React from 'react';
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
-import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
+import { VALID_VARIABLES } from '../../types';
 
-export default function AssortativeMating({ name, onChange }) {
+export default function AssortativeMating() {
 	const positiveAssortMatingFreq = getPopGenVariableByName(VALID_VARIABLES.ASSORT_MATING_POSITIVE_FREQ);
 
 	return (
@@ -23,16 +24,7 @@ export default function AssortativeMating({ name, onChange }) {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider
-						name={positiveAssortMatingFreq.name}
-						label={positiveAssortMatingFreq.sliderName}
-						min={positiveAssortMatingFreq.min}
-						max={positiveAssortMatingFreq.max}
-						step={positiveAssortMatingFreq.step}
-						defaultValue={positiveAssortMatingFreq.defaultValue}
-						isActive={true}
-						onChange={onChange}
-					/>
+					<Slider popVariable={positiveAssortMatingFreq} isActive={true} isInfinite={false} />
 				</Stack>
 			</Grid>
 		</Box>

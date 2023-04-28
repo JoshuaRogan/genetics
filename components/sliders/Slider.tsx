@@ -11,9 +11,10 @@ import {
 	SliderTrack,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import React, { useContext, useState } from 'react';
-import { ApplicationContext } from '../../context/application';
-import { getPopGenVariableByName } from '../../data/popGenVariables';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPopGenVar } from '../../redux/reducers/rootSlice';
+import { PopGenVariable, StoreState } from '../../types';
 
 const minLabelStyles = {
 	mt: '2',
@@ -28,51 +29,46 @@ const maxLabelStyles = {
 };
 
 interface SliderInputProps {
-	name: string;
-	label: string;
-	min: number;
-	max: number;
-	step?: number;
-	defaultValue?: number;
-	onChange: (varName: string, value: number) => void;
+	popVariable: PopGenVariable;
 	isActive?: boolean;
 	isInfinite?: boolean;
 }
 
-function SliderInput({
-	name,
-	label,
-	defaultValue,
-	min,
-	max,
-	step = 1,
-	onChange,
-	isActive = true,
-	isInfinite = false,
-}: SliderInputProps) {
-	const sliderVariable = getPopGenVariableByName(name).variable;
-	const context = useContext(ApplicationContext);
-	const [value, setValue] = useState(context.popGenVars[sliderVariable] || defaultValue || min);
+function SliderInput({ popVariable, isActive = true, isInfinite = false }: SliderInputProps) {
+	const { max, min, step, defaultValue, sliderName, variable } = popVariable;
 
-	const handleChange = (value) => {
+	const dispatch = useDispatch();
+	const sliderValue: number = useSelector((state: StoreState) => state.root.popGenVars[variable]);
+	const [value, setValue] = React.useState(sliderValue || defaultValue || min);
+
+	// If slider value changes in the Redux store, update the local state to keep it in sync.
+	useEffect(() => {
+		setValue(sliderValue);
+	}, [sliderValue]);
+
+	const onSliderChanged = (value) => {
 		setValue(value);
-		onChange(name, value);
+	};
+
+	const onSliderEndChanged = (value) => {
+		dispatch(setPopGenVar({ varName: variable, value: Number(value) }));
 	};
 
 	return (
 		<>
 			<Slider
-				name={name}
+				name={sliderName}
 				flex="1"
 				mb={{ base: 2, md: 8 }}
-				aria-label={label}
+				aria-label={sliderName}
 				defaultValue={defaultValue || min}
 				min={min}
 				max={max}
 				step={step}
 				focusThumbOnChange={false}
 				value={value}
-				onChange={handleChange}
+				onChange={onSliderChanged}
+				onChangeEnd={onSliderEndChanged}
 				isDisabled={!isActive || isInfinite}
 			>
 				<SliderMark value={min} {...minLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
@@ -87,7 +83,7 @@ function SliderInput({
 				<SliderThumb boxSize={6}>{/* <Box color="tomato" as={} /> */}</SliderThumb>
 			</Slider>
 			<NumberInput
-				aria-label={`${label} number input`}
+				aria-label={`${sliderName} number input`}
 				maxW="120px"
 				mr="2rem"
 				defaultValue={defaultValue || min}
@@ -95,7 +91,7 @@ function SliderInput({
 				max={max}
 				step={step}
 				value={value}
-				onChange={handleChange}
+				onChange={onSliderChanged}
 				isDisabled={!isActive || isInfinite}
 				sx={{
 					'& input': {
