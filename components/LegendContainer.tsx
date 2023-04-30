@@ -125,7 +125,7 @@ function LegendManager({
 	isReplicated: boolean;
 }) {
 	const [isActive, setIsActive] = React.useState(true);
-	const simualtionNumber = index + 1;
+	const simulationNumber = index + 1;
 
 	const handleCheckboxChange = (event) => {
 		setIsActive(event.target.checked);
@@ -136,11 +136,11 @@ function LegendManager({
 			<LegendChecker>
 				<StyledCheckboxLabel>
 					<Checkbox variant="redBox" isChecked={isActive} onChange={handleCheckboxChange} />
-					<Text as="p" style={{ marginLeft: 8 }}>{`Simulation #${simualtionNumber}`}</Text>
+					<Text as="p" style={{ marginLeft: 8 }}>{`Simulation #${simulationNumber}`}</Text>
 				</StyledCheckboxLabel>
 			</LegendChecker>
 			<LegendHider isActive={isActive}>
-				<SimulationLegendSettings settings={settings} enabledSettings={enabledSettings} />
+				<SimulationLegendSettings settings={settings} enabledSettings={enabledSettings} isReplicated={isReplicated} />
 				<LegendStats result={result} />
 			</LegendHider>
 		</StyledLegendManagerWrapper>
@@ -158,7 +158,7 @@ function BulkLegend({
 }) {
 	return (
 		<>
-			<SimulationLegendSettings settings={settings} enabledSettings={enabledSettings} />
+			<SimulationLegendSettings settings={settings} enabledSettings={enabledSettings} isReplicated={false} />
 			<BulkLegendStats results={results} />
 		</>
 	);
@@ -231,11 +231,5 @@ export default function LegendContainer({
 		);
 	}
 
-	return (
-		<LastSimulationStats
-			settings={settings[settings.length - 1]}
-			results={genoTypeResults}
-			isReplicated={isReplicated}
-		/>
-	);
+	return <LastSimulationStats settings={settings[settings.length - 1]} results={genoTypeResults} />;
 }

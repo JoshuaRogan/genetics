@@ -38,9 +38,11 @@ function FactorManager({ title, isFactorActive, children }: FactorManagerProps) 
 		>
 			<HStack as="label" fontWeight={600} fontSize="18px" textTransform="uppercase">
 				<Checkbox
+					key={`${title}-checkbox-${factorActiveState}`}
 					size="lg"
 					variant="redBox"
 					defaultChecked={factorActiveState}
+					checked={factorActiveState}
 					isDisabled={!isFactorActive}
 					onChange={handleCheckboxChange}
 				/>

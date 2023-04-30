@@ -1,7 +1,15 @@
 import { Box, List, ListItem, Text } from '@chakra-ui/react';
 import { Settings, VALID_SECTIONS } from '../../types';
 
-function SimulationLegendSettings({ settings, enabledSettings }: { settings: Settings; enabledSettings: any }) {
+function SimulationLegendSettings({
+	settings,
+	enabledSettings,
+	isReplicated,
+}: {
+	settings: Settings;
+	enabledSettings: any;
+	isReplicated: boolean;
+}) {
 	return (
 		<Box margin="10px 0">
 			<Text fontWeight={700} fontSize="16px" letterSpacing="0.3px" height="30px">
@@ -17,11 +25,12 @@ function SimulationLegendSettings({ settings, enabledSettings }: { settings: Set
 				{enabledSettings[VALID_SECTIONS.BASE] && (
 					<LegendListItem>
 						<LegendItemWrapper>
-							<LegendItem>Generations (t) = {settings.t} </LegendItem>
 							<LegendItem>Population Size (N) = {settings.N} </LegendItem>
+							<LegendItem>Generations (t) = {settings.t} </LegendItem>
 							<LegendItem>
 								Initial frequency of Allele A (p<sub>0</sub>) = {settings.p}{' '}
 							</LegendItem>
+							{isReplicated && <LegendItem>Number of Populations (Nb) = {settings.Nb}</LegendItem>}
 						</LegendItemWrapper>
 					</LegendListItem>
 				)}
