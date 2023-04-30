@@ -79,7 +79,7 @@ const lightTheme = {
 };
 
 const darkTheme = {
-	colors: ['#d35400', '#2980b9', '#2ecc71', '#f1c40f', '#2c3e50', '#7f8c8d'],
+	colors: ['#d35400', '#2980b9', '#2ecc71', '#f1c40f', '#DEBCFB', '#7f8c8d'],
 	chart: {
 		backgroundColor: 'var(--chakra-colors-gray-900)',
 		borderWidth: 1,

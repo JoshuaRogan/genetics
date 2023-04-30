@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
@@ -13,7 +13,7 @@ import BaseIndividualSimulation from '../simulator-factors/BaseIndividualSimulat
 import Mutation from '../simulator-factors/Mutation';
 
 import { DebugHeader, Pre } from '../../utils/debugging';
-import { getWorker, listenToWorker } from '../../workers/generationWorker';
+import { getWorker, listenToWorker, removeAndRecreateWorker } from '../../workers/generationWorker';
 
 import LegendContainer from '../LegendContainer';
 import MainWrapper from '../MainWrapper';
@@ -44,12 +44,31 @@ function Index() {
 	React.useEffect(() => {
 		dispatch(setPopGenVar({ varName: 'number-replicated', value: 1 }));
 
-		listenToWorker((event) => {
-			dispatch(addMoreResults({ workerResults: event }));
-		});
+		listenToWorker(onWorkerResultHandler);
+
+		return () => {
+			// clear the results on the graph
+			dispatch(clearResults());
+
+			// reset the input values
+			dispatch(resetInputValues());
+
+			// reset the active sections
+			dispatch(resetDefaultActiveSections());
+
+			// This is a measure to prevent multiple event listener attaching to a single worker on page reloads
+			removeAndRecreateWorker();
+		};
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	const onWorkerResultHandler = useCallback(
+		(event) => {
+			dispatch(addMoreResults({ workerResults: event }));
+		},
+		[dispatch],
+	);
 
 	const updateChart = () => {
 		const worker: Worker = getWorker();
@@ -134,53 +153,59 @@ function Index() {
 		// worker.postMessage({'cmd':'setVar', 'varName': 'population-bottleneck', 'generationStart': 3, 'generationEnd': 50, 'newPopulationSize': 500});
 
 		// Listen for messages from the worker
-		worker.addEventListener('message', (event) => {
-			const workerResult = JSON.parse(event.data);
+		worker.addEventListener(
+			'message',
+			(event) => {
+				const workerResult = JSON.parse(event.data);
 
-			// If the worker started a new generation show toast
-			if (workerResult.status === 'running' && !toast.isActive('simulation-started')) {
-				// Close all toasts before starting a new simulation
-				toast.closeAll();
+				// If the worker started a new generation show toast
+				if (workerResult.status === 'running' && !toast.isActive('simulation-started')) {
+					// Close all toasts before starting a new simulation
+					toast.closeAll();
 
-				// Show a toast to let the user know the simulation has started
-				toast({
-					id: 'simulation-started',
-					title: 'Simulation Started',
-					description: 'The simulation has started and will complete in the background.',
-					status: 'info',
-					duration: 3000,
-					position: 'bottom-right',
-					isClosable: true,
-				});
+					// Show a toast to let the user know the simulation has started
+					toast({
+						id: 'simulation-started',
+						title: 'Simulation Started',
+						description: 'The simulation has started and will complete in the background.',
+						status: 'info',
+						duration: 3000,
+						position: 'bottom-right',
+						isClosable: true,
+					});
 
-				return;
-			}
+					return;
+				}
 
-			// If work was completed successfully, show a toast to let the user know
-			if (workerResult.status === 'complete' && !isCompleteToastDisplayed) {
-				setIsCompleteToastDisplayed(true);
+				// If work was completed successfully, show a toast to let the user know
+				if (workerResult.status === 'complete' && !isCompleteToastDisplayed) {
+					setIsCompleteToastDisplayed(true);
 
-				// This timeout exists to smooth out the transition between the simulation complete toast and the results
-				setTimeout(() => {
-					if (!toast.isActive('simulation-complete')) {
-						toast({
-							id: 'simulation-complete',
-							title: 'Simulation Complete',
-							description: 'The simulation has completed and the results are ready to view.',
-							status: 'success',
-							duration: 4000,
-							position: 'bottom-right',
-							isClosable: true,
-							onCloseComplete: () => {
-								setIsCompleteToastDisplayed(false);
-							},
-						});
-					}
-				}, 2000);
+					// This timeout exists to smooth out the transition between the simulation complete toast and the results
+					setTimeout(() => {
+						if (!toast.isActive('simulation-complete')) {
+							toast({
+								id: 'simulation-complete',
+								title: 'Simulation Complete',
+								description: 'The simulation has completed and the results are ready to view.',
+								status: 'success',
+								duration: 4000,
+								position: 'bottom-right',
+								isClosable: true,
+								onCloseComplete: () => {
+									setIsCompleteToastDisplayed(false);
+								},
+							});
+						}
+					}, 2000);
 
-				return;
-			}
-		});
+					return;
+				}
+			},
+			{
+				once: true,
+			},
+		);
 
 		// Kick it off
 		worker.postMessage({ cmd: 'run' });
@@ -262,11 +287,7 @@ function Index() {
 						maxWidth={{ md: '90%', lg: '80%', xl: '70%' }}
 						marginX={{ sm: 'auto' }}
 					>
-						<BaseIndividualSimulation
-							name={'Base Simulation Model'}
-							isActive={activeSections[VALID_SECTIONS.BASE]}
-							isReplicated={false}
-						/>
+						<BaseIndividualSimulation name={'Base Simulation Model'} isReplicated={false} />
 						<Box my={6}>
 							<Collapsible header={`Advanced Factors`} variant="solid" iconDirection="left">
 								{/* Selection Input */}
