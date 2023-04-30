@@ -105,6 +105,9 @@ const darkTheme = {
 		itemStyle: {
 			color: 'var(--chakra-colors-gray-500)',
 		},
+		itemHoverStyle: {
+			color: '#C0C0C0',
+		},
 	},
 	tooltip: {
 		borderWidth: 0,

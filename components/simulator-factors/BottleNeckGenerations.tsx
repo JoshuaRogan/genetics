@@ -27,8 +27,8 @@ export default function BottleneckGenerations() {
 					mt={4}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider popVariable={generationToOverrideStart} isActive={true} isInfinite={false} />
-					<Slider popVariable={generationToOverrideEnd} isActive={true} isInfinite={false} />
+					<Slider popVariable={generationToOverrideStart} isActive={true} />
+					<Slider popVariable={generationToOverrideEnd} isActive={true} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -45,7 +45,7 @@ export default function BottleneckGenerations() {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider popVariable={bottleNeckPopSize} isActive={true} isInfinite={false} />
+					<Slider popVariable={bottleNeckPopSize} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>

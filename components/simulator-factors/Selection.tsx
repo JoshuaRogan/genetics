@@ -22,7 +22,7 @@ export default function Selection() {
 					<Text fontWeight="bold">{fitnessFactorWAA.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mb={4} mt={2} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={fitnessFactorWAA} isActive={true} isInfinite={false} />
+					<Slider popVariable={fitnessFactorWAA} isActive={true} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -34,7 +34,7 @@ export default function Selection() {
 					<Text fontWeight="bold">{fitnessFactorWAa.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mb={4} mt={2} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={fitnessFactorWAa} isActive={true} isInfinite={false} />
+					<Slider popVariable={fitnessFactorWAa} isActive={true} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -46,7 +46,7 @@ export default function Selection() {
 					<Text fontWeight="bold">{fitnessFactorWaa.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={2} align={{ base: 'center' }}>
-					<Slider popVariable={fitnessFactorWaa} isActive={true} isInfinite={false} />
+					<Slider popVariable={fitnessFactorWaa} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>

@@ -27,8 +27,8 @@ export default function Mutation() {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider popVariable={forwardMutation} isActive={true} isInfinite={false} />
-					<Slider popVariable={fowardMutationEpon} isActive={true} isInfinite={false} />
+					<Slider popVariable={forwardMutation} isActive={true} />
+					<Slider popVariable={fowardMutationEpon} isActive={true} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -45,8 +45,8 @@ export default function Mutation() {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider popVariable={backwardMutation} isActive={true} isInfinite={false} />
-					<Slider popVariable={backwardMutationExpon} isActive={true} isInfinite={false} />
+					<Slider popVariable={backwardMutation} isActive={true} />
+					<Slider popVariable={backwardMutationExpon} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>

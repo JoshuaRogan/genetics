@@ -24,7 +24,7 @@ export default function AssortativeMating() {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider popVariable={positiveAssortMatingFreq} isActive={true} isInfinite={false} />
+					<Slider popVariable={positiveAssortMatingFreq} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>

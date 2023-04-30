@@ -23,6 +23,7 @@ export type Settings = {
 	t: number;
 	p: number;
 	N: number;
+	Nb: number;
 	numSims: number;
 
 	// selection

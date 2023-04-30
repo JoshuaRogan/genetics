@@ -25,7 +25,7 @@ export default function Migration() {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider popVariable={migrationRate} isActive={true} isInfinite={false} />
+					<Slider popVariable={migrationRate} isActive={true} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -42,7 +42,7 @@ export default function Migration() {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider popVariable={migrantAllelFreq} isActive={true} isInfinite={false} />
+					<Slider popVariable={migrantAllelFreq} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>

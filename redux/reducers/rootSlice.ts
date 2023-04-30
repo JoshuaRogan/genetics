@@ -93,10 +93,10 @@ export const rootSlice = createSlice({
 			state.activeSectionsResults = [];
 		},
 		resetInputValues: (state) => {
-			state.popGenVars = defaultValuesForSettings;
+			state.popGenVars = Object.assign({}, defaultValuesForSettings);
 		},
 		resetDefaultActiveSections: (state) => {
-			state.activeSections = defaultActiveSectionState;
+			state.activeSections = Object.assign({}, defaultActiveSectionState);
 		},
 	},
 });
