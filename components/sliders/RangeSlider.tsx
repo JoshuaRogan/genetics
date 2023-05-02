@@ -21,12 +21,6 @@ import { setPopGenVar } from '../../redux/reducers/rootSlice';
 import { PopGenVariable, StoreState, VALID_VARIABLES } from '../../types';
 import { getPopGenVariableByName } from '../../data/popGenVariables';
 
-const minLabelStyles = {
-	mt: '5',
-	ml: '0',
-	fontSize: 'sm',
-};
-
 const maxLabelStyles = {
 	mt: '5',
 	ml: { base: '-10', md: '-5' },
@@ -41,12 +35,15 @@ interface SliderInputProps {
 }
 
 function RangeSliderInput({ startVariable, endVariable, isActive = true }: SliderInputProps) {
-	const dispatch = useDispatch();
-	const [values, setValues] = React.useState([0, 50]);
-
 	const { sliderName: startSliderName, variable: startVariableName } = startVariable;
 	const { sliderName: endSliderName, variable: endVariableName } = endVariable;
 
+	const dispatch = useDispatch();
+	// const [values, setValues] = React.useState([0, 50]);
+	const [values, setValues] = React.useState([
+		useSelector((state: StoreState) => state.root.popGenVars[startVariableName]),
+		useSelector((state: StoreState) => state.root.popGenVars[endVariableName]),
+	]);
 	const popVariable = useCallback(() => getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS), []);
 
 	const min = 0;
@@ -62,6 +59,12 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 		dispatch(setPopGenVar({ varName: startVariableName, value: minValue }));
 		dispatch(setPopGenVar({ varName: endVariableName, value: maxValue }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [max]);
+
+	const calculateRightMarkMargin = useCallback(() => {
+		const maxStrLength = max.toString().length;
+		const margin = maxStrLength * 2 * -1;
+		return margin;
 	}, [max]);
 
 	// Changes the local state when the slider is changed,
@@ -104,10 +107,16 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 					onChangeEnd={onSliderEndChanged}
 					isDisabled={!isActive}
 				>
-					<SliderMark value={min} {...minLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
+					<SliderMark value={min} mt={2} ml="0" fontSize="sm" color={useColorModeValue('black', 'whitesmoke')}>
 						{min}
 					</SliderMark>
-					<SliderMark value={100} {...maxLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
+					<SliderMark
+						mt={2}
+						ml={{ base: '-10', md: calculateRightMarkMargin() }}
+						fontSize="sm"
+						value={100}
+						color={useColorModeValue('black', 'whitesmoke')}
+					>
 						{max}
 					</SliderMark>
 					<RangeSliderTrack bg="sliderTrack">
@@ -162,7 +171,7 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 					max={max}
 					step={step}
 					value={values[1]}
-					onChange={(_, value) => onSliderChanged([value[0], value])}
+					onChange={(_, value) => onSliderChanged([values[0], value])}
 					onBlur={() => onSliderNumberInputChanged(endVariableName, values)}
 					onKeyDown={(e) => {
 						if (e.key === 'Enter') {

@@ -142,17 +142,8 @@ function Index() {
 			});
 		}
 
-		// All Other Variables
-		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-W', 'wAA': .3, 'wAa': .2, 'waa': .5});
-		// worker.postMessage({'cmd':'setVar', 'varName': 'selection-DS', 'selectionCoef': .3, 'dominaceCoef': .2});
-
-		// worker.postMessage({'cmd':'setVar', 'varName': 'mutation', 'mu': .0003, 'nu': .003});
-		// worker.postMessage({'cmd':'setVar', 'varName': 'migration', 'migrationRate': .145, 'migrantAlleleFreq': .333});
-		// worker.postMessage({'cmd':'setVar', 'varName': 'inbreeding', 'inbreedCoef': .255});
-		// worker.postMessage({'cmd':'setVar', 'varName': 'assortative-mating', 'matingFreq': .99});
-		// worker.postMessage({'cmd':'setVar', 'varName': 'population-bottleneck', 'generationStart': 3, 'generationEnd': 50, 'newPopulationSize': 500});
-
 		// Listen for messages from the worker
+		// TODO: Listener duplicates on each updateChart call, need to remove old listeners
 		worker.addEventListener(
 			'message',
 			(event) => {
@@ -203,7 +194,7 @@ function Index() {
 				}
 			},
 			{
-				once: true,
+				once: false,
 			},
 		);
 
