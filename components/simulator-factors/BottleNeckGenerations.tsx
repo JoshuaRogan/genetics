@@ -5,6 +5,7 @@ import { VALID_VARIABLES } from '../../types';
 import Slider from '../sliders/Slider';
 import HelpContentWrapper from './HelpContentWrapper';
 import { getPopGenVariableByName } from '../../data/popGenVariables';
+import RangeSlider from '../sliders/RangeSlider';
 
 export default function BottleneckGenerations() {
 	const generationToOverrideStart = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_START);
@@ -27,8 +28,7 @@ export default function BottleneckGenerations() {
 					mt={4}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider popVariable={generationToOverrideStart} isActive={true} />
-					<Slider popVariable={generationToOverrideEnd} isActive={true} />
+					<RangeSlider startVariable={generationToOverrideStart} endVariable={generationToOverrideEnd} />
 				</Stack>
 			</Grid>
 			<Grid>

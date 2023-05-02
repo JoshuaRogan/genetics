@@ -11,22 +11,10 @@ import {
 	SliderTrack,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPopGenVar } from '../../redux/reducers/rootSlice';
 import { PopGenVariable, StoreState } from '../../types';
-
-const minLabelStyles = {
-	mt: '2',
-	ml: '0',
-	fontSize: 'sm',
-};
-
-const maxLabelStyles = {
-	mt: '2',
-	ml: { base: '-10', md: '-10' },
-	fontSize: 'sm',
-};
 
 interface SliderInputProps {
 	popVariable: PopGenVariable;
@@ -46,13 +34,23 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false }: Slide
 		setValue(sliderValue);
 	}, [sliderValue]);
 
+	// Changes the local state when the slider is changed,
+	// but doesn't update the Redux store until the slider is released.
 	const onSliderChanged = (value) => {
 		setValue(value);
 	};
 
+	// Updates the Redux store only when the slider is released.
+	// This is to prevent the Redux store from being updated on every slider change
 	const onSliderEndChanged = (value) => {
 		dispatch(setPopGenVar({ varName: variable, value: Number(value) }));
 	};
+
+	const calculateRightMarkMargin = useCallback(() => {
+		const maxStrLength = max.toString().length;
+		const margin = maxStrLength * 2 * -1;
+		return margin;
+	}, [max]);
 
 	return (
 		<>
@@ -71,10 +69,16 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false }: Slide
 				onChangeEnd={onSliderEndChanged}
 				isDisabled={!isActive || isInfinite}
 			>
-				<SliderMark value={min} {...minLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
+				<SliderMark mt={2} ml="0" fontSize="sm" value={min} color={useColorModeValue('black', 'whitesmoke')}>
 					{min}
 				</SliderMark>
-				<SliderMark value={max} {...maxLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
+				<SliderMark
+					mt={2}
+					ml={{ base: '-10', md: calculateRightMarkMargin() }}
+					fontSize="sm"
+					value={max}
+					color={useColorModeValue('black', 'whitesmoke')}
+				>
 					{max}
 				</SliderMark>
 				<SliderTrack bg="sliderTrack">
@@ -92,6 +96,12 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false }: Slide
 				step={step}
 				value={value}
 				onChange={onSliderChanged}
+				onBlur={() => onSliderEndChanged(value)}
+				onKeyDown={(e) => {
+					if (e.key === 'Enter') {
+						onSliderEndChanged(value);
+					}
+				}}
 				isDisabled={!isActive || isInfinite}
 				sx={{
 					'& input': {
