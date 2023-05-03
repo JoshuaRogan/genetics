@@ -139,7 +139,7 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 					mr={{ base: 0, md: '1rem' }}
 					defaultValue={min}
 					min={min}
-					max={max}
+					max={values[1]}
 					step={step}
 					value={values[0]}
 					onChange={(_, value) => onSliderChanged([value, values[1]])}
