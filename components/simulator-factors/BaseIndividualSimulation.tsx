@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { getPopGenVariableByName, VALID_SECTIONS, VALID_VARIABLES } from '../../data/popGenVariables';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
 import { Box, Checkbox, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
+import { StoreState, VALID_SECTIONS, VALID_VARIABLES } from '../../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveSectionStatus } from '../../redux/reducers/rootSlice';
 
-export default function BaseSimulation({ isActive, name, onChange, isReplicated, toggleActiveSection }) {
-	const [isInfinitePopulation, setIsInfinitePopulation] = useState(false);
+export default function BaseIndividualSimulation({ name, isReplicated }) {
+	const dispatch = useDispatch();
+	const infinitePopulationState = useSelector((state: StoreState) => state.root.activeSections[VALID_SECTIONS.FINITE]);
 
 	const populationSize = getPopGenVariableByName(VALID_VARIABLES.POPULATION_SIZE);
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
@@ -14,8 +18,12 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 	const bulkSimulator = getPopGenVariableByName(VALID_VARIABLES.NUM_REPLICATED);
 
 	const onInfinitePopulationChecked = (e) => {
-		setIsInfinitePopulation(e.target.checked);
-		toggleActiveSection(VALID_SECTIONS.FINITE);
+		dispatch(
+			setActiveSectionStatus({
+				name: VALID_SECTIONS.FINITE,
+				status: !e.target.checked,
+			}),
+		);
 	};
 
 	return (
@@ -29,22 +37,13 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 					<Text fontWeight="bold">{populationSize.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider
-						name={populationSize.name}
-						label={populationSize.sliderName}
-						defaultValue={populationSize.defaultValue}
-						min={populationSize.min}
-						max={populationSize.max}
-						step={populationSize.step}
-						isActive={true}
-						isInfinite={isInfinitePopulation}
-						onChange={onChange}
-					/>
+					<Slider popVariable={populationSize} isActive={true} isInfinite={!infinitePopulationState} />
 					<Checkbox
-						variant="redBox"
 						role="checkbox"
-						aria-label="Changes population size to infinite for the current simulation"
+						variant="redBox"
 						size="lg"
+						aria-label="Changes population size to infinite for the current simulation"
+						checked={infinitePopulationState}
 						onChange={onInfinitePopulationChecked}
 					>
 						Infinite (∞)
@@ -61,16 +60,7 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 					<Text fontWeight="bold">{numberOfGenerations.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider
-						name={numberOfGenerations.name}
-						label={numberOfGenerations.sliderName}
-						defaultValue={numberOfGenerations.defaultValue}
-						min={numberOfGenerations.min}
-						max={numberOfGenerations.max}
-						step={numberOfGenerations.step}
-						isActive={true}
-						onChange={onChange}
-					/>
+					<Slider popVariable={numberOfGenerations} isActive={true} />
 				</Stack>
 			</Grid>
 
@@ -83,16 +73,7 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 					<Text fontWeight="bold">{startingAlleleFreq.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider
-						name={startingAlleleFreq.name}
-						label={startingAlleleFreq.sliderName}
-						defaultValue={startingAlleleFreq.defaultValue}
-						min={startingAlleleFreq.min}
-						max={startingAlleleFreq.max}
-						step={startingAlleleFreq.step}
-						isActive={true}
-						onChange={onChange}
-					/>
+					<Slider popVariable={startingAlleleFreq} isActive={true} />
 				</Stack>
 			</Grid>
 
@@ -106,17 +87,7 @@ export default function BaseSimulation({ isActive, name, onChange, isReplicated,
 						<Text fontWeight="bold">{bulkSimulator.sliderName}</Text>
 					</HelpContentWrapper>
 					<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-						<Slider
-							name={bulkSimulator.name}
-							label={bulkSimulator.sliderName}
-							aria-label={bulkSimulator.sliderName}
-							defaultValue={bulkSimulator.defaultValue}
-							min={bulkSimulator.min}
-							max={bulkSimulator.max}
-							step={bulkSimulator.step}
-							isActive={true}
-							onChange={onChange}
-						/>
+						<Slider popVariable={bulkSimulator} isActive={true} />
 					</Stack>
 				</Grid>
 			)}

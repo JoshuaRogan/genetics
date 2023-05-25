@@ -1,10 +1,11 @@
 import React from 'react';
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
-import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
+import { VALID_VARIABLES } from '../../types';
 import HelpContentWrapper from './HelpContentWrapper';
 
-export default function Inbreeding({ name, onChange }) {
+export default function Inbreeding() {
 	const inbreedingCoef = getPopGenVariableByName(VALID_VARIABLES.INBREEDING_COEFFICIENT);
 
 	return (
@@ -23,16 +24,7 @@ export default function Inbreeding({ name, onChange }) {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider
-						name={inbreedingCoef.name}
-						label={inbreedingCoef.sliderName}
-						min={inbreedingCoef.min}
-						max={inbreedingCoef.max}
-						step={inbreedingCoef.step}
-						defaultValue={inbreedingCoef.defaultValue}
-						isActive={true}
-						onChange={onChange}
-					/>
+					<Slider popVariable={inbreedingCoef} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>

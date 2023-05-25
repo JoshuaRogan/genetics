@@ -11,74 +11,74 @@ import {
 	SliderTrack,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import React, { useContext, useState } from 'react';
-import { ApplicationContext } from '../../context/application';
-import { getPopGenVariableByName } from '../../data/popGenVariables';
-
-const minLabelStyles = {
-	mt: '2',
-	ml: '0',
-	fontSize: 'sm',
-};
-
-const maxLabelStyles = {
-	mt: '2',
-	ml: { base: '-10', md: '-10' },
-	fontSize: 'sm',
-};
+import React, { useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPopGenVar } from '../../redux/reducers/rootSlice';
+import { PopGenVariable, StoreState } from '../../types';
 
 interface SliderInputProps {
-	name: string;
-	label: string;
-	min: number;
-	max: number;
-	step?: number;
-	defaultValue?: number;
-	onChange: (varName: string, value: number) => void;
+	popVariable: PopGenVariable;
 	isActive?: boolean;
 	isInfinite?: boolean;
 }
 
-function SliderInput({
-	name,
-	label,
-	defaultValue,
-	min,
-	max,
-	step = 1,
-	onChange,
-	isActive = true,
-	isInfinite = false,
-}: SliderInputProps) {
-	const sliderVariable = getPopGenVariableByName(name).variable;
-	const context = useContext(ApplicationContext);
-	const [value, setValue] = useState(context.popGenVars[sliderVariable] || defaultValue || min);
+function SliderInput({ popVariable, isActive = true, isInfinite = false }: SliderInputProps) {
+	const { max, min, step, defaultValue, sliderName, variable } = popVariable;
 
-	const handleChange = (value) => {
+	const dispatch = useDispatch();
+	const sliderValue: number = useSelector((state: StoreState) => state.root.popGenVars[variable]);
+	const [value, setValue] = React.useState(sliderValue || defaultValue || min);
+
+	// If slider value changes in the Redux store, update the local state to keep it in sync.
+	useEffect(() => {
+		setValue(sliderValue);
+	}, [sliderValue]);
+
+	// Changes the local state when the slider is changed,
+	// but doesn't update the Redux store until the slider is released.
+	const onSliderChanged = (value) => {
 		setValue(value);
-		onChange(name, value);
 	};
+
+	// Updates the Redux store only when the slider is released.
+	// This is to prevent the Redux store from being updated on every slider change
+	const onSliderEndChanged = (value) => {
+		dispatch(setPopGenVar({ varName: variable, value: Number(value) }));
+	};
+
+	const calculateRightMarkMargin = useCallback(() => {
+		const maxStrLength = max.toString().length;
+		const margin = maxStrLength * 2 * -1;
+		return margin;
+	}, [max]);
 
 	return (
 		<>
 			<Slider
-				name={name}
+				name={sliderName}
 				flex="1"
 				mb={{ base: 2, md: 8 }}
-				aria-label={label}
+				aria-label={sliderName}
 				defaultValue={defaultValue || min}
 				min={min}
 				max={max}
 				step={step}
 				focusThumbOnChange={false}
 				value={value}
-				onChange={handleChange}
+				onChange={onSliderChanged}
+				onChangeEnd={onSliderEndChanged}
 				isDisabled={!isActive || isInfinite}
 			>
-				<SliderMark value={min} {...minLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
+				<SliderMark mt={2} ml="0" fontSize="sm" value={min} color={useColorModeValue('black', 'whitesmoke')}>
 					{min}
 				</SliderMark>
-				<SliderMark value={max} {...maxLabelStyles} color={useColorModeValue('black', 'whitesmoke')}>
+				<SliderMark
+					mt={2}
+					ml={{ base: '-10', md: calculateRightMarkMargin() }}
+					fontSize="sm"
+					value={max}
+					color={useColorModeValue('black', 'whitesmoke')}
+				>
 					{max}
 				</SliderMark>
 				<SliderTrack bg="sliderTrack">
@@ -87,7 +87,7 @@ function SliderInput({
 				<SliderThumb boxSize={6}>{/* <Box color="tomato" as={} /> */}</SliderThumb>
 			</Slider>
 			<NumberInput
-				aria-label={`${label} number input`}
+				aria-label={`${sliderName} number input`}
 				maxW="120px"
 				mr="2rem"
 				defaultValue={defaultValue || min}
@@ -95,7 +95,13 @@ function SliderInput({
 				max={max}
 				step={step}
 				value={value}
-				onChange={handleChange}
+				onChange={onSliderChanged}
+				onBlur={() => onSliderEndChanged(value)}
+				onKeyDown={(e) => {
+					if (e.key === 'Enter') {
+						onSliderEndChanged(value);
+					}
+				}}
 				isDisabled={!isActive || isInfinite}
 				sx={{
 					'& input': {

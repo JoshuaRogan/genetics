@@ -1,11 +1,12 @@
 import React from 'react';
 
 import Slider from '../sliders/Slider';
-import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 import HelpContentWrapper from './HelpContentWrapper';
+import { VALID_VARIABLES } from '../../types';
 
-export default function Selection({ name, onChange }) {
+export default function Selection() {
 	const fitnessFactorWAA = getPopGenVariableByName(VALID_VARIABLES.SELECTION_WAA);
 	const fitnessFactorWAa = getPopGenVariableByName(VALID_VARIABLES.SELECTION_WAa);
 	const fitnessFactorWaa = getPopGenVariableByName(VALID_VARIABLES.SELECTION_Waa);
@@ -21,16 +22,7 @@ export default function Selection({ name, onChange }) {
 					<Text fontWeight="bold">{fitnessFactorWAA.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mb={4} mt={2} spacing="24px" align={{ base: 'center' }}>
-					<Slider
-						name={fitnessFactorWAA.name}
-						label={fitnessFactorWAA.sliderName}
-						min={fitnessFactorWAA.min}
-						max={fitnessFactorWAA.max}
-						step={fitnessFactorWAA.step}
-						defaultValue={fitnessFactorWAA.defaultValue}
-						isActive={true}
-						onChange={onChange}
-					/>
+					<Slider popVariable={fitnessFactorWAA} isActive={true} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -42,16 +34,7 @@ export default function Selection({ name, onChange }) {
 					<Text fontWeight="bold">{fitnessFactorWAa.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mb={4} mt={2} spacing="24px" align={{ base: 'center' }}>
-					<Slider
-						name={fitnessFactorWAa.name}
-						label={fitnessFactorWAa.sliderName}
-						min={fitnessFactorWAa.min}
-						max={fitnessFactorWAa.max}
-						step={fitnessFactorWAa.step}
-						defaultValue={fitnessFactorWAa.defaultValue}
-						isActive={true}
-						onChange={onChange}
-					/>
+					<Slider popVariable={fitnessFactorWAa} isActive={true} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -63,16 +46,7 @@ export default function Selection({ name, onChange }) {
 					<Text fontWeight="bold">{fitnessFactorWaa.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={2} align={{ base: 'center' }}>
-					<Slider
-						name={fitnessFactorWaa.name}
-						label={fitnessFactorWaa.sliderName}
-						min={fitnessFactorWaa.min}
-						max={fitnessFactorWaa.max}
-						step={fitnessFactorWaa.step}
-						defaultValue={fitnessFactorWaa.defaultValue}
-						isActive={true}
-						onChange={onChange}
-					/>
+					<Slider popVariable={fitnessFactorWaa} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>

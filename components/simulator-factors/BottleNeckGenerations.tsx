@@ -1,11 +1,13 @@
 import React from 'react';
-
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
-import HelpContentWrapper from './HelpContentWrapper';
-import Slider from '../sliders/Slider';
-import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
 
-export default function BottleneckGenerations({ name, onChange }) {
+import { VALID_VARIABLES } from '../../types';
+import Slider from '../sliders/Slider';
+import HelpContentWrapper from './HelpContentWrapper';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
+import RangeSlider from '../sliders/RangeSlider';
+
+export default function BottleneckGenerations() {
 	const generationToOverrideStart = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_START);
 	const generationToOverrideEnd = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_END);
 	const bottleNeckPopSize = getPopGenVariableByName(VALID_VARIABLES.BOTTLENECK_POPULATION_SIZE);
@@ -26,26 +28,7 @@ export default function BottleneckGenerations({ name, onChange }) {
 					mt={4}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider
-						name={generationToOverrideStart.name}
-						label={generationToOverrideStart.sliderName}
-						defaultValue={generationToOverrideStart.defaultValue}
-						min={generationToOverrideStart.min}
-						max={generationToOverrideStart.max}
-						step={generationToOverrideStart.step}
-						isActive={true}
-						onChange={onChange}
-					/>
-					<Slider
-						onChange={onChange}
-						min={generationToOverrideEnd.min}
-						max={generationToOverrideEnd.max}
-						step={generationToOverrideEnd.step}
-						defaultValue={generationToOverrideEnd.defaultValue}
-						label={generationToOverrideEnd.sliderName}
-						name={generationToOverrideEnd.name}
-						isActive={true}
-					/>
+					<RangeSlider startVariable={generationToOverrideStart} endVariable={generationToOverrideEnd} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -62,16 +45,7 @@ export default function BottleneckGenerations({ name, onChange }) {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider
-						onChange={onChange}
-						min={bottleNeckPopSize.min}
-						max={bottleNeckPopSize.max}
-						step={bottleNeckPopSize.step}
-						defaultValue={bottleNeckPopSize.defaultValue}
-						label={bottleNeckPopSize.sliderName}
-						name={bottleNeckPopSize.name}
-						isActive={true}
-					/>
+					<Slider popVariable={bottleNeckPopSize} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>

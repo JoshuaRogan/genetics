@@ -13,7 +13,7 @@ const HelpContentToggle = styled.div`
 	width: 20px;
 	height: 20px;
 	color: #ffffff;
-	background-color: ${(props) => props.theme.colors.tooltip};
+	background-color: var(--chakra-colors-gray-500);
 	cursor: pointer;
 	font-size: 0.8rem;
 	font-weight: 600;

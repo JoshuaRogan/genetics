@@ -1,96 +1,6 @@
-export const VALID_SECTIONS = {
-	BASE: 'base-simulation',
-	FINITE: 'finite-population',
-	SELECTION: 'selection',
-	MUTATION: 'mutation',
-	MIGRATION: 'migration',
-	INBREEDING: 'inbreeding',
-	ASSORT_MATING: 'assortative-mating',
-	BOTTLENECK_GEN: 'bottleneck-generations',
-	// ...continue
-};
+import { PopGenVariable, VALID_SECTIONS, VALID_VARIABLES } from '../types';
 
-export const VALID_VARIABLES = {
-	NUM_GENERATIONS: 'number-of-generations',
-	STARTING_ALLELE_FREQ: 'starting-allele-frequency',
-	POPULATION_SIZE: 'population-size',
-	NUM_REPLICATED: 'number-replicated',
-	NUM_OF_POPULATIONS: 'number-of-populations',
-
-	SELECTION_WAA: 'selection-wAA',
-	SELECTION_WAa: 'selection-WAa',
-	SELECTION_Waa: 'selection-Waa',
-	SELECTION_COEFFICIENT: 'selection-coefficient',
-	SELECTION_DOMINANCE_COEFFICIENT: 'selection-dominance-coefficient',
-
-	MUTATION_FORWARD_MUTATION: 'mutation-forward',
-	MUTATION_BACKWARD_MUTATION: 'mutation-backward',
-	MUTATION_FORWARD_MUTATION_EXPONENT: 'mutation-forward-exponent',
-	MUTATION_BACKWARD_MUTATION_EXPONENT: 'mutation-backward-exponent',
-
-	MIGRATION_MIGRATION_RATE: 'migration-rate',
-	MIGRATION_MIGRANT_ALLELE_FREQ: 'migration-migrant-allele-freq',
-
-	INBREEDING_COEFFICIENT: 'inbreeding-coeff',
-
-	ASSORT_MATING_POSITIVE_FREQ: 'positive-assortative-mating-frequency',
-
-	BOTTLENECK_GEN_TO_OVERRIDE_START: 'bottle-neck-gen-to-override-start',
-	BOTTLENECK_GEN_TO_OVERRIDE_END: 'bottle-neck-gen-to-override-end',
-	BOTTLENECK_POPULATION_SIZE: 'bottle-neck-population-size',
-};
-
-// IMPORTANT THIS IS JUST A MECHANISM TO HELP AUTOCOMPLETE. NEED TO KEEP UPDATED WITH THE VARIABLES BELOW
-export interface Settings {
-	t: number;
-	p: number;
-	N: number;
-	numSims: number;
-
-	// selection
-	WAA: number;
-	WAa: number;
-	Waa: number;
-	s: number;
-	h: number;
-
-	// Mutation
-	mu: number; // forward mutation
-	'mu-exp': number;
-	nu: number; // reverse mutation
-	'nu-exp': number;
-
-	// Migration
-	m: number;
-	pm: number;
-
-	// Inbreeding
-	F: number;
-
-	// Assortative Mating
-	assortMating: number;
-
-	// Bottleneck
-	'gen-to-over-start': number;
-	'gen-to-over-end': number;
-	BNb: number;
-}
-
-interface PopGenVariable {
-	name: string;
-	variable: string;
-	variableHTML?: string;
-	description: string;
-	section: string;
-	sliderName?: string;
-	order: number;
-	min?: number;
-	max?: number;
-	step?: number;
-	defaultValue: number;
-}
-
-export const popGenVariables = [
+export const popGenVariables: PopGenVariable[] = [
 	// BASE SIMULATION INPUTS
 	{
 		name: VALID_VARIABLES.NUM_GENERATIONS,
@@ -110,7 +20,7 @@ export const popGenVariables = [
 		description: 'temp desc',
 		section: VALID_SECTIONS.BASE,
 		order: 1,
-		defaultValue: 3,
+		defaultValue: 1,
 		min: 1,
 		max: 50,
 		step: 1,
@@ -197,17 +107,27 @@ export const popGenVariables = [
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_COEFFICIENT,
+		sliderName: 'Selection Coefficient (s)',
+		description: null,
 		variable: 's',
 		section: VALID_SECTIONS.SELECTION,
 		order: 3,
+		min: 1,
+		max: 10,
+		step: 1,
 		defaultValue: 0,
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_DOMINANCE_COEFFICIENT,
+		sliderName: 'Selection Coefficient (s)',
+		description: null,
 		variable: 'h',
 		section: VALID_SECTIONS.SELECTION,
 		order: 4,
-		defaultValue: 1,
+		min: 1,
+		max: 10,
+		step: 1,
+		defaultValue: 0,
 	},
 
 	// MUTATION
@@ -361,7 +281,7 @@ export const popGenVariables = [
 		max: 10000,
 		step: 1,
 	},
-] as PopGenVariable[];
+];
 
 export function getPopGenVariableByName(name: string): PopGenVariable {
 	return popGenVariables.find((popgenVar) => popgenVar.name === name);

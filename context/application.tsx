@@ -1,6 +1,7 @@
 'use client';
-import { nameToVariable, VALID_SECTIONS, popGenVariables, Settings } from '../data/popGenVariables';
+import { nameToVariable, popGenVariables } from '../data/popGenVariables';
 import React from 'react';
+import { Settings, VALID_SECTIONS } from '../types';
 
 function valueToProper(name, value) {
 	// Need to convert back to decimal
@@ -100,6 +101,7 @@ export const ApplicationContextProvider = ({ children, isBulkSimulatorProp }) =>
 			const A1A1 = genoTypeFreqs.AA;
 			const A1A2 = genoTypeFreqs.Aa;
 			const A2A2 = genoTypeFreqs.aa;
+
 			setGenoTypeResults([A1A1, A1A2, A2A2]); // Order matters here
 		}
 	};

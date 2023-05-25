@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 
-import { getPopGenVariableByName, VALID_SECTIONS, VALID_VARIABLES } from '../../data/popGenVariables';
+import { VALID_VARIABLES } from '../../types';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
 import HelpContentWrapper from './HelpContentWrapper';
-import { Box, Checkbox, Grid, Stack, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
 
-export default function ReplicatedSimulation({ isActive, name, onChange, toggleActiveSection }) {
+export default function BaseReplicatedSimulation({ name }) {
 	const numberOfGenerations = getPopGenVariableByName(VALID_VARIABLES.NUM_GENERATIONS);
 	const populationSize = getPopGenVariableByName(VALID_VARIABLES.POPULATION_SIZE);
 	const startingAlleleFreq = getPopGenVariableByName(VALID_VARIABLES.STARTING_ALLELE_FREQ);
@@ -22,17 +23,7 @@ export default function ReplicatedSimulation({ isActive, name, onChange, toggleA
 					<Text fontWeight="bold">{populationSize.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider
-						name={populationSize.name}
-						label={populationSize.sliderName}
-						min={populationSize.min}
-						max={populationSize.max}
-						step={populationSize.step}
-						defaultValue={populationSize.max}
-						isActive={true}
-						isInfinite={false}
-						onChange={onChange}
-					/>
+					<Slider popVariable={populationSize} isActive={true} />
 				</Stack>
 			</Grid>
 
@@ -45,16 +36,7 @@ export default function ReplicatedSimulation({ isActive, name, onChange, toggleA
 					<Text fontWeight="bold">{numberOfGenerations.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider
-						onChange={onChange}
-						min={numberOfGenerations.min}
-						max={numberOfGenerations.max}
-						step={numberOfGenerations.step}
-						defaultValue={numberOfGenerations.defaultValue}
-						label={numberOfGenerations.sliderName}
-						name={numberOfGenerations.name}
-						isActive={true}
-					/>
+					<Slider popVariable={numberOfGenerations} isActive={true} />
 				</Stack>
 			</Grid>
 
@@ -67,16 +49,7 @@ export default function ReplicatedSimulation({ isActive, name, onChange, toggleA
 					<Text fontWeight="bold">{startingAlleleFreq.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider
-						onChange={onChange}
-						min={startingAlleleFreq.min}
-						max={startingAlleleFreq.max}
-						step={startingAlleleFreq.step}
-						defaultValue={startingAlleleFreq.defaultValue}
-						label={startingAlleleFreq.sliderName}
-						name={startingAlleleFreq.name}
-						isActive={true}
-					/>
+					<Slider popVariable={startingAlleleFreq} isActive={true} />
 				</Stack>
 			</Grid>
 
@@ -89,16 +62,7 @@ export default function ReplicatedSimulation({ isActive, name, onChange, toggleA
 					<Text fontWeight="bold">{numPopulation.sliderName}</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider
-						onChange={onChange}
-						min={numPopulation.min}
-						max={numPopulation.max}
-						step={numPopulation.step}
-						defaultValue={numPopulation.defaultValue}
-						label={numPopulation.sliderName}
-						name={numPopulation.name}
-						isActive={true}
-					/>
+					<Slider popVariable={numPopulation} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>

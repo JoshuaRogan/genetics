@@ -39,8 +39,6 @@ function initGeneration(data) {
 	if (data.populationSize === false) {
 		generation.setInfinitePopulation();
 	}
-
-	// console.log(generation);
 }
 
 
@@ -200,7 +198,7 @@ function outputResultsAllele(frequencies, genoTypeFreq) {
 	const alleleResults = {
 		type: "results-allele",
 		results: frequencies,
-		genotypeFreqs: genoTypeFreq || '{}',
+		genotypeFreqs: genoTypeFreq || {},
 		resultsSettings: generation.getSimulationSettings(),
 	};
 

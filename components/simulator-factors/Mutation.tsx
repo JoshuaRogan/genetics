@@ -1,10 +1,11 @@
 import React from 'react';
 import Slider from '../sliders/Slider';
-import { getPopGenVariableByName, VALID_VARIABLES } from '../../data/popGenVariables';
+import { getPopGenVariableByName } from '../../data/popGenVariables';
 import { Box, Grid, Stack, Text } from '@chakra-ui/react';
 import HelpContentWrapper from './HelpContentWrapper';
+import { VALID_VARIABLES } from '../../types';
 
-export default function Mutation({ name, onChange }) {
+export default function Mutation() {
 	const forwardMutation = getPopGenVariableByName(VALID_VARIABLES.MUTATION_FORWARD_MUTATION);
 	const backwardMutation = getPopGenVariableByName(VALID_VARIABLES.MUTATION_BACKWARD_MUTATION);
 	const fowardMutationEpon = getPopGenVariableByName(VALID_VARIABLES.MUTATION_FORWARD_MUTATION_EXPONENT);
@@ -26,26 +27,8 @@ export default function Mutation({ name, onChange }) {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider
-						name={forwardMutation.name}
-						label={forwardMutation.sliderName}
-						defaultValue={forwardMutation.defaultValue}
-						min={forwardMutation.min}
-						max={forwardMutation.max}
-						step={forwardMutation.step}
-						isActive={true}
-						onChange={onChange}
-					/>
-					<Slider
-						name={fowardMutationEpon.name}
-						label={fowardMutationEpon.sliderName}
-						defaultValue={fowardMutationEpon.defaultValue}
-						min={fowardMutationEpon.min}
-						max={fowardMutationEpon.max}
-						step={fowardMutationEpon.step}
-						isActive={true}
-						onChange={onChange}
-					/>
+					<Slider popVariable={forwardMutation} isActive={true} />
+					<Slider popVariable={fowardMutationEpon} isActive={true} />
 				</Stack>
 			</Grid>
 			<Grid>
@@ -62,26 +45,8 @@ export default function Mutation({ name, onChange }) {
 					mt={2}
 					align={{ base: 'center', md: 'self-start' }}
 				>
-					<Slider
-						onChange={onChange}
-						min={backwardMutation.min}
-						max={backwardMutation.max}
-						step={backwardMutation.step}
-						defaultValue={backwardMutation.defaultValue}
-						label={backwardMutation.sliderName}
-						name={backwardMutation.name}
-						isActive={true}
-					/>
-					<Slider
-						onChange={onChange}
-						min={backwardMutationExpon.min}
-						max={backwardMutationExpon.max}
-						step={backwardMutationExpon.step}
-						defaultValue={backwardMutationExpon.defaultValue}
-						label={backwardMutationExpon.sliderName}
-						name={backwardMutationExpon.name}
-						isActive={true}
-					/>
+					<Slider popVariable={backwardMutation} isActive={true} />
+					<Slider popVariable={backwardMutationExpon} isActive={true} />
 				</Stack>
 			</Grid>
 		</Box>
