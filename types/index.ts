@@ -53,6 +53,7 @@ export type Settings = {
 	'gen-to-over-start': number;
 	'gen-to-over-end': number;
 	BNb: number;
+	nB: number;
 };
 
 export type PopGenVariable = {
