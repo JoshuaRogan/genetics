@@ -18,7 +18,7 @@ function SimulationLegendSettings({
 			<List listStyleType="none" p={0} m={0}>
 				<LegendListItem>
 					<LegendItemWrapper>
-						<LegendItem>Number of Populations = {settings.numSims} </LegendItem>
+						<LegendItem>Number of Populations = {settings.Nb} </LegendItem>
 					</LegendItemWrapper>
 				</LegendListItem>
 

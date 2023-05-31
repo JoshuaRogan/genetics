@@ -70,7 +70,7 @@ function Index() {
 	);
 
 	const updateChart = () => {
-		const numberOfSims = popGenVars.numSims;
+		const numberOfSims = popGenVars.Nb;
 
 		for (let i = 0; i < numberOfSims; i++) {
 			updateCharts();
