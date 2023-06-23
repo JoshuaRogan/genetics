@@ -28,7 +28,7 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 
 	return (
 		<Box aria-label={name}>
-			<Grid mb={4}>
+			<Grid mb={8}>
 				<HelpContentWrapper
 					title={populationSize.sliderName + `「 ${populationSize.variable} 」`}
 					message={populationSize.description}
@@ -39,19 +39,19 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={populationSize} isActive={true} isInfinite={!infinitePopulationState} />
 					<Checkbox
-						role="checkbox"
 						variant="redBox"
 						size="lg"
-						aria-label="Changes population size to infinite for the current simulation"
 						checked={infinitePopulationState}
 						onChange={onInfinitePopulationChecked}
+						aria-label="Toggles population size to infinite for the current simulation"
+						aria-selected={infinitePopulationState}
 					>
 						Infinite (∞)
 					</Checkbox>
 				</Stack>
 			</Grid>
 
-			<Grid mb={4}>
+			<Grid mb={8}>
 				<HelpContentWrapper
 					title={numberOfGenerations.sliderName + `「 ${numberOfGenerations.variable} 」`}
 					message={numberOfGenerations.description}
@@ -64,7 +64,7 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 				</Stack>
 			</Grid>
 
-			<Grid mb={4}>
+			<Grid mb={8}>
 				<HelpContentWrapper
 					title={startingAlleleFreq.sliderName + `「 ${startingAlleleFreq.variable} 」`}
 					message={startingAlleleFreq.description}

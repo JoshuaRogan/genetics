@@ -10,7 +10,7 @@ export default function AssortativeMating() {
 
 	return (
 		<Box aria-label="Advanced Simulation Factor: AssortativeMating">
-			<Grid>
+			<Grid mb={4}>
 				<HelpContentWrapper
 					title={positiveAssortMatingFreq.sliderName + `「 ${positiveAssortMatingFreq.variable} 」`}
 					message={positiveAssortMatingFreq.description}
@@ -18,12 +18,7 @@ export default function AssortativeMating() {
 				>
 					<Text fontWeight="bold">{positiveAssortMatingFreq.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack
-					direction={{ base: 'column', md: 'row' }}
-					spacing="24px"
-					mt={2}
-					align={{ base: 'center', md: 'self-start' }}
-				>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={positiveAssortMatingFreq} isActive={true} />
 				</Stack>
 			</Grid>

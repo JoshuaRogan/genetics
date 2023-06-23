@@ -92,46 +92,13 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 	};
 
 	return (
-		<Box display="flex" flexDirection={{ base: 'column', md: 'row' }} width="100%">
-			<Slider flex="1" mb={{ base: 8 }} mr="1.5rem">
-				<RangeSlider
-					name={startSliderName}
-					aria-label={['Generations to Override Start', 'Generations to Override End']}
-					width="100%"
-					defaultValue={[0, 150]}
-					min={min}
-					max={max}
-					step={step}
-					value={values}
-					onChange={onSliderChanged}
-					onChangeEnd={onSliderEndChanged}
-					isDisabled={!isActive}
-				>
-					<SliderMark value={min} mt={2} ml="0" fontSize="sm" color={useColorModeValue('black', 'whitesmoke')}>
-						{min}
-					</SliderMark>
-					<SliderMark
-						mt={2}
-						ml={{ base: '-10', md: calculateRightMarkMargin() }}
-						fontSize="sm"
-						value={100}
-						color={useColorModeValue('black', 'whitesmoke')}
-					>
-						{max}
-					</SliderMark>
-					<RangeSliderTrack bg="sliderTrack">
-						<RangeSliderFilledTrack bg="sliderFilledTrack" />
-					</RangeSliderTrack>
-					<RangeSliderThumb index={0} boxSize={6} />
-					<RangeSliderThumb index={1} boxSize={6} />
-				</RangeSlider>
-			</Slider>
+		<Box display="flex" flexDirection={{ base: 'column', md: 'row' }} width="100%" alignItems="center">
 			<Stack
 				display="flex"
 				flexDirection={{ base: 'column', md: 'row' }}
 				alignItems="center"
 				spacing={{ base: '1rem', md: '0' }}
-				mb={{ base: 4, md: 8 }}
+				mr="1.5rem"
 			>
 				<NumberInput
 					aria-label={`Generations to Override Start`}
@@ -192,6 +159,39 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 					</NumberInputStepper>
 				</NumberInput>
 			</Stack>
+			<Slider flex="1">
+				<RangeSlider
+					name={startSliderName}
+					aria-label={['Generations to Override Start', 'Generations to Override End']}
+					width="100%"
+					defaultValue={[0, 150]}
+					min={min}
+					max={max}
+					step={step}
+					value={values}
+					onChange={onSliderChanged}
+					onChangeEnd={onSliderEndChanged}
+					isDisabled={!isActive}
+				>
+					<SliderMark value={min} mt={2} ml="0" fontSize="sm" color={useColorModeValue('black', 'whitesmoke')}>
+						{min}
+					</SliderMark>
+					<SliderMark
+						mt={2}
+						ml={{ base: '-10', md: calculateRightMarkMargin() }}
+						fontSize="sm"
+						value={100}
+						color={useColorModeValue('black', 'whitesmoke')}
+					>
+						{max}
+					</SliderMark>
+					<RangeSliderTrack bg="sliderTrack">
+						<RangeSliderFilledTrack bg="sliderFilledTrack" />
+					</RangeSliderTrack>
+					<RangeSliderThumb index={0} boxSize={6} />
+					<RangeSliderThumb index={1} boxSize={6} />
+				</RangeSlider>
+			</Slider>
 		</Box>
 	);
 }
