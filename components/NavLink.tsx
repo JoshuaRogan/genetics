@@ -11,16 +11,14 @@ const NavLink = ({ children, href }: { children: ReactNode; href: string }) => {
 
 	return (
 		<Link
-			px={8}
-			py={4}
-			rounded={'md'}
+			variant="navigationLink"
+			href={href}
+			as={NextLink}
+			bg={highlight}
 			_hover={{
 				textDecoration: 'none',
 				bg: useColorModeValue('gray.600', 'gray.700'),
 			}}
-			href={href}
-			as={NextLink}
-			bg={highlight}
 		>
 			{children}
 		</Link>

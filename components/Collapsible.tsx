@@ -1,5 +1,6 @@
 import React from 'react';
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box } from '@chakra-ui/react';
+import { a11yFocus } from '../utils/a11y';
 
 interface CollapsibleProps {
 	open?: boolean;
@@ -19,7 +20,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({
 		<Accordion allowToggle variant={variant}>
 			<AccordionItem>
 				<h2>
-					<AccordionButton flexDirection={iconDirection === 'right' ? 'row' : 'row-reverse'}>
+					<AccordionButton flexDirection={iconDirection === 'right' ? 'row' : 'row-reverse'} _focus={a11yFocus}>
 						<Box
 							as="span"
 							flex="1"
