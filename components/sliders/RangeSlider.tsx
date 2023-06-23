@@ -119,7 +119,12 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 					isDisabled={!isActive}
 					sx={{
 						'& input': {
-							borderColor: useColorModeValue('gray.500', 'whitesmoke'),
+							borderColor: useColorModeValue('black', 'gray.300'),
+						},
+						'&:hover': {
+							'& input:not(:focus)': {
+								borderColor: useColorModeValue('purple.500', 'purple.500'),
+							},
 						},
 					}}
 				>
