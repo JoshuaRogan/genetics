@@ -44,9 +44,9 @@ To install the project and its dependencies, run the following commands:
 
 ### Useful Links
 
-[Netlify Hosting - Production deployment](https://epic-shaw-a67b5a.netlify.app/) (current)
-[Old Version - Production deployment](https://eloquent-williams-76e898.netlify.app/)
-[Repository backup - GitHub Repository](https://github.com/JoshuaRogan/genetics/tree/dev-backup)
+[Netlify Hosting - Production deployment](https://epic-shaw-a67b5a.netlify.app/) (current)  
+[Old Version - Production deployment](https://eloquent-williams-76e898.netlify.app/)  
+[Repository backup - GitHub Repository](https://github.com/JoshuaRogan/genetics/tree/dev-backup)  
 
 ### Resources
 
