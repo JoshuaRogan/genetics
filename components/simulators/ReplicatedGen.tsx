@@ -363,7 +363,7 @@ function Index() {
 				</Box>
 
 				<Box my={6}>
-					<HighChart lines={alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+					<HighChart chartIndex={0} lines={alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
 				</Box>
 				<Text
 					as="p"
@@ -387,7 +387,11 @@ function Index() {
 				/>
 
 				<Box my={6}>
-					<HighChart lines={genotypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+					<HighChart
+						chartIndex={1}
+						lines={genotypeResults}
+						title={'Graph 2: Genotype Frequency Change Over Generations'}
+					/>
 				</Box>
 				<Text
 					as="p"
