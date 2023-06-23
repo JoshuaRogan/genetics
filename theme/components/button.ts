@@ -72,8 +72,38 @@ const generateLinkStyle = defineStyle({
 	},
 });
 
+const showTableStyle = defineStyle({
+	...baseStyle,
+	display: 'flex',
+	mx: 'auto',
+	mt: 4,
+	color: 'blue.600',
+	border: 2,
+	borderStyle: 'solid',
+	borderColor: 'blue.500',
+	alignContent: 'center',
+	_dark: {
+		color: 'blue.300',
+		border: 2,
+		borderStyle: 'solid',
+		borderColor: 'blue.300',
+	},
+	_hover: {
+		backgroundColor: 'blue.50',
+		_dark: {
+			backgroundColor: 'whiteAlpha.300',
+		},
+	},
+	_focus: {
+		ring: false,
+		outlineColor: 'blue.500',
+		outlineOffset: 4,
+		outlineWidth: 3,
+	},
+});
+
 const buttonTheme = defineStyleConfig({
-	variants: { baseStyle, primary, secondary, themeSwitcher, generateLinkStyle },
+	variants: { baseStyle, primary, secondary, themeSwitcher, generateLinkStyle, showTableStyle },
 });
 
 export default buttonTheme;

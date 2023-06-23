@@ -18,13 +18,14 @@ const GlobalStyle = createGlobalStyle`
 
 	.highcharts-data-table {
 		margin-top: 30px;
-	
 	&	table {
 		font-family: 'Roboto, sans-serif';
 		border: 1px solid #646262;
 		margin: 10px auto;
 		text-align: center;
 		width: 100%;
+		min-width: 360px;
+    max-width: 950px;
 
 		caption {
 			font-size: 1.2em;
@@ -35,12 +36,21 @@ const GlobalStyle = createGlobalStyle`
 			border-bottom: 1px solid #646262;
 		}
 
+		th {
+    	font-weight: 600;
+    	padding: 0.5em;
+		}
+
 		tbody {
 			border-style: solid;
     	border-width: 1px;
 
 			tr {
 				border-bottom: 1px solid #646262;
+			}
+
+			tr:nth-child(even) {
+				background: var(--chakra-colors-gray-700);
 			}
 		}
 	}

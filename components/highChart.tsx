@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
+import { Box, Button } from '@chakra-ui/react';
 import { useColorMode } from '@chakra-ui/react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
@@ -105,27 +105,68 @@ function createOptions(theme = 'light', lines, title) {
 				},
 			},
 		},
+		responsive: {
+			rules: [
+				{
+					condition: {
+						maxWidth: 550,
+					},
+					chartOptions: {
+						chart: {
+							spacingLeft: 3,
+							spacingRight: 300,
+						},
+					},
+				},
+			],
+		},
+		exporting: {
+			showTable: true,
+		},
 		credits: {
 			enabled: false,
 		},
 	};
 }
 
-const HighchartWrapper = ({ lines, title }) => {
+const HighchartWrapper = ({ chartIndex, lines, title }) => {
 	const { colorMode } = useColorMode();
 	const theme = colorMode === 'light' ? lightTheme : darkTheme;
 
 	Highcharts.setOptions(theme);
 
+	// Hide the data table on initial render since the option is set to true in the theme
+	useEffect(() => {
+		const dataTable = document.getElementsByClassName('highcharts-data-table')[chartIndex] as HTMLElement;
+		if (dataTable) dataTable.style.display = 'none';
+	}, [chartIndex]);
+
 	return (
 		<Box
 			key={colorMode}
-			// minHeight="500px"
-			// height={500}
+			display="flex"
+			flexDirection="column"
+			justifyContent="center"
 			aria-label="Graph displaying the results of the Simulator"
 			role="figure"
 		>
 			<HighchartsReact highcharts={Highcharts} options={createOptions(colorMode, lines, title)} />
+			<Button
+				variant="showTableStyle"
+				my={2}
+				w={250}
+				onClick={() => {
+					const chart = Highcharts.charts[chartIndex];
+
+					const element = document.getElementsByClassName('highcharts-data-table')[chartIndex] as HTMLElement;
+
+					if (!element) return;
+
+					element.style.display === 'block' ? chart.hideData() : chart.viewData();
+				}}
+			>
+				Show/Hide data view table
+			</Button>
 		</Box>
 	);
 };
