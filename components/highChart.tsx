@@ -1,11 +1,11 @@
 import React from 'react';
-import Highcharts from 'highcharts';
 import { Box } from '@chakra-ui/react';
+import { useColorMode } from '@chakra-ui/react';
+import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsExportData from 'highcharts/modules/export-data';
 import HighchartsAccessibility from 'highcharts/modules/accessibility';
-import { useColorMode } from '@chakra-ui/react';
 import { darkTheme, lightTheme } from '../theme/highchartTheme';
 
 if (typeof Highcharts === 'object') {
@@ -17,20 +17,37 @@ if (typeof Highcharts === 'object') {
 const genoTypeOrder = ['AA', 'Aa', 'aa'];
 
 function createLinesFromArray(lines, isGeno = false) {
-	return lines.map((line, index) => {
+	return lines.map((line: number[], index: number) => {
+		const name = isGeno ? `Genotype ${genoTypeOrder[index]} Frequency` : `Simulation #${index + 1}`;
+
 		return {
-			data: [...line],
-			name: isGeno ? genoTypeOrder[index] : 'Run ' + (index + 1),
+			name,
+			accessibility: {
+				enabled: true,
+				description: 'The frequency of the A allele in the population.',
+			},
+			data: [
+				...line.map((point: number, idx: number) => {
+					const dataPointName = `Generation #${idx + 1}`;
+					return [dataPointName, point];
+				}),
+			],
 		};
 	});
 }
 
-function createOptions(lines, title) {
+function createOptions(theme = 'light', lines, title) {
 	const isGenoType = title.toLowerCase().includes('genotype');
+	const subtitleColor =
+		theme === 'light' ? 'var(--chakra-colors-blackAlpha-800)' : 'var(--chakra-colors-whiteAlpha-800)';
 
 	return {
 		title: {
 			text: title || 'Population Genetics Simulation',
+			margin: 50,
+		},
+		subtitle: {
+			text: 'Hover (or navigate with the keyboard) over the line to see the frequency of the A allele in the population.',
 		},
 		chart: {
 			styledMode: false,
@@ -41,25 +58,51 @@ function createOptions(lines, title) {
 					y: 5,
 				},
 			},
+			height: 500,
 		},
 		xAxis: {
 			title: {
 				text: 'Generation Number',
 			},
+			accessibility: {
+				description: 'Generation number',
+			},
 			allowDecimals: false,
 			min: 0,
 		},
 		yAxis: {
-			min: 0,
-			max: 1,
 			title: {
 				text: 'Frequency of the A allele',
 			},
+			accessibility: {
+				description: 'Frequency of the A allele',
+			},
+			min: 0,
+			max: 1,
+		},
+		accessibility: {
+			description: 'The frequency of the A allele in the population.',
 		},
 		series: createLinesFromArray(lines, isGenoType),
 		plotOptions: {
 			series: {
 				pointStart: 0,
+				accessibility: {
+					enabled: true,
+					description: 'The frequency of the A allele in the population.',
+					keyboardNavigation: {
+						enabled: true,
+					},
+				},
+				tooltip: {
+					headerFormat: `
+					<span style="font-size: 10px">
+						<span style="color:{point.color}">\u25CF</span>
+						{series.name}
+					</span>
+					<br/>`,
+					pointFormat: '{point.name}: <b>{point.y}</b><br/>',
+				},
 			},
 		},
 		credits: {
@@ -75,8 +118,14 @@ const HighchartWrapper = ({ lines, title }) => {
 	Highcharts.setOptions(theme);
 
 	return (
-		<Box key={colorMode} minHeight="400px" aria-label="Graph displaying the results of the Simulator" role="figure">
-			<HighchartsReact highcharts={Highcharts} options={createOptions(lines, title)} />
+		<Box
+			key={colorMode}
+			// minHeight="500px"
+			// height={500}
+			aria-label="Graph displaying the results of the Simulator"
+			role="figure"
+		>
+			<HighchartsReact highcharts={Highcharts} options={createOptions(colorMode, lines, title)} />
 		</Box>
 	);
 };
