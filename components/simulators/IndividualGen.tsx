@@ -178,7 +178,8 @@ function Index() {
 							toast({
 								id: 'simulation-complete',
 								title: 'Simulation Complete',
-								description: 'The simulation has completed and the results are ready to view.',
+								description:
+									'The simulation has completed and the results are ready to view. Below each table there is a summary of the results.',
 								status: 'success',
 								duration: 4000,
 								position: 'bottom-right',
@@ -236,7 +237,7 @@ function Index() {
 				mx={{ sm: 'auto' }}
 			>
 				<Box as="section" m={'40px 0'}>
-					<Text textStyle="title" align="center">
+					<Text as="h1" textStyle="title" align="center">
 						Individual Simulations
 					</Text>
 					<Text as="p" my={4}>
@@ -273,8 +274,9 @@ function Index() {
 					<Box
 						as="div"
 						role="form"
-						aria-label="All simulator inputs"
+						aria-label="Simulator variable configuration"
 						padding={{ base: '0 15px 15px 15px', sm: '0 30px 30px 30px', md: '0' }}
+						mt={{ base: 6, md: 10 }}
 						maxWidth={{ md: '90%', lg: '80%', xl: '70%' }}
 						marginX={{ sm: 'auto' }}
 					>
@@ -311,17 +313,8 @@ function Index() {
 									<BottleNeckGenerations />
 								</FactorManager>
 							</Collapsible>
-							<Button
-								display="flex"
-								mx="auto"
-								mt={4}
-								colorScheme="whatsapp"
-								variant="outline"
-								alignContent="center"
-								rightIcon={<LinkIcon />}
-								onClick={generateShareableLink}
-							>
-								Generate Shareable Link
+							<Button variant="generateLinkStyle" rightIcon={<LinkIcon />} onClick={generateShareableLink}>
+								Generate shareable Link
 							</Button>
 						</Box>
 						<Text my={4}>
@@ -339,8 +332,7 @@ function Index() {
 							spacing={0}
 						>
 							<Button
-								variant={'primary'}
-								w={{ base: '70%', md: '30%' }}
+								variant="primary"
 								onClick={() => {
 									dispatch(clearResults());
 									updateChart();
@@ -348,12 +340,7 @@ function Index() {
 							>
 								Run Simulation
 							</Button>
-							<Button
-								variant={'primary'}
-								w={{ base: '70%', md: '30%' }}
-								marginTop={{ base: 2, md: 0 }}
-								onClick={() => updateChart()}
-							>
+							<Button variant="primary" marginTop={{ base: 2, md: 0 }} onClick={() => updateChart()}>
 								Add as a new simulation
 							</Button>
 						</ButtonGroup>
@@ -363,6 +350,18 @@ function Index() {
 				<Box my={6}>
 					<HighChart lines={alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
 				</Box>
+				<Text
+					as="p"
+					mt={4}
+					mb={8}
+					textAlign={{
+						base: 'center',
+						md: 'left',
+					}}
+				>
+					Below will be the results for the above graph. The legend will change based on the settings you have selected,
+					and the results of the simulation.
+				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}
 					genoTypeResults={null}
@@ -375,6 +374,19 @@ function Index() {
 				<Box my={6}>
 					<HighChart lines={genotypeResults} title="Graph 2: Genotype Frequency Change Over Generations" />
 				</Box>
+				<Text
+					as="p"
+					mt={4}
+					mb={8}
+					textAlign={{
+						base: 'center',
+						md: 'left',
+					}}
+				>
+					Below will be the results for the above graph. Here you will find the initial / final genotype frequencies,
+					for A1A1, A1A2, and A2A2. The legend will change based on the settings you have selected, and the results of
+					the simulation.
+				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}
 					genoTypeResults={genotypeResults}
@@ -409,7 +421,7 @@ function Index() {
 								toast({
 									id: 'simulation-reset',
 									title: 'Simulator Reset',
-									description: 'The simulator has been reset to default values.',
+									description: "The simulator's settings have been reset to their default values.",
 									status: 'warning',
 									duration: 5000,
 									isClosable: true,

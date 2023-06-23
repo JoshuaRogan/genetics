@@ -46,19 +46,13 @@ function HomePage() {
 					alignItems={'center'}
 					marginTop={25}
 					marginBottom={25}
-					spacing={0}
+					spacing={{ base: 0, md: 4 }}
 				>
-					<Button as={Link} href="/individual" variant={'primary'} w={{ base: '70%', md: '40%' }}>
+					<Button as={Link} variant="primary" href="/individual">
 						Go to Individual Simulations
 					</Button>
 
-					<Button
-						as={Link}
-						href="/replicated"
-						variant={'primary'}
-						w={{ base: '70%', md: '40%' }}
-						marginTop={{ base: 2, md: 0 }}
-					>
+					<Button as={Link} variant="primary" href="/replicated" marginTop={{ base: 4, md: 0 }}>
 						Go to Replicated Simulations
 					</Button>
 				</ButtonGroup>
