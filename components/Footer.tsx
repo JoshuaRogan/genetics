@@ -1,6 +1,7 @@
 import NextLink from 'next/link';
 import Image from 'next/image';
 import { Box, Container, Stack, Link } from '@chakra-ui/react';
+import { a11yFocus } from '../utils/a11y';
 
 export default function Footer() {
 	return (
@@ -15,16 +16,11 @@ export default function Footer() {
 				justify={{ base: 'center', md: 'space-between' }}
 				align={{ base: 'center', md: 'center' }}
 			>
-				<Link href="/" as={NextLink}>
+				<Link href="/" as={NextLink} variant="footerLink">
 					Supporting information
 				</Link>
-				<Link href="https://biointeractive.org" target={'_blank'} as={NextLink}>
-					<Image
-						src="/images/biointeractive.png"
-						width={120}
-						height={25}
-						alt="Logo from the Population Genetics Simulator"
-					/>
+				<Link href="https://biointeractive.org" target={'_blank'} as={NextLink} variant="footerLink">
+					<Image src="/images/hhmi-biointeractive.svg" width={120} height={25} alt="Logo from HHMI BioInteractive" />
 				</Link>
 			</Container>
 		</Box>

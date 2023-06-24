@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Box, Button } from '@chakra-ui/react';
+import { useColorMode } from '@chakra-ui/react';
 import Highcharts from 'highcharts';
-import { Box } from '@chakra-ui/react';
 import HighchartsReact from 'highcharts-react-official';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import HighchartsExportData from 'highcharts/modules/export-data';
 import HighchartsAccessibility from 'highcharts/modules/accessibility';
-import { useColorMode } from '@chakra-ui/react';
 import { darkTheme, lightTheme } from '../theme/highchartTheme';
 
 if (typeof Highcharts === 'object') {
@@ -17,20 +17,35 @@ if (typeof Highcharts === 'object') {
 const genoTypeOrder = ['AA', 'Aa', 'aa'];
 
 function createLinesFromArray(lines, isGeno = false) {
-	return lines.map((line, index) => {
+	return lines.map((line: number[], index: number) => {
+		const name = isGeno ? `Genotype ${genoTypeOrder[index]} Frequency` : `Simulation #${index + 1}`;
+
 		return {
-			data: [...line],
-			name: isGeno ? genoTypeOrder[index] : 'Run ' + (index + 1),
+			name,
+			accessibility: {
+				enabled: true,
+				description: 'The frequency of the A allele in the population.',
+			},
+			data: [
+				...line.map((point: number, idx: number) => {
+					const dataPointName = `Generation #${idx + 1}`;
+					return [dataPointName, point];
+				}),
+			],
 		};
 	});
 }
 
-function createOptions(lines, title) {
+function createOptions(theme = 'light', lines, title) {
 	const isGenoType = title.toLowerCase().includes('genotype');
 
 	return {
 		title: {
 			text: title || 'Population Genetics Simulation',
+			margin: 50,
+		},
+		subtitle: {
+			text: 'Hover (or navigate with the keyboard) over the line to see the frequency of the A allele in the population.',
 		},
 		chart: {
 			styledMode: false,
@@ -41,26 +56,85 @@ function createOptions(lines, title) {
 					y: 5,
 				},
 			},
+			height: 500,
 		},
 		xAxis: {
 			title: {
 				text: 'Generation Number',
 			},
+			accessibility: {
+				description: 'Generation number',
+			},
 			allowDecimals: false,
 			min: 0,
 		},
 		yAxis: {
-			min: 0,
-			max: 1,
 			title: {
 				text: 'Frequency of the A allele',
 			},
+			accessibility: {
+				description: 'Frequency of the A allele',
+			},
+			min: 0,
+			max: 1,
+		},
+		accessibility: {
+			description: 'The frequency of the A allele in the population.',
 		},
 		series: createLinesFromArray(lines, isGenoType),
 		plotOptions: {
 			series: {
 				pointStart: 0,
+				accessibility: {
+					enabled: true,
+					description: 'The frequency of the A allele in the population.',
+					keyboardNavigation: {
+						enabled: true,
+					},
+				},
+				tooltip: {
+					useHTML: true,
+					headerFormat: `
+					<div>
+						<span style="color:{point.color}">\u25CF</span>
+						<span>
+							{series.name}
+						</span>
+					</div>
+					<br/>
+					<br/>
+					`,
+					pointFormat: `
+					<span>
+					{point.name}: <b>{point.y}</b>
+					</span>`,
+				},
 			},
+		},
+		tooltip: {
+			borderColor: 'var(--chakra-colors-purple-500)',
+			backgroundColor: '#FFFFFF',
+			borderWidth: 4,
+			borderRadius: 3,
+			className: 'highcharts-tooltip',
+		},
+		responsive: {
+			rules: [
+				{
+					condition: {
+						maxWidth: 550,
+					},
+					chartOptions: {
+						chart: {
+							spacingLeft: 3,
+							spacingRight: 300,
+						},
+					},
+				},
+			],
+		},
+		exporting: {
+			showTable: true,
 		},
 		credits: {
 			enabled: false,
@@ -68,15 +142,44 @@ function createOptions(lines, title) {
 	};
 }
 
-const HighchartWrapper = ({ lines, title }) => {
+const HighchartWrapper = ({ chartIndex, lines, title }) => {
 	const { colorMode } = useColorMode();
 	const theme = colorMode === 'light' ? lightTheme : darkTheme;
 
 	Highcharts.setOptions(theme);
 
+	// Hide the data table on initial render since the option is set to true in the theme
+	useEffect(() => {
+		const dataTable = document.getElementsByClassName('highcharts-data-table')[chartIndex] as HTMLElement;
+		if (dataTable) dataTable.style.display = 'none';
+	}, [chartIndex]);
+
 	return (
-		<Box key={colorMode} minHeight="400px" aria-label="Graph displaying the results of the Simulator" role="figure">
-			<HighchartsReact highcharts={Highcharts} options={createOptions(lines, title)} />
+		<Box
+			key={colorMode}
+			display="flex"
+			flexDirection="column"
+			justifyContent="center"
+			aria-label="Graph displaying the results of the Simulator"
+			role="figure"
+		>
+			<HighchartsReact highcharts={Highcharts} options={createOptions(colorMode, lines, title)} />
+			<Button
+				variant="showTableStyle"
+				my={2}
+				w={250}
+				onClick={() => {
+					const chart = Highcharts.charts[chartIndex];
+
+					const element = document.getElementsByClassName('highcharts-data-table')[chartIndex] as HTMLElement;
+
+					if (!element) return;
+
+					element.style.display === 'block' ? chart.hideData() : chart.viewData();
+				}}
+			>
+				Show/Hide data view table
+			</Button>
 		</Box>
 	);
 };

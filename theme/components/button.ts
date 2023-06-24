@@ -1,33 +1,109 @@
-import { ComponentStyleConfig } from '@chakra-ui/react';
+import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
 
-const ButtonStyle: ComponentStyleConfig = {
-	// style object for base or default style
-	baseStyle: {},
-	// styles for different sizes ("sm", "md", "lg")
-	sizes: {},
-	// styles for different visual variants ("outline", "solid")
-	variants: {
-		primary: {
-			bg: 'gray.900',
-			color: 'white',
-			_hover: {
-				bg: 'blue.500',
-			},
-		},
-		secondary: {
-			bg: 'buttonSecondary',
-			color: 'white',
-			_hover: {
-				bg: 'buttonSecondaryHover',
-			},
+const baseStyle = defineStyle({
+	_focus: {
+		ring: false,
+		outlineColor: 'purple.500',
+		outlineOffset: 4,
+		outlineWidth: 3,
+	},
+});
+
+const primary = defineStyle({
+	...baseStyle,
+	paddingY: 6,
+	width: {
+		base: '250px',
+		md: '40%',
+	},
+	bg: 'blackAlpha.800',
+	color: 'white',
+	_hover: {
+		bg: 'blue.500',
+	},
+});
+
+const secondary = defineStyle({
+	...baseStyle,
+});
+
+const themeSwitcher = defineStyle({
+	...baseStyle,
+	color: 'yellow.400',
+	backgroundColor: 'whiteAlpha.200',
+	_hover: {
+		backgroundColor: 'whiteAlpha.300',
+		_dark: {
+			backgroundColor: 'whiteAlpha.300',
 		},
 	},
-	// default values for 'size', 'variant' and 'colorScheme'
-	defaultProps: {
-		size: 'md',
-		variant: 'primary',
-		colorScheme: 'buttonPrimary',
+	_dark: {
+		backgroundColor: 'whiteAlpha.200',
 	},
-};
+});
 
-export default ButtonStyle;
+const generateLinkStyle = defineStyle({
+	...baseStyle,
+	display: 'flex',
+	mx: 'auto',
+	mt: 4,
+	color: 'green.600',
+	border: 2,
+	borderStyle: 'solid',
+	borderColor: 'green.500',
+	alignContent: 'center',
+	_dark: {
+		color: 'green.300',
+		border: 2,
+		borderStyle: 'solid',
+		borderColor: 'green.300',
+	},
+	_hover: {
+		backgroundColor: 'green.100',
+		_dark: {
+			backgroundColor: 'whiteAlpha.300',
+		},
+	},
+	_focus: {
+		ring: false,
+		outlineColor: 'purple.500',
+		outlineOffset: 4,
+		outlineWidth: 3,
+	},
+});
+
+const showTableStyle = defineStyle({
+	...baseStyle,
+	display: 'flex',
+	mx: 'auto',
+	mt: 4,
+	color: 'blue.600',
+	border: 2,
+	borderStyle: 'solid',
+	borderColor: 'blue.500',
+	alignContent: 'center',
+	_dark: {
+		color: 'blue.300',
+		border: 2,
+		borderStyle: 'solid',
+		borderColor: 'blue.300',
+	},
+	_hover: {
+		backgroundColor: 'blue.50',
+		_dark: {
+			backgroundColor: 'whiteAlpha.300',
+		},
+	},
+	_focus: {
+		ring: false,
+		outlineColor: 'blue.500',
+		outlineOffset: 4,
+		outlineWidth: 3,
+	},
+});
+
+const buttonTheme = defineStyleConfig({
+	variants: { baseStyle, primary, secondary, themeSwitcher, generateLinkStyle, showTableStyle },
+});
+
+export default buttonTheme;

@@ -196,7 +196,8 @@ function Index() {
 							toast({
 								id: 'simulation-complete',
 								title: 'Simulation Complete',
-								description: 'The simulation has completed and the results are ready to view.',
+								description:
+									'The simulation has completed and the results are ready to view. Below each table there is a summary of the results.',
 								status: 'success',
 								duration: 4000,
 								position: 'bottom-right',
@@ -212,7 +213,7 @@ function Index() {
 				}
 			},
 			{
-				once: true,
+				once: false,
 			},
 		);
 
@@ -284,14 +285,14 @@ function Index() {
 					px={{ base: '0', md: '30px' }}
 					bg={useColorModeValue('gray.100', ' gray.700')}
 				>
-					<Text as="h2" textStyle="subtitle" align="center">
+					<Text as="h2" textStyle="subtitle" align="center" mb={4}>
 						Simulator Settings
 					</Text>
 
 					<Box
 						as="div"
 						role="form"
-						aria-label="All simulator inputs"
+						aria-label="Simulator variable configuration"
 						padding={{ base: '0 15px 15px 15px', sm: '0 30px 30px 30px', md: '0' }}
 						maxWidth={{ md: '90%', lg: '80%', xl: '70%' }}
 						marginX={{ sm: 'auto' }}
@@ -329,17 +330,8 @@ function Index() {
 									<BottleNeckGenerations />
 								</FactorManager>
 							</Collapsible>
-							<Button
-								display="flex"
-								mx="auto"
-								mt={4}
-								colorScheme="whatsapp"
-								variant="outline"
-								alignContent="center"
-								rightIcon={<LinkIcon />}
-								onClick={generateShareableLink}
-							>
-								Generate Shareable Link
+							<Button variant="generateLinkStyle" rightIcon={<LinkIcon />} onClick={generateShareableLink}>
+								Generate shareable Link
 							</Button>
 						</Box>
 						<Text my={4}>
@@ -371,8 +363,20 @@ function Index() {
 				</Box>
 
 				<Box my={6}>
-					<HighChart lines={alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
+					<HighChart chartIndex={0} lines={alleleResults} title="Graph 1: Allele Frequency Change Over Generations" />
 				</Box>
+				<Text
+					as="p"
+					mt={4}
+					mb={8}
+					textAlign={{
+						base: 'center',
+						md: 'left',
+					}}
+				>
+					Below will be the results for the above graph. The legend will change based on the settings you have selected,
+					and the results of the simulation.
+				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}
 					genoTypeResults={null}
@@ -383,8 +387,25 @@ function Index() {
 				/>
 
 				<Box my={6}>
-					<HighChart lines={genotypeResults} title={'Graph 2: Genotype Frequency Change Over Generations'} />
+					<HighChart
+						chartIndex={1}
+						lines={genotypeResults}
+						title={'Graph 2: Genotype Frequency Change Over Generations'}
+					/>
 				</Box>
+				<Text
+					as="p"
+					mt={4}
+					mb={8}
+					textAlign={{
+						base: 'center',
+						md: 'left',
+					}}
+				>
+					Below will be the results for the above graph. Here you will find the initial / final genotype frequencies,
+					for A1A1, A1A2, and A2A2. The legend will change based on the settings you have selected, and the results of
+					the simulation.
+				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}
 					genoTypeResults={genotypeResults}

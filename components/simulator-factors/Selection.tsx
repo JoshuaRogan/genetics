@@ -13,7 +13,7 @@ export default function Selection() {
 
 	return (
 		<Box aria-label="Advanced Simulation Factor: Selection">
-			<Grid>
+			<Grid mb={8}>
 				<HelpContentWrapper
 					title={fitnessFactorWAA.sliderName + `「 ${fitnessFactorWAA.variable} 」`}
 					message={fitnessFactorWAA.description}
@@ -21,11 +21,11 @@ export default function Selection() {
 				>
 					<Text fontWeight="bold">{fitnessFactorWAA.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mb={4} mt={2} spacing="24px" align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={fitnessFactorWAA} isActive={true} />
 				</Stack>
 			</Grid>
-			<Grid>
+			<Grid mb={8}>
 				<HelpContentWrapper
 					title={fitnessFactorWAa.sliderName + `「 ${fitnessFactorWAa.variable} 」`}
 					message={fitnessFactorWAa.description}
@@ -33,11 +33,11 @@ export default function Selection() {
 				>
 					<Text fontWeight="bold">{fitnessFactorWAa.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mb={4} mt={2} spacing="24px" align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={fitnessFactorWAa} isActive={true} />
 				</Stack>
 			</Grid>
-			<Grid>
+			<Grid mb={2}>
 				<HelpContentWrapper
 					title={fitnessFactorWaa.sliderName + `「 ${fitnessFactorWaa.variable} 」`}
 					message={fitnessFactorWaa.description}
@@ -45,7 +45,7 @@ export default function Selection() {
 				>
 					<Text fontWeight="bold">{fitnessFactorWaa.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={2} align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align={{ base: 'center' }}>
 					<Slider popVariable={fitnessFactorWaa} isActive={true} />
 				</Stack>
 			</Grid>

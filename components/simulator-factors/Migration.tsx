@@ -11,7 +11,7 @@ export default function Migration() {
 
 	return (
 		<Box aria-label="Advance Simulation Factor: Migration">
-			<Grid>
+			<Grid mb={8}>
 				<HelpContentWrapper
 					title={migrationRate.sliderName + `「 ${migrationRate.variable} 」`}
 					message={migrationRate.description}
@@ -19,16 +19,11 @@ export default function Migration() {
 				>
 					<Text fontWeight="bold">{migrationRate.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack
-					direction={{ base: 'column', md: 'row' }}
-					spacing="24px"
-					mt={2}
-					align={{ base: 'center', md: 'self-start' }}
-				>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={migrationRate} isActive={true} />
 				</Stack>
 			</Grid>
-			<Grid>
+			<Grid mb={4}>
 				<HelpContentWrapper
 					title={migrantAllelFreq.sliderName + `「 ${migrantAllelFreq.variable} 」`}
 					message={migrantAllelFreq.description}
@@ -36,12 +31,7 @@ export default function Migration() {
 				>
 					<Text fontWeight="bold">{migrantAllelFreq.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack
-					direction={{ base: 'column', md: 'row' }}
-					spacing="24px"
-					mt={2}
-					align={{ base: 'center', md: 'self-start' }}
-				>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={migrantAllelFreq} isActive={true} />
 				</Stack>
 			</Grid>

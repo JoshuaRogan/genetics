@@ -10,7 +10,7 @@ export default function Inbreeding() {
 
 	return (
 		<Box aria-label="Advanced Simulation Factor: Inbreeding">
-			<Grid>
+			<Grid mb={4}>
 				<HelpContentWrapper
 					title={inbreedingCoef.sliderName + `「 ${inbreedingCoef.variable} 」`}
 					message={inbreedingCoef.description}
@@ -18,12 +18,7 @@ export default function Inbreeding() {
 				>
 					<Text fontWeight="bold">{inbreedingCoef.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack
-					direction={{ base: 'column', md: 'row' }}
-					spacing="24px"
-					mt={2}
-					align={{ base: 'center', md: 'self-start' }}
-				>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={inbreedingCoef} isActive={true} />
 				</Stack>
 			</Grid>

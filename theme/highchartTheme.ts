@@ -11,15 +11,18 @@ const lightTheme = {
 	},
 	title: {
 		style: {
-			color: '#000',
+			color: 'var(--chakra-colors-gray-900)',
+			fontSize: '1.5rem',
 			fontFamily: 'Roboto Condensed',
 			fontWeight: 'bold',
 		},
 	},
 	subtitle: {
 		style: {
-			color: '#666666',
+			color: 'var(--chakra-colors-gray-800)',
+			fontSize: '.9rem',
 			fontFamily: 'Roboto Condensed',
+			fontWeight: 'semibold',
 		},
 	},
 	legend: {
@@ -29,9 +32,10 @@ const lightTheme = {
 		},
 	},
 	tooltip: {
-		borderWidth: 0,
-		backgroundColor: 'rgba(219,219,216,0.8)',
-		shadow: false,
+		borderWidth: 2,
+		borderColor: 'var(--chakra-colors-purple-500)',
+		backgroundColor: 'var(--chakra-colors-gray-50)',
+		shadow: true,
 	},
 	xAxis: {
 		gridLineColor: '#424242',
@@ -48,7 +52,9 @@ const lightTheme = {
 		},
 		title: {
 			style: {
-				color: '#333',
+				color: 'var(--chakra-colors-gray-800)',
+				fontSize: '1.2rem',
+				fontFamily: 'Roboto Condensed',
 			},
 		},
 	},
@@ -67,7 +73,9 @@ const lightTheme = {
 		},
 		title: {
 			style: {
-				color: '#333',
+				color: 'var(--chakra-colors-gray-800)',
+				fontSize: '1.2rem',
+				fontFamily: 'Roboto Condensed',
 			},
 		},
 	},
@@ -90,15 +98,18 @@ const darkTheme = {
 	},
 	title: {
 		style: {
-			color: 'var(--chakra-colors-gray-400)',
+			color: 'var(--chakra-colors-gray-200)',
+			fontSize: '1.5rem',
 			fontFamily: 'Roboto Condensed',
 			fontWeight: 'bold',
 		},
 	},
 	subtitle: {
 		style: {
-			color: 'var(--chakra-colors-gray-400)',
+			color: 'var(--chakra-colors-gray-200)',
+			fontSize: '1rem',
 			fontFamily: 'Roboto Condensed',
+			fontWeight: 'semibold',
 		},
 	},
 	legend: {
@@ -110,9 +121,10 @@ const darkTheme = {
 		},
 	},
 	tooltip: {
-		borderWidth: 0,
-		backgroundColor: 'rgba(219,219,216,0.8)',
-		shadow: false,
+		borderWidth: 2,
+		borderColor: 'var(--chakra-colors-purple-500)',
+		backgroundColor: 'var(--chakra-colors-gray-50)',
+		shadow: true,
 	},
 	xAxis: {
 		gridLineColor: '#424242',
@@ -124,12 +136,14 @@ const darkTheme = {
 		lineColor: '#424242',
 		labels: {
 			style: {
-				color: 'var(--chakra-colors-gray-400)',
+				color: 'var(--chakra-colors-gray-300)',
 			},
 		},
 		title: {
 			style: {
-				color: 'var(--chakra-colors-gray-400)',
+				color: 'var(--chakra-colors-gray-300)',
+				fontSize: '1.2rem',
+				fontFamily: 'Roboto Condensed',
 			},
 		},
 	},
@@ -143,12 +157,14 @@ const darkTheme = {
 		lineColor: '#424242',
 		labels: {
 			style: {
-				color: 'var(--chakra-colors-gray-400)',
+				color: 'var(--chakra-colors-gray-300)',
 			},
 		},
 		title: {
 			style: {
-				color: 'var(--chakra-colors-gray-400)',
+				color: 'var(--chakra-colors-gray-300)',
+				fontSize: '1.2rem',
+				fontFamily: 'Roboto Condensed',
 			},
 		},
 	},

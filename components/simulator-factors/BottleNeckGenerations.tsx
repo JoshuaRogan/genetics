@@ -14,7 +14,7 @@ export default function BottleneckGenerations() {
 
 	return (
 		<Box aria-label="Advanced Simulation Factor: BottleneckGenerations">
-			<Grid>
+			<Grid mb={8}>
 				<HelpContentWrapper
 					title={generationToOverrideStart.sliderName + `「 ${generationToOverrideStart.variable} 」`}
 					message={generationToOverrideStart.description}
@@ -22,16 +22,11 @@ export default function BottleneckGenerations() {
 				>
 					<Text fontWeight="bold">{generationToOverrideStart.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack
-					direction={{ base: 'column', md: 'row' }}
-					spacing="24px"
-					mt={4}
-					align={{ base: 'center', md: 'self-start' }}
-				>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<RangeSlider startVariable={generationToOverrideStart} endVariable={generationToOverrideEnd} />
 				</Stack>
 			</Grid>
-			<Grid>
+			<Grid mb={4}>
 				<HelpContentWrapper
 					title={bottleNeckPopSize.sliderName + `「 ${bottleNeckPopSize.variable} 」`}
 					message={bottleNeckPopSize.description}
@@ -39,12 +34,7 @@ export default function BottleneckGenerations() {
 				>
 					<Text fontWeight="bold">{bottleNeckPopSize.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack
-					direction={{ base: 'column', md: 'row' }}
-					spacing="24px"
-					mt={2}
-					align={{ base: 'center', md: 'self-start' }}
-				>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={bottleNeckPopSize} isActive={true} />
 				</Stack>
 			</Grid>

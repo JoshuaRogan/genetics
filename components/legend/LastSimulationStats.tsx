@@ -12,7 +12,7 @@ function LastSimulationStats({ settings, results }: { settings: Settings; result
 	const finalFrequencyA2A2 = results[2][results[2].length - 1];
 
 	return (
-		<Collapsible header={`Stats (Last Simulation)`}>
+		<Collapsible header={`Genotype statistics (Last Simulation)`}>
 			<Box>
 				<List
 					listStyleType="initial"

@@ -13,7 +13,7 @@ export default function Mutation() {
 
 	return (
 		<Box aria-label="Advance Simulation Factor: Selection">
-			<Grid>
+			<Grid mb={8}>
 				<HelpContentWrapper
 					title={forwardMutation.sliderName + `「 ${forwardMutation.variable} 」`}
 					message={forwardMutation.description}
@@ -21,17 +21,12 @@ export default function Mutation() {
 				>
 					<Text fontWeight="bold">{forwardMutation.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack
-					direction={{ base: 'column', md: 'row' }}
-					spacing="24px"
-					mt={2}
-					align={{ base: 'center', md: 'self-start' }}
-				>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={forwardMutation} isActive={true} />
 					<Slider popVariable={fowardMutationEpon} isActive={true} />
 				</Stack>
 			</Grid>
-			<Grid>
+			<Grid mb={4}>
 				<HelpContentWrapper
 					title={backwardMutation.sliderName + `「 ${backwardMutation.variable} 」`}
 					message={backwardMutation.description}
@@ -39,12 +34,7 @@ export default function Mutation() {
 				>
 					<Text fontWeight="bold">{backwardMutation.sliderName}</Text>
 				</HelpContentWrapper>
-				<Stack
-					direction={{ base: 'column', md: 'row' }}
-					spacing="24px"
-					mt={2}
-					align={{ base: 'center', md: 'self-start' }}
-				>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={backwardMutation} isActive={true} />
 					<Slider popVariable={backwardMutationExpon} isActive={true} />
 				</Stack>

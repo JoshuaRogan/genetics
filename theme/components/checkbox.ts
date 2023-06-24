@@ -13,15 +13,15 @@ const redBox = definePartsStyle({
 			bg: 'blackAlpha.400',
 		},
 		_focus: {
-			borderColor: 'red.500',
-			boxShadow: '0 0 0 3px rgb(250 137 137 / 60%)',
+			borderColor: 'purple.500',
+			boxShadow: '0 0 0 3px rgb(159 122 234 / 60%)',
 		},
 		_checked: {
-			bg: 'red',
-			borderColor: 'red.600',
+			bg: 'purple.300',
+			borderColor: 'purple.600',
 			_hover: {
-				bg: 'red.400',
-				borderColor: 'red.600',
+				bg: 'purple.400',
+				borderColor: 'purple.800',
 			},
 		},
 		_disabled: {
@@ -33,18 +33,23 @@ const redBox = definePartsStyle({
 			},
 		},
 		_dark: {
-			color: 'gray.200',
+			color: 'purple.200',
 			borderColor: 'gray.600',
 			background: 'gray.800',
 			_hover: {
 				bg: 'gray.900',
 			},
 			_checked: {
-				bg: 'red.500',
-				borderColor: 'red.600',
+				bg: 'purple.500',
+				borderColor: 'purple.600',
 				_hover: {
-					bg: 'red.600',
+					bg: 'purple.400',
+					borderColor: 'purple.800',
 				},
+			},
+			_focus: {
+				borderColor: 'purple.900',
+				boxShadow: '0 0 0 3px rgb(159 122 234 / 100%)',
 			},
 			_disabled: {
 				bg: 'gray.700',

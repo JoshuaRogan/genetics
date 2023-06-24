@@ -9,7 +9,7 @@ import {
 	findNumOfFixations,
 	getAverageFinalFreq,
 } from '../utils/bulkStats';
-import { Checkbox, Text } from '@chakra-ui/react';
+import { Box, Checkbox, Text, useColorModeValue } from '@chakra-ui/react';
 import { Settings } from '../types';
 import SimulationLegendSettings from './legend/SimulationLegendSettings';
 import LegendStats from './legend/LegendStats';
@@ -77,12 +77,6 @@ function BulkLegendStats({ results }: { results: number[][] }) {
 		</StyledLegendContainer>
 	);
 }
-
-const LegendStyled = styled.div`
-	background: transparent;
-	padding: 2px 10px;
-`;
-
 const LegendHider = styled.div`
 	display: ${(props) => (props.isActive ? 'block' : 'none')};
 `;
@@ -100,6 +94,7 @@ const StyledCheckboxLabel = styled.label`
 `;
 
 const StyledLegendManagerWrapper = styled.div`
+	padding-bottom: 10px;
 	border-bottom: 1px solid #4f4f4f;
 	margin-bottom: 10px;
 
@@ -126,6 +121,7 @@ function LegendManager({
 }) {
 	const [isActive, setIsActive] = React.useState(true);
 	const simulationNumber = index + 1;
+	const checkboxId = `simulation-${simulationNumber}-checkbox`;
 
 	const handleCheckboxChange = (event) => {
 		setIsActive(event.target.checked);
@@ -134,10 +130,24 @@ function LegendManager({
 	return (
 		<StyledLegendManagerWrapper key={index}>
 			<LegendChecker>
-				<StyledCheckboxLabel>
-					<Checkbox variant="redBox" isChecked={isActive} onChange={handleCheckboxChange} />
-					<Text as="p" style={{ marginLeft: 8 }}>{`Simulation #${simulationNumber}`}</Text>
-				</StyledCheckboxLabel>
+				<Box
+					display="flex"
+					alignItems="center"
+					fontWeight={700}
+					fontSize={16}
+					textTransform="uppercase"
+					color={useColorModeValue('gray.800', 'purple.200')}
+				>
+					<Checkbox
+						id={checkboxId}
+						variant="redBox"
+						isChecked={isActive}
+						onChange={handleCheckboxChange}
+						aria-label={`Show/Hides the simulation #${simulationNumber} list of settings and stats`}
+						aria-selected={isActive}
+					/>
+					<Text as="label" htmlFor={checkboxId} style={{ marginLeft: 8 }}>{`Simulation #${simulationNumber}`}</Text>
+				</Box>
 			</LegendChecker>
 			<LegendHider isActive={isActive}>
 				<SimulationLegendSettings settings={settings} enabledSettings={enabledSettings} isReplicated={isReplicated} />
@@ -219,7 +229,7 @@ export default function LegendContainer({
 
 	if (!isGenoType) {
 		return (
-			<LegendStyled>
+			<Box bg="transparent" mb={55}>
 				<AlleleLegend
 					settings={settings}
 					results={alleleResults}
@@ -227,7 +237,7 @@ export default function LegendContainer({
 					graphNumber={graphNumber}
 					isReplicated={isReplicated}
 				/>
-			</LegendStyled>
+			</Box>
 		);
 	}
 

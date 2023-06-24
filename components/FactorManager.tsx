@@ -14,6 +14,8 @@ interface FactorManagerProps {
 }
 
 function FactorManager({ title, isFactorActive, children }: FactorManagerProps) {
+	const checkboxId = `${title.split(' ').join('-').toLowerCase()}-checkbox`;
+
 	const dispatch = useDispatch();
 	const factorActiveState = useSelector((state: StoreState) => state.root.activeSections[title]);
 
@@ -36,17 +38,27 @@ function FactorManager({ title, isFactorActive, children }: FactorManagerProps) 
 				},
 			}}
 		>
-			<HStack as="label" fontWeight={600} fontSize="18px" textTransform="uppercase">
+			<HStack as="div" fontWeight={600} fontSize="18px" textTransform="uppercase">
 				<Checkbox
-					key={`${title}-checkbox-${factorActiveState}`}
+					key={`${title}-checkbox`}
+					id={checkboxId}
 					size="lg"
 					variant="redBox"
 					defaultChecked={factorActiveState}
 					checked={factorActiveState}
 					isDisabled={!isFactorActive}
 					onChange={handleCheckboxChange}
+					aria-label={`Toggles the ${title} factor`}
+					aria-selected={factorActiveState}
 				/>
-				<Text as="p" ml={8} cursor="pointer" userSelect="none" color={isFactorActive ? titleColor : titleColorDisabled}>
+				<Text
+					as="label"
+					htmlFor={checkboxId}
+					ml={1}
+					cursor="pointer"
+					userSelect="none"
+					color={isFactorActive ? titleColor : titleColorDisabled}
+				>
 					{title}
 				</Text>
 			</HStack>
