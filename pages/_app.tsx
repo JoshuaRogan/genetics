@@ -30,15 +30,9 @@ const GlobalStyle = createGlobalStyle`
 			& > tspan:nth-child(4) {
 				font: normal 16px sans-serif;
 			}
-
 		}
 	}
 
-	// .highcharts-tooltip-box_description {
-	// 	// margin-top: 15px;
-	// 	// padding-top: 15px;
-	// 	font-size: 1.5em;
-	// }
 
 	.highcharts-data-table {
 		margin-top: 30px;
