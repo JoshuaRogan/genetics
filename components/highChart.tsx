@@ -38,8 +38,6 @@ function createLinesFromArray(lines, isGeno = false) {
 
 function createOptions(theme = 'light', lines, title) {
 	const isGenoType = title.toLowerCase().includes('genotype');
-	const subtitleColor =
-		theme === 'light' ? 'var(--chakra-colors-blackAlpha-800)' : 'var(--chakra-colors-whiteAlpha-800)';
 
 	return {
 		title: {
@@ -95,15 +93,30 @@ function createOptions(theme = 'light', lines, title) {
 					},
 				},
 				tooltip: {
+					useHTML: true,
 					headerFormat: `
-					<span style="font-size: 10px">
+					<div>
 						<span style="color:{point.color}">\u25CF</span>
-						{series.name}
-					</span>
-					<br/>`,
-					pointFormat: '{point.name}: <b>{point.y}</b><br/>',
+						<span>
+							{series.name}
+						</span>
+					</div>
+					<br/>
+					<br/>
+					`,
+					pointFormat: `
+					<span>
+					{point.name}: <b>{point.y}</b>
+					</span>`,
 				},
 			},
+		},
+		tooltip: {
+			borderColor: 'var(--chakra-colors-purple-500)',
+			backgroundColor: '#FFFFFF',
+			borderWidth: 4,
+			borderRadius: 3,
+			className: 'highcharts-tooltip',
 		},
 		responsive: {
 			rules: [
