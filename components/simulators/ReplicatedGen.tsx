@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
 import { LinkIcon } from '@chakra-ui/icons';
+import Highcharts from 'highcharts';
 
 import BaseReplicatedSimulation from '../simulator-factors/BaseReplicatedSimulation';
 import Selection from '../simulator-factors/Selection';
@@ -351,6 +352,10 @@ function Index() {
 							<Button
 								w={{ base: '70%', md: '30%' }}
 								onClick={() => {
+									// reset the chart data table for it to update
+									Highcharts.charts[0].hideData();
+									Highcharts.charts[1].hideData();
+
 									dispatch(clearResults());
 									updateChart();
 								}}
@@ -427,6 +432,10 @@ function Index() {
 				>
 					<Button
 						onClick={() => {
+							// reset the chart data table for it to update
+							Highcharts.charts[0].hideData();
+							Highcharts.charts[1].hideData();
+
 							// clear the results on the graph
 							dispatch(clearResults());
 

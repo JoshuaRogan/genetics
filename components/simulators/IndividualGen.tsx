@@ -28,6 +28,7 @@ import {
 	setPopGenVar,
 } from '../../redux/reducers/rootSlice';
 import { StoreState, VALID_SECTIONS } from '../../types';
+import Highcharts from 'highcharts';
 
 function Index() {
 	const dispatch = useDispatch();
@@ -334,13 +335,27 @@ function Index() {
 							<Button
 								variant="primary"
 								onClick={() => {
+									// reset the chart data table for it to update
+									Highcharts.charts[0].hideData();
+									Highcharts.charts[1].hideData();
+
 									dispatch(clearResults());
 									updateChart();
 								}}
 							>
 								Run Simulation
 							</Button>
-							<Button variant="primary" marginTop={{ base: 2, md: 0 }} onClick={() => updateChart()}>
+							<Button
+								variant="primary"
+								marginTop={{ base: 2, md: 0 }}
+								onClick={() => {
+									// reset the chart data table for it to update
+									Highcharts.charts[0].hideData();
+									Highcharts.charts[1].hideData();
+
+									updateChart();
+								}}
+							>
 								Add as a new simulation
 							</Button>
 						</ButtonGroup>
@@ -412,6 +427,10 @@ function Index() {
 				>
 					<Button
 						onClick={() => {
+							// reset the chart data table for it to update
+							Highcharts.charts[0].hideData();
+							Highcharts.charts[1].hideData();
+
 							// clear the results on the graph
 							dispatch(clearResults());
 
