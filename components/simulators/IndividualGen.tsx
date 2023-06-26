@@ -229,6 +229,19 @@ function Index() {
 		});
 	};
 
+	const resetDataTableView = () => {
+		// Reset the data table view
+		if (!Highcharts.charts || Highcharts.charts.length === 0) {
+			return;
+		}
+
+		Highcharts.charts.filter(Boolean).forEach((chart) => {
+			if (chart) {
+				chart.hideData();
+			}
+		});
+	};
+
 	return (
 		<MainWrapper>
 			<Box
@@ -336,8 +349,7 @@ function Index() {
 								variant="primary"
 								onClick={() => {
 									// reset the chart data table for it to update
-									Highcharts.charts[0].hideData();
-									Highcharts.charts[1].hideData();
+									resetDataTableView();
 
 									dispatch(clearResults());
 									updateChart();
@@ -350,8 +362,7 @@ function Index() {
 								marginTop={{ base: 2, md: 0 }}
 								onClick={() => {
 									// reset the chart data table for it to update
-									Highcharts.charts[0].hideData();
-									Highcharts.charts[1].hideData();
+									resetDataTableView();
 
 									updateChart();
 								}}
@@ -428,8 +439,7 @@ function Index() {
 					<Button
 						onClick={() => {
 							// reset the chart data table for it to update
-							Highcharts.charts[0].hideData();
-							Highcharts.charts[1].hideData();
+							resetDataTableView();
 
 							// clear the results on the graph
 							dispatch(clearResults());
