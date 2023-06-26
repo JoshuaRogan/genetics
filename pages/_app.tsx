@@ -36,6 +36,8 @@ const GlobalStyle = createGlobalStyle`
 
 	.highcharts-data-table {
 		margin-top: 30px;
+		overflow-x: scroll;
+
 		&	table {
 			font-family: 'Roboto, sans-serif';
 			border: 1px solid #646262;
@@ -46,6 +48,8 @@ const GlobalStyle = createGlobalStyle`
 			max-width: 950px;
 
 			caption {
+				margin-bottom: 10px;
+				text-align: left;
 				font-size: 1.2em;
 				font-weight: bold;
 			}
