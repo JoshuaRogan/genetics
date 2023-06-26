@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
 				}
 
 				tr:nth-child(even) {
-					background: var(--chakra-colors-gray-700);
+					background: var(--chakra-colors-blackAlpha-100);
 				}
 			}
 	}
