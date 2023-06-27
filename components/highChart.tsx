@@ -26,12 +26,7 @@ function createLinesFromArray(lines, isGeno = false) {
 				enabled: true,
 				description: 'The frequency of the A allele in the population.',
 			},
-			data: [
-				...line.map((point: number, idx: number) => {
-					const dataPointName = `Generation #${idx + 1}`;
-					return [dataPointName, point];
-				}),
-			],
+			data: [...line],
 		};
 	});
 }
@@ -106,7 +101,7 @@ function createOptions(theme = 'light', lines, title) {
 					`,
 					pointFormat: `
 					<span>
-					{point.name}: <b>{point.y}</b>
+					Generation #<b>{point.x}</b>: <b>{point.y}</b>
 					</span>`,
 				},
 			},
@@ -117,21 +112,6 @@ function createOptions(theme = 'light', lines, title) {
 			borderWidth: 4,
 			borderRadius: 3,
 			className: 'highcharts-tooltip',
-		},
-		responsive: {
-			rules: [
-				{
-					condition: {
-						maxWidth: 550,
-					},
-					chartOptions: {
-						chart: {
-							spacingLeft: 3,
-							spacingRight: 300,
-						},
-					},
-				},
-			],
 		},
 		exporting: {
 			showTable: true,
@@ -169,11 +149,11 @@ const HighchartWrapper = ({ chartIndex, lines, title }) => {
 				my={2}
 				w={250}
 				onClick={() => {
-					const chart = Highcharts.charts[chartIndex];
+					const chart = Highcharts.charts.filter(Boolean)[chartIndex];
 
 					const element = document.getElementsByClassName('highcharts-data-table')[chartIndex] as HTMLElement;
 
-					if (!element) return;
+					if (!element || !chart) return;
 
 					element.style.display === 'block' ? chart.hideData() : chart.viewData();
 				}}

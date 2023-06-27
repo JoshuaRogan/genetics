@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
 import { LinkIcon } from '@chakra-ui/icons';
+import Highcharts from 'highcharts';
 
 import BaseReplicatedSimulation from '../simulator-factors/BaseReplicatedSimulation';
 import Selection from '../simulator-factors/Selection';
@@ -246,6 +247,19 @@ function Index() {
 		});
 	};
 
+	const resetDataTableView = () => {
+		// Reset the data table view
+		if (!Highcharts.charts || Highcharts.charts.length === 0) {
+			return;
+		}
+
+		Highcharts.charts.filter(Boolean).forEach((chart) => {
+			if (chart) {
+				chart.hideData();
+			}
+		});
+	};
+
 	return (
 		<MainWrapper>
 			<Box
@@ -351,6 +365,9 @@ function Index() {
 							<Button
 								w={{ base: '70%', md: '30%' }}
 								onClick={() => {
+									// reset the chart data table for it to update
+									resetDataTableView();
+
 									dispatch(clearResults());
 									updateChart();
 								}}
@@ -427,6 +444,9 @@ function Index() {
 				>
 					<Button
 						onClick={() => {
+							// reset the chart data table for it to update
+							resetDataTableView();
+
 							// clear the results on the graph
 							dispatch(clearResults());
 
