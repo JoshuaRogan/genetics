@@ -1,0 +1,159 @@
+[
+	{
+		"question": "How can I create a graph of my simulation?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "To generate a new graph, set the simulation parameters of interest and click the \"New Simulation\" button. You can then add more simulations to the existing graph by clicking the \"Add as a new simulation\" button. You can replace the existing graph with a new simulation by clicking the \"Run Simulation\" button."
+			},
+			{
+				"type": "gif",
+				"value": "",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"question": "How can I change the simulation parameters?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "To change any of the simulation parameters you can open up the appropriate section by clicking the checkbox to the left of the section name."
+			},
+			{
+				"type": "text",
+				"value": "Once the section is opened you can either move the slider or click on the parameter value to directly input a new value using your preferred way of inputting data."
+			},
+			{
+				"type": "gif",
+				"value": "",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"question": "How can I deactivate a simulation parameter?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "If a parameter is active (i.e., slider shown in color), you deactivate it by de-selecting the checkbox to the left of the section you would like to deactivate. Once a value is deselected the slider will be grayed out."
+			},
+			{
+				"type": "gif",
+				"value": "",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"question": "How can I zoom in the graph?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "To zoom in the graph simply click and drag across the area you would like to zoom in. To zoom out, click on the \"Reset Zoom\" button that appears in the top right corner of the graph."
+			},
+			{
+				"type": "gif",
+				"value": "",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"question": "How can I save/download the graph as an  (or file) ?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "To save the graph as an image (or another type of file) click the menu in the upper right corner of the graph and select your preferred option."
+			},
+			{
+				"type": "text",
+				"value": "You can download the graph result in these following formats:"
+			},
+			{
+				"type": "list",
+				"value": [
+					"PNG",
+					"JPEG",
+					"PDF",
+					"SVG",
+					"CSV",
+					"XLS"
+				]
+			},
+			{
+				"type": "gif",
+				"value": "",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"question": "How can I view different legends?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "Legends are automatically created for each simulation and are located under the graph with the title [[Legend for Graph]]."
+			},
+			{
+				"type": "text",
+				"value": "All of the most recent simulations are shown. But, you can open/hide legends of any previous simulation by clicking on either the checkbox to the left of the legend name or the legend name itself."
+			},
+			{
+				"type": "gif",
+				"value": "",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"question": "Where can I find more information on the simulation parameters?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "You can click the small question mark next to each variable in order to see a short explanation of the variable."
+			},
+			{
+				"type": "text",
+				"value": "Additional background information is available in the educator's guide accompanying the interactive."
+			},
+			{
+				"type": "gif",
+				"value": "",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"question": "How can I generate a link (URL) for a simulation?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "You can generate a link (URL) for a set of simulation parameters by clicking on the [[Generate shareable link]] button, below the \"Advance Factors\" section. Navigating to this URL will prepopulate the set of simulation parameters that you currently have set. It will be automatically copied to your clipboard."
+			},
+			{
+				"type": "gif",
+				"value": "",
+				"alt": ""
+			}
+		]
+	},
+	{
+		"question": "How can I access the data represented in the graph?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "After running a simulation you can access the data table by either clicking on the \"Show/Hide data view table\" button below each graph or by clicking on the graph's menu and selecting the same option."
+			},
+			{
+				"type": "text",
+				"value": "You can easily copy and paste this into your favorite data manipulation program to perform additional analysis."
+			},
+			{
+				"type": "gif",
+				"value": "",
+				"alt": ""
+			}
+		]
+	}
+]

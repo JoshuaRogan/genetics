@@ -1,0 +1,58 @@
+[
+	{
+		"question": "How can I submit a bug or potential new feature?",
+		"answer": "You can email <a class=\"faq-link\" href=\"mailto:jjjr1122@gmail.com\" target=\"_blank\" rel=\"noreferrer\">Josh Rogan</a> to report a problem or either submit a bug/error or suggest new features."
+	},
+	{
+		"question": "How was this application created?",
+		"answer": "This application was created by <a class=\"faq-link\" href=\"https://joshuarogan.com/\" target=\"_blank\" rel=\"noreferrer\" >Josh Rogan</a> and commissioned by  <a href=\"https://www.publichealth.pitt.edu/home/directory/john-r-shaffer\" class=\"faq-link\" target=\"_blank\" rel=\"noreferrer\">Dr. John Shaffer</a>, Assistant Professor of  <a class=\"faq-link\" href=\"https://www.sph.pitt.edu/hugen\" target=\"_blank\" rel=\"noreferrer\">Human Genetics</a> at the  <a class=\"faq-link\" href=\"https://www.pitt.edu/\" target=\"_blank\" rel=\"noreferrer\">University of Pittsburgh</a>."
+	},
+	{
+		"question": "How was this application developed?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "The graphing application is powered by JavaScript with heavy usage of <a class=\"faq-link\" href=\"https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers#Web_Workers_API\" target=\"_blank\" rel=\"noreferrer\">Web Workers</a> for performance."
+			},
+			{
+				"type": "text",
+				"value": "The graphing library for both the simulators is <a class=\"faq-link\" href=\"https://www.highcharts.com/\" target=\"_blank\" rel=\"noreferrer\">HighchartsJS</a> as it out performed all other responsive graphing libraries."
+			},
+			{
+				"type": "text",
+				"value": "The frontend design is built with the responsive React component CSS framework <a class=\"faq-link\" href=\"https://chakra-ui.com\" target=\"_blank\" rel=\"noreferrer\">Chakra UI</a>."
+			},
+			{
+				"type": "text",
+				"value": "The backend utilizes the Javascript framework <a class=\"faq-link\" href=\"https://nextjs.org\" target=\"_blank\" rel=\"noreferrer\">NextJS</a> heavily its for server side rendering feature, and static site generation."
+			}
+		]
+	},
+	{
+		"question": "Technologies used in this application",
+		"answer": [
+			{
+				"type": "text",
+				"value": "This application was developed using the following technologies:"
+			},
+			{
+				"type": "list",
+				"value": [
+					"HTML5",
+					"CSS3",
+					"JavaScript",
+					"TypeScript",
+					"React",
+					"Redux",
+					"Node.js",
+					"NextJS",
+					"Chakra UI"
+				]
+			}
+		]
+	},
+	{
+		"question": "How can I support this project?",
+		"answer": "To support this project you can submit bugs, submit issues to the  <a class=\"faq-link\" href=\"https://github.com/JoshuaRogan/genetics\" target=\"_blank\" rel=\"noreferrer\">GitHub repository</a>, or contact us at <a class=\"faq-link\" href=\"mailto:jjjr1122@gmail.com\" target=\"_blank\" rel=\"noreferrer\">Josh Rogan</a>."
+	}
+]
