@@ -16,7 +16,7 @@ export default function Footer() {
 				justify={{ base: 'center', md: 'space-between' }}
 				align={{ base: 'center', md: 'center' }}
 			>
-				<Link href="/" as={NextLink} variant="footerLink">
+				<Link href="/faq?tab=supporting-information" as={NextLink} variant="footerLink">
 					Supporting information
 				</Link>
 				<Link href="https://biointeractive.org" target={'_blank'} as={NextLink} variant="footerLink">

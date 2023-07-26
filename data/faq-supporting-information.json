@@ -1,0 +1,34 @@
+[
+	{
+		"question": "Summary",
+		"answer": "In this Click & Learn, you’ll explore the frequency of an allele or the frequency of genotypes in a population using a population genetics simulation. Use the simulation to explore and test your own questions on the impacts of natural selection,population size, migration and more on allele or genotype frequencies."
+	},
+	{
+		"question": "Instructions for use",
+		"answer": ""
+	},
+	{
+		"question": "Optimization and limitations",
+		"answer": [
+			{
+				"type": "text",
+				"value": "This resource is optimized for use on desktops, modern tablets, and mobile. It is supported by the most recent versions of Google Chrome, Firefox, Microsoft Edge, and Safari web browsers."
+			},
+			{
+				"type": "list",
+				"value": [
+					"No limitations: This resource has been designed, optimized, and/or tested for <a class=\"faq-link\" href=\"https://www.biointeractive.org/commitment-accessibility\" target=\"_blank\" rel=\"noreferrer\">accessibility compliance</a> (<a class=\"faq-link\" href=\"https://www.w3.org/WAI/standards-guidelines/wcag/\" target=\"_blank\" rel=\"noreferrer\">WCAG</a> Level 2.0 AA Success Criteria).",
+					"Some limitations: Most components of this resource have been designed, optimized, and/or tested for accessibility compliance (<a class=\"faq-link\" href=\"https://www.w3.org/WAI/standards-guidelines/wcag/\" target=\"_blank\" rel=\"noreferrer\">WCAG</a> Level 2.0 AA Success Criteria)."
+				]
+			},
+			{
+				"type": "text",
+				"value": "Submit comments, questions, or feedback about this resource via email to <a class=\"faq-link\" href=\"https://biointeractive@hhmi.org\" target=\"_blank\" rel=\"noreferrer\">biointeractive@hhmi.org</a>"
+			}
+		]
+	},
+	{
+		"question": "References",
+		"answer": "John R. Shaffer, Joshua Rogan. Online human population genetics simulator: a tool for genetics/genomics education and research. (2015) American Society of Human Genetics 65th Annual Meeting. Oct. 9, 2015. Baltimore, MD. Abstract #1701F."
+	}
+]

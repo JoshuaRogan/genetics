@@ -17,7 +17,6 @@ import {
 } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import NavLink from './NavLink';
-import { a11yFocus } from '../utils/a11y';
 
 export default function Navigation() {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -39,6 +38,9 @@ export default function Navigation() {
 							</NavLink>
 							<NavLink href="/replicated">
 								<Text fontWeight={'bold'}>Replicated Simulations</Text>
+							</NavLink>
+							<NavLink href="/faq">
+								<Text fontWeight={'bold'}>FAQ</Text>
 							</NavLink>
 						</HStack>
 					</HStack>
@@ -74,6 +76,9 @@ export default function Navigation() {
 							</NavLink>
 							<NavLink href="/replicated">
 								<Text fontWeight={'bold'}>Replicated Simulations</Text>
+							</NavLink>
+							<NavLink href="/faq">
+								<Text fontWeight={'bold'}>FAQ</Text>
 							</NavLink>
 						</Stack>
 					</Box>

@@ -1,0 +1,350 @@
+[
+	{
+		"question": "What is an allele? What is allele frequency?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "Alleles are variants of a particular gene or DNA region. This simulation models a system with two alleles. The symbol \"A₁\" is the allele being modeled, and \"A₂\" is the other allele."
+			},
+			{
+				"type": "text",
+				"value": "The allele frequency is the frequency of an allele in a population. For this simulator, the frequency of the A allele is calculated as the number of “A” alleles divided by the total number of alleles in the population. Likewise, the frequency of the “a” allele can be calculated as the number of  “a”  alleles divided by the total number of alleles in the population."
+			},
+			{
+				"type": "text",
+				"value": "Advanced: The frequency of “A₁” is represented by the symbol p. The frequency of “A₂”  is represented by the symbol q. Because there are only two alleles, the frequencies of the two alleles, “A₁” and “A₂”, sum to 1 and <code class='math-block'>q = 1-p.</code>"
+			}
+		]
+	},
+	{
+		"question": "What is a genotype?",
+		"answer": "For diploid organisms including humans, individuals carry two copies of their genome. One copy is inherited from the sperm and one from the egg. A genotype describes the set of two alleles an individual has at one DNA region. In this simulator, the three possible genotypes are \"A₁A₁\", \"A₁A₂\", and \"A₂A₂\". The frequencies of each of the three genotype groups sum to 1."
+	},
+	{
+		"question": "What is a generation and how is it modeled in this simulator?",
+		"answer": "A generation refers to the descent from parents to offspring. In this simulator, mating occurs at one time period in a generation. This process makes each generation distinct and non-overlapping. Alleles of the next generation are derived solely from the immediately previous generation.</br></br>The alleles of a new generation are sampled from the previous generation without regard to which alleles have already been sampled and without regard to more ancestral generations."
+	},
+	{
+		"question": "Can more than two alleles be modeled at a time?",
+		"answer": "No. This simulator is designed for a two-allele system. In practice, multi-allele systems could be modeled by defining the \"A₁\" allele as the allele of interest, and defining the \"A₂\" allele as the collection of all non-A alleles combined."
+	},
+	{
+		"question": "What is the population size?",
+		"answer": "The population size used in the simulator is normally the counted number of individuals in the population. The number of alleles is twice the population size because each individual has two copies of each allele.</br></br>Advanced: For sexually reproducing organisms with unequal sex ratios, the effective population size should be input, rather than the counted number of individuals. The effective population size is calculated as follows:</br></br><code>Nₑ = (4Nₘ x N<sub>f</sub>) / (4ₘ + N<sub>f</sub>)</code></br></br>Where Nₑ is the effective population size, and N<sub>m</sub> and N<sub>f</sub> are the number of males and females, respectively."
+	},
+	{
+		"question": "Hardy-Weinberg Equilibrium",
+		"answer": [
+			{
+				"type": "text",
+				"value": "In 1908, Godfrey Hardy (a mathematician) and Wilhelm Weinberg (a physician) independently developed a mathematical model for analyzing genes in populations. Their work outlines the conditions that need to be met in order for a population to maintain the same genetic structure over time."
+			},
+			{
+				"type": "text",
+				"value": "The Hardy-Weinberg equilibrium model (H-W model) that they proposed led to a very important insight. If certain assumptions are met, the frequencies of alleles at a specific gene or region of the genome (locus) remain constant from generation to generation. As a result, the H-W model can act as a null hypothesis as biologists explore whether populations are evolving."
+			},
+			{
+				"type": "text",
+				"value": "The Hardy-Weinberg proportions in a generation reflect a simple relationship between genotype and allele frequencies. Specifically, the genotype frequencies are:"
+			},
+			{
+				"type": "list",
+				"value": [
+					"Frequency of the AA genotype [P(A₁A₁]) = p²",
+					"Frequency of the Aa genotype [P(A₁A₂)] = 2pq",
+					"Frequency of the aa genotype [P(A₂A₂)] = q²"
+				]
+			},
+			{
+				"type": "text",
+				"value": "In these equations, p is the frequency of the A₁ allele and q is the frequency of the A₂ allele."
+			}
+		]
+	},
+	{
+		"question": "What are the Hardy-Weinberg assumptions?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "The assumptions central to Hardy-Weinberg equilibrium are as follows:"
+			},
+			{
+				"type": "list",
+				"value": [
+					"Individuals have two copies of a genome (they are diploid).",
+					"Individuals reproduce sexually.",
+					"There are non-overlapping generations (generations are discrete).",
+					"The allele frequencies in males and females are equal.",
+					"The population is infinitely large.",
+					"Individuals do not choose their mates (mating is at random).",
+					"There is no migration. In other words, there is no movement of individuals or their gametes in or out of a population.",
+					"There is no mutation. No new alleles are formed by mutation, and existing alleles do not change.",
+					"There is no selection. All individuals have an equal probability of survival, and they reproduce at the same rate."
+				]
+			},
+			{
+				"type": "text",
+				"value": "Violations of any of these assumptions can lead to deviations from Hardy-Weinberg equilibrium. Depending on which assumptions are violated, allele and genotype frequencies may change across generations, or the genotype frequencies may deviate from the Hardy-Weinberg proportions."
+			},
+			{
+				"type": "text",
+				"value": "Alternatively, violations of these assumptions may not lead to deviations from Hardy-Weinberg proportions. Genotype frequencies may appear to be in Hardy-Weinberg equilibrium even if some assumptions are violated. Observing that a population/locus is in Hardy-Weinberg equilibrium does not imply that all assumptions are met."
+			}
+		]
+	},
+	{
+		"question": "What happens if Hardy-Weinberg assumptions are violated?",
+		"answer": "Answering this question is the main purpose of Population Genetics Explorer. Violations in Hardy-Weinberg assumptions may lead to interesting changes in the genetic composition of a population. </br></br> Many of the parameters set by the user represent forces that shape the genetic composition of the population. These forces are violations of the Hardy-Weinberg assumptions. Some have predictable effects on allele and genotype frequencies. Others represent random processes governed by chance. Combinations of forces can act at the same time."
+	},
+	{
+		"question": "What is genetic drift?",
+		"answer": "Genetic drift refers to the random changes in allele frequency that occur in any populations that are not infinite due to gametes being chosen at random. The number of a particular allele chosen may be different than its proportion in the population due to chance. Drift is particularly important for small populations."
+	},
+	{
+		"question": "How is genetic drift modeled in this simulator?",
+		"answer": "Genetic drift is modeled by the random selection of alleles from a current generation chosen to be transmitted to the next generation. This is achieved by random sampling with replacement.</br></br>For example, imagine that there are 10 alleles in a population, 5 A₁ and 5 A₂. One allele is selected at random, and then put back into the pool (making it  5 A₁ and 5 A₂ again) for the next selection of an allele. Drift occurs in any population that is not infinite."
+	},
+	{
+		"question": "What is a population bottleneck?",
+		"answer": "A population bottleneck occurs when the size of a population decreases for a number of generations, followed by an expansion. In this simulation, the population returns to its original size after the bottleneck."
+	},
+	{
+		"question": "How is a population bottleneck modeled in this simulator?",
+		"answer": "A population bottleneck is modeled by changing the size of the simulated population for a specified number of generations.</br></br>Note: While “bottleneck” generally refers to a temporary decrease in population size, the simulator allows any one-time change in size (i.e., decrease or increase) that lasts for any number of generations."
+	},
+	{
+		"question": "What is an \"infinitely large\" population?",
+		"answer": "An infinitely large population is a theoretical population comprising an infinite number of individuals. This allows chance events (such as the random sampling of alleles) to converge in probability toward the expected value and allele frequencies of the next generation are derived precisely from the previous generation. In other words, this assumption eliminates the role of chance.</br></br>It can be useful to use infinite population sizes to examine evolutionary forces other than genetic drift because infinitely-large populations do not experience the effects of genetic drift."
+	},
+	{
+		"question": "How is an infinitely-large population modeled in this simulator?",
+		"answer": "Because there is no random sampling of alleles in infinitely-large populations, allele frequencies of the next generation can be derived precisely from those of the previous generation.</br></br>The default setting of the simulator is to model the theoretical infinitely-large population.</br></br>A large finite population closely approximates the behavior of an infinitely-large population. Because the computational burden of simulating an infinitely-large population is considerably less than that of simulating a large finite population, users may desire to simulate infinitely-large populations rather than large finite populations."
+	},
+	{
+		"question": "Can population growth be modeled?",
+		"answer": "No. Population growth models are currently not implemented."
+	},
+	{
+		"question": "What is selection?",
+		"answer": "Selection refers to the differing rates at which alleles are transmitted across generations, due to differences in survival or fertility among the genotype groups."
+	},
+	{
+		"question": "How is selection modeled in this simulator?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "There are two ways to use sets of parameters to model selection. Only one of these systems can be active at a time."
+			},
+			{
+				"type": "text",
+				"value": "The first way involves the user inputting the relative probability that an individual within each genotype group reproduces. This is also called using fitness coefficients. Typically one or more of the three fitness coefficients is set equal to 1 to serve as a reference, and the others are expressed as a fraction relative to the reference."
+			},
+			{
+				"type": "text",
+				"value": "Advanced. After one generation of random mating, the allele frequency is modeled as:"
+			},
+			{
+				"type": "image",
+				"value": "images/faq/formula-p1.png",
+				"alt": "Formula for allele frequency after one generation of random mating."
+			},
+			{
+				"type": "text",
+				"value": "In which p₁ is the frequency of allele A₁ in generation 1, p₀ is the frequency of allele A₁ in generation 0, q₀  is the frequency of allele A₂ in generation 0₁, and WA₁A₁, WA₁A₂ , WA₂A₂ , are the fitness coefficients of the three genotype groups.</br></br>It is not required that the fitness of a reference allele be set equal to 1. The three fitness coefficients need only to be proportional to each other."
+			},
+			{
+				"type": "text",
+				"value": "The second way involves the user inputting two values, one for selection and one for the degree of dominance of the a allele. Selection is the degree of selection against the aa genotype group with respect to the AA genotype group. This is called the selection coefficient. A value of 1 indicates 100% selection against the aa genotype group (no individuals with the aa genotype reproduce). A value of 0 indicates no selection against the aa genotype group (the aa group reproduces at the same rate as the AA group)."
+			},
+			{
+				"type": "text",
+				"value": "Dominance is the degree to which selection impacts heterozygotes.  A value of 1 indicates that the Aa genotype group is equally unfavored as the aa genotype group. A value of 0 indicates that the Aa genotype group is equally favored as the AA genotype group. A value of 0.5 represents that selection against the Aa genotype group is half that of the aa genotype group. "
+			},
+			{
+				"type": "text",
+				"value": "Advanced. Selection and dominance coefficients can be expressed in terms of relative fitness coefficients as follows:"
+			},
+			{
+				"type": "image",
+				"value": "images/faq/formula-s.png",
+				"alt": "Formula for selection coefficient."
+			},
+			{
+				"type": "text",
+				"value": "In which s is the selection coefficient and h is the dominance coefficient."
+			},
+			{
+				"type": "text",
+				"value": "When selection and dominance coefficients are input by the user, the simulator will calculate the corresponding fitness coefficients, , WAa and Waa , and set WAA  equal to 1 as the reference. The above formula is then used to calculate the effect on allele frequency."
+			},
+			{
+				"type": "text",
+				"value": "Both systems can be used to specify models of directional selection (also called positive selection), which in this context means that one allele is clearly favored and the other allele is clearly disfavored."
+			},
+			{
+				"type": "text",
+				"value": "Models of over-dominance (also called heterozygote advantage), a form of balancing selection, can be specified only by using fitness coefficients. Other forms of balancing selection, such as frequency-dependent selection, are not implemented at this time."
+			},
+			{
+				"type": "text",
+				"value": "Models of under-dominance (also called heterozygote disadvantage), a form of disruptive selection, can only be specified using fitness coefficients. "
+			}
+		]
+	},
+	{
+		"question": "Can X-linked/sex-linked selection be modeled?",
+		"answer": "No. Currently selection occurring at a locus on an autosomal chromosome is implemented."
+	},
+	{
+		"question": "What is mutation?",
+		"answer": "Mutation is defined as a spontaneous change in genetic material. In population genetics explorer, mutation means that a given allele spontaneously changes into the other allele."
+	},
+	{
+		"question": "How is mutation modeled in this simulator?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "Mutation is modeled as a function of the forward (μ, A₁ → A₂) and reverse (ν, A₂ → A₁) mutation rates according the following formula:"
+			},
+			{
+				"type": "image",
+				"value": "images/faq/formula-mutation.png",
+				"alt": "Formula for mutation rate."
+			},
+			{
+				"type": "text",
+				"value": "In this equation, p₁ is the frequency of allele A₁ in generation 1, p₀ is the frequency of allele A₁ in generation 0."
+			}
+		]
+	},
+	{
+		"question": "What is genetic migration?",
+		"answer": "Genetic migration refers to the movement of alleles from an outside population into the population of interest."
+	},
+	{
+		"question": "How is genetic migration modeled in this simulator?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "Migration is modeled as a function of the migration rate, m, and the migrant allele frequency, pM, according to the following formula:"
+			},
+			{
+				"type": "image",
+				"value": "images/faq/formula-migration.png",
+				"alt": "Formula for migration rate."
+			},
+			{
+				"type": "text",
+				"value": "In this equation,  p₁ is the frequency of allele A₁ in generation 1, p₀ is the frequency of allele A₁ in generation 0"
+			},
+			{
+				"type": "text",
+				"value": "The migration rate corresponds to the proportion of alleles in the next generation that come from outside the population of interest. The migrant allele frequency is the allele frequency of the A₁ allele in the set of alleles entering the population."
+			},
+			{
+				"type": "text",
+				"value": "Advanced: The migration model in Population Genetics Explorer may result in changes in allele frequency in the population of interest across generations. However, this model assumes there is no change in allele frequency in the alleles arriving from the outside population. Therefore, this model is applicable for many simplistic migration scenarios such as the “source-sink”, “continent-to-island”, “one island”, and “Wright’s island” models."
+			}
+		]
+	},
+	{
+		"question": "Can migration be modeled between two or more populations of interest?",
+		"answer": "No. The simulator assumes one population of interest that may evolve across generations, and one source of migrant alleles that stays the same. Models where sources of migrant alleles are themselves changing in genetic composition are not implemented."
+	},
+	{
+		"question": "What is inbreeding? What is the inbreeding coefficient?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "Inbreeding refers to the mating between two related individuals. Inbreeding in a population greater than that expected due to chance is described by the inbreeding coefficient, F. This is the probability that both alleles in a randomly chosen individual in the population are identical‐by‐descent."
+			},
+			{
+				"type": "text",
+				"value": "A value of F = 0 indicates there is no inbreeding within the population. A value of 1 indicates that all the alleles in a population are identical by descent. This situation can occur in inbred lines of model organisms."
+			},
+			{
+				"type": "text",
+				"value": "Advanced: The inbreeding coefficient, F, is one of a family of “genetics F statistics”, also called fixation statistics, that measure various aspects of heterozygosity in individuals within populations and between populations. In the context of this simulator, the inbreeding coefficient F is equivalent to Wright’s F<sub>IS</sub> and is equivalent to the average kinship coefficient between pairs of individuals in the previous generation."
+			}
+		]
+	},
+	{
+		"question": "How is inbreeding modeled in the simulator?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "Inbreeding alone does not alter allele frequencies, and therefore it alone will not impact an allele frequency simulation. Inbreeding can alter genotype proportions (and therefore impact the genotype frequency simulator)."
+			},
+			{
+				"type": "text",
+				"value": "Advanced: Inbreeding is specified by the inbreeding coefficient, F, where genotype frequencies occur as follows:"
+			},
+			{
+				"type": "list",
+				"value": [
+					"Frequency of the AA genotype [P(A₁A₁]) = p² - F<sub>pq</sub>",
+					"Frequency of the Aa genotype [P(A₁A₂)] = 2<sub>pq</sub> + 2F<sub>pq</sub>",
+					"Frequency of the aa genotype [P(A₂A₂)] = q² - 2F<sub>pq</sub>"
+				]
+			},
+			{
+				"type": "text",
+				"value": "In this equation, p is the frequency of allele A₁, and q is the frequency of allele A₂."
+			}
+		]
+	},
+	{
+		"question": "What is assortative mating?",
+		"answer": "Assortative mating is the tendency of individuals to choose mates with similar (or dissimilar) genotypes. This bias can influences the genotype frequencies of the next generation."
+	},
+	{
+		"question": "How is assortative mating modeled in the simulator?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "Assortative mating alone does not alter allele frequencies, and therefore it alone will not impact an allele frequency simulation. Assortative mating can alter genotype proportions (and therefore will impact the genotype frequency simulator)."
+			},
+			{
+				"type": "text",
+				"value": "Advanced: Positive assortative mating is specified by the positive assortative mating fraction, α. The genotype frequencies in the next generation are:"
+			},
+			{
+				"type": "list",
+				"value": [
+					"Frequency of the A₁A₁ genotype [P(A₁A₁])  = [(1 - α)p² + α(p² + pq/2)] / D",
+					"Frequency of the A₁A₂ genotype [P(A₁A₂)] = [(1 - α)2pq + α(pq)] / D",
+					"Frequency of the A₂A₂ genotype [P(A₂A₂)] = [(1 - α)q² + α(q² + pq/2)] / D"
+				]
+			},
+			{
+				"type": "text",
+				"value": "In this equation, D = [(1 - α)p² + α(p² + pq/2)] + [(1 - α)2pq + α(pq)] + [(1 - α)q² + α(q² + pq/2)], p is the frequency of allele A₁, and q is the frequency of allele A₂."
+			}
+		]
+	},
+	{
+		"question": "Is negative assortative mating / disassortative mating modeled in the simulator?",
+		"answer": "No, currently only simple scenarios of positive assortative mating are implemented."
+	},
+	{
+		"question": "Can the simulator model multiple evolutionary forces simultaneously?",
+		"answer": "Yes. One of the major strengths of Population Genetics Explorer is that multiple forces can easily be applied simultaneously."
+	},
+	{
+		"question": "Can the parameters of the simulation change across generations?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "Generally, no. Once set, the parameters set by the user remain the same for the duration of the simulation"
+			},
+			{
+				"type": "text",
+				"value": "However, some complex scenarios can be simulated in pieces, where the result (ending allele frequency) of a simulation can be used as the starting point for a second phase under a new set of parameters. Multiple simulations can be strung together in this fashion to create a multi-phase scenario."
+			}
+		]
+	},
+	{
+		"question": "How can I cite the simulator?",
+		"answer": "John R. Shaffer, Joshua Rogan. Online human population genetics simulator: a tool for genetics/genomics education and research. (2015) American Society of Human Genetics 65th Annual Meeting. Oct. 9, 2015. Baltimore, MD. Abstract #1701F."
+	}
+]
