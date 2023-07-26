@@ -420,7 +420,7 @@ function Index() {
 					}}
 				>
 					Below will be the results for the above graph. Here you will find the initial / final genotype frequencies,
-					for A1A1, A1A2, and A2A2. The legend will change based on the settings you have selected, and the results of
+					for A₁A₁, A₁A₂, A₂A₂. The legend will change based on the settings you have selected, and the results of
 					the simulation.
 				</Text>
 				<LegendContainer
