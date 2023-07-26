@@ -44,14 +44,14 @@ export const popGenVariables: PopGenVariable[] = [
 		name: VALID_VARIABLES.STARTING_ALLELE_FREQ,
 		variable: 'p',
 		description:
-			' The frequency of the allele of interest, A, at the beginning of the simulation. The beginning of the simulation is generation 0.',
+			' The frequency of the allele of interest, A₁, at the beginning of the simulation. The beginning of the simulation is generation 0.',
 		section: VALID_SECTIONS.BASE,
 		order: 1,
 		defaultValue: 0.5,
 		min: 0,
 		max: 1,
 		step: 0.001,
-		sliderName: 'Starting Frequency for Allele A',
+		sliderName: 'Starting Frequency for Allele A₁',
 	},
 
 	{

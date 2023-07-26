@@ -14,7 +14,7 @@ if (typeof Highcharts === 'object') {
 	HighchartsAccessibility(Highcharts);
 }
 
-const genoTypeOrder = ['AA', 'Aa', 'aa'];
+const genoTypeOrder = ['A₁A₁', 'A₁A₂', 'A₂A₂'];
 
 function createLinesFromArray(lines, isGeno = false) {
 	return lines.map((line: number[], index: number) => {
