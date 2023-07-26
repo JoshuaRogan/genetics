@@ -3,7 +3,7 @@ import React, { ReactSVGElement } from 'react';
 
 interface CustomTabProps extends TabProps {
 	heading: string;
-	tabIcon: any;
+	TabIcon: any;
 }
 
 const CustomTab = React.forwardRef<HTMLButtonElement, CustomTabProps>((props: CustomTabProps, ref) => {
@@ -37,7 +37,7 @@ const CustomTab = React.forwardRef<HTMLButtonElement, CustomTabProps>((props: Cu
 		>
 			<Stack align={'start'} spacing={2}>
 				<Flex width="100%" h={12} align={'center'} justify={'center'} color={isSelected ? 'purple.500' : 'gray.400'}>
-					{props.tabIcon}
+					{props.TabIcon}
 				</Flex>
 				<Box mt={1}>
 					<Text

@@ -1,7 +1,7 @@
 [
 	{
 		"question": "How can I submit a bug or potential new feature?",
-		"answer": "You can navigate to the  <a class=\"faq-link\" href=\"\" target=\"_blank\" rel=\"noreferrer\">Report a Problem</a> page to either submit a bug/error or suggest new features."
+		"answer": "You can email <a class=\"faq-link\" href=\"mailto:jjjr1122@gmail.com\" target=\"_blank\" rel=\"noreferrer\">Josh Rogan</a> to report a problem or either submit a bug/error or suggest new features."
 	},
 	{
 		"question": "How was this application created?",
@@ -53,6 +53,6 @@
 	},
 	{
 		"question": "How can I support this project?",
-		"answer": "To support this project you can submit bugs, submit issues to the  <a class=\"faq-link\" href=\"https://github.com/JoshuaRogan/genetics\" target=\"_blank\" rel=\"noreferrer\">GitHub repository</a>, or contact us!"
+		"answer": "To support this project you can submit bugs, submit issues to the  <a class=\"faq-link\" href=\"https://github.com/JoshuaRogan/genetics\" target=\"_blank\" rel=\"noreferrer\">GitHub repository</a>, or contact us at <a class=\"faq-link\" href=\"mailto:jjjr1122@gmail.com\" target=\"_blank\" rel=\"noreferrer\">Josh Rogan</a>."
 	}
 ]

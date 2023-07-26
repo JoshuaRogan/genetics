@@ -7,15 +7,38 @@ import React, { useEffect, useState } from 'react';
 import CustomTab from '../components/CustomTab';
 import MainWrapper from '../components/MainWrapper';
 
-import faqGettingStarted from '../data/faq-getting-started.json';
-import faqTechnicalQuestions from '../data/faq-technical-questions.json';
-import faqHelpMenu from '../data/faq-help-menu.json';
-import faqSupportingInformation from '../data/faq-supporting-information.json';
 import AccordionCustomContent from '../components/AccordionCustomContent';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 const tabs = ['getting-started', 'help-menu', 'technical-questions', 'supporting-information'];
 
-function FAQPage() {
+export const getStaticProps: GetStaticProps<{
+	faqGettingStarted: any;
+	faqTechnicalQuestions: any;
+	faqHelpMenu: any;
+	faqSupportingInformation: any;
+}> = async () => {
+	const faqGettingStarted = require('../data/faq-getting-started.json');
+	const faqTechnicalQuestions = require('../data/faq-technical-questions.json');
+	const faqHelpMenu = require('../data/faq-help-menu.json');
+	const faqSupportingInformation = require('../data/faq-supporting-information.json');
+
+	return {
+		props: {
+			faqGettingStarted,
+			faqTechnicalQuestions,
+			faqHelpMenu,
+			faqSupportingInformation,
+		},
+	};
+};
+
+function FAQPage({
+	faqGettingStarted,
+	faqTechnicalQuestions,
+	faqHelpMenu,
+	faqSupportingInformation,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
 	const [tabIndex, setTabIndex] = useState(0);
 
 	useEffect(() => {
@@ -86,10 +109,10 @@ function FAQPage() {
 							mx="auto"
 						>
 							<SimpleGrid width="100%" columns={{ base: 1, md: 2, lg: 4 }} paddingY={2} spacing={4}>
-								<CustomTab heading="Getting Started" tabIcon={<Icon as={IoFlagOutline} w={8} h={8} />} />
-								<CustomTab heading="Help Menu" tabIcon={<Icon as={IoHelpBuoyOutline} w={8} h={8} />} />
-								<CustomTab heading="Technical Questions" tabIcon={<Icon as={MdComputer} w={8} h={8} />} />
-								<CustomTab heading="Supporting Information" tabIcon={<Icon as={ChatIcon} w={7} h={7} />} />
+								<CustomTab heading="Getting Started" TabIcon={<Icon as={IoFlagOutline} w={8} h={8} />} />
+								<CustomTab heading="Help Menu" TabIcon={<Icon as={IoHelpBuoyOutline} w={8} h={8} />} />
+								<CustomTab heading="Technical Questions" TabIcon={<Icon as={MdComputer} w={8} h={8} />} />
+								<CustomTab heading="Supporting Information" TabIcon={<Icon as={ChatIcon} w={7} h={7} />} />
 							</SimpleGrid>
 						</TabList>
 						<TabPanels maxWidth={{ base: '550px', md: '786px', lg: '860px', xl: '1080px' }} mx="auto">
