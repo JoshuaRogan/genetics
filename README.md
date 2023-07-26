@@ -1,6 +1,6 @@
 # Genetics Simulator
 
-![](https://img.shields.io/badge/Genetics-Simulators-blue) ![](https://img.shields.io/badge/Version-1.0.0-blueviolet) ![](https://img.shields.io/badge/Status-Beta-blue)
+![](https://img.shields.io/badge/Genetics-Simulators-blue) ![](https://img.shields.io/badge/Version-1.1.0-blueviolet) ![](https://img.shields.io/badge/Status-Beta-blue)
 
 
 ### Description

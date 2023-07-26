@@ -75,6 +75,23 @@ const GlobalStyle = createGlobalStyle`
 					background: var(--chakra-colors-blackAlpha-100);
 				}
 			}
+		}
+	}
+
+	.math-block {
+		font-family: 'Roboto Mono', monospace;
+		padding: 2px 9px;
+    border-radius: 5px;
+	}
+
+	.faq-link {
+		display: inline-block;
+    color: var(--chakra-colors-text);
+    -webkit-text-decoration: wavy underline;
+    text-decoration: wavy underline;
+    text-decoration-color: var(--chakra-colors-purple-300);
+    text-underline-offset: 2px;
+    font-weight: 800;
 	}
 `;
 
