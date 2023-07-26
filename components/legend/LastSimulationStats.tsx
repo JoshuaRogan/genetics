@@ -29,12 +29,12 @@ function LastSimulationStats({ settings, results }: { settings: Settings; result
 						},
 					}}
 				>
-					<ListItem minHeight="30px">Initial frequency of genotype A1A1 = {initialFrequencyA1A1}</ListItem>
-					<ListItem minHeight="30px">Initial frequency of genotype A1A2 = {initialFrequencyA1A2}</ListItem>
-					<ListItem minHeight="30px">Initial frequency of genotype A2A2 = {initialFrequencyA2A2}</ListItem>
-					<ListItem minHeight="30px">Final frequency of genotype A1A1 = {finalFrequencyA1A1?.toFixed(4) || 0}</ListItem>
-					<ListItem minHeight="30px">Final frequency of genotype A1A2 = {finalFrequencyA1A2?.toFixed(4) || 0}</ListItem>
-					<ListItem minHeight="30px">Final frequency of genotype A2A2 = {finalFrequencyA2A2?.toFixed(4) || 0}</ListItem>
+					<ListItem minHeight="30px">Initial frequency of genotype A₁A₁ = {initialFrequencyA1A1}</ListItem>
+					<ListItem minHeight="30px">Initial frequency of genotype A₁A₂ = {initialFrequencyA1A2}</ListItem>
+					<ListItem minHeight="30px">Initial frequency of genotype A₂A₂ = {initialFrequencyA2A2}</ListItem>
+					<ListItem minHeight="30px">Final frequency of genotype A₁A₁ = {finalFrequencyA1A1?.toFixed(4) || 0}</ListItem>
+					<ListItem minHeight="30px">Final frequency of genotype A₁A₂ = {finalFrequencyA1A2?.toFixed(4) || 0}</ListItem>
+					<ListItem minHeight="30px">Final frequency of genotype A₂A₂ = {finalFrequencyA2A2?.toFixed(4) || 0}</ListItem>
 				</List>
 			</Box>
 		</Collapsible>
