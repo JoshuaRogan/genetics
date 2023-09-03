@@ -64,13 +64,16 @@ export default function AccordionCustomContent({ data }) {
 												/>
 											)}
 											{answer.type === 'gif' && (
-												<Image
+												<video
+													style={{
+														width: '600px',
+														margin: '20px auto',
+														borderRadius: '10px',
+													}}
 													src={answer.value as string}
-													alt={answer.alt as string}
-													marginY={5}
-													borderRadius={5}
-													mx="auto"
-													fallback={<Box width={'340px'} height={'150px'} />}
+													autoPlay
+													controls
+													muted
 												/>
 											)}
 										</Fragment>

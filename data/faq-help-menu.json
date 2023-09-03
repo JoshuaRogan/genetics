@@ -8,8 +8,7 @@
 			},
 			{
 				"type": "gif",
-				"value": "",
-				"alt": ""
+				"value": "videos/faq_1.mp4"
 			}
 		]
 	},
@@ -26,8 +25,7 @@
 			},
 			{
 				"type": "gif",
-				"value": "",
-				"alt": ""
+				"value": "videos/faq_2.mp4"
 			}
 		]
 	},
@@ -36,12 +34,11 @@
 		"answer": [
 			{
 				"type": "text",
-				"value": "If a parameter is active (i.e., slider shown in color), you deactivate it by de-selecting the checkbox to the left of the section you would like to deactivate. Once a value is deselected the slider will be grayed out."
+				"value": "If a parameter is active (i.e., slider shown in color), you deactivate it by de-selecting the checkbox to the left of the section you would like to deactivate. Once a value is deselected the slider section will hide."
 			},
 			{
 				"type": "gif",
-				"value": "",
-				"alt": ""
+				"value": "videos/faq_3.mp4"
 			}
 		]
 	},
@@ -54,8 +51,7 @@
 			},
 			{
 				"type": "gif",
-				"value": "",
-				"alt": ""
+				"value": "videos/faq_4.mp4"
 			}
 		]
 	},
@@ -83,8 +79,7 @@
 			},
 			{
 				"type": "gif",
-				"value": "",
-				"alt": ""
+				"value": "videos/faq_5.mp4"
 			}
 		]
 	},
@@ -101,8 +96,7 @@
 			},
 			{
 				"type": "gif",
-				"value": "",
-				"alt": ""
+				"value": "videos/faq_6.mp4"
 			}
 		]
 	},
@@ -119,8 +113,7 @@
 			},
 			{
 				"type": "gif",
-				"value": "",
-				"alt": ""
+				"value": "videos/faq_7.mp4"
 			}
 		]
 	},
@@ -133,8 +126,7 @@
 			},
 			{
 				"type": "gif",
-				"value": "",
-				"alt": ""
+				"value": "videos/faq_8.mp4"
 			}
 		]
 	},
@@ -151,8 +143,7 @@
 			},
 			{
 				"type": "gif",
-				"value": "",
-				"alt": ""
+				"value": "videos/faq_9.mp4"
 			}
 		]
 	}
