@@ -18,6 +18,8 @@ export default function ThirdSectionSlide() {
 					px={{
 						base: 0,
 					}}
+					tabIndex={0}
+					aria-label="Section 3: Population Size"
 				>
 					<Stack
 						align={'center'}

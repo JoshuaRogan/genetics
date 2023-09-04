@@ -13,7 +13,7 @@ export default function SecondSectionSlide() {
 	return (
 		<>
 			<SlideFade ref={ref} in={isIntersecting} offsetY="20px" delay={0.5}>
-				<Container maxW={'7xl'} px="0">
+				<Container maxW={'7xl'} px="0" tabIndex={0} aria-label="Section 2: Frequency of Alleles">
 					<Stack
 						align={'center'}
 						spacing={{ base: 8, md: 5 }}

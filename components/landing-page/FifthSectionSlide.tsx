@@ -19,6 +19,8 @@ export default function FifthSectionSlide() {
 					px={{
 						base: 0,
 					}}
+					tabIndex={0}
+					aria-label="Section 5: Mating Preferences"
 				>
 					<Stack
 						align={'center'}

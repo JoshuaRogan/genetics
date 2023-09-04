@@ -17,6 +17,8 @@ export default function FirstSectionSlide() {
 					px={{
 						base: 0,
 					}}
+					tabIndex={0}
+					aria-label="Section 1: Introduction"
 				>
 					<Stack
 						align={'center'}
