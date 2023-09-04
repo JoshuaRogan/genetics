@@ -19,7 +19,7 @@ const primary = defineStyle({
 	bg: 'blackAlpha.800',
 	color: 'white',
 	_hover: {
-		bg: 'blue.500',
+		bg: 'purple.500',
 	},
 });
 
