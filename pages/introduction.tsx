@@ -50,6 +50,7 @@ function Index() {
 								textDecorationColor="purple.300"
 								textUnderlineOffset={2}
 								fontWeight={800}
+								tabIndex={0}
 							>
 								alleles
 							</Text>
