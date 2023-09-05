@@ -12,35 +12,39 @@ export default function FourthSectionSlide() {
 	return (
 		<>
 			<SlideFade ref={ref} in={isIntersecting} offsetY="20px" delay={0.5}>
-				<Container
-					maxW={'7xl'}
-					my={{
-						base: 10,
-						md: 15,
-					}}
-				>
+				<Container maxW={'7xl'} px="0" tabIndex={0} aria-label="Section 4: Movement of Mosquitoes">
 					<Stack
 						align={'center'}
 						spacing={{ base: 8, md: 5 }}
-						py={{ base: 20, md: 28 }}
-						direction={{ base: 'column', md: 'row' }}
-						overflow={
-							{
-								// base: 'hidden',
-								// lg: 'visible',
-							}
-						}
+						py={{ base: 10, md: 24 }}
+						px={{
+							base: 5,
+							md: 16,
+							lg: 28,
+						}}
+						direction={{ base: 'column-reverse', md: 'row' }}
 					>
-						<Flex flex={1} justify={'end'} align={'center'} position={'relative'} w={'full'}>
+						<Flex
+							flex={1}
+							justify={{
+								md: 'center',
+								lg: 'start',
+							}}
+							align="center"
+							position="relative"
+							width="full"
+						>
 							<Blob
 								w={'150%'}
 								h={'150%'}
 								position={'absolute'}
-								top={'-20%'}
+								top={{
+									base: '-10%',
+									md: '-20%',
+								}}
 								right={{
 									base: '5%',
 									md: '-10%',
-									lg: '-20%',
 								}}
 								zIndex={-1}
 								transform={{
@@ -51,7 +55,10 @@ export default function FourthSectionSlide() {
 							/>
 							<Box
 								position={'relative'}
-								height={'300px'}
+								height={{
+									base: '200px',
+									md: '250px',
+								}}
 								rounded={'2xl'}
 								boxShadow={'2xl'}
 								width={'auto'}
@@ -71,7 +78,7 @@ export default function FourthSectionSlide() {
 							<Heading
 								lineHeight={1.1}
 								fontWeight={600}
-								fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
+								fontSize={{ base: '2xl', sm: '3xl', lg: '4xl' }}
 								textAlign={{
 									base: 'center',
 									md: 'left',
@@ -82,13 +89,25 @@ export default function FourthSectionSlide() {
 									position={'relative'}
 									_after={{
 										content: "''",
-										width: 'full',
-										height: '18%',
+										width: {
+											sm: '70%',
+											lg: '90%',
+										},
+										height: {
+											base: '25%',
+											md: '18%',
+										},
 										position: 'absolute',
-										bottom: 1,
+										top: {
+											base: 6,
+											md: 6,
+										},
+										bottom: {
+											base: 0,
+										},
 										left: {
 											base: '22%',
-											sm: '18%',
+											sm: '14%',
 											md: 0,
 										},
 										bg: 'yellow.300',

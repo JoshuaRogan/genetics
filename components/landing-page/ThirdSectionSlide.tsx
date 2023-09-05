@@ -18,13 +18,17 @@ export default function ThirdSectionSlide() {
 					px={{
 						base: 0,
 					}}
+					tabIndex={0}
+					aria-label="Section 3: Population Size"
 				>
 					<Stack
 						align={'center'}
 						spacing={{ base: 8, md: 5 }}
-						py={{ base: 20, md: 28 }}
+						py={{ base: 10, md: 20 }}
 						px={{
 							base: 5,
+							md: 16,
+							lg: 28,
 						}}
 						direction={{ base: 'column', md: 'row' }}
 						overflow={{
@@ -36,7 +40,7 @@ export default function ThirdSectionSlide() {
 							<Heading
 								lineHeight={1.1}
 								fontWeight={600}
-								fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
+								fontSize={{ base: '2xl', sm: '3xl', lg: '4xl' }}
 								textAlign={{
 									base: 'center',
 									md: 'left',
@@ -74,7 +78,16 @@ export default function ThirdSectionSlide() {
 								population over time?
 							</Text>
 						</Stack>
-						<Flex flex={1} justify={'end'} align={'center'} position={'relative'} w={'full'}>
+						<Flex
+							flex={1}
+							justify={{
+								base: 'center',
+								md: 'end',
+							}}
+							align="center"
+							position="relative"
+							width="full"
+						>
 							<Blob
 								w={'150%'}
 								h={'150%'}
@@ -86,7 +99,10 @@ export default function ThirdSectionSlide() {
 							/>
 							<Box
 								position={'relative'}
-								height={'300px'}
+								height={{
+									base: '200px',
+									md: '250px',
+								}}
 								rounded={'2xl'}
 								boxShadow={'2xl'}
 								width={'auto'}

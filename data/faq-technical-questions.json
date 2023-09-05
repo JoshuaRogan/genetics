@@ -25,6 +25,10 @@
 			{
 				"type": "text",
 				"value": "The backend utilizes the Javascript framework <a class=\"faq-link\" href=\"https://nextjs.org\" target=\"_blank\" rel=\"noreferrer\">NextJS</a> heavily its for server side rendering feature, and static site generation."
+			},
+			{
+				"type": "text",
+				"value": "Some illustration are brought you by: <a class=\"faq-link\" href=\"https://storyset.com/medical\" rel=\"noreferrer\">Storyset</a>"
 			}
 		]
 	},

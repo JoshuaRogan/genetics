@@ -29,10 +29,19 @@ export default function Navigation() {
 			<Box bg="navBar" px={4}>
 				<Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
 					<HStack spacing={8} alignItems={'center'}>
-						<Link href={'/'} as={NextLink} variant="footerLink">
-							<Image src="/images/logo.svg" width={60} height={25} alt="Logo from the Population Genetics Simulator" />
+						<Link href={'/'} as={NextLink} variant="footerLink" width="auto">
+							<Image
+								src="/images/logo.svg"
+								width={60}
+								height={25}
+								alt="Logo from the Population Genetics Simulator"
+								style={{ filter: 'brightness(2)' }}
+							/>
 						</Link>
-						<HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }} color="navBarText">
+						<HStack as={'nav'} spacing={4} display={{ base: 'none', lg: 'flex' }} color="navBarText">
+							<NavLink href="/introduction">
+								<Text fontWeight={'bold'}>Introduction</Text>
+							</NavLink>
 							<NavLink href="/individual">
 								<Text fontWeight={'bold'}>Individual Simulations</Text>
 							</NavLink>
@@ -59,7 +68,7 @@ export default function Navigation() {
 								size={'md'}
 								icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
 								aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-								display={{ md: 'none' }}
+								display={{ lg: 'none' }}
 								color="whitesmoke"
 								bg={useColorModeValue('whiteAlpha.200', 'whiteAlpha.200')}
 								onClick={isOpen ? onClose : onOpen}
@@ -69,8 +78,11 @@ export default function Navigation() {
 				</Flex>
 
 				{isOpen ? (
-					<Box pb={4} display={{ md: 'none' }}>
+					<Box pb={4} display={{ lg: 'none' }}>
 						<Stack as={'nav'} spacing={4} color="navBarText">
+							<NavLink href="/introduction">
+								<Text fontWeight={'bold'}>Introduction</Text>
+							</NavLink>
 							<NavLink href="/individual">
 								<Text fontWeight={'bold'}>Individual Simulations</Text>
 							</NavLink>
