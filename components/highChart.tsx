@@ -24,7 +24,7 @@ function createLinesFromArray(lines, isGeno = false) {
 			name,
 			accessibility: {
 				enabled: true,
-				description: 'The frequency of the A allele in the population.',
+				description: isGeno ? 'Frequency' : 'The frequency of the A₁ allele in the population.',
 			},
 			data: [...line],
 		};
@@ -65,16 +65,16 @@ function createOptions(theme = 'light', lines, title) {
 		},
 		yAxis: {
 			title: {
-				text: 'Frequency of the A allele',
+				text: isGenoType ? 'Frequency' : 'Frequency of the A₁ allele',
 			},
 			accessibility: {
-				description: 'Frequency of the A allele',
+				description: isGenoType ? 'Frequency' : 'Frequency of the A₁ allele',
 			},
 			min: 0,
 			max: 1,
 		},
 		accessibility: {
-			description: 'The frequency of the A allele in the population.',
+			description: isGenoType ? 'Frequency' : 'Frequency of the A₁ allele',
 		},
 		series: createLinesFromArray(lines, isGenoType),
 		plotOptions: {
@@ -82,7 +82,7 @@ function createOptions(theme = 'light', lines, title) {
 				pointStart: 0,
 				accessibility: {
 					enabled: true,
-					description: 'The frequency of the A allele in the population.',
+					description: isGenoType ? 'Frequency' : 'Frequency of the A₁ allele',
 					keyboardNavigation: {
 						enabled: true,
 					},
