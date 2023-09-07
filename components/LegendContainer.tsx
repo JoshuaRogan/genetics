@@ -74,7 +74,10 @@ function BulkLegendStats({ results }: { results: number[][] }) {
 				</StyledListItemStats>
 
 				<StyledListItemStats> Average Freq {getAverageFinalFreq(results)}</StyledListItemStats>
-				<StyledListItemStats> Standard deviation among all simulations at end {getStandardDeviationOfResults(results)}</StyledListItemStats>
+				<StyledListItemStats>
+					{' '}
+					Standard deviation among all simulations at end {getStandardDeviationOfResults(results)}
+				</StyledListItemStats>
 			</StyledListStats>
 		</StyledLegendContainer>
 	);

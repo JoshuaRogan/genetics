@@ -273,7 +273,8 @@ function Index() {
 						Replicated Simulations
 					</Text>
 					<Text as="p" my={4}>
-						Here, you can generate multiple simulations with the same settings. Use this to explore how random chance, particularly genetic drift, may affect allele and genotype frequencies in independent populations.
+						Here, you can generate multiple simulations with the same settings. Use this to explore how random chance,
+						particularly genetic drift, may affect allele and genotype frequencies in independent populations.
 					</Text>
 				</Box>
 
@@ -409,8 +410,8 @@ function Index() {
 					}}
 				>
 					Below will be the results for the above graph. Here you will find the initial / final genotype frequencies,
-					for A₁A₁, A₁A₂, A₂A₂. The legend will change based on the settings you have selected, and the results of
-					the simulation.
+					for A₁A₁, A₁A₂, A₂A₂. The legend will change based on the settings you have selected, and the results of the
+					simulation.
 				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}
