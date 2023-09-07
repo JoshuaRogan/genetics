@@ -8,6 +8,7 @@ import {
 	findNumOfEliminations,
 	findNumOfFixations,
 	getAverageFinalFreq,
+	getStandardDeviationOfResults,
 } from '../utils/bulkStats';
 import { Box, Checkbox, Text, useColorModeValue } from '@chakra-ui/react';
 import { Settings } from '../types';
@@ -73,6 +74,7 @@ function BulkLegendStats({ results }: { results: number[][] }) {
 				</StyledListItemStats>
 
 				<StyledListItemStats> Average Freq {getAverageFinalFreq(results)}</StyledListItemStats>
+				<StyledListItemStats> Standard deviation among all simulations at end {getStandardDeviationOfResults(results)}</StyledListItemStats>
 			</StyledListStats>
 		</StyledLegendContainer>
 	);

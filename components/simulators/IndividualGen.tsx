@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Text, useColorModeValue, useToast, Tooltip } from '@chakra-ui/react';
 import { LinkIcon } from '@chakra-ui/icons';
 
 import Selection from '../simulator-factors/Selection';
@@ -255,18 +255,32 @@ function Index() {
 						Individual Simulations
 					</Text>
 					<Text as="p" my={4}>
-						(Place holder text) Use this paragrah to explain 1) the purpose of this page. 2) what the default graph is.
-						3) what the users should do on this page.
+					Here, you can generate one simulation for each group of settings you select. You can use this to compare how different settings may affect allele and / or genotype frequencies.
+
 					</Text>
 					<Text as="p" my={4}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-						ea commodo consequat.
-					</Text>
-					<Text as="p" my={4}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-						ea commodo consequat.
+						Adjust the settings for the model below. For the default settings, the population is in {' '}						
+						<Tooltip
+							label="When the allele and genotype frequencies in a population stay constant."
+							aria-label="A tooltip"
+							color={useColorModeValue('black', 'white')}
+							backgroundColor={useColorModeValue('purple.200', 'purple.500')}
+							padding={2}
+							hasArrow
+						>
+							<Text
+								as="span"
+								display="inline-block"
+								color="text"
+								textDecoration="wavy underline"
+								textDecorationColor="purple.300"
+								textUnderlineOffset={2}
+								fontWeight={800}
+								tabIndex={0}
+							>
+								Hardy-Weinberg equilibrium
+							</Text>
+						</Tooltip> You can select “Reset Simulator” to restore the default settings.
 					</Text>
 				</Box>
 
