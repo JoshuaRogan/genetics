@@ -16,57 +16,6 @@ import {
   import Support from '../pages/supporting'
 
 
-function CollapseEx({ header }) {
-	const { isOpen, onToggle } = useDisclosure()
-  
-	return (
-	  <>
-		<h3 onClick={onToggle}>Click Me</h3>
-		<Collapse in={isOpen} animateOpacity>
-		  <Box
-			p='40px'
-			color='white'
-			mt='4'
-			bg='teal.500'
-			rounded='md'
-			shadow='md'
-		  >
-			{/* <Lorem count={1} /> */}
-		  </Box>
-		</Collapse>
-	  </>
-	)
-  }
-
-
-function FaqModal() {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-
-    return (
-      <>
-        <Button onClick={onOpen}>Supporting Information</Button>
-  
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Support />
-            </ModalBody>
-  
-            <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={onClose}>
-                Close
-              </Button>
-              <Button variant='ghost'>Secondary Action</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
-    )
-  }
-
 export default function Footer() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -85,7 +34,6 @@ export default function Footer() {
               <Button colorScheme='blue' mr={3} onClick={onClose}>
                 Close
               </Button>
-              <Button variant='ghost'>Secondary Action</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
