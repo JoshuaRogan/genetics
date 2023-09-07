@@ -32,7 +32,9 @@ function Index() {
 						md: 'left',
 					}}
 				>
-					All living things, including us, belong to a population: a group of individuals of the same species that live in the same area and potentially reproduce together. Population genetics is the study of genetic variation within and among populations. It often explores the {' '}
+					All living things, including us, belong to a population: a group of individuals of the same species that live
+					in the same area and potentially reproduce together. Population genetics is the study of genetic variation
+					within and among populations. It often explores the{' '}
 					{
 						<Tooltip
 							label="Variants of a particular gene or DNA region"
@@ -56,7 +58,7 @@ function Index() {
 							</Text>
 						</Tooltip>
 					}{' '}
-					and{' '} 
+					and{' '}
 					{
 						<Tooltip
 							label="An individual's set of alleles for a particular region of DNA"
@@ -80,9 +82,10 @@ function Index() {
 							</Text>
 						</Tooltip>
 					}{' '}
-					within a population. 
-					
-					Learning about population genetics is crucial for understanding evolution, which is a change in the frequencies of a population’s alleles over time. Population genetics can help us better understand how allele frequencies may change based on natural selection, mutation, migration, and many other factors.
+					within a population. Learning about population genetics is crucial for understanding evolution, which is a
+					change in the frequencies of a population’s alleles over time. Population genetics can help us better
+					understand how allele frequencies may change based on natural selection, mutation, migration, and many other
+					factors.
 				</Text>
 				<Text
 					color="text"
@@ -139,8 +142,9 @@ function Index() {
 				</Box>
 
 				<Text color="text" marginY={{ base: 3, md: 4 }}>
-				It’s complicated to track all the genetic information in a population over time. So, biologists studying population genetics often use {' '}
-				{
+					It’s complicated to track all the genetic information in a population over time. So, biologists studying
+					population genetics often use{' '}
+					{
 						<Tooltip
 							label="Mathematical models describe real-world behaviors and processes using equations. They are a way to simplify and simulate reality, in order to explore the key components of a complex system."
 							aria-label="A tooltip"
@@ -163,7 +167,7 @@ function Index() {
 							</Text>
 						</Tooltip>
 					}{' '}
-				. Models provide a powerful framework to explore questions and predictions about evolution. 
+					. Models provide a powerful framework to explore questions and predictions about evolution.
 				</Text>
 				{/* <UnorderedList
 					spacing={4}
@@ -190,8 +194,14 @@ function Index() {
 					</ListItem>
 				</UnorderedList>  */}
 				<Text color="text" marginY={{ base: 3, md: 10, lg: 16 }}>
-				<strong>In this Click & Learn, you’ll explore a mathematical model that simulates the frequencies of alleles and genotypes</strong> in a population over time. This simulation tracks one specific gene region (or locus) with only two alleles. Use the model to explore your own questions about how frequencies are affected by different factors. Like all models, this model makes some simplifying {' '}
-				{
+					<strong>
+						In this Click & Learn, you’ll explore a mathematical model that simulates the frequencies of alleles and
+						genotypes
+					</strong>{' '}
+					in a population over time. This simulation tracks one specific gene region (or locus) with only two alleles.
+					Use the model to explore your own questions about how frequencies are affected by different factors. Like all
+					models, this model makes some simplifying{' '}
+					{
 						<Tooltip
 							label="Conditions that a model assumes to be true, in order to make the system easier to understand and work with"
 							aria-label="A tooltip"
@@ -214,22 +224,30 @@ function Index() {
 							</Text>
 						</Tooltip>
 					}{' '}
-
 				</Text>
 
 				<Text color="text" marginY={{ base: 3, md: 10, lg: 16 }}>
-				You can explore the model using two different simulator modes:
-				<UnorderedList
-					spacing={4}
-					marginY={{ base: 10, md: 10, lg: 10 }}
-					ml={{
-						base: 4,
-						md: 10,
-						lg: 16,
-					}}
-				>
-					<ListItem> <strong>“Individual Simulations” </strong>generates one simulation for each group of settings you select. You can use this to compare how different settings may affect allele and genotype frequencies. </ListItem>
-					<ListItem> <strong>"Replicated Simulations”</strong> generates multiple simulations with the same settings. You can use this to explore how random chance may affect allele and genotype frequencies in many independent populations</ListItem>
+					You can explore the model using two different simulator modes:
+					<UnorderedList
+						spacing={4}
+						marginY={{ base: 10, md: 10, lg: 10 }}
+						ml={{
+							base: 4,
+							md: 10,
+							lg: 16,
+						}}
+					>
+						<ListItem>
+							{' '}
+							<strong>"Individual Simulations" </strong>generates one simulation for each group of settings you select.
+							You can use this to compare how different settings may affect allele and genotype frequencies.{' '}
+						</ListItem>
+						<ListItem>
+							{' '}
+							<strong>"Replicated Simulations"</strong> generates multiple simulations with the same settings. You can
+							use this to explore how random chance may affect allele and genotype frequencies in many independent
+							populations
+						</ListItem>
 					</UnorderedList>
 				</Text>
 				<ButtonGroup

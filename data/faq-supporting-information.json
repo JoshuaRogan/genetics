@@ -1,11 +1,29 @@
 [
 	{
 		"question": "Summary",
-		"answer": "In this Click & Learn, you’ll explore the frequency of an allele or the frequency of genotypes in a population using a population genetics simulation. Use the simulation to explore and test your own questions on the impacts of natural selection,population size, migration and more on allele or genotype frequencies."
+		"answer": "In this Click & Learn, you’ll explore the frequency of alleles and genotypes in a population using a simulator based on a mathematical model. Use the simulator to explore your own questions about how allele and genotype frequencies are affected by natural selection, migration, mutation, and more. "
 	},
 	{
 		"question": "Instructions for use",
-		"answer": ""
+		"answer": [
+			{
+				"type": "text",
+				"value": "This resource contains the following sections in the top and bottom menus:"
+			},
+			{
+				"type": "list",
+				"value": [
+					"The “Introduction” tab (top) provides a brief overview of population genetics and the model. ",
+					"The “Simulations” tabs (top) are where you can access the model simulator. Navigate the simulator by following the instructions in each section. ",
+					"The “Model Background” page (bottom) provides more information about the biological concepts and terms used in the model.",
+					"The “Help” page (bottom) provides more support for using the simulator.\n"
+				]
+			},
+			{
+				"type": "text",
+				"value": "Throughout the resource, you can select bold underlined text and question mark icons to show additional information and links."
+			}
+		]
 	},
 	{
 		"question": "Optimization and limitations",
@@ -30,5 +48,26 @@
 	{
 		"question": "References",
 		"answer": "John R. Shaffer, Joshua Rogan. Online human population genetics simulator: a tool for genetics/genomics education and research. (2015) American Society of Human Genetics 65th Annual Meeting. Oct. 9, 2015. Baltimore, MD. Abstract #1701F."
+	},
+	{
+		"question": "Credits",
+		"answer": [
+			{
+				"type": "text",
+				"value": "© 2022 Howard Hughes Medical Institute. The resource is licensed under a <a class=\"faq-link\"  target=\"_blank\" href='https://creativecommons.org/licenses/by-nc-sa/4.0/'> Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license. </a>"
+			},
+			{
+				"type": "text",
+				"value": "© 2022 Howard Hughes Medical Institute. All rights reserved. Please see the <a class=\"faq-link\" target=\"_blank\" href='https://www.hhmi.org/terms-of-use'>Terms of Use</a> for information on how this resource can be used."
+			}
+		]
+	},
+	{
+		"question": "Version",
+		"answer": "1.0"
+	},
+	{
+		"question": "Last Updated",
+		"answer": "Sept. 2023"
 	}
 ]

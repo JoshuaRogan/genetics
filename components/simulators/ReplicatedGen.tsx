@@ -466,20 +466,20 @@ function Index() {
 				</ButtonGroup>
 
 				<DevOnLocal>
-					 <Pre role="figure" aria-label="Debugging information">
-						 <Box as="h2" color={'red'}>
-							  Debug Information + Content for Legend:
-						 </Box>
-						 <DebugHeader>Current Input Values</DebugHeader>
-						 {JSON.stringify(popGenVars)} <br />
-						 {JSON.stringify(activeSections)}
-						 <DebugHeader>Allele Output</DebugHeader>
-						 {JSON.stringify(alleleResults)} <br />
-						 <DebugHeader>Genotype Output</DebugHeader>
-						 {JSON.stringify(alleleResults)} <br />
-						 <DebugHeader>Legend Data</DebugHeader>
-						 {JSON.stringify(settingResults, null, 2)}
-					 </Pre>
+					<Pre role="figure" aria-label="Debugging information">
+						<Box as="h2" color={'red'}>
+							Debug Information + Content for Legend:
+						</Box>
+						<DebugHeader>Current Input Values</DebugHeader>
+						{JSON.stringify(popGenVars)} <br />
+						{JSON.stringify(activeSections)}
+						<DebugHeader>Allele Output</DebugHeader>
+						{JSON.stringify(alleleResults)} <br />
+						<DebugHeader>Genotype Output</DebugHeader>
+						{JSON.stringify(alleleResults)} <br />
+						<DebugHeader>Legend Data</DebugHeader>
+						{JSON.stringify(settingResults, null, 2)}
+					</Pre>
 				</DevOnLocal>
 			</Box>
 		</MainWrapper>
