@@ -255,11 +255,11 @@ function Index() {
 						Individual Simulations
 					</Text>
 					<Text as="p" my={4}>
-					Here, you can generate one simulation for each group of settings you select. You can use this to compare how different settings may affect allele and / or genotype frequencies.
-
+						Here, you can generate one simulation for each group of settings you select. You can use this to compare how
+						different settings may affect allele and / or genotype frequencies.
 					</Text>
 					<Text as="p" my={4}>
-						Adjust the settings for the model below. For the default settings, the population is in {' '}						
+						Adjust the settings for the model below. For the default settings, the population is in{' '}
 						<Tooltip
 							label="When the allele and genotype frequencies in a population stay constant."
 							aria-label="A tooltip"
@@ -280,7 +280,8 @@ function Index() {
 							>
 								Hardy-Weinberg equilibrium
 							</Text>
-						</Tooltip> You can select “Reset Simulator” to restore the default settings.
+						</Tooltip>{' '}
+						You can select “Reset Simulator” to restore the default settings.
 					</Text>
 				</Box>
 
@@ -428,8 +429,8 @@ function Index() {
 					}}
 				>
 					Below will be the results for the above graph. Here you will find the initial / final genotype frequencies,
-					for A₁A₁, A₁A₂, A₂A₂. The legend will change based on the settings you have selected, and the results of
-					the simulation.
+					for A₁A₁, A₁A₂, A₂A₂. The legend will change based on the settings you have selected, and the results of the
+					simulation.
 				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}
