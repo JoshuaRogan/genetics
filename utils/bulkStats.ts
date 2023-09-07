@@ -55,3 +55,14 @@ export function getAverageFinalFreq(results: number[][]) {
 	const finals = results.map(res => res[res.length - 1]);
 	return finals.reduce((prev, curr) => prev + curr, 0) / divider;
 }
+
+function getStandardDeviation(array: number[]) {
+	const n = array.length
+	const mean = array.reduce((a, b) => a + b) / n
+	return Math.sqrt(array.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n)
+  }
+
+export function getStandardDeviationOfResults(results: number[][]) {
+	const finals = results.map(res => res[res.length - 1]);
+	return getStandardDeviation(finals);
+}

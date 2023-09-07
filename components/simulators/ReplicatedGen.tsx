@@ -273,18 +273,7 @@ function Index() {
 						Replicated Simulations
 					</Text>
 					<Text as="p" my={4}>
-						(Place holder text) Use this paragrah to explain 1) the purpose of this page. 2) what the default graph is.
-						3) what the users should do on this page.
-					</Text>
-					<Text as="p" my={4}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-						ea commodo consequat.
-					</Text>
-					<Text as="p" my={4}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-						ea commodo consequat.
+						Here, you can generate multiple simulations with the same settings. Use this to explore how random chance, particularly genetic drift, may affect allele and genotype frequencies in independent populations.
 					</Text>
 				</Box>
 
