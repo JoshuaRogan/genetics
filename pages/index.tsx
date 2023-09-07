@@ -44,12 +44,10 @@ function Index() {
 							marginTop={{ base: 4, md: 6, lg: 12 }}
 							lineHeight={{ base: '1.2', md: '1.1' }}
 						>
-							Dive into Population Genetics Science
+							Dive into Population Genetics Simulations!
 						</Text>
 						<Text color="text" marginY={{ base: 3 }} width="80%" align={{ base: 'center', md: 'start' }}>
-							Welcome to the Population Genetics Explorer, your gateway to understanding genetic evolution. Dive into
-							the fascinating world of genetics and explore the dynamic frequencies of alleles, natural selection, and
-							more through mathematical simulations within populations.
+						Welcome to the Population Genetics Explorer, your gateway to understanding evolution through mathematical simulations. Dive into this fascinating world by exploring the frequencies of alleles in populations as they respond to natural selection, genetic drift, migration, mutation and more.
 						</Text>
 						<Button
 							as={NextLink}
@@ -93,8 +91,7 @@ function Index() {
 					marginX="auto"
 				>
 					<Text color="text" marginY={{ base: 6, md: 8, lg: 16 }} textAlign="center">
-						Take a hands-on approach to understanding genetic evolution. Use the simulators to explore and test your own
-						questions on the impacts of natural selection, population size, and more.
+					Take a hands-on approach to understanding population genetics. Use the simulator to explore and test your own questions on the impacts of different processes of evolution on the frequency of alleles in a population.
 					</Text>
 					<ButtonGroup
 						width={{

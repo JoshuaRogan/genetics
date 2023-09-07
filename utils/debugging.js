@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { isLocalHost } from './env';
 
 export const DebugHeader = styled.div`
 	display: block;
@@ -19,3 +20,11 @@ export const Pre = styled.pre`
 	margin-bottom: 200px;
 	border-radius: 4px;
 `;
+
+export function DevOnLocal({ children }) {
+	if (isLocalHost()) {
+		return children;
+	}
+
+	return null;
+}
