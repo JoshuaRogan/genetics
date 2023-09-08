@@ -2,18 +2,27 @@ import Link from 'next/link';
 
 import MainWrapper from '../components/MainWrapper';
 
-import { Box, Button, ButtonGroup, Text, Tooltip, useColorModeValue, ListItem, UnorderedList } from '@chakra-ui/react';
-
-import FirstSectionSlide from '../components/landing-page/FirstSectionSlide';
-import SecondSectionSlide from '../components/landing-page/SecondSectionSlide';
-import ThirdSectionSlide from '../components/landing-page/ThirdSectionSlide';
-import FourthSectionSlide from '../components/landing-page/FourthSectionSlide';
-import FifthSectionSlide from '../components/landing-page/FifthSectionSlide';
+import {
+	Box,
+	Button,
+	ButtonGroup,
+	Text,
+	Tooltip,
+	useColorModeValue,
+	ListItem,
+	UnorderedList,
+	Icon,
+	Flex,
+	Container,
+	Stack,
+	Heading,
+} from '@chakra-ui/react';
+import IntroCard from '../components/IntroCard';
 
 function Index() {
 	return (
 		<MainWrapper>
-			<Box as="section" p={7} maxWidth={{ base: '550px', md: '786px', lg: '860px', xl: '1080px' }} mx={{ sm: 'auto' }}>
+			<Box as="section" p={7} maxWidth={{ base: '550px', md: '860px', lg: '1080px', xl: '1440px' }} mx={{ sm: 'auto' }}>
 				<Text
 					color="text"
 					fontWeight={'extrabold'}
@@ -100,45 +109,105 @@ function Index() {
 					frequency of alleles in a population over time is evolution, so population genetics is crucial for
 					understanding how evolution works.
 				</Text>
-				<Text
-					color="text"
-					align="center"
-					fontWeight={'extrabold'}
-					fontSize={{ base: '22px', md: '24px', lg: '30px' }}
-					marginTop={{ base: 4, md: 16 }}
-					padding={{ base: 2, md: 0 }}
-				>
-					You can use Population Genetics Explorer to test questions like the following:
-				</Text>
-				<Box
-					as="section"
-					display="flex"
-					flexDirection="column"
-					gap={{
-						base: 8,
-						md: 10,
-					}}
-					position="relative"
-					left="50%"
-					right="50%"
-					mx="-50vw"
-					w="100vw"
-					py={{ base: '20px' }}
-				>
-					{/* Mice */}
-					<FirstSectionSlide />
+				<Box>
+					<Stack as={Container} maxW={'3xl'} textAlign={'center'}>
+						<Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} marginTop={10}>
+							You can use Population Genetics Explorer to test questions like the following:
+						</Heading>
+					</Stack>
 
-					{/* Sickled Cell */}
-					<SecondSectionSlide />
+					<Box marginY={12}>
+						<Flex flexWrap="wrap" gridGap={6} justify="center">
+							<IntroCard
+								title="Could, the high frequency of an allele"
+								description="or dark fur color in rock pocket mice on dark soils be due to natural selection favoring individuals
+								with the allele?"
+								imageProps={{
+									src: '/images/rock-pocket-mouse.jpeg',
+									alt: 'Rock Pocket Mouse (Chaetodipus intermedius), photo by J. N. Stuart, from https://www.flickr.com/photos/stuartwildlife/5726805085',
+								}}
+								blobProps={{
+									color: {
+										light: 'purple.100',
+										dark: 'purple.400',
+									},
+									variation: 'normal',
+								}}
+								aria-label="Section 1: Introduction"
+							/>
+							<IntroCard
+								title="Is the high frequency of the allele associated with"
+								description="Sickle cell disease in some human populations due to the fact that people who have one copy of the
+								sickle cell allele are protected from malaria?"
+								imageProps={{
+									src: '/images/sickled-cells.jpeg',
+									alt: '3D illustration of Sickle Cells',
+								}}
+								blobProps={{
+									color: {
+										light: 'red.100',
+										dark: 'red.300',
+									},
+									variation: 'normal',
+								}}
+								aria-label="Section 2: Introduction"
+							/>
 
-					{/* Lynx */}
-					<ThirdSectionSlide />
+							<IntroCard
+								title="	How, does population size"
+								description="	Like the small populations of the endangered Iberian lynxes, affect the frequency of alleles in a
+								population over time?"
+								imageProps={{
+									src: '/images/iberian-lynx.jpeg',
+									alt: 'Iberian Lynx in the wild',
+								}}
+								blobProps={{
+									color: {
+										light: 'green.100',
+										dark: 'green.400',
+									},
+									variation: 'normal',
+								}}
+								aria-label="Section 3: Population Size"
+							/>
 
-					{/* Mosquito */}
-					<FourthSectionSlide />
+							<IntroCard
+								title="How does the movement of mosquitoes"
+								description="That are resistant to insecticides from one population to another affect the evolution of resistance to
+								insecticide?"
+								imageProps={{
+									src: '/images/mosquito.jpeg',
+									alt: '3D illustration of a mosquito on a blue fabric',
+								}}
+								blobProps={{
+									color: {
+										light: 'yellow.100',
+										dark: 'yellow.400',
+									},
+									variation: 'normal',
+								}}
+								aria-label="Section 4: Population Size"
+							/>
 
-					{/* Bluebird */}
-					<FifthSectionSlide />
+							<IntroCard
+								title="	In Western bluebirds, bright blue females and males tend to mate with one another."
+								description="Birds that are more dull in color also seem to choose one another. How does this preference for mates
+								affect the frequency of alleles in a population?"
+								imageProps={{
+									src: '/images/western-blue-bird.jpeg',
+									alt: 'Western blue bird in a tree with a blue sky background',
+								}}
+								blobProps={{
+									color: {
+										light: 'blue.100',
+										dark: 'blue.400',
+									},
+									variation: 'normal',
+								}}
+								aria-label="Section 5: Mating Preferences"
+							/>
+						</Flex>
+					</Box>
 				</Box>
 
 				<Text color="text" marginY={{ base: 3, md: 4 }}>
@@ -169,30 +238,6 @@ function Index() {
 					}{' '}
 					. Models provide a powerful framework to explore questions and predictions about evolution.
 				</Text>
-				{/* <UnorderedList
-					spacing={4}
-					marginY={{ base: 10, md: 10, lg: 10 }}
-					ml={{
-						base: 4,
-						md: 10,
-						lg: 16,
-					}}
-				>
-					<ListItem>
-						The simulation tracks one specific gene region (or locus) with only two alleles. The symbol &quot;A
-						<sub>1</sub>&quot; represents the allele being analyzed. The symbol &quot;A<sub>2</sub>&quot; is the other
-						allele.
-					</ListItem>
-					<ListItem>
-						The individuals in this population have two copies of a gene region. The copies can be the same or different
-						allele.
-					</ListItem>
-					<ListItem>
-						Individuals in the population reproduce sexually. These assumptions make the model easier to understand.
-						Although it is simpler than reality, it provides a powerful framework that biologists use to explore and
-						make predictions about evolution.
-					</ListItem>
-				</UnorderedList>  */}
 				<Text color="text" marginY={{ base: 3, md: 10, lg: 16 }}>
 					<strong>
 						In this Click & Learn, you’ll explore a mathematical model that simulates the frequencies of alleles and
