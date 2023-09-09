@@ -1,5 +1,4 @@
-import { Stack, Flex, useColorModeValue, Heading, Button, Box, Text, Image } from '@chakra-ui/react';
-import { ReactElement } from 'react';
+import { Stack, Flex, useColorModeValue, Box, Text, Image } from '@chakra-ui/react';
 import Blob from './Blob';
 interface CardProps {
 	imageProps: {
@@ -49,7 +48,7 @@ const IntroCard = ({ title, description, blobProps, imageProps }: CardProps) => 
 						}}
 						rounded={'2xl'}
 						boxShadow={'2xl'}
-						width={'auto'}
+						width="225px"
 						overflow={'hidden'}
 					>
 						<Image
@@ -63,10 +62,8 @@ const IntroCard = ({ title, description, blobProps, imageProps }: CardProps) => 
 					</Box>
 				</Flex>
 				<Box mt={2}>
-					<Heading size="md" textAlign="center">
-						{title}
-					</Heading>
 					<Text mt={3} fontSize={'sm'} textAlign="center">
+						{title}
 						{description}
 					</Text>
 				</Box>

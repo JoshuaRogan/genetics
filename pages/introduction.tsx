@@ -116,7 +116,7 @@ function Index() {
 						</Heading>
 					</Stack>
 
-					<Box marginY={12}>
+					<Box marginY={16}>
 						<Flex flexWrap="wrap" gridGap={6} justify="center">
 							<IntroCard
 								title="Could, the high frequency of an allele"
@@ -188,24 +188,6 @@ function Index() {
 								}}
 								aria-label="Section 4: Population Size"
 							/>
-
-							<IntroCard
-								title="	In Western bluebirds, bright blue females and males tend to mate with one another."
-								description="Birds that are more dull in color also seem to choose one another. How does this preference for mates
-								affect the frequency of alleles in a population?"
-								imageProps={{
-									src: '/images/western-blue-bird.jpeg',
-									alt: 'Western blue bird in a tree with a blue sky background',
-								}}
-								blobProps={{
-									color: {
-										light: 'blue.100',
-										dark: 'blue.400',
-									},
-									variation: 'normal',
-								}}
-								aria-label="Section 5: Mating Preferences"
-							/>
 						</Flex>
 					</Box>
 				</Box>
@@ -238,7 +220,7 @@ function Index() {
 					}{' '}
 					. Models provide a powerful framework to explore questions and predictions about evolution.
 				</Text>
-				<Text color="text" marginY={{ base: 3, md: 10, lg: 16 }}>
+				<Text color="text" marginY={{ base: 3, md: 8 }}>
 					<strong>
 						In this Click & Learn, you’ll explore a mathematical model that simulates the frequencies of alleles and
 						genotypes
