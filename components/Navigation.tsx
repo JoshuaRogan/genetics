@@ -29,14 +29,26 @@ export default function Navigation() {
 			<Box bg="navBar" px={4}>
 				<Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
 					<HStack spacing={8} alignItems={'center'}>
-						<Link href={'/'} as={NextLink} variant="footerLink" width="auto">
+						<Link href={'/'} as={NextLink} variant="footerLink" display="flex" flexDirection="row" gap="3">
 							<Image
 								src="/images/logo.svg"
 								width={60}
 								height={25}
-								alt="Logo from the Population Genetics Simulator"
+								alt="Two curved dotted lines, one concave one convex, intersecting each other"
 								style={{ filter: 'brightness(2)' }}
 							/>
+							<Text
+								fontSize={{
+									sm: 'sm',
+									base: 'md',
+								}}
+								fontWeight="bold"
+								maxWidth="150px"
+								lineHeight="1.2"
+								textDecoration="none"
+							>
+								Population Genetics Explorer
+							</Text>
 						</Link>
 						<HStack as={'nav'} spacing={4} display={{ base: 'none', lg: 'flex' }} color="navBarText">
 							<NavLink href="/introduction">

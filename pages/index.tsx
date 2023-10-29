@@ -7,7 +7,10 @@ function Index() {
 		<MainWrapper>
 			<Box
 				as="section"
-				padding={7}
+				padding={{
+					sm: '5',
+					base: '7',
+				}}
 				marginTop={{
 					md: '7%',
 					lg: '0',
