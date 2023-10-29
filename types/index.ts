@@ -13,6 +13,17 @@ export type StoreState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 
+export type FAQItem = {
+	type: 'text' | 'image' | 'list' | 'gif';
+	value: string | string[];
+	alt?: string;
+};
+
+export type FAQ = {
+	question: string;
+	answer: string | FAQItem[];
+};
+
 export type GenoTypeFrequency = {
 	AA: number[];
 	Aa: number[];
