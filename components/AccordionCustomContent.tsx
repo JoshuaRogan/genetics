@@ -9,8 +9,9 @@ import {
 	Box,
 	Image,
 } from '@chakra-ui/react';
-import { Key } from 'react';
+import { Fragment, Key } from 'react';
 import { FAQ, FAQItem } from '../types';
+import { renderMathML } from '../utils/math-ml';
 
 export default function AccordionCustomContent({ data }) {
 	return (
@@ -81,20 +82,45 @@ function renderAnswer(answerItem: FAQItem, index: Key) {
 				/>
 			);
 
-		case 'gif':
+		case 'math':
 			return (
-				<video
+				<Box
 					key={index}
-					style={{
-						width: '600px',
-						margin: '20px auto',
-						borderRadius: '10px',
-					}}
-					src={answerItem.value as string}
-					autoPlay
-					controls
-					muted
+					fontSize="3xl"
+					textAlign="center"
+					margin="15px auto"
+					dangerouslySetInnerHTML={{ __html: renderMathML(answerItem.value as string) }}
 				/>
+			);
+
+		case 'video':
+			return (
+				<Fragment key={index}>
+					<video
+						style={{
+							width: '600px',
+							margin: '0 auto',
+							marginTop: '20px',
+							marginBottom: '10px',
+							borderRadius: '10px',
+						}}
+						src={answerItem.value as string}
+						autoPlay
+						controls
+						muted
+						aria-describedby={`video-description-${index}`}
+					/>
+					<Text
+						id={`video-description-${index}`}
+						textAlign="center"
+						fontSize="xs"
+						margin="0 auto"
+						maxWidth="600px"
+						hidden
+					>
+						{answerItem.alt}
+					</Text>
+				</Fragment>
 			);
 	}
 }

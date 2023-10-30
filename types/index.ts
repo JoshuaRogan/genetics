@@ -14,7 +14,7 @@ export type StoreState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export type FAQItem = {
-	type: 'text' | 'image' | 'list' | 'gif';
+	type: 'text' | 'image' | 'list' | 'video' | 'math';
 	value: string | string[];
 	alt?: string;
 };
