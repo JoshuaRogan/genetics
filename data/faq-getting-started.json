@@ -177,7 +177,7 @@
 			},
 			{
 				"type": "text",
-				"value": "When selection and dominance coefficients are input by the user, the simulator will calculate the corresponding fitness coefficients, , WAa and Waa , and set WAA  equal to 1 as the reference. The above formula is then used to calculate the effect on allele frequency."
+				"value": "When selection and dominance coefficients are input by the user, the simulator will calculate the corresponding fitness coefficients, WAa, and Waa, and set WAA  equal to 1 as the reference. The above formula is then used to calculate the effect on allele frequency."
 			},
 			{
 				"type": "text",
