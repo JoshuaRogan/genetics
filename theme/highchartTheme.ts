@@ -1,5 +1,5 @@
 const lightTheme = {
-	colors: ['#058DC7', '#2F855A', '#ED561B', '#949900', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+	colors: ['#058DC7', '#2F855A', '#ED561B', '#949900', '#159DB2', '#1BA12B', '#F55E00', '#A39600', '#08A66C'],
 	chart: {
 		backgroundColor: '#fff',
 		borderWidth: 1,

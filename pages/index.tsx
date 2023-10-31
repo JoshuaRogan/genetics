@@ -66,9 +66,9 @@ function Index() {
 							as={NextLink}
 							href="/introduction"
 							variant="primary"
-							bgGradient="linear(to-r, purple.400, purple.500)"
+							bgGradient="linear(to-r, purple.500, purple.700)"
 							_hover={{
-								bgGradient: 'linear(to-r, purple.500, purple.600)',
+								bgGradient: 'linear(to-r, purple.600, purple.800)',
 								shadow: 'xl',
 							}}
 							alignSelf={{
@@ -134,6 +134,7 @@ function Index() {
 						<Link
 							as={NextLink}
 							href="/faq"
+							variant="baseLink"
 							textDecoration="underline"
 							color={useColorModeValue('purple.500', 'purple.300')}
 							fontWeight="semibold"

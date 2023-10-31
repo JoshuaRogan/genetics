@@ -48,7 +48,7 @@ export default function Footer() {
 					justify={{ base: 'center', md: 'space-between' }}
 					align={{ base: 'center', md: 'center' }}
 				>
-					<Button onClick={onOpen} variant="footerLink">
+					<Button onClick={onOpen} variant="footerButton">
 						Supporting Information
 					</Button>
 					<Link href="https://biointeractive.org" target={'_blank'} as={NextLink} variant="footerLink">

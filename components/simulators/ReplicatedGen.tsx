@@ -28,6 +28,7 @@ import MainWrapper from '../MainWrapper';
 import HighChart from '../highChart';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
+import Head from 'next/head';
 
 function Index() {
 	const dispatch = useDispatch();
@@ -262,6 +263,9 @@ function Index() {
 
 	return (
 		<MainWrapper>
+			<Head>
+				<title>Replicated Simulations - Population Genetics Simulator</title>
+			</Head>
 			<Box
 				as="main"
 				id="main-content"
