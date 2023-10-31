@@ -49,7 +49,6 @@ function FactorManager({ title, isFactorActive, children }: FactorManagerProps) 
 					isDisabled={!isFactorActive}
 					onChange={handleCheckboxChange}
 					aria-label={`Toggles the ${title} factor`}
-					aria-selected={factorActiveState}
 				/>
 				<Text
 					as="label"

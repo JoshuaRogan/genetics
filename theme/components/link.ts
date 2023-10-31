@@ -1,4 +1,5 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
+import { a11yFocus } from '../../utils/a11y';
 
 const brandPrimary = defineStyle({
 	textDecoration: 'underline',
@@ -32,10 +33,7 @@ const navigationLink = defineStyle({
 	paddingY: 3,
 	rounded: 'md',
 	_focus: {
-		ring: false,
-		outlineColor: 'purple.500',
-		outlineOffset: 4,
-		outlineWidth: 3,
+		...a11yFocus,
 	},
 });
 

@@ -149,7 +149,6 @@ function LegendManager({
 						isChecked={isActive}
 						onChange={handleCheckboxChange}
 						aria-label={`Show/Hides the simulation #${simulationNumber} list of settings and stats`}
-						aria-selected={isActive}
 					/>
 					<Text as="label" htmlFor={checkboxId} style={{ marginLeft: 8 }}>{`Simulation #${simulationNumber}`}</Text>
 				</Box>

@@ -1,11 +1,9 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
+import { a11yFocus } from '../../utils/a11y';
 
 const baseStyle = defineStyle({
 	_focus: {
-		ring: false,
-		outlineColor: 'purple.500',
-		outlineOffset: 4,
-		outlineWidth: 3,
+		...a11yFocus,
 	},
 });
 

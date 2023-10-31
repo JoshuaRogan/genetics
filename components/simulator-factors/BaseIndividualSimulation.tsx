@@ -44,7 +44,6 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 						checked={infinitePopulationState}
 						onChange={onInfinitePopulationChecked}
 						aria-label="Toggles population size to infinite for the current simulation"
-						aria-selected={infinitePopulationState}
 					>
 						Infinite (∞)
 					</Checkbox>

@@ -23,6 +23,16 @@ export default function HelpContentWrapper({ children, title, message, status = 
 
 	const ariaLabel = `Show description for term: ${title}`;
 
+	const onContentClose = () => {
+		if (document.activeElement) {
+			let e = Array.from(document.querySelectorAll('button')) as HTMLElement[];
+			let index = e.indexOf(document.activeElement as HTMLElement) - 1;
+			index = index < 0 ? e.length - 1 : index;
+			e[index].focus();
+			onClose();
+		}
+	};
+
 	return (
 		<>
 			<HStack spacing={4}>
@@ -36,6 +46,8 @@ export default function HelpContentWrapper({ children, title, message, status = 
 					justifyContent={'center'}
 					width={'20px'}
 					height={'20px'}
+					minWidth={'20px'}
+					minHeight={'20px'}
 					color={'#ffffff'}
 					backgroundColor={'var(--chakra-colors-gray-500)'}
 					fontSize={'0.8rem'}
@@ -52,7 +64,7 @@ export default function HelpContentWrapper({ children, title, message, status = 
 				<Alert variant="top-accent" status={status} my="10px">
 					<AlertIcon />
 					<Box maxW="90%">
-						<AlertTitle>{title}</AlertTitle>
+						<AlertTitle marginTop={6}>{title}</AlertTitle>
 						<AlertDescription maxW="90%">{message}</AlertDescription>
 					</Box>
 					<CloseButton
@@ -61,7 +73,7 @@ export default function HelpContentWrapper({ children, title, message, status = 
 						position="absolute"
 						right={'10px'}
 						top={1}
-						onClick={onClose}
+						onClick={onContentClose}
 						_focus={a11yFocus}
 					/>
 				</Alert>
