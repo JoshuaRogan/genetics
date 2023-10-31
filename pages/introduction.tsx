@@ -124,7 +124,7 @@ function Index() {
 								with the allele?"
 								imageProps={{
 									src: '/images/rock-pocket-mouse.jpeg',
-									alt: 'Rock Pocket Mouse (Chaetodipus intermedius), photo by J. N. Stuart, from https://www.flickr.com/photos/stuartwildlife/5726805085',
+									alt: 'A picture of a mouse on a rock.',
 								}}
 								blobProps={{
 									color: {
@@ -135,13 +135,14 @@ function Index() {
 								}}
 								aria-label="Section 1: Introduction"
 							/>
+
 							<IntroCard
 								title="Is the high frequency of the allele associated with"
 								description="Sickle cell disease in some human populations due to the fact that people who have one copy of the
 								sickle cell allele are protected from malaria?"
 								imageProps={{
 									src: '/images/sickled-cells.jpeg',
-									alt: '3D illustration of Sickle Cells',
+									alt: 'Two red crescent shaped objects float in front of several more circular red objects.',
 								}}
 								blobProps={{
 									color: {
@@ -159,7 +160,7 @@ function Index() {
 								population over time?"
 								imageProps={{
 									src: '/images/iberian-lynx.jpeg',
-									alt: 'Iberian Lynx in the wild',
+									alt: 'A picture of a lynx lying in a shaded grassy area.',
 								}}
 								blobProps={{
 									color: {
@@ -177,7 +178,7 @@ function Index() {
 								insecticide?"
 								imageProps={{
 									src: '/images/mosquito.jpeg',
-									alt: '3D illustration of a mosquito on a blue fabric',
+									alt: 'A close up picture of a mosquito.',
 								}}
 								blobProps={{
 									color: {

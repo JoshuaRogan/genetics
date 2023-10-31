@@ -144,9 +144,8 @@
 				"value": "Advanced. After one generation of random mating, the allele frequency is modeled as:"
 			},
 			{
-				"type": "image",
-				"value": "images/faq/formula-p1.png",
-				"alt": "Formula for allele frequency after one generation of random mating."
+				"type": "math",
+				"value": "selection-formula"
 			},
 			{
 				"type": "text",
@@ -165,9 +164,12 @@
 				"value": "Advanced. Selection and dominance coefficients can be expressed in terms of relative fitness coefficients as follows:"
 			},
 			{
-				"type": "image",
-				"value": "images/faq/formula-s.png",
-				"alt": "Formula for selection coefficient."
+				"type": "math",
+				"value": "selection-formula-2"
+			},
+			{
+				"type": "math",
+				"value": "selection-formula-3"
 			},
 			{
 				"type": "text",
@@ -175,7 +177,7 @@
 			},
 			{
 				"type": "text",
-				"value": "When selection and dominance coefficients are input by the user, the simulator will calculate the corresponding fitness coefficients, , WAa and Waa , and set WAA  equal to 1 as the reference. The above formula is then used to calculate the effect on allele frequency."
+				"value": "When selection and dominance coefficients are input by the user, the simulator will calculate the corresponding fitness coefficients, WAa, and Waa, and set WAA  equal to 1 as the reference. The above formula is then used to calculate the effect on allele frequency."
 			},
 			{
 				"type": "text",
@@ -207,9 +209,8 @@
 				"value": "Mutation is modeled as a function of the forward (μ, A₁ → A₂) and reverse (ν, A₂ → A₁) mutation rates according the following formula:"
 			},
 			{
-				"type": "image",
-				"value": "images/faq/formula-mutation.png",
-				"alt": "Formula for mutation rate."
+				"type": "math",
+				"value": "mutation-rate"
 			},
 			{
 				"type": "text",
@@ -229,13 +230,12 @@
 				"value": "Migration is modeled as a function of the migration rate, m, and the migrant allele frequency, pM, according to the following formula:"
 			},
 			{
-				"type": "image",
-				"value": "images/faq/formula-migration.png",
-				"alt": "Formula for migration rate."
+				"type": "math",
+				"value": "migration-rate"
 			},
 			{
 				"type": "text",
-				"value": "In this equation,  p₁ is the frequency of allele A₁ in generation 1, p₀ is the frequency of allele A₁ in generation 0"
+				"value": "In this equation, p₁ is the frequency of allele A₁ in generation 1, p₀ is the frequency of allele A₁ in generation 0"
 			},
 			{
 				"type": "text",

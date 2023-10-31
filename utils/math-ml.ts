@@ -1,0 +1,247 @@
+export function renderMathML(formula: string): string {
+	switch (formula) {
+		case 'selection-formula':
+			return `
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			<mrow>
+				<msub>
+					<mi>P</mi>
+					<mn>1</mn>
+				</msub>
+			</mrow>
+			<mo>=</mo>
+			<mfrac>
+				<mrow>
+					<mrow>
+						<mo>(</mo>
+						<msub>
+							<mi>p</mi>
+							<msup>
+								<mi>0</mi>
+								<mn>2</mn>
+							</msup>
+						</msub>
+						<mo>)</mo>
+						<mo>(</mo>
+						<msub>
+							<mi>W</mi>
+							<mn>A</mn>
+							<mn>A</mn>
+						</msub>
+						<mo>)</mo>
+					</mrow>
+					<mo>+</mo>
+					<mrow>
+						<mo>(</mo>
+						<mn>1</mn>
+						<msub>
+							<mi>p</mi>
+							<mn>0</mn>
+						</msub>
+						<msub>
+							<mi>q</mi>
+							<mn>0</mn>
+						</msub>
+						<mo>)</mo>
+						<mo>(</mo>
+						<msub>
+							<mi>W</mi>
+							<mn>A</mn>
+							<mn>a</mn>
+						</msub>
+						<mo>)</mo>
+					</mrow>
+				</mrow>
+				<mrow>
+					<mrow>
+						<mrow>
+							<mo>(</mo>
+							<msub>
+								<mi>p</mi>
+								<msup>
+									<mi>0</mi>
+									<mn>2</mn>
+								</msup>
+							</msub>
+							<mo>)</mo>
+						</mrow>
+						<mrow>
+							<mo>(</mo>
+							<msub>
+								<mi>W</mi>
+								<mn>A</mn>
+								<mn>A</mn>
+							</msub>
+							<mo>)</mo>
+						</mrow>
+					</mrow>
+					<mo>+</mo>
+					<mrow>
+						<mo>(</mo>
+						<mn>2</mn>
+						<msub>
+							<mi>p</mi>
+							<msup>
+								<mi>0</mi>
+							</msup>
+						</msub>
+						<msub>
+							<mi>q</mi>
+							<msup>
+								<mi>0</mi>
+							</msup>
+						</msub>
+						<mo>)</mo>
+						<mo>(</mo>
+						<msub>
+							<mi>W</mi>
+							<mn>A</mn>
+							<mn>a</mn>
+						</msub>
+						<mo>)</mo>
+					</mrow>
+					<mo>+</mo>
+					<mrow>
+						<mo>(</mo>
+						<msub>
+							<mi>q</mi>
+							<msup>
+								<mi>0</mi>
+								<mn>2</mn>
+							</msup>
+						</msub>
+						<mo>)</mo>
+						<mo>(</mo>
+						<msub>
+							<mi>W</mi>
+							<mn>a</mn>
+							<mn>a</mn>
+						</msub>
+						<mo>)</mo>
+					</mrow>
+				</mrow>
+			</mfrac>
+		</math>
+			`;
+
+		case 'selection-formula-2':
+			return `
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+			<mrow>
+				<mi>s</mi>
+				<mo>=</mo>
+				<mi>1</mi>
+				<mo>-</mo>
+				<mo>(</mo>
+				<msub>
+					<mi>W</mi>
+					<mn>a</mn>
+					<mn>a</mn>
+				</msub>
+				<mo>/</mo>
+				<msub>
+					<mi>W</mi>
+					<mn>A</mn>
+					<mn>A</mn>
+				</msub>
+				<mo>)</mo>
+			</mrow>
+		</math>`;
+
+		case 'selection-formula-3':
+			return `
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mrow>
+						<mi>h</mi>
+						<mo>&#x22C5;</mo>
+						<mi>s</mi>
+						<mo>=</mo>
+						<mi>1</mi>
+						<mo>-</mo>
+						<mo>(</mo>
+						<msub>
+							<mi>W</mi>
+							<mn>A</mn>
+							<mn>a</mn>
+						</msub>
+						<mo>/</mo>
+						<msub>
+							<mi>W</mi>
+							<mn>A</mn>
+							<mn>A</mn>
+						</msub>
+						<mo>)</mo>
+					</mrow>
+				</math>`;
+
+		case 'mutation-rate':
+			return `
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+					<mrow>
+						<mrow>
+							<msub>
+								<mi>p</mi>
+								<mn>1</mn>
+							</msub>
+							<mo>=</mo>
+							<msub>
+								<mi>p</mi>
+								<mn>0</mn>
+							</msub>
+							<mo>(</mo>
+							<mn>1</mn>
+							<mo>-</mo>
+							<mi>µ</mi>
+							<mo>)</mo>
+						</mrow>
+						<mo>+</mo>
+						<mrow>
+							<mi>v</mi>
+							<mo>(</mo>
+							<mn>1</mn>
+							<mo>-</mo>
+							<msub>
+								<mi>p</mi>
+								<mn>0</mn>
+							</msub>
+							<mo>)</mo>
+						</mrow>
+					</mrow>
+				</math>
+					`;
+
+		case 'migration-rate':
+			return `
+				<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mrow>
+					<mrow>
+						<msub>
+							<mi>p</mi>
+							<mn>1</mn>
+						</msub>
+						<mo>=</mo>
+						<mo>(</mo>
+						<mn>1</mn>
+						<mo>-</mo>
+						<mi>m</mi>
+						<mo>)</mo>
+						<msub>
+							<mi>p</mi>
+							<mn>0</mn>
+						</msub>
+						<mo>+</mo>
+						<mi>m</mi>
+						<mo>(</mo>
+						<msub>
+							<mi>p</mi>
+							<mn>m</mn>
+						</msub>
+						<mo>)</mo>
+					</mrow>
+				</mrow>
+			</math>`;
+
+		default:
+			return '';
+	}
+}

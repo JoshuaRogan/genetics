@@ -1,13 +1,14 @@
+import React from 'react';
 import { Box, Button, Flex, Stack, TabProps, Text, useColorModeValue, useTab } from '@chakra-ui/react';
-import React, { ReactSVGElement } from 'react';
 
 interface CustomTabProps extends TabProps {
 	heading: string;
-	TabIcon: any;
+	tabIcon: any;
 }
 
 const CustomTab = React.forwardRef<HTMLButtonElement, CustomTabProps>((props: CustomTabProps, ref) => {
-	const tabProps = useTab({ ...props, ref });
+	const { tabIcon, heading, ...rest } = props;
+	const tabProps = useTab({ ...rest, ref });
 	const isSelected = !!tabProps['aria-selected'];
 
 	const unSelectedBorderColor = useColorModeValue('gray.300', 'gray.600');
@@ -32,12 +33,12 @@ const CustomTab = React.forwardRef<HTMLButtonElement, CustomTabProps>((props: Cu
 				backgroundColor: useColorModeValue('gray.100', 'gray.700'),
 			}}
 			{...tabProps}
-			title={props.heading}
-			aria-label={props.heading}
+			title={heading}
+			aria-label={heading}
 		>
 			<Stack align={'start'} spacing={2}>
 				<Flex width="100%" h={12} align={'center'} justify={'center'} color={isSelected ? 'purple.500' : 'gray.400'}>
-					{props.TabIcon}
+					{tabIcon}
 				</Flex>
 				<Box mt={1}>
 					<Text
