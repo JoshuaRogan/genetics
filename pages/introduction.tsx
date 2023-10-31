@@ -22,7 +22,13 @@ import IntroCard from '../components/IntroCard';
 function Index() {
 	return (
 		<MainWrapper>
-			<Box as="section" p={7} maxWidth={{ base: '550px', md: '860px', lg: '1080px', xl: '1440px' }} mx={{ sm: 'auto' }}>
+			<Box
+				as="main"
+				id="main-content"
+				p={7}
+				maxWidth={{ base: '550px', md: '860px', lg: '1080px', xl: '1440px' }}
+				mx={{ sm: 'auto' }}
+			>
 				<Text
 					color="text"
 					fontWeight={'extrabold'}

@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import NavLink from './NavLink';
+import { a11yFocus } from '../utils/a11y';
 
 export default function Navigation() {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -39,6 +40,7 @@ export default function Navigation() {
 							/>
 							<Text
 								fontSize={{
+									xs: '2xs',
 									sm: 'sm',
 									base: 'md',
 								}}
@@ -66,7 +68,13 @@ export default function Navigation() {
 						</HStack>
 					</HStack>
 					<Flex alignItems={'center'}>
-						<Stack direction={'row'} spacing={7}>
+						<Stack
+							direction={'row'}
+							spacing={{
+								xs: 4,
+								base: 7,
+							}}
+						>
 							<Button
 								variant="themeSwitcher"
 								title={colorModeLabel}
@@ -88,7 +96,6 @@ export default function Navigation() {
 						</Stack>
 					</Flex>
 				</Flex>
-
 				{isOpen ? (
 					<Box pb={4} display={{ lg: 'none' }}>
 						<Stack as={'nav'} spacing={4} color="navBarText">
@@ -108,6 +115,17 @@ export default function Navigation() {
 					</Box>
 				) : null}
 			</Box>
+			<Link
+				tabIndex={1}
+				href="#main-content"
+				opacity={0}
+				width="fit-content"
+				margin="10px auto 0 auto"
+				fontWeight="bold"
+				_focus={{ ...a11yFocus, opacity: '1' }}
+			>
+				Skip to main content
+			</Link>
 		</>
 	);
 }

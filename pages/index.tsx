@@ -38,8 +38,16 @@ function Index() {
 						md: 10,
 					}}
 				>
-					<Box display="flex" flexDirection="column" alignItems={{ base: 'center', md: 'start' }} gap="15px">
+					<Box
+						as="main"
+						id="main-content"
+						display="flex"
+						flexDirection="column"
+						alignItems={{ base: 'center', md: 'start' }}
+						gap="15px"
+					>
 						<Text
+							as="h1"
 							color="text"
 							align={{ base: 'center', md: 'start' }}
 							fontWeight={'extrabold'}
