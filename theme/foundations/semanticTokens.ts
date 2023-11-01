@@ -21,11 +21,11 @@ const semanticTokens = {
 			_dark: '#333333',
 		},
 		sliderTrack: {
-			default: 'blue.200',
-			_dark: 'blue.100',
+			default: 'cyan.500',
+			_dark: 'blue.300',
 		},
 		sliderFilledTrack: {
-			default: 'blue.500',
+			default: 'blue.600',
 			_dark: 'blue.500',
 		},
 	},

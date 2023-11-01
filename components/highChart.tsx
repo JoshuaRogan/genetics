@@ -31,13 +31,14 @@ function createLinesFromArray(lines, isGeno = false) {
 	});
 }
 
-function createOptions(theme = 'light', lines, title) {
+function createOptions(theme = 'light', lines, title: string) {
 	const isGenoType = title.toLowerCase().includes('genotype');
 
 	return {
 		title: {
-			text: title || 'Population Genetics Simulation',
-			margin: 50,
+			text: `<h2>${title}</h2>` || '<h2>Population Genetics Simulation</h2>',
+			align: 'center',
+			useHTML: true,
 		},
 		subtitle: {
 			text: 'Hover (or navigate with the keyboard) over the line to see the frequency of the A allele in the population.',

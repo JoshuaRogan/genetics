@@ -1,4 +1,13 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
+import { a11yFocus } from '../../utils/a11y';
+
+const baseLink = defineStyle({
+	_focus: {
+		...a11yFocus,
+		outlineOffset: 1,
+		outlineWidth: 2,
+	},
+});
 
 const brandPrimary = defineStyle({
 	textDecoration: 'underline',
@@ -17,10 +26,8 @@ const footerLink = defineStyle({
 	color: 'white',
 	fontWeight: 'normal',
 	_focus: {
-		ring: false,
-		outlineColor: 'purple.500',
-		outlineOffset: 4,
-		outlineWidth: 3,
+		...a11yFocus,
+		outlineColor: 'purple.400',
 	},
 });
 
@@ -32,15 +39,13 @@ const navigationLink = defineStyle({
 	paddingY: 3,
 	rounded: 'md',
 	_focus: {
-		ring: false,
-		outlineColor: 'purple.500',
-		outlineOffset: 4,
-		outlineWidth: 3,
+		...a11yFocus,
+		outlineColor: 'purple.400',
 	},
 });
 
 const linkTheme = defineStyleConfig({
-	variants: { brandPrimary, footerLink, navigationLink },
+	variants: { baseLink, brandPrimary, footerLink, navigationLink },
 });
 
 export default linkTheme;

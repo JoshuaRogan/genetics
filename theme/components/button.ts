@@ -1,11 +1,9 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
+import { a11yFocus } from '../../utils/a11y';
 
 const baseStyle = defineStyle({
 	_focus: {
-		ring: false,
-		outlineColor: 'purple.500',
-		outlineOffset: 4,
-		outlineWidth: 3,
+		...a11yFocus,
 	},
 });
 
@@ -47,7 +45,7 @@ const generateLinkStyle = defineStyle({
 	display: 'flex',
 	mx: 'auto',
 	mt: 4,
-	color: 'green.600',
+	color: 'green.700',
 	border: 2,
 	borderStyle: 'solid',
 	borderColor: 'green.500',
@@ -59,7 +57,7 @@ const generateLinkStyle = defineStyle({
 		borderColor: 'green.300',
 	},
 	_hover: {
-		backgroundColor: 'green.100',
+		backgroundColor: 'blackAlpha.100',
 		_dark: {
 			backgroundColor: 'whiteAlpha.300',
 		},
@@ -102,8 +100,16 @@ const showTableStyle = defineStyle({
 	},
 });
 
+const footerButton = defineStyle({
+	...baseStyle,
+	_focus: {
+		...a11yFocus,
+		outlineColor: 'purple.400',
+	},
+});
+
 const buttonTheme = defineStyleConfig({
-	variants: { baseStyle, primary, secondary, themeSwitcher, generateLinkStyle, showTableStyle },
+	variants: { baseStyle, primary, secondary, themeSwitcher, generateLinkStyle, showTableStyle, footerButton },
 });
 
 export default buttonTheme;

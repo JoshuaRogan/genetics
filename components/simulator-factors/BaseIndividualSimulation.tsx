@@ -34,7 +34,9 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 					message={populationSize.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{populationSize.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{populationSize.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={populationSize} isActive={true} isInfinite={!infinitePopulationState} />
@@ -44,7 +46,6 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 						checked={infinitePopulationState}
 						onChange={onInfinitePopulationChecked}
 						aria-label="Toggles population size to infinite for the current simulation"
-						aria-selected={infinitePopulationState}
 					>
 						Infinite (∞)
 					</Checkbox>
@@ -57,7 +58,9 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 					message={numberOfGenerations.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{numberOfGenerations.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{numberOfGenerations.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={numberOfGenerations} isActive={true} />
@@ -70,7 +73,9 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 					message={startingAlleleFreq.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{startingAlleleFreq.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{startingAlleleFreq.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={startingAlleleFreq} isActive={true} />
@@ -84,7 +89,9 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 						message={bulkSimulator.description}
 						status="info"
 					>
-						<Text fontWeight="bold">{bulkSimulator.sliderName}</Text>
+						<Text as="h3" fontWeight="bold">
+							{bulkSimulator.sliderName}
+						</Text>
 					</HelpContentWrapper>
 					<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 						<Slider popVariable={bulkSimulator} isActive={true} />

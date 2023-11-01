@@ -60,7 +60,8 @@ function FAQPage({
 		<>
 			<MainWrapper>
 				<Box
-					as="section"
+					as="main"
+					id="main-content"
 					p={7}
 					maxWidth={{ base: '550px', md: '786px', lg: '860px', xl: '1080px' }}
 					mx={{ sm: 'auto' }}

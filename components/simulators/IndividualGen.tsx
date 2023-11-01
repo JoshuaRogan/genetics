@@ -29,6 +29,8 @@ import {
 } from '../../redux/reducers/rootSlice';
 import { StoreState, VALID_SECTIONS } from '../../types';
 import Highcharts from 'highcharts';
+import AriaTooltip from '../AriaTooltip';
+import Head from 'next/head';
 
 function Index() {
 	const dispatch = useDispatch();
@@ -244,8 +246,12 @@ function Index() {
 
 	return (
 		<MainWrapper>
+			<Head>
+				<title>Individual Simulations - Population Genetics Simulator</title>
+			</Head>
 			<Box
 				as="main"
+				id="main-content"
 				padding={{ base: '0 15px 15px 15px', sm: '0 30px 30px 30px', md: '0' }}
 				maxWidth={{ md: '90%', lg: '80%', xl: '70%' }}
 				mx={{ sm: 'auto' }}
@@ -260,27 +266,19 @@ function Index() {
 					</Text>
 					<Text as="p" my={4}>
 						Adjust the settings for the model below. For the default settings, the population is in{' '}
-						<Tooltip
-							label="When the allele and genotype frequencies in a population stay constant."
-							aria-label="A tooltip"
-							color={useColorModeValue('black', 'white')}
-							backgroundColor={useColorModeValue('purple.200', 'purple.500')}
-							padding={2}
-							hasArrow
-						>
+						<AriaTooltip label="When the allele and genotype frequencies in a population stay constant.">
 							<Text
-								as="span"
+								as="p"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"
 								textDecorationColor="purple.300"
 								textUnderlineOffset={2}
 								fontWeight={800}
-								tabIndex={0}
 							>
 								Hardy-Weinberg equilibrium
 							</Text>
-						</Tooltip>{' '}
+						</AriaTooltip>{' '}
 						You can select “Reset Simulator” to restore the default settings.
 					</Text>
 				</Box>

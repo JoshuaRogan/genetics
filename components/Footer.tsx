@@ -48,16 +48,16 @@ export default function Footer() {
 					justify={{ base: 'center', md: 'space-between' }}
 					align={{ base: 'center', md: 'center' }}
 				>
-					<Button onClick={onOpen} variant="footerLink">
+					<Button onClick={onOpen} variant="footerButton">
 						Supporting Information
 					</Button>
-					{/* <Link href="/faq?tab=supporting-information" as={NextLink} variant="footerLink">
-					Supporting information
-
-				</Link> */}
-
 					<Link href="https://biointeractive.org" target={'_blank'} as={NextLink} variant="footerLink">
-						<Image src="/images/hhmi-biointeractive.svg" width={120} height={25} alt="Logo from HHMI BioInteractive" />
+						<Image
+							src="/images/hhmi-biointeractive.svg"
+							width={120}
+							height={25}
+							alt="HHMI BioInteractive home, opens in new tab"
+						/>
 					</Link>
 				</Container>
 			</Box>

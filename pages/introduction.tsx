@@ -18,11 +18,22 @@ import {
 	Heading,
 } from '@chakra-ui/react';
 import IntroCard from '../components/IntroCard';
+import AriaTooltip from '../components/AriaTooltip';
+import Head from 'next/head';
 
 function Index() {
 	return (
 		<MainWrapper>
-			<Box as="section" p={7} maxWidth={{ base: '550px', md: '860px', lg: '1080px', xl: '1440px' }} mx={{ sm: 'auto' }}>
+			<Head>
+				<title>Introduction - Population Genetics Simulator</title>
+			</Head>
+			<Box
+				as="main"
+				id="main-content"
+				p={7}
+				maxWidth={{ base: '550px', md: '860px', lg: '1080px', xl: '1440px' }}
+				mx={{ sm: 'auto' }}
+			>
 				<Text
 					color="text"
 					fontWeight={'extrabold'}
@@ -45,51 +56,35 @@ function Index() {
 					in the same area and potentially reproduce together. Population genetics is the study of genetic variation
 					within and among populations. It often explores the{' '}
 					{
-						<Tooltip
-							label="Variants of a particular gene or DNA region"
-							aria-label="A tooltip"
-							color={useColorModeValue('black', 'white')}
-							backgroundColor={useColorModeValue('purple.200', 'purple.500')}
-							padding={2}
-							hasArrow
-						>
+						<AriaTooltip label="Variants of a particular gene or DNA region">
 							<Text
-								as="span"
+								as="p"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"
 								textDecorationColor="purple.300"
 								textUnderlineOffset={2}
 								fontWeight={800}
-								tabIndex={0}
 							>
 								alleles
 							</Text>
-						</Tooltip>
+						</AriaTooltip>
 					}{' '}
 					and{' '}
 					{
-						<Tooltip
-							label="An individual's set of alleles for a particular region of DNA"
-							aria-label="A tooltip"
-							color={useColorModeValue('black', 'white')}
-							backgroundColor={useColorModeValue('purple.200', 'purple.500')}
-							padding={2}
-							hasArrow
-						>
+						<AriaTooltip label="An individual's set of alleles for a particular region of DNA">
 							<Text
-								as="span"
+								as="p"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"
 								textDecorationColor="purple.300"
 								textUnderlineOffset={2}
 								fontWeight={800}
-								tabIndex={0}
 							>
 								genotypes
 							</Text>
-						</Tooltip>
+						</AriaTooltip>
 					}{' '}
 					within a population. Learning about population genetics is crucial for understanding evolution, which is a
 					change in the frequencies of a population’s alleles over time. Population genetics can help us better
@@ -197,27 +192,19 @@ function Index() {
 					It’s complicated to track all the genetic information in a population over time. So, biologists studying
 					population genetics often use{' '}
 					{
-						<Tooltip
-							label="Mathematical models describe real-world behaviors and processes using equations. They are a way to simplify and simulate reality, in order to explore the key components of a complex system."
-							aria-label="A tooltip"
-							color={useColorModeValue('black', 'white')}
-							backgroundColor={useColorModeValue('purple.200', 'purple.500')}
-							padding={2}
-							hasArrow
-						>
+						<AriaTooltip label="Mathematical models describe real-world behaviors and processes using equations. They are a way to simplify and simulate reality, in order to explore the key components of a complex system.">
 							<Text
-								as="span"
+								as="p"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"
 								textDecorationColor="purple.300"
 								textUnderlineOffset={2}
 								fontWeight={800}
-								tabIndex={0}
 							>
 								mathematical models
 							</Text>
-						</Tooltip>
+						</AriaTooltip>
 					}{' '}
 					. Models provide a powerful framework to explore questions and predictions about evolution.
 				</Text>
@@ -230,27 +217,20 @@ function Index() {
 					Use the model to explore your own questions about how frequencies are affected by different factors. Like all
 					models, this model makes some simplifying{' '}
 					{
-						<Tooltip
-							label="Conditions that a model assumes to be true, in order to make the system easier to understand and work with"
-							aria-label="A tooltip"
-							color={useColorModeValue('black', 'white')}
-							backgroundColor={useColorModeValue('purple.200', 'purple.500')}
-							padding={2}
-							hasArrow
-						>
+						<AriaTooltip label="Conditions that a model assumes to be true, in order to make the system easier to understand and work with.">
 							<Text
-								as="span"
+								as="p"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"
 								textDecorationColor="purple.300"
 								textUnderlineOffset={2}
 								fontWeight={800}
-								tabIndex={0}
+								title="Conditions that a model assumes to be true, in order to make the system easier to understand and work with."
 							>
 								assumptions
 							</Text>
-						</Tooltip>
+						</AriaTooltip>
 					}{' '}
 				</Text>
 
