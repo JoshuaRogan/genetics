@@ -8,6 +8,7 @@ import {
 	CloseButton,
 	HStack,
 	useDisclosure,
+	useColorModeValue,
 } from '@chakra-ui/react';
 import { a11yFocus } from '../../utils/a11y';
 
@@ -48,8 +49,8 @@ export default function HelpContentWrapper({ children, title, message, status = 
 					height={'20px'}
 					minWidth={'20px'}
 					minHeight={'20px'}
-					color={'#ffffff'}
-					backgroundColor={'var(--chakra-colors-gray-500)'}
+					color={useColorModeValue('white', 'white')}
+					backgroundColor={useColorModeValue('#5B657B', '#5B657B')}
 					fontSize={'0.8rem'}
 					fontWeight={600}
 					borderRadius={'50%'}
