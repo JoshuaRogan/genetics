@@ -20,7 +20,9 @@ export default function BottleneckGenerations() {
 					message={generationToOverrideStart.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{generationToOverrideStart.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{generationToOverrideStart.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<RangeSlider startVariable={generationToOverrideStart} endVariable={generationToOverrideEnd} />
@@ -32,7 +34,9 @@ export default function BottleneckGenerations() {
 					message={bottleNeckPopSize.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{bottleNeckPopSize.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{bottleNeckPopSize.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={bottleNeckPopSize} isActive={true} />

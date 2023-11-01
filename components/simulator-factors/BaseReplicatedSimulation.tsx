@@ -20,7 +20,9 @@ export default function BaseReplicatedSimulation({ name }) {
 					message={populationSize.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{populationSize.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{populationSize.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={populationSize} isActive={true} />
@@ -33,7 +35,9 @@ export default function BaseReplicatedSimulation({ name }) {
 					message={numberOfGenerations.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{numberOfGenerations.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{numberOfGenerations.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={numberOfGenerations} isActive={true} />
@@ -46,7 +50,9 @@ export default function BaseReplicatedSimulation({ name }) {
 					message={startingAlleleFreq.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{startingAlleleFreq.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{startingAlleleFreq.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={startingAlleleFreq} isActive={true} />
@@ -59,7 +65,9 @@ export default function BaseReplicatedSimulation({ name }) {
 					message={numPopulation.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{numPopulation.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{numPopulation.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={numPopulation} isActive={true} />

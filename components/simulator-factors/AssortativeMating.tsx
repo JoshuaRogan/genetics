@@ -16,7 +16,9 @@ export default function AssortativeMating() {
 					message={positiveAssortMatingFreq.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{positiveAssortMatingFreq.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{positiveAssortMatingFreq.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={positiveAssortMatingFreq} isActive={true} />

@@ -16,7 +16,9 @@ export default function Inbreeding() {
 					message={inbreedingCoef.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{inbreedingCoef.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{inbreedingCoef.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={inbreedingCoef} isActive={true} />
