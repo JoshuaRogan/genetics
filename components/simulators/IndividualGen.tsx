@@ -74,6 +74,18 @@ function Index() {
 	);
 
 	const updateChart = () => {
+		// Check for errors, before continuing
+		if (popGenVars['gen-to-over-start'] > popGenVars['gen-to-over-end']) {
+			toast({
+				title: 'Error',
+				description: 'The generation to start the bottleneck must be less than the generation to end the bottleneck.',
+				status: 'error',
+				duration: 6000,
+				isClosable: true,
+			});
+			return;
+		}
+
 		const worker: Worker = getWorker();
 
 		if (!worker) {
@@ -268,7 +280,7 @@ function Index() {
 						Adjust the settings for the model below. For the default settings, the population is in{' '}
 						<AriaTooltip label="When the allele and genotype frequencies in a population stay constant.">
 							<Text
-								as="p"
+								as="span"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"

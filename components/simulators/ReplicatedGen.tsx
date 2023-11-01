@@ -80,14 +80,23 @@ function Index() {
 	};
 
 	const updateCharts = (isAllele = true) => {
+		if (popGenVars['gen-to-over-start'] > popGenVars['gen-to-over-end']) {
+			toast({
+				title: 'Error',
+				description: 'The generation to start the bottleneck must be less than the generation to end the bottleneck.',
+				status: 'error',
+				duration: 6000,
+				isClosable: true,
+			});
+			return;
+		}
+
 		const worker: Worker = getWorker();
 
 		if (!worker) {
 			console.error('Error no worker');
 			return;
 		}
-
-		const numberOfSims = popGenVars.numSims;
 
 		worker.postMessage({
 			cmd: 'initGeneration',
