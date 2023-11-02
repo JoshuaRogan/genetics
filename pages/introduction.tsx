@@ -58,7 +58,7 @@ function Index() {
 					{
 						<AriaTooltip label="Variants of a particular gene or DNA region">
 							<Text
-								as="p"
+								as="span"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"
@@ -74,7 +74,7 @@ function Index() {
 					{
 						<AriaTooltip label="An individual's set of alleles for a particular region of DNA">
 							<Text
-								as="p"
+								as="span"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"
@@ -194,7 +194,7 @@ function Index() {
 					{
 						<AriaTooltip label="Mathematical models describe real-world behaviors and processes using equations. They are a way to simplify and simulate reality, in order to explore the key components of a complex system.">
 							<Text
-								as="p"
+								as="span"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"
@@ -219,7 +219,7 @@ function Index() {
 					{
 						<AriaTooltip label="Conditions that a model assumes to be true, in order to make the system easier to understand and work with.">
 							<Text
-								as="p"
+								as="span"
 								display="inline-block"
 								color="text"
 								textDecoration="wavy underline"
@@ -234,8 +234,8 @@ function Index() {
 					}{' '}
 				</Text>
 
-				<Text color="text" marginY={{ base: 3, md: 10, lg: 16 }}>
-					You can explore the model using two different simulator modes:
+				<Box marginY={{ base: 3, md: 10, lg: 16 }}>
+					<Text color="text">You can explore the model using two different simulator modes:</Text>
 					<UnorderedList
 						spacing={4}
 						marginY={{ base: 10, md: 10, lg: 10 }}
@@ -257,7 +257,8 @@ function Index() {
 							populations
 						</ListItem>
 					</UnorderedList>
-				</Text>
+				</Box>
+
 				<ButtonGroup
 					w="100%"
 					display={'flex'}

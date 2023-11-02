@@ -19,7 +19,9 @@ export default function Mutation() {
 					message={forwardMutation.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{forwardMutation.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{forwardMutation.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={forwardMutation} isActive={true} />
@@ -32,7 +34,9 @@ export default function Mutation() {
 					message={backwardMutation.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{backwardMutation.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{backwardMutation.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={backwardMutation} isActive={true} />

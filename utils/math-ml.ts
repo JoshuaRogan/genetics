@@ -5,7 +5,7 @@ export function renderMathML(formula: string): string {
 			<math xmlns="http://www.w3.org/1998/Math/MathML">
 			<mrow>
 				<msub>
-					<mi>P</mi>
+					<mi>p</mi>
 					<mn>1</mn>
 				</msub>
 			</mrow>
@@ -16,17 +16,23 @@ export function renderMathML(formula: string): string {
 						<mo>(</mo>
 						<msub>
 							<mi>p</mi>
-							<msup>
-								<mi>0</mi>
-								<mn>2</mn>
-							</msup>
+							<mn>0</mn>
 						</msub>
+						<msup>
+							<mi>2</mi>
+						</msup>
 						<mo>)</mo>
 						<mo>(</mo>
 						<msub>
 							<mi>W</mi>
-							<mn>A</mn>
-							<mn>A</mn>
+							<msub>
+								<mn>A</mn>
+								<mn>1</mn>
+							</msub>
+							<msub>
+								<mn>A</mn>
+								<mn>1</mn>
+							</msub>
 						</msub>
 						<mo>)</mo>
 					</mrow>
@@ -46,8 +52,14 @@ export function renderMathML(formula: string): string {
 						<mo>(</mo>
 						<msub>
 							<mi>W</mi>
-							<mn>A</mn>
-							<mn>a</mn>
+							<msub>
+								<mn>A</mn>
+								<mn>1</mn>
+							</msub>
+							<msub>
+								<mn>A</mn>
+								<mn>2</mn>
+							</msub>
 						</msub>
 						<mo>)</mo>
 					</mrow>
@@ -58,19 +70,25 @@ export function renderMathML(formula: string): string {
 							<mo>(</mo>
 							<msub>
 								<mi>p</mi>
-								<msup>
-									<mi>0</mi>
-									<mn>2</mn>
-								</msup>
+								<mn>0</mn>
 							</msub>
+							<msup>
+								<mi>2</mi>
+							</msup>
 							<mo>)</mo>
 						</mrow>
 						<mrow>
 							<mo>(</mo>
 							<msub>
 								<mi>W</mi>
-								<mn>A</mn>
-								<mn>A</mn>
+								<msub>
+									<mn>A</mn>
+									<mn>1</mn>
+								</msub>
+								<msub>
+									<mn>A</mn>
+									<mn>1</mn>
+								</msub>
 							</msub>
 							<mo>)</mo>
 						</mrow>
@@ -95,8 +113,14 @@ export function renderMathML(formula: string): string {
 						<mo>(</mo>
 						<msub>
 							<mi>W</mi>
-							<mn>A</mn>
-							<mn>a</mn>
+							<msub>
+								<mn>A</mn>
+								<mn>1</mn>
+							</msub>
+							<msub>
+								<mn>A</mn>
+								<mn>2</mn>
+							</msub>
 						</msub>
 						<mo>)</mo>
 					</mrow>
@@ -105,17 +129,23 @@ export function renderMathML(formula: string): string {
 						<mo>(</mo>
 						<msub>
 							<mi>q</mi>
-							<msup>
-								<mi>0</mi>
-								<mn>2</mn>
-							</msup>
+							<mn>0</mn>
 						</msub>
+						<msup>
+							<mi>2</mi>
+						</msup>
 						<mo>)</mo>
 						<mo>(</mo>
 						<msub>
 							<mi>W</mi>
-							<mn>a</mn>
-							<mn>a</mn>
+							<msub>
+								<mn>A</mn>
+								<mn>2</mn>
+							</msub>
+							<msub>
+								<mn>A</mn>
+								<mn>2</mn>
+							</msub>
 						</msub>
 						<mo>)</mo>
 					</mrow>
@@ -135,14 +165,26 @@ export function renderMathML(formula: string): string {
 				<mo>(</mo>
 				<msub>
 					<mi>W</mi>
-					<mn>a</mn>
-					<mn>a</mn>
+					<msub>
+						<mn>A</mn>
+						<mn>2</mn>
+					</msub>
+					<msub>
+						<mn>A</mn>
+						<mn>2</mn>
+					</msub>
 				</msub>
 				<mo>/</mo>
 				<msub>
 					<mi>W</mi>
-					<mn>A</mn>
-					<mn>A</mn>
+					<msub>
+						<mn>A</mn>
+						<mn>1</mn>
+					</msub>
+					<msub>
+						<mn>A</mn>
+						<mn>1</mn>
+					</msub>
 				</msub>
 				<mo>)</mo>
 			</mrow>
@@ -161,14 +203,26 @@ export function renderMathML(formula: string): string {
 						<mo>(</mo>
 						<msub>
 							<mi>W</mi>
-							<mn>A</mn>
-							<mn>a</mn>
+							<msub>
+								<mn>A</mn>
+								<mn>1</mn>
+							</msub>
+							<msub>
+								<mn>A</mn>
+								<mn>2</mn>
+							</msub>
 						</msub>
 						<mo>/</mo>
 						<msub>
 							<mi>W</mi>
-							<mn>A</mn>
-							<mn>A</mn>
+							<msub>
+								<mn>A</mn>
+								<mn>1</mn>
+							</msub>
+							<msub>
+								<mn>A</mn>
+								<mn>1</mn>
+							</msub>
 						</msub>
 						<mo>)</mo>
 					</mrow>

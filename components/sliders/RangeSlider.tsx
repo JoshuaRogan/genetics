@@ -39,7 +39,6 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 	const { sliderName: endSliderName, variable: endVariableName } = endVariable;
 
 	const dispatch = useDispatch();
-	// const [values, setValues] = React.useState([0, 50]);
 	const [values, setValues] = React.useState([
 		useSelector((state: StoreState) => state.root.popGenVars[startVariableName]),
 		useSelector((state: StoreState) => state.root.popGenVars[endVariableName]),
@@ -70,7 +69,11 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 	// Changes the local state when the slider is changed,
 	// but doesn't update the Redux store until the slider is released.
 	const onSliderChanged = (values: number[]) => {
-		setValues(values);
+		// If the max value changes, update the slider values to reflect the new value
+		const minValue = values[0] > max ? max : values[0];
+		const maxValue = values[1] > max ? max : values[1];
+
+		setValues([minValue, maxValue]);
 	};
 
 	// Updates the Redux store only when the slider is released.
@@ -127,6 +130,7 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 							},
 						},
 					}}
+					focusBorderColor="purple.500"
 				>
 					<NumberInputField />
 					<NumberInputStepper>
@@ -156,6 +160,7 @@ function RangeSliderInput({ startVariable, endVariable, isActive = true }: Slide
 							borderColor: useColorModeValue('gray.500', 'whitesmoke'),
 						},
 					}}
+					focusBorderColor="purple.500"
 				>
 					<NumberInputField />
 					<NumberInputStepper>

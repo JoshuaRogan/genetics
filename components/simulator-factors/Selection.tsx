@@ -19,7 +19,9 @@ export default function Selection() {
 					message={fitnessFactorWAA.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{fitnessFactorWAA.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{fitnessFactorWAA.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={fitnessFactorWAA} isActive={true} />
@@ -31,7 +33,9 @@ export default function Selection() {
 					message={fitnessFactorWAa.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{fitnessFactorWAa.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{fitnessFactorWAa.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={fitnessFactorWAa} isActive={true} />
@@ -43,7 +47,9 @@ export default function Selection() {
 					message={fitnessFactorWaa.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{fitnessFactorWaa.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{fitnessFactorWaa.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align={{ base: 'center' }}>
 					<Slider popVariable={fitnessFactorWaa} isActive={true} />

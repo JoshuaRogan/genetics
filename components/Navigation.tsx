@@ -122,7 +122,10 @@ export default function Navigation() {
 				width="fit-content"
 				margin="10px auto 0 auto"
 				fontWeight="bold"
+				animation="ease-in-out"
+				transitionDuration=".4s"
 				_focus={{ ...a11yFocus, opacity: '1' }}
+				_hover={{ ...a11yFocus, opacity: '1' }}
 			>
 				Skip to main content
 			</Link>

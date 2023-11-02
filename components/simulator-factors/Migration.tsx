@@ -17,7 +17,9 @@ export default function Migration() {
 					message={migrationRate.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{migrationRate.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{migrationRate.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={migrationRate} isActive={true} />
@@ -29,7 +31,9 @@ export default function Migration() {
 					message={migrantAllelFreq.description}
 					status="info"
 				>
-					<Text fontWeight="bold">{migrantAllelFreq.sliderName}</Text>
+					<Text as="h3" fontWeight="bold">
+						{migrantAllelFreq.sliderName}
+					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider popVariable={migrantAllelFreq} isActive={true} />
