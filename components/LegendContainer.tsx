@@ -194,7 +194,7 @@ function AlleleLegend({
 	// Make the initial settings immutable
 	return (
 		<div>
-			<Collapsible header={`Legend for Graph ${graphNumber}`}>
+			<Collapsible header={`Settings / Statistics for Graph ${graphNumber}`}>
 				{isReplicated ? (
 					<BulkLegend settings={settings[0]} results={results} enabledSettings={enabledSettings[0]} />
 				) : null}
