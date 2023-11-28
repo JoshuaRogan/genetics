@@ -75,7 +75,7 @@ function FAQPage({
 						padding={{ base: 2, md: 0 }}
 						marginY={{ base: 4, md: 6, lg: 10 }}
 					>
-						Frequently Asked Questions
+						Help Section
 					</Text>
 					<Text
 						as="h2"
@@ -85,10 +85,8 @@ function FAQPage({
 						align="center"
 						padding={{ base: 2, md: 0 }}
 					>
-						Explore our Comprehensive FAQ: Get detailed answers and valuable information to address a wide range of
-						common inquiries about our allele frequency simulations.
+						Welcome to the help section. Here you can find answers to some of the most common questions.
 					</Text>
-					{/* maybe a search ? */}
 					<Tabs
 						variant="unstyled"
 						position="relative"
@@ -109,35 +107,18 @@ function FAQPage({
 							}}
 							mx="auto"
 						>
-							<SimpleGrid width="100%" columns={{ base: 1, md: 3 }} paddingY={2} spacing={4} placeItems="center">
-								<CustomTab heading="Getting Started" tabIcon={<Icon as={IoFlagOutline} w={8} h={8} />} />
-								<CustomTab heading="Technical Questions" tabIcon={<Icon as={MdComputer} w={8} h={8} />} />
-								<CustomTab heading="Supporting Information" tabIcon={<Icon as={ChatIcon} w={7} h={7} />} />
+							<SimpleGrid width="100%" columns={{ base: 1 }} paddingY={2} spacing={4} placeItems="center">
+								<CustomTab
+									heading="Help Menu"
+									tabIcon={<Icon as={IoHelpBuoyOutline} w={8} h={8} />}
+									maxW={{ base: '150px' }}
+								/>
 							</SimpleGrid>
 						</TabList>
 						<TabPanels maxWidth={{ base: '550px', md: '786px', lg: '860px', xl: '1080px' }} mx="auto">
 							<TabPanel>
-								<Text color="text" textAlign={'center'} marginBottom={4}>
-									Getting Started
-								</Text>
 								<Accordion variant="faq">
-									<AccordionCustomContent data={faqGettingStarted} />
-								</Accordion>
-							</TabPanel>
-							<TabPanel>
-								<Text color="text" textAlign={'center'} marginBottom={4}>
-									Technical Questions
-								</Text>
-								<Accordion variant="faq">
-									<AccordionCustomContent data={faqTechnicalQuestions} />
-								</Accordion>
-							</TabPanel>
-							<TabPanel>
-								<Text color="text" textAlign={'center'} marginBottom={4}>
-									Supporting Information
-								</Text>
-								<Accordion variant="faq">
-									<AccordionCustomContent data={faqSupportingInformation} />
+									<AccordionCustomContent data={faqHelpMenu} />
 								</Accordion>
 							</TabPanel>
 						</TabPanels>

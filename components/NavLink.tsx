@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { Link, useColorModeValue } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
-const NavLink = ({ children, href }: { children: ReactNode; href: string }) => {
+const NavLink = ({ children, href, variant }: { children: ReactNode; href: string; variant?: string }) => {
 	const router = useRouter();
 	const highlightColor = useColorModeValue('gray.600', 'gray.700');
 
@@ -11,7 +11,7 @@ const NavLink = ({ children, href }: { children: ReactNode; href: string }) => {
 
 	return (
 		<Link
-			variant="navigationLink"
+			variant={variant ?? 'navigationLink'}
 			href={href}
 			as={NextLink}
 			bg={highlight}

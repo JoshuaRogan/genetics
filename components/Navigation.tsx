@@ -14,8 +14,12 @@ import {
 	useColorMode,
 	HStack,
 	IconButton,
+	Menu,
+	MenuButton,
+	MenuItem,
+	MenuList,
 } from '@chakra-ui/react';
-import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { ChevronDownIcon, CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import NavLink from './NavLink';
 import { a11yFocus } from '../utils/a11y';
 
@@ -56,14 +60,67 @@ export default function Navigation() {
 							<NavLink href="/introduction">
 								<Text fontWeight={'bold'}>Introduction</Text>
 							</NavLink>
-							<NavLink href="/individual">
-								<Text fontWeight={'bold'}>Individual Simulations</Text>
-							</NavLink>
-							<NavLink href="/replicated">
-								<Text fontWeight={'bold'}>Replicated Simulations</Text>
-							</NavLink>
+							<Menu>
+								<MenuButton
+									as={Button}
+									variant="menu"
+									rightIcon={<ChevronDownIcon />}
+									_hover={{
+										textDecoration: 'none',
+										bg: useColorModeValue('gray.600', 'gray.700'),
+									}}
+								>
+									Simulations
+								</MenuButton>
+								<MenuList bg={useColorModeValue('#333333', 'gray.900')}>
+									<MenuItem
+										as="a"
+										href="/individual"
+										bg={useColorModeValue('#333333', 'gray.900')}
+										_hover={{
+											textDecoration: 'none',
+											bg: useColorModeValue('gray.600', 'gray.700'),
+										}}
+										_focus={{
+											ring: false,
+											outlineColor: 'purple.200',
+											outlineOffset: 0,
+											outlineWidth: 2,
+											_dark: {
+												outlineColor: 'purple.400',
+											},
+										}}
+									>
+										<Text fontWeight={'bold'}>Individual Simulations</Text>
+									</MenuItem>
+									<MenuItem
+										as="a"
+										href="/replicated"
+										bg={useColorModeValue('#333333', 'gray.900')}
+										_hover={{
+											textDecoration: 'none',
+											bg: useColorModeValue('gray.500', 'gray.700'),
+										}}
+										_focus={{
+											ring: false,
+											outlineColor: 'purple.200',
+											outlineOffset: 0,
+											outlineWidth: 2,
+											_dark: {
+												outlineColor: 'purple.400',
+											},
+										}}
+									>
+										<Text fontWeight={'bold'}>Replicated Simulations</Text>
+									</MenuItem>
+								</MenuList>
+							</Menu>
+
 							<NavLink href="/faq">
 								<Text fontWeight={'bold'}>FAQ</Text>
+							</NavLink>
+							<NavLink href="/help">
+								<Text fontWeight={'bold'}>Help</Text>
 							</NavLink>
 						</HStack>
 					</HStack>
@@ -98,7 +155,7 @@ export default function Navigation() {
 				</Flex>
 				{isOpen ? (
 					<Box pb={4} display={{ lg: 'none' }}>
-						<Stack as={'nav'} spacing={4} color="navBarText">
+						<Stack as="nav" spacing="2" color="navBarText">
 							<NavLink href="/introduction">
 								<Text fontWeight={'bold'}>Introduction</Text>
 							</NavLink>
@@ -110,6 +167,9 @@ export default function Navigation() {
 							</NavLink>
 							<NavLink href="/faq">
 								<Text fontWeight={'bold'}>FAQ</Text>
+							</NavLink>
+							<NavLink href="/help">
+								<Text fontWeight={'bold'}>Help</Text>
 							</NavLink>
 						</Stack>
 					</Box>
