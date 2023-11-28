@@ -353,8 +353,8 @@ function Index() {
 							</Button>
 						</Box>
 						<Text my={4}>
-							You can change the settings below, and then “Runs Simulation” to get a new simulation based on the latest
-							settings.
+							You can change the settings above, and then select “Run Simulation” to get a new simulation based on the
+							latest settings.
 						</Text>
 						<ButtonGroup
 							w="100%"
@@ -395,8 +395,7 @@ function Index() {
 						md: 'left',
 					}}
 				>
-					Below will be the results for the above graph. The legend will change based on the settings you have selected,
-					and the results of the simulation.
+					Select the bar below to show/hide the settings and statistics for the latest simulation(s).
 				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}
@@ -423,9 +422,8 @@ function Index() {
 						md: 'left',
 					}}
 				>
-					Below will be the results for the above graph. Here you will find the initial / final genotype frequencies,
-					for A₁A₁, A₁A₂, A₂A₂. The legend will change based on the settings you have selected, and the results of the
-					simulation.
+					Select the bar below to show/hide the initial and final genotype frequencies for <i>A₁A₁, A₁A₂, and A₂A₂</i>.
+					Only the results from the last simulation are provided.
 				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}

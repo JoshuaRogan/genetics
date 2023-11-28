@@ -108,8 +108,16 @@ const footerButton = defineStyle({
 	},
 });
 
+const menu = defineStyle({
+	paddingY: 6,
+	_focus: {
+		...a11yFocus,
+		outlineColor: 'purple.400',
+	},
+});
+
 const buttonTheme = defineStyleConfig({
-	variants: { baseStyle, primary, secondary, themeSwitcher, generateLinkStyle, showTableStyle, footerButton },
+	variants: { baseStyle, primary, secondary, themeSwitcher, generateLinkStyle, showTableStyle, menu, footerButton },
 });
 
 export default buttonTheme;

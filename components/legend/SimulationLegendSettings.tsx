@@ -38,9 +38,15 @@ function SimulationLegendSettings({
 				{enabledSettings[VALID_SECTIONS.SELECTION] && (
 					<LegendListItem>
 						<LegendItemWrapper>
-							<LegendItem>Fitness coefficient for A1A1 (WA1A1) = {settings.WAA}</LegendItem>
-							<LegendItem>Fitness coefficient for A1A2 (WA1A2) = {settings.WAa}</LegendItem>
-							<LegendItem>Fitness coefficient for A2A2 (WA2A2) = {settings.Waa}</LegendItem>
+							<LegendItem>
+								Fitness coefficient for <i>A1A1</i> (WA1A1) = {settings.WAA}
+							</LegendItem>
+							<LegendItem>
+								Fitness coefficient for <i>A1A2</i> (WA1A2) = {settings.WAa}
+							</LegendItem>
+							<LegendItem>
+								Fitness coefficient for <i>A2A2</i> (WA2A2) = {settings.Waa}
+							</LegendItem>
 						</LegendItemWrapper>
 					</LegendListItem>
 				)}

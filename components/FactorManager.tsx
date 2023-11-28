@@ -57,6 +57,7 @@ function FactorManager({ title, isFactorActive, children }: FactorManagerProps) 
 					cursor="pointer"
 					userSelect="none"
 					color={isFactorActive ? titleColor : titleColorDisabled}
+					textTransform="capitalize"
 				>
 					{title}
 				</Text>

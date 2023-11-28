@@ -44,8 +44,24 @@ const navigationLink = defineStyle({
 	},
 });
 
+const subMenu = defineStyle({
+	textDecoration: 'none',
+	color: 'white',
+	fontWeight: 'normal',
+	paddingX: 8,
+	paddingY: 3,
+	rounded: 'md',
+	_hover: {
+		backgroundColor: 'red.400',
+	},
+	_focus: {
+		...a11yFocus,
+		outlineColor: 'purple.400',
+	},
+});
+
 const linkTheme = defineStyleConfig({
-	variants: { baseLink, brandPrimary, footerLink, navigationLink },
+	variants: { baseLink, brandPrimary, footerLink, navigationLink, subMenu },
 });
 
 export default linkTheme;

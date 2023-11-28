@@ -68,7 +68,7 @@ export default function HelpContentWrapper({ children, title, message, status = 
 						<AlertTitle as="h4" marginTop={6}>
 							{title}
 						</AlertTitle>
-						<AlertDescription maxW="90%">{message}</AlertDescription>
+						<AlertDescription maxW="90%" dangerouslySetInnerHTML={{ __html: message }} />
 					</Box>
 					<CloseButton
 						aria-label={`Close ${title} help content`}

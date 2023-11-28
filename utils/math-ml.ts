@@ -14,11 +14,11 @@ export function renderMathML(formula: string): string {
 				<mrow>
 					<mrow>
 						<mo>(</mo>
-						<msub>
-							<mi>p</mi>
-							<mn>0</mn>
-						</msub>
 						<msup>
+							<msub>
+								<mi>p</mi>
+								<mn>0</mn>
+							</msub>
 							<mi>2</mi>
 						</msup>
 						<mo>)</mo>
@@ -68,11 +68,11 @@ export function renderMathML(formula: string): string {
 					<mrow>
 						<mrow>
 							<mo>(</mo>
-							<msub>
-								<mi>p</mi>
-								<mn>0</mn>
-							</msub>
 							<msup>
+								<msub>
+									<mi>p</mi>
+									<mn>0</mn>
+								</msub>
 								<mi>2</mi>
 							</msup>
 							<mo>)</mo>
@@ -127,11 +127,11 @@ export function renderMathML(formula: string): string {
 					<mo>+</mo>
 					<mrow>
 						<mo>(</mo>
-						<msub>
-							<mi>q</mi>
-							<mn>0</mn>
-						</msub>
 						<msup>
+							<msub>
+								<mi>q</mi>
+								<mn>0</mn>
+							</msub>
 							<mi>2</mi>
 						</msup>
 						<mo>)</mo>
