@@ -110,7 +110,7 @@ function FAQPage({
 							mx="auto"
 						>
 							<SimpleGrid width="100%" columns={{ base: 1, md: 3 }} paddingY={2} spacing={4} placeItems="center">
-								<CustomTab heading="Getting Started" tabIcon={<Icon as={IoFlagOutline} w={8} h={8} />} />
+								<CustomTab heading="Model Background" tabIcon={<Icon as={IoFlagOutline} w={8} h={8} />} />
 								<CustomTab heading="Technical Questions" tabIcon={<Icon as={MdComputer} w={8} h={8} />} />
 								<CustomTab heading="Supporting Information" tabIcon={<Icon as={ChatIcon} w={7} h={7} />} />
 							</SimpleGrid>
@@ -118,7 +118,7 @@ function FAQPage({
 						<TabPanels maxWidth={{ base: '550px', md: '786px', lg: '860px', xl: '1080px' }} mx="auto">
 							<TabPanel>
 								<Text color="text" textAlign={'center'} marginBottom={4}>
-									Getting Started
+									Model Background
 								</Text>
 								<Accordion variant="faq">
 									<AccordionCustomContent data={faqGettingStarted} />

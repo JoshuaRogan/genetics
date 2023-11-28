@@ -19,7 +19,7 @@ export const popGenVariables: PopGenVariable[] = [
 		name: VALID_VARIABLES.POPULATION_SIZE,
 		variable: 'N',
 		description:
-			'The number of individuals per generation in the simulation. The range of population sizes are from 1 to 10,000. The default assumption is a population of infinite size. The number of alleles in the model is 2N because each individual has two copies of each allele.',
+			'The number of individuals per generation in the simulation. The range of population sizes are from 1 to 10,000. The default assumption is a population of infinite size. The number of alleles in the model is 2<i>N</i> because each individual has two copies of each allele.',
 		section: VALID_SECTIONS.FINITE,
 		order: 0,
 		defaultValue: 500,
@@ -51,14 +51,14 @@ export const popGenVariables: PopGenVariable[] = [
 		min: 0,
 		max: 1,
 		step: 0.001,
-		sliderName: 'Starting Frequency for Allele A₁',
+		sliderName: 'Initial Frequency for Allele A₁',
 	},
 
 	{
 		name: VALID_VARIABLES.NUM_OF_POPULATIONS,
 		variable: 'Nb',
 		description:
-			'This is the number of individuals in the population during the event. When “Number of Populations in a Simulation” is greater than one, you get multiple populations each represented by their own lines from the same simulation setting when clicking “Run Simulation”. Each line is a simulated population generated from the same settings. Clicking “Run Simulation” will replace the current set of lines with a newer set of lines.',
+			'This is the number of individuals in the population during the event. When this value is greater than 1, multiple simulations with the same settings are run simultaneously. Each simulation is an independent, replicated population with its own data.',
 		section: VALID_SECTIONS.BASE,
 		order: 0,
 		defaultValue: 1,

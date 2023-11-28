@@ -58,9 +58,9 @@ function Index() {
 							Dive into Population Genetics Simulations!
 						</Text>
 						<Text color="text" marginY={{ base: 3 }} width="80%" align={{ base: 'center', md: 'start' }}>
-							Welcome to the Population Genetics Explorer, your gateway to understanding evolution through mathematical
-							simulations. Dive into this fascinating world by exploring the frequencies of alleles in populations as
-							they respond to natural selection, genetic drift, migration, mutation and more.
+							Welcome to the <i>Population Genetics Explorer</i>, your gateway to understanding evolution through
+							mathematical simulations. Dive into this fascinating world by exploring the frequencies of alleles in
+							populations as they respond to natural selection, genetic drift, migration, mutation, and more.
 						</Text>
 						<Button
 							as={NextLink}

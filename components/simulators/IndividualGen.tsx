@@ -273,25 +273,11 @@ function Index() {
 						Individual Simulations
 					</Text>
 					<Text as="p" my={4}>
-						Here, you can generate one simulation for each group of settings you select. You can use this to compare how
-						different settings may affect allele and / or genotype frequencies.
+						Here, you can generate one simulation for each group of settings you select. Use this to compare how
+						different settings may affect allele and/or genotype frequencies.
 					</Text>
 					<Text as="p" my={4}>
-						Adjust the settings for the model below. For the default settings, the population is in{' '}
-						<AriaTooltip label="When the allele and genotype frequencies in a population stay constant.">
-							<Text
-								as="span"
-								display="inline-block"
-								color="text"
-								textDecoration="wavy underline"
-								textDecorationColor="purple.300"
-								textUnderlineOffset={2}
-								fontWeight={800}
-							>
-								Hardy-Weinberg equilibrium
-							</Text>
-						</AriaTooltip>{' '}
-						You can select “Reset Simulator” to restore the default settings.
+						Adjust the settings for the model below. You can select “Reset Simulator” to restore the default settings.
 					</Text>
 				</Box>
 
@@ -357,8 +343,8 @@ function Index() {
 							</Button>
 						</Box>
 						<Text my={4}>
-							You can change the settings above, and then “Runs Simulation” to get a new simulation based on the latest
-							settings, or “Add As A New Simulation” to the graphs without erasing the last smulation.
+							You can change the settings above, then select “Runs Simulation” to get a new simulation based on the
+							latest settings, or “Add As A New Simulation” to the graphs without erasing the last smulation.
 						</Text>
 						<ButtonGroup
 							w="100%"

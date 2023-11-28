@@ -1,7 +1,16 @@
 [
 	{
 		"question": "Summary",
-		"answer": "In this Click & Learn, you’ll explore the frequency of alleles and genotypes in a population using a simulator based on a mathematical model. Use the simulator to explore your own questions about how allele and genotype frequencies are affected by natural selection, migration, mutation, and more. "
+		"answer": [
+			{
+				"type": "text",
+				"value": "In this tool, you’ll explore the frequency of alleles and genotypes in a population using a simulator based on a mathematical model. Use the simulator to explore your own questions about how allele and genotype frequencies are affected by natural selection, migration, mutation, and more."
+			},
+			{
+				"type": "text",
+				"value": "Additional information can be found on <a class=\"faq-link\" href=\"https://www.biointeractive.org/classroom-resources/population-genetics-explorer\" target=\"_blank\" rel=\"noreferrer\">this resource’s webpage</a>"
+			}
+		]
 	},
 	{
 		"question": "Instructions for use",
@@ -22,6 +31,10 @@
 			{
 				"type": "text",
 				"value": "Throughout the resource, you can select bold underlined text and question mark icons to show additional information and links."
+			},
+			{
+				"type": "text",
+				"value": "For more information on using this resource, refer to the materials on <a class=\"faq-link\" href=\"https://www.biointeractive.org/classroom-resources/population-genetics-explorer\" target=\"_blank\" rel=\"noreferrer\">this resource’s webpage</a>"
 			}
 		]
 	},
@@ -68,6 +81,6 @@
 	},
 	{
 		"question": "Last Updated",
-		"answer": "Sept. 2023"
+		"answer": "Nov. 2023"
 	}
 ]

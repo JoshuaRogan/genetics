@@ -107,7 +107,7 @@ function Index() {
 				<Box>
 					<Stack as={Container} maxW={'3xl'} textAlign={'center'}>
 						<Heading fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} marginTop={10}>
-							You can use Population Genetics Explorer to test questions like the following:
+							You can use <i>Population Genetics Explorer</i> to test questions like the following:
 						</Heading>
 					</Stack>
 
@@ -210,10 +210,9 @@ function Index() {
 				</Text>
 				<Text color="text" marginY={{ base: 3, md: 8 }}>
 					<strong>
-						In this Click & Learn, you’ll explore a mathematical model that simulates the frequencies of alleles and
-						genotypes
+						In this tool, you’ll explore a mathematical model that simulates the frequencies of alleles and genotypes
 					</strong>{' '}
-					in a population over time. This simulation tracks one specific gene region (or locus) with only two alleles.
+					in a population over time. This simulator tracks one specific gene region (or locus) with only two alleles.
 					Use the model to explore your own questions about how frequencies are affected by different factors. Like all
 					models, this model makes some simplifying{' '}
 					{

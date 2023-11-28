@@ -47,36 +47,36 @@ function BulkLegendStats({ results }: { results: number[][] }) {
 			<StyledListStats>
 				<StyledListItemStats>
 					{' '}
-					Average generations for A1 to reach fixation = {findAverageFixationIndex(results)}
+					Average generations for A₁ to reach fixation = {findAverageFixationIndex(results)}
 				</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Number of simulations where A1 reaches fixation = {findNumOfFixations(results)}{' '}
+					Number of simulations where A₁ reaches fixation = {findNumOfFixations(results)}{' '}
 				</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Percentage of simulations where A1 reaches fixation = {(findNumOfFixations(results) / results.length) *
+					Percentage of simulations where A₁ reaches fixation = {(findNumOfFixations(results) / results.length) *
 						100}%{' '}
 				</StyledListItemStats>
 
 				<StyledListItemStats>
 					{' '}
-					Average generations for A1 to reach elimination = {findAverageElimIndex(results)}
+					Average generations for A₁ to reach elimination = {findAverageElimIndex(results)}
 				</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Number of simulations where A1 reaches elimination = {findNumOfEliminations(results)}{' '}
+					Number of simulations where A₁ reaches elimination = {findNumOfEliminations(results)}{' '}
 				</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Percentage of simulations where A1 reaches elimination ={' '}
+					Percentage of simulations where A₁ reaches elimination ={' '}
 					{(findNumOfEliminations(results) / results.length) * 100}%{' '}
 				</StyledListItemStats>
 
 				<StyledListItemStats> Average Freq {getAverageFinalFreq(results)}</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Standard deviation among all simulations at end {getStandardDeviationOfResults(results)}
+					Standard deviation for final frequency of allele A₁ {getStandardDeviationOfResults(results)}
 				</StyledListItemStats>
 			</StyledListStats>
 		</StyledLegendContainer>
@@ -87,16 +87,6 @@ const LegendHider = styled.div`
 `;
 
 const LegendChecker = styled.div``;
-
-const StyledCheckboxLabel = styled.label`
-	display: flex;
-	color: #2f80ed;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 20px;
-	letter-spacing: 0.3px;
-	text-transform: uppercase;
-`;
 
 const StyledLegendManagerWrapper = styled.div`
 	padding-bottom: 10px;
