@@ -92,6 +92,7 @@ function Index() {
 							xl: '450px',
 						}}
 						placeSelf="center"
+						alt="A group of scientists wearing lab coats and glasses observing a microscope in a laboratory setting."
 					/>
 				</Box>
 
