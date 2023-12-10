@@ -47,36 +47,36 @@ function BulkLegendStats({ results }: { results: number[][] }) {
 			<StyledListStats>
 				<StyledListItemStats>
 					{' '}
-					Average generations for A₁ to reach fixation = {findAverageFixationIndex(results)}
+					Average generations for <i>A₁</i> to reach fixation = {findAverageFixationIndex(results)}
 				</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Number of simulations where A₁ reaches fixation = {findNumOfFixations(results)}{' '}
+					Number of simulations where <i>A₁</i> reaches fixation = {findNumOfFixations(results)}{' '}
 				</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Percentage of simulations where A₁ reaches fixation = {(findNumOfFixations(results) / results.length) *
+					Percentage of simulations where <i>A₁</i> reaches fixation = {(findNumOfFixations(results) / results.length) *
 						100}%{' '}
 				</StyledListItemStats>
 
 				<StyledListItemStats>
 					{' '}
-					Average generations for A₁ to reach elimination = {findAverageElimIndex(results)}
+					Average generations for <i>A₁</i> to reach elimination = {findAverageElimIndex(results)}
 				</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Number of simulations where A₁ reaches elimination = {findNumOfEliminations(results)}{' '}
+					Number of simulations where <i>A₁</i> reaches elimination = {findNumOfEliminations(results)}{' '}
 				</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Percentage of simulations where A₁ reaches elimination ={' '}
+					Percentage of simulations where <i>A₁</i> reaches elimination ={' '}
 					{(findNumOfEliminations(results) / results.length) * 100}%{' '}
 				</StyledListItemStats>
 
-				<StyledListItemStats> Average Freq {getAverageFinalFreq(results)}</StyledListItemStats>
+				<StyledListItemStats> Average final frequency of allele <i>A<sub>1</sub></i> {getAverageFinalFreq(results)}</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Standard deviation for final frequency of allele A₁ {getStandardDeviationOfResults(results)}
+					Standard deviation for final frequency of allele <i>A₁</i> {getStandardDeviationOfResults(results)}
 				</StyledListItemStats>
 			</StyledListStats>
 		</StyledLegendContainer>

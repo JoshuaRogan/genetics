@@ -8,7 +8,7 @@ function LegendStats({ result }: { result: number[] }) {
 			</Text>
 			<List paddingInlineStart="20px" m={0}>
 				<ListItem padding="5px 0" listStylePosition="inside">
-					Final Allele Freq = {result[result.length - 1]}
+					Final frequency of allele <i>A<sub>1</sub></i> = {result[result.length - 1]}
 				</ListItem>
 			</List>
 		</Box>
