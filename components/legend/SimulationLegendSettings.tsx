@@ -25,12 +25,12 @@ function SimulationLegendSettings({
 				{enabledSettings[VALID_SECTIONS.BASE] && (
 					<LegendListItem>
 						<LegendItemWrapper>
-							<LegendItem>Population Size (N) = {settings.N} </LegendItem>
-							<LegendItem>Generations (t) = {settings.t} </LegendItem>
+							<LegendItem>Population Size (<i>N</i>) = {settings.N} </LegendItem>
+							<LegendItem>Generations (<i>t</i>) = {settings.t} </LegendItem>
 							<LegendItem>
-								Initial frequency of Allele A (p<sub>0</sub>) = {settings.p}{' '}
+								Starting frequency of Allele <i>A<sub>1</sub> (p<sub>0</sub></i>) = {settings.p}{' '}
 							</LegendItem>
-							{isReplicated && <LegendItem>Number of Populations (Nb) = {settings.Nb}</LegendItem>}
+							{isReplicated && <LegendItem>Number of Populations (<i>Nb</i>) = {settings.Nb}</LegendItem>}
 						</LegendItemWrapper>
 					</LegendListItem>
 				)}
@@ -39,13 +39,13 @@ function SimulationLegendSettings({
 					<LegendListItem>
 						<LegendItemWrapper>
 							<LegendItem>
-								Fitness coefficient for <i>A1A1</i> (WA1A1) = {settings.WAA}
+								Fitness coefficient for <i>A<sub>1</sub>A<sub>1</sub></i> (<i>W<sub>A1A1</sub></i>) = {settings.WAA}
 							</LegendItem>
 							<LegendItem>
-								Fitness coefficient for <i>A1A2</i> (WA1A2) = {settings.WAa}
+								Fitness coefficient for <i>A<sub>1</sub>A<sub>2</sub></i> (<i>W<sub>A1A2</sub></i>) = {settings.WAa}
 							</LegendItem>
 							<LegendItem>
-								Fitness coefficient for <i>A2A2</i> (WA2A2) = {settings.Waa}
+								Fitness coefficient for <i>A<sub>2</sub>A<sub>2</sub></i> (<i>W<sub>A2A2</sub></i>) = {settings.Waa}
 							</LegendItem>
 						</LegendItemWrapper>
 					</LegendListItem>
@@ -55,10 +55,10 @@ function SimulationLegendSettings({
 					<LegendListItem>
 						<LegendItemWrapper>
 							<LegendItem>
-								Forward mutation rate (μ) = {settings.mu}*10<sup>{settings['mu-exp']}</sup>
+								Forward mutation rate (<i>μ</i>) = {settings.mu}*10<sup>{settings['mu-exp']}</sup>
 							</LegendItem>
 							<LegendItem>
-								Reverse mutation rate (v) = {settings.nu}*10<sup>{settings['nu-exp']}</sup>
+								Reverse mutation rate (<i>v</i>) = {settings.nu}*10<sup>{settings['nu-exp']}</sup>
 							</LegendItem>
 						</LegendItemWrapper>
 					</LegendListItem>
@@ -67,8 +67,8 @@ function SimulationLegendSettings({
 				{enabledSettings[VALID_SECTIONS.MIGRATION] && (
 					<LegendListItem>
 						<LegendItemWrapper>
-							<LegendItem> Migrant rate (m) = {settings.m}</LegendItem>
-							<LegendItem> Migrant allele frequency (pM) = {settings.pm}</LegendItem>
+							<LegendItem> Migrant rate (<i>m</i>) = {settings.m}</LegendItem>
+							<LegendItem> Migrant allele frequency (<i>p<sub>M</sub></i>) = {settings.pm}</LegendItem>
 						</LegendItemWrapper>
 					</LegendListItem>
 				)}
@@ -76,7 +76,7 @@ function SimulationLegendSettings({
 				{enabledSettings[VALID_SECTIONS.INBREEDING] && (
 					<LegendListItem>
 						<LegendItemWrapper>
-							<LegendItem>Inbreeding coefficient (F) = {settings.F} </LegendItem>
+							<LegendItem>Inbreeding coefficient (<i>F</i>) = {settings.F} </LegendItem>
 						</LegendItemWrapper>
 					</LegendListItem>
 				)}
@@ -84,7 +84,7 @@ function SimulationLegendSettings({
 				{enabledSettings[VALID_SECTIONS.ASSORT_MATING] && (
 					<LegendListItem>
 						<LegendItemWrapper>
-							<LegendItem> Positive assortative mating frequency (α) = {settings.assortMating} </LegendItem>
+							<LegendItem> Positive assortative mating frequency (<i>α</i>) = {settings.assortMating} </LegendItem>
 						</LegendItemWrapper>
 					</LegendListItem>
 				)}
@@ -95,7 +95,7 @@ function SimulationLegendSettings({
 							<LegendItem>
 								Bottleneck Generations: {settings['gen-to-over-start']} to {settings['gen-to-over-end']}
 							</LegendItem>
-							<LegendItem>Bottleneck population size (NB) = {settings.BNb}</LegendItem>
+							<LegendItem>Bottleneck population size (<i>N<sub>B</sub></i>) = {settings.BNb}</LegendItem>
 						</LegendItemWrapper>
 					</LegendListItem>
 				)}
