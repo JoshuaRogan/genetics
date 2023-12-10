@@ -30,13 +30,13 @@ function LastSimulationStats({ settings, results }: { settings: Settings; result
 					}}
 				>
 					<ListItem minHeight="30px">
-						Initial frequency of genotype <i>A₁A₁</i> = {initialFrequencyA1A1}
+						Starting frequency of genotype <i>A₁A₁</i> = {initialFrequencyA1A1}
 					</ListItem>
 					<ListItem minHeight="30px">
-						Initial frequency of genotype <i>A₁A₂</i> = {initialFrequencyA1A2}
+						Starting frequency of genotype <i>A₁A₂</i> = {initialFrequencyA1A2}
 					</ListItem>
 					<ListItem minHeight="30px">
-						Initial frequency of genotype <i>A₂A₂</i> = {initialFrequencyA2A2}
+						Starting frequency of genotype <i>A₂A₂</i> = {initialFrequencyA2A2}
 					</ListItem>
 					<ListItem minHeight="30px">
 						Final frequency of genotype <i>A₁A₁</i> = {finalFrequencyA1A1?.toFixed(4) || 0}

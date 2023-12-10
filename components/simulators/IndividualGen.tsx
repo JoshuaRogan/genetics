@@ -307,7 +307,7 @@ function Index() {
 					>
 						<BaseIndividualSimulation name={'Base Simulation Model'} isReplicated={false} />
 						<Box my={6}>
-							<Collapsible header={`Advanced Factors`} variant="solid" iconDirection="left">
+							<Collapsible header={`Additional Settings`} variant="solid" iconDirection="left">
 								{/* Selection Input */}
 								<FactorManager title={VALID_SECTIONS.SELECTION} isFactorActive={true}>
 									<Selection />
@@ -344,7 +344,7 @@ function Index() {
 						</Box>
 						<Text my={4}>
 							You can change the settings above, then select “Runs Simulation” to get a new simulation based on the
-							latest settings, or “Add As A New Simulation” to the graphs without erasing the last smulation.
+							latest settings, or “Add as a new simulation” to the graphs without erasing the last smulation.
 						</Text>
 						<ButtonGroup
 							w="100%"

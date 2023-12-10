@@ -317,7 +317,7 @@ function Index() {
 					>
 						<BaseReplicatedSimulation name={'Base Simulation Model'} />
 						<Box my={6}>
-							<Collapsible header={`Advanced Factors`} variant="solid" iconDirection="left">
+							<Collapsible header={`Additional Settings`} variant="solid" iconDirection="left">
 								{/* Selection Input */}
 								<FactorManager title={VALID_SECTIONS.SELECTION} isFactorActive={true}>
 									<Selection />
