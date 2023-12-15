@@ -52,11 +52,11 @@ function Index() {
 						md: 'left',
 					}}
 				>
-					All living things, including us, belong to a population: a group of individuals of the same species that live
-					in the same area and potentially reproduce together. Population genetics is the study of genetic variation
+					All living things, including us, belong to a <strong>population</strong>:  a group of individuals of the same species that live in the same area and potentially reproduce together.
+					<strong>Population genetics</strong> is the study of genetic variation
 					within and among populations. It often explores the{' '}
 					{
-						<AriaTooltip label="Variants of a particular gene or DNA region">
+						<AriaTooltip label="Variants of a particular region of DNA.">
 							<Text
 								as="span"
 								display="inline-block"
@@ -72,7 +72,7 @@ function Index() {
 					}{' '}
 					and{' '}
 					{
-						<AriaTooltip label="An individual's set of alleles for a particular region of DNA">
+						<AriaTooltip label="An individual’s set of alleles for a particular region of DNA.">
 							<Text
 								as="span"
 								display="inline-block"
@@ -86,10 +86,11 @@ function Index() {
 							</Text>
 						</AriaTooltip>
 					}{' '}
-					within a population. Learning about population genetics is crucial for understanding evolution, which is a
-					change in the frequencies of a population’s alleles over time. Population genetics can help us better
-					understand how allele frequencies may change based on natural selection, mutation, migration, and many other
-					factors.
+					within a population.
+				</Text>
+
+				<Text>
+					Learning about population genetics is crucial for understanding <strong>evolution</strong>, which is a change in the frequencies of a population’s alleles over time. Population genetics can help us better understand how allele frequencies may change based on natural selection, mutation, migration, and many other factors.
 				</Text>
 				<Text
 					color="text"
@@ -114,9 +115,8 @@ function Index() {
 					<Box marginY={16}>
 						<Flex flexWrap="wrap" gridGap={6} justify="center">
 							<IntroCard
-								title="Could, the high frequency of an allele"
-								description="or dark fur color in rock pocket mice on dark soils be due to natural selection favoring individuals
-								with the allele?"
+								title=""
+								description="Populations of rock pocket mice that live on dark-colored surfaces have higher frequencies of an allele for dark-colored fur. Can natural selection explain the rise in frequency of this allele? "
 								imageProps={{
 									src: '/images/rock-pocket-mouse.jpeg',
 									alt: 'A picture of a mouse on a rock.',
@@ -132,9 +132,8 @@ function Index() {
 							/>
 
 							<IntroCard
-								title="Is the high frequency of the allele associated with"
-								description="Sickle cell disease in some human populations due to the fact that people who have one copy of the
-								sickle cell allele are protected from malaria?"
+								title=""
+								description="Sickle cell disease is a genetic condition that results in sickle-shaped red blood cells. Does the fact that people who have one copy of the sickle cell allele are protected from malaria explain why sickle cell disease is more common in some populations?"
 								imageProps={{
 									src: '/images/sickled-cells.jpeg',
 									alt: 'Two red crescent shaped objects float in front of several more circular red objects.',
@@ -150,27 +149,8 @@ function Index() {
 							/>
 
 							<IntroCard
-								title="	How, does population size"
-								description="	Like the small populations of the endangered Iberian lynxes, affect the frequency of alleles in a
-								population over time?"
-								imageProps={{
-									src: '/images/iberian-lynx.jpeg',
-									alt: 'A picture of a lynx lying in a shaded grassy area.',
-								}}
-								blobProps={{
-									color: {
-										light: 'green.100',
-										dark: 'green.400',
-									},
-									variation: 'normal',
-								}}
-								aria-label="Section 3: Population Size"
-							/>
-
-							<IntroCard
-								title="How does the movement of mosquitoes"
-								description="That are resistant to insecticides from one population to another affect the evolution of resistance to
-								insecticide?"
+								title=""
+								description="Certain alleles make mosquitos more resistant to insecticide. How does the movement of these mosquitoes among populations affect the evolution of insecticide resistance?"
 								imageProps={{
 									src: '/images/mosquito.jpeg',
 									alt: 'A close up picture of a mosquito.',
@@ -183,6 +163,23 @@ function Index() {
 									variation: 'normal',
 								}}
 								aria-label="Section 4: Population Size"
+							/>
+
+							<IntroCard
+								title=""
+								description="Iberian lynxes and other endangered species have small populations. How might population size affect the evolution of these species over time?"
+								imageProps={{
+									src: '/images/iberian-lynx.jpeg',
+									alt: 'A picture of a lynx lying in a shaded grassy area.',
+								}}
+								blobProps={{
+									color: {
+										light: 'green.100',
+										dark: 'green.400',
+									},
+									variation: 'normal',
+								}}
+								aria-label="Section 3: Population Size"
 							/>
 						</Flex>
 					</Box>
