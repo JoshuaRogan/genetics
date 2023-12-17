@@ -30,13 +30,11 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 		<Box aria-label={name}>
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={populationSize.sliderName + `「 ${populationSize.variable} 」`}
+					title={populationSize.sliderName + `「 ${populationSize.variableHTML} 」`}
 					message={populationSize.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold">
-						{populationSize.sliderName}
-					</Text>
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: populationSize.sliderName}} />
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={populationSize} isActive={true} isInfinite={!infinitePopulationState} />
@@ -54,7 +52,7 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={numberOfGenerations.sliderName + `「 ${numberOfGenerations.variable} 」`}
+					title={numberOfGenerations.sliderName + `「 ${numberOfGenerations.variableHTML} 」`}
 					message={numberOfGenerations.description}
 					status="info"
 				>
@@ -69,12 +67,11 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={startingAlleleFreq.sliderName + `「 ${startingAlleleFreq.variable} 」`}
+					title={startingAlleleFreq.sliderName + `「 ${startingAlleleFreq.variableHTML} 」`}
 					message={startingAlleleFreq.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold">
-						{startingAlleleFreq.sliderName}
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: startingAlleleFreq.sliderName}}>
 					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
@@ -85,7 +82,7 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 			{isReplicated && (
 				<Grid mb={4}>
 					<HelpContentWrapper
-						title={bulkSimulator.sliderName + `「 ${bulkSimulator.variable} 」`}
+						title={bulkSimulator.sliderName + `「 ${bulkSimulator.variableHTML} 」`}
 						message={bulkSimulator.description}
 						status="info"
 					>

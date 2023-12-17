@@ -12,7 +12,7 @@ export default function Inbreeding() {
 		<Box aria-label="Advanced Simulation Factor: Inbreeding">
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={inbreedingCoef.sliderName + `「 ${inbreedingCoef.variable} 」`}
+					title={inbreedingCoef.sliderName + `「 ${inbreedingCoef.variableHTML} 」`}
 					message={inbreedingCoef.description}
 					status="info"
 				>
