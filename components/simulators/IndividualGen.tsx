@@ -277,7 +277,7 @@ function Index() {
 						different settings may affect allele and/or genotype frequencies.
 					</Text>
 					<Text as="p" my={4}>
-						Adjust the settings for the model below. You can select “Reset Simulator” to restore the default settings.
+						Adjust the settings for the model below. Select “Reset Simulator” to restore the default settings.
 					</Text>
 				</Box>
 
