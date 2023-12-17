@@ -117,7 +117,7 @@ export default function Navigation() {
 							</Menu>
 
 							<NavLink href="/faq">
-								<Text fontWeight={'bold'}>FAQ</Text>
+								<Text fontWeight={'bold'}>Model Background</Text>
 							</NavLink>
 							<NavLink href="/help">
 								<Text fontWeight={'bold'}>Help</Text>

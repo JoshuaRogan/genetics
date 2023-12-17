@@ -15,12 +15,11 @@ export default function Selection() {
 		<Box aria-label="Advanced Simulation Factor: Selection">
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={fitnessFactorWAA.sliderName + `「 ${fitnessFactorWAA.variable} 」`}
+					title={fitnessFactorWAA.sliderName + `「 ${fitnessFactorWAA.variableHTML} 」`}
 					message={fitnessFactorWAA.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold">
-						{fitnessFactorWAA.sliderName}
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: fitnessFactorWAA.sliderName}}>
 					</Text>
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
@@ -29,13 +28,11 @@ export default function Selection() {
 			</Grid>
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={fitnessFactorWAa.sliderName + `「 ${fitnessFactorWAa.variable} 」`}
+					title={fitnessFactorWAa.sliderName + `「 ${fitnessFactorWAa.variableHTML} 」`}
 					message={fitnessFactorWAa.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold">
-						{fitnessFactorWAa.sliderName}
-					</Text>
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: fitnessFactorWAa.sliderName}} />
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={fitnessFactorWAa} isActive={true} />
@@ -43,13 +40,11 @@ export default function Selection() {
 			</Grid>
 			<Grid mb={2}>
 				<HelpContentWrapper
-					title={fitnessFactorWaa.sliderName + `「 ${fitnessFactorWaa.variable} 」`}
+					title={fitnessFactorWaa.sliderName + `「 ${fitnessFactorWaa.variableHTML} 」`}
 					message={fitnessFactorWaa.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold">
-						{fitnessFactorWaa.sliderName}
-					</Text>
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: fitnessFactorWaa.sliderName}} />
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align={{ base: 'center' }}>
 					<Slider popVariable={fitnessFactorWaa} isActive={true} />

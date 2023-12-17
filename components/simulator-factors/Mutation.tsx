@@ -15,7 +15,7 @@ export default function Mutation() {
 		<Box aria-label="Advance Simulation Factor: Selection">
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={forwardMutation.sliderName + `「 ${forwardMutation.variable} 」`}
+					title={forwardMutation.sliderName + `「 ${forwardMutation.variableHTML} 」`}
 					message={forwardMutation.description}
 					status="info"
 				>
@@ -31,7 +31,7 @@ export default function Mutation() {
 			</Grid>
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={backwardMutation.sliderName + `「 ${backwardMutation.variable} 」`}
+					title={backwardMutation.sliderName + `「 ${backwardMutation.variableHTML} 」`}
 					message={backwardMutation.description}
 					status="info"
 				>

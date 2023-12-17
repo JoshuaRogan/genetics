@@ -13,7 +13,7 @@ export default function Migration() {
 		<Box aria-label="Advance Simulation Factor: Migration">
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={migrationRate.sliderName + `「 ${migrationRate.variable} 」`}
+					title={migrationRate.sliderName + `「 ${migrationRate.variableHTML} 」`}
 					message={migrationRate.description}
 					status="info"
 				>
@@ -27,7 +27,7 @@ export default function Migration() {
 			</Grid>
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={migrantAllelFreq.sliderName + `「 ${migrantAllelFreq.variable} 」`}
+					title={migrantAllelFreq.sliderName + `「 ${migrantAllelFreq.variableHTML} 」`}
 					message={migrantAllelFreq.description}
 					status="info"
 				>

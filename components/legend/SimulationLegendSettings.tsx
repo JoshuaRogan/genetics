@@ -18,14 +18,14 @@ function SimulationLegendSettings({
 			<List listStyleType="none" p={0} m={0}>
 				<LegendListItem>
 					<LegendItemWrapper>
-						<LegendItem>Number of Populations = {settings.Nb} </LegendItem>
+						<LegendItem>Number of populations = {settings.Nb} </LegendItem>
 					</LegendItemWrapper>
 				</LegendListItem>
 
 				{enabledSettings[VALID_SECTIONS.BASE] && (
 					<LegendListItem>
 						<LegendItemWrapper>
-							<LegendItem>Population Size (<i>N</i>) = {settings.N} </LegendItem>
+							<LegendItem>Population size (<i>N</i>) = {settings.N} </LegendItem>
 							<LegendItem>Generations (<i>t</i>) = {settings.t} </LegendItem>
 							<LegendItem>
 								Starting frequency of Allele <i>A<sub>1</sub> (p<sub>0</sub></i>) = {settings.p}{' '}

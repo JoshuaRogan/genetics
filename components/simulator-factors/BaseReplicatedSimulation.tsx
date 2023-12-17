@@ -16,7 +16,7 @@ export default function BaseReplicatedSimulation({ name }) {
 		<Box aria-label={name}>
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={populationSize.sliderName + `「 ${populationSize.variable} 」`}
+					title={populationSize.sliderName + `「 ${populationSize.variableHTML} 」`}
 					message={populationSize.description}
 					status="info"
 				>
@@ -31,7 +31,7 @@ export default function BaseReplicatedSimulation({ name }) {
 
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={numberOfGenerations.sliderName + `「 ${numberOfGenerations.variable} 」`}
+					title={numberOfGenerations.sliderName + `「 ${numberOfGenerations.variableHTML} 」`}
 					message={numberOfGenerations.description}
 					status="info"
 				>
@@ -46,13 +46,11 @@ export default function BaseReplicatedSimulation({ name }) {
 
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={startingAlleleFreq.sliderName + `「 ${startingAlleleFreq.variable} 」`}
+					title={startingAlleleFreq.sliderName + `「 ${startingAlleleFreq.variableHTML} 」`}
 					message={startingAlleleFreq.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold">
-						{startingAlleleFreq.sliderName}
-					</Text>
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: startingAlleleFreq.sliderName}} />
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={startingAlleleFreq} isActive={true} />
@@ -61,7 +59,7 @@ export default function BaseReplicatedSimulation({ name }) {
 
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={numPopulation.sliderName + `「 ${numPopulation.variable} 」`}
+					title={numPopulation.sliderName + `「 ${numPopulation.variableHTML} 」`}
 					message={numPopulation.description}
 					status="info"
 				>

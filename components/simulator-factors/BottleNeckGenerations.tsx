@@ -16,7 +16,7 @@ export default function BottleneckGenerations() {
 		<Box aria-label="Advanced Simulation Factor: BottleneckGenerations">
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={generationToOverrideStart.sliderName + `「 ${generationToOverrideStart.variable} 」`}
+					title={generationToOverrideStart.sliderName + `「 ${generationToOverrideStart.variableHTML} 」`}
 					message={generationToOverrideStart.description}
 					status="info"
 				>
@@ -30,7 +30,7 @@ export default function BottleneckGenerations() {
 			</Grid>
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={bottleNeckPopSize.sliderName + `「 ${bottleNeckPopSize.variable} 」`}
+					title={bottleNeckPopSize.sliderName + `「 ${bottleNeckPopSize.variableHTML} 」`}
 					message={bottleNeckPopSize.description}
 					status="info"
 				>
