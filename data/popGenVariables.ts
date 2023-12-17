@@ -58,7 +58,7 @@ export const popGenVariables: PopGenVariable[] = [
 		name: VALID_VARIABLES.NUM_OF_POPULATIONS,
 		variable: 'Nb',
 		description:
-			'This is the number of individuals in the population during the event. When this value is greater than 1, multiple simulations with the same settings are run simultaneously. Each simulation is an independent, replicated population with its own data.',
+			'When this value is greater than 1, multiple simulations with the same settings are run simultaneously. Each simulation is an independent, replicated population with its own data.',
 		section: VALID_SECTIONS.BASE,
 		order: 0,
 		defaultValue: 1,
