@@ -136,9 +136,20 @@ function Index() {
 							color={useColorModeValue('purple.500', 'purple.300')}
 							fontWeight="semibold"
 						>
-							FAQ page
+							Model Background
 						</Link>{' '}
-						for answers to get you started.
+						and {' '}
+						<Link
+							as={NextLink}
+							href="/help"
+							variant="baseLink"
+							textDecoration="underline"
+							color={useColorModeValue('purple.500', 'purple.300')}
+							fontWeight="semibold"
+						>
+							Help
+						</Link>{' '}
+						pages to get you started.
 					</Text>
 				</Box>
 			</Box>

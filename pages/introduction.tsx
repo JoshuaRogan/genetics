@@ -53,7 +53,7 @@ function Index() {
 					}}
 				>
 					All living things, including us, belong to a <strong>population</strong>:  a group of individuals of the same species that live in the same area and potentially reproduce together.
-					<strong>Population genetics</strong> is the study of genetic variation
+					<strong> Population genetics</strong> is the study of genetic variation
 					within and among populations. It often explores the{' '}
 					{
 						<AriaTooltip label="Variants of a particular region of DNA.">
@@ -91,19 +91,6 @@ function Index() {
 
 				<Text>
 					Learning about population genetics is crucial for understanding <strong>evolution</strong>, which is a change in the frequencies of a population’s alleles over time. Population genetics can help us better understand how allele frequencies may change based on natural selection, mutation, migration, and many other factors.
-				</Text>
-				<Text
-					color="text"
-					marginY={{ base: 3, md: 4 }}
-					align={{
-						base: 'center',
-						md: 'left',
-					}}
-				>
-					They also use population genetics to examine how natural selection, the movement of individuals between
-					populations, or other factors change the frequency of alleles in a population over time. A change in the
-					frequency of alleles in a population over time is evolution, so population genetics is crucial for
-					understanding how evolution works.
 				</Text>
 				<Box>
 					<Stack as={Container} maxW={'3xl'} textAlign={'center'}>
@@ -202,7 +189,7 @@ function Index() {
 								mathematical models
 							</Text>
 						</AriaTooltip>
-					}{' '}
+					}
 					. Models provide a powerful framework to explore questions and predictions about evolution.
 				</Text>
 				<Text color="text" marginY={{ base: 3, md: 8 }}>
@@ -224,7 +211,7 @@ function Index() {
 								fontWeight={800}
 								title="Conditions that a model assumes to be true, in order to make the system easier to understand and work with."
 							>
-								assumptions
+								assumptions.
 							</Text>
 						</AriaTooltip>
 					}{' '}
@@ -250,7 +237,7 @@ function Index() {
 							{' '}
 							<strong>"Replicated Simulations"</strong> generates multiple simulations with the same settings. You can
 							use this to explore how random chance may affect allele and genotype frequencies in many independent
-							populations
+							populations.
 						</ListItem>
 					</UnorderedList>
 				</Box>
