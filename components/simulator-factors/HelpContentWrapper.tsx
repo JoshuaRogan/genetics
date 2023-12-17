@@ -65,8 +65,8 @@ export default function HelpContentWrapper({ children, title, message, status = 
 				<Alert variant="top-accent" status={status} my="10px">
 					<AlertIcon />
 					<Box maxW="90%">
-						<AlertTitle as="h4" marginTop={6}>
-							{title}
+						<AlertTitle as="h4" marginTop={6} dangerouslySetInnerHTML={{__html: title}}>
+
 						</AlertTitle>
 						<AlertDescription maxW="90%" dangerouslySetInnerHTML={{ __html: message }} />
 					</Box>

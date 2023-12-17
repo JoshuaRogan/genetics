@@ -15,7 +15,7 @@ export default function Selection() {
 		<Box aria-label="Advanced Simulation Factor: Selection">
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={fitnessFactorWAA.sliderName + `「 ${fitnessFactorWAA.variable} 」`}
+					title={fitnessFactorWAA.sliderName + `「 ${fitnessFactorWAA.variableHTML} 」`}
 					message={fitnessFactorWAA.description}
 					status="info"
 				>
@@ -29,7 +29,7 @@ export default function Selection() {
 			</Grid>
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={fitnessFactorWAa.sliderName + `「 ${fitnessFactorWAa.variable} 」`}
+					title={fitnessFactorWAa.sliderName + `「 ${fitnessFactorWAa.variableHTML} 」`}
 					message={fitnessFactorWAa.description}
 					status="info"
 				>
@@ -43,7 +43,7 @@ export default function Selection() {
 			</Grid>
 			<Grid mb={2}>
 				<HelpContentWrapper
-					title={fitnessFactorWaa.sliderName + `「 ${fitnessFactorWaa.variable} 」`}
+					title={fitnessFactorWaa.sliderName + `「 ${fitnessFactorWaa.variableHTML} 」`}
 					message={fitnessFactorWaa.description}
 					status="info"
 				>

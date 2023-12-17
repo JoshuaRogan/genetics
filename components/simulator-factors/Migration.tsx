@@ -27,7 +27,7 @@ export default function Migration() {
 			</Grid>
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={migrantAllelFreq.sliderName + `「 ${migrantAllelFreq.variable} 」`}
+					title={migrantAllelFreq.sliderName + `「 ${migrantAllelFreq.variableHTML} 」`}
 					message={migrantAllelFreq.description}
 					status="info"
 				>

@@ -12,7 +12,7 @@ export default function AssortativeMating() {
 		<Box aria-label="Advanced Simulation Factor: AssortativeMating">
 			<Grid mb={4}>
 				<HelpContentWrapper
-					title={positiveAssortMatingFreq.sliderName + `「 ${positiveAssortMatingFreq.variable} 」`}
+					title={positiveAssortMatingFreq.sliderName + `「 ${positiveAssortMatingFreq.variableHTML} 」`}
 					message={positiveAssortMatingFreq.description}
 					status="info"
 				>

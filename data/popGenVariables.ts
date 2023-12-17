@@ -19,7 +19,7 @@ export const popGenVariables: PopGenVariable[] = [
 		name: VALID_VARIABLES.POPULATION_SIZE,
 		variable: 'N',
 		description:
-			'The number of individuals per generation in the simulation. The range of population sizes are from 1 to 10,000. The default assumption is a population of infinite size. The number of alleles in the model is 2<i>N</i> because each individual has two copies of each allele.',
+			'The number of individuals in the population. The range of population sizes is from 1 to 10,000, with an option to select a population of infinite size. The number of alleles in the model is 2N because each individual has two copies of each allele.',
 		section: VALID_SECTIONS.FINITE,
 		order: 0,
 		defaultValue: 500,
@@ -31,7 +31,7 @@ export const popGenVariables: PopGenVariable[] = [
 	{
 		name: VALID_VARIABLES.NUM_GENERATIONS,
 		variable: 't',
-		description: 'The number of generations to be simulated. A grandparent, parent, child represent three generations.',
+		description: 'The number of generations that will be simulated. The starting generation is Generation 0.',
 		section: VALID_SECTIONS.BASE,
 		order: 0,
 		defaultValue: 500,
@@ -42,16 +42,16 @@ export const popGenVariables: PopGenVariable[] = [
 	},
 	{
 		name: VALID_VARIABLES.STARTING_ALLELE_FREQ,
-		variable: 'p',
+		variable: 'p₀',
 		description:
-			' The frequency of the allele of interest, A₁, at the beginning of the simulation. The beginning of the simulation is generation 0.',
+			'The frequency of allele A₁ (the allele of interest) in the starting generation. ',
 		section: VALID_SECTIONS.BASE,
 		order: 1,
 		defaultValue: 0.5,
 		min: 0,
 		max: 1,
 		step: 0.001,
-		sliderName: 'Initial Frequency for Allele A₁',
+		sliderName: 'Starting Frequency of Allele A₁',
 	},
 
 	{
@@ -71,43 +71,46 @@ export const popGenVariables: PopGenVariable[] = [
 	// SELECTION
 	{
 		name: VALID_VARIABLES.SELECTION_WAA,
-		variable: 'WAA',
+		variable: 'WA₁ A₁',
+		variableHTML: 'W<sub>A1A1</sub>',
 		section: VALID_SECTIONS.SELECTION,
 		order: 0,
 		defaultValue: 1,
 		min: 0,
 		max: 1,
 		step: 0.001,
-		sliderName: 'Relative fitness of the A₁ A₁ genotype (WA₁ A₁)',
+		sliderName: 'Fitness Coefficient for A₁A₁',
 		description:
 			// 'This describes the relative fitness of individuals with the A₁ A₁ genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wA₁A₂ and wA₂A₂). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.',
-			'The relative probability that an individual with an A₁ A₁ genotype reproduces. This is also called the WA₁ A₁ fitness coefficient. Typically one or more of the three fitness coefficients is set equal to 1 to serve as a reference, and the others are expressed as a fraction relative to the reference.',
+			'The probability (from 0 to 1) that an individual with the A₁A₁ genotype reproduces relative to individuals with other genotypes.',
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_WAa,
-		variable: 'WAa',
+		variable: 'WA₁ A₂',
+		variableHTML: 'W<sub>A1A2</sub>',
 		section: VALID_SECTIONS.SELECTION,
 		order: 1,
 		defaultValue: 1,
 		min: 0,
 		max: 1,
 		step: 0.001,
-		sliderName: 'Fitness Coefficient (WAa)',
+		sliderName: 'Fitness Coefficient for A₁A₂',
 		description:
-			'This describes the relative fitness of individuals with the Aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAA and waa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.',
+			'The probability (from 0 to 1) that an individual with the A₁A₂ genotype reproduces relative to individuals with other genotypes.',
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_Waa,
-		variable: 'Waa',
+		variable: 'WA₂ A₂',
+		variableHTML: 'W<sub>A2A2</sub>',
 		section: VALID_SECTIONS.SELECTION,
 		order: 2,
 		defaultValue: 1,
 		min: 0,
 		max: 1,
 		step: 0.001,
-		sliderName: 'Fitness Coefficient (Waa)',
+		sliderName: 'Fitness Coefficient for A₂A₂',
 		description:
-			'This describes the relative fitness of individuals with the aa genotype. Higher values represent greater fitness. This coefficient is used in conjunction with the fitness coefficients of the other genotype groups (i.e., wAA and wAa). Note, selection can be defined in terms of the three fitness coefficients or in terms of the selection and dominance coefficients, but not both.',
+			'The probability (from 0 to 1) that an individual with the A₂A₂ genotype reproduces relative to individuals with other genotypes.',
 	},
 	{
 		name: VALID_VARIABLES.SELECTION_COEFFICIENT,
@@ -147,7 +150,7 @@ export const popGenVariables: PopGenVariable[] = [
 		max: 10,
 		step: 0.001,
 		description:
-			'The rate at which allele A₁ mutates to allele a per generation. The rate can be entered using a negative exponent with a base of 10. For example, 10-1 is the same as 1/10 or 0.1 mutations per generation.  10-2 represents 1/102 = 1/100 = 0.01 mutations per generation. The mutation rate per site per generation for the human genome is about 1.1×10−8 or 0.00000001 mutations per site per generation.',
+			'The probability that allele A₁ changes into A₂ per generation. Enter this probability as a number multiplied by a negative exponent with a base of 10. For example, 1 X 10⁻² = 0.01 mutations per generation.',
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_BACKWARD_MUTATION,
@@ -161,7 +164,7 @@ export const popGenVariables: PopGenVariable[] = [
 		max: 10,
 		step: 0.001,
 		description:
-			'The rate at which allele A₂ mutates to allele A₁ per generation. See forward mutation rate to learn about negative exponents.',
+			'The probability that allele A₂ changes into A₁ per generation. Enter this probability as a number multiplied by a negative exponent with a base of 10. For example, 1 X 10⁻² = 0.01 mutations per generation.',
 	},
 	{
 		name: VALID_VARIABLES.MUTATION_FORWARD_MUTATION_EXPONENT,
@@ -194,7 +197,7 @@ export const popGenVariables: PopGenVariable[] = [
 		variable: 'm',
 		section: VALID_SECTIONS.MIGRATION,
 		sliderName: 'Migration Rate',
-		description: 'The rate at which alleles from a different population enter the simulated population per generation.',
+		description: 'The proportion of alleles (from 0 to 1) coming from an outside population per generation.',
 		order: 0,
 		defaultValue: 0,
 		min: 0,
@@ -208,7 +211,7 @@ export const popGenVariables: PopGenVariable[] = [
 		sliderName: 'Migrant Allele Frequency',
 		section: VALID_SECTIONS.MIGRATION,
 		description:
-			'The frequency of the A₁ allele among all alleles from another population that migrate into the simulated population.',
+			'The frequency of allele A₁ in the alleles coming from an outside population.',
 		order: 1,
 		defaultValue: 0.5,
 		min: 0,
@@ -223,7 +226,7 @@ export const popGenVariables: PopGenVariable[] = [
 		section: VALID_SECTIONS.INBREEDING,
 		order: 0,
 		description:
-			'The probability that both alleles in a randomly chosen individual in the population were inherited from the same common ancestor. A value of 0 indicates there is no inbreeding within the population. A value of 1 indicates all the alleles in the population came from the same ancestor, an extreme form of inbreeding found in model organisms that are specifically inbred to remove all genetic variation.',
+			'The probability that both alleles of a random individual in the population were inherited from the same common ancestor. If F = 0, there is no inbreeding in the population. If F = 1, all alleles in the population came from the same ancestor. ',
 		sliderName: 'Inbreeding Coefficient',
 		defaultValue: 0,
 		min: 0,
@@ -239,7 +242,7 @@ export const popGenVariables: PopGenVariable[] = [
 		section: VALID_SECTIONS.ASSORT_MATING,
 		order: 0,
 		description:
-			'Assortative mating is the tendency of individuals to choose mates with similar (or dissimilar) genotypes. A value of 1 indicates 100% positive assortative mating, meaning that individuals will only mate with other individuals of the same genotype. A value of 0 indicates total random mating. A value of 0.5 indicates that 50% of the time individuals will mate with others of the same genotype and the other 50% of the time at random.',
+			'The proportion of individuals in the population that choose mates with the same genotype. If α = 0, individuals always mate randomly. If α = 1, individuals always mate with other individuals that have the same genotype.',
 		sliderName: 'Positive Assortative Mating Frequency',
 		defaultValue: 0,
 		min: 0,
@@ -251,11 +254,12 @@ export const popGenVariables: PopGenVariable[] = [
 	{
 		name: VALID_VARIABLES.BOTTLENECK_GEN_TO_OVERRIDE_START,
 		variable: 'gen-to-over-start',
+		variableHTML: '',
 		section: VALID_SECTIONS.BOTTLENECK_GEN,
 		order: 0,
 		description:
-			'A population bottleneck is a time period over which there is a sudden decrease in population size but the population later recovers. Input the generation at which the bottleneck started and when it ended.',
-		sliderName: 'Timing of bottleneck generations',
+			'The generations over which the bottleneck takes place. Input the generation at which the bottleneck started and the generation at which it ended.',
+		sliderName: 'Bottleneck Generations',
 		defaultValue: 0,
 		min: 0,
 		max: 500,
@@ -277,11 +281,11 @@ export const popGenVariables: PopGenVariable[] = [
 	{
 		name: VALID_VARIABLES.BOTTLENECK_POPULATION_SIZE,
 		variable: 'BNb',
-		variableHTML: 'BN<sub>B</sub>',
+		variableHTML: 'N<sub>B</sub>',
 		section: VALID_SECTIONS.BOTTLENECK_GEN,
 		order: 0,
-		description: 'The number of individuals in the population during the bottleneck event.',
-		sliderName: 'Population Size During Bottleneck',
+		description: 'The number of individuals in the population during the bottleneck.',
+		sliderName: 'Bottleneck Population Size',
 		defaultValue: 500,
 		min: 0,
 		max: 10000,
