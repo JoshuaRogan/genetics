@@ -25,7 +25,7 @@ export default function Mutation() {
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider reverse popVariable={forwardMutation} isActive={true} />
-					<p>x10^</p>
+					<strong><p>x10^</p></strong>
 					<Slider popVariable={fowardMutationEpon} isActive={true} />
 				</Stack>
 			</Grid>
@@ -41,7 +41,7 @@ export default function Mutation() {
 				</HelpContentWrapper>
 				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
 					<Slider reverse popVariable={backwardMutation} isActive={true} />
-						<p>x10^</p>
+					<strong><p>x10^</p></strong>
 					<Slider popVariable={backwardMutationExpon} isActive={true} />
 				</Stack>
 			</Grid>
