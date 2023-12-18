@@ -1,3 +1,4 @@
+import React from "react";
 import {
 	AccordionItem,
 	AccordionButton,
@@ -6,8 +7,12 @@ import {
 	Text,
 } from '@chakra-ui/react';
 
-
-export default function AccordionCustomItem({ title, children, anchor }) {
+interface AccordianTypes {
+	title: string;
+	children: React.ReactNode;
+	anchor?: string;
+}
+export default function AccordionCustomItem({ title, children, anchor } : AccordianTypes) {
 		return <>
 				<AccordionItem>
 					<h2>
