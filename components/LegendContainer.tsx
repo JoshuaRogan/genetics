@@ -73,10 +73,10 @@ function BulkLegendStats({ results }: { results: number[][] }) {
 					{(findNumOfEliminations(results) / results.length) * 100}%{' '}
 				</StyledListItemStats>
 
-				<StyledListItemStats> Average final frequency of allele <i>A<sub>1</sub></i> {getAverageFinalFreq(results)}</StyledListItemStats>
+				<StyledListItemStats> Average final frequency of allele <i>A<sub>1</sub></i> = {getAverageFinalFreq(results)}</StyledListItemStats>
 				<StyledListItemStats>
 					{' '}
-					Standard deviation for final frequency of allele <i>A₁</i> {getStandardDeviationOfResults(results)}
+					Standard deviation for final frequency of allele <i>A₁</i> = {getStandardDeviationOfResults(results)}
 				</StyledListItemStats>
 			</StyledListStats>
 		</StyledLegendContainer>
