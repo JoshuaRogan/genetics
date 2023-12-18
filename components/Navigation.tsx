@@ -116,7 +116,7 @@ export default function Navigation() {
 								</MenuList>
 							</Menu>
 
-							<NavLink href="/faq">
+							<NavLink href="/model-background">
 								<Text fontWeight={'bold'}>Model Background</Text>
 							</NavLink>
 							<NavLink href="/help">

@@ -109,16 +109,17 @@ function FAQPage({
 							}}
 							mx="auto"
 						>
-							<SimpleGrid width="100%" columns={{ base: 1, md: 3 }} paddingY={2} spacing={4} placeItems="center">
+							<SimpleGrid width="100%" columns={{ base: 1, md: 2, xl: 4 }} paddingY={2} spacing={4} placeItems="center">
 								<CustomTab heading="Basic" tabIcon={<Icon as={IoFlagOutline} w={8} h={8} />} />
-								<CustomTab heading="Technical Questions" tabIcon={<Icon as={MdComputer} w={8} h={8} />} />
-								<CustomTab heading="Supporting Information" tabIcon={<Icon as={ChatIcon} w={7} h={7} />} />
+								<CustomTab heading="Additional Settings" tabIcon={<Icon as={MdComputer} w={8} h={8} />} />
+								<CustomTab heading="Assumptions and Limitations" tabIcon={<Icon as={ChatIcon} w={7} h={7} />} />
+								<CustomTab heading="Model Summary Table" tabIcon={<Icon as={ChatIcon} w={7} h={7} />} />
 							</SimpleGrid>
 						</TabList>
 						<TabPanels maxWidth={{ base: '550px', md: '786px', lg: '860px', xl: '1080px' }} mx="auto">
 							<TabPanel>
 								<Text color="text" textAlign={'center'} marginBottom={4}>
-									Model Background
+									Basic
 								</Text>
 								<Accordion variant="faq">
 									<AccordionCustomContent data={faqGettingStarted} />
@@ -126,7 +127,7 @@ function FAQPage({
 							</TabPanel>
 							<TabPanel>
 								<Text color="text" textAlign={'center'} marginBottom={4}>
-									Technical Questions
+									Additional
 								</Text>
 								<Accordion variant="faq">
 									<AccordionCustomContent data={faqTechnicalQuestions} />
@@ -134,7 +135,15 @@ function FAQPage({
 							</TabPanel>
 							<TabPanel>
 								<Text color="text" textAlign={'center'} marginBottom={4}>
-									Supporting Information
+									Assumptions and Limitations
+								</Text>
+								<Accordion variant="faq">
+									<AccordionCustomContent data={faqSupportingInformation} />
+								</Accordion>
+							</TabPanel>
+							<TabPanel>
+								<Text color="text" textAlign={'center'} marginBottom={4}>
+									Model Summary Table
 								</Text>
 								<Accordion variant="faq">
 									<AccordionCustomContent data={faqSupportingInformation} />
