@@ -13,7 +13,7 @@ import {
 	UnorderedList,
 	ListItem, List
 } from '@chakra-ui/react';
-import { IoFlagOutline, IoHelpBuoyOutline } from 'react-icons/io5';
+import {IoBookSharp, IoFlagOutline, IoHelpBuoyOutline, IoLibrary, IoSettings, IoSparkles} from 'react-icons/io5';
 import { MdComputer } from 'react-icons/md';
 
 import React, { useEffect, useState } from 'react';
@@ -171,10 +171,10 @@ function FAQPage({
 							mx="auto"
 						>
 							<SimpleGrid width="100%" columns={{ base: 1, md: 2, xl: 4 }} paddingY={2} spacing={4} placeItems="center">
-								<CustomTab heading="Basic Settings" tabIcon={<Icon as={IoFlagOutline} w={8} h={8} />} />
-								<CustomTab heading="Additional Settings" tabIcon={<Icon as={MdComputer} w={8} h={8} />} />
-								<CustomTab heading="Assumptions and Limitations" tabIcon={<Icon as={ChatIcon} w={7} h={7} />} />
-								<CustomTab heading="Model Summary Table" tabIcon={<Icon as={ChatIcon} w={7} h={7} />} />
+								<CustomTab heading="Basic Settings" tabIcon={<Icon as={IoSettings} w={8} h={8} />} />
+								<CustomTab heading="Additional Settings" tabIcon={<Icon as={IoSparkles} w={8} h={8} />} />
+								<CustomTab heading="Assumptions and Limitations" tabIcon={<Icon as={IoBookSharp} w={7} h={7} />} />
+								<CustomTab heading="Model Summary Table" tabIcon={<Icon as={IoLibrary } w={7} h={7} />} />
 							</SimpleGrid>
 						</TabList>
 
