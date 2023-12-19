@@ -23,7 +23,21 @@ import MainWrapper from '../components/MainWrapper';
 import AccordionCustomContent from '../components/AccordionCustomContent';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import AccordionCustomItem from "../components/AccordionItem";
-import Variable, {A1, A1A1, A1A2, A2, A2A2, P0} from "../components/Variable";
+import Variable, {
+	A1,
+	A1A1,
+	A1A2,
+	A2,
+	A2A2,
+	P0,
+	WA1A1,
+	WA2A2,
+	WA1A2,
+	N,
+	NSubE,
+	NSubm,
+	NSubf
+} from "../components/Variable";
 
 const tabs = ['getting-started', 'help-menu', 'technical-questions', 'supporting-information'];
 
@@ -48,8 +62,16 @@ export const getStaticProps: GetStaticProps<{
 	};
 };
 
+function UnorderedAnswerList({...props}) {
+	return <UnorderedList marginLeft={25} {...props} />
+}
+
 function AnswerText({children, ...props}) {
 	return <Text marginBottom={3} {...props}>{children}</Text>
+}
+
+function IndentedText({children, ...props}) {
+	return <AnswerText marginLeft={25} {...props}>{children}</AnswerText>
 }
 
 function InThisModel({children, ...props}) {
@@ -182,11 +204,11 @@ function FAQPage({
 
 									<AccordionCustomItem title={'Allele frequency'} anchor={'allele-frequency'}>
 										<AnswerText>The frequency, or proportion, of alleles in the population that are a specific type. Each allele frequency will always be a number from 0 to 1.</AnswerText>
-										<InThisModel>The frequency of A1, the allele of interest, is written as p. It is the number of A1 alleles divided by the total number of alleles in the population.</InThisModel>
-										<UnorderedList>
+										<InThisModel>The frequency of A1, the allele of interest, is written as <Variable isBold>p</Variable> . It is the number of A1 alleles divided by the total number of alleles in the population.</InThisModel>
+										<UnorderedAnswerList>
 											<ListItem>If p = 0, there are no <A1/> alleles in the population. In this case, <A1/> has been “eliminated” from the population.</ListItem>
 											<ListItem>If p = 1, all the alleles in the population are <A1/> alleles. In this case, <A1/> has reached “fixation” in the population.</ListItem>
-										</UnorderedList>
+										</UnorderedAnswerList>
 										<br/>
 										<AnswerText>The frequency of the other allele, <A2/>, is written as <Variable isBold>q</Variable>. Since the model has only two alleles: <i>p</i> + <i>q</i> = 1</AnswerText>
 										<LearnMore>  Subscripts may be added to indicate allele frequencies in specific generations. For example, <P0 isBold/> is the frequency of allele <A1/> in the starting generation (Generation 0).
@@ -205,8 +227,64 @@ function FAQPage({
 										</LearnMore>
 									</AccordionCustomItem>
 
+									<AccordionCustomItem title={'Hardy-Weinberg equilibrium'} anchor={'Hardy-Weinberg-equilibrium'}>
+										<AnswerText>When all the allele and genotype frequencies in a population stay constant from generation to generation. This happens when all the Hardy-Weinberg assumptions are met.</AnswerText>
+										<LearnMore>A mathematical model of Hardy-Weinberg equilibrium was independently developed in 1908 by Godfrey Hardy (a mathematician) and Wilhelm Weinberg (a physician). This model can act as a null hypothesis as biologists explore whether populations are evolving.</LearnMore>
+										<AnswerText>
+											In the Hardy-Weinberg equilibrium model, there are expected proportions for the genotype frequencies based on the allele frequencies:
+											<Text>
+												<br/>
+												<Text>P(<A1A1/>) = <Variable>p<sup>2</sup></Variable></Text>
+												<Text>P(<A1A2/>) = <Variable>2pq</Variable></Text>
+												<Text>P(<A2A2/>) = <Variable>q<sup>2</sup></Variable></Text>
+											</Text>
+										</AnswerText>
+									</AccordionCustomItem>
 
 
+									<AccordionCustomItem title={'Hardy-Weinberg assumptions'} anchor={'Hardy-Weinberg-assumptions'}>
+										<AnswerText>Conditions that must be met for a population to be in Hardy-Weinberg equilibrium. The conditions include the following:</AnswerText>
+
+										<AnswerText>
+											<UnorderedAnswerList>
+												<ListItem>Each individual has two genome copies (is diploid).</ListItem>
+												<ListItem>Individuals reproduce sexually.</ListItem>
+												<ListItem>Generations do not overlap.</ListItem>
+												<ListItem>Allele frequencies in males and females are equal.</ListItem>
+												<ListItem>No selection (<WA1A1 /> = <WA1A2 /> = <WA2A2 />  or <WA1A1 /> = 1, <WA1A2 /> = 1, <WA2A2 /> = 1). All individuals have the same chances of survival and reproduction.</ListItem>
+												<ListItem>No mutation (<Variable>μ</Variable> = 0, <Variable>v</Variable> = 0). No new alleles are formed by mutation, and existing alleles do not change.</ListItem>
+												<ListItem>No migration (<Variable>m</Variable> = 0). There is no movement of individuals or their alleles in or out of the population. </ListItem>
+												<ListItem>No assortative mating (<Variable>α</Variable> = 0). Individuals do not selectively choose their mates. In other words, mating is random.</ListItem>
+												<ListItem>Infinitely large population (<Variable>N</Variable> → ∞). The population is so large that it is unaffected by genetic drift.</ListItem>
+											</UnorderedAnswerList>
+										</AnswerText>
+										<InThisModel>The base model for the simulator is the Hardy-Weinberg equilibrium model, which meets all of the assumptions above. If you introduce evolutionary factors (like selection,  mutation, or migration) into the model, it will violate the assumptions and may deviate from Hardy-Weinberg equilibrium.</InThisModel>
+										<LearnMore> Deviations from Hardy-Weinberg equilibrium may include allele and genotype frequencies changing across generations, or genotype frequencies differing from their expected proportions. Some deviations are predictable, while others are more stochastic.</LearnMore>
+										<AnswerText>Not all violations of the assumptions will lead to deviations. So even if a population’s genotype frequencies match the expected proportions for Hardy-Weinberg equilibrium, that does not mean all assumptions are met.</AnswerText>
+									</AccordionCustomItem>
+
+
+									<AccordionCustomItem title={'Generations'} anchor={'generations'}>
+										<AnswerText>A generation is the group of individuals that are born and live around the same time. For example, a child, a parent, and a grandparent represent three generations.</AnswerText>
+										<InThisModel><Variable isBold>t</Variable> is the number of generations that will be simulated.</InThisModel>
+										<LearnMore>The model assumes that mating occurs at one time period in each generation, so different generations do not overlap. This means that alleles in one generation come only from the immediately previous generation, not any older generations.</LearnMore>
+									</AccordionCustomItem>
+
+									<AccordionCustomItem title={'Population size'} anchor={'population-size'}>
+										<AnswerText>The number of individuals in the population.</AnswerText>
+										<InThisModel><N isBold/> is the population size. For diploid organisms like humans, each individual has two genome copies, meaning that there are 2N alleles in the population.</InThisModel>
+										<LearnMore>Models with unequal numbers of males and females use the effective population size (<NSubE />):</LearnMore>
+										<IndentedText>
+											<NSubE /> = (4<NSubm/> x <NSubf />) / (<NSubm/> + <NSubf />)
+										</IndentedText>
+										<AnswerText>where <NSubm/> and <NSubf /> are the number of males and females respectively.</AnswerText>
+									</AccordionCustomItem>
+
+									<AccordionCustomItem title={'Infinitely large population'} anchor={'infinite-population'}>
+										<AnswerText>A theoretical population with an infinite number of individuals. Modeling infinitely large populations allows us to ignore random effects. </AnswerText>
+										<InThisModel>An infinite population is one of the Hardy-Weinberg assumptions.</InThisModel>
+										<LearnMore> In an infinitely large population, random events affecting allele frequencies become negligible, which eliminates the role of chance. As a result, the population is not affected by genetic drift, which can be helpful if you are studying the impact of other evolutionary forces. Allele frequencies of the next generation are derived precisely from the previous generation so you do not need to run multiple replications with the same settings.</LearnMore>
+									</AccordionCustomItem>
 								</Accordion>
 							</TabPanel>
 							<TabPanel>
