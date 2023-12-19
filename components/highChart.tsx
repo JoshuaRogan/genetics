@@ -36,7 +36,7 @@ function createOptions(theme = 'light', lines, title: string) {
 
 	return {
 		title: {
-			text: `${title}` || 'Population Genetics Simulation',
+			text: `<h2>${title}</h2>` || 'Population Genetics Simulation',
 			align: 'center',
 			useHTML: true,
 		},

@@ -29,6 +29,7 @@ import HighChart from '../highChart';
 import Collapsible from '../Collapsible';
 import FactorManager from '../FactorManager';
 import Head from 'next/head';
+import { CustomToast } from '../CustomToast';
 
 function Index() {
 	const dispatch = useDispatch();
@@ -82,9 +83,15 @@ function Index() {
 	const updateCharts = (isAllele = true) => {
 		if (popGenVars['gen-to-over-start'] > popGenVars['gen-to-over-end']) {
 			toast({
-				title: 'Error',
-				description: 'The generation to start the bottleneck must be less than the generation to end the bottleneck.',
-				status: 'error',
+				id: 'simulation-error',
+				render: (props) =>
+					CustomToast({
+						id: props.id as string,
+						title: 'Error',
+						description:
+							'The generation to start the bottleneck must be less than the generation to end the bottleneck.',
+						status: 'error',
+					}),
 				duration: 6000,
 				isClosable: true,
 			});
@@ -186,9 +193,13 @@ function Index() {
 					// Show a toast to let the user know the simulation has started
 					toast({
 						id: 'simulation-started',
-						title: 'Simulation Started',
-						description: 'The simulation has started and will complete in the background.',
-						status: 'info',
+						render: (props) =>
+							CustomToast({
+								id: props.id as string,
+								title: 'Simulation Started',
+								description: 'The simulation has started and will complete in the background.',
+								status: 'info',
+							}),
 						duration: 3000,
 						position: 'bottom-right',
 						isClosable: true,
@@ -206,10 +217,14 @@ function Index() {
 						if (!toast.isActive('simulation-complete')) {
 							toast({
 								id: 'simulation-complete',
-								title: 'Simulation Complete',
-								description:
-									'The simulation has completed and the results are ready to view. Below each table there is a summary of the results.',
-								status: 'success',
+								render: (props) =>
+									CustomToast({
+										id: props.id as string,
+										title: 'Simulation Complete',
+										description:
+											'The simulation has completed and the results are ready to view. Below each table there is a summary of the results.',
+										status: 'success',
+									}),
 								duration: 4000,
 								position: 'bottom-right',
 								isClosable: true,
@@ -249,9 +264,13 @@ function Index() {
 		navigator.clipboard.writeText(url.toString());
 
 		toast({
-			title: 'Link copied to clipboard',
-			description: 'You can now share this link with others',
-			status: 'success',
+			render: (props) =>
+				CustomToast({
+					id: props.id as string,
+					title: 'Link copied to clipboard',
+					description: 'You can now share this link with others',
+					status: 'success',
+				}),
 			duration: 4000,
 			isClosable: true,
 		});
@@ -461,9 +480,13 @@ function Index() {
 							if (!toast.isActive('simulation-reset')) {
 								toast({
 									id: 'simulation-reset',
-									title: 'Simulator Reset',
-									description: 'The simulator has been reset to default values.',
-									status: 'warning',
+									render: (props) =>
+										CustomToast({
+											id: props.id as string,
+											title: 'Simulator Reset',
+											description: "The simulator's settings have been reset to their default values.",
+											status: 'warning',
+										}),
 									duration: 5000,
 									isClosable: true,
 								});
