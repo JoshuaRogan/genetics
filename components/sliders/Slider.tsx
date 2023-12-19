@@ -129,7 +129,7 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false }: Slide
 				<SliderTrack bg="sliderTrack">
 					<SliderFilledTrack bg="sliderFilledTrack" />
 				</SliderTrack>
-				<SliderThumb boxSize={6} bg="blue.500" _focus={a11yThumbFocus}>
+				<SliderThumb boxSize={6} bg="#3585D0" _focus={a11yThumbFocus}>
 					{/* <Box color="tomato" /> */}
 				</SliderThumb>
 			</Slider>
