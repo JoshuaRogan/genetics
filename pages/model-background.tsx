@@ -76,6 +76,10 @@ function Italic({children, ...props}) {
 	return <Text as={'span'} fontStyle='italic' {...props}>{children}</Text>
 }
 
+function Underline({children, ...props}) {
+	return <Text as={'span'} textDecoration={'underline'} {...props}>{children}</Text>
+}
+
 function UnorderedAnswerList({...props}) {
 	return <UnorderedList marginLeft={25} {...props} />
 }
@@ -265,14 +269,15 @@ function FAQPage({
 												<ListItem>Individuals reproduce sexually.</ListItem>
 												<ListItem>Generations do not overlap.</ListItem>
 												<ListItem>Allele frequencies in males and females are equal.</ListItem>
-												<ListItem>No selection (<WA1A1 /> = <WA1A2 /> = <WA2A2 />  or <WA1A1 /> = 1, <WA1A2 /> = 1, <WA2A2 /> = 1). All individuals have the same chances of survival and reproduction.</ListItem>
-												<ListItem>No mutation (<Variable>μ</Variable> = 0, <Variable>v</Variable> = 0). No new alleles are formed by mutation, and existing alleles do not change.</ListItem>
-												<ListItem>No migration (<Variable>m</Variable> = 0). There is no movement of individuals or their alleles in or out of the population. </ListItem>
-												<ListItem>No assortative mating (<Variable>α</Variable> = 0). Individuals do not selectively choose their mates. In other words, mating is random.</ListItem>
-												<ListItem>Infinitely large population (<Variable>N</Variable> → ∞). The population is so large that it is unaffected by genetic drift.</ListItem>
+												<ListItem><strong>No selectio</strong>n (<WA1A1 /> = <WA1A2 /> = <WA2A2 />  or <WA1A1 /> = 1, <WA1A2 /> = 1, <WA2A2 /> = 1). All individuals have the same chances of survival and reproduction.</ListItem>
+												<ListItem><strong>No mutation</strong> (<Variable>μ</Variable> = 0, <Variable>v</Variable> = 0). No new alleles are formed by mutation, and existing alleles do not change.</ListItem>
+												<ListItem><strong>No migration</strong> (<Variable>m</Variable> = 0). There is no movement of individuals or their alleles in or out of the population. </ListItem>
+												<ListItem><strong>No assortative mating</strong> (<Variable>α</Variable> = 0). Individuals do not selectively choose their mates. In other words, mating is random.</ListItem>
+												<ListItem><strong>Infinitely large population </strong>(<Variable>N</Variable> → ∞). The population is so large that it is unaffected by genetic drift.</ListItem>
 											</UnorderedAnswerList>
 										</AnswerText>
-										<InThisModel>The base model for the simulator is the Hardy-Weinberg equilibrium model, which meets all of the assumptions above. If you introduce evolutionary factors (like selection,  mutation, or migration) into the model, it will violate the assumptions and may deviate from Hardy-Weinberg equilibrium.</InThisModel>
+										<InThisModel>The base model for the simulator is the Hardy-Weinberg equilibrium model, which meets all of the assumptions above. If you introduce evolutionary factors (like <Underline>
+											selection</Underline>, <Underline>mutation</Underline>, or <Underline>migration</Underline>) into the model, it will violate the assumptions and may deviate from Hardy-Weinberg equilibrium.</InThisModel>
 										<LearnMore> Deviations from Hardy-Weinberg equilibrium may include allele and genotype frequencies changing across generations, or genotype frequencies differing from their expected proportions. Some deviations are predictable, while others are more stochastic.</LearnMore>
 										<AnswerText>Not all violations of the assumptions will lead to deviations. So even if a population’s genotype frequencies match the expected proportions for Hardy-Weinberg equilibrium, that does not mean all assumptions are met.</AnswerText>
 									</AccordionCustomItem>
@@ -296,7 +301,8 @@ function FAQPage({
 
 									<AccordionCustomItem title={'Infinitely large population'} anchor={'infinite-population'}>
 										<AnswerText>A theoretical population with an infinite number of individuals. Modeling infinitely large populations allows us to ignore random effects. </AnswerText>
-										<InThisModel>An infinite population is one of the Hardy-Weinberg assumptions.</InThisModel>
+										<InThisModel>An infinite population is one of the <Underline>Hardy-Weinberg
+											assumptions</Underline>.</InThisModel>
 										<LearnMore> In an infinitely large population, random events affecting allele frequencies become negligible, which eliminates the role of chance. As a result, the population is not affected by genetic drift, which can be helpful if you are studying the impact of other evolutionary forces. Allele frequencies of the next generation are derived precisely from the previous generation so you do not need to run multiple replications with the same settings.</LearnMore>
 									</AccordionCustomItem>
 								</Accordion>
@@ -344,6 +350,7 @@ function FAQPage({
 											<ListItem><WA2A2 isBold/>  the fitness coefficient for the <A2A2/> genotype, is the relative probability that an <A2A2/> individual reproduces.</ListItem>
 										</UnorderedAnswerList>
 
+										<br/>
 										<AnswerText>The fitness coefficient for at least one genotype is usually set to 1, and the fitness coefficients for the other genotypes are written as proportions relative to 1.</AnswerText>
 
 										<LearnMore>After one generation of random mating, the allele frequency in this model is:</LearnMore>
@@ -356,8 +363,8 @@ function FAQPage({
 										<AnswerText>A spontaneous change in the genetic material. For example, a given allele may spontaneously change into another allele.</AnswerText>
 										<InThisModel>The model has two alleles, <A1/> and <A2/>, that may change into each other.</InThisModel>
 										<UnorderedAnswerList>
-											<ListItem>The forward mutation rate, <Mu/>, is the probability that <A1/> changes into <A2/> per generation.</ListItem>
-											<ListItem>The reverse mutation rate, <V/>, is the probability that <A2/> changes into <A1/> per generation.</ListItem>
+											<ListItem>The forward mutation rate, <Mu isBold/>, is the probability that <A1/> changes into <A2/> per generation.</ListItem>
+											<ListItem>The reverse mutation rate, <V isBold/>, is the probability that <A2/> changes into <A1/> per generation.</ListItem>
 										</UnorderedAnswerList>
 
 										<LearnMore>
@@ -437,12 +444,6 @@ function FAQPage({
 										</LearnMore>
 									</AccordionCustomItem>
 
-									<AccordionCustomItem title={'Infinitely large population'} anchor={'infinite-population'}>
-										<AnswerText></AnswerText>
-										<InThisModel></InThisModel>
-										<LearnMore></LearnMore>
-									</AccordionCustomItem>
-
 								</Accordion>
 							</TabPanel>
 							<TabPanel>
@@ -478,7 +479,7 @@ function FAQPage({
 								<Text color="text" textAlign={'center'} marginBottom={4}>
 									Model Summary Table
 								</Text>
-								<TableContainer whiteSpace={'wrap'}>
+								<TableContainer whiteSpace='normal'>
 									<Table variant='simple'>
 										<TableCaption>Model Summary Table</TableCaption>
 										<Thead>
