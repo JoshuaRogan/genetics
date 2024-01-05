@@ -1,5 +1,4 @@
 import {
-	Box,
 	NumberDecrementStepper,
 	NumberIncrementStepper,
 	NumberInput,
@@ -10,6 +9,7 @@ import {
 	SliderMark,
 	SliderThumb,
 	SliderTrack,
+	Stack,
 	useColorModeValue,
 } from '@chakra-ui/react';
 import React, { useCallback, useEffect } from 'react';
@@ -55,45 +55,51 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false, reverse
 		return margin;
 	}, [max]);
 
-	const NumberInputComp = () => <NumberInput
-		aria-label={`${sliderName} factor value input`}
-		maxW="120px"
-		defaultValue={defaultValue || min}
-		min={min}
-		max={max}
-		step={step}
-		value={value}
-		onChange={onSliderChanged}
-		onBlur={() => onSliderEndChanged(value)}
-		onKeyDown={(e) => {
-			if (e.key === 'Enter') {
-				onSliderEndChanged(value);
-			}
-		}}
-		isDisabled={!isActive || isInfinite}
-		sx={{
-			'& input': {
-				borderColor: useColorModeValue('black', 'gray.300'),
-			},
-			'&:hover': {
-				'& input:not(:focus)': {
-					borderColor: useColorModeValue('purple.500', 'purple.500'),
-				},
-			},
-		}}
-		focusBorderColor="purple.500"
-	>
-		<NumberInputField />
-		<NumberInputStepper>
-			<NumberIncrementStepper />
-			<NumberDecrementStepper />
-		</NumberInputStepper>
-	</NumberInput>
-
-
 	return (
-		<>
-			{!reverse && <NumberInputComp />}
+		<Stack
+			direction={{
+				base: 'column',
+				md: reverse ? 'row-reverse' : 'row',
+			}}
+			width="100%"
+			spacing="24px"
+			align={{ base: 'center' }}
+		>
+			<NumberInput
+				aria-label={`${sliderName} factor value input`}
+				maxW="120px"
+				defaultValue={defaultValue || min || value}
+				min={min}
+				max={max}
+				step={step}
+				value={value}
+				onChange={onSliderChanged}
+				onBlur={() => onSliderEndChanged(value)}
+				onKeyDown={(e) => {
+					if (e.key === 'Enter') {
+						onSliderEndChanged(value);
+					}
+				}}
+				isDisabled={!isActive || isInfinite}
+				sx={{
+					'& input': {
+						borderColor: useColorModeValue('black', 'gray.300'),
+					},
+					'&:hover': {
+						'& input:not(:focus)': {
+							borderColor: useColorModeValue('purple.500', 'purple.500'),
+						},
+					},
+				}}
+				focusBorderColor="purple.500"
+			>
+				<NumberInputField />
+				<NumberInputStepper>
+					<NumberIncrementStepper />
+					<NumberDecrementStepper />
+				</NumberInputStepper>
+			</NumberInput>
+
 			<Slider
 				name={sliderName}
 				flex="1"
@@ -137,9 +143,7 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false, reverse
 					{/* <Box color="tomato" /> */}
 				</SliderThumb>
 			</Slider>
-
-			{reverse && <NumberInputComp />}
-		</>
+		</Stack>
 	);
 }
 

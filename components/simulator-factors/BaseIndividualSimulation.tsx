@@ -34,9 +34,9 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 					message={populationSize.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: populationSize.sliderName}} />
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{ __html: populationSize.sliderName }} />
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
+				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" align={{ base: 'center' }}>
 					<Slider popVariable={populationSize} isActive={true} isInfinite={!infinitePopulationState} />
 					<Checkbox
 						variant="redBox"
@@ -44,6 +44,10 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 						checked={infinitePopulationState}
 						onChange={onInfinitePopulationChecked}
 						aria-label="Toggles population size to infinite for the current simulation"
+						style={{
+							// @ts-ignore - This is a valid style property, but Chakra UI definition doesn't have it.
+							textWrap: 'nowrap',
+						}}
 					>
 						Infinite (∞)
 					</Checkbox>
@@ -60,9 +64,7 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 						{numberOfGenerations.sliderName}
 					</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={numberOfGenerations} isActive={true} />
-				</Stack>
+				<Slider popVariable={numberOfGenerations} isActive={true} />
 			</Grid>
 
 			<Grid mb={8}>
@@ -71,12 +73,9 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 					message={startingAlleleFreq.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: startingAlleleFreq.sliderName}}>
-					</Text>
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{ __html: startingAlleleFreq.sliderName }}></Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={startingAlleleFreq} isActive={true} />
-				</Stack>
+				<Slider popVariable={startingAlleleFreq} isActive={true} />
 			</Grid>
 
 			{isReplicated && (
@@ -90,9 +89,7 @@ export default function BaseIndividualSimulation({ name, isReplicated }) {
 							{bulkSimulator.sliderName}
 						</Text>
 					</HelpContentWrapper>
-					<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-						<Slider popVariable={bulkSimulator} isActive={true} />
-					</Stack>
+					<Slider popVariable={bulkSimulator} isActive={true} />
 				</Grid>
 			)}
 		</Box>

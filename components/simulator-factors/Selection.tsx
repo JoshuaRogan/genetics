@@ -2,7 +2,7 @@ import React from 'react';
 
 import Slider from '../sliders/Slider';
 import { getPopGenVariableByName } from '../../data/popGenVariables';
-import { Box, Grid, Stack, Text } from '@chakra-ui/react';
+import { Box, Grid, Text } from '@chakra-ui/react';
 import HelpContentWrapper from './HelpContentWrapper';
 import { VALID_VARIABLES } from '../../types';
 
@@ -19,12 +19,9 @@ export default function Selection() {
 					message={fitnessFactorWAA.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: fitnessFactorWAA.sliderName}}>
-					</Text>
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{ __html: fitnessFactorWAA.sliderName }}></Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={fitnessFactorWAA} isActive={true} />
-				</Stack>
+				<Slider popVariable={fitnessFactorWAA} isActive={true} />
 			</Grid>
 			<Grid mb={8}>
 				<HelpContentWrapper
@@ -32,11 +29,9 @@ export default function Selection() {
 					message={fitnessFactorWAa.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: fitnessFactorWAa.sliderName}} />
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{ __html: fitnessFactorWAa.sliderName }} />
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={fitnessFactorWAa} isActive={true} />
-				</Stack>
+				<Slider popVariable={fitnessFactorWAa} isActive={true} />
 			</Grid>
 			<Grid mb={2}>
 				<HelpContentWrapper
@@ -44,11 +39,9 @@ export default function Selection() {
 					message={fitnessFactorWaa.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: fitnessFactorWaa.sliderName}} />
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{ __html: fitnessFactorWaa.sliderName }} />
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align={{ base: 'center' }}>
-					<Slider popVariable={fitnessFactorWaa} isActive={true} />
-				</Stack>
+				<Slider popVariable={fitnessFactorWaa} isActive={true} />
 			</Grid>
 		</Box>
 	);

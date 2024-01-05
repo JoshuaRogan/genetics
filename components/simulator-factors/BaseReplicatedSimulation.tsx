@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Stack, Text } from '@chakra-ui/react';
+import { Box, Grid, Text } from '@chakra-ui/react';
 
 import { VALID_VARIABLES } from '../../types';
 import { getPopGenVariableByName } from '../../data/popGenVariables';
@@ -24,9 +24,7 @@ export default function BaseReplicatedSimulation({ name }) {
 						{populationSize.sliderName}
 					</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={populationSize} isActive={true} />
-				</Stack>
+				<Slider popVariable={populationSize} isActive={true} />
 			</Grid>
 
 			<Grid mb={4}>
@@ -39,9 +37,7 @@ export default function BaseReplicatedSimulation({ name }) {
 						{numberOfGenerations.sliderName}
 					</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={numberOfGenerations} isActive={true} />
-				</Stack>
+				<Slider popVariable={numberOfGenerations} isActive={true} />
 			</Grid>
 
 			<Grid mb={4}>
@@ -50,11 +46,9 @@ export default function BaseReplicatedSimulation({ name }) {
 					message={startingAlleleFreq.description}
 					status="info"
 				>
-					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{__html: startingAlleleFreq.sliderName}} />
+					<Text as="h3" fontWeight="bold" dangerouslySetInnerHTML={{ __html: startingAlleleFreq.sliderName }} />
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={startingAlleleFreq} isActive={true} />
-				</Stack>
+				<Slider popVariable={startingAlleleFreq} isActive={true} />
 			</Grid>
 
 			<Grid mb={4}>
@@ -67,9 +61,7 @@ export default function BaseReplicatedSimulation({ name }) {
 						{numPopulation.sliderName}
 					</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} mt={4} spacing="24px" align={{ base: 'center' }}>
-					<Slider popVariable={numPopulation} isActive={true} />
-				</Stack>
+				<Slider popVariable={numPopulation} isActive={true} />
 			</Grid>
 		</Box>
 	);

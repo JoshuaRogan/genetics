@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Stack, Text } from '@chakra-ui/react';
+import { Box, Grid, Text } from '@chakra-ui/react';
 
 import { VALID_VARIABLES } from '../../types';
 import Slider from '../sliders/Slider';
@@ -24,9 +24,7 @@ export default function BottleneckGenerations() {
 						{generationToOverrideStart.sliderName}
 					</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
-					<RangeSlider startVariable={generationToOverrideStart} endVariable={generationToOverrideEnd} />
-				</Stack>
+				<RangeSlider startVariable={generationToOverrideStart} endVariable={generationToOverrideEnd} />
 			</Grid>
 			<Grid mb={4}>
 				<HelpContentWrapper
@@ -38,9 +36,7 @@ export default function BottleneckGenerations() {
 						{bottleNeckPopSize.sliderName}
 					</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
-					<Slider popVariable={bottleNeckPopSize} isActive={true} />
-				</Stack>
+				<Slider popVariable={bottleNeckPopSize} isActive={true} />
 			</Grid>
 		</Box>
 	);

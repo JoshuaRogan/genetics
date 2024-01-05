@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Stack, Text } from '@chakra-ui/react';
+import { Box, Grid, Text } from '@chakra-ui/react';
 import Slider from '../sliders/Slider';
 import { getPopGenVariableByName } from '../../data/popGenVariables';
 import { VALID_VARIABLES } from '../../types';
@@ -20,9 +20,7 @@ export default function Inbreeding() {
 						{inbreedingCoef.sliderName}
 					</Text>
 				</HelpContentWrapper>
-				<Stack direction={{ base: 'column', md: 'row' }} spacing="24px" mt={4} align="center">
-					<Slider popVariable={inbreedingCoef} isActive={true} />
-				</Stack>
+				<Slider popVariable={inbreedingCoef} isActive={true} />
 			</Grid>
 		</Box>
 	);
