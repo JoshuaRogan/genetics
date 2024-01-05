@@ -1,4 +1,5 @@
 import {
+	Box,
 	NumberDecrementStepper,
 	NumberIncrementStepper,
 	NumberInput,
@@ -10,9 +11,10 @@ import {
 	SliderThumb,
 	SliderTrack,
 	Stack,
+	Text,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPopGenVar } from '../../redux/reducers/rootSlice';
 import { PopGenVariable, StoreState } from '../../types';
@@ -30,7 +32,8 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false, reverse
 
 	const dispatch = useDispatch();
 	const sliderValue: number = useSelector((state: StoreState) => state.root.popGenVars[variable]);
-	const [value, setValue] = React.useState(sliderValue || defaultValue || min);
+	const [value, setValue] = useState(sliderValue || defaultValue || min);
+	const [isInvalid, setIsInvalid] = useState(false);
 
 	// If slider value changes in the Redux store, update the local state to keep it in sync.
 	useEffect(() => {
@@ -45,8 +48,9 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false, reverse
 
 	// Updates the Redux store only when the slider is released.
 	// This is to prevent the Redux store from being updated on every slider change
-	const onSliderEndChanged = (value) => {
-		dispatch(setPopGenVar({ varName: variable, value: Number(value) }));
+	const onSliderEndChanged = (value: number) => {
+		dispatch(setPopGenVar({ varName: variable, value: value }));
+		setIsInvalid(value < max && value > min ? false : true);
 	};
 
 	const calculateRightMarkMargin = useCallback(() => {
@@ -55,94 +59,109 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false, reverse
 		return margin;
 	}, [max]);
 
-	return (
-		<Stack
-			direction={{
-				base: 'column',
-				md: reverse ? 'row-reverse' : 'row',
-			}}
-			width="100%"
-			spacing="24px"
-			align={{ base: 'center' }}
-		>
-			<NumberInput
-				aria-label={`${sliderName} factor value input`}
-				maxW="120px"
-				defaultValue={defaultValue || min || value}
-				min={min}
-				max={max}
-				step={step}
-				value={value}
-				onChange={onSliderChanged}
-				onBlur={() => onSliderEndChanged(value)}
-				onKeyDown={(e) => {
-					if (e.key === 'Enter') {
-						onSliderEndChanged(value);
-					}
-				}}
-				isDisabled={!isActive || isInfinite}
-				sx={{
-					'& input': {
-						borderColor: useColorModeValue('black', 'gray.300'),
-					},
-					'&:hover': {
-						'& input:not(:focus)': {
-							borderColor: useColorModeValue('purple.500', 'purple.500'),
-						},
-					},
-				}}
-				focusBorderColor="purple.500"
-			>
-				<NumberInputField />
-				<NumberInputStepper>
-					<NumberIncrementStepper />
-					<NumberDecrementStepper />
-				</NumberInputStepper>
-			</NumberInput>
+	const onInputInvalid = useCallback(() => setIsInvalid(true), []);
 
-			<Slider
-				name={sliderName}
-				flex="1"
-				mb={{ base: 2, md: 0 }}
-				aria-label={`${sliderName} factor value slider`}
-				defaultValue={defaultValue || min}
-				min={min}
-				max={max}
-				step={step}
-				focusThumbOnChange={false}
-				value={value}
-				onChange={onSliderChanged}
-				onChangeEnd={onSliderEndChanged}
-				isDisabled={!isActive || isInfinite}
-				_focus={a11yFocus}
+	return (
+		<Stack width="100%" position="relative">
+			<Stack
+				direction={{
+					base: 'column',
+					md: reverse ? 'row-reverse' : 'row',
+				}}
+				width="100%"
+				spacing="24px"
+				align={{ base: 'center' }}
 			>
-				<SliderMark
-					mt={2}
-					ml="0"
-					fontSize="sm"
-					fontWeight={600}
-					value={min}
-					color={useColorModeValue('black', 'whitesmoke')}
+				<NumberInput
+					aria-label={`${sliderName} factor value input`}
+					maxW="120px"
+					defaultValue={defaultValue || min || value}
+					min={min}
+					max={max}
+					step={step}
+					value={value}
+					onChange={onSliderChanged}
+					onBlur={() => onSliderEndChanged(value)}
+					onKeyDown={(e) => {
+						if (e.key === 'Enter') {
+							onSliderEndChanged(value);
+						}
+					}}
+					isDisabled={!isActive || isInfinite}
+					onInvalid={onInputInvalid}
+					sx={{
+						'& input': {
+							borderColor: useColorModeValue('black', 'gray.300'),
+						},
+						'&:hover': {
+							'& input:not(:focus)': {
+								borderColor: useColorModeValue('purple.500', 'purple.500'),
+							},
+						},
+					}}
+					focusBorderColor="purple.500"
 				>
-					{min}
-				</SliderMark>
-				<SliderMark
-					mt={2}
-					ml={{ base: '-10', md: calculateRightMarkMargin() }}
-					fontSize="sm"
-					fontWeight={600}
-					value={max}
-					color={useColorModeValue('black', 'whitesmoke')}
+					<NumberInputField />
+					<NumberInputStepper>
+						<NumberIncrementStepper />
+						<NumberDecrementStepper />
+					</NumberInputStepper>
+				</NumberInput>
+
+				<Slider
+					name={sliderName}
+					flex="1"
+					mb={{ base: 2, md: 0 }}
+					aria-label={`${sliderName} factor value slider`}
+					defaultValue={defaultValue || min}
+					min={min}
+					max={max}
+					step={step}
+					focusThumbOnChange={false}
+					value={value}
+					onChange={onSliderChanged}
+					onChangeEnd={onSliderEndChanged}
+					isDisabled={!isActive || isInfinite}
+					_focus={a11yFocus}
 				>
-					{max}
-				</SliderMark>
-				<SliderTrack bg="sliderTrack">
-					<SliderFilledTrack bg="sliderFilledTrack" />
-				</SliderTrack>
-				<SliderThumb boxSize={6} bg="#3585D0" _focus={a11yThumbFocus}>
-					{/* <Box color="tomato" /> */}
-				</SliderThumb>
-			</Slider>
+					<SliderMark
+						mt={2}
+						ml="0"
+						fontSize="sm"
+						fontWeight={600}
+						value={min}
+						color={useColorModeValue('black', 'whitesmoke')}
+					>
+						{min}
+					</SliderMark>
+					<SliderMark
+						mt={2}
+						ml={{ base: '-10', md: calculateRightMarkMargin() }}
+						fontSize="sm"
+						fontWeight={600}
+						value={max}
+						color={useColorModeValue('black', 'whitesmoke')}
+					>
+						{max}
+					</SliderMark>
+					<SliderTrack bg="sliderTrack">
+						<SliderFilledTrack bg="sliderFilledTrack" />
+					</SliderTrack>
+					<SliderThumb boxSize={6} bg="#3585D0" _focus={a11yThumbFocus}>
+						{/* <Box color="tomato" /> */}
+					</SliderThumb>
+				</Slider>
+			</Stack>
+
+			<Text
+				color={useColorModeValue('red.600', 'red.200')}
+				fontSize="sm"
+				bottom="-6"
+				display={isInvalid ? 'block' : 'none'}
+			>
+				Please enter a value between <strong>{min}</strong> and <strong>{max}</strong> for the{' '}
+				<strong>[{sliderName}]</strong> factor value.
+			</Text>
 		</Stack>
 	);
 }
