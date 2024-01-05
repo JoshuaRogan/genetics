@@ -62,13 +62,17 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false, reverse
 	const onInputInvalid = useCallback(() => setIsInvalid(true), []);
 
 	return (
-		<Stack width="100%" position="relative">
+		<Stack width="100%">
 			<Stack
 				direction={{
 					base: 'column',
 					md: reverse ? 'row-reverse' : 'row',
 				}}
 				width="100%"
+				mb={{
+					base: 4,
+					md: 0,
+				}}
 				spacing="24px"
 				align={{ base: 'center' }}
 			>
