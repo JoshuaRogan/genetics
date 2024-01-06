@@ -537,7 +537,7 @@ function FAQPage({
 											<Tr>
 												<Td><P/></Td>
 												<Td><strong>frequency of allele <A1/></strong>, the number of <A1/> alleles divided by the total number of alleles in the population</Td>
-												<Td>Allele frequency</Td>
+												<Td><AlleleFrequencyLink /></Td>
 											</Tr>
 
 											<Tr>
