@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
 	AccordionItem,
 	AccordionButton,
@@ -13,8 +13,21 @@ interface AccordianTypes {
 	anchor?: string;
 }
 export default function AccordionCustomItem({ title, children, anchor } : AccordianTypes) {
+
+	// Autoopen any anchors
+	useEffect(() => {
+		setTimeout(() => {
+			const anchorValue = window.location.hash.substring(1);
+			const el = document.getElementById(anchorValue)
+			if (el) {
+				el.click()
+			}
+		}, 200)
+
+	}, [window.location.hash])
+
 		return <>
-				<AccordionItem>
+			<AccordionItem as="section" id={anchor} itemID={anchor}>
 					<h2>
 						<AccordionButton>
 							<Text as="span" flex="1" textAlign="left" fontWeight={600}>
