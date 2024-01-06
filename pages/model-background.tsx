@@ -48,8 +48,28 @@ import Variable, {
 	NSubm,
 	NSubf, NSubB, P1, Q0, Mu, V, M, PM, F, Alpha, PSquared, QSquared, P, Q, T
 } from "../components/Variable";
+import HelpLink, {
+	AlleleFrequencyLink,
+	AlleleLink,
+	AssortMatingLink,
+	GenerationsLink, GeneticDriftLink,
+	GenotypeLink, HardyWeinAssumLink,
+	HardyWeinEquilLink,
+	InbreedingLink,
+	InifinitePopulationLink,
+	MigrationLink,
+	MutationLink,
+	PopulationBottleNeckLink,
+	PopulationSizeLink,
+	SelectionLink
+} from "../components/HelpLink";
 
-const tabs = ['getting-started', 'help-menu', 'technical-questions', 'supporting-information'];
+export const TAB_BASIC = 'basic-settings';
+export const TAB_ADDITIONAL = 'additional-settings';
+export const TAB_ASSUMPTIONS = 'assumptions';
+export const TAB_SUMMARY_TABLE = 'model-summary';
+
+const tabs = [TAB_BASIC, TAB_ADDITIONAL, TAB_ASSUMPTIONS, TAB_SUMMARY_TABLE];
 
 export const getStaticProps: GetStaticProps<{
 	faqGettingStarted: any;
@@ -112,16 +132,29 @@ function FAQPage({
 	useEffect(() => {
 		const params = new URLSearchParams(window.location.search);
 		const urlTab = params.get('tab');
+		debugger
 		if (urlTab) {
 			const tabIndex = tabs.indexOf(urlTab);
 			if (tabIndex > -1) {
 				setTabIndex(tabIndex);
 			}
 		}
-	}, []);
+	}, [window.location.search]);
 
 	const handleTabsChange = (index) => {
 		setTabIndex(index);
+
+		// Update the URL param
+		const currentUrl = new URL(window.location.href);
+
+		// Create URLSearchParams object from the current URL's query string
+		const searchParams = new URLSearchParams(currentUrl.search);
+
+		// Set the new value of the "tab" parameter
+		searchParams.set('tab', tabs[index]);
+
+		// Update the URL without reloading the page (TBD if we actually want to do this)
+		history.pushState(null, '', currentUrl.pathname + '?' + searchParams.toString());
 	};
 
 	return (
@@ -249,7 +282,7 @@ function FAQPage({
 										<AnswerText>When all the allele and genotype frequencies in a population stay constant from generation to generation. This happens when all the Hardy-Weinberg assumptions are met.</AnswerText>
 										<LearnMore>A mathematical model of Hardy-Weinberg equilibrium was independently developed in 1908 by Godfrey Hardy (a mathematician) and Wilhelm Weinberg (a physician). This model can act as a null hypothesis as biologists explore whether populations are evolving.</LearnMore>
 										<AnswerText>
-											In the Hardy-Weinberg equilibrium model, there are expected proportions for the genotype frequencies based on the allele frequencies:
+											In the Hardy-Weinberg equilibrium model, there are expected proportions for the <GenotypeLink linkText="genotype frequencies"/> based on the <AlleleFrequencyLink linkText="allele frequencies" /> :
 											<Text>
 												<br/>
 												<Text>P(<A1A1/>) = <Variable>p<sup>2</sup></Variable></Text>
@@ -269,15 +302,15 @@ function FAQPage({
 												<ListItem>Individuals reproduce sexually.</ListItem>
 												<ListItem>Generations do not overlap.</ListItem>
 												<ListItem>Allele frequencies in males and females are equal.</ListItem>
-												<ListItem><strong>No selectio</strong>n (<WA1A1 /> = <WA1A2 /> = <WA2A2 />  or <WA1A1 /> = 1, <WA1A2 /> = 1, <WA2A2 /> = 1). All individuals have the same chances of survival and reproduction.</ListItem>
-												<ListItem><strong>No mutation</strong> (<Variable>μ</Variable> = 0, <Variable>v</Variable> = 0). No new alleles are formed by mutation, and existing alleles do not change.</ListItem>
-												<ListItem><strong>No migration</strong> (<Variable>m</Variable> = 0). There is no movement of individuals or their alleles in or out of the population. </ListItem>
-												<ListItem><strong>No assortative mating</strong> (<Variable>α</Variable> = 0). Individuals do not selectively choose their mates. In other words, mating is random.</ListItem>
-												<ListItem><strong>Infinitely large population </strong>(<Variable>N</Variable> → ∞). The population is so large that it is unaffected by genetic drift.</ListItem>
+												<ListItem><strong>No <SelectionLink isLower /></strong> (<WA1A1 /> = <WA1A2 /> = <WA2A2 />  or <WA1A1 /> = 1, <WA1A2 /> = 1, <WA2A2 /> = 1). All individuals have the same chances of survival and reproduction.</ListItem>
+												<ListItem><strong>No <MutationLink isLower /></strong> (<Variable>μ</Variable> = 0, <Variable>v</Variable> = 0). No new alleles are formed by mutation, and existing alleles do not change.</ListItem>
+												<ListItem><strong>No <MigrationLink isLower /></strong> (<Variable>m</Variable> = 0). There is no movement of individuals or their alleles in or out of the population. </ListItem>
+												<ListItem><strong>No <AssortMatingLink isLower /></strong> (<Variable>α</Variable> = 0). Individuals do not selectively choose their mates. In other words, mating is random.</ListItem>
+												<ListItem><strong><InifinitePopulationLink /> </strong>(<Variable>N</Variable> → ∞). The population is so large that it is unaffected by genetic drift.</ListItem>
 											</UnorderedAnswerList>
 										</AnswerText>
 										<InThisModel>The base model for the simulator is the Hardy-Weinberg equilibrium model, which meets all of the assumptions above. If you introduce evolutionary factors (like <Underline>
-											selection</Underline>, <Underline>mutation</Underline>, or <Underline>migration</Underline>) into the model, it will violate the assumptions and may deviate from Hardy-Weinberg equilibrium.</InThisModel>
+											<SelectionLink isLower /></Underline>, <Underline><MutationLink isLower /></Underline>, or <Underline><MigrationLink /></Underline>) into the model, it will violate the assumptions and may deviate from Hardy-Weinberg equilibrium.</InThisModel>
 										<LearnMore> Deviations from Hardy-Weinberg equilibrium may include allele and genotype frequencies changing across generations, or genotype frequencies differing from their expected proportions. Some deviations are predictable, while others are more stochastic.</LearnMore>
 										<AnswerText>Not all violations of the assumptions will lead to deviations. So even if a population’s genotype frequencies match the expected proportions for Hardy-Weinberg equilibrium, that does not mean all assumptions are met.</AnswerText>
 									</AccordionCustomItem>
@@ -301,9 +334,8 @@ function FAQPage({
 
 									<AccordionCustomItem title={'Infinitely large population'} anchor={'infinite-population'}>
 										<AnswerText>A theoretical population with an infinite number of individuals. Modeling infinitely large populations allows us to ignore random effects. </AnswerText>
-										<InThisModel>An infinite population is one of the <Underline>Hardy-Weinberg
-											assumptions</Underline>.</InThisModel>
-										<LearnMore> In an infinitely large population, random events affecting allele frequencies become negligible, which eliminates the role of chance. As a result, the population is not affected by genetic drift, which can be helpful if you are studying the impact of other evolutionary forces. Allele frequencies of the next generation are derived precisely from the previous generation so you do not need to run multiple replications with the same settings.</LearnMore>
+										<InThisModel>An infinite population is one of the <HardyWeinAssumLink />.</InThisModel>
+										<LearnMore> In an infinitely large population, random events affecting allele frequencies become negligible, which eliminates the role of chance. As a result, the population is not affected by <GeneticDriftLink isLower />, which can be helpful if you are studying the impact of other evolutionary forces. Allele frequencies of the next generation are derived precisely from the previous generation so you do not need to run multiple replications with the same settings.</LearnMore>
 									</AccordionCustomItem>
 								</Accordion>
 							</TabPanel>
@@ -313,12 +345,12 @@ function FAQPage({
 								</Text>
 								<Accordion variant="faq">
 									<AccordionCustomItem title={'Evolution'} anchor={'evolution'}>
-										<AnswerText>A change in a population’s allele frequencies over time. Factors that can cause evolution include:  </AnswerText>
+										<AnswerText>A change in a population’s <AlleleFrequencyLink linkText="allele frequencies"/> over time. Factors that can cause evolution include:  </AnswerText>
 										<UnorderedAnswerList>
-											<ListItem>genetic drift</ListItem>
-											<ListItem>selection</ListItem>
-											<ListItem>mutation</ListItem>
-											<ListItem>migration</ListItem>
+											<ListItem><GeneticDriftLink isLower /></ListItem>
+											<ListItem><SelectionLink isLower /> </ListItem>
+											<ListItem><MutationLink isLower /></ListItem>
+											<ListItem><MigrationLink isLower /></ListItem>
 										</UnorderedAnswerList>
 
 										<AnswerText>
@@ -327,7 +359,7 @@ function FAQPage({
 									</AccordionCustomItem>
 
 									<AccordionCustomItem title={'Genetic drift'} anchor={'genetic-drift'}>
-										<AnswerText>Changes in allele frequency due to random chance. For example, some individuals may randomly die or not reproduce, causing their alleles to become less common by chance. Genetic drift occurs in any populations that are not infinitely large. It can be particularly important for small populations and during population bottlenecks.</AnswerText>
+										<AnswerText>Changes in allele frequency due to random chance. For example, some individuals may randomly die or not reproduce, causing their alleles to become less common by chance. Genetic drift occurs in any populations that are not <InifinitePopulationLink linkText={"infinitely large"}/>. It can be particularly important for small populations and during <PopulationBottleNeckLink linkText={"population bottlenecks"}/>.</AnswerText>
 										<InThisModel>Genetic drift is modeled by “random sampling with replacement,” which involves randomly selecting alleles from each generation to be passed on to the next. For example, imagine a population with 10 copies of alleles: 5 <A1 /> and 5 <A2 />. The model randomly selects one allele, and then puts it back into the pool (making it 5 <A1 /> and 5 <A2/> again) to select another allele.
 										</InThisModel>
 									</AccordionCustomItem>
@@ -409,7 +441,7 @@ function FAQPage({
 											</UnorderedAnswerList>
 										</InThisModel>
 
-										<LearnMore>Inbreeding alone does not alter allele frequencies, but it can alter genotype frequencies:
+										<LearnMore>Inbreeding alone does not alter <AlleleFrequencyLink linkText="allele frequencies" />, but it can alter <GenotypeLink linkText="genotype frequencies"/>:
 										<UnorderedAnswerList>
 											<ListItem><i>P(<A1A1/>) = p<sup>2</sup> (1 − F) + Fp </i> </ListItem>
 											<ListItem><i>P(<A1A2/>) = 2pq (1 − F)</i> </ListItem>
@@ -431,7 +463,7 @@ function FAQPage({
 												<ListItem>If <Alpha/> = 1, individuals always mate with other individuals that have the same genotype.</ListItem>
 											</UnorderedAnswerList>
 										</InThisModel>
-										<LearnMore> Assortative mating alone does not alter allele frequencies, but it can alter genotype frequencies:
+										<LearnMore> Assortative mating alone does not alter <AlleleFrequencyLink linkText="allele frequencies" />, but it can alter <GenotypeLink linkText="genotype frequencies"/>:
 											<UnorderedAnswerList>
 												<ListItem>P(<A1A1/>) =  [(1 – <Alpha/>)p<sup>2</sup> + α(p<sup>2</sup> + pq/2)] / D</ListItem>
 												<ListItem>P(<A1A2/>) =  = [(1 – <Alpha/>)2pq + α(pq)] / D</ListItem>
@@ -459,7 +491,7 @@ function FAQPage({
 											<ListItem>Individuals in the population reproduce sexually.</ListItem>
 										</UnorderedAnswerList>
 										<br/>
-										<AnswerText >More assumptions of the base model (without evolution) are described in the Hardy-Weinberg assumptions section. More assumptions of the full model are described in the limitations section below.</AnswerText>
+										<AnswerText >More assumptions of the base model (without evolution) are described in the <HardyWeinAssumLink /> section. More assumptions of the full model are described in the limitations section below.</AnswerText>
 									</AccordionCustomItem>
 
 									<AccordionCustomItem title={'What are the limitations of the model? '} anchor={'limits'}>
@@ -493,13 +525,13 @@ function FAQPage({
 											<Tr>
 												<Td><A1/></Td>
 												<Td>the <strong>allele of interest</strong></Td>
-												<Td>Allele</Td>
+												<Td><AlleleLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><A2/></Td>
 												<Td>the <strong>other allele</strong></Td>
-												<Td>Allele</Td>
+												<Td><AlleleLink /></Td>
 											</Tr>
 
 											<Tr>
@@ -511,85 +543,85 @@ function FAQPage({
 											<Tr>
 												<Td><P0/></Td>
 												<Td><strong>starting frequency of allele <A1/></strong>, the frequency of allele <A1/> in the starting generation (Generation 0)</Td>
-												<Td>Allele frequency</Td>
+												<Td><AlleleFrequencyLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><Q/></Td>
 												<Td><strong>frequency of allele <A2/></strong>, the number of <A2/> alleles divided by the total number of alleles in the population</Td>
-												<Td>Allele frequency</Td>
+												<Td><AlleleFrequencyLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><A1A1/>, <A1A2/>, <A2A2/></Td>
 												<Td><strong>genotypes</strong></Td>
-												<Td>Genotype</Td>
+												<Td><GenotypeLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td>P(<A1A1/>), P(<A1A2/>), P(<A2A2/>)</Td>
 												<Td><strong>frequency of each genotype</strong>, the number of individuals with the genotype divided by the total number of individuals in the population</Td>
-												<Td>Genotype</Td>
+												<Td><GenotypeLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><T/></Td>
 												<Td>number of <strong>generations</strong> simulated</Td>
-												<Td>Generations</Td>
+												<Td><GenerationsLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><N/></Td>
 												<Td><strong>population size</strong>, the number of individuals in the population</Td>
-												<Td>Population size</Td>
+												<Td><PopulationSizeLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><NSubB/></Td>
 												<Td><strong>population size during a bottleneck</strong>, an event that suddenly decreases population size</Td>
-												<Td>Population bottleneck</Td>
+												<Td><PopulationBottleNeckLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><WA1A1/>, <WA1A2/>, <WA2A2/></Td>
 												<Td><strong>fitness coefficients</strong>, the relative probabilities that an individual of a given genotype reproduces</Td>
-												<Td>Selection</Td>
+												<Td><SelectionLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><Mu/></Td>
 												<Td><strong>forward mutation rate</strong>, the probability that allele <A1/> changes into <A2/></Td>
-												<Td>Mutation</Td>
+												<Td><MutationLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><V/></Td>
 												<Td><strong>reverse mutation rate</strong>, the probability that allele <A2/> changes into <A1/></Td>
-												<Td>Mutation</Td>
+												<Td><MutationLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><M/></Td>
 												<Td><strong>migration rate</strong>, the proportion of alleles coming from an outside population</Td>
-												<Td>Migration</Td>
+												<Td><MigrationLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><PM/></Td>
 												<Td><strong>migrant allele frequency</strong>, the frequency of allele <A1/> in the alleles coming from an outside population</Td>
-												<Td>Migration</Td>
+												<Td><MigrationLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><F/></Td>
 												<Td><strong>inbreeding coefficient</strong>, the probability that both alleles of a random individual in the population were inherited from the same common ancestor</Td>
-												<Td>Inbreeding</Td>
+												<Td><InbreedingLink /></Td>
 											</Tr>
 
 											<Tr>
 												<Td><Mu/></Td>
 												<Td><strong>positive assortative mating frequency</strong>, the proportion of individuals in the population that choose mates with the same genotype</Td>
-												<Td>Assortative mating</Td>
+												<Td><AssortMatingLink /></Td>
 											</Tr>
 										</Tbody>
 									</Table>
