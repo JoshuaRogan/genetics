@@ -507,7 +507,7 @@ function FAQPage({
 											{/*</UnorderedAnswerList>*/}
 
 											<br/>
-											<AnswerText>where <Italic>D = [(1 – α)<PSquared/> + α(<PSquared/> + pq/2)] + [(1 – α)2pq + α(pq)] + [(1 – α)<QSquared/> + α(<QSquared/> + pq/2)]</Italic>.</AnswerText>
+											{/*<AnswerText>where <Italic>D = [(1 – α)<PSquared/> + α(<PSquared/> + pq/2)] + [(1 – α)2pq + α(pq)] + [(1 – α)<QSquared/> + α(<QSquared/> + pq/2)]</Italic>.</AnswerText>*/}
 											<AnswerText> where </AnswerText>
 											<SmallMathEquation equationName='assort-4' />
 											<AnswerText>In this simulator, only simple scenarios of positive assortative mating are implemented, and negative assortative mating/disassortative mating cannot be modeled.</AnswerText>
