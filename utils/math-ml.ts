@@ -1,5 +1,21 @@
 export function renderMathML(formula: string): string {
 	switch (formula) {
+		case 'genotype':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>1</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>+</mo><mo>&#xA0;</mo><mi>P</mi><mo>(</mo><mpadded lspace="-1px"><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>2</mn></msub></mpadded><mo>)</mo><mo>&#xA0;</mo><mo>+</mo><mo>&#xA0;</mo><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>2</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><mo>&#xA0;</mo><mn>1</mn></math>`;
+
+		case 'hardy-1':
+			return '<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>1</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><msup><mi>p</mi><mn>2</mn></msup></math>'
+
+		case 'hardy-2':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><mn>2</mn><mi>p</mi><mi>q</mi></math>`;
+
+		case 'hardy-3':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>2</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><msup><mi>q</mi><mn>2</mn></msup></math>`
+
+		case 'population-size':
+			return `
+				<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>N</mi><mi>e</mi></msub><mo>=</mo><mfrac><mrow><mo>(</mo><mn>4</mn><msub><mi>N</mi><mi>m</mi></msub><mo>&#xD7;</mo><msub><mi>N</mi><mi>f</mi></msub><mo>)</mo></mrow><mrow><mo>(</mo><msub><mi>N</mi><mi>m</mi></msub><mo>+</mo><msub><mi>N</mi><mi>f</mi></msub><mo>)</mo></mrow></mfrac></math>
+			`
 		case 'selection-formula':
 			return `
 			<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -15,31 +31,16 @@ export function renderMathML(formula: string): string {
 					<mrow>
 						<mo>(</mo>
 						<msup>
-							<msub>
-								<mi>p</mi>
-								<mn>0</mn>
-							</msub>
-							<mi>2</mi>
+							<msubsup><mi>p</mi><mn>0</mn><mn>2</mn></msubsup>
 						</msup>
 						<mo>)</mo>
 						<mo>(</mo>
-						<msub>
-							<mi>W</mi>
-							<msub>
-								<mn>A</mn>
-								<mn>1</mn>
-							</msub>
-							<msub>
-								<mn>A</mn>
-								<mn>1</mn>
-							</msub>
-						</msub>
+							<msub><mi>W</mi><mrow><mi>A</mi><mn>1</mn><mi>A</mi><mn>1</mn></mrow></msub>
 						<mo>)</mo>
 					</mrow>
 					<mo>+</mo>
 					<mrow>
 						<mo>(</mo>
-						<mn>1</mn>
 						<msub>
 							<mi>p</mi>
 							<mn>0</mn>
@@ -50,17 +51,7 @@ export function renderMathML(formula: string): string {
 						</msub>
 						<mo>)</mo>
 						<mo>(</mo>
-						<msub>
-							<mi>W</mi>
-							<msub>
-								<mn>A</mn>
-								<mn>1</mn>
-							</msub>
-							<msub>
-								<mn>A</mn>
-								<mn>2</mn>
-							</msub>
-						</msub>
+						<msub><mi>W</mi><mrow><mi>A</mi><mn>1</mn><mi>A</mi><mn>2</mn></mrow></msub>
 						<mo>)</mo>
 					</mrow>
 				</mrow>
@@ -68,28 +59,12 @@ export function renderMathML(formula: string): string {
 					<mrow>
 						<mrow>
 							<mo>(</mo>
-							<msup>
-								<msub>
-									<mi>p</mi>
-									<mn>0</mn>
-								</msub>
-								<mi>2</mi>
-							</msup>
+							<msubsup><mi>p</mi><mn>0</mn><mn>2</mn></msubsup>
 							<mo>)</mo>
 						</mrow>
 						<mrow>
 							<mo>(</mo>
-							<msub>
-								<mi>W</mi>
-								<msub>
-									<mn>A</mn>
-									<mn>1</mn>
-								</msub>
-								<msub>
-									<mn>A</mn>
-									<mn>1</mn>
-								</msub>
-							</msub>
+							<msub><mi>W</mi><mrow><mi>A</mi><mn>1</mn><mi>A</mi><mn>1</mn></mrow></msub>
 							<mo>)</mo>
 						</mrow>
 					</mrow>
@@ -111,42 +86,16 @@ export function renderMathML(formula: string): string {
 						</msub>
 						<mo>)</mo>
 						<mo>(</mo>
-						<msub>
-							<mi>W</mi>
-							<msub>
-								<mn>A</mn>
-								<mn>1</mn>
-							</msub>
-							<msub>
-								<mn>A</mn>
-								<mn>2</mn>
-							</msub>
-						</msub>
+						<msub><mi>W</mi><mrow><mi>A</mi><mn>1</mn><mi>A</mi><mn>2</mn></mrow></msub>
 						<mo>)</mo>
 					</mrow>
 					<mo>+</mo>
 					<mrow>
 						<mo>(</mo>
-						<msup>
-							<msub>
-								<mi>q</mi>
-								<mn>0</mn>
-							</msub>
-							<mi>2</mi>
-						</msup>
+						<msubsup><mi>q</mi><mn>0</mn><mn>2</mn></msubsup>
 						<mo>)</mo>
 						<mo>(</mo>
-						<msub>
-							<mi>W</mi>
-							<msub>
-								<mn>A</mn>
-								<mn>2</mn>
-							</msub>
-							<msub>
-								<mn>A</mn>
-								<mn>2</mn>
-							</msub>
-						</msub>
+						<msub><mi>W</mi><mrow><mi>A</mi><mn>2</mn><mi>A</mi><mn>2</mn></mrow></msub>
 						<mo>)</mo>
 					</mrow>
 				</mrow>
@@ -230,71 +179,33 @@ export function renderMathML(formula: string): string {
 
 		case 'mutation-rate':
 			return `
-					<math xmlns="http://www.w3.org/1998/Math/MathML">
-					<mrow>
-						<mrow>
-							<msub>
-								<mi>p</mi>
-								<mn>1</mn>
-							</msub>
-							<mo>=</mo>
-							<msub>
-								<mi>p</mi>
-								<mn>0</mn>
-							</msub>
-							<mo>(</mo>
-							<mn>1</mn>
-							<mo>-</mo>
-							<mi>µ</mi>
-							<mo>)</mo>
-						</mrow>
-						<mo>+</mo>
-						<mrow>
-							<mi>v</mi>
-							<mo>(</mo>
-							<mn>1</mn>
-							<mo>-</mo>
-							<msub>
-								<mi>p</mi>
-								<mn>0</mn>
-							</msub>
-							<mo>)</mo>
-						</mrow>
-					</mrow>
-				</math>
+				<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>p</mi><mn>1</mn></msub><mo>=</mo><mo>&#xA0;</mo><msub><mi>p</mi><mn>0</mn></msub><mo>(</mo><mn>1</mn><mo>-</mo><mi>&#x3BC;</mi><mo>)</mo><mo>&#xA0;</mo><mo>+</mo><mo>&#xA0;</mo><mi>v</mi><mo>(</mo><mn>1</mn><mo>-</mo><msub><mi>p</mi><mn>0</mn></msub><mo>)</mo></math>
 					`;
 
 		case 'migration-rate':
 			return `
-				<math xmlns="http://www.w3.org/1998/Math/MathML">
-				<mrow>
-					<mrow>
-						<msub>
-							<mi>p</mi>
-							<mn>1</mn>
-						</msub>
-						<mo>=</mo>
-						<mo>(</mo>
-						<mn>1</mn>
-						<mo>-</mo>
-						<mi>m</mi>
-						<mo>)</mo>
-						<msub>
-							<mi>p</mi>
-							<mn>0</mn>
-						</msub>
-						<mo>+</mo>
-						<mi>m</mi>
-						<mo>(</mo>
-						<msub>
-							<mi>p</mi>
-							<mn>m</mn>
-						</msub>
-						<mo>)</mo>
-					</mrow>
-				</mrow>
-			</math>`;
+				<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>p</mi><mn>1</mn></msub><mo>=</mo><mo>(</mo><mn>1</mn><mo>-</mo><mi>m</mi><mo>)</mo><msub><mi>p</mi><mn>0</mn></msub><mo>&#xA0;</mo><mo>+</mo><mo>&#xA0;</mo><mi>m</mi><mo>(</mo><msub><mi>P</mi><mi>M</mi></msub><mo>)</mo></math>`;
 
+		case 'inbreeding-1':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>1</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><mo>&#xA0;</mo><msup><mi>p</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>-</mo><mi>F</mi><mo>)</mo><mo>&#x2009;</mo><mo>+</mo><mo>&#x2009;</mo><mi>F</mi><mi>p</mi></math>`;
+
+		case 'inbreeding-2':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><mo>&#xA0;</mo><mn>2</mn><mi>p</mi><mi>q</mi><mo>(</mo><mn>1</mn><mo>-</mo><mi>F</mi><mo>)</mo></math>`;
+
+		case 'inbreeding-3':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>2</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><mo>&#xA0;</mo><msup><mi>q</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>-</mo><mi>F</mi><mo>)</mo><mo>&#x2009;</mo><mo>+</mo><mo>&#x2009;</mo><mi>F</mi><mi>q</mi></math>`;
+
+		case 'assort-1':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>1</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><mfrac><mrow><mo>[</mo><mo>(</mo><mn>1</mn><mo>&#xA0;</mo><mo>-</mo><mo>&#xA0;</mo><mi>&#x3B1;</mi><mo>)</mo><msup><mi>p</mi><mn>2</mn></msup><mo>+</mo><mi>&#x3B1;</mi><mo>(</mo><msup><mi>p</mi><mn>2</mn></msup><mo>+</mo><mstyle displaystyle="true"><mfrac><mrow><mi>p</mi><mi>q</mi></mrow><mn>2</mn></mfrac></mstyle><mo>)</mo><mo>]</mo></mrow><mi>D</mi></mfrac><mo>&#xA0;</mo><mo>&#xA0;</mo><mo>&#xA0;</mo></math>`;
+
+		case 'assort-2':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><mfrac><mrow><mo>[</mo><mo>(</mo><mn>1</mn><mo>&#xA0;</mo><mo>-</mo><mo>&#xA0;</mo><mi>&#x3B1;</mi><mo>)</mo><mn>2</mn><mi>p</mi><mi>q</mi><mo>+</mo><mi>&#x3B1;</mi><mo>(</mo><mi>p</mi><mi>q</mi><mo>)</mo><mo>]</mo></mrow><mi>D</mi></mfrac><mo>&#xA0;</mo><mo>&#xA0;</mo><mo>&#xA0;</mo></math>`;
+
+		case 'assort-3':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>2</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>&#xA0;</mo><mo>=</mo><mfrac><mrow><mo>[</mo><mo>(</mo><mn>1</mn><mo>&#xA0;</mo><mo>-</mo><mo>&#xA0;</mo><mi>&#x3B1;</mi><mo>)</mo><msup><mi>q</mi><mn>2</mn></msup><mo>+</mo><mi>&#x3B1;</mi><mo>(</mo><msup><mi>q</mi><mn>2</mn></msup><mo>&#xA0;</mo><mo>+</mo><mstyle displaystyle="true"><mfrac><mrow><mi>p</mi><mi>q</mi></mrow><mn>2</mn></mfrac></mstyle><mo>)</mo><mo>]</mo></mrow><mi>D</mi></mfrac><mo>&#xA0;</mo><mo>&#xA0;</mo><mo>&#xA0;</mo></math>`;
+
+		case 'assort-4':
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>D</mi><mo>&#xA0;</mo><mo>=</mo><mo>&#xA0;</mo><mo>[</mo><mo>(</mo><mn>1</mn><mo>-</mo><mi>&#x3B1;</mi><mo>)</mo><msup><mi>p</mi><mn>2</mn></msup><mo>&#xA0;</mo><mo>+</mo><mi>&#x3B1;</mi><mo>(</mo><msup><mi>p</mi><mn>2</mn></msup><mo>&#xA0;</mo><mo>+</mo><mfrac><mrow><mi>p</mi><mi>q</mi></mrow><mn>2</mn></mfrac><mo>)</mo><mo>&#xA0;</mo><mo>]</mo><mo>&#xA0;</mo><mo>+</mo><mo>[</mo><mo>(</mo><mn>1</mn><mo>-</mo><mi>&#x3B1;</mi><mo>)</mo><mn>2</mn><mi>p</mi><mi>q</mi><mo>&#xA0;</mo><mo>+</mo><mo>&#xA0;</mo><mi>&#x3B1;</mi><mo>(</mo><mi>p</mi><mi>q</mi><mo>)</mo><mo>]</mo><mo>&#xA0;</mo><mo>+</mo><mo>&#xA0;</mo><mo>[</mo><mo>(</mo><mn>1</mn><mo>-</mo><mi>&#x3B1;</mi><mo>)</mo><msup><mi>q</mi><mn>2</mn></msup><mo>&#xA0;</mo><mo>+</mo><mo>&#xA0;</mo><mi>&#x3B1;</mi><mo>(</mo><msup><mi>q</mi><mn>2</mn></msup><mo>&#xA0;</mo><mo>+</mo><mo>&#xA0;</mo><mfrac><mrow><mi>p</mi><mi>q</mi></mrow><mn>2</mn></mfrac><mo>)</mo><mo>]</mo></math>`;
 		default:
 			return '';
 	}

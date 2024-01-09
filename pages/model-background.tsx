@@ -63,6 +63,7 @@ import HelpLink, {
 	PopulationSizeLink,
 	SelectionLink
 } from "../components/HelpLink";
+import {renderMathML} from "../utils/math-ml";
 
 export const TAB_BASIC = 'basic-settings';
 export const TAB_ADDITIONAL = 'additional-settings';
@@ -91,6 +92,29 @@ export const getStaticProps: GetStaticProps<{
 		},
 	};
 };
+
+
+function MathEquation({equationName}) {
+	const mathXMLString = renderMathML(equationName);
+
+	return <Box
+		fontSize="3xl"
+		textAlign="center"
+		margin="15px auto"
+		dangerouslySetInnerHTML={{ __html: mathXMLString }}
+	/>
+}
+
+function SmallMathEquation({equationName}) {
+	const mathXMLString = renderMathML(equationName);
+
+	return <Box
+		fontSize="sm"
+		textAlign="center"
+		margin="15px auto"
+		dangerouslySetInnerHTML={{ __html: mathXMLString }}
+	/>
+}
 
 function Italic({children, ...props}) {
 	return <Text as={'span'} fontStyle='italic' {...props}>{children}</Text>
@@ -285,9 +309,12 @@ function FAQPage({
 											In the Hardy-Weinberg equilibrium model, there are expected proportions for the <GenotypeLink linkText="genotype frequencies"/> based on the <AlleleFrequencyLink linkText="allele frequencies" /> :
 											<Text>
 												<br/>
-												<Text>P(<A1A1/>) = <Variable>p<sup>2</sup></Variable></Text>
-												<Text>P(<A1A2/>) = <Variable>2pq</Variable></Text>
-												<Text>P(<A2A2/>) = <Variable>q<sup>2</sup></Variable></Text>
+												<SmallMathEquation equationName='hardy-1' />
+												<SmallMathEquation equationName='hardy-2' />
+												<SmallMathEquation equationName='hardy-3' />
+												{/*<Text>P(<A1A1/>) = <Variable>p<sup>2</sup></Variable></Text>*/}
+												{/*<Text>P(<A1A2/>) = <Variable>2pq</Variable></Text>*/}
+												{/*<Text>P(<A2A2/>) = <Variable>q<sup>2</sup></Variable></Text>*/}
 											</Text>
 										</AnswerText>
 									</AccordionCustomItem>
@@ -327,7 +354,7 @@ function FAQPage({
 										<InThisModel><N isBold/> is the population size. For diploid organisms like humans, each individual has two genome copies, meaning that there are 2N alleles in the population.</InThisModel>
 										<LearnMore>Models with unequal numbers of males and females use the effective population size (<NSubE />):</LearnMore>
 										<IndentedText>
-											<NSubE /> = (4<NSubm/> x <NSubf />) / (<NSubm/> + <NSubf />)
+											<MathEquation equationName='population-size'/>
 										</IndentedText>
 										<AnswerText>where <NSubm/> and <NSubf /> are the number of males and females respectively.</AnswerText>
 									</AccordionCustomItem>
@@ -386,7 +413,7 @@ function FAQPage({
 										<AnswerText>The fitness coefficient for at least one genotype is usually set to 1, and the fitness coefficients for the other genotypes are written as proportions relative to 1.</AnswerText>
 
 										<LearnMore>After one generation of random mating, the allele frequency in this model is:</LearnMore>
-										<AnswerText>----TODO ---- MATHXML HERE </AnswerText>
+										<AnswerText><MathEquation equationName='selection-formula' /> </AnswerText>
 										<AnswerText>where <P1 /> is the frequency of allele <A1/> in Generation 1, <P0/> is the frequency of allele <A1/> in Generation 0, and <Q0 /> is the frequency of allele <A2/> in Generation 0.</AnswerText>
 
 									</AccordionCustomItem>
@@ -406,7 +433,8 @@ function FAQPage({
 										<AnswerText>
 											This equation shows how allele frequencies change due to mutation in this model:
 											<IndentedText marginTop={3}>
-												<P1/> = <P0/>(1 –  <Mu/>) + <V/>(1 - <P0/>)
+												{/*<P1/> = <P0/>(1 –  <Mu/>) + <V/>(1 - <P0/>)*/}
+												<MathEquation equationName='mutation-rate' />
 											</IndentedText>
 										</AnswerText>
 
@@ -423,7 +451,8 @@ function FAQPage({
 										<LearnMore>This equation shows how allele frequencies change due to migration in this model:
 
 											<IndentedText>
-												<P1/> = (1 – <M/>)<P0/> + <M/>(<PM />)
+												{/*<P1/> = (1 – <M/>)<P0/> + <M/>(<PM />)*/}
+												<MathEquation equationName='migration-rate'/>
 											</IndentedText>
 
 											where <P1/> is the frequency of allele <A1/> in Generation 1 and <P0/> is the frequency of allele <A1/> in Generation 0.
@@ -442,10 +471,13 @@ function FAQPage({
 										</InThisModel>
 
 										<LearnMore>Inbreeding alone does not alter <AlleleFrequencyLink linkText="allele frequencies" />, but it can alter <GenotypeLink linkText="genotype frequencies"/>:
+											<MathEquation equationName='inbreeding-1' />
+											<MathEquation equationName='inbreeding-2' />
+											<MathEquation equationName='inbreeding-3' />
 										<UnorderedAnswerList>
-											<ListItem><i>P(<A1A1/>) = p<sup>2</sup> (1 − F) + Fp </i> </ListItem>
-											<ListItem><i>P(<A1A2/>) = 2pq (1 − F)</i> </ListItem>
-											<ListItem><i>P(<A2A2/>) = q<sup>2</sup> (1 − F) + Fq</i>     </ListItem>
+											{/*<ListItem><i>P(<A1A1/>) = p<sup>2</sup> (1 − F) + Fp </i> </ListItem>*/}
+											{/*<ListItem><i>P(<A1A2/>) = 2pq (1 − F)</i> </ListItem>*/}
+											{/*<ListItem><i>P(<A2A2/>) = q<sup>2</sup> (1 − F) + Fq</i>     </ListItem>*/}
 										</UnorderedAnswerList>
 											<br/>
 											<AnswerText>
@@ -464,14 +496,19 @@ function FAQPage({
 											</UnorderedAnswerList>
 										</InThisModel>
 										<LearnMore> Assortative mating alone does not alter <AlleleFrequencyLink linkText="allele frequencies" />, but it can alter <GenotypeLink linkText="genotype frequencies"/>:
-											<UnorderedAnswerList>
-												<ListItem>P(<A1A1/>) =  [(1 – <Alpha/>)p<sup>2</sup> + α(p<sup>2</sup> + pq/2)] / D</ListItem>
-												<ListItem>P(<A1A2/>) =  = [(1 – <Alpha/>)2pq + α(pq)] / D</ListItem>
-												<ListItem>P(<A2A2/>) =  = [(1 – <Alpha/>)q<sup>2</sup> + α(q<sup>2</sup> + pq/2)] / D</ListItem>
-											</UnorderedAnswerList>
+											<MathEquation equationName='assort-1' />
+											<MathEquation equationName='assort-2' />
+											<MathEquation equationName='assort-3' />
+											{/*<UnorderedAnswerList>*/}
+											{/*	<ListItem>P(<A1A1/>) =  [(1 – <Alpha/>)p<sup>2</sup> + α(p<sup>2</sup> + pq/2)] / D</ListItem>*/}
+											{/*	<ListItem>P(<A1A2/>) =  = [(1 – <Alpha/>)2pq + α(pq)] / D</ListItem>*/}
+											{/*	<ListItem>P(<A2A2/>) =  = [(1 – <Alpha/>)q<sup>2</sup> + α(q<sup>2</sup> + pq/2)] / D</ListItem>*/}
+											{/*</UnorderedAnswerList>*/}
 
 											<br/>
 											<AnswerText>where <Italic>D = [(1 – α)<PSquared/> + α(<PSquared/> + pq/2)] + [(1 – α)2pq + α(pq)] + [(1 – α)<QSquared/> + α(<QSquared/> + pq/2)]</Italic>.</AnswerText>
+											<AnswerText> where </AnswerText>
+											<SmallMathEquation equationName='assort-4' />
 											<AnswerText>In this simulator, only simple scenarios of positive assortative mating are implemented, and negative assortative mating/disassortative mating cannot be modeled.</AnswerText>
 										</LearnMore>
 									</AccordionCustomItem>
