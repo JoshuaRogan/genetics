@@ -298,7 +298,8 @@ function FAQPage({
 											The frequency of each genotype is written as P(genotype). For example, P(<A1A1/>) is the frequency of the genotype <A1A1/>. The frequencies of all the genotypes add up to 1:
 											<br/>
 											<br/>
-											P(<A1A1/>) + P(<A1A2/>) + P(<A2A2/>) = 1
+											{/*P(<A1A1/>) + P(<A1A2/>) + P(<A2A2/>) = 1*/}
+											<MathEquation equationName='genotype' />
 										</LearnMore>
 									</AccordionCustomItem>
 
