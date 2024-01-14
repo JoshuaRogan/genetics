@@ -98,7 +98,7 @@ function MathEquation({equationName}) {
 	const mathXMLString = renderMathML(equationName);
 
 	return <Box
-		fontSize="3xl"
+		fontSize={{ base: "sm", md: "md", lg: "3xl" }}
 		textAlign="center"
 		margin="15px auto"
 		dangerouslySetInnerHTML={{ __html: mathXMLString }}
@@ -109,10 +109,22 @@ function SmallMathEquation({equationName}) {
 	const mathXMLString = renderMathML(equationName);
 
 	return <Box
-		fontSize="sm"
+		fontSize={{ base: "sm", md: "md" }}
 		textAlign="center"
 		margin="15px auto"
 		dangerouslySetInnerHTML={{ __html: mathXMLString }}
+	/>
+}
+
+function ExtraSmallMathEquation({equationName}) {
+	const mathXMLString = renderMathML(equationName);
+
+	return <Box
+		fontSize={{ base: "xs", md: "md" }}
+		textAlign="center"
+		margin="15px auto"
+		dangerouslySetInnerHTML={{ __html: mathXMLString }}
+		overflow={'scroll'}
 	/>
 }
 
@@ -156,7 +168,6 @@ function FAQPage({
 	useEffect(() => {
 		const params = new URLSearchParams(window.location.search);
 		const urlTab = params.get('tab');
-		debugger
 		if (urlTab) {
 			const tabIndex = tabs.indexOf(urlTab);
 			if (tabIndex > -1) {
@@ -509,7 +520,7 @@ function FAQPage({
 											<br/>
 											{/*<AnswerText>where <Italic>D = [(1 – α)<PSquared/> + α(<PSquared/> + pq/2)] + [(1 – α)2pq + α(pq)] + [(1 – α)<QSquared/> + α(<QSquared/> + pq/2)]</Italic>.</AnswerText>*/}
 											<AnswerText> where </AnswerText>
-											<SmallMathEquation equationName='assort-4' />
+											<ExtraSmallMathEquation equationName='assort-4' />
 											<AnswerText>In this simulator, only simple scenarios of positive assortative mating are implemented, and negative assortative mating/disassortative mating cannot be modeled.</AnswerText>
 										</LearnMore>
 									</AccordionCustomItem>
