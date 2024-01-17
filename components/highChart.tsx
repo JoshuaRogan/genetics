@@ -36,7 +36,7 @@ function createOptions(theme = 'light', lines, title: string) {
 
 	return {
 		title: {
-			text: `<h2>${title}</h2>` || 'Population Genetics Simulation',
+			text: `<h2>${title}</h2>`,
 			align: 'center',
 			useHTML: true,
 		},
@@ -114,6 +114,10 @@ function createOptions(theme = 'light', lines, title: string) {
 			borderRadius: 3,
 			className: 'highcharts-tooltip',
 		},
+		caption: {
+			useHTML: true,
+			text: `<h3>${title}</h3>`,
+		},
 		exporting: {
 			showTable: true,
 		},
@@ -157,6 +161,11 @@ const HighchartWrapper = ({ chartIndex, lines, title }) => {
 					if (!element || !chart) return;
 
 					element.style.display === 'block' ? chart.hideData() : chart.viewData();
+
+					const tableCaption = document.getElementsByClassName('highcharts-table-caption')[chartIndex] as HTMLElement;
+					if (tableCaption) {
+						tableCaption.textContent = title;
+					}
 				}}
 			>
 				Show/Hide data view table
