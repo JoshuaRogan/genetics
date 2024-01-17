@@ -49,19 +49,27 @@ function SiteMap({ pages }) {
 					alignContent="center"
 				>
 					<Heading color="text" textAlign="center">
-						SiteMap
+						Site Map
 					</Heading>
 					<Text color="text" textAlign="center">
 						Here you can find a list of all the pages on this website. Click on a page to go to it.
 					</Text>
 					<UnorderedList marginTop={10}>
-						{pages.map((page, index) => (
-							<ListItem key={index} width="fit-content">
-								<Link as={NextLink} href={page.href}>
-									{page.name}
-								</Link>
-							</ListItem>
-						))}
+						{pages.map(
+							(
+								page: {
+									name: string;
+									href: string;
+								},
+								index: number,
+							) => (
+								<ListItem key={index} width="fit-content">
+									<Link as={NextLink} href={page.href}>
+										{page.name}
+									</Link>
+								</ListItem>
+							),
+						)}
 					</UnorderedList>
 					<Button
 						as={NextLink}
