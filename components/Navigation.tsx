@@ -39,7 +39,7 @@ export default function Navigation() {
 								src="/images/logo.svg"
 								width={60}
 								height={25}
-								alt="Two curved dotted lines, one concave one convex, intersecting each other, Population Genetics Simulator home"
+								alt="Population Genetics Simulator home"
 								style={{ filter: 'brightness(2)' }}
 							/>
 							<Text
