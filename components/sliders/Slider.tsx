@@ -50,7 +50,7 @@ function SliderInput({ popVariable, isActive = true, isInfinite = false, reverse
 	// This is to prevent the Redux store from being updated on every slider change
 	const onSliderEndChanged = (value: number) => {
 		dispatch(setPopGenVar({ varName: variable, value: value }));
-		setIsInvalid(value < max && value > min ? false : true);
+		setIsInvalid(value <= max && value >= min ? false : true);
 	};
 
 	const calculateRightMarkMargin = useCallback(() => {
