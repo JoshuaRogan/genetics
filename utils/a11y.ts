@@ -10,6 +10,16 @@ export const a11yFocus: SystemStyleObject = {
 	},
 };
 
+export const a11yToastFocus: SystemStyleObject = {
+	ring: false,
+	outlineColor: '#FAF5FF',
+	outlineOffset: 4,
+	outlineWidth: 3,
+	_dark: {
+		outlineColor: '#FAF5FF',
+	},
+};
+
 export const a11yThumbFocus: SystemStyleObject = {
 	ring: false,
 	outlineColor: 'purple.500',

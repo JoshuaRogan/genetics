@@ -441,7 +441,8 @@ function Index() {
 						md: 'left',
 					}}
 				>
-					Select the bar below to show/hide the starting and final genotype frequencies for A₁A₁, A₁A₂, and A₂A₂.Only the results from the last simulation are provided.
+					Select the bar below to show/hide the starting and final genotype frequencies for A₁A₁, A₁A₂, and A₂A₂.Only
+					the results from the last simulation are provided.
 				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}
@@ -486,7 +487,7 @@ function Index() {
 											description: "The simulator's settings have been reset to their default values.",
 											status: 'warning',
 										}),
-									duration: 5000,
+									duration: 4000,
 									isClosable: true,
 								});
 							}
