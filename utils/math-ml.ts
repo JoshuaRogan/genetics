@@ -189,13 +189,13 @@ export function renderMathML(formula: string): string {
 				<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>p</mi><mn>1</mn></msub><mo>=</mo><mo>(</mo><mn>1</mn><mo>-</mo><mi>m</mi><mo>)</mo><msub><mi>p</mi><mn>0</mn></msub><mo>+</mo><mi>m</mi><mo>(</mo><msub><mi>P</mi><mi>M</mi></msub><mo>)</mo></math>`;
 
 		case 'inbreeding-1':
-			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>1</mn></msub><mo>)</mo><mo>=</mo><msup><mi>p</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>-</mo><mi>F</mi><mo>)</mo><mo>&#x2009;</mo><mo>+</mo><mo>&#x2009;</mo><mi>F</mi><mi>p</mi></math>`;
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>1</mn></msub><mo>)</mo><mo>=</mo><msup><mi>p</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>-</mo><mi>F</mi><mo>)</mo><mo>+</mo><mi>F</mi><mi>p</mi></math>`;
 
 		case 'inbreeding-2':
 			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>=</mo><mn>2</mn><mi>p</mi><mi>q</mi><mo>(</mo><mn>1</mn><mo>-</mo><mi>F</mi><mo>)</mo></math>`;
 
 		case 'inbreeding-3':
-			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>2</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>=</mo><msup><mi>q</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>-</mo><mi>F</mi><mo>)</mo><mo>&#x2009;</mo><mo>+</mo><mo>&#x2009;</mo><mi>F</mi><mi>q</mi></math>`;
+			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>2</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mo>)</mo><mo>=</mo><msup><mi>q</mi><mn>2</mn></msup><mo>(</mo><mn>1</mn><mo>-</mo><mi>F</mi><mo>)</mo><mo>+</mo><mi>F</mi><mi>q</mi></math>`;
 
 		case 'assort-1':
 			return `<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>1</mn></msub><mo>)</mo><mo>=</mo><mfrac><mrow><mo>[</mo><mo>(</mo><mn>1</mn><mo>-</mo><mi>&#x3B1;</mi><mo>)</mo><msup><mi>p</mi><mn>2</mn></msup><mo>+</mo><mi>&#x3B1;</mi><mo>(</mo><msup><mi>p</mi><mn>2</mn></msup><mo>+</mo><mstyle displaystyle="true"><mfrac><mrow><mi>p</mi><mi>q</mi></mrow><mn>2</mn></mfrac></mstyle><mo>)</mo><mo>]</mo></mrow><mi>D</mi></mfrac></math>`;
