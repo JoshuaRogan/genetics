@@ -1,7 +1,6 @@
 import NextLink from 'next/link';
 import Image from 'next/image';
-import { Box, Container, Stack, Link, Collapse } from '@chakra-ui/react';
-import { a11yFocus } from '../utils/a11y';
+import { Box, Container, Stack, Link, Accordion } from '@chakra-ui/react';
 import {
 	Modal,
 	ModalOverlay,
@@ -13,7 +12,8 @@ import {
 	Button,
 } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
-import Support from '../pages/supporting';
+import AccordionCustomContent from './AccordionCustomContent';
+const faqSupportingInformation = require('../data/faq-supporting-information.json');
 
 export default function Footer() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,7 +26,11 @@ export default function Footer() {
 					<ModalHeader>Supporting Information</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-						<iframe src="/supporting" style={{ width: '100%', height: '70vh' }} />
+						<Box as="section" p={7} mx={{ sm: 'auto' }}>
+							<Accordion variant="faq">
+								<AccordionCustomContent data={faqSupportingInformation} />
+							</Accordion>
+						</Box>
 					</ModalBody>
 
 					<ModalFooter>
@@ -51,6 +55,9 @@ export default function Footer() {
 					<Button onClick={onOpen} variant="footerButton">
 						Supporting Information
 					</Button>
+					<Link href="/sitemap" as={NextLink} marginInlineEnd="auto" variant="footerLink">
+						Site Map
+					</Link>
 					<Link href="https://biointeractive.org" target={'_blank'} as={NextLink} variant="footerLink">
 						<Image
 							src="/images/hhmi-biointeractive.svg"
