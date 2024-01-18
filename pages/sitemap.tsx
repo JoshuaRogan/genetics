@@ -1,32 +1,39 @@
 import { Box, Button, Heading, Link, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import MainWrapper from '../components/MainWrapper';
-import fs from 'fs/promises';
-import path from 'node:path';
 
-export async function getServerSideProps({ res }) {
-	// get all pages from /pages directory
-	const rawPages = await fs.readdir(path.join(process.cwd(), 'pages'));
-	const pages = rawPages
-		.filter((page) => page.endsWith('.tsx') && !page.startsWith('_') && !page.endsWith('.xml.tsx'))
-		.map((page) => {
-			const name = page.replace('.tsx', '');
-			const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+const pages = [
+	{
+		name: 'Home',
+		href: '/',
+	},
+	{
+		name: 'Introduction',
+		href: '/introduction',
+	},
+	{
+		name: 'Individual',
+		href: '/individual',
+	},
+	{
+		name: 'Replicated',
+		href: '/replicated',
+	},
+	{
+		name: 'Model Background',
+		href: '/model-background',
+	},
+	{
+		name: 'FAQ',
+		href: '/faq',
+	},
+	{
+		name: 'Help',
+		href: '/help',
+	},
+];
 
-			return {
-				name: capitalizedName,
-				href: `/${page.replace('.tsx', '')}`,
-			};
-		});
-
-	return {
-		props: {
-			pages,
-		},
-	};
-}
-
-function SiteMap({ pages }) {
+function SiteMap() {
 	return (
 		<MainWrapper>
 			<Box
