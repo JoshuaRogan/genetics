@@ -1,7 +1,5 @@
-import { ChatIcon } from '@chakra-ui/icons';
-import { Box, Icon, SimpleGrid, Tab, TabList, TabPanel, TabPanels, Tabs, Text, Accordion } from '@chakra-ui/react';
-import { IoFlagOutline, IoHelpBuoyOutline } from 'react-icons/io5';
-import { MdComputer } from 'react-icons/md';
+import { Box, Icon, SimpleGrid, TabList, TabPanel, TabPanels, Tabs, Text, Accordion } from '@chakra-ui/react';
+import { IoHelpBuoyOutline } from 'react-icons/io5';
 
 import React, { useEffect, useState } from 'react';
 import CustomTab from '../components/CustomTab';
