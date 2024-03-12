@@ -1,0 +1,48 @@
+[
+	{
+		"question": "How can I create a graph of my simulation?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "To generate a new graph, set the simulation parameters of interest and click the \"New Simulation\" button. You can then add more simulations to the existing graph by clicking the \"Add as a new simulation\" button. You can replace the existing graph with a new simulation by clicking the \"Run Simulation\" button."
+			},
+			{
+				"type": "video",
+				"value": "videos/faq_1.mp4",
+				"alt": "A 7 second video showing a pointer clicking on the \"Run Simulation\" button and a graph appearing at the bottom of the screen."
+			}
+		]
+	},
+	{
+		"question": "How can I change the simulation parameters?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "To change any of the simulation parameters you can open up the appropriate section by clicking the checkbox to the left of the section name."
+			},
+			{
+				"type": "text",
+				"value": "Once the section is opened you can either move the slider or click on the parameter value to directly input a new value using your preferred way of inputting data."
+			},
+			{
+				"type": "video",
+				"value": "videos/faq_2.mp4",
+				"alt": "A 15 second video showing a pointer clicking on and moving the slider for the parameter population size to change the value and then clicking on the expandable section for advanced factors to reveal another set of parameters, selecting assortative mating, and moving the slider to change the value."
+			}
+		]
+	},
+	{
+		"question": "How can I deactivate a simulation parameter?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "If a parameter is active (i.e., slider shown in color), you deactivate it by de-selecting the checkbox to the left of the section you would like to deactivate. Once a value is deselected the slider section will hide."
+			},
+			{
+				"type": "video",
+				"value": "videos/faq_3.mp4",
+				"alt": "A 5 second video showing a pointer clicking on advanced factors settings to deselect them."
+			}
+		]
+	}
+]

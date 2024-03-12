@@ -35,7 +35,7 @@ export default function Footer() {
 						<Box as="section" p={7} mx={{ sm: 'auto' }}>
 							<Accordion variant="faq">
 								<AccordionCustomContent data={faqSupportingInformation} />
-								<AccordionCustomChildrenItem title="Credits">
+								<AccordionCustomChildrenItem title="Credits" hasHeightLimit={true}>
 									<CreditHeader title="Producer" />
 									Paul Beardsley,Cal Poly Pomona, CA
 
