@@ -1,0 +1,113 @@
+[
+	{
+		"question": "How can I zoom in the graph?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "To zoom in the graph simply click and drag across the area you would like to zoom in. To zoom out, click on the \"Reset Zoom\" button that appears in the top right corner of the graph."
+			},
+			{
+				"type": "video",
+				"value": "videos/faq_4.mp4",
+				"alt": "A 13 second video showing a pointer clicking on the run simulation button and then moving the pointer along the line on the graph showing the values of the data points."
+			}
+		]
+	},
+	{
+		"question": "How can I save/download the graph as an image?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "To save the graph as an image (or another type of file) click the menu in the upper right corner of the graph and select your preferred option."
+			},
+			{
+				"type": "text",
+				"value": "You can download the graph result in these following formats:"
+			},
+			{
+				"type": "list",
+				"value": [
+					"PNG",
+					"JPEG",
+					"PDF",
+					"SVG",
+					"CSV",
+					"XLS"
+				]
+			},
+			{
+				"type": "video",
+				"value": "videos/faq_5.mp4",
+				"alt": "A 10 second video showing a pointer clicking on the run simulation button and then moving the pointer to the menu icon with the 3 horizontal lines to reveal the dropdown menu of options."
+			}
+		]
+	},
+	{
+		"question": "How can I view different legends?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "Legends are automatically created for each simulation and are located under the graph with the title [[Legend for Graph]]."
+			},
+			{
+				"type": "text",
+				"value": "All of the most recent simulations are shown. But, you can open/hide legends of any previous simulation by clicking on either the checkbox to the left of the legend name or the legend name itself."
+			},
+			{
+				"type": "video",
+				"value": "videos/faq_6.mp4",
+				"alt": "A 16 second video showing a pointer clicking on the run simulation button and then clicking on the add simulation button and then clicking on the expandable section marked Legend for Graph 1 which reveals settings for simulation 1 and simulation 2 which can be selected and deselected."
+			}
+		]
+	},
+	{
+		"question": "Where can I find more information on the simulation parameters?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "You can click the small question mark next to each variable in order to see a short explanation of the variable."
+			},
+			{
+				"type": "text",
+				"value": "Additional background information is available in the educator's guide accompanying the interactive."
+			},
+			{
+				"type": "video",
+				"value": "videos/faq_7.mp4",
+				"alt": "A 7 second video showing a pointer clicking on the question mark icons next to the parameters in the simulator settings, which reveal definitions of those parameters."
+			}
+		]
+	},
+	{
+		"question": "How can I generate a link (URL) for a simulation?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "You can generate a link (URL) for a set of simulation parameters by clicking on the [[Generate shareable link]] button, below the \"Advance Factors\" section. Navigating to this URL will prepopulate the set of simulation parameters that you currently have set. It will be automatically copied to your clipboard."
+			},
+			{
+				"type": "video",
+				"value": "videos/faq_8.mp4",
+				"alt": "A 14 second video showing a pointer clicking on and moving the slider for the parameter settings of population size, generations, starting frequency for allele A to change the values, then clicking on the expandable section for advanced factors to reveal another set of parameters, selecting inbreeding, and moving the slider to change the value. After the expandable section of advanced factors is a button called Generate shareable link; when selected a tooltip pops up stating Link copied to clipboard."
+			}
+		]
+	},
+	{
+		"question": "How can I access the data represented in the graph?",
+		"answer": [
+			{
+				"type": "text",
+				"value": "After running a simulation you can access the data table by either clicking on the \"Show/Hide data view table\" button below each graph or by clicking on the graph's menu and selecting the same option."
+			},
+			{
+				"type": "text",
+				"value": "You can easily copy and paste this into your favorite data manipulation program to perform additional analysis."
+			},
+			{
+				"type": "video",
+				"value": "videos/faq_9.mp4",
+				"alt": "A 9 second video showing a pointer clicking on the run simulation button and then hoovering over part of the generated graph displaying the data point values and then moving to the button after the graph labeled show/hide data view table, which when selected, shows a table view of the values in the graph."
+			}
+		]
+	}
+]

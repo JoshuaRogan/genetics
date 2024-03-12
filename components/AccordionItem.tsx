@@ -11,6 +11,7 @@ interface AccordianTypes {
 	title: string;
 	children: React.ReactNode;
 	anchor?: string;
+	hasHeightLimit?: boolean;
 }
 export default function AccordionCustomItem({ title, children, anchor } : AccordianTypes) {
 
@@ -49,7 +50,7 @@ export default function AccordionCustomItem({ title, children, anchor } : Accord
 		</>
 }
 
-export function AccordionCustomChildrenItem({ title, children, anchor } : AccordianTypes) {
+export function AccordionCustomChildrenItem({ title, children, anchor, hasHeightLimit } : AccordianTypes) {
 
 	// Autoopen any anchors
 	useEffect(() => {
@@ -63,6 +64,13 @@ export function AccordionCustomChildrenItem({ title, children, anchor } : Accord
 
 	}, [window.location.hash])
 
+
+	const styleObj : any = {}
+	if (hasHeightLimit) {
+		styleObj.overflowY = 'scroll'
+		styleObj.maxHeight = '400px'
+	}
+
 	return <>
 		<AccordionItem as="section" id={anchor} itemID={anchor}>
 			<h2>
@@ -73,7 +81,7 @@ export function AccordionCustomChildrenItem({ title, children, anchor } : Accord
 					<AccordionIcon />
 				</AccordionButton>
 			</h2>
-			<AccordionPanel pb={4} style={{overflowY: 'scroll', maxHeight: '400px'}}>
+			<AccordionPanel pb={4} style={styleObj}>
 				{children}
 			</AccordionPanel>
 		</AccordionItem>

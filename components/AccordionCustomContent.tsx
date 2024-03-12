@@ -124,3 +124,35 @@ function renderAnswer(answerItem: FAQItem, index: Key) {
 			);
 	}
 }
+
+
+export function VideoElementAnswer({ src, alt, index }) {
+	return (
+		<Fragment key={index}>
+			<video
+				style={{
+					width: '600px',
+					margin: '0 auto',
+					marginTop: '20px',
+					marginBottom: '10px',
+					borderRadius: '10px',
+				}}
+				src={src}
+				autoPlay
+				controls
+				muted
+				aria-describedby={`video-description-${index}`}
+			/>
+			<Text
+				id={`video-description-${index}`}
+				textAlign="center"
+				fontSize="xs"
+				margin="0 auto"
+				maxWidth="600px"
+				hidden
+			>
+				{alt}
+			</Text>
+		</Fragment>
+	);
+}
