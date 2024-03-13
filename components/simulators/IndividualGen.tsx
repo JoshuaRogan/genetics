@@ -362,7 +362,7 @@ function Index() {
 						</Box>
 						<Text my={4}>
 							You can change the settings above, then select “Run Simulation” to get a new simulation based on the
-							latest settings, or “Add as a new simulation” to the graphs without erasing the last smulation.
+							latest settings, or “Add a new simulation” to the graphs without erasing the last smulation.
 						</Text>
 						<ButtonGroup
 							w="100%"
@@ -414,7 +414,7 @@ function Index() {
 						md: 'left',
 					}}
 				>
-					Select the bar below to show/hide the settings and statistics for the simulations.
+					Select the bar below to show/hide the settings and statistics for the simulation(s).
 				</Text>
 				<LegendContainer
 					alleleResults={alleleResults}

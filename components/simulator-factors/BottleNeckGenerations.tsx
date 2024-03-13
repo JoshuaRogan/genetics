@@ -16,7 +16,7 @@ export default function BottleneckGenerations() {
 		<Box aria-label="Advanced Simulation Factor: BottleneckGenerations">
 			<Grid mb={8}>
 				<HelpContentWrapper
-					title={generationToOverrideStart.sliderName + `「 ${generationToOverrideStart.variableHTML} 」`}
+					title={generationToOverrideStart.sliderName }
 					message={generationToOverrideStart.description}
 					status="info"
 				>

@@ -20,7 +20,7 @@ export const popGenVariables: PopGenVariable[] = [
 		variable: 'N',
 		variableHTML: '<i>N</i>',
 		description:
-			'The number of individuals in the population. The range of population sizes is from 1 to 10,000, with an option to select a population of infinite size. The number of alleles in the model is 2N because each individual has two copies of each allele.',
+			'The number of individuals in the population. The range of population sizes is from 1 to 10,000, with an option to select a population of infinite size. The number of alleles in the model is <i>2N</i> because each individual has two copies of each allele.',
 		section: VALID_SECTIONS.FINITE,
 		order: 0,
 		defaultValue: 500,
@@ -250,7 +250,7 @@ export const popGenVariables: PopGenVariable[] = [
 		section: VALID_SECTIONS.ASSORT_MATING,
 		order: 0,
 		description:
-			'The proportion of individuals in the population that choose mates with the same genotype. If α = 0, individuals always mate randomly. If α = 1, individuals always mate with other individuals that have the same genotype.',
+			'The proportion of individuals in the population that choose mates with the same genotype. If <i>α</i> = 0, individuals always mate randomly. If <i>α</i> = 1, individuals always mate with other individuals that have the same genotype.',
 		sliderName: 'Positive Assortative Mating Frequency',
 		defaultValue: 0,
 		min: 0,

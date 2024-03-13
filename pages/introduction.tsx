@@ -196,7 +196,7 @@ function Index() {
 					<strong>
 						In this tool, you’ll explore a mathematical model that simulates the frequencies of alleles and genotypes
 					</strong>{' '}
-					in a population over time. This simulator tracks one specific gene region (or locus) with only two alleles.
+					in a population over generations. This simulator tracks one specific gene region (or locus) with only two alleles.
 					Use the model to explore your own questions about how frequencies are affected by different factors. Like all
 					models, this model makes some simplifying{' '}
 					{
@@ -209,7 +209,7 @@ function Index() {
 								textDecorationColor="purple.300"
 								textUnderlineOffset={2}
 								fontWeight={800}
-								title="Conditions that a model assumes to be true, in order to make the system easier to understand and work with."
+								title="Conditions that a model assumes to be true, in order to make the system easier to understand and workable"
 							>
 								assumptions.
 							</Text>

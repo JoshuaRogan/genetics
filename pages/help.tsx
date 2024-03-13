@@ -162,7 +162,7 @@ function FAQPage({
 											Select the question mark next to each setting to show a short explanation with links to more information. You can learn more by opening the “Model Background” section in the bottom menu/footer of the resource.
 										</Text>
 										<br/>
-										<Text> For more information on using this resource, refer to the materials on <a href="https://www.biointeractive.org/classroom-resources/population-genetics-explorer">this
+										<Text> For more information on using this resource, refer to the materials on <a href="https://www.biointeractive.org/classroom-resources/population-genetics-explorer" className={"faq-link"}>this
 											resource’s webpage</a>.</Text>
 									</AccordionCustomChildrenItem>
 
@@ -206,7 +206,7 @@ function FAQPage({
 									<AccordionCustomChildrenItem title={"How can I generate a graph of my simulation?"}>
 										<Text>After entering the simulator settings, select the "Run Simulation" button.</Text>
 										<br/>
-										<Text>When using “Individual Simulations,” you can <strong>add</strong> more simulations to the existing graph (and optionally change some of the input settings) by selecting the “Add as a New Simulation” button. Selecting “Run Simulation” will <strong>replace</strong> the existing graph with a new simulation.</Text>
+										<Text>When using “Individual Simulations,” you can <strong>add</strong> more simulations to the existing graph (and optionally change some of the input settings) by selecting the “Add a New Simulation” button. Selecting “Run Simulation” will <strong>replace</strong> the existing graph with a new simulation.</Text>
 									</AccordionCustomChildrenItem>
 
 									<AccordionCustomChildrenItem title={"How can I zoom in on part of the graph?"}>

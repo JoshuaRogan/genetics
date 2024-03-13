@@ -22,15 +22,15 @@
 			{
 				"type": "list",
 				"value": [
-					"The “Introduction” tab (top) provides a brief overview of population genetics and the model. ",
-					"The “Simulations” tabs (top) are where you can access the model simulator. Navigate the simulator by following the instructions in each section. ",
-					"The “Model Background” page (bottom) provides more information about the biological concepts and terms used in the model.",
-					"The “Help” page (bottom) provides more support for using the simulator.\n"
+					"The <strong>“Introduction”</strong> tab (top) provides a brief overview of population genetics and the model. ",
+					"The <strong>“Simulations”</strong> tabs (top) are where you can access the model simulator. Navigate the simulator by following the instructions in each section. <ul style='margin-left: 15px'> <li> “Individual Simulations” generates one simulation for each group of settings you select. You can use this to compare the effects of different settings. </li> <li> “Replicated Simulations” generates multiple simulations with the same settings. Use this to explore the effects of random chance.\n</li> </ul>",
+					"The <strong>“Model Background”</strong> page (top) provides more information about the biological concepts and terms used in the model.",
+					"The <strong>“Help”</strong> page (top) provides more support for using the simulator.\n"
 				]
 			},
 			{
 				"type": "text",
-				"value": "Throughout the resource, you can select bold underlined text and question mark icons to show additional information and links."
+				"value": "Throughout the resource, you can select bold underlined text and question mark icons <img src='/images/question-mark.png' style='width: 1em; height: 1em; display: inline' /> to show additional information and links."
 			},
 			{
 				"type": "text",

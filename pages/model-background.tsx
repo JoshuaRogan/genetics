@@ -229,7 +229,7 @@ function FAQPage({
 
 					<Text marginY={{ base: 4, md: 6, lg: 10 }}>
 						<UnorderedList >
-							<ListItem><strong>Basic Settings </strong>covers the base model, which allows you to change the population size (and thus effect of genetic drift), number of generations, and the starting frequency of allele A1. </ListItem>
+							<ListItem><strong>Basic Settings </strong>covers the base model, which allows you to change the population size (and thus effect of genetic drift), number of generations, and the starting frequency of allele <A1/>. </ListItem>
 							<ListItem><strong>Additional Settings</strong> covers the other factors that can be included in the model, including the evolutionary factors selection, mutation, migration, inbreeding, assortative mating, and population bottlenecks. </ListItem>
 							<ListItem><strong>Assumptions and Limitations</strong> discusses the assumptions and limitations of the model.</ListItem>
 							<ListItem><strong>Model Summary Table</strong> summarizes the symbols and terms used in the model.</ListItem>
@@ -290,10 +290,10 @@ function FAQPage({
 
 									<AccordionCustomItem title={'Allele frequency'} anchor={'allele-frequency'}>
 										<AnswerText>The frequency, or proportion, of alleles in the population that are a specific type. Each allele frequency will always be a number from 0 to 1.</AnswerText>
-										<InThisModel>The frequency of A1, the allele of interest, is written as <Variable isBold>p</Variable> . It is the number of A1 alleles divided by the total number of alleles in the population.</InThisModel>
+										<InThisModel>The frequency of <A1/>, the allele of interest, is written as <Variable isBold>p</Variable> . It is the number of <A1/> alleles divided by the total number of alleles in the population.</InThisModel>
 										<UnorderedAnswerList>
-											<ListItem>If p = 0, there are no <A1/> alleles in the population. In this case, <A1/> has been “eliminated” from the population.</ListItem>
-											<ListItem>If p = 1, all the alleles in the population are <A1/> alleles. In this case, <A1/> has reached “fixation” in the population.</ListItem>
+											<ListItem>If <Italic>p</Italic> = 0, there are no <A1/> alleles in the population. In this case, <A1/> has been “eliminated” from the population.</ListItem>
+											<ListItem>If <Italic>p</Italic> = 1, all the alleles in the population are <A1/> alleles. In this case, <A1/> has reached “fixation” in the population.</ListItem>
 										</UnorderedAnswerList>
 										<br/>
 										<AnswerText>The frequency of the other allele, <A2/>, is written as <Variable isBold>q</Variable>. Since the model has only two alleles: <i>p</i> + <i>q</i> = 1</AnswerText>
@@ -348,10 +348,10 @@ function FAQPage({
 												<ListItem><strong><InifinitePopulationLink /> </strong>(<Variable>N</Variable> → ∞). The population is so large that it is unaffected by genetic drift.</ListItem>
 											</UnorderedAnswerList>
 										</AnswerText>
-										<InThisModel>The base model for the simulator is the Hardy-Weinberg equilibrium model, which meets all of the assumptions above. If you introduce evolutionary factors (like <Underline>
+										<InThisModel>To simulate a population in Hardy-Weinberg equilibrium model, choose the individual simulation option and select the infinite options for population size. Leave all the additional settings as default. If you introduce evolutionary factors (like <Underline>
 											<SelectionLink isLower /></Underline>, <Underline><MutationLink isLower /></Underline>, or <Underline><MigrationLink /></Underline>) into the model, it will violate the assumptions and may deviate from Hardy-Weinberg equilibrium.</InThisModel>
 										<LearnMore> Deviations from Hardy-Weinberg equilibrium may include allele and genotype frequencies changing across generations, or genotype frequencies differing from their expected proportions. Some deviations are predictable, while others are more stochastic.</LearnMore>
-										<AnswerText>Not all violations of the assumptions will lead to deviations. So even if a population’s genotype frequencies match the expected proportions for Hardy-Weinberg equilibrium, that does not mean all assumptions are met.</AnswerText>
+										<AnswerText>Not all violations of the assumptions will lead to deviations. So even if a population’s genotype frequencies match the expected proportions for Hardy-Weinberg equilibrium, that does <i>not</i> mean all assumptions are met.</AnswerText>
 									</AccordionCustomItem>
 
 
