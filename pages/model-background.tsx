@@ -348,7 +348,7 @@ function FAQPage({
 												<ListItem><strong><InifinitePopulationLink /> </strong>(<Variable>N</Variable> → ∞). The population is so large that it is unaffected by genetic drift.</ListItem>
 											</UnorderedAnswerList>
 										</AnswerText>
-										<InThisModel>To simulate a population in Hardy-Weinberg equilibrium model, choose the individual simulation option and select the infinite options for population size. Leave all the additional settings as default. If you introduce evolutionary factors (like <Underline>
+										<InThisModel>To simulate a population in Hardy-Weinberg equilibrium model, choose the individual simulation option and select the infinite option for population size. Leave all the additional settings as default. If you introduce evolutionary factors (like <Underline>
 											<SelectionLink isLower /></Underline>, <Underline><MutationLink isLower /></Underline>, or <Underline><MigrationLink /></Underline>) into the model, it will violate the assumptions and may deviate from Hardy-Weinberg equilibrium.</InThisModel>
 										<LearnMore> Deviations from Hardy-Weinberg equilibrium may include allele and genotype frequencies changing across generations, or genotype frequencies differing from their expected proportions. Some deviations are predictable, while others are more stochastic.</LearnMore>
 										<AnswerText>Not all violations of the assumptions will lead to deviations. So even if a population’s genotype frequencies match the expected proportions for Hardy-Weinberg equilibrium, that does <i>not</i> mean all assumptions are met.</AnswerText>

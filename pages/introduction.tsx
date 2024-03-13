@@ -200,7 +200,7 @@ function Index() {
 					Use the model to explore your own questions about how frequencies are affected by different factors. Like all
 					models, this model makes some simplifying{' '}
 					{
-						<AriaTooltip label="Conditions that a model assumes to be true, in order to make the system easier to understand and work with.">
+						<AriaTooltip label="Conditions that a model assumes to be true, in order to make the system easier to understand and workable.">
 							<Text
 								as="span"
 								display="inline-block"
