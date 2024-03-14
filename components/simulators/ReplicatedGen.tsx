@@ -429,7 +429,7 @@ function Index() {
 					<HighChart
 						chartIndex={1}
 						lines={genotypeResults}
-						title={'Graph 2: Genotype Frequency Change Over Generations'}
+						title={'Graph 2: Genotype Frequency Change Over Generations (Last Simulation)'}
 					/>
 				</Box>
 				<Text
