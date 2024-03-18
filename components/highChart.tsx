@@ -34,6 +34,7 @@ function createLinesFromArray(lines, isGeno = false) {
 function createOptions(theme = 'light', lines, title: string) {
 	const isGenoType = title.toLowerCase().includes('genotype');
 
+	const subTitleText = isGenoType ? 'Hover (or navigate with the keyboard) over a line to see the frequency of a specific genotype in the population.' : 'Hover (or navigate with the keyboard) over the line to see the frequency of the A₁ allele in the population.';
 	return {
 		title: {
 			text: `<h2>${title}</h2>`,
@@ -41,7 +42,7 @@ function createOptions(theme = 'light', lines, title: string) {
 			useHTML: true,
 		},
 		subtitle: {
-			text: 'Hover (or navigate with the keyboard) over the line to see the frequency of the A allele in the population.',
+			text: subTitleText,
 		},
 		chart: {
 			styledMode: false,
