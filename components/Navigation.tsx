@@ -74,7 +74,7 @@ export default function Navigation() {
 								</MenuButton>
 								<MenuList bg={useColorModeValue('#333333', 'gray.900')}>
 									<MenuItem
-										as="a"
+										as={NextLink}
 										href="/individual"
 										bg={useColorModeValue('#333333', 'gray.900')}
 										_hover={{
@@ -94,7 +94,7 @@ export default function Navigation() {
 										<Text fontWeight={'bold'}>Individual Simulations</Text>
 									</MenuItem>
 									<MenuItem
-										as="a"
+										as={NextLink}
 										href="/replicated"
 										bg={useColorModeValue('#333333', 'gray.900')}
 										_hover={{

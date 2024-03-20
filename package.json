@@ -28,7 +28,9 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "prettier components pages *.js* -w && next lint"
+		"lint": "prettier components pages *.js* -w && next lint",
+		"export": "next export",
+		"exportDev": "IS_DEV_BRANCH=true next export"
 	},
 	"devDependencies": {
 		"@types/node": "18.11.18",
