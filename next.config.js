@@ -18,8 +18,10 @@ module.exports = {
 	compiler: {
 		styledComponents: true,
 	},
-	images: {
-		unoptimized: true,
-	}
+
+	// Only works on netlify and when sharp library is installed
+	// images: {
+	// 	unoptimized: true,
+	// }
 };
 

@@ -105,7 +105,7 @@ function Index() {
 								title=""
 								description="Populations of rock pocket mice that live on dark-colored surfaces have higher frequencies of an allele for dark-colored fur. Can natural selection explain the rise in frequency of this allele? "
 								imageProps={{
-									src: '/images/mouse-wikipedia.jpg',
+									src: 'images/mouse-wikipedia.jpg',
 									alt: 'A picture of a mouse on a rock.',
 								}}
 								blobProps={{
@@ -122,7 +122,7 @@ function Index() {
 								title=""
 								description="Sickle cell disease is a genetic condition that results in sickle-shaped red blood cells. Does the fact that people who have one copy of the sickle cell allele are protected from malaria explain why sickle cell disease is more common in some populations?"
 								imageProps={{
-									src: '/images/sickle-cell-domain.jpg',
+									src: 'images/sickle-cell-domain.jpg',
 									alt: 'Two red crescent shaped objects float in front of several more circular red objects.',
 								}}
 								blobProps={{
@@ -139,7 +139,7 @@ function Index() {
 								title=""
 								description="Certain alleles make mosquitos more resistant to insecticide. How does the movement of these mosquitoes among populations affect the evolution of insecticide resistance?"
 								imageProps={{
-									src: '/images/mosquito-domain.jpg',
+									src: 'images/mosquito-domain.jpg',
 									alt: 'A close up picture of a mosquito.',
 								}}
 								blobProps={{
@@ -156,7 +156,7 @@ function Index() {
 								title=""
 								description="Iberian lynxes and other endangered species have small populations. How might population size affect the evolution of these species over time?"
 								imageProps={{
-									src: '/images/lynx-wikipedia.jpg',
+									src: 'images/lynx-wikipedia.jpg',
 									alt: 'A picture of a lynx lying in a shaded grassy area.',
 								}}
 								blobProps={{
